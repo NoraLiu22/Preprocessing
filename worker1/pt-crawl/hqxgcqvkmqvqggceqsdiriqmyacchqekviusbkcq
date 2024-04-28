@@ -1,0 +1,271 @@
+hqxgcqvkmqvqggceqsdiriqmyacchqekviusbkcq length 5 12989 page 12989 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>pyBlazon: Blazonry to SVG Converter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- link rel="SHORTCUT ICON" href="/favicon.ico" / -->
+<!-- link rel="ICON" href="/favicon.ico" / -->
+
+
+</head>
+<body>
+<div id="counter">
+<!-- Place this tag where you want the +1 button to render -->
+<g:plusone annotation="inline" width="200"></g:plusone>
+
+<!-- Place this render call where appropriate -->
+
+    <iframe src="http://www.facebook.com/plugins/like.php?href=http://web.meson.org/pyBlazon/"        scrolling="no" frameborder="0"
+        style="border:none; width:100%; height:80px"></iframe>
+
+</div>
+<div id='nav'>
+<table width='100%'>
+<tr class='current sub0'>
+<td><a class='intern' href='' ></a></td>
+</tr>
+<tr class='sub0'>
+<td><a class='intern' href='' ></a></td>
+</tr>
+
+</table>
+<p id='timenote'>Last modified: 26-May-2016</p>
+<p id='feednote'><a href='/updates.atom' class='intern'>Atom feed for this site</a></p>
+</div>
+<div class="main">
+<h1>pyBlazon: Blazonry to SVG Converter</h1>
+<p><strong>Links here are temporarily broken: Google code shut down, and the project has been moved to github; I'll update the links soon.</strong></p>
+
+<p>pyBlazon is a Python program that attempts to translate from <a
+href="http://en.wikipedia.org/wiki/Blazonry" class="extern">Blazonry</a>,
+the specialized terminology used for describing coats of arms (specifically
+shields) to <a href="http://www.w3c.org/Graphics/SVG/"
+class="extern">Scalable Vector Graphics</a>.  In other words, this is an
+attempt at automatic emblazoning (drawing) of a blazon (description).
+pyBlazon was written by <a href="/" class="intern">Mark Shoulson</a> and <a
+href="http://arj.nvg.org/" class="extern">Arnt Richard Johansen</a>.</p>
+
+<p>Blazonry has been called the first programming language, loosely
+speaking (maybe a markup language would be closer.  Like HTML or
+something).  But it never intended for the kind of precision required here,
+and was always meant to be read by readers with full Natural Language
+Processing abilities (<i>i.e.</i>, people), not by a computer program
+trying to implement it as a proper subset of English.  The line between
+blazonry and just plain English is not a sharp one, so be aware the
+program&rsquo;s abilities are very limited compared to the liberties
+blazons commonly take.</p>
+
+<p>pyBlazon is licensed under the <a class="extern" 
+href="http://www.gnu.org/licenses/lgpl.html">GNU
+Lesser General Public License</a>, and can be downloaded (via
+  <a class="extern" href="http://subversion.tigris.org/">SVN</a>) from the
+  <a class="extern" href="http://code.google.com/p/pyblazon/">pyBlazon
+  GoogleCode Site</a>.
+
+<p>
+The program uses <a class="extern"
+href="http://www.dabeaz.com/ply/">PLY</a>, which is a Python port of the
+venerable LEX/YACC combo.  The grammar is thus subject to some limitations,
+but we'll see what can be done about that.  As the blazon is parsed,
+various blazonry objects are created and called upon each other,
+representing tinctures, charges, ordinaries, and so forth.  The other
+library used is SVGdraw, which does not seem to be supported anymore, so we
+will include it with the pyBlazon distribution (the license appears to
+permit this).  SVGdraw is a fairly simple library that just makes building
+SVG files a bit easier.
+</p>
+
+<h2><a href="/blazonserver/" class="intern">Use the online pyBlazon server
+to convert blazons into graphics</a></h2>
+<h2><a class="extern" href="http://code.google.com/p/pyblazon/">See the
+    Googlecode pyBlazon Site</a></h2>
+
+<h2>News</h2>
+<p>
+The <a class="intern" href="svnlog.html">SVN log</a> of the project will
+show the checkin messages as changes are made to the code, but more
+usefully...
+</p>
+
+<dl>
+<dt> 1 May 2008 </dt>
+<dd> <p>Merged a &ldquo;branch&rdquo; version I had been working on back into
+  the trunk: I think I don&apos;t yet properly appreciate when I should
+  really be dealing with branches.  The new one, now uploaded to the
+  server, uses a different method of lexing, which gives more flexibility,
+  and also added a question-mark charge to be used whenever someone gives a
+  charge that the program does not know about.  This should lead to fewer
+  unenlightening &ldquo;error&rdquo; pages.</p>
+ <p> Also, finally announcing the <a class="extern"
+ href="http://code.google.com/p/pyblazon/">pyBlazon GoogleCode
+ repository</a> for all your pyBlazon needs.  You can check out the source
+ code from there (yay!), add your comments to the wiki, track issues that
+ I&apos;ll ignore, etc.
+ </p>
+</dd>
+<dt> 14 March 2008 </dt>
+<dd> Pursuant to 
+  <a class="extern"
+    href="https://bugzilla.mozilla.org/show_bug.cgi?id=422599">bug
+  report #422599</a> reported on 
+  <a class="extern"
+     href="http://www.mozilla.com/">Mozilla Firefox</a>, which someone
+  else filed after having trouble seeing the SVG code generated by
+  pyBlazon, I&rsquo;ve corrected all the SVG errors.  I had run the output
+    through a validator, but that was a while ago and also there are errors
+    that validators don&rsquo;t catch.  I may backtrack on some that
+    apparently did not need to be fixed, but things do seem to be working
+    better on 
+     <a class="extern" href="http://www.opera.com/">Opera</a>, at any rate.
+</dl>
+
+<h2>pyBlazon&rsquo;s Grammar</h2>
+
+<p>The full grammar understood by pyBlazon is in its plyyacc.py file,
+contained in the <tt>__doc__</tt> strings of the functions, as required by
+the <a class="extern" href="http://www.dabeaz.com/ply/">PLY</a> package.
+<a class="intern" href="grammar.txt">Here</a> is a link to a printout of
+the current grammar, and <a class="intern" href="lexitems.txt">here</a> is
+one for the lexical elements.  But it is probably more helpful to have a
+simplified description.  I am replacing the almost-formal informal grammar
+that used to be here with something much shorter and more example-oriented;
+maybe that will be helpful.
+Note that punctuation, in general, is stripped out and ignored, so
+don&rsquo;t go worrying about where to put commas: they do not need to be
+anywhere.</p>
+
+<ul>
+<li>Essentially, you want <i>&laquo;treatment&raquo;</i> followed by one
+  or more charges or charge-groups.</li>
+<li>The &ldquo;treatment&rdquo; is going to be a color, like <i>argent</i>
+  or <i>sable</i> or <i>azure</i> and so on (I am assuming you know
+  blazonry jargon; if not, follow a link somewhere below); or else it can
+  be something more complicated like <i>per pale argent and sable</i>
+  or <i>gyronny of ten vert and azure</i> or <i>per bend sinister wavy
+  purpure and or</i>.  You can do furs and lines of partition and all
+  kinds of sneaky things like that.</li>
+<li>Charges and ordinaries currently sorta share grammatical space.  And
+  the usual ones work: <i>bend, pale, fesse, chevron, bar, pallet, bend
+  sinister,</i> etc., and also <i>roundel, lozenge, fusil, mullet
+  [of <b>x</b> points], annulet,</i> and so on.  A charge has to have a
+  treatment too, which follows it, as in <i>sable a roundel or</i>
+  or <i>per pale argent and sable a lozenge per saltire gules and azure</i>
+  or whatever excites you.  These can get arbitrarily complex.</li>
+<li>You can also have a charge-group, which is a group of identical
+  charges, like <i>three lozenges sable</i> or <i>six roundels per cross
+  argent and gules</i>.  These can also be given an arrangement,
+  like <i>two two and two</i> or <i>seven annulets argent, four one one and
+  one</i> or whatever, or else <i>in cross</i>, <i>in bend</i>, <i>in
+  annulo</i>, etc.  If you have more than one charge or charge-group,
+  pyBlazon will try to arrange them in the &ldquo;right&rdquo; way,
+  occasionally with success.</li>
+<li>Any charge can have other stuff on it, in which case you use the
+  following syntax: <i>on a roundel sable two mullets argent</i> or <i>on a
+  bend or three billets azure</i>.</li>
+<li>If you want charges on the elements of a chargegroup, you say things
+  like <i>three roundels azure each charged with a lozenge or</i>
+  or <i>five lozenges sable each charged with as many mullets
+  argent</i>.</li>
+<li>For examples, see the blazonserver&apos;s <a class="intern"
+href="/blazonserver/#examples">list of examples</a>, and also the
+  <a class="extern"
+  href="http://code.google.com/p/pyblazon/wiki/EvilBlazons">Evil Blazons
+  page</a> on the pyBlazon wiki at GoogleCode.</li>
+</ul>
+<h2><a href="svnlog.html">View SVN Changelog</a></h2>
+
+<h2>Known Issues</h2>
+
+<p>Just from looking at the grammar you can see some potential
+problems with commonly-used constructions.  This isn't an exhaustive list,
+  though I'm working on it.  I'm sure you'll find plenty of perfectly
+  normal blazons that don't work: remember, blazons were intended for
+  humans, whose English is much better than the program's.</p>
+
+<p><small>This section prone to fast out-of-dateness.</small></p>
+
+<ul>
+<li> Directions like &ldquo;in chief&rdquo; come <i>after</i> the charge or
+group, so you have to say <i>Argent two bars and three mullets in chief
+gules</i> instead of <i>Argent two bars and in chief three mullets
+gules</i>. (George Washington&rsquo;s arms) 
+
+<li> You have to say <i>purpure within a bordure argent</i> instead of 
+  <i>purpure a bordure argent</i>
+
+<li> &ldquo;Between&rdquo; is a synonym for &ldquo;and&rdquo;.  So
+&ldquo;or a fess between two chevrons gules&rdquo; doesn&rsquo;t work: the
+fess overlies most of the chevrons. (Working on changing this, but progress
+  is slight so far.)
+
+<li> At the moment, certain treatments, like &ldquo;per pale azure and
+gules&rdquo; don&rsquo;t work on some SVG-included symbols, like lions
+rampant.
+
+<li> Stuff like &ldquo;argent an escutcheon gules and eight escallops azure
+in orle&rdquo; lumps the escutcheon and the escallops into one group, and
+then ignores the &ldquo;in orle&rdquo; instruction.  Using <i>between</i>
+  will (now) prevent the lumping together, but the sizes come out wrong
+  still.
+
+<li> Generally, the hack that combines different charges into groups is,
+well, a hack.  And fairly badly-behaved in several situations.  This hack
+is necessary for things like &ldquo;per bend argent and sable a mullet and
+a roundel counterchanged&rdquo;: they have to be joined into a group of
+charges so they can be distributed properly, on either side of the
+partition line.  Misbehavior of this hack causes things like the above bug,
+and also the fact that you can't say &ldquo;ermine a mullet and a lozenge
+gules in pale&rdquo;.  The &ldquo;in pale&rdquo; has to come after the
+<i>first</i> charge, which is just wrong.  The hack will have to be
+re-hacked.
+
+<li> The charges &ldquo;cross couped&rdquo; and &ldquo;saltire
+couped&rdquo;, etc, are not recognized and tend to be treated as just
+crosses and saltires.
+
+<li> A chief <i>sometimes</i> squishes the rest of the field down, as it
+should, and sometimes does not, in which case it interferes with what is on
+the top of the regular field.  I've tried to disambiguate a little: to make
+  a &ldquo;real&rdquo; chief, that is, one that squishes the field down,
+  use <i>&ldquo;<b>with</b> a chief...&rdquo;</i> instead of
+  &ldquo;<i>and</i> a chief&rdquo;, and it has to be at the very end of
+  the blazon.  If there are charges on the chief, you have to
+  say <i>&ldquo;with a chief azure charged with three bezants&rdquo;</i> or
+  something like that (and not the &ldquo;and on a &lsaquo;ordinary&rsaquo;
+  two &lsaquo;charges&rsaquo;&rdquo; like usual).
+
+<li> Field colorations like barry and furs (<i>usually</i>) don't scale
+  with the charge they are attached to.  This is often the Right Thing, but
+  it can make things like a fountain (a roundel barry wavy argent and azure)
+  look funny because the stripes are too wide.  You need to specify
+  something like &ldquo;a roundel barry wavy of twelve argent and
+  azure&rdquo; to make it a finer-grained barry.  On the other
+  hand, <i>sometimes</i> the treatments <i>do</i> scale, depending 
+  on the precise charge and how it is included, or when made into a semy.
+
+<li> In general, only a few charges are known.  Deal with it.
+
+<li> Sometimes charges get positioned badly and overlie each other.
+
+<li> In a similar vein, charges on top of other charges (e.g. <q>on a
+roundel or two mullets sable</q>) work some of the time, particularly when
+the base charge is fairly large and open, like a roundel or an escutcheon.
+But since the program doesn't know the sizes of the <i>open areas</i> of
+charges, things like lozenges and mullets sometimes wind up too small for
+their contents.
+
+<li> Obviously, you can&rsquo;t specify complicated things like
+&ldquo;argent a label sable each point charged with three bezants&rdquo; or
+&ldquo;azure three four-winged, six-headed seahorses in pall argent, their
+  tails nowed in a right-handed three-way sheet bend&rdquo;.
+
+</ul>
+
+<p>See also <a href="hacks.php" class="intern">Hacks</a>.<p>
+
+</div>
+
+
+</body></html>
+    contentType 9 text/html url 33 http://web.meson.org:80/pyBlazon/ responseCode 3 200 
