@@ -1,0 +1,234 @@
+qeoijaxqkihogqtkzadkkoqovkccyipodcncdodk length 5 11192 page 11192 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>NCAA Publications</title>
+    <meta name="description" content="enter your site description here" />
+    <meta name="keywords" content="enter your site keywords here" />
+    <link rel="stylesheet" href="skins/Skin_1/style.css" type="text/css" />
+    <!--[if IE]>
+        <link rel="stylesheet" href="skins/Skin_1/ie.css" type="text/css" />
+    <![endif]-->
+    <link rel="stylesheet" href="skins/Skin_1/accordion.css" type="text/css" />
+    <script type="text/javascript" src="jscripts/formValidate.js"></script>
+    <script type="text/javascript" src="skins/skin_1/accordionscript.js"></script>
+    <script
+	src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+    <script src="nivo-slider/jquery.nivo.slider.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="nivo-slider/themes/default/default.css" type="text/css"
+        media="screen" />
+    <link rel="stylesheet" href="nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+    <script type="text/javascript">
+        $(window).load(function () {
+
+            $("#sliderContents").html("<img style='margin-left:500px; margin-top:300px;' src=\"images/rotator/ajax-loader.gif\" alt=\"loading...\"/>");
+            $("#InSeasonNowContents").html("<div style='height:400px;'><img style='margin-left:30px; margin-top:0px;' src=\"images/rotator/ajax-loader.gif\" alt=\"loading...\"/></div>");
+            $("#NewItemsContent").html("<img style='margin-left:80px; margin-top:0px;' src=\"images/rotator/ajax-loader.gif\" alt=\"loading...\"/>");
+            //get rotator data
+
+            $.get("TopNavContents.aspx", '',
+                function (data) {
+                    $("#Navigation").html(data);
+                }
+            );
+
+
+            $.get("rotatorData.aspx",
+                  '',
+                  function (data) {     //what to do with the data
+                      $("#sliderContents").html(data);
+                      $('#slider').nivoSlider({
+                          effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
+                          animSpeed: 250, // Slide transition speed
+                          pauseTime: 5000, // How long each slide will show
+                          startSlide: 0, // Set starting Slide (0 index)
+                          directionNav: false, // Next & Prev navigation
+                          controlNav: true, // 1,2,3... navigation
+                          controlNavThumbs: true, // Use thumbnails for Control Nav
+                          manualAdvance: false, // Force manual transitions
+                          randomStart: false, // Start on a random slide
+                          beforeChange: function () { }, // Triggers before a slide transition
+                          afterChange: function () { }, // Triggers after a slide transition
+                          slideshowEnd: function () { }, // Triggers after all slides have been shown
+                          lastSlide: function () { }, // Triggers when last slide is shown
+                          afterLoad: function () { } // Triggers when slider has loaded
+                      });
+                  }
+            );
+
+            $.get("InSeasonData.aspx", '',
+                function (data) {
+                   $("#InSeasonNowContents").html(data);
+                }
+            );
+
+            $.get("NewItemsData.aspx", '',
+                function (data) {
+                   $("#NewItemsContent").html(data);
+                }
+            );
+        });
+
+        $(document).ready(function () {
+            $('img.BackArrow').click(function () {
+                parent.history.back();
+                return false;
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        function SearchBoxForm_Validator(theForm) {
+            submitonce(theForm);
+            if (theForm.SearchTerm.value.length < 3) {
+                alert('Please enter at least 3 characters in the Search For field.');
+                theForm.SearchTerm.focus();
+                submitenabled(theForm);
+                return (false);
+            }
+            return (true);
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="Content">
+        <div id="Rotator">
+            <div id="sliderContents" class="slider-wrapper theme-default">
+            </div>
+        </div>
+        <div class="Header">
+            <div class="Links">
+                <div class="LinkItem">
+                    <a href="https://www.ncaa.org/sports/2021/2/16/overview.aspx">About the NCAA</a></div>
+                <div class="LinkItem">
+                    <a href="http://www.ncaa.org/about/what-we-do/academics">Academics</a></div>
+                <div class="LinkItem">
+                    <a href="https://www.ncaa.org/sports/2021/5/11/division-i-compliance.aspx">Rules Compliance</a></div>
+                <div class="LinkItem">
+                    <a href="http://www.ncaa.org/health-and-safety">
+                        Health & Safety</a></div>
+                <div class="LinkItem">
+                    <a href="http://www.ncaa.org/championships">Championships</a></div>
+                <div class="LinkItem">
+                    <a href="https://www.ncaa.org/sports/2015/2/11/student-athletes-future-educational-resources.aspx">Resources</a></div>
+                <div class="LinkItem">
+                    <a href="https://www.ncaa.org/sports/2021/5/4/finances.aspx">Finances</a></div>
+            </div>
+            <div class="SearchArea">
+                <form name="SearchBoxForm" action="searchadv.aspx" method="GET" onsubmit="return SearchBoxForm_Validator(this)">
+                <input type="hidden" name="IsSubmit" value="true" />
+                <span style="margin-right: 5px;">SEARCH:</span><input name="SearchTerm" size="35" />
+                </form>
+            </div>
+            <ul id="Navigation">
+                <li class="Empty"></li>
+                <li class="Heading"><a href="http://ncaapublications.com/">HOME</a> </li>
+                <li class="Heading">NCAA MANUALS
+                    <div class="Manuals Menu">
+                        <span class="MenuHeading">2012-2013 DIVISION MANUALS</span>
+                        <hr/>
+                        <div class="Col">
+                          <img src="images/rotator/ajax-loader.gif" alt="loading..."/>
+                        </div>
+                    </div>
+                </li>
+                <li class="Heading">RULE BOOKS
+                    <div class="Rules Menu">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td valign="top">
+                                <span class="MenuHeading">2013 RULE BOOKS</span><br />
+                                <hr/>
+                                <div class="Col">
+                                   <img src="images/rotator/ajax-loader.gif" alt="loading..."/>
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <span class="MenuHeading">NCAA CASE BOOKS</span><br />
+                                <hr style="width:250px;"/>
+                                <div class="Col">
+                                   <img src="images/rotator/ajax-loader.gif" alt="loading..."/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </li>
+                <li class="Heading">SCOREBOOKS
+                    <div class="Scorebooks Menu">
+                        <span class="MenuHeading">SCOREBOOKS</span><br />
+                        <hr/>
+                        <div class="Col">
+                            <img src="images/rotator/ajax-loader.gif" alt="loading..."/>
+                        </div>
+                    </div>
+                </li>
+                <li class="Heading">MISCELLANEOUS
+                    <div class="Miscellaneous Menu">
+                        <span class="MenuHeading">MISCELLANEOUS</span><br />
+                        <hr/>
+                        <div class="Col">
+                            <img src="images/rotator/ajax-loader.gif" alt="loading..."/>
+                        </div>
+                    </div>
+                </li>
+                <li class="Heading ComplimentaryMenu">COMPLIMENTARY
+                    <div class="Complimentary Menu">
+                        <span class="MenuHeading">COMPLIMENTARY PUBLICATIONS</span><br />
+                        <hr/>
+                        <div class="Col">
+                            <img src="images/rotator/ajax-loader.gif" alt="loading..."/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="Ball">
+                <a href="http://ncaapublications.com">
+                    <img src="images/NCAABall.png" />
+                </a>
+            </div>
+        </div>
+        <div class="TableContainer WithRotator">
+            <table id="PublicationTable" cellpadding="0" cellspacing="0" width="900">
+                <tbody>
+                    <tr>
+                        <td class="header" colspan="4">
+                            In season now
+                        </td>
+                        <td class="dividerL" style="padding-right:10px" rowspan="4">
+                        </td>
+                        <td class="dividerR" rowspan="4">
+                        </td>
+                        <td class="recent header">
+                            Recently published
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="InSeasonNowContents">
+                           
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>&nbsp;</td>
+                        <td id="NewItemsContent" class="RecentList" valign="top">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="Footer">
+            <a href="t-Helpbox.aspx">FAQ</a> <a href="t-privacy.aspx">Privacy Policy</a> <a
+                href="t-contact.aspx">Contact Us</a> <a href="shoppingcart.aspx">Shopping Cart</a> <!--<a href="account.aspx">My Account</a> --> <a href="signin.aspx">Login</a>
+        </div>
+    </div>
+</body>
+</html>
+ contentType 9 text/html url 37 https://www.ncaapublications.com:443/ responseCode 3 200 
