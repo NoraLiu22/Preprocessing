@@ -1,0 +1,116 @@
+zgoceioigooijcqotsbcsormlshaakqadinmumki length 4 3694 page 3694 <html>
+<head>
+<title>Great Circle Distances</title>
+<script>
+function round(n) {
+   if(n < 0.01) return 0
+   if(n <= 10) mult = 100
+   if((n > 10) && (n < 100))  mult = 10
+   if(n >= 100) mult = 1
+   return parseInt((n * mult) + 0.5) / mult
+}
+function calc() {
+   rad = 0.01745566
+   LoAdeg = document.a.aLongdeg.value
+   LoAmin = document.a.aLongmin.value
+   if((LoAdeg == "") || (LoAmin == "")) return
+   LoAdeg = parseFloat(LoAdeg); LoAmin = parseFloat(LoAmin)
+   LoA = LoAdeg + (LoAmin / 60)
+   if(LoA > 180) return
+   if(document.a.aLong[1].checked) LoA = -LoA
+
+   LoBdeg = document.b.bLongdeg.value
+   LoBmin = document.b.bLongmin.value
+   if((LoBdeg == "") || (LoBmin == "")) return
+   LoBdeg = parseFloat(LoBdeg); LoBmin = parseFloat(LoBmin)
+   LoB = LoBdeg + (LoBmin / 60)
+   if(LoB > 180) return
+   if(document.b.bLong[1].checked) LoB = -LoB
+   Lo = Math.abs(LoA - LoB); 
+
+   LatAdeg = document.a.aLatdeg.value
+   LatAmin = document.a.aLatmin.value
+   if((LatAdeg == "") || (LatAmin == "")) return
+   LatAdeg = parseFloat(LatAdeg); LatAmin = parseFloat(LatAmin)
+   LatA = LatAdeg + (LatAmin /60)
+   if(LatA > 90) return
+   if(document.a.aLat[1].checked) LatA = -LatA
+
+   LatBdeg = document.b.bLatdeg.value
+   LatBmin = document.b.bLatmin.value
+   if((LatBdeg == "") || (LatBmin == "")) return
+   LatBdeg = parseFloat(LatBdeg); LatBmin = parseFloat(LatBmin)
+   LatB = LatBdeg + (LatBmin /60)
+   if(LatB > 90) return 
+   if(document.b.bLat[1].checked) LatB = -LatB
+
+   with(Math) {
+      Drad = acos((sin(LatA*rad)*sin(LatB*rad))+
+            (abs(cos(LatA*rad))*abs(cos(LatB*rad))*cos(Lo*rad)))
+   }
+   document.result.miles.value = " "+round(Drad * 57.2881 * 69.06)
+   document.result.k.value = " "+round(Drad * 57.2881 * 111.2)
+}
+</script>
+</head>
+<BODY TEXT="#00009F" BGCOLOR="#000000" LINK="#FFFFFF" VLINK="#CCCCCC" ALINK="#CCCCCC" 
+
+BACKGROUND="./images/grengrad2.gif" OnLoad="init()">
+<font color="#0000ff">
+<CENTER><B><I><FONT COLOR="#0000FF"><FONT SIZE=+4><IMG SRC="./images/towerani.gif">   Great 
+
+Circle Calculator   <IMG SRC="./images/towerani.gif" BORDER=0 ></FONT></FONT></I></A></B>
+<hr>
+<p>
+</font><b>
+<table border=2>
+<form name="a">
+<th colspan=3>Your Station's Location&nbsp;&nbsp;
+&nbsp;&nbsp;<input type="reset" value="Clear">
+</th>
+<tr><td>Latitude:
+<td><input size=5 name="aLatdeg"> Degrees
+    <input size=5 name="aLatmin"> Minutes
+<td><input type="radio" name="aLat" OnClick=0> North
+    <input type="radio" name="aLat" OnClick=0> South
+
+<tr><td>Longitude:
+<td><input size=5 name="aLongdeg"> Degrees
+    <input size=5 name="aLongmin"> Minutes
+<td><input type="radio" name="aLong" OnClick=0> West
+    <input type="radio" name="aLong" OnClick=0> East
+</form>
+</table>
+<table border=2>
+<form name="b">
+<th colspan=3>Remote Station's Location
+&nbsp;&nbsp;<input type="reset" value="Clear">
+</th>
+<tr><td>Latitude: 
+<td><input size=5 name="bLatdeg"> Degrees
+    <input size=5 name="bLatmin"> Minutes
+<td><input type="radio" name="bLat" OnClick=0> North
+    <input type="radio" name="bLat" OnClick=0> South
+
+<tr><td>Longitude:
+<td><input size=5 name="bLongdeg"> Degrees
+    <input size=5 name="bLongmin"> Minutes
+<td><input type="radio" name="bLong" OnClick=0> West
+    <input type="radio" name="bLong" OnClick=0> East
+</form></table></center>
+<form name="result">
+<center>
+<input type="button" value="Calculate" OnClick="calc()">
+Distance between stations: 
+<input size=10 name="miles"> Miles.&nbsp; (
+<input size=10 name="k"> Kilometres)<br>
+</form>
+<hr><pre>
+73 from John G4VWL @GB7DEE         email: john@vwlowen.demon.co.uk
+</b>
+<hr>
+<b><i>This page was found on Packet Radio. If you find it useful send thanks to John (G4VWL)</b></i></center>
+</body>
+</html>
+
+ contentType 9 text/html url 37 http://www.gb3pi.org.uk:80/great.html responseCode 3 200 

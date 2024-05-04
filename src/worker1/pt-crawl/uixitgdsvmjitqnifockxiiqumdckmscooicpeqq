@@ -1,0 +1,284 @@
+uixitgdsvmjitqnifockxiiqumdckmscooicpeqq length 4 9912 page 9912 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Wikimedia Hashtags tool</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="icon" type="image/png" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/skeleton.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/advance.js"></script>
+</head>
+<body>
+  <div class="section page-header">
+    <div class="container">
+      <div class="row">
+	      <div class="full column" style="margin-top: 5%">
+            <h1><a href="/">Wikimedia hashtag search</a></h1>
+          	<p> Search for <a href="http://blog.hatnote.com/post/112756032432/the-humble-hashtag-now-on-wikipedia">hashtags</a> in Wikimedia edit summaries </p>
+	      </div>
+      </div>
+    </div>
+  </div>
+
+  
+<script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://tools-static.wmflabs.org/cdnjs/ajax//libs/Chart.js/2.8.0/Chart.min.js"></script>
+<div class="container">
+    <form id="tag-search">
+        <div class="row">
+            <div class="four columns">
+                <input type="text" name="query" value="#1Lib1RefNG" placeholder="Enter a hashtag" style="width:100%" required id="id_query">
+            </div>
+            <div class="four columns">
+                <input type="text" name="project" placeholder="en.wikisource.org" style="width:100%" id="id_project">
+            </div>
+            <div class="two columns">
+                <input class="u-full-width button-primary" type="submit" value="Submit">
+            </div>
+        </div>
+        <div class="row">
+            <div class="three columns" style="margin-right: 2em">
+                Start date:
+                <input type="date" name="startdate" id="id_startdate">
+            </div>
+            <div class="three columns">
+                End date:
+                <input type="date" name="enddate" id="id_enddate">
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" onclick="showAdvance()">
+                
+                More Filters
+            </button>
+        </div>
+        <div class="row" id="adv" style="display: none">
+            <div style="margin-right: 2em">
+                Type:
+                <select name="search_type" id="id_search_type">
+  <option value="or">or</option>
+
+  <option value="and">and</option>
+
+</select>
+                &nbsp;
+                <div class="tooltip">&nbsp; ?
+                    <span class="tooltiptext">
+                        
+                        When searching for multiple hashtags, should the results be a subset or union?
+                    </span>
+                </div>
+            </div>
+            <div style="margin-right: 2em">
+                User:
+                <input type="text" name="user" placeholder="Enter username" id="id_user">
+            </div>
+        </div>
+    </form>
+    
+    <div class="info">
+        <div class="row">
+            <div class="two-thirds column">
+                <h2 id="queried-hashtags">
+                    
+                    #1Lib1RefNG
+                    
+                </h2>
+                <a href="/?query=%231Lib1RefNG&amp;amp%3Bproject=&amp;amp%3Bstartdate=2022-06-01&amp;amp%3Benddate=2026-07-01&amp;amp%3Bsearch_type=or&amp;amp%3Buser=">
+                    <button>
+                        
+                        Show list
+                    </button></a>
+            </div>
+            <div class="one-third column">
+                <p class="stats-date-range">May 23, 2022 - July 4, 2023</p>
+<table class="stats-table">
+    <tr>
+        <td class="stat">1980</td>
+        <td class="stat-label">revisions</td>
+    </tr>
+    <tr>
+        <td class="stat">575</td> 
+        <td class="stat-label">pages</td>
+    </tr>
+    <tr>
+        <td class="stat">69</td>
+        <td class="stat-label">users</td>
+    </tr>
+    <tr>
+        <td class="stat">4</td>
+        <td class="stat-label">projects</td>
+    </tr>
+</table>
+            </div>
+        </div>
+    </div>
+    <div id="top_projects">
+        <hr>
+        <div class="row">
+            <h1>
+                
+                Top projects
+            </h1>
+        </div>
+        <div class="row">
+            <div class="two-thirds column">
+                <div align="center" id="loader1">
+                    <img type="image/gif" src="/static/loader.gif">
+                </div>
+                <canvas id="projectsChart" width="400" height="400"></canvas>
+            </div>
+            <div class="one-third column">
+                <a href="/projects_csv/?query=%231Lib1RefNG&amp;amp%3Bproject=&amp;amp%3Bstartdate=2022-06-01&amp;amp%3Benddate=2026-07-01&amp;amp%3Bsearch_type=or&amp;amp%3Buser=">
+                    <button>
+                        
+                        Download CSV
+                    </button>
+                </a>
+                <a id="projects_url" class="downloadAnchor">
+                    <button>
+                        
+                        Download JPG
+                    </button>
+                </a>
+                </a>
+                <a href="/all_projects/?query=%231Lib1RefNG&amp;amp%3Bproject=&amp;amp%3Bstartdate=2022-06-01&amp;amp%3Benddate=2026-07-01&amp;amp%3Bsearch_type=or&amp;amp%3Buser=">
+                    <button>
+                        
+                        View Full Stats
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="top_users">
+        <hr>
+        <div class="row">
+            <h1>
+                
+                Top users
+            </h1>
+        </div>
+        <div class="row">
+            <div class="two-thirds column">
+                <div align="center" id="loader2">
+                    <img type="image/gif" src="/static/loader.gif">
+                </div>
+                <canvas id="usersChart" width="400" height="400"></canvas>
+            </div>
+            <div class="one-third column">
+                <a href="/users_csv/?query=%231Lib1RefNG&amp;amp%3Bproject=&amp;amp%3Bstartdate=2022-06-01&amp;amp%3Benddate=2026-07-01&amp;amp%3Bsearch_type=or&amp;amp%3Buser=">
+                    <button>
+                        
+                        Download CSV
+                    </button>
+                </a>
+                <a id="users_url" class="downloadAnchor">
+                    <button>
+                        
+                        Download JPG
+                    </button>
+                </a>
+                <a href="/all_users/?query=%231Lib1RefNG&amp;amp%3Bproject=&amp;amp%3Bstartdate=2022-06-01&amp;amp%3Benddate=2026-07-01&amp;amp%3Bsearch_type=or&amp;amp%3Buser=">
+                    <button>
+                        
+                        View Full Stats
+                    </button>
+                </a>    
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h1>
+            
+            Edits over time
+        </h1>
+    </div>
+    <div class="row">
+       <button name="dailyTimeChart" class="view-type">Daily</button>&emsp;
+       <button name="monthlyTimeChart" class="view-type">Monthly</button>&emsp;
+       <button name="yearlyTimeChart" class="view-type">Yearly</button>
+    </div>
+    <div class="row">
+        <div align="center" id="loader3">
+            <img type="image/gif" src="/static/loader.gif">
+        </div>
+        <div>
+            <canvas class="timeChart" id="dailyTimeChart" status="not-loaded" width="400" height="400"></canvas>
+        </div>
+         <div>
+            <canvas class="timeChart" id="monthlyTimeChart" status="not-loaded" width="400" height="400"></canvas>
+        </div>
+         <div>
+            <canvas class="timeChart" id="yearlyTimeChart" status="not-loaded" width="400" height="400"></canvas>
+        </div>
+        <div class="row download-edits">
+
+            <a id="dailyTimeChart-csv" class="downloadAnchor">
+                <button>
+                    
+                    Download CSV
+                </button>
+            </a>
+            <a id="monthlyTimeChart-csv" class="downloadAnchor">
+                <button >
+                    
+                    Download CSV
+                </button>
+            </a>
+            <a id="yearlyTimeChart-csv" class="downloadAnchor">
+                <button>
+                    
+                    Download CSV
+                </button>
+            </a>
+
+            <a id="dailyTimeChart-jpg" class="downloadAnchor">
+                <button>
+                    
+                    Download JPG
+                </button>
+            </a>
+            <a id="monthlyTimeChart-jpg" class="downloadAnchor">
+                <button>
+                    
+                    Download JPG
+                </button>
+            </a>
+            <a id="yearlyTimeChart-jpg" class="downloadAnchor">
+                <button>
+                    
+                    Download JPG
+                </button>
+            </a>
+
+        </div>
+    </div>
+    <hr>
+    <script src="/static/js/graph.js"></script>
+    
+</div>
+
+
+  <div class="section page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="full width">
+          <p><a href="/docs/">Learn more</a>. Built by <a href="https://blog.hatnote.com/">Hatnote</a>, <a href="https://meta.wikimedia.org/wiki/The_Wikipedia_Library">The Wikipedia Library</a>, and <a href="https://github.com/WikipediaLibrary/hashtags/graphs/contributors">contributors</a>. Our source code is <a href="https://github.com/WikipediaLibrary/hashtags"> available on github </a>.</p>
+          <p><a href="https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?tags=hashtags">Report a bug</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+ contentType 9 text/html url 149 https://hashtags.wmcloud.org:443/graph/?query=%231Lib1RefNG&amp;project=&amp;startdate=2022-06-01&amp;enddate=2026-07-01&amp;search_type=or&amp;user= responseCode 3 200 

@@ -1,0 +1,140 @@
+wqoiuihkbcoeeirqpqgomqweviagpiwmyqnqhizc length 5 18311 page 18311 
+<html>
+<head>
+<title>r25825 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r25825 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/25825" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./25824.html" title="Special:Code/MediaWiki/25824">r25824</a>‎ | <b>r25825</b> | <a href="./25826.html" title="Special:Code/MediaWiki/25826">r25826</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>10:23, 13 September 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/daniel" title="Special:Code/MediaWiki/author/daniel">daniel</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">support parser-function syntax</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/CategoryTree/CategoryTree.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTree.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/README</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FREADME" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/25825&amp;action=purge" title="Special:Code/MediaWiki/25825">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTree.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -81,7 +81,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">82</td><td class="linenumbers">82</td><td class="unchanged"><span> $wgHooks['OutputPageParserOutput'][] = 'efCategoryTreeParserOutput';</span></td></tr>
+<tr id="7"><td class="linenumbers">83</td><td class="linenumbers">83</td><td class="unchanged"><span> $wgHooks['LoadAllMessages'][] = 'efInjectCategoryTreeMessages';</span></td></tr>
+<tr id="8"><td class="linenumbers">84</td><td class="linenumbers">84</td><td class="unchanged"><span> $wgHooks['ArticleFromTitle'][] = 'efCategoryTreeArticleFromTitle';</span></td></tr>
+<tr id="9"><td class="linenumbers">85</td><td class="linenumbers"> </td><td class="del"><del>-</del></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">85</td><td class="ins"><ins>+$wgHooks['LanguageGetMagic'][] = 'efCategoryTreeGetMagic';</ins></td></tr>
+<tr id="11"><td class="linenumbers">86</td><td class="linenumbers">86</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="12"><td class="linenumbers">87</td><td class="linenumbers">87</td><td class="unchanged"><span>  * register Ajax function</span></td></tr>
+<tr id="13"><td class="linenumbers">88</td><td class="linenumbers">88</td><td class="unchanged"><span>  */</span></td></tr>
+<tr id="14"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -99,10 +99,27 @@</span></td></tr>
+<tr id="15"><td class="linenumbers">100</td><td class="linenumbers">100</td><td class="unchanged"><span> 		return;</span></td></tr>
+<tr id="16"><td class="linenumbers">101</td><td class="linenumbers">101</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="17"><td class="linenumbers">102</td><td class="linenumbers">102</td><td class="unchanged"><span> </span></td></tr>
+<tr id="18"><td class="linenumbers">103</td><td class="linenumbers"> </td><td class="del"><del>-	if ( $wgCategoryTreeAllowTag ) $wgParser->setHook( 'categorytree' , 'efCategoryTreeParserHook' );</del></td></tr>
+<tr id="19"><td class="linenumbers"> </td><td class="linenumbers">103</td><td class="ins"><ins>+	if ( $wgCategoryTreeAllowTag ) {</ins></td></tr>
+<tr id="20"><td class="linenumbers"> </td><td class="linenumbers">104</td><td class="ins"><ins>+		$wgParser->setHook( 'categorytree' , 'efCategoryTreeParserHook' );</ins></td></tr>
+<tr id="21"><td class="linenumbers"> </td><td class="linenumbers">105</td><td class="ins"><ins>+		$wgParser->setFunctionHook( 'categorytree' , 'efCategoryTreeParserFunction' );</ins></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">106</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="23"><td class="linenumbers">104</td><td class="linenumbers">107</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="24"><td class="linenumbers">105</td><td class="linenumbers">108</td><td class="unchanged"><span> </span></td></tr>
+<tr id="25"><td class="linenumbers">106</td><td class="linenumbers">109</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">110</td><td class="ins"><ins>+* Hook magic word</ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">111</td><td class="ins"><ins>+*/</ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">112</td><td class="ins"><ins>+function efCategoryTreeGetMagic( &amp;$magicWords, $langCode ) {</ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">113</td><td class="ins"><ins>+	global $wgUseAjax, $wgCategoryTreeAllowTag;</ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">114</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">115</td><td class="ins"><ins>+	if ( $wgUseAjax &amp;&amp; $wgCategoryTreeAllowTag ) {</ins></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">116</td><td class="ins"><ins>+		//XXX: should we allow a local alias?</ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">117</td><td class="ins"><ins>+		$magicWords['categorytree'] = array( 0, 'categorytree' );</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">118</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">119</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">120</td><td class="ins"><ins>+	return true;</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">121</td><td class="ins"><ins>+}</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">122</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">123</td><td class="ins"><ins>+/**</ins></td></tr>
+<tr id="40"><td class="linenumbers">107</td><td class="linenumbers">124</td><td class="unchanged"><span>  * Entry point for Ajax, registered in $wgAjaxExportList.</span></td></tr>
+<tr id="41"><td class="linenumbers">108</td><td class="linenumbers">125</td><td class="unchanged"><span>  * This loads CategoryTreeFunctions.php and calls CategoryTree::ajax()</span></td></tr>
+<tr id="42"><td class="linenumbers">109</td><td class="linenumbers">126</td><td class="unchanged"><span>  */</span></td></tr>
+<tr id="43"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -164,6 +181,38 @@</span></td></tr>
+<tr id="44"><td class="linenumbers">165</td><td class="linenumbers">182</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="45"><td class="linenumbers">166</td><td class="linenumbers">183</td><td class="unchanged"><span> </span></td></tr>
+<tr id="46"><td class="linenumbers">167</td><td class="linenumbers">184</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="47"><td class="linenumbers"> </td><td class="linenumbers">185</td><td class="ins"><ins>+ * Entry point for the {{#categorytree}} tag parser function.</ins></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">186</td><td class="ins"><ins>+ * This is a wrapper around efCategoryTreeParserHook</ins></td></tr>
+<tr id="49"><td class="linenumbers"> </td><td class="linenumbers">187</td><td class="ins"><ins>+ */</ins></td></tr>
+<tr id="50"><td class="linenumbers"> </td><td class="linenumbers">188</td><td class="ins"><ins>+function efCategoryTreeParserFunction( &amp;$parser ) {</ins></td></tr>
+<tr id="51"><td class="linenumbers"> </td><td class="linenumbers">189</td><td class="ins"><ins>+	$params = func_get_args();</ins></td></tr>
+<tr id="52"><td class="linenumbers"> </td><td class="linenumbers">190</td><td class="ins"><ins>+	array_shift( $params ); //first is &amp;$parser, strip it</ins></td></tr>
+<tr id="53"><td class="linenumbers"> </td><td class="linenumbers">191</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="54"><td class="linenumbers"> </td><td class="linenumbers">192</td><td class="ins"><ins>+	//first user-supplied parameter must be category name</ins></td></tr>
+<tr id="55"><td class="linenumbers"> </td><td class="linenumbers">193</td><td class="ins"><ins>+	if ( !$params ) return ''; //no category specified, return nothing</ins></td></tr>
+<tr id="56"><td class="linenumbers"> </td><td class="linenumbers">194</td><td class="ins"><ins>+	$cat = array_shift( $params );</ins></td></tr>
+<tr id="57"><td class="linenumbers"> </td><td class="linenumbers">195</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="58"><td class="linenumbers"> </td><td class="linenumbers">196</td><td class="ins"><ins>+	//build associative arguments from flat parameter list</ins></td></tr>
+<tr id="59"><td class="linenumbers"> </td><td class="linenumbers">197</td><td class="ins"><ins>+	$argv = array();</ins></td></tr>
+<tr id="60"><td class="linenumbers"> </td><td class="linenumbers">198</td><td class="ins"><ins>+	foreach ( $params as $p ) {</ins></td></tr>
+<tr id="61"><td class="linenumbers"> </td><td class="linenumbers">199</td><td class="ins"><ins>+		if ( preg_match('/^\s*(\S.*?)\s*=\s*(.*?)\s*$/', $p, $m) ) {</ins></td></tr>
+<tr id="62"><td class="linenumbers"> </td><td class="linenumbers">200</td><td class="ins"><ins>+			$k = $m[1];</ins></td></tr>
+<tr id="63"><td class="linenumbers"> </td><td class="linenumbers">201</td><td class="ins"><ins>+			$v = $m[2];</ins></td></tr>
+<tr id="64"><td class="linenumbers"> </td><td class="linenumbers">202</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="65"><td class="linenumbers"> </td><td class="linenumbers">203</td><td class="ins"><ins>+		else {</ins></td></tr>
+<tr id="66"><td class="linenumbers"> </td><td class="linenumbers">204</td><td class="ins"><ins>+			$k = trim($p);</ins></td></tr>
+<tr id="67"><td class="linenumbers"> </td><td class="linenumbers">205</td><td class="ins"><ins>+			$v = true;</ins></td></tr>
+<tr id="68"><td class="linenumbers"> </td><td class="linenumbers">206</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="69"><td class="linenumbers"> </td><td class="linenumbers">207</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="70"><td class="linenumbers"> </td><td class="linenumbers">208</td><td class="ins"><ins>+		$argv[$k] = $v;</ins></td></tr>
+<tr id="71"><td class="linenumbers"> </td><td class="linenumbers">209</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="72"><td class="linenumbers"> </td><td class="linenumbers">210</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="73"><td class="linenumbers"> </td><td class="linenumbers">211</td><td class="ins"><ins>+	//now handle just like a &lt;categorytree> tag</ins></td></tr>
+<tr id="74"><td class="linenumbers"> </td><td class="linenumbers">212</td><td class="ins"><ins>+	$html = efCategoryTreeParserHook( $cat, $argv, $parser );</ins></td></tr>
+<tr id="75"><td class="linenumbers"> </td><td class="linenumbers">213</td><td class="ins"><ins>+	return array( $html, 'noargs' => true, 'noparse' => true ); //XXX: isHTML would be right logically, but it causes extra blank lines</ins></td></tr>
+<tr id="76"><td class="linenumbers"> </td><td class="linenumbers">214</td><td class="ins"><ins>+}</ins></td></tr>
+<tr id="77"><td class="linenumbers"> </td><td class="linenumbers">215</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="78"><td class="linenumbers"> </td><td class="linenumbers">216</td><td class="ins"><ins>+/**</ins></td></tr>
+<tr id="79"><td class="linenumbers">168</td><td class="linenumbers">217</td><td class="unchanged"><span>  * Entry point for the &lt;categorytree> tag parser hook.</span></td></tr>
+<tr id="80"><td class="linenumbers">169</td><td class="linenumbers">218</td><td class="unchanged"><span>  * This loads CategoryTreeFunctions.php and calls CategoryTree::getTag()</span></td></tr>
+<tr id="81"><td class="linenumbers">170</td><td class="linenumbers">219</td><td class="unchanged"><span>  */</span></td></tr>
+<tr id="82" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/README</td></tr>
+
+
+
+<tr id="86"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -48,9 +48,9 @@</span></td></tr>
+<tr id="87"><td class="linenumbers">49</td><td class="linenumbers">49</td><td class="unchanged"><span> parsing the HTML of category pages.</span></td></tr>
+<tr id="88"><td class="linenumbers">50</td><td class="linenumbers">50</td><td class="unchanged"><span> </span></td></tr>
+<tr id="89"><td class="linenumbers">51</td><td class="linenumbers">51</td><td class="unchanged"><span> The custom tag is called &lt;categorytree>. For example, if you put</span></td></tr>
+<tr id="90"><td class="linenumbers">52</td><td class="linenumbers"> </td><td class="del"><del>-&lt;categorytree>Foo&lt;/categorytree> on a wiki page, it will show the contents</del></td></tr>
+<tr id="91"><td class="linenumbers">53</td><td class="linenumbers"> </td><td class="del"><del>-of category Foo as a dynamic tree on that page. The tag accepts the following</del></td></tr>
+<tr id="92"><td class="linenumbers">54</td><td class="linenumbers"> </td><td class="del"><del>-attributes, using a HTML-like syntax:</del></td></tr>
+<tr id="93"><td class="linenumbers"> </td><td class="linenumbers">52</td><td class="ins"><ins>+&lt;categorytree mode="pages">Foo&lt;/categorytree> on a wiki page, it will show</ins></td></tr>
+<tr id="94"><td class="linenumbers"> </td><td class="linenumbers">53</td><td class="ins"><ins>+the contents of category Foo as a dynamic tree on that page. The tag accepts</ins></td></tr>
+<tr id="95"><td class="linenumbers"> </td><td class="linenumbers">54</td><td class="ins"><ins>+the following attributes, using a HTML-like syntax:</ins></td></tr>
+<tr id="96"><td class="linenumbers">55</td><td class="linenumbers">55</td><td class="unchanged"><span> </span></td></tr>
+<tr id="97"><td class="linenumbers">56</td><td class="linenumbers">56</td><td class="unchanged"><span> * hideroot - set this to "on" to hide the "root" node of the tree, i.e.</span></td></tr>
+<tr id="98"><td class="linenumbers">57</td><td class="linenumbers">57</td><td class="unchanged"><span>              the mention of category Foo from the example.</span></td></tr>
+<tr id="99"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -64,7 +64,11 @@</span></td></tr>
+<tr id="100"><td class="linenumbers">65</td><td class="linenumbers">65</td><td class="unchanged"><span>          </span></td></tr>
+<tr id="101"><td class="linenumbers">66</td><td class="linenumbers">66</td><td class="unchanged"><span> * style - can be used to specify any CSS styles you would like for the</span></td></tr>
+<tr id="102"><td class="linenumbers">67</td><td class="linenumbers">67</td><td class="unchanged"><span>           tree.</span></td></tr>
+<tr id="103"><td class="linenumbers">68</td><td class="linenumbers"> </td><td class="del"><del>-          </del></td></tr>
+<tr id="104"><td class="linenumbers"> </td><td class="linenumbers">68</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="105"><td class="linenumbers"> </td><td class="linenumbers">69</td><td class="ins"><ins>+Alternatively to the &lt;categorytree> tag, parser-function syntax can also be</ins></td></tr>
+<tr id="106"><td class="linenumbers"> </td><td class="linenumbers">70</td><td class="ins"><ins>+used, e.g {{#categorytree:Foo|hideroot=yes}}. This syntax allows the use of</ins></td></tr>
+<tr id="107"><td class="linenumbers"> </td><td class="linenumbers">71</td><td class="ins"><ins>+magic variables, templates and template parameters for the category name.</ins></td></tr>
+<tr id="108"><td class="linenumbers"> </td><td class="linenumbers">72</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="109"><td class="linenumbers">69</td><td class="linenumbers">73</td><td class="unchanged"><span> The special page is called Special:CategoryTree; there you can enter the</span></td></tr>
+<tr id="110"><td class="linenumbers">70</td><td class="linenumbers">74</td><td class="unchanged"><span> name of a category and then browse it's content. The CategoryTree</span></td></tr>
+<tr id="111"><td class="linenumbers">71</td><td class="linenumbers">75</td><td class="unchanged"><span> extension also adds a tab for this special page to every category page.</span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:20, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r25825 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/25825.html responseCode 3 200 

@@ -1,0 +1,73 @@
+vookpavaccnazamcfalajmxabgvigmccqeugggpg length 4 8353 page 8353 
+<html>
+<head>
+<title>r20840 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r20840 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/20840" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./20839.html" title="Special:Code/MediaWiki/20839">r20839</a>‎ | <b>r20840</b> | <a href="./20841.html" title="Special:Code/MediaWiki/20841">r20841</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>13:43, 30 March 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/daniel" title="Special:Code/MediaWiki/author/daniel">daniel</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">added several comments for incomplete support for depth parameter in ajax mode (follow-up for changes to CategoryTree.php that accidentally slipped into the previous commit)</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/CategoryTree/CategoryTree.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTree.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/CategoryTreeFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTreeFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/20840&amp;action=purge" title="Special:Code/MediaWiki/20840">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTree.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -106,7 +106,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">107</td><td class="linenumbers">107</td><td class="unchanged"><span> 	global $wgCategoryTreeHTTPCache, $wgSquidMaxAge, $wgUseSquid;</span></td></tr>
+<tr id="7"><td class="linenumbers">108</td><td class="linenumbers">108</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="8"><td class="linenumbers">109</td><td class="linenumbers">109</td><td class="unchanged"><span> 	$ct = new CategoryTree;</span></td></tr>
+<tr id="9"><td class="linenumbers">110</td><td class="linenumbers"> </td><td class="del"><del>-	$response = $ct->ajax( $category, $mode );</del></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">110</td><td class="ins"><ins>+	$response = $ct->ajax( $category, $mode ); //FIXME: would need to pass on depth parameter here.</ins></td></tr>
+<tr id="11"><td class="linenumbers">111</td><td class="linenumbers">111</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="12"><td class="linenumbers">112</td><td class="linenumbers">112</td><td class="unchanged"><span> 	if ( $wgCategoryTreeHTTPCache &amp;&amp; $wgSquidMaxAge &amp;&amp; $wgUseSquid ) {</span></td></tr>
+<tr id="13"><td class="linenumbers">113</td><td class="linenumbers">113</td><td class="unchanged"><span> 		$response->setCacheDuration( $wgSquidMaxAge );</span></td></tr>
+<tr id="14" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTreeFunctions.php</td></tr>
+
+
+
+<tr id="18"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -86,7 +86,7 @@</span></td></tr>
+<tr id="19"><td class="linenumbers">87</td><td class="linenumbers">87</td><td class="unchanged"><span> 				'page_title' => $dbkey,</span></td></tr>
+<tr id="20"><td class="linenumbers">88</td><td class="linenumbers">88</td><td class="unchanged"><span> 			), __METHOD__ );</span></td></tr>
+<tr id="21"><td class="linenumbers">89</td><td class="linenumbers">89</td><td class="unchanged"><span> 			</span></td></tr>
+<tr id="22"><td class="linenumbers">90</td><td class="linenumbers"> </td><td class="del"><del>-		$mckey = "$wgDBname:categorytree($mode):$dbkey";</del></td></tr>
+<tr id="23"><td class="linenumbers"> </td><td class="linenumbers">90</td><td class="ins"><ins>+		$mckey = "$wgDBname:categorytree($mode):$dbkey"; //FIXME: would need to add depth parameter.</ins></td></tr>
+<tr id="24"><td class="linenumbers">91</td><td class="linenumbers">91</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="25"><td class="linenumbers">92</td><td class="linenumbers">92</td><td class="unchanged"><span> 		$response = new AjaxResponse();</span></td></tr>
+<tr id="26"><td class="linenumbers">93</td><td class="linenumbers">93</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="27"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -98,7 +98,8 @@</span></td></tr>
+<tr id="28"><td class="linenumbers">99</td><td class="linenumbers">99</td><td class="unchanged"><span> 			return $response;</span></td></tr>
+<tr id="29"><td class="linenumbers">100</td><td class="linenumbers">100</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="30"><td class="linenumbers">101</td><td class="linenumbers">101</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="31"><td class="linenumbers">102</td><td class="linenumbers"> </td><td class="del"><del>-		$html = $this->renderChildren( $title, $mode );</del></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">102</td><td class="ins"><ins>+		$html = $this->renderChildren( $title, $mode ); //FIXME: would need to pass depth parameter.</ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">103</td><td class="ins"><ins>+		</ins></td></tr>
+<tr id="34"><td class="linenumbers">103</td><td class="linenumbers">104</td><td class="unchanged"><span> 		if ( $html == '' ) $html = ' ';   #HACK: Safari doesn't like empty responses. </span></td></tr>
+<tr id="35"><td class="linenumbers">104</td><td class="linenumbers">105</td><td class="unchanged"><span> 						  #see Bug 7219 and http://bugzilla.opendarwin.org/show_bug.cgi?id=10716</span></td></tr>
+<tr id="36"><td class="linenumbers">105</td><td class="linenumbers">106</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="37"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -140,7 +141,7 @@</span></td></tr>
+<tr id="38"><td class="linenumbers">141</td><td class="linenumbers">142</td><td class="unchanged"><span> 		else {</span></td></tr>
+<tr id="39"><td class="linenumbers">142</td><td class="linenumbers">143</td><td class="unchanged"><span> 			if ( $display != 'hideroot' ) $html .= CategoryTree::renderNode( $title, $mode, $depth>0, $wgCategoryTreeDynamicTag, $depth-1 );</span></td></tr>
+<tr id="40"><td class="linenumbers">143</td><td class="linenumbers">144</td><td class="unchanged"><span> 			else if ( !$wgCategoryTreeDynamicTag ) $html .= $this->renderChildren( $title, $mode, $depth-1 );</span></td></tr>
+<tr id="41"><td class="linenumbers">144</td><td class="linenumbers"> </td><td class="del"><del>-			else {</del></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">145</td><td class="ins"><ins>+			else { //FIXME: depth would need to be propagated here. this would imact the cache key, too</ins></td></tr>
+<tr id="43"><td class="linenumbers">145</td><td class="linenumbers">146</td><td class="unchanged"><span> 				$uniq += 1;</span></td></tr>
+<tr id="44"><td class="linenumbers">146</td><td class="linenumbers">147</td><td class="unchanged"><span> 				$load = 'ct-' . $uniq . '-' . mt_rand( 1, 100000 );</span></td></tr>
+<tr id="45"><td class="linenumbers">147</td><td class="linenumbers">148</td><td class="unchanged"><span> 				</span></td></tr>
+</table>
+</div>
+</form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/20840.html responseCode 3 200 
