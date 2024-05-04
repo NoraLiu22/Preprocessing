@@ -263,8 +263,13 @@ public class tfIdf {
                 String word = urlword.split("\\|", 2)[1];
                 String url = urlword.split("\\|", 2)[0];
                 Row row = new Row(word);
-                row.put(url, tfidf);
-                kvs.putRow(tableName, row);
+                try {
+                    row.put(url, tfidf);
+                    kvs.putRow(tableName, row);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
 
             endTime = System.currentTimeMillis();
