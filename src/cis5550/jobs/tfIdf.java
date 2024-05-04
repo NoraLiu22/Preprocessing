@@ -266,15 +266,9 @@ public class tfIdf {
 
                 String word = urlword.split("\\|", 2)[1];
                 String url = urlword.split("\\|", 2)[0];
-                Row row;
-                if (kvs.existsRow(tableName, word)) {
-                    row = kvs.getRow(tableName, word);
-                } else {
-                    row = new Row(word);
-                }
+
                 try {
-                    row.put(url, tfidf);
-                    kvs.putRow(tableName, row);
+                    kvs.put(tableName, word, url, tfidf);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
