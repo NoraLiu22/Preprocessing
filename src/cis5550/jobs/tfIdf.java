@@ -73,17 +73,18 @@ public class tfIdf {
             AtomicLong finalStartTime = new AtomicLong(startTime);
             long startTimeFinal = startTime;
             indexflamePairRdd = indexflamePairRdd.flatMapToPair(pair -> {
-//                i.getAndIncrement();
-//
-//                if (i.get() % 100 == 0) {
-//                    finalEndTime.set(System.currentTimeMillis());
-//                    System.out.println("i: " + i + ", time: " + (finalEndTime.get() - finalStartTime.get()) + "ms");
-//                    finalStartTime.set(finalEndTime.get());
-//                }
-//                if (i.get() == 1500) {
-//                    System.out.println("========TIME=========" + (System.currentTimeMillis() - startTimeFinal) + "ms");
-//                }
-
+                // i.getAndIncrement();
+                //
+                // if (i.get() % 100 == 0) {
+                // finalEndTime.set(System.currentTimeMillis());
+                // System.out.println("i: " + i + ", time: " + (finalEndTime.get() -
+                // finalStartTime.get()) + "ms");
+                // finalStartTime.set(finalEndTime.get());
+                // }
+                // if (i.get() == 1500) {
+                // System.out.println("========TIME=========" + (System.currentTimeMillis() -
+                // startTimeFinal) + "ms");
+                // }
 
                 String urlList = pair._2();
                 int df = 1;
@@ -137,7 +138,8 @@ public class tfIdf {
             });
 
             endTime = System.currentTimeMillis();
-            System.out.println("Time taken in part 4: " + (endTime - startTime) + "ms, size: " + flameRdd.count() + ", a: " + a.get());
+            System.out.println("Time taken in part 4: " + (endTime - startTime) + "ms, size: " + flameRdd.count()
+                    + ", a: " + a.get());
 
             // part 5
             startTime = System.currentTimeMillis();
@@ -232,7 +234,8 @@ public class tfIdf {
                 // return pairs;
             });
             endTime = System.currentTimeMillis();
-            System.out.println("Time taken in part 5: " + (endTime - startTime) + "ms, size: " + flamePairRdd.collect().size());
+            System.out.println(
+                    "Time taken in part 5: " + (endTime - startTime) + "ms, size: " + flamePairRdd.collect().size());
             // part 6
             startTime = System.currentTimeMillis();
 
@@ -248,7 +251,7 @@ public class tfIdf {
             });
             endTime = System.currentTimeMillis();
             System.out.println("Time taken in part 6: " + (endTime - startTime) + "ms");
-
+            flamePairRdd.saveAsTable("pt-tfIdf");
             ///////////////////
             startTime = System.currentTimeMillis();
 
@@ -301,7 +304,6 @@ public class tfIdf {
                 return String.valueOf(sum);
             });
 
-            flamePairRdd.saveAsTable("pt-tfIdf");
             flamePairRdd2.saveAsTable("pt-TableTFIDF");
             endTime = System.currentTimeMillis();
             System.out.println("Time taken in part 7: " + (endTime - startTime) + "ms");
