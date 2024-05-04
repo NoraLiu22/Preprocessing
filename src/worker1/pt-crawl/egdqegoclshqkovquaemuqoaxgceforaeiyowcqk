@@ -1,0 +1,706 @@
+egdqegoclshqkovquaemuqoaxgceforaeiyowcqk length 5 31770 page 31770 <!DOCTYPE HTML><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="https://www.giss.nasa.gov/css/css2104.css" media="all" />
+
+
+<title>Data.GISS: Global Fire WEather Database (GFWED)</title>
+<link rel="apple-touch-icon" href="/gfx/apple-touch-icon-180x180.png" />
+<link rel="apple-touch-icon-precomposed" href="/gfx/apple-touch-icon-180x180.png" />
+<link rel="apple-touch-icon" sizes="192x192" href="/gfx/apple-touch-icon-192x192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/gfx/apple-touch-icon-180x180.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="/gfx/apple-touch-icon-152x152.png" />
+<link rel="apple-touch-icon" sizes="128x128" href="/gfx/apple-touch-icon-128x128.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="/gfx/apple-touch-icon-76x76.png" />
+<meta name="orgcode" content="611" />
+<meta name="rno" content="Gavin.A.Schmidt.1" />
+<meta name="content-owner" content="Robert.B.Schmunk.1" />
+<meta name="webmaster" content="Robert.B.Schmunk.1" />
+<meta name="viewport" content="width=956, initial-scale=1" /><script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&amp;subagency=GISS&amp;yt=true&amp;dclink=true&amp;pua=UA-52099626-1" async="async"></script>
+</head><body>
+<div id="bkg1"><div id="bkg2"></div><!-- end bkg2 --></div><!-- end bkg1 -->
+<div id="page">
+<div class="hidden">
+<a href="#content" title="Go to Main Content" accesskey="2">Go to Main Content (Accesskey 2)</a><br /><a href="#nav" title="Go to Site Menu" accesskey="3">Go to Site Menu (Accesskey 3)</a></div><!-- end hidden -->
+<div id="header">
+<div id="headerlogo">
+<a href="https://www.nasa.gov/"><img src="https://www.giss.nasa.gov/gfx/2013/nasa_x2.png" alt="NASA Logo, National Aeronautics and Space Administration" style="width:140px;height:98px" /></a></div><!-- end headerlogo -->
+<div id="centername">
+<h1><a href="https://www.nasa.gov/">National Aeronautics and Space Administration</a></h1>
+<h2><a href="https://www.giss.nasa.gov/">Goddard Institute for Space Studies</a></h2></div><!-- end centername -->
+<div id="hierarchy">
+<h2><a href="https://www.nasa.gov/goddard/">Goddard Space Flight Center</a><br /><a href="https://science.gsfc.nasa.gov/sci">Sciences and Exploration Directorate</a><br /><a href="https://science.gsfc.nasa.gov/earth">Earth Sciences Division</a></h2></div><!-- end hierarchy --></div><!-- end header -->
+<div id="paper">
+<div id="content"><div id="cpad">
+
+
+
+<h2>Global Fire WEather Database (GFWED)</h2>
+
+
+<p>
+The Global Fire WEather Database (GFWED) integrates different weather factors influencing the likelihood of a vegetation fire starting and spreading. It is based on the Fire Weather Index (FWI) System, the most widely used fire weather system in the world. The FWI System was developed in Canada, and is composed of three moisture codes and three fire behavior indices. The moisture codes capture the moisture content of three generalized fuel classes and the behavior indices reflect the spread rate, fuel consumption and intensity of a fire if it were to start.
+Details on the development and testing of GFWED can be found in Field et al. (2015) and evaluation of GFWED products in Field (2020a).
+Applications of the FWI System can be found in Taylor and Alexander (2006) and technical descriptions are provided by van Wagner (1987) and Dowdy et al. (2009). 
+</p>
+
+
+
+<div class="floatrightfr" style="margin-bottom:12px;width:350px;clear:right">
+<img src="figure1.gif" style="width:350px;border:0"
+  alt="Sample global map of Fire Weather Index for July 1980-2012" />
+<p class="caption">
+Mean July Fire Weather Index from 1980-2012, based on the Chen et al. (2008) daily precipitation estimate over land.
+Figure created using the Panoply desktop application.
+</p>
+</div>
+
+
+<h4>Data Versions</h4>
+
+<p>
+FWI System calculations require measurements of 12:00 local time temperature at 2m, relative humidity at 2m, and wind speed at 10m, daily snow-depth, and precipitation totaled over the previous 24 hours.</p>
+
+<p>
+GFWED is comprised of eight different sets of FWI calculations, all using temperature, relative humidity, wind speed and snow depth estimates from the NASA Modern Era Retrospective Analysis for Research and Applications version 2 (MERRA-2) (Rienecker et al., 2011). Each of the eight versions uses a different precipitation estimate, ranging from the MERRA-2 estimates, to rain-gauge only estimates to three different satellite-based estimates, listed in the table below. 
+</p>
+
+<p>
+Experimental, near-real time versions using GEOS-5 analysis fields in place of MERRA-2 are available going back to mid-2014 for some versions, including those using GPM precipitation.
+8-day experimental forecasts are available going back to December 2017.
+</p>
+
+
+
+
+
+<table class="tdata tdatab" style="clear:both">
+
+<thead>
+<tr class="headrow">
+  <th></th>
+  <th>Data source</th>
+  <th>Period</th>
+  <th>Latency</th>
+  <th>Coverage</th>
+  <th>Resolution</th>
+  <th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+  <td rowspan="2">T, RH, wind-speed, snow depth</td>
+  <td><a href="https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/">MERRA-2</a></td>
+  <td style="text-align:center">1981-Present</td>
+  <td style="text-align:center">~2 months</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">0.5&#176;&#215;2/3&#176;</td>
+  <td>All versions of the FWI calculations use the MERRA-2 T, RH, wind speed and snow depth estimates</td>
+</tr>
+
+<tr>
+  <td><a href="https://gmao.gsfc.nasa.gov/GMAO_products/wx_analysis-prediction_products.php">GEOS-5</a></td>
+  <td style="text-align:center">2014-present (analysis)<br />
+ December 2017-present (forecasts)</td>
+  <td style="text-align:center">~12 hrs</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">0.25&#176;&#215;0.25&#176;</td>
+  <td>NRT 7-day forecasts, analysis versions using GEOS-5, IMERG and CPC precipitation</td>
+</tr>
+
+<tr>
+  <td rowspan="9">Precipitation</td>
+  <td><a href="https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/">MERRA-2 raw precipitation (PRECTOT)</a></td>
+  <td style="text-align:center">1981-Present</td>
+  <td style="text-align:center">~2 months</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">0.5&#176;&#215;2/3&#176;</td>
+  <td>Precip estimate from model w/ assimilation</td>
+</tr>
+<tr>
+  <td><a href="https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/">MERRA-2 bias-corrected precipitation (PRECTOTCORR)</a></td>
+  <td style="text-align:center">1981-Present</td>
+  <td style="text-align:center">~2 months</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">0.5&#176;&#215;2/3&#176;</td>
+  <td>Gauge-corrected precipitation used by aerosol wet removal and land surface schemes</td>
+</tr>
+<tr>
+  <td><a href="http://hydrology.princeton.edu/data.pgf.php">Sheffield / Princeton precipitation</a></td>
+  <td style="text-align:center">1981-2010</td>
+  <td style="text-align:center">variable, 4+years</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">0.5&#176;&#215;0.5&#176;</td>
+  <td>CRU-corrected NCEP I</td>
+</tr>
+<tr>
+
+  <td><a href="http://ftp.cpc.ncep.noaa.gov/precip/CPC_UNI_PRCP/GAUGE_GLB/">NCEP CPC gauge-based analysis of global precipitation</a></td>
+  <td style="text-align:center">1981-Present</td>
+  <td style="text-align:center">1 day</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">0.5&#176;&#215;0.5&#176;</td>
+  <td>Primarily gauges from WMO-level synoptic network</td>
+</tr>
+<tr>
+  <td><a href="https://climatedataguide.ucar.edu/climate-data/gpcp-daily-global-precipitation-climatology-project">GPCP 1-degree-daily v1.2</a></td>
+  <td style="text-align:center">1997-Present</td>
+  <td style="text-align:center">6+ months</td>
+  <td style="text-align:center">Global</td>
+  <td style="text-align:center">1.0&#176;&#215;1.0&#176;</td>
+  <td>With IR, microwave and gauges. V1.3 forthcoming</td>
+</tr>
+<tr>
+  <td><a href="http://disc.sci.gsfc.nasa.gov/precipitation/documentation/TRMM_README/TRMM_3B42_readme.shtml">TRMM 3B42</a></td>
+  <td style="text-align:center">1998-2014</td>
+  <td style="text-align:center">N/A</td>
+  <td style="text-align:center">50S-50N</td>
+  <td style="text-align:center">0.25&#176;&#215;0.25&#176;</td>
+  <td>After 2014, this is 'pseudo-TRMM', i.e. same retrieval but without TRMM instruments</td>
+</tr>
+
+<tr>
+  <td><a href="https://pmm.nasa.gov/data-access/downloads/gpm">GPM IMERG - Early (GPM_3IMERGDE.05)</a></td>
+  <td style="text-align:center">20140501-Present</td>
+  <td style="text-align:center">1 day</td>
+  <td style="text-align:center">60S-60N</td>
+  <td style="text-align:center">0.1&#176;&#215;0.1&#176;</td>
+  <td>Early NRT version.</td>
+</tr>
+<tr>
+  <td><a href="https://pmm.nasa.gov/data-access/downloads/gpm">GPM IMERG - Late (GPM_3IMERGDL.05)</a></td>
+  <td style="text-align:center">20140501-Present</td>
+  <td style="text-align:center">1 day</td>
+  <td style="text-align:center">60S-60N</td>
+  <td style="text-align:center">0.1&#176;&#215;0.1&#176;</td>
+  <td>Late NRT version.</td>
+</tr>
+<tr>
+  <td><a href="https://pmm.nasa.gov/data-access/downloads/gpm">GPM IMERG - Final (GPM_3IMERGDF.05)</a></td>
+  <td style="text-align:center">20140501-Present</td>
+  <td style="text-align:center">2.5 mo.</td>
+  <td style="text-align:center">60S-60N</td>
+  <td style="text-align:center">0.1&#176;&#215;0.1&#176;</td>
+  <td>Final research version with monthly rain-gauge correction.</td>
+</tr>
+
+<!--
+<tr>
+  <td><a href="https://pmm.nasa.gov/data-access/downloads/gpm">GPM IMERG - Final (GPM_3IMERGDF.03)</a></td>
+  <td style="text-align:center">20140401-Present</td>
+  <td style="text-align:center">5+ mo.</td>
+  <td style="text-align:center">60S-60N</td>
+  <td style="text-align:center">0.1&#176;&#215;0.1&#176;</td>
+  <td>Final version with maximum data assimilation and correction incl. rain gauges</td>
+</tr>
+<tr>
+  <td><a href="https://pmm.nasa.gov/data-access/downloads/gpm">GPM IMERG - Early (GPM_3IMERGDL.03)</a></td>
+  <td style="text-align:center">20150401-Present</td>
+  <td style="text-align:center">1 day</td>
+  <td style="text-align:center">60S-60N</td>
+  <td style="text-align:center">0.1&#176;&#215;0.1&#176;</td>
+  <td>Early, NRT version but with less assimilation and correction</td>
+</tr>
+-->
+
+
+</tbody>
+
+</table>
+
+
+
+<h4>Data Access</h4>
+
+<p>
+GFWED data are distributed in NetCDF format from the NASA Center for Climate Simulation Dataportal at the URL:
+</p>
+
+<ul>
+<li><a href="https://portal.nccs.nasa.gov/datashare/GlobalFWI/">https://portal.nccs.nasa.gov/datashare/GlobalFWI/</a></li>
+</ul>
+
+
+<p>Downloads can be automated using the "wget" and "curl" tools. A wget example to download a single file to the current directory is:</p>
+
+<blockquote>
+wget https://portal.nccs.nasa.gov/datashare/GlobalFWI/v2.0/fwiCalcs.GEOS-5/Default/GEOS-5/2014/FWI.GEOS-5.Daily.Default.20140501.nc
+</blockquote>
+
+
+
+
+
+<div class="floatrightfr" style="margin-bottom:12px;width:350px;clear:right">
+<img src="finefuelmoisture.png" style="width:350px;border:0"
+  alt="Sample map of Fine Fuel Moisture Code for southeastern USA" />
+<p class="caption">
+The Fine Fuel Moisture Code is a good indicator of fire starts. The example shown here is over the southeast US with Aqua/Terra MODIS active fires.
+</p>
+</div>
+
+
+<p>
+The underlying weather data used for the calculations are also included, along with ancillary information such as snow cover used to start and stop the calculations. 
+</p>
+
+<p>
+GFWED datasets are in netCDF (NC) format. After downloading, the data may be easily plotted and viewed using the <a href="https://www.giss.nasa.gov/tools/panoply/">Panoply Data Viewer</a>.
+</p>
+
+
+
+<p>
+Data are also available from the
+<a href="http://iridl.ldeo.columbia.edu/SOURCES/.GISS/.GlobalFWI/">Data Library</a>
+at Columbia University’s International Research Institute for Climate and Society.
+This system can be used for interactive mapping and plotting. 
+</p>
+
+<p>
+Global FWI forecasts are available from the GOFC-GOLD
+<a href="http://gfmc.online/gwfews/index-12.html">
+Global Early Warning System for Wildland Fires</a>
+and the European Commission JRC
+<a href="http://gwis.jrc.ec.europa.eu">
+Global Wildfire Information System</a>,
+jointly produced with the European Centre for Medium Range Weather Forecasting. The latter also includes historical FWI calculations based on the ERA-Interim Reanalysis, under 'Data Access'.
+</p>
+
+
+
+
+
+
+<h4>Examples of FWI Interpretation</h4>
+
+<p>The FWI System requires calibration to the local fire environment. The studies below are examples of different approaches to determining fire danger classes for the FWI or different sub-indices. Note that the fire danger classes in each are specific to the type of input weather data, for example from weather stations or gridded fields from numerical models. </p>
+
+<table class="tdata tdatab" style="clear:both">
+
+<thead>
+<tr class="headrow">
+  <th>Region</th>
+  <th>Weather data </th>
+  <th>Indices</th>
+  <th>Approach</th>
+  <th>Reference</th
+</tr>
+<thead>
+
+<tbody>
+<tr>
+  <td>Alberta, Canada</td>
+  <td>On-site measurements</td>
+  <td>FWI</td>
+  <td>Experimental fire behavior examples for different FWI values in a reference Jack Pine fuel type in relation to fire intensity and suppression difficulty.</td>
+  <td>Alexander and de Groot (1988)</td>
+</tr>
+<tr>
+  <td>Canadian provinces</td>
+  <td>Weather stations</td>
+  <td>FWI, FWI &amp; BUI for BC</td>
+  <td>Cumulative FWI frequency distributions, relationships between FWI, number of fires and burned area from reports, expert assessment.</td>
+  <td>Stocks et al. (1989) and references therein</td>
+</tr>
+<tr>
+  <td>Northeast China</td>
+  <td>Weather stations</td>
+  <td>All</td>
+  <td>Cumulative FWI frequency distributions, number of fires and burnt area across fire danger classes, relationships between FWI values, number of fires and area burnt.</td>
+  <td>Tian et al. (2011)</td>
+</tr>
+<tr>
+  <td>
+Southwest Slovenia</td>
+  <td>Weather stations</td>
+  <td>FWI</td>
+  <td>Cumulative FWI frequency distributions, number of fires and burnt area across fire danger classes, logistic regression between FWI indices and days with fire.</td>
+  <td>Sturm et al. (2012)</td>
+</tr>
+<tr>
+  <td>
+Districts in Portugal</td>
+  <td>Weather stations</td>
+  <td>FWI</td>
+  <td>Cumulative FWI frequency distributions, relationships between FFMC and moisture content of dead Eucalyptus leaves, ISI and spread rate in shrub vegetation, DC and live moisture content of shrubs, DC and total annual June-Sept area burned.</td>
+  <td>Fujioka et al. (2009), translated from Viegas et al. (2004)</td>
+</tr>
+<tr>
+  <td>
+Portugal</td>
+  <td>Weather stations</td>
+  <td>FWI</td>
+  <td>Estimated fireline intensity and difficulty of suppression for maritime pine stands in Portugal using experimental fires and wildfires, simulated fire spread rates.</td>
+  <td>Palheiro et al. (2006)</td>
+</tr>
+<tr>
+  <td>
+Crete, Greece</td>
+  <td>Single weather station</td>
+  <td>FWI</td>
+  <td>Cumulative FWI frequency distributions, sub-index correlations with number of fires and burned areas from fire reports, relationships between FFMC and sampled fine fuel moisture content, DMC and sampled duff moisture content.</td>
+  <td>Dimitrakopoulos et al. (2011)</td>
+</tr>
+<tr>
+  <td>
+Patagonia, Argentina</td>
+  <td>Weather stations</td>
+  <td>FFMC</td>
+  <td>Relationships between FFMC and laboratory ignitions, and moisture content for cypress and shrub litter.</td>
+  <td>Bianchi and Defosse (2014)</td>
+</tr>
+<tr>
+  <td>
+United Kingdom</td>
+  <td>Weather stations and NWP analysis fields.</td>
+  <td>All</td>
+  <td>Cumulative FWI frequency distributions relative to fire occurrence, emphasizing percentile-based classification, possible utility of absolute FFMC values.  </td>
+  <td>de Jong et al. (2016)</td>
+</tr>
+<tr>
+  <td>
+Indonesia and Malaysia</td>
+  <td>Weather stations</td>
+  <td>FFMC, DC, ISI</td>
+  <td>Grass fuel ignition tests, satellite active fires, airport visibility as an indicator of severe haze.</td>
+  <td>de Groot et al. (2007)</td>
+</tr>
+<tr>
+  <td>General</td>
+  <td>ERA-Interim reanalysis.</td>
+  <td>FWI</td>
+  <td>General fire weather index calibration software, regional European examples provided for satellite-based burned area.</td>
+  <td>Vitolo et al. (2018)</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+<hr style="width:50%" />
+
+
+<h4>References</h4>
+
+<p>
+Alexander, M. E., and W. J. de Groot, 1988:
+Fire behavior in jack pine stands as related to the Canadian Forest Fire Weather Index (FWI) System, Poster (with text), Canadian Forest Service Northern Forestry Centre.
+PDF available from
+<a href="https://cfs.nrcan.gc.ca/publications?id=24310">
+https://cfs.nrcan.gc.ca/publications?id=24310</a> (last accessed 2020-04-30).
+</p>
+
+
+
+
+
+<div class="floatrightfr" style="margin-bottom:12px;width:350px;clear:right">
+<img src="figure2.png" style="width:350px;border:0"
+  alt="Sample map of western Indonesia from IMERG-GPM precipitation" />
+<p class="caption">
+FWI System Drought Code over western Indonesia from IMERG-GPM precipitation, October 14-16, 2015, with MODIS active fires. A description of the severe 2015 fire and haze can be found in Field et al. (2016), and the classification for the Drought Code over Indonesia in de Groot et al. (2007).
+</p>
+</div>
+
+
+
+<p>
+Bianchi, L.O., and G.E. Defosse, 2014:
+Ignition probability of fine dead surface fuels in native Patagonia forests of Argentina.
+<cite>Forest Syst.</cite>, <b>23</b>, no. 1, 129-138,
+<a href="http://dx.doi.org/10.5424/fs/2014231-04632">doi:10.5424/fs/2014231-04632</a>.
+
+<!--
+<p>
+Chen, M.Y., W. Shi, P.P. Xie, V.B.S. Silva, V.E. Kousky, R.W. Higgins, and J.E. Janowiak, 2008:
+Assessing objective techniques for gauge-based analyses of global daily precipitation.
+<cite>J. Geophys. Res.</cite>, <b>113</b>, no. D4, 13,
+<a href="http://dx.doi.org/10.1029/2007jd009132">doi:10.1029/2007jd009132</a>.
+</p>
+-->
+
+<p>
+Cruz, M.G., A.L. Sullivan, J.S. Gould, N.C. Sims, A.J. Bannister, J.J. Hollis, and R.J. Hurley, 2012:
+Anatomy of a catastrophic wildfire: The Black Saturday Kilmore East fire in Victoria, Australia.
+<cite>Forest Ecol. Manag.</cite>, <b>284</b>, 269-285,
+<a href="http://dx.doi.org/doi:10.1016/j.foreco.2012.02.035">doi:10.1016/j.foreco.2012.02.035</a>.
+</p>
+
+<p>
+De Groot, W. J., R. D. Field, M. A. Brady, O. Roswintiarti, and M. Mohamad, 2007:
+Development of the Indonesian and Malaysian Fire Danger Rating Systems.
+<cite>Mitig. Adapt. Strateg. Glob. Change</cite>, <b>12</b>, 165-180,
+<a href="http://dx.doi.org/10.1007/s11027-006-9043-8">doi:10.1007/s11027-006-9043-8</a>.
+</p>
+
+<p>
+De Jong, M. C., M. J. Wooster, K. Kitchen, C. Manley, R. Gazzard, and F. F. McCall, 2016:
+Calibration and evaluation of the Canadian Forest Fire Weather Index (FWI) System for improved wildland fire danger rating in the United Kingdom.
+<cite>Nat. Hazards Earth Syst. Sci.</cite>, <b>16</b>, 1217-1237,
+<a href="ttps://doi.org/10.5194/nhess-16-1217-2016">doi:10.5194/nhess-16-1217-2016</a>.
+</p>
+
+<p>
+Dimitrakopoulos, A. P., A. M. Bemmerzouk, and I. D. Mitsopoulos, 2011:
+Evaluation of the Canadian fire weather index system in an eastern Mediterranean environment.
+<cite>Meteorol. Applic.</cite>, <b>18</b>, no. 1, 83-93,
+<a href="https://doi.org/10.1002/met.214">doi:10.1002/met.214</a>.
+</p>
+
+<p>
+Dowdy, A. J., G. A. Mills, K. Finkele, and W. J. de Groot, 2009:
+Australian fire weather as represented by the McArthur Forest Fire Danger Index and the Canadian Forest Fire Weather.
+CAWCR Technical Report No. 010, Centre for Australian Weather and Climate Research.
+PDF available from <a href="http://www.cawcr.gov.au/technical-reports/CTR_010.pdf">
+www.cawcr.gov.au/technical-reports/CTR_010.pdf</a> (last accessed 2020-04-30).</p>
+
+<p>
+Field, R.D., 2020a: 
+<a href="https://pubs.giss.nasa.gov/abs/fi02300g.html">Evaluation of Global Fire Weather Database re-analysis and short-term forecast products</a>. 
+<cite>Nat. Hazards Earth Syst. Sci.</cite>, <b>20</b>, no. 4, 1123-1147, doi:10.5194/nhess-20-1123-2020.
+</p>
+
+<p>
+Field, R.D., 2020b:
+<a href="https://pubs.giss.nasa.gov/abs/fi03300h.html">Using satellite estimates of precipitation for fire danger rating</a>.
+In <cite>Satellite Precipitation Measurement, Volume 2</cite>. V. Levizzani, C. Kidd, D.B. Kirschbaum, C.D. Kummerow, K. Nakamura, and F.J. Turk, Eds., Advances in Global Change Research. Springer, pp. 1131-1154, doi:10.1007/978-3-030-35798-6_33.
+</p>
+
+<p>Field, R.D., A.C. Spessa, N.A. Aziz, A. Camia, A. Cantin, R. Carr, W.J. de Groot, A.J. Dowdy, M.D. Flannigan, K. Manomaiphiboon, F. Pappenberger, V. Tanpipat, and X. Wang, 2015: <a href="https://pubs.giss.nasa.gov/abs/fi05200z.html">Development of a global fire weather database</a>. <cite>Nat. Hazards Earth Syst. Sci.</cite>, <b>15</b>, 1407-1423, doi:10.5194/nhess-15-1407-2015.</p>
+
+<p>Field, R.D., G. van der Werf, T. Fanin, E. Fetzer, R. Fuller, H. Jethva, R. Levy, N. Livesey, M. Luo, O. Torres, and H.M. Worden, 2016: <a href="https://pubs.giss.nasa.gov/abs/fi08200c.html">Indonesian fire activity and smoke pollution in 2015 show persistent nonlinear sensitivity to El Ni&ntilde;o-induced drought</a>. <cite>Proc. Natl. Acad. Sci.</cite>, <b>113</b>, no. 33, 9204-9209, doi:10.1073/pnas.1524888113.</p>
+
+<p>
+Fujioka, F.M., A.M. Gill, D.X. Viegas, and B.M. Wotton, 2009:
+Fire danger and fire behavior modeling systems in Australia, Europe, and North America.
+In <cite>Wildland fires and Air Pollution</cite>.
+A. Bytnerowicz, M.J. Arbaugh, A.R. Riebau, and C.Andersen, Eds.,
+Developments in Environmental Science, vol. 8, pp. 471-497,
+<a href="https://doi.org/10.1016/S1474-8177(08)00021-1">doi:10.1016/S1474-8177(08)00021-1</a>.
+</P>
+
+<p>
+Palheiro, P.M., P. Fernandes, and M. Cruz, 2006:
+A fire behaviour-based fire danger classification for maritime pine stands: Comparison of two approaches.
+<cite>Forest Ecol. Manag.</cite>, <b>234</b>, Supp., S54,
+<a href="http://10.1016/j.foreco.2006.08.075">doi:10.1016/j.foreco.2006.08.075</a>.
+</P>
+
+<!--
+<p>
+Rienecker, M.M., M.. Suarez, R. Gelaro, R. Todling, J. Bacmeister, E. Liu, M.G. Bosilovich, S.D. Schubert, L. Takacs, G.-K. Kim, S. Bloom, J. Chen, D. Collins, A. Conaty, A. da Silva, W. Gu, J. Joiner, R.D. Koster, R. Lucchesi, A. Molod, T. Owens, S. Pawson, P. Pegion, C.R. Redder, R. Reichle, F.R. Robertson, A.G. Ruddick, M. Sienkiewicz, and J. Woollen, 2011:
+MERRA: NASA’s Modern-Era Retrospective Analysis for Research and Applications.
+<cite>J. Climate</cite>, <b>24</b>, no. 14, 3624–3648,
+<a href="http://dx.doi.org/10.1175/jcli-d-11-00015.1">doi:10.1175/jcli-d-11-00015.1</a>.
+</p>
+-->
+
+<!--
+<p>
+Sheffield, J., G. Goteti, and E.F. Wood, 2006:
+Development of a 50-year high-resolution global dataset of meteorological forcings for land surface modeling,
+<cite>J. Climate</cite>, <b>19</b>, no. 13, 3088-3111,
+<a href="http://dx.doi.org/10.1175/jcli3790.1">doi:10.1175/jcli3790.1</a>.
+</p>
+-->
+
+
+
+
+
+<div class="floatrightfr" style="margin-bottom:12px;width:350px;clear:right">
+<img src="figure3.png" style="width:350px;border:0"
+  alt="Sample global map of Fire Weather Index for February 9, 2009" />
+<p class="caption">
+Fire Weather Index on February 9, 2009 during the Black Saturday bushfires in southeast Australia described by Cruz et al. (2013).
+Figure generated from Columbia IRI Data Library.
+</p>
+</div>
+
+
+
+
+<p>
+Stocks, B.J., B.D. Lawson, M.E. Alexander, C.E. Vanwagner, R.S. McAlpine, T.J. Lynham, and D.E. Dube, 1989:
+he Canadian Forest Fire Danger Rating System - An Overview.
+cite>Forestry Chronicle</cite>, <b>65</b>, 450-457.
+DF available from
+a href="http://pubs.cif-ifc.org/doi/pdf/10.5558/tfc65450-6">http://pubs.cif-ifc.org/doi/pdf/10.5558/tfc65450-6</a> (last accessed 2020-04-30).
+/p>
+
+<p>
+Sturm, T., P. M. Fernandes, and R. Sumrada, 2012:
+The Canadian fire weather index system and wildfire activity in the Karst forest management area, Slovenia.
+<cite>Eur. J. Forest Res.</cite>, <b>131</b>, no. 3, 829-834
+<a href="http:/dx.doi.org/10.1007/s10342-011-0556-7">doi:10.1007/s10342-011-0556-7</a>.
+</p>
+
+<p>
+Taylor, S.W., and M.E. Alexander, 2006:
+Science, technology, and human factors in fire danger rating: the Canadian experience.
+<cite>Intl. J. Wildland Fire</cite>, <b>15</b>, no. 1, 121-135,
+<a href="http://dx.doi.org/10.1071/wf05021">doi:10.1071/wf05021</a>.
+</p>
+
+<p>
+Tian, X. R., D. J. McRae, J. Z. Jin, L. F. Shu, F. J. Zhao, and M. Y. Wang, 2011:
+Wildfires and the Canadian Forest Fire Weather Index system for the Daxing'anling region of China.
+<cite>Intl. J. Wildland Fire</cite>, <b>20</b>, no. 8, 963-973,
+<a href="https://doi.org/10.1071/WF09120">doi:10.1071/WF09120</a>.
+</p>
+
+<p>Van Wagner, C.E., 1987:
+<cite>Development and Structure of the Canadian Forest Fire Weather Index System</cite>.
+Forestry Technical Report 35. Canadian Forest Service, Ottawa, Canada. 
+Available at <a href="https://cfs.nrcan.gc.ca/publications?id=19927">
+https://cfs.nrcan.gc.ca/publications?id=19927</a> (last accessed 2020-04-30).
+</p>
+
+<p>
+Viegas, D. X., R. M. Reis, M. G. Cruz, and M. T. Viegas, 2004:
+Calibra&ccedil;&atilde;o do Sistema Canadiano de Perigo de Inc&eacute;ndio para Aplica&ccedil;&atilde;o em Portugal.
+<cite>Silva Lusitana</cite>, <b>12</b>, no. 1, 77-93.
+</p>
+
+<p>
+Vitolo, C., F. Di Giuseppe, and M. D'Andrea, 2018:
+Caliver: An R package for CALIbration and VERification of forest fire gridded model outputs.
+<cite>PLOS One</cite>, <b>13</b>, no. 1, e0189419.
+<a href="https://doi.org/10.1371/journal.pone.0189419">doi:10.1371/journal.pone.0189419</a>.
+</p>
+ 
+
+
+
+
+<p class="ednote">
+Note:
+PDF documents require the free <a href="http://get.adobe.com/reader/">Adobe Reader</a> or compatible
+viewing software to be viewed.
+</p>
+
+
+<h4>Funding</h4>
+
+<p>
+GFWED development is supported by the NASA Precipitation Measurement Missions Science Team and the NASA Group on Earth Observations Work Program.
+</p>
+
+
+<h4>Contact</h4>
+
+<p>Please send questions and feedback to <a href="https://www.giss.nasa.gov/staff/rfield.html">Dr. Robert Field</a>.
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="clear"></div></div><!-- end cpad --></div><!-- end content -->
+<div id="nav"><h3>Site Menu</h3>
+<ul id="mnav">
+<li><a href="https://www.giss.nasa.gov/">GISS Home</a></li>
+<li><a href="https://www.giss.nasa.gov/research/">News &amp; Features</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/research/">News &amp; Features Overview</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/projects/">Projects &amp; Groups</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/projects/">Projects Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/projects/gcm/">Global Climate Modeling</a></li>
+<li><a href="https://www.giss.nasa.gov/projects/astrobio/">Astrobiology / ROCKE-3D</a></li>
+<li><a href="https://www.giss.nasa.gov/projects/impacts/">Climate Impacts</a></li>
+<li><a href="https://isccp.giss.nasa.gov/">ISCCP</a></li></ul><!-- end mnav2 --></li><li class="sel"><a href="https://data.giss.nasa.gov/">Datasets</a>
+<ul class="mnav2">
+<li><a href="https://data.giss.nasa.gov/">Datasets Overview</a></li>
+<li><a href="https://data.giss.nasa.gov/gistemp/">GISTEMP Surface Temperature</a></li>
+<li><a href="https://data.giss.nasa.gov/modelE/">Model E Simulations</a></li>
+<li><a href="https://data.giss.nasa.gov/modelforce/">Model Forcings</a></li>
+<li><a href="https://data.giss.nasa.gov/rocke3d/maps/">ROCKE-3D Simulations</a></li>
+<li><a href="https://isccp.giss.nasa.gov/products/onlineData.html">ISCCP Data Products</a></li>
+<li><a href="https://gacp.giss.nasa.gov/datasets/">GACP Data Products</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://pubs.giss.nasa.gov/">Publications</a>
+<ul class="mnav2">
+<li><a href="https://pubs.giss.nasa.gov/">Publications Overview</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2024.html">2024 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2023.html">2023 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2022.html">2022 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2021.html">2021 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2020.html">2020 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/inpress.html">Accepted &amp; In Press</a></li>
+<li><a href="https://pubs.giss.nasa.gov/authors/">Author Bibliographies</a></li>
+<li><a href="https://pubs.giss.nasa.gov/best.html">Annual Best</a></li>
+<li><a href="https://pubs.giss.nasa.gov/cited.html">Most Cited</a></li>
+<li><a href="https://pubs.giss.nasa.gov/dissertations.html">Dissertations</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/tools/">Software</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/tools/">Software Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/modelE/">GCM Model E</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/panoply/">Panoply Data Viewer</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/gprojector/">G.Projector</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/mars24/">Mars24 Sunclock</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/edu/">Education</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/edu/">Education Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/intern/">Internships</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/ccri/">CCRI</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/grad/">Graduate Study</a></li>
+<li><a href="https://www.giss.nasa.gov/about/jobs/postdoc.html">Postdoc Research</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/res/">STEM Curriculum Modules</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/events/">Events</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/events/">Events Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/events/lunch/">Lunch Seminars</a></li>
+<li><a href="https://www.giss.nasa.gov/events/past.html">Past Events</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/about/">About GISS</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/about/">About GISS</a></li>
+<li><a href="https://www.giss.nasa.gov/about/management.html">Management Staff</a></li>
+<li><a href="https://www.giss.nasa.gov/staff/">Personnel Directory</a></li>
+<li><a href="https://www.giss.nasa.gov/about/visiting/">Visitors' Info</a></li>
+<li><a href="https://www.giss.nasa.gov/about/jobs/">Employment</a></li></ul><!-- end mnav2 --></li></ul><!-- end mnav --></div><!-- end nav -->
+
+<div id="endpaper"></div></div><!-- end paper -->
+<div id="footer">
+<div id="footerlogo">
+<a href="https://www.nasa.gov"><img src="https://www.giss.nasa.gov/gfx/2013/nasa_x2.png" alt="NASA Logo, National Aeronautics and Space Administration" style="width:140px;height:98px" /></a></div><!-- end footerlogo -->
+<div id="footersig"><a href="https://www.nasa.gov/goddard/" class="imageLink"><img src="https://www.giss.nasa.gov/gfx/2013/gsig.png" alt="Goddard Space Flight Center" style="width:172px;height:68px" /></a></div><!-- end footersig -->
+<div id="footerinfo">
+<p>Page updated: Apr 30, 2020</p>
+<p>Website Curator:
+<a href="https://www.giss.nasa.gov/staff/rschmunk.html">
+Robert B. Schmunk</a>
+&mdash;
+NASA Official:
+<a href="https://www.giss.nasa.gov/staff/gschmidt.html">
+Gavin A. Schmidt</a></p>
+<p><a href="https://www.giss.nasa.gov/about/contact.html">Contact GISS</a> &mdash;
+<a href="https://www.nasa.gov/about/highlights/HP_Privacy.html">NASA Privacy Policy</a> &mdash;
+<a href="https://www.nasa.gov/general/accessibility/">Accessibility</a></p></div><!-- end footerinfo --></div><!-- end footer --></div><!-- end page --></body>
+
+</html>
+
+
+ contentType 9 text/html url 45 https://data.giss.nasa.gov:443/impacts/gfwed/ responseCode 3 200 

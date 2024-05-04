@@ -1,0 +1,6071 @@
+nirizouqiqicnmtkfiikiqtawissyqfktinkcayc length 5 90220 page 90220 <!DOCTYPE html>
+<!--[if lte IE 8 ]><html lang="en" class="js-off lte-ie8"><![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="js-off ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="js-off">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Class: Title, MediaWiki Frontend API, JSDoc</title>
+    <script>
+document.documentElement.className = document.documentElement.className.replace(/\bjs-off\b/,'js-on'); // no BEM notation thx to IE
+    </script>
+    <!--[if lt IE 9]>
+      <script>window.html5={'shivCSS':false};</script>
+      <script src="wmf/js/vendor/ie/html5shiv-3.7.3.min.js"></script>
+      <script src="wmf/js/vendor/ie/respond-1.4.2.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="styles/jsdoc-wmf-theme.css">
+    <script src="scripts/lib/prettify/prettify.js"> </script>
+    <script src="scripts/lib/prettify/lang-css.js"> </script>
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link rel="preload" href="wmf/fonts/Charter_regular.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="wmf/fonts/Lato_regular.woff2" as="font" type="font/woff2" crossorigin="">
+    <script src="scripts/fonts-loader.js" async=""></script>
+</head>
+
+<body class="page--home">
+	<header id="header" class="header" role="banner">
+		<div class="content-box">
+			<a href="#content" class="is-aural is-focusable">Jump to content</a>
+			<a href="#nav--main" class="is-aural is-focusable">Jump to navigation</a>
+			<div class="header__title">
+				<span class="site-title"><a href="./"><span class="site-logo"></span>MediaWiki Frontend API</a></span>
+				<label class="btn--nav-main" for="trigger--nav-main" aria-hidden="true" title="Show main menu">
+					<i></i> <span>Menu</span>
+				</label>
+			</div>
+     		<div id="search-container" class="search-container">
+  <input type="search" id="lunr-search" class="search-input" role="combobox" aria-autocomplete="list" aria-controls="search-results" aria-expanded="false" aria-activedescendant="selected-search-result" placeholder="Search">
+  <ul id="search-results" class="search-results role="listbox"></ul>
+</div>
+<script src="lunr-data.js"></script>
+<script src="scripts/lib/lunr.js"></script>
+<script src="scripts/lunrSearch.js"></script>
+
+		</div>
+	</header>
+	<div class="page">
+		<div class="content-box flex-cols">
+			<div class="flex-col flex-col--start">
+				<input type="checkbox" id="trigger--nav-main" class="trigger--nav-main">
+				<nav id="nav--main" class="nav nav--main" role="navigation">
+					<ol><li class="nav__item"><a href="index.html">Home</a></li><li class="nav__item"><a href="modules.html">Modules</a><ul class="nav__sub-items"><li class="nav__sub-item"><a href="module-mediawiki.ForeignApi.html">mediawiki.ForeignApi</a></li><li class="nav__sub-item"><a href="module-mediawiki.String.html">mediawiki.String</a></li><li class="nav__sub-item"><a href="module-mediawiki.libs.jpegmeta.html">mediawiki.libs.jpegmeta</a></li><li class="nav__sub-item"><a href="module-mediawiki.libs.pluralruleparser.html">mediawiki.libs.pluralruleparser</a></li><li class="nav__sub-item"><a href="module-mediawiki.notification.convertmessagebox.html">mediawiki.notification.convertmessagebox</a></li><li class="nav__sub-item"><a href="module-mediawiki.page.preview.html">mediawiki.page.preview</a></li><li class="nav__sub-item"><a href="module-mediawiki.page.ready.html">mediawiki.page.ready</a></li><li class="nav__sub-item"><a href="module-mediawiki.page.watch.ajax.html">mediawiki.page.watch.ajax</a></li><li class="nav__sub-item"><a href="module-mediawiki.storage.html">mediawiki.storage</a></li><li class="nav__sub-item"><a href="module-mediawiki.util.html">mediawiki.util</a></li><li class="nav__sub-item"><a href="module-mediawiki.visibleTimeout.html">mediawiki.visibleTimeout</a></li><li class="nav__sub-item"><a href="module-mediawiki.watchstar.widgets.html">mediawiki.watchstar.widgets</a></li><li class="nav__sub-item"><a href="module-moment.html">moment</a></li><li class="nav__sub-item"><a href="module-vue.html">vue</a></li></ul></li><li class="nav__item"><a href="namespaces.html">Globals</a><ul class="nav__sub-items"><li class="nav__sub-item"><a href="Hooks.html">Hooks</a></li><li class="nav__sub-item"><a href="jQueryPlugins.html">jQueryPlugins</a></li><li class="nav__sub-item"><a href="mw.html">mw</a></li><li class="nav__sub-item"><a href="window.html">window</a></li></ul></li><li class="nav__item"><a href="sitemap.html">Sitemap</a></li></ol>
+				</nav>
+			</div>
+			<div class="flex-col flex-col--end">
+				<main id="content" class="content" role="main">
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+    <nav class="breadcrumbs">
+        <a href="mw.html">mw</a> &gt;
+        Title
+    </nav>
+    
+    <h1 class="page-title"><span class="page-title__attribs"><span class="type-signature"></span></span>
+    <span class="page-title__name">mw.Title</span></h1>
+    
+        
+            <div class="class-description"><p>Library for constructing MediaWiki titles.</p></div>
+            
+                <h2>Example</h2>
+                
+    <pre class="prettyprint"><code>new mw.Title( 'Foo', NS_TEMPLATE ).getPrefixedText();
+// => 'Template:Foo'
+mw.Title.newFromText( 'Foo', NS_TEMPLATE ).getPrefixedText();
+// => 'Template:Foo'
+mw.Title.makeTitle( NS_TEMPLATE, 'Foo' ).getPrefixedText();
+// => 'Template:Foo'
+
+new mw.Title( 'Category:Foo', NS_TEMPLATE ).getPrefixedText();
+// => 'Category:Foo'
+mw.Title.newFromText( 'Category:Foo', NS_TEMPLATE ).getPrefixedText();
+// => 'Category:Foo'
+mw.Title.makeTitle( NS_TEMPLATE, 'Category:Foo' ).getPrefixedText();
+// => 'Template:Category:Foo'
+
+new mw.Title( 'Template:Foo', NS_TEMPLATE ).getPrefixedText();
+// => 'Template:Foo'
+mw.Title.newFromText( 'Template:Foo', NS_TEMPLATE ).getPrefixedText();
+// => 'Template:Foo'
+mw.Title.makeTitle( NS_TEMPLATE, 'Template:Foo' ).getPrefixedText();
+// => 'Template:Template:Foo'</code></pre>
+
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+<div class="member  member--has-toggle-box">
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <details id="toggle-Title" class="toggle-box">
+    <summary>
+        <h3 class="name" id="Title">
+            new <span class="name__function-name">mw.Title</span><span class="signature">(title, namespace)</span><span class="type-signature"></span><span class="type-signature"></span>
+            <a href="#Title">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Parse titles into an object structure. Note that when using the constructor
+directly, passing invalid titles will result in an exception.
+Use <a href="mw.Title.html#.newFromText"><code>newFromText</code></a> to use the
+logic directly and get null for invalid titles which is easier to work with.</p>
+<p>Note that in the constructor and <a href="mw.Title.html#.newFromText"><code>newFromText</code></a> method,
+<code>namespace</code> is the <strong>default</strong> namespace only, and can be overridden by a namespace
+prefix in <code>title</code>. If you do not want this behavior,
+use <a href="mw.Title.html#.makeTitle"><code>makeTitle</code></a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Title of the page. If no second argument given,
+this will be searched for a namespace</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>namespace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    NS_MAIN
+                
+                </td>
+            
+
+            <td class="description last"><p>If given, will used as default namespace for the given title</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line406">line 406</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Throws:</h4>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>When the title is invalid</p>
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">
+	 Error
+</span>
+
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+</div>
+
+    
+    </div>
+
+    
+        <h2 class="subsection-title">Properties</h2>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+<details id="toggle-.exist" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".exist">
+            <span class="name__function-name">exist</span><span class="type-signature"> :<a href="mw.Title.html#~TitleExistenceStore">mw.Title~TitleExistenceStore</a></span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.exist">#</a>
+        </h3>
+    </summary>
+
+    <div class="long">
+    
+
+    
+
+    
+        <h4>Type:</h4>
+        <ul>
+            <li>
+                
+<span class="param-type">
+	 <a href="mw.Title.html#~TitleExistenceStore">mw.Title~TitleExistenceStore</a>
+</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line710">line 710</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    </div>
+</details>
+
+<div class="summary">
+    
+</div>
+
+</div>
+
+        
+    
+
+    
+        <h2 class="subsection-title">Methods</h2>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-canHaveTalkPage" class="toggle-box">
+    <summary>
+        <h3 class="name" id="canHaveTalkPage">
+            <span class="name__function-name">canHaveTalkPage</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>}</span><span class="type-signature"></span>
+            <a href="#canHaveTalkPage">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Check the title can have an associated talk page.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line1021">line 1021</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>The title can have an associated talk page</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Check the title can have an associated talk page.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-exists" class="toggle-box">
+    <summary>
+        <h3 class="name" id="exists">
+            <span class="name__function-name">exists</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>|<code>null</code>}</span><span class="type-signature"></span>
+            <a href="#exists">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Whether this title exists on the wiki.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line1031">line 1031</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mw.Title.html#.exists">mw.Title.exists</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>Boolean if the information is available, otherwise null</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Whether this title exists on the wiki.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getExtension" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getExtension">
+            <span class="name__function-name">getExtension</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>|<code>null</code>}</span><span class="type-signature"></span>
+            <a href="#getExtension">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the extension of the page name (if any).</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line871">line 871</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>Name extension or null if there is none</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the extension of the page name (if any).
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getFileNameTextWithoutExtension" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getFileNameTextWithoutExtension">
+            <span class="name__function-name">getFileNameTextWithoutExtension</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getFileNameTextWithoutExtension">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the page name as if it is a file name, without extension or namespace prefix,
+in the human-readable form with spaces instead of underscores. For example, the title
+<code>File:Example_image.svg</code> will be returned as &quot;Example image&quot;.</p>
+<p>Note that this method will work for non-file titles but probably give nonsensical results.
+A title like <code>User:Dr._J._Fail</code> will be returned as <code>Dr. J</code>! Use <a href="mw.Title.html#getMainText"><code>getMainText</code></a> instead.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line834">line 834</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        <p>Get the page name as if it is a file name, without extension or namespace prefix,
+in the human-readable form with spaces instead of underscores.</p>
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getFileNameWithoutExtension" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getFileNameWithoutExtension">
+            <span class="name__function-name">getFileNameWithoutExtension</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getFileNameWithoutExtension">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the page name as if it is a file name, without extension or namespace prefix,
+in the canonical form with underscores instead of spaces. For example, the title
+<code>File:Example_image.svg</code> will be returned as <code>Example_image</code>.</p>
+<p>Note that this method will work for non-file titles but probably give nonsensical results.
+A title like <code>User:Dr._J._Fail</code> will be returned as <code>Dr._J</code>! Use <a href="mw.Title.html#getMain"><code>getMain</code></a> instead.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line816">line 816</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        <p>Get the page name as if it is a file name, without extension or namespace prefix,
+in the canonical form with underscores instead of spaces.</p>
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getFragment" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getFragment">
+            <span class="name__function-name">getFragment</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>|<code>null</code>}</span><span class="type-signature"></span>
+            <a href="#getFragment">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the fragment (if any).</p>
+<p>Note that this method (by design) does not include the hash character and
+the value is not url encoded.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line961">line 961</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the fragment (if any).
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getMain" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getMain">
+            <span class="name__function-name">getMain</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getMain">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the main page name.</p>
+<p>Example: <code>Example_image.svg</code> for <code>File:Example_image.svg</code>.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line886">line 886</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the main page name.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getMainText" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getMainText">
+            <span class="name__function-name">getMainText</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getMainText">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the main page name (transformed by text()).</p>
+<p>Example: <code>Example image.svg</code> for <code>File:Example_image.svg</code>.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line904">line 904</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the main page name (transformed by text()).
+    </div>
+
+</div>
+
+        
+            
+<div class="member  method--deprecated member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getName" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getName">
+            <span class="name__function-name">getName</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getName">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the page name as if it is a file name, without extension or namespace prefix. Warning,
+this is usually not what you want! A title like <code>User:Dr._J._Fail</code> will be returned as
+<code>Dr. J</code>! Use <a href="mw.Title.html#getMain"><code>getMain</code></a> or <a href="mw.Title.html#getMainText"><code>getMainText</code></a> for the actual page name.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>since 1.40, use <a href="mw.Title.html#getFileNameWithoutExtension"><code>getFileNameWithoutExtension</code></a> instead</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line848">line 848</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>File name without file extension, in the canonical form with underscores
+instead of spaces. For example, the title <code>File:Example_image.svg</code> will be returned as
+<code>Example_image</code>.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the page name as if it is a file name, without extension or namespace prefix.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  method--deprecated member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getNameText" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getNameText">
+            <span class="name__function-name">getNameText</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getNameText">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the page name as if it is a file name, without extension or namespace prefix. Warning,
+this is usually not what you want! A title like <code>User:Dr._J._Fail</code> will be returned as
+<code>Dr. J</code>! Use <a href="mw.Title.html#getMainText"><code>getMainText</code></a> for the actual page name.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>since 1.40, use <a href="mw.Title.html#getFileNameTextWithoutExtension"><code>getFileNameTextWithoutExtension</code></a> instead</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line862">line 862</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>File name without file extension, formatted with spaces instead of
+underscores. For example, the title <code>File:Example_image.svg</code> will be returned as
+<code>Example image</code>.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the page name as if it is a file name, without extension or namespace prefix.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getNamespaceId" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getNamespaceId">
+            <span class="name__function-name">getNamespaceId</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>}</span><span class="type-signature"></span>
+            <a href="#getNamespaceId">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the namespace number.</p>
+<p>Example: 6 for &quot;File:Example_image.svg&quot;.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line790">line 790</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the namespace number.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getNamespacePrefix" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getNamespacePrefix">
+            <span class="name__function-name">getNamespacePrefix</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getNamespacePrefix">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the namespace prefix (in the content language).</p>
+<p>Example: &quot;File:&quot; for &quot;File:Example_image.svg&quot;.
+In #NS_MAIN this is '', otherwise namespace name plus ':'</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line802">line 802</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the namespace prefix (in the content language).
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getPrefixedDb" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getPrefixedDb">
+            <span class="name__function-name">getPrefixedDb</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getPrefixedDb">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the full page name.</p>
+<p>Example: <code>File:Example_image.svg</code>.
+Most useful for API calls, anything that must identify the &quot;title&quot;.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line916">line 916</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the full page name.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getPrefixedText" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getPrefixedText">
+            <span class="name__function-name">getPrefixedText</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getPrefixedText">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the full page name (transformed by <code>text</code>).</p>
+<p>Example: <code>File:Example image.svg</code> for <code>File:Example_image.svg</code>.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line927">line 927</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the full page name (transformed by <code>text</code>).
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getRelativeText" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getRelativeText">
+            <span class="name__function-name">getRelativeText</span><span class="signature">(namespace)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getRelativeText">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the page name relative to a namespace.</p>
+<p>Example:</p>
+<ul>
+<li>&quot;Foo:Bar&quot; relative to the Foo namespace becomes &quot;Bar&quot;.</li>
+<li>&quot;Bar&quot; relative to any non-main namespace becomes &quot;:Bar&quot;.</li>
+<li>&quot;Foo:Bar&quot; relative to any namespace other than Foo stays &quot;Foo:Bar&quot;.</li>
+</ul>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>namespace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The namespace to be relative to</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line943">line 943</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the page name relative to a namespace.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getSubjectPage" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getSubjectPage">
+            <span class="name__function-name">getSubjectPage</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"></span>
+            <a href="#getSubjectPage">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the title for the subject page of a talk page.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line1010">line 1010</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>The title for the subject page of a talk page, null if not available</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the title for the subject page of a talk page.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getTalkPage" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getTalkPage">
+            <span class="name__function-name">getTalkPage</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"></span>
+            <a href="#getTalkPage">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the title for the associated talk page.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line996">line 996</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>The title for the associated talk page, null if not available</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the title for the associated talk page.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-getUrl" class="toggle-box">
+    <summary>
+        <h3 class="name" id="getUrl">
+            <span class="name__function-name">getUrl</span><span class="signature">(params)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"></span>
+            <a href="#getUrl">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the URL to this title.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>A mapping of query parameter names to values,
+e.g. <code>{ action: 'edit' }</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line973">line 973</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><p><a href="module-mediawiki.util.html#.getUrl"><code>mw.util.getUrl</code></a></p></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the URL to this title.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-isTalkPage" class="toggle-box">
+    <summary>
+        <h3 class="name" id="isTalkPage">
+            <span class="name__function-name">isTalkPage</span><span class="signature">()</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>}</span><span class="type-signature"></span>
+            <a href="#isTalkPage">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Check if the title is in a talk namespace.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line987">line 987</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>The title is in a talk namespace</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Check if the title is in a talk namespace.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-toString" class="toggle-box">
+    <summary>
+        <h3 class="name" id="toString">
+            <span class="name__function-name">toString</span><span class="signature">()</span><span class="type-signature"></span><span class="type-signature"></span>
+            <a href="#toString">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Alias of <a href="mw.Title.html#getPrefixedDb"><code>getPrefixedDb</code></a>.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line1036">line 1036</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Alias of <a href="mw.Title.html#getPrefixedDb"><code>getPrefixedDb</code></a>.
+    </div>
+
+</div>
+
+        
+            
+<div class="member  member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-toText" class="toggle-box">
+    <summary>
+        <h3 class="name" id="toText">
+            <span class="name__function-name">toText</span><span class="signature">()</span><span class="type-signature"></span><span class="type-signature"></span>
+            <a href="#toText">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Alias of <a href="mw.Title.html#getPrefixedText"><code>getPrefixedText</code></a>.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line1044">line 1044</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Alias of <a href="mw.Title.html#getPrefixedText"><code>getPrefixedText</code></a>.
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.exists" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".exists">
+            <span class="name__function-name">exists</span><span class="signature">(title)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>|<code>null</code>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.exists">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Whether this title exists on the wiki.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+|
+
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>prefixed db-key name (string) or instance of Title</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line662">line 662</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Throws:</h4>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>If title is not a string or mw.Title</p>
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">
+	 Error
+</span>
+
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>Boolean if the information is available, otherwise null</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Whether this title exists on the wiki.
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.isTalkNamespace" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".isTalkNamespace">
+            <span class="name__function-name">isTalkNamespace</span><span class="signature">(namespaceId)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.isTalkNamespace">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Check if a given namespace is a talk namespace.</p>
+<p>See NamespaceInfo::isTalk in PHP</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>namespaceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Namespace ID</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line633">line 633</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>Namespace is a talk namespace</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Check if a given namespace is a talk namespace.
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.makeTitle" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".makeTitle">
+            <span class="name__function-name">makeTitle</span><span class="signature">(namespace, title)</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.makeTitle">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Constructor for Title objects with predefined namespace.</p>
+<p>Unlike <a href="mw.Title.html#.newFromText"><code>newFromText</code></a> or the constructor, this function doesn't allow the given <code>namespace</code> to be
+overridden by a namespace prefix in <code>title</code>. See the constructor documentation for details about this behavior.</p>
+<p>The single exception to this is when <code>namespace</code> is 0, indicating the main namespace. The
+function behaves like <a href="mw.Title.html#.newFromText"><code>newFromText</code></a> in that case.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>namespace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Namespace to use for the title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line488">line 488</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>A valid Title object or null if the title is invalid</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Constructor for Title objects with predefined namespace.
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.newFromFileName" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".newFromFileName">
+            <span class="name__function-name">newFromFileName</span><span class="signature">(uncleanName)</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.newFromFileName">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Sanitizes a file name as supplied by the user, originating in the user's file system
+so it is most likely a valid MediaWiki title and file name after processing.
+Returns null on fatal errors.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>uncleanName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unclean file name including file extension but
+without namespace</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line600">line 600</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>A valid Title object or null if the title is invalid</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        <p>Sanitizes a file name as supplied by the user, originating in the user's file system
+so it is most likely a valid MediaWiki title and file name after processing.</p>
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.newFromImg" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".newFromImg">
+            <span class="name__function-name">newFromImg</span><span class="signature">(img)</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.newFromImg">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Get the file title from an image element.</p>
+</div>
+
+
+
+    
+        <h4>Example</h4>
+        
+    <pre class="prettyprint"><code>const title = mw.Title.newFromImg( imageNode );</code></pre>
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>img</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/API/HTMLElement">HTMLElement</a>
+</span>
+|
+
+<span class="param-type">
+	 <a href="https://api.jquery.com/jQuery/">jQuery</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The image to use as a base</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line615">line 615</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>The file title or null if unsuccessful</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Get the file title from an image element.
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.newFromText" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".newFromText">
+            <span class="name__function-name">newFromText</span><span class="signature">(title, namespace)</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.newFromText">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Constructor for Title objects with a null return instead of an exception for invalid titles.</p>
+<p>Note that <code>namespace</code> is the <strong>default</strong> namespace only, and can be overridden by a namespace
+prefix in <code>title</code>. If you do not want this behavior, use #makeTitle. See #constructor for
+details.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>namespace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    NS_MAIN
+                
+                </td>
+            
+
+            <td class="description last"><p>Default namespace</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line461">line 461</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>A valid Title object or null if the title is invalid</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Constructor for Title objects with a null return instead of an exception for invalid titles.
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.newFromUserInput" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".newFromUserInput">
+            <span class="name__function-name">newFromUserInput</span><span class="signature">(title, defaultNamespace, options)</span><span class="type-signature"> &rarr; {<a href="mw.Title.html">mw.Title</a>|<code>null</code>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.newFromUserInput">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Constructor for Title objects from user input altering that input to
+produce a title that MediaWiki will accept as legal.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultNamespace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    NS_MAIN
+                
+                </td>
+            
+
+            <td class="description last"><p>If given, will used as default namespace for the given title.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>additional options</p>
+                <h5>Properties:</h5>
+                
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>forUploading</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Makes sure that a file is uploadable under the title returned.
+There are pages in the file namespace under which file upload is impossible.
+Automatically assumed if the title is created in the Media namespace.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line511">line 511</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>A valid Title object or null if the input cannot be turned into a valid title</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="mw.Title.html">mw.Title</a>
+</span>
+|
+
+<span class="param-type">
+	 <code>null</code>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        <p>Constructor for Title objects from user input altering that input to
+produce a title that MediaWiki will accept as legal.</p>
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.normalizeExtension" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".normalizeExtension">
+            <span class="name__function-name">normalizeExtension</span><span class="signature">(extension)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.normalizeExtension">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Normalize a file extension to the common form, making it lowercase and checking some synonyms,
+and ensure it's clean. Extensions with non-alphanumeric characters will be discarded.
+Keep in sync with File::normalizeExtension() in PHP.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>extension</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>File extension (without the leading dot)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line730">line 730</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>File extension in canonical form</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        <p>Normalize a file extension to the common form, making it lowercase and checking some synonyms,
+and ensure it's clean.</p>
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.phpCharToUpper" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".phpCharToUpper">
+            <span class="name__function-name">phpCharToUpper</span><span class="signature">(chr)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.phpCharToUpper">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>PHP's strtoupper differs from String.toUpperCase in a number of cases (<a href="https://phabricator.wikimedia.org/T147646">T147646</a>).</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>chr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Unicode character</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line759">line 759</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>Unicode character, in upper case, according to the same rules as in PHP</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        PHP's strtoupper differs from String.toUpperCase in a number of cases (<a href="https://phabricator.wikimedia.org/T147646">T147646</a>).
+    </div>
+
+</div>
+
+        
+            
+<div class="member method--static member--has-toggle-box">
+
+    
+
+    
+    <details id="toggle-.wantSignaturesNamespace" class="toggle-box">
+    <summary>
+        <h3 class="name" id=".wantSignaturesNamespace">
+            <span class="name__function-name">wantSignaturesNamespace</span><span class="signature">(namespaceId)</span><span class="type-signature"> &rarr; {<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>}</span><span class="type-signature"><span class="type-signature__attrib type-signature__attrib--static">static</span></span>
+            <a href="#.wantSignaturesNamespace">#</a>
+        </h3>
+    </summary>
+    
+
+
+<div class="long">
+
+<div class="description">
+    <p>Check if signature buttons should be shown in a given namespace.</p>
+<p>See NamespaceInfo::wantSignatures in PHP</p>
+</div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <h4>Parameters:</h4>
+    
+
+<div class="params-wrapper">
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>namespaceId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Namespace ID</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line647">line 647</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>Returns:</h4>
+
+        
+<div class="param-desc">
+    <p>Namespace is a signature namespace</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+</div>
+
+<!--
+    Displays the description preview for collapsed sections.
+    Don't display as part of top-level page descriptions or for constructors.
+-->
+
+    </details>
+    <div class="summary">
+        Check if signature buttons should be shown in a given namespace.
+    </div>
+
+</div>
+
+        
+    
+
+    
+        <h2 class="subsection-title">Type Definitions</h2>
+
+        
+                
+<div class="member  member--has-toggle-box">
+
+<details id="toggle-~TitleExistenceStore" class="toggle-box">
+    <summary>
+        <h3 class="name" id="~TitleExistenceStore">
+            <span class="name__function-name">TitleExistenceStore</span>
+            <a href="#~TitleExistenceStore">#</a>
+        </h3>
+    </summary>
+
+    <div class="long">
+    
+
+    
+
+    
+        <h4>Type:</h4>
+        <ul>
+            <li>
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+
+
+    <h4 class="subsection-title">Properties:</h4>
+
+    
+
+<div class="props-wrapper">
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Keyed by title. Boolean true value indicates page does exist.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>set</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 function
+</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The setter function. Returns a boolean.</p>
+<p>Example to declare existing titles:</p>
+<pre class="prettyprint source"><code>Title.exist.set( ['User:John_Doe', ...] );
+</code></pre>
+<p>Example to declare titles nonexistent:</p>
+<pre class="prettyprint source"><code>Title.exist.set( ['File:Foo_bar.jpg', ...], false );
+</code></pre>
+                <h5>Properties:</h5>
+
+<div class="props-wrapper">
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>titles</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>
+</span>
+|
+
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>.&lt;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Title(s) in strict prefixedDb title form</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">
+	 <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
+</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    optional<br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>State of the given titles</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+</div>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="mediawiki.Title_Title.js.html">mediawiki.Title/Title.js</a>, <a href="mediawiki.Title_Title.js.html#line690">line 690</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    </div>
+</details>
+
+<div class="summary">
+    
+</div>
+
+</div>
+
+            
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+				</main>
+			</div>
+		</div>
+	</div>
+	<footer id="footer" class="footer">
+		<div class="content-box">
+			<ul class="footer__list">
+				<li><a href="https://gerrit.wikimedia.org/g/mediawiki/core/">Contribute</a></li>
+			</ul>
+			<p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri May 03 2024 22:50:45 GMT+0000 (Coordinated Universal Time)</p>
+			<p><a href="https://wikimediafoundation.org/" class="lnk--wikimedia-project">A Wikimedia Foundation project</a></p>
+		</div>
+	</footer>
+
+<script src="scripts/redirect.js"></script>
+<script>
+var arr = function(aa) { return Array.prototype.slice.call(aa); };
+arr(document.querySelectorAll("nav > ol > li a:not([href])")).map(function(el) {
+  var li = el;
+  while (li && li.tagName !== 'LI') { li = li.parentNode; }
+  el.addEventListener('click', function(event) {
+    if (li.classList.contains('is-on')) {
+      li.classList.remove('is-on');
+      return;
+    }
+    arr(document.querySelectorAll("nav li.nav__item.is-on")).map(function(el2) {
+      el2.classList.remove('is-on');
+    });
+    li.classList.add('is-on');
+  });
+});
+</script>
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/open-member.js"> </script>
+</body>
+</html> contentType 9 text/html url 68 https://doc.wikimedia.org:443/mediawiki-core/master/js/mw.Title.html responseCode 3 200 

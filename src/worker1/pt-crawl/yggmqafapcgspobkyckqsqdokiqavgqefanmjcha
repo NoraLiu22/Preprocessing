@@ -1,0 +1,939 @@
+yggmqafapcgspobkyckqsqdokiqavgqefanmjcha length 5 48079 page 48079 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caching Dependencies and Directories - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/caching/ />
+<meta property="og:description" content="Caching Dependencies and Directories" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/caching.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">Caching Dependencies and Directories</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#caching-directories-bundler-dependencies">Caching directories (Bundler, dependencies)</a></li>
+  <li><a href="#things-not-to-cache">Things not to cache</a></li>
+  <li><a href="#fetching-and-storing-caches">Fetching and storing caches</a></li>
+  <li><a href="#build-config-reference">Build Config Reference</a></li>
+  <li><a href="#configuration">Configuration</a></li>
+  <li><a href="#caches-and-build-matrices">Caches and build matrices</a></li>
+  <li><a href="#caches-and-read-permissions">Caches and read permissions</a></li>
+  <li><a href="#how-does-caching-work">How does caching work?</a></li>
+</ul>
+
+            </div>
+          
+
+          <p>Travis CI can cache content that does not often change, to speed up your build process.
+<strong>To use the caching feature</strong>, in your repository settings, set <em>Build pushed branches</em> to
+<em>ON</em>.</p>
+
+<ul>
+  <li>Travis CI fetches the cache for every build, including branches and pull requests.</li>
+  <li>If a branch does not have its own cache, Travis CI fetches the cache of the repository’s default branch.</li>
+  <li>There is one cache per branch and language version/ compiler version/ JDK version/  Gemfile location/ etc.</li>
+  <li>Only modifications made to the cached directories from normal pushes are stored.</li>
+</ul>
+
+<blockquote>
+  <p>Please note that cache content is available to any build on the repository, including Pull Requests, so make sure you do not put any sensitive information in the cache.</p>
+</blockquote>
+
+<blockquote>
+  <p>When creating the cache, symbolic links are not followed.
+Consider caching the normal files and directories instead.</p>
+</blockquote>
+
+<h2 id="caching-directories-bundler-dependencies">Caching directories (Bundler, dependencies) <a href="#caching-directories-bundler-dependencies" class="toc-anchor">#</a></h2>
+
+<p>Caches lets Travis CI store directories between builds, which is useful for storing
+dependencies that take longer to compile or download.</p>
+
+<p>Note that if a third party project, such as Bundler, changes the location where they store dependencies you might need to specify the <a href="#arbitrary-directories">directory manually</a> instead of using that particular <a href="#bundler">caching shortcut</a>. Please <a href="mailto:support@travis-ci.com?subject=Caching">contact us</a> with any questions, issues or feedback.</p>
+
+<h3 id="build-phases">Build phases <a href="#build-phases" class="toc-anchor">#</a></h3>
+
+<p>Travis CI uploads the cache after the <code class="highlighter-rouge">script</code> phase of the build, but before
+either <code class="highlighter-rouge">after_success</code> or <code class="highlighter-rouge">after_failure</code>.</p>
+
+<blockquote>
+  <p>Failure to upload the cache does <em>not</em> mark the job as failed.</p>
+</blockquote>
+
+<h3 id="bundler">Bundler <a href="#bundler" class="toc-anchor">#</a></h3>
+
+<p>On Ruby and Objective-C projects, installing dependencies via <a href="http://bundler.io/">Bundler</a> can make up a large portion of the build duration. Caching the bundle between builds drastically reduces the time a build takes to run.</p>
+
+<h4 id="enabling-bundler-caching">Enabling Bundler caching <a href="#enabling-bundler-caching" class="toc-anchor">#</a></h4>
+
+<p>To enable Bundler caching in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">ruby</span>
+<span class="na">cache</span><span class="pi">:</span> <span class="s">bundler</span>
+</code></pre></div></div>
+
+<p>Whenever you update your bundle, Travis CI will also update the cache.</p>
+
+<h4 id="determining-the-bundle-path">Determining the bundle path <a href="#determining-the-bundle-path" class="toc-anchor">#</a></h4>
+
+<p>Travis CI tries its best at determining the path bundler uses for storing dependencies.</p>
+
+<p>If you have <a href="/user/languages/ruby/#custom-bundler-arguments-and-gemfile-locations">custom Bundler arguments</a>, and these include the <code class="highlighter-rouge">--path</code> option, Travis CI will use that path. If <code class="highlighter-rouge">--path</code> is missing but <code class="highlighter-rouge">--deployment</code> is present, it will use <code class="highlighter-rouge">vendor/bundle</code>.</p>
+
+<p>Otherwise it will automatically add the <code class="highlighter-rouge">--path</code> option. In this case it will either use the value of the environment variable <code class="highlighter-rouge">BUNDLE_PATH</code> or, if it is missing, <code class="highlighter-rouge">vendor/bundle</code>.</p>
+
+<h4 id="caching-and-overriding-install-step">Caching and overriding <code class="highlighter-rouge">install</code> step <a href="#caching-and-overriding-install-step" class="toc-anchor">#</a></h4>
+
+<p>Overriding the <code class="highlighter-rouge">install</code> step may cause the directive <code class="highlighter-rouge">cache: bundler</code> to miss the directory.
+In this case, observe where Bundler is installing the gems, and cache that directory using
+<a href="#arbitrary-directories">cache.directories</a>.</p>
+
+<h4 id="cleaning-up-bundle">Cleaning up bundle <a href="#cleaning-up-bundle" class="toc-anchor">#</a></h4>
+
+<p>When you use</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cache</span><span class="pi">:</span> <span class="s">bundler</span>
+</code></pre></div></div>
+
+<p>The command <code class="highlighter-rouge">bundle clean</code> is executed before the cache is uploaded.</p>
+
+<p>In the cases where this is not desirable, you can use specify the <a href="#arbitrary-directories">arbitrary directories</a>
+to get around it.
+See <a href="https://github.com/travis-ci/travis-ci/issues/2518">this GitHub issue</a> for more information.</p>
+
+<h3 id="cache-rvm-ruby-version-for-non-ruby-projects">cache RVM Ruby version for non Ruby projects <a href="#cache-rvm-ruby-version-for-non-ruby-projects" class="toc-anchor">#</a></h3>
+
+<p>There are projects using machines not based on Ruby but having some Ruby executions. For example, a NodeJS application that has a Ruby functional test suite.</p>
+
+<p>For these cases installing a version of ruby with <code class="highlighter-rouge">rvm install 2.3.1</code> may take more than 3 minutes. For these cases you can cache the ruby installation.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="na">cache</span><span class="pi">:</span>
+    <span class="na">directories</span><span class="pi">:</span>
+     <span class="pi">-</span> <span class="s">/home/travis/.rvm/</span>
+</code></pre></div></div>
+
+<h3 id="cocoapods">CocoaPods <a href="#cocoapods" class="toc-anchor">#</a></h3>
+
+<p>On Objective-C projects, installing dependencies via <a href="http://cocoapods.org">CocoaPods</a> can take up a good portion of your build. Caching the compiled Pods between builds helps reduce this time.</p>
+
+<h4 id="enabling-cocoapods-caching">Enabling CocoaPods caching <a href="#enabling-cocoapods-caching" class="toc-anchor">#</a></h4>
+
+<p>You can enable CocoaPods caching for your repository by adding this to your
+<em>.travis.yml</em>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">objective-c</span>
+<span class="na">cache</span><span class="pi">:</span> <span class="s">cocoapods</span>
+</code></pre></div></div>
+
+<p>If you want to enable both Bundler caching and CocoaPods caching, you can list
+them both:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">objective-c</span>
+<span class="na">cache</span><span class="pi">:</span>
+  <span class="na">bundler</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">cocoapods</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>Note that CocoaPods caching won’t have any effect if you are already vendoring
+the Pods directory in your Git repository.</p>
+
+<h4 id="determining-the-podfile-path">Determining the Podfile path <a href="#determining-the-podfile-path" class="toc-anchor">#</a></h4>
+
+<p>By default, Travis CI will assume that your Podfile is in the root of the
+repository. If this is not the case, you can specify where the Podfile is like
+this:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">objective-c</span>
+<span class="na">podfile</span><span class="pi">:</span> <span class="s">path/to/Podfile</span>
+</code></pre></div></div>
+
+<h3 id="npm-cache">npm cache <a href="#npm-cache" class="toc-anchor">#</a></h3>
+
+<blockquote>
+  <p>Please note that as of July 2019, npm is cached by default on Travis CI</p>
+</blockquote>
+
+<p>To disable npm caching, use:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cache</span><span class="pi">:</span>
+  <span class="na">npm</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>To explicitly cache <code class="highlighter-rouge">npm</code>, use:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">node_js</span>
+
+<span class="na">node_js</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6'</span> <span class="c1"># or another</span>
+
+<span class="na">cache</span><span class="pi">:</span> <span class="s">npm</span>
+</code></pre></div></div>
+
+<p>This caches <code class="highlighter-rouge">$HOME/.npm</code> or <code class="highlighter-rouge">node_modules</code>, depending on the repository’s
+structure.
+See <a href="/user/languages/javascript-with-nodejs/#caching-with-npm">Node.js documentation</a>
+for more details.</p>
+
+<h3 id="yarn-cache">yarn cache <a href="#yarn-cache" class="toc-anchor">#</a></h3>
+
+<p>For caching with <code class="highlighter-rouge">yarn</code>, use:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">node_js</span>
+
+<span class="na">node_js</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6'</span> <span class="c1"># or another</span>
+
+<span class="na">cache</span><span class="pi">:</span> <span class="s">yarn</span>
+</code></pre></div></div>
+
+<p>This caches <code class="highlighter-rouge">$HOME/.cache/yarn</code>.</p>
+
+<h3 id="pip-cache">pip cache <a href="#pip-cache" class="toc-anchor">#</a></h3>
+
+<p>For caching <code class="highlighter-rouge">pip</code> files, use:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">python</span>
+
+<span class="na">cache</span><span class="pi">:</span> <span class="s">pip</span>
+</code></pre></div></div>
+
+<p>caches <code class="highlighter-rouge">$HOME/.cache/pip</code>.</p>
+
+<h3 id="ccache-cache">ccache cache <a href="#ccache-cache" class="toc-anchor">#</a></h3>
+
+<p>If you are using <code class="highlighter-rouge">ccache</code>, use:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">c</span> <span class="c1"># or other C/C++ variants</span>
+
+<span class="na">cache</span><span class="pi">:</span> <span class="s">ccache</span>
+</code></pre></div></div>
+
+<p>to cache <code class="highlighter-rouge">$HOME/.ccache</code> and automatically add <code class="highlighter-rouge">/usr/lib/ccache</code> to your <code class="highlighter-rouge">$PATH</code>.</p>
+
+<h4 id="ccache-on-macos">ccache on macOS <a href="#ccache-on-macos" class="toc-anchor">#</a></h4>
+
+<p>ccache is not installed on macOS environments but you can install it by adding</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">brew install ccache</span>
+  <span class="pi">-</span> <span class="s">export PATH="/usr/local/opt/ccache/libexec:$PATH"</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note that this creates wrappers around your default gcc and g++ compilers.</p>
+</blockquote>
+
+<h3 id="r-package-cache">R package cache <a href="#r-package-cache" class="toc-anchor">#</a></h3>
+
+<p>For caching R packages, use:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">R</span>
+
+<span class="na">cache</span><span class="pi">:</span> <span class="s">packages</span>
+</code></pre></div></div>
+
+<p>This caches <code class="highlighter-rouge">$HOME/R/Library</code>, and sets <code class="highlighter-rouge">R_LIB_USER=$HOME/R/Library</code> environment variable.</p>
+
+<h3 id="rust-cargo-cache">Rust Cargo cache <a href="#rust-cargo-cache" class="toc-anchor">#</a></h3>
+
+<p>For caching Cargo packages, use:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">rust</span>
+
+<span class="na">cache</span><span class="pi">:</span> <span class="s">cargo</span>
+</code></pre></div></div>
+
+<p>This caches <code class="highlighter-rouge">$HOME/.cargo</code> and <code class="highlighter-rouge">$TRAVIS_BUILD_DIR/target</code>.</p>
+
+<h3 id="arbitrary-directories">Arbitrary directories <a href="#arbitrary-directories" class="toc-anchor">#</a></h3>
+
+<p>You can cache arbitrary directories, such as Gradle, Maven, Composer and npm cache directories, between builds by listing them in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cache</span><span class="pi">:</span>
+  <span class="na">directories</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">.autoconf</span>
+  <span class="pi">-</span> <span class="s">$HOME/.m2</span>
+</code></pre></div></div>
+
+<p>As you can see, you can use environment variables as part of the directory path.  After possible variable expansion, paths that</p>
+
+<ul>
+  <li>do <strong>not</strong> start with a <code class="highlighter-rouge">/</code> are relative to <code class="highlighter-rouge">$TRAVIS_BUILD_DIR</code>.</li>
+  <li>start with a <code class="highlighter-rouge">/</code> are absolute.</li>
+</ul>
+
+<p>Please be aware that the <code class="highlighter-rouge">travis</code> user needs to have write permissions to this directory.</p>
+
+<h2 id="things-not-to-cache">Things not to cache <a href="#things-not-to-cache" class="toc-anchor">#</a></h2>
+
+<p>The cache’s purpose is to make installing language-specific dependencies easy
+and fast, so everything related to tools like Bundler, pip, Composer, npm,
+Gradle, Maven, is what should go into the cache.</p>
+
+<p>Large files that are quick to install but slow to download do not benefit from caching, as they take as long to download from the cache as from the original source:</p>
+
+<ul>
+  <li>Android SDKs</li>
+  <li>Debian packages</li>
+  <li>JDK packages</li>
+  <li>Compiled binaries</li>
+  <li>Docker images</li>
+</ul>
+
+<p>Docker images are not cached, because we provision a brand new virtual machine for every build.</p>
+
+<h2 id="fetching-and-storing-caches">Fetching and storing caches <a href="#fetching-and-storing-caches" class="toc-anchor">#</a></h2>
+
+<ul>
+  <li>Travis CI fetches the cache for every build, including branches and pull requests.</li>
+  <li>There is one cache per branch and language version / compiler version / JDK version / Gemfile location, etc. See <a href="#caches-and-build-matrices">Caches and build matrices</a> for details.</li>
+  <li>If a branch does not have its own cache, Travis CI fetches the default branch cache.</li>
+  <li>Only modifications made to the cached directories from normal pushes are stored.</li>
+</ul>
+
+<h3 id="pull-request-builds-and-caches">Pull request builds and caches <a href="#pull-request-builds-and-caches" class="toc-anchor">#</a></h3>
+
+<p>Pull request builds check the following cache locations in order, using the first one present:</p>
+
+<ul>
+  <li>The pull request cache.</li>
+  <li>The pull request target branch cache.</li>
+  <li>The repository default branch cache.</li>
+</ul>
+
+<p>If none of the previous locations contain a valid cache, the build continues without a cache.</p>
+
+<p>After the first pull request build is run, it creates a new pull request cache.</p>
+
+<p>Some important things to note about caching for pull requests:</p>
+
+<ul>
+  <li>If a repository has <em>Build pushed branches</em> set to <em>OFF</em>, neither the target branch nor the master branch can ever be cached.</li>
+  <li>If the cache on the master branch is old, for example in a workflow where most work happens on branches, the less useful the cache will be.</li>
+  <li>If a pull request is using a cache but you don’t want it to, you need to clear <strong>both</strong> the pull request cache <strong>and</strong> the cache of the target branch.</li>
+</ul>
+
+<h3 id="before_cache-phase">before_cache phase <a href="#before_cache-phase" class="toc-anchor">#</a></h3>
+
+<p>When using caches, it may be useful to run a command just before uploading
+the new cache archive.</p>
+
+<p>For example, the dependency management utility may write log files into the directory you are caching and you do not want them to affect the cache. Use the <code class="highlighter-rouge">before_cache</code> phase to delete the log files:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cache</span><span class="pi">:</span>
+  <span class="na">directories</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">$HOME/.cache/pip</span>
+<span class="na">before_cache</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">rm -f $HOME/.cache/pip/log/debug.log</span>
+</code></pre></div></div>
+
+<p>Failure in this phase does not mark the job as failed.</p>
+
+<h3 id="clearing-caches">Clearing Caches <a href="#clearing-caches" class="toc-anchor">#</a></h3>
+
+<p>Sometimes you spoil your cache by storing bad data in one of the cached directories, or your cache can become invalid when language runtimes change.</p>
+
+<p>Use one of the following ways to access your cache and delete it if necessary:</p>
+
+<ul>
+  <li>
+    <p>The settings page of your repository on <a href="https://travis-ci.com">https://travis-ci.com</a></p>
+
+    <p><img src="/images/caches-item.png" alt="Image of cache UI" /></p>
+  </li>
+  <li>
+    <p>The <a href="https://github.com/travis-ci/travis#readme">command line client</a></p>
+
+    <p><img src="/images/cli-cache.png" alt="travis cache --delete" /></p>
+  </li>
+  <li>
+    <p>The <a href="https://api.travis-ci.com/#/repos/:owner_name/:name/caches">API</a></p>
+  </li>
+</ul>
+
+<h3 id="caches-expiration">Caches expiration <a href="#caches-expiration" class="toc-anchor">#</a></h3>
+
+<p>Cache archives are currently set to expire after 45 days for repositories on https://app.travis-ci.com. 
+This means a specific cache archive will be deleted if it wasn’t changed after its expiration delay.</p>
+
+<h2 id="build-config-reference">Build Config Reference <a href="#build-config-reference" class="toc-anchor">#</a></h2>
+
+<p>You can find more information on the build config format for <a href="https://config.travis-ci.com/ref/job/cache">Caching</a> in our <a href="https://config.travis-ci.com/">Travis CI Build Config Reference</a>.</p>
+
+<h2 id="configuration">Configuration <a href="#configuration" class="toc-anchor">#</a></h2>
+
+<h3 id="enabling-multiple-caching-features">Enabling multiple caching features <a href="#enabling-multiple-caching-features" class="toc-anchor">#</a></h3>
+
+<p>When you want to enable multiple caching features and the language supports them, you can list them as an array:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">objective-c</span>
+<span class="na">cache</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">bundler</span>
+<span class="pi">-</span> <span class="s">cocoapods</span>
+</code></pre></div></div>
+
+<p>This does not work when caching <a href="#arbitrary-directories">arbitrary directories</a>,
+or when any of the directives is not supported by the language.</p>
+
+<p>If you want to combine that with other caching modes, use a hash map.
+Here is an example of a Ruby repository caching Node.js modules:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">ruby</span>
+<span class="na">cache</span><span class="pi">:</span>
+  <span class="na">bundler</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">directories</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">node_modules</span> <span class="c1"># NPM packages</span>
+</code></pre></div></div>
+
+<p>This is another example; a Rust repository caching cargo and Ruby gems:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">rust</span>
+<span class="na">cache</span><span class="pi">:</span>
+  <span class="na">cargo</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">directories</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">vendor/bundle</span>
+<span class="na">install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">bundle install --deployment</span> <span class="c1"># to cache vendor/bundle</span>
+</code></pre></div></div>
+
+<h3 id="explicitly-disabling-caching">Explicitly disabling caching <a href="#explicitly-disabling-caching" class="toc-anchor">#</a></h3>
+
+<p>You can explicitly disable all caching by setting the <code class="highlighter-rouge">cache</code> option to <code class="highlighter-rouge">false</code> in your <em>.travis.yml</em>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cache</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>It is also possible to disable a single caching mode:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">objective-c</span>
+<span class="na">cache</span><span class="pi">:</span>
+  <span class="na">bundler</span><span class="pi">:</span> <span class="no">false</span>
+  <span class="na">cocoapods</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<h3 id="setting-the-timeout">Setting the timeout <a href="#setting-the-timeout" class="toc-anchor">#</a></h3>
+
+<p>Caching has a timeout set to 3 minutes by default. The timeout is there in order
+to guard against any issues that may result in a stuck build. Such issues may be
+caused by a network issue between worker servers and S3 or even by a cache being
+too big to pack and upload in timely fashion. There are, however,
+situations when you might want to set a bigger timeout, especially if you need
+to cache a large amount. In order to change the timeout you can use the <code class="highlighter-rouge">timeout</code>
+property with a desired time in seconds:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cache</span><span class="pi">:</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">1000</span>
+</code></pre></div></div>
+
+<h2 id="caches-and-build-matrices">Caches and build matrices <a href="#caches-and-build-matrices" class="toc-anchor">#</a></h2>
+
+<p>When you have multiple jobs in a <a href="/user/customizing-the-build/#build-matrix">build matrix</a>,
+some characteristics of each job are used to identify the cache each of the
+jobs should use.</p>
+
+<p>These factors are:</p>
+
+<ol>
+  <li>OS name (currently, <code class="highlighter-rouge">linux</code>, <code class="highlighter-rouge">osx</code>, or <code class="highlighter-rouge">windows</code>)</li>
+  <li>OS distribution (for Linux, <code class="highlighter-rouge">focal</code>, <code class="highlighter-rouge">bionic</code>, <code class="highlighter-rouge">xenial</code>, <code class="highlighter-rouge">trusty</code>, or <code class="highlighter-rouge">precise</code>)</li>
+  <li>macOS image name (e.g., <code class="highlighter-rouge">xcode7.2</code>)</li>
+  <li>Names and values of visible environment variables set in <code class="highlighter-rouge">.travis.yml</code> or Settings panel</li>
+  <li>Language runtime version (for the language specified in the <code class="highlighter-rouge">language</code> key) if applicable</li>
+  <li>For Bundler-aware jobs, the name of the <code class="highlighter-rouge">Gemfile</code> used</li>
+</ol>
+
+<p>If these characteristics are shared by more than one job in a build matrix,
+they will share the same URL on the network.
+This could corrupt the cache, or the cache may contain files that are not
+usable in all jobs using it.
+In this case, we advise you to add a public environment variable
+name to each job to create a unique cache entry:</p>
+
+<div data-file=".travis.yml" class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CACHE_NAME=JOB1
+</code></pre></div></div>
+
+<p>Note that when considering environment variables, the values must match <em>exactly</em>,
+including spaces.
+For example, with</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">env</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">FOO=1 BAR=2</span>
+  <span class="pi">-</span> <span class="s">FOO=1  BAR=2</span>
+  <span class="pi">-</span> <span class="s">BAR=2 FOO=1</span>
+</code></pre></div></div>
+
+<p>each of the three jobs will use its own cache.</p>
+
+<h2 id="caches-and-read-permissions">Caches and read permissions <a href="#caches-and-read-permissions" class="toc-anchor">#</a></h2>
+
+<p>When caching <a href="/user/caching/#arbitrary-directories">custom files and directories</a>,
+ensure that the locations you specify are readable and writable by the user.</p>
+
+<p>If they are not, the caching utility reports errors when it
+invokes <code class="highlighter-rouge">tar</code> to create the cache archive.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FAILED: tar -Pzcf /Users/travis/.casher/push.tgz /path/to/unreadable/directory
+
+tar: /path/to/unreadable/directory: Cannot stat: No such file or directory
+</code></pre></div></div>
+
+<h2 id="how-does-caching-work">How does caching work? <a href="#how-does-caching-work" class="toc-anchor">#</a></h2>
+
+<p>Travis CI saves an archive of all the directories listed in the configuration and uploads
+it to a storage provider, using a secure and protected URL, ensuring security and privacy of
+the uploaded archives.</p>
+
+<p>Note that this makes our cache not network-local, it is still bound to network
+bandwidth and DNS resolutions. That impacts what you can and should store
+in the cache. If you store archives larger than a few hundred megabytes in the
+cache, it is unlikely that you’ll see a big speed improvement.</p>
+
+<p>Before the build, we check if a cached archive exists. If it does, we download it and unpack it to the specified locations.</p>
+
+<p>After the build we check for changes in the directory, create a new archive with those changes, and upload it to the remote storage.</p>
+
+<p>The upload is currently part of the build cycle, but we’re looking into improving
+that to happen outside of the build, giving faster build feedback.</p>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 44 https://docs.travis-ci.com:443/user/caching/ responseCode 3 200 

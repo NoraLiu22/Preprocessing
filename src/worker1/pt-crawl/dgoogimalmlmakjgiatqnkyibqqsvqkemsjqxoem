@@ -1,0 +1,1721 @@
+dgoogimalmlmakjgiatqnkyibqqsvqkemsjqxoem length 5 80904 page 80904 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="author" content="GBIF Secretariat">
+<title>GBIF Documentation Guidelines</title>
+<style>
+/* This way delays font loading */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,600,600italic|Droid+Sans+Mono:400,700&display=swap);
+
+@import "https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css";
+
+/**
+ * Overrides of the default stylesheet
+ */
+
+:root {
+  --primary-color: #4e565f;
+  --primary-font: "Roboto", "DejaVu Sans", sans-serif, "Twemoji Country Flags";
+  --header-color: #46a138;
+  --subheader-color: #4e565f;
+}
+
+html {
+  font-family: var(--primary-font);
+}
+
+body {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#toctitle, .sidebarblock > .content > .title {
+  font-family: var(--primary-font);
+  color: var(--header-color);
+  font-weight: 400;
+}
+
+h1 small,
+h2 small,
+h3 small,
+#toctitle small,
+.sidebarblock > .content > .title small,
+h4 small,
+h5 small,
+h6 small {
+  color: var(--header-color);
+}
+
+#toctitle {
+  color: var(--subheader-color);
+}
+
+#toc ul {
+  font-family: var(--primary-font);
+}
+
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
+  font-family: var(--primary-font);
+}
+
+.admonitionblock > table td.icon .title {
+  font-family: var(--primary-font);
+}
+
+.subheader,
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
+  color: var(--primary-color);
+}
+
+a {
+  color: #4ba2ce;
+}
+
+a:hover,
+a:focus {
+  color: #2c79a1;
+}
+
+code {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+blockquote,
+blockquote p {
+  color: var(--primary-color);
+}
+
+/*
+$subheader-font-color: $body-font-color;
+$title-font-weight: $header-font-weight;
+
+$hr-border-color: #ccc;
+$hr-border-style: dotted;
+$sect-divider-color: $hr-border-color;
+
+$panel-font-color: $body-font-color;
+
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+$blockquote-border: 1px solid #efefef;
+
+$code-color: darken($alert-color, 15%);
+
+$pre-bg: #efefef;
+$pre-padding: emCalc(12px) emCalc(12px) emCalc(10px) emCalc(12px);
+*/
+
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td {
+  color: var(--header-color);
+}
+
+table tr th,
+table tr td {
+  color: var(--primary-color);
+}
+
+#footer {
+  background: #222222;
+}
+
+#footer-text {
+  color: white;
+}
+
+/**
+ * GBIF custom styles (not simply colour/font changes).
+ */
+
+xtable.stripes-none tr {
+  background: none;
+}
+
+#toc h3 {
+  /* From h3 */
+  line-height: 1.2;
+  word-spacing: -0.05em;
+  /* End */
+  color: var(--subheader-color);
+  /* shrink font-size below breakpoint */
+  font-size: 1.375em;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 768px) {
+  #toc h3 {
+    /* restore font size above breakpoint */
+    font-size: 1.375em;
+  }
+}
+
+#content {
+  margin-top: 1.25em;
+  /* A bit of a hack: make the footer stick to the bottom.
+   * 2.5em+2.88em is the footer top+bottom padding and two line heights
+   * 2.5em is the top+bottom padding on content
+   * 2.25rem is the h1 top margin
+   * 2.75*1.2rem is the h1 font size * line height
+   * 0.5rem+1.45rem is the padding and line height of the author line
+   */
+  min-height: calc(100vh - 2.5em - 2.88em - 2.5em - 2.25rem - 2.75 * 1.2rem - 0.5rem - 1.45rem);
+}
+
+h1, #header > h1:first-child {
+  text-align: center;
+  color: var(--header-color);
+}
+
+#header h1 small {
+  display: block;
+  line-height: inherit;
+}
+
+.imageblock .title {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+:not(.translationLinks) > {
+  em:lang(zh), em:lang(ja) {
+    font-style: normal;
+    text-emphasis: dot;
+  }
+}
+
+.term {
+  color: inherit;
+  font: 0.9em "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  text-decoration: dotted underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  word-wrap: break-word;
+}
+
+a.glossary {
+  color: inherit;
+  text-decoration: dotted underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.hl {
+  text-shadow: yellow 0 0 8px, yellow 0 0 5px, yellow 0 0 3px;
+}
+
+.sidebarblock {
+  margin-left: 2em;
+  margin-right: 2em;
+  line-height: 1.6;
+}
+
+</style>
+<script type="text/javascript">
+      if (/windows/i.test(navigator.userAgent)) {
+        const style = document.createElement("style");
+        style.textContent = `@font-face {
+          font-family: "Twemoji Country Flags";
+          unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+          src: url('https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1/dist/TwemojiCountryFlags.woff2') format('woff2');
+          font-display: swap;
+        }`;
+        document.head.appendChild(style);
+      }
+    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="alternate" hreflang="x-default" href="../">
+<link rel="alternate" hreflang="en" href="./">
+
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+
+          <style id="question">
+            .hidden {
+    display: none;
+}
+
+question[data-type=gap] gap > input.incorrect {
+    font-weight: bold;
+    color: red;
+}
+
+
+question[data-type=gap] gap > answer, div[id*=question][data-type=gap] gap > input.correct {
+    font-weight: bold;
+    color: green;
+}
+
+question[data-type=mc] input[type="checkbox"].show ~ span::before {
+    display: inline;
+    width: 16px;
+    height: 16px;
+}
+
+question[data-type=mc] input[type="checkbox"][data-correct="true"].show ~ span::before {
+    content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGZpbGw9Im9saXZlZHJhYiIgc3Ryb2tlPSJvbGl2ZWRyYWIiIGQ9Ik0yMS42NTIsMy4yMTFjLTAuMjkzLTAuMjk1LTAuNzctMC4yOTUtMS4wNjEsMEw5LjQxLDE0LjM0ICBjLTAuMjkzLDAuMjk3LTAuNzcxLDAuMjk3LTEuMDYyLDBMMy40NDksOS4zNTFDMy4zMDQsOS4yMDMsMy4xMTQsOS4xMywyLjkyMyw5LjEyOUMyLjczLDkuMTI4LDIuNTM0LDkuMjAxLDIuMzg3LDkuMzUxICBsLTIuMTY1LDEuOTQ2QzAuMDc4LDExLjQ0NSwwLDExLjYzLDAsMTEuODIzYzAsMC4xOTQsMC4wNzgsMC4zOTcsMC4yMjMsMC41NDRsNC45NCw1LjE4NGMwLjI5MiwwLjI5NiwwLjc3MSwwLjc3NiwxLjA2MiwxLjA3ICBsMi4xMjQsMi4xNDFjMC4yOTIsMC4yOTMsMC43NjksMC4yOTMsMS4wNjIsMGwxNC4zNjYtMTQuMzRjMC4yOTMtMC4yOTQsMC4yOTMtMC43NzcsMC0xLjA3MUwyMS42NTIsMy4yMTF6Ii8+PC9zdmc+);
+}
+
+question[data-type=mc] input[type="checkbox"][data-correct="false"].show ~ span::before {
+    content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGZpbGw9Im1hcm9vbiIgc3Ryb2tlPSJtYXJvb24iIGQ9Ik0yMi4yNDUsNC4wMTVjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjEzOWwtNi4yNzYsNi4yN2MtMC4zMTMsMC4zMTItMC4zMTMsMC44MjYsMCwxLjE0bDYuMjczLDYuMjcyICBjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjE0bC0yLjI4NSwyLjI3N2MtMC4zMTQsMC4zMTItMC44MjgsMC4zMTItMS4xNDIsMGwtNi4yNzEtNi4yNzFjLTAuMzEzLTAuMzEzLTAuODI4LTAuMzEzLTEuMTQxLDAgIGwtNi4yNzYsNi4yNjdjLTAuMzEzLDAuMzEzLTAuODI4LDAuMzEzLTEuMTQxLDBsLTIuMjgyLTIuMjhjLTAuMzEzLTAuMzEzLTAuMzEzLTAuODI2LDAtMS4xNGw2LjI3OC02LjI2OSAgYzAuMzEzLTAuMzEyLDAuMzEzLTAuODI2LDAtMS4xNEwxLjcwOSw1LjE0N2MtMC4zMTQtMC4zMTMtMC4zMTQtMC44MjcsMC0xLjE0bDIuMjg0LTIuMjc4QzQuMzA4LDEuNDE3LDQuODIxLDEuNDE3LDUuMTM1LDEuNzMgIEwxMS40MDUsOGMwLjMxNCwwLjMxNCwwLjgyOCwwLjMxNCwxLjE0MSwwLjAwMWw2LjI3Ni02LjI2N2MwLjMxMi0wLjMxMiwwLjgyNi0wLjMxMiwxLjE0MSwwTDIyLjI0NSw0LjAxNXoiLz48L3N2Zz4=);
+}
+          </style>
+        <script type="text/javascript">
+                          function onLoad() {
+    var questions = document.getElementsByTagName("question")
+    for (var pos = 0; pos < questions.length; pos++) {
+        var question = questions[pos]
+        if (question.getAttribute('data-type') == 'mc') {
+            if (question.getAttribute('data-shuffle') != null) shuffleAnswers(question)
+        }
+    }
+}
+
+function shuffleAnswers(question) {
+    var answers = null
+    var content = question.children[0]
+    for (var i = content.children.length-1; i >= 0; i--) {
+        if(content.children[i].className.indexOf('checklist') > -1) {
+            answers = content.children[i].children[0]
+            break;
+        }
+    }
+    if(answers == null) return
+
+    for (var i = answers.children.length; i >= 0; i--) {
+        answers.appendChild(answers.children[Math.random() * i | 0]);
+    }
+}
+
+function resolve(questionId) {
+    var q = document.getElementById("question_" + questionId)
+    var type = q.getAttribute("data-type")
+    var elems
+    var pos
+    var answer
+
+    if(type == "mc") {
+        elems = q.getElementsByTagName("input")
+        for(pos = 0; pos < elems.length; pos++) {
+            answer = elems[pos]
+            answer.setAttribute("class", "show")
+        }
+    } else if(type == "gap") {
+        elems = q.getElementsByTagName("gap")
+        for(pos = 0; pos < elems.length; pos++) {
+            var gap = elems[pos]
+            var input = gap.getElementsByTagName("input")[0]
+            answer = gap.getElementsByTagName("answer")[0]
+            if(input.value == answer.textContent) {
+                input.setAttribute("class", "correct")
+            } else {
+                input.setAttribute("class", "incorrect")
+                answer.setAttribute("class", "")
+            }
+        }
+    }
+}
+
+function reset(questionId) {
+    var q = document.getElementById("question_" + questionId)
+    var type = q.getAttribute("data-type")
+    var elems
+    var pos
+    var answer
+
+    if(type == "mc") {
+        elems = q.getElementsByTagName("input")
+        for(pos = 0; pos < elems.length; pos++) {
+            answer = elems[pos]
+            answer.setAttribute("class", "")
+            answer.checked = false
+        }
+    } else if(type == "gap") {
+        elems = q.getElementsByTagName("gap")
+        for(pos = 0; pos < elems.length; pos++) {
+            var gap = elems[pos]
+            var input = gap.getElementsByTagName("input")[0]
+            answer = gap.getElementsByTagName("answer")[0]
+            input.setAttribute("class", "")
+            answer.setAttribute("class", "hidden")
+        }
+    }
+}
+                        </script>
+</head>
+<body class="article toc2 toc-left" onload="onLoad()">
+<div id="header">
+<h1>GBIF Documentation Guidelines</h1>
+<div class="details">
+<span id="author" class="author">GBIF Secretariat</span><br>
+<span id="email" class="email"><a href="mailto:communication@gbif.org">communication@gbif.org</a></span><br>
+<span id="revnumber">version HEAD detached,</span>
+<span id="revdate">2023-06-14 08:24:08 UTC</span>
+</div>
+<div id="toc" class="toc2">
+<header id="logo">
+  <a href="https://www.gbif.org/">
+    <img src="https://docs.gbif.org/style/logo.svg" alt="GBIF – Global Biodiversity Information Facility">
+  </a>
+</header>
+  <br>
+<h3 id="otherformatstitle">Other Formats</h3>
+<ul class="sectlevel1">
+<li><a hreflang="en" type="application/pdf" href="gbif-documentation-guidelines.en.pdf">PDF file</a></li>
+</ul>
+  <br>
+<h3 id="contributetitle">Contribute</h3>
+<div id="improvetext"><a href="https://docs.gbif.org/contributing/"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgaWQ9ImltcHJvdmUtbWFyayIgdmVyc2lvbj0iMS4xIj48Y2lyY2xlIHN0eWxlPSJmaWxsOiMxNzVjYTE7IiBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiLz48ZyBzdHlsZT0iZmlsbDojZmZmZmZmIj48cGF0aCBkPSJtIDQ1LjA5OTk5NSwyNC4wMDk5NDggYSAxLjM3NDUwNjMsMS4zNjMyMDE4IDAgMCAxIDEuMzUzNjc5LDEuMzgyMzUxIHYgNC4zNzA3NTUgaCA0LjQwNzYxOCBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwyLjcyNTk4OCBoIC00LjQwNzYxOCB2IDQuMzcwNzU0IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAtMi43NDg3OTksMCB2IC00LjM3MDc1NCBoIC00LjQxNzEwMyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjU5ODggaCA0LjQxNzEwMyB2IC00LjM3MDc1NSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zOTUxMiwtMS4zODIzNTEgeiIvPjxwYXRoIGQ9Im0gMzQuNjY3OTMxLDE4LjAwMDE1MSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zNTM2NzksMS4zODIzNTIgdiAxLjc3NTM2MSBoIDEuNzgxMjg3IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAwLDIuNzI1OTg4IEggMzYuMDIxNjEgdiAxLjc3NTM2MSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgLTIuNzQ4NTI1LDAgViAyMy44ODM4NTIgSCAzMS40ODI1MiBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjU5ODggaCAxLjc5MDU2NSB2IC0xLjc3NTM2MSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zOTQ4NDYsLTEuMzgyMzUyIHoiLz48cGF0aCBkPSJtIDMwLjQ1NDM5MiwzOC4wNzI4MzkgYSAxLjM3NDUwNjMsMS4zNjMyMDE4IDAgMCAxIDEuMzUzNjc5LDEuMzgyMzUxIHYgNC4zNzA3NTUgaCA0LjQwNzYxOSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwyLjcyNjAwMSBoIC00LjQwNzYxOSB2IDQuMzcwNzU1IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAtMi43NDg3MzEsMCB2IC00LjM3MDc1NSBoIC00LjQwNzY4NyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjYwMDEgSCAyOS4wNTkzNCBWIDM5LjQ1NTE5IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDAgMSAxLjM5NTA1MiwtMS4zODIzNTEgeiIvPjxwYXRoIGQ9Im0gMjIuNTg0MDU3LDMwLjc0Njg3NCBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zNTM2OCwxLjM4MjQyIHYgMS43NzUyOTMgaCAxLjc5MDU2NSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwyLjcyNTk4OCBoIC0xLjc5MDU2NSB2IDEuNzc1MzYxIGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAtMi43NDg3MzEsMCB2IC0xLjc3NTM2MSBoIC0xLjc5MDQ5NyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjU5ODggaCAxLjc5MDQ5NyB2IC0xLjc3NTI5MyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zOTUwNTEsLTEuMzgyNDIgeiIvPjxwYXRoIGQ9Im0gMjcuMDQ3OTYyLDIzLjgwODc0IGEgMS4zNzQ2MDIzLDEuMzYzMTA2NSAwIDAgMSAwLjk1MTU2OCwwLjM5ODg3MiBsIDQ5LjU5Nzk3NCw0OS4xODMyNTYgYSAxLjM3NDYwMjMsMS4zNjMxMDY1IDAgMCAxIDAsMS45Mjc0OTUgbCAtMi4zMDE2NzQsMi4yODI0NzEgYSAxLjM3NDYwMjMsMS4zNjMxMDY1IDAgMCAxIC0xLjk0MzgyMiwwIEwgMjMuNzU0MDM0LDI4LjQxNzY0NSBhIDEuMzc0NjAyMywxLjM2MzEwNjUgMCAwIDEgMCwtMS45Mjc1NjIgbCAyLjMwMTY3NCwtMi4yODI0NzEgYSAxLjM3NDYwMjMsMS4zNjMxMDY1IDAgMCAxIDAuOTkyMjU0LC0wLjM5ODg3MiB6Ii8+PC9nPjwvc3ZnPg==" alt="" style="height: 1.5rem; margin: 0.25em 0;"> Improve this document</a></div>
+<div id="issuestext"><a href="https://github.com/gbif/doc-documentation-guidelines/issues/new"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NjEiIGhlaWdodD0iNjYxIiB2ZXJzaW9uPSIxLjEiIGlkPSJpc3N1ZS1tYXJrIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQiPjxwYXRoIHN0eWxlPSJmaWxsOiM0ZDlhMzQiIGlkPSJtYXJrIiBkPSJNIDY2MSwzMzAuNSBDIDY2MSwxNDcuOTcyIDUxMy4wMjgsMCAzMzAuNSwwIDE0Ny45NzIsMCAwLDE0Ny45NzIgMCwzMzAuNSAwLDUxMy4wMjggMTQ3Ljk3Miw2NjEgMzMwLjUsNjYxIDUxMy4wMjgsNjYwLjk1NCA2NjEsNTEyLjk4MSA2NjEsMzMwLjUgWiIvPjxwYXRoIHN0eWxlPSJmaWxsOiNmZmZmZmYiIGQ9Im0gMzk0LDE0NSB2IDYwLjk5NyBDIDM5NCwyMjkuMzIxIDQxNS4wNzgsMjM0IDQzNS40ODcsMjM0IEggNDkxIFoiLz48cGF0aCBzdHlsZT0iZmlsbDojZmZmZmZmIiBkPSJNIDQ0OC4xNzcsMzM0LjkzMiBIIDI2My4zMDMgYyAtNi42MDEsMCAtMTEuOTQ3LC01LjM1MyAtMTEuOTQ3LC0xMS45NTEgMCwtNi42MDcgNS4zNDYsLTExLjk0MyAxMS45NDcsLTExLjk0MyBoIDE4NC44NzQgYyA2LjYwMSwwIDExLjk1NSw1LjMzNiAxMS45NTUsMTEuOTQzIDAsNi41ODkgLTUuMzU0LDExLjk1MSAtMTEuOTU1LDExLjk1MSBtIDAsNjYuMTgxIEggMjk3LjgzNiBjIC02LjYsMCAtMTEuOTQ2LC01LjMzNiAtMTEuOTQ2LC0xMS45NDIgMCwtNi41OSA1LjM1NCwtMTEuOTM0IDExLjk0NiwtMTEuOTM0IGggMTUwLjM0MSBjIDYuNjAxLDAgMTEuOTU1LDUuMzQ0IDExLjk1NSwxMS45MzQgMCw2LjYwNiAtNS4zNTQsMTEuOTQyIC0xMS45NTUsMTEuOTQyIG0gMCw2Ni4yMTYgaCAtMTI4LjU1IGMgLTYuNiwwIC0xMS45NDYsLTUuMzUzIC0xMS45NDYsLTExLjk1MSAwLC02LjYwNyA1LjM1NSwtMTEuOTUxIDExLjk0NiwtMTEuOTUxIGggMTI4LjU1IGMgNi42MDEsMCAxMS45NTUsNS4zNDQgMTEuOTU1LDExLjk1MSAwLDYuNTk4IC01LjM1NCwxMS45NTEgLTExLjk1NSwxMS45NTEgTSAyNjAuOTUsMjQ0LjgxNCBoIDY3LjcyNiBjIDYuNTkyLDAgMTEuOTQ3LDUuMzcgMTEuOTQ3LDExLjk2IDAsNi42MDcgLTUuMzU1LDExLjk0MiAtMTEuOTQ3LDExLjk0MiBIIDI2MC45NSBjIC02LjYxLDAgLTExLjk0NywtNS4zMzUgLTExLjk0NywtMTEuOTQyIDAsLTYuNTkgNS4zNDYsLTExLjk2IDExLjk0NywtMTEuOTYgbSAwLC02Ni4xOSBoIDY3LjcyNiBjIDYuNTkyLDAgMTEuOTQ3LDUuMzM2IDExLjk0NywxMS45NDMgMCw2LjU4IC01LjM1NSwxMS45NDIgLTExLjk0NywxMS45NDIgSCAyNjAuOTUgYyAtNi42MSwwIC0xMS45NDcsLTUuMzUzIC0xMS45NDcsLTExLjk0MiAwLC02LjYwNyA1LjM0NiwtMTEuOTQzIDExLjk0NywtMTEuOTQzIG0gMTUwLjQyNyw3NC41MjYgYyAtMTkuMjY1LDAgLTM4LjQ3OCwtMTYuMzUzIC0zOC40NzgsLTQwLjIzOCBWIDEzOSBIIDIyNi42MzIgYyAtMTEuODk1LDAgLTIxLjUzMiw5LjY2IC0yMS41MzIsMjEuNTMzIHYgMTE5LjE4MyBsIDcwLjkwMiwxNDkuODA1IC0xLjY0NCw4NS4zNzkgSCA0NzIuNDYgYyAxMS44OTQsMCAyMS41NCwtOS42MzMgMjEuNTQsLTIxLjUyNCBWIDI1My4xNSBaIE0gMjU4Ljg3Myw1MjIgbCAxLjQ4OCwtODcuNzIzIC03MS4wODMsMzQuMjcxIHogbSAtNjQuNjU1LC0yMjQuNzk4IC03MS4wODMsMzQuMjggNjAuNDE2LDEyNS4yMTkgNzEuMTAxLC0zNC4yODggeiBtIC0yMC45MzUsLTQzLjQwMyBjIC0yLjg2MywtNS45NDEgLTEwLjAxNywtOC40MzIgLTE1Ljk2OSwtNS41NjEgbCAtNDkuNTUyLDIzLjkwMyBjIC01Ljk0MywyLjg3MSAtOC40NDMsMTAuMDIyIC01LjU3MSwxNS45NDYgbCAxMy41OTEsMjguMTc1IDcxLjA5MSwtMzQuMjk3IHoiIC8+PC9zdmc+" alt="" style="height: 1.5rem; margin: 0.25em 0;"> Create an issue</a></div>
+<div id="contributetext"><a href="https://github.com/gbif/doc-documentation-guidelines"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICBpZD0iZ2l0aHViLW1hcmsiCiAgIHZlcnNpb249IjEuMSIKICAgdmlld0JveD0iMCAwIDExLjQ5MjkgMTEuMjA5NDY2IgogICBoZWlnaHQ9IjExLjIwOTQ2Nm1tIgogICB3aWR0aD0iMTEuNDkyOW1tIj4KICA8cGF0aAogICAgIGlkPSJtYXJrIgogICAgIHN0eWxlPSJmaWxsOiMxYjE4MTc7c3Ryb2tlOm5vbmUiCiAgICAgZD0iTSA1Ljc0NjA0LDAgQyAyLjU3MjgxMDEsMCAwLDIuNTcyODA4IDAsNS43NDY3NSBjIDAsMi41Mzg5NDA4IDEuNjQ2NDEsNC42OTI2NSAzLjkyOTk0LDUuNDUyODg2IDAuMjg3NTIsMC4wNTI1NiAwLjM5MjI5LC0wLjEyNDg4NCAwLjM5MjI5LC0wLjI3NzI4NCAwLC0wLjEzNjE3MiAtMC4wMDUsLTAuNDk3NzY5IC0wLjAwOCwtMC45NzcxOTQyIC0xLjU5ODQzOTksMC4zNDcxMzMyIC0xLjkzNTY4OTksLTAuNzcwNDY3IC0xLjkzNTY4OTksLTAuNzcwNDY3IC0wLjI2MTQxLC0wLjY2MzU3NSAtMC42MzgxOCwtMC44NDAzMTYgLTAuNjM4MTgsLTAuODQwMzE2IC0wLjUyMTc2MDEsLTAuMzU2NjU5IDAuMDM5NSwtMC4zNDk2MDMgMC4wMzk1LC0wLjM0OTYwMyAwLjU3NjgsMC4wNDA5MiAwLjg4MDE5LDAuNTkyMzE0IDAuODgwMTksMC41OTIzMTQgMC41MTI1OCwwLjg3ODA2NCAxLjM0NTEzOTksMC42MjQ0MTYgMS42NzI1MDk5LDAuNDc3NjYxIDAuMDUyMiwtMC4zNzE0NzUgMC4yMDAzOCwtMC42MjQ3NjkgMC4zNjQ3OCwtMC43NjgzNSBDIDMuNDIxMzQwMSw4LjE0MTQwNDggMi4wNzk3MzAxLDcuNjQ4MjIyIDIuMDc5NzMwMSw1LjQ0NjE4MyBjIDAsLTAuNjI3MjM5IDAuMjI0MDEsLTEuMTQwMTc4IDAuNTkxNiwtMS41NDE5OTEgLTAuMDU5MywtMC4xNDUzNDUgLTAuMjU2NDcsLTAuNzI5NTQ1IDAuMDU2MSwtMS41MjA4MjYgMCwwIDAuNDgyNiwtMC4xNTQ1MTYgMS41ODA0Mzk5LDAuNTg5MTM5IEMgNC43NjYxMywyLjg0NTE1MyA1LjI1NzksMi43ODEzIDUuNzQ2NSwyLjc3OTE4MyA2LjIzNDM5LDIuNzgxMjgzIDYuNzI2MTYsMi44NDUxNTMgNy4xODUxMywyLjk3MjUwNSA4LjI4MjI2LDIuMjI4ODUgOC43NjM4MSwyLjM4MzM2NiA4Ljc2MzgxLDIuMzgzMzY2IGMgMC4zMTM2MSwwLjc5MTI4MSAwLjExNjQxLDEuMzc1NDgxIDAuMDU3MSwxLjUyMDgyNiAwLjM2ODMsMC40MDE4MTMgMC41OTA5LDAuOTE0NzUyIDAuNTkwOSwxLjU0MTk5MSAwLDIuMjA3NjgzIC0xLjM0MzczLDIuNjkzNDU3OCAtMi42MjM5NiwyLjgzNTYyNzggMC4yMDYzNywwLjE3NzQ0NyAwLjM5MDE3LDAuNTI4MTA4IDAuMzkwMTcsMS4wNjQzMyAwLDAuNzY3OTk4MiAtMC4wMDcsMS4zODc4MjgyIC0wLjAwNywxLjU3NjIxMTIgMCwwLjE1MzgxMiAwLjEwMzM2LDAuMzMyNjcgMC4zOTUxMSwwLjI3NjU3OCBDIDkuODQ3OSwxMC40MzcyODMgMTEuNDkyOSw4LjI4NDk4NTggMTEuNDkyOSw1Ljc0Njc1IDExLjQ5MjksMi41NzI4MDggOC45MTk3NCwwIDUuNzQ1OCwwIiAvPgo8L3N2Zz4K" alt="" style="height: 1.5rem; margin: 0.25em 0;"> Edit on GitHub</a></div>
+<br>
+<h3 id="search">Search</h3>
+          <div id="search_form">
+            <form onsubmit="return submitForm(event)" method="GET" style="display: flex;">
+              <input type="search" name="q" value="" size="12" id="search_input" style="flex-grow: 1;">
+              <input type="submit" value="🔍" style="width: 3em;">
+            </form>
+          </div>
+          <br>
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li>
+<a href="#background">Background</a>
+<ul class="sectlevel2">
+<li><a href="#current-documents">Current documents</a></li>
+</ul>
+</li>
+<li><a href="#community-peer-review-process">1. Community peer-review process</a></li>
+<li><a href="#guidelines-for-document-authors">2. Guidelines for document authors</a></li>
+<li><a href="#translations">3. Translations</a></li>
+<li><a href="#decommissioning-old-documents">4. ‘Decommissioning’ old documents</a></li>
+<li>
+<a href="#panel">5. Documentation Steering Panel</a>
+<ul class="sectlevel2">
+<li><a href="#structure-and-operations">5.1. Structure and operations</a></li>
+<li><a href="#responsibilities">5.2. Responsibilities</a></li>
+<li><a href="#panel-members">5.3. Panel members</a></li>
+</ul>
+</li>
+<li>
+<a href="#technical-guidance">6. Technical guidance</a>
+<ul class="sectlevel2">
+<li><a href="#for-authors">6.1. For authors</a></li>
+<li><a href="#for-editors">6.2. For editors</a></li>
+<li><a href="#the-documentation-system-software">6.3. The documentation system software</a></li>
+</ul>
+</li>
+<li>
+<a href="#information-for-gbif-developers">7. Information for GBIF developers</a>
+<ul class="sectlevel2">
+<li><a href="#new-documents">7.1. New documents</a></li>
+</ul>
+</li>
+<li>
+<a href="#colophon">Colophon</a>
+<ul class="sectlevel2">
+<li><a href="#suggested-citation">Suggested citation</a></li>
+<li><a href="#contributors">Contributors</a></li>
+<li><a href="#licence">Licence</a></li>
+<li><a href="#persistent-uri">Persistent URI</a></li>
+<li><a href="#document-control">Document control</a></li>
+<li><a href="#cover-image">Cover image</a></li>
+</ul>
+</li>
+</ul>
+<br>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+<p class="translationLinks"><em>This document is also available in <a hreflang="en" type="application/pdf" href="gbif-documentation-guidelines.en.pdf">PDF format</a>.</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="background">
+<a class="anchor" href="#background"></a>Background</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GBIF—the Global Biodiversity Information Facility—has long produced technical documentation on a range of topics relating to biodiversity informatics and open biodiversity data with the aim of supporting a global community of practice.</p>
+</div>
+<div class="paragraph">
+<p>With the help of the team from <a href="http://www.vertnet.org">VertNet</a>, the GBIF Secretariat started coordinating the development of such documentation as part of its 2019 work programme, with the aim of engaging GBIF communities of practice to work with subject-matter experts commissioned to create and update under the guidance of an <a href="#panel">editorial panel</a>.</p>
+</div>
+<div class="paragraph">
+<p>This goal of this approach is to provide consistent, reliable, reusable and versioned materials that can be easily updated, instilling community trust in the documentation and fostering its wider adoption and use.</p>
+</div>
+<div class="sect2">
+<h3 id="current-documents">
+<a class="anchor" href="#current-documents"></a>Current documents</h3>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0003-1700-6962" target="_blank" rel="noopener">Arthur D. Chapman</a> (2020) <strong>Current Best Practices for Generalizing Sensitive Species Occurrence Data</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.15468/doc-5jp4-5g10" class="bare">https://doi.org/10.15468/doc-5jp4-5g10</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translations (status): <a href="https://docs.gbif.org/sensitive-species-best-practices/master/es/" target="_blank" rel="noopener">Spanish</a> (complete), <a href="https://crowdin.com/project/sensitive-species-guide/invite?d=q685i40575g583g5m4o4r4c3b3l4" target="_blank" rel="noopener">French</a> (ongoing)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0003-1700-6962" target="_blank" rel="noopener">Arthur D. Chapman</a> &amp; <a href="https://orcid.org/0000-0003-1144-0290" target="_blank" rel="noopener">John R. Wieczorek</a> (2020) <strong>Georeferencing Best Practices</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.15468/doc-gg7h-s853" class="bare">https://doi.org/10.15468/doc-gg7h-s853</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif.org/georeferencing-best-practices/1.0/es/" target="_blank" rel="noopener">Spanish</a> (complete)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0002-6056-5084" target="_blank" rel="noopener">Paula F. Zermoglio</a>, <a href="https://orcid.org/0000-0003-1700-6962" target="_blank" rel="noopener">Arthur D. Chapman</a>, <a href="https://orcid.org/0000-0003-1144-0290" target="_blank" rel="noopener">John R. Wieczorek</a>, <a href="https://orcid.org/0000-0002-6392-8864" target="_blank" rel="noopener">Maria Celeste Luna</a> &amp; <a href="https://orcid.org/0000-0003-1273-1807" target="_blank" rel="noopener">David A. Bloom</a> (2020) <strong>Georeferencing Quick Reference Guide</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/e09p-h128" class="bare">https://doi.org/10.35035/e09p-h128</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif.org/georeferencing-quick-reference-guide/1.0/es/" target="_blank" rel="noopener">Spanish</a> (complete)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0003-1273-1807" target="_blank" rel="noopener">David A. Bloom</a>, <a href="https://orcid.org/0000-0003-1144-0290" target="_blank" rel="noopener">John R. Wieczorek</a> &amp; <a href="https://orcid.org/0000-0002-6056-5084" target="_blank" rel="noopener">Paula F. Zermoglio</a> (2020) <strong>Georeferencing Calculator Manual</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/gdwq-3v93" class="bare">https://doi.org/10.35035/gdwq-3v93</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif.org/georeferencing-calculator-manual/1.0/es/" target="_blank" rel="noopener">Spanish</a> (complete)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0002-6056-5084" target="_blank" rel="noopener">Paula F. Zermoglio</a>, <a href="https://orcid.org/0000-0002-1632-9818" target="_blank" rel="noopener">Camila A. Plata Corredor</a>, <a href="https://orcid.org/0000-0003-1144-0290" target="_blank" rel="noopener">John R. Wieczorek</a>, <a href="https://orcid.org/0000-0003-1070-1081" target="_blank" rel="noopener">Ricardo Ortiz Gallego</a> &amp; <a href="https://orcid.org/0000-0002-0459-4024" target="_blank" rel="noopener">Leonardo Buitrago</a> (2021) <strong>Guía para la limpieza de datos sobre biodiversidad con OpenRefine</strong>. Versión 3. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.15468/doc-gzjg-af18" class="bare">https://doi.org/10.15468/doc-gzjg-af18</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://crowdin.com/project/openrefine-guide/invite?d=q64576056507p4d3l5p4d343a3m4c3" target="_blank" rel="noopener">English</a> (ongoing), <a href="https://crowdin.com/project/openrefine-guide/invite?d=q64576056507m4h5d3p4c343a3r4" target="_blank" rel="noopener">French</a> (ongoing)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>GBIF Secretariat &amp; <a href="https://www.iaia.org/" target="_blank" rel="noopener">IAIA: International Association for Impact Assessment</a> (2020) <strong>Best Practices for Publishing Biodiversity Data from Environmental Impact Assessments</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/doc-5xdm-8762" class="bare">https://doi.org/10.35035/doc-5xdm-8762</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif.org/eia-best-practices/1.0/es/" target="_blank" rel="noopener">Spanish</a> (complete), <a href="https://crowdin.com/project/eia-guide/invite?d=o6l6q45535f593h5c3o4v4m4e3j4" target="_blank" rel="noopener">French</a> (ongoing)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0002-8351-4028" target="_blank" rel="noopener">Rui Figueira</a>, <a href="https://orcid.org/0000-0001-8164-0760" target="_blank" rel="noopener">Pedro Beja</a>, <a href="https://orcid.org/0000-0001-9244-399X" target="_blank" rel="noopener">Cristina Villaverde</a>, <a href="https://orcid.org/0000-0003-1885-7195" target="_blank" rel="noopener">Miguel Vega</a>, <a href="https://orcid.org/0000-0003-3077-6136" target="_blank" rel="noopener">Katia Cezón</a>, <a href="https://orcid.org/0000-0002-2629-222X" target="_blank" rel="noopener">Tainan Messina</a>, <a href="https://orcid.org/0000-0001-6902-1465" target="_blank" rel="noopener">Anne-Sophie Archambeau</a>, <a href="https://orcid.org/0000-0002-2857-2276" target="_blank" rel="noopener">Rukaya Johaadien</a>, <a href="https://orcid.org/0000-0002-2352-5497" target="_blank" rel="noopener">Dag Endresen</a> &amp; <a href="https://orcid.org/0000-0001-8327-8670" target="_blank" rel="noopener">Dairo Escobar</a> (2020) Guidance for private companies to become data publishers through GBIF: Template document to support the internal authorization process to become a GBIF publisher. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/doc-b8hq-me03" class="bare">https://doi.org/10.35035/doc-b8hq-me03</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif-uat.org/private-sector-data-publishing/2.0/es/" target="_blank" rel="noopener">Spanish</a> (complete), <a href="https://docs.gbif-uat.org/private-sector-data-publishing/2.0/fr/" target="_blank" rel="noopener">French</a> (complete), <a href="https://docs.gbif-uat.org/private-sector-data-publishing/2.0/pt/" target="_blank" rel="noopener">Portuguese</a> (complete)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0002-3627-6899" target="_blank" rel="noopener">Anders F. Andersson</a>, <a href="https://orcid.org/0000-0001-7396-1484" target="_blank" rel="noopener">Andrew Bissett</a>, <a href="https://orcid.org/0000-0003-4529-6266" target="_blank" rel="noopener">Anders G. Finstad</a>, <a href="https://orcid.org/0000-0002-7535-9574" target="_blank" rel="noopener">Frode Fossøy</a>, <a href="https://orcid.org/0000-0002-2685-8078" target="_blank" rel="noopener">Marie Grosjean</a>, <a href="https://orcid.org/0000-0002-4827-3310" target="_blank" rel="noopener">Michael Hope</a>, <a href="https://orcid.org/0000-0003-1691-239X" target="_blank" rel="noopener">Thomas S. Jeppesen</a>, <a href="https://orcid.org/0000-0002-5171-1668" target="_blank" rel="noopener">Urmas Kõljalg</a>, <a href="https://orcid.org/0000-0002-8779-6464" target="_blank" rel="noopener">Daniel Lundin</a>, <a href="https://orcid.org/0000-0002-8052-0107" target="_blank" rel="noopener">R. Henrik Nilsson</a>, <a href="https://orcid.org/0000-0003-4897-8422" target="_blank" rel="noopener">Maria Prager</a>, <a href="https://orcid.org/0000-0002-9216-2917" target="_blank" rel="noopener">Cecilie Svenningsen</a> &amp; <a href="https://orcid.org/0000-0002-2919-1168" target="_blank" rel="noopener">Dmitry Schigel</a> (2020) <strong>Publishing DNA-derived data through biodiversity data platforms</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/doc-vf1a-nr22" class="bare">https://doi.org/10.35035/doc-vf1a-nr22</a>.</p>
+</div>
+<div class="paragraph">
+<p>Translation (status): <a href="https://docs.gbif.org/publishing-dna-derived-data/1.0/fr/" target="_blank" rel="noopener">French</a> (complete)</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>GBIF Secretariat (2019) <strong>Establishing an Effective GBIF Participant Node: Concepts and general considerations</strong>. Copenhagen. <a href="https://doi.org/10.15468/doc-z79c-sa53" class="bare">https://doi.org/10.15468/doc-z79c-sa53</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://crowdin.com/project/gbif-nodes-guidance/invite?d=5565i475a507c327a3m4s4l473q4" target="_blank" rel="noopener">Spanish</a> (update needed), <a href="https://crowdin.com/project/gbif-nodes-guidance/invite?d=5565i475a507b327a3m4s4l473q4" target="_blank" rel="noopener">French</a> (update needed), <a href="https://crowdin.com/project/gbif-nodes-guidance/invite?d=5565i475a507d3m4j5k4o4r4a3l4d3" target="_blank" rel="noopener">Portuguese</a> (update needed)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0001-6492-4016" target="_blank" rel="noopener">Donald Hobern</a>, <a href="https://orcid.org/0000-0003-0116-3445" target="_blank" rel="noopener">Alex Asase</a>, <a href="https://orcid.org/0000-0002-0596-5376" target="_blank" rel="noopener">Quentin Groom</a>, Maofang Luo, <a href="https://orcid.org/0000-0003-2639-7520" target="_blank" rel="noopener">Deborah Paul</a>, <a href="https://orcid.org/0000-0001-6215-3617" target="_blank" rel="noopener">Tim Robertson</a>, <a href="https://orcid.org/0000-0002-4048-7728" target="_blank" rel="noopener">Patrick Semal</a>, <a href="https://orcid.org/0000-0002-8613-7133" target="_blank" rel="noopener">Barbara Thiers</a>, <a href="https://orcid.org/0000-0001-6496-1423" target="_blank" rel="noopener">Matt Woodburn</a> &amp; Eliza Zschuschen (2020) <strong>Advancing the Catalogue of the World’s Natural History Collections</strong>. v2.0. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/p93g-te47" class="bare">https://doi.org/10.35035/p93g-te47</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif.org/collections-idea-paper/es/" target="_blank" rel="noopener">Spanish</a> (complete), <a href="https://docs.gbif.org/collections-idea-paper/fr/" target="_blank" rel="noopener">French</a> (complete), <a href="https://docs.gbif.org/collections-idea-paper/zh/" target="_blank" rel="noopener">Simplified Chinese</a> (complete)</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>GBIF Secretariat (2020) <strong>GBIF Work Programme 2021: Annual Update to Implementation Plan 2017–2021</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/doc-bpdx-ae08" class="bare">https://doi.org/10.35035/doc-bpdx-ae08</a></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>GBIF Secretariat (2019) <strong>GBIF Work Programme 2020: Annual Update to Implementation Plan 2017–2021</strong>. Copenhagen: GBIF Secretariat. <a href="https://docs.gbif.org/2020-work-programme/en/" class="bare">https://docs.gbif.org/2020-work-programme/en/</a></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>GBIF Secretariat (2015) <strong>GBIF Communications Strategy</strong>. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.15468/doc-6yp9-9885" class="bare">https://doi.org/10.15468/doc-6yp9-9885</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Translation (status): <a href="https://docs.gbif-uat.org/gbif-communications-strategy/1.0/pt/" target="_blank" rel="noopener">Portuguese</a> (complete)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="community-peer-review-process">
+<a class="anchor" href="#community-peer-review-process"></a>1. Community peer-review process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Community peer-review may be just a single step in GBIF’s digital documentation workflow, but it provides an important opportunity for members of the GBIF community of practice—the intended users and beneficiaries of these documents—to guide the documents' development by offering direct input and feedback. While this process is first and foremost intended to ensure the quality of the documentation, it also serves as a mechanism for fostering community discussion and collaboration.</p>
+</div>
+<div class="paragraph">
+<p>The process starts from the premise that authors and reviewers are part of the same community. The fact that their identities are not concealed at any point during the process, reviewers and authors should be encouraged toward open, honest and collegial exchanges, with a focus on constructive criticism even where difference of opinion exist. The focus of reviewers should be to help authors to improve their work in ways that benefit the broader biodiversity informatics community. Community members are responsible for ensuring that their actions encourage a “safe, hospitable, and productive environment” that is “professional, respectful and harassment-free for all participating,” in adherence with the <a href="https://www.gbif.org/code-of-conduct">GBIF Code of Conduct</a>.</p>
+</div>
+<div class="paragraph">
+<p>Each document’s source text is freely and openly available and maintained in a public GitHub repository, or “repo”. The use of GitHub enables reviewers and users to raise issues and track their resolution. Reviewers and users can offer comments, suggestions and corrections at any stage of the document’s life cycle, making it easier to make corrections to current versions and update future ones while ensuring community access to accurate, well-maintained guidance and information.</p>
+</div>
+<div class="paragraph">
+<p>Staff from the GBIF Secretariat commits to two operational principles to ensure the transparency and effectiveness of the community review process:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Individual contributions by community members will be properly credited and acknowledged</p>
+</li>
+<li>
+<p>Open issues will be resolved in timely fashion, either by the authors or by Secretariat staff, in agreement with the authors</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><a href="https://docs.gbif.org/contributing/">Learn how to help improve these documents as a community peer-reviewer</a></p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="guidelines-for-document-authors">
+<a class="anchor" href="#guidelines-for-document-authors"></a>2. Guidelines for document authors</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We code documents in this system using a lightweight code called <a href="https://asciidoctor.org/docs/what-is-asciidoc/">AsciiDoc</a>. We apply <a href="https://www.un.org/dgacm/en/content/editorial-manual">United Nations editorial style conventions</a> and <a href="https://www.un.org/dgacm/en/content/editorial-manual/spelling">spelling</a> (tl;dr: British English with <em>–ize</em> and <em>–yse</em> endings).</p>
+</div>
+<div class="paragraph">
+<p>We use AsciiDoc because it means that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Authors need not worry about maintaining formatting.</p>
+</li>
+<li>
+<p>Changes to both the document’s content and structure can be tracked and managed using general tools.</p>
+</li>
+<li>
+<p>The same source files can produce multiple outputs automatically, such as HTML and (as a convenience) PDF.</p>
+</li>
+<li>
+<p>The management and tracking translations is easier and more efficient.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While this system does require learning some new tools, the ones we have chosen are widely used in the publishing, software development and translation communities. AsciiDoc is also relatively simple to work with and understand. If you’ve written or edited a Wikipedia article, you’ll have no problem with this format.</p>
+</div>
+<div class="paragraph">
+<p>We’ve pulled out details for a few of the more common uses of AsciiDoc markup <a href="https://#">in the technical guidelines below</a> to give you a flavour of it. However, two resources provide more detailed guidance:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="https://asciidoctor.org/docs/asciidoc-writers-guide/">AsciiDoc Writer’s Guide</a>, which provides a ‘gentle introduction’ to the format</p>
+</li>
+<li>
+<p>The <a href="https://asciidoctor.org/docs/user-manual/">AsciiDoctor User Guide</a>, which provides a comprehensive reference on how to work with this language.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have questions, comments or concerns—either specifically about AsciiDoc or about the overall use and approach of this format—please email us at <a href="mailto:communication@gbif.org">communication@gbif.org</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="translations">
+<a class="anchor" href="#translations"></a>3. Translations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The GBIF network hosts <a href="https://www.gbif.org/translators">a vibrant community of volunteer translators</a> who work actively to reduce linguistic barriers to free and open biodiversity data. We also commission commercial translation of our materials when the Secretariat views such efforts as strategically important and/or our existing language communities lack the capacity to complete them.</p>
+</div>
+<div class="paragraph">
+<p>We support translations based on the expressed needs and interests of our language communities. As such, we welcome efforts to extend usefulness and reach of our documentation through translation. If you wish to volunteer or to voice your support for making specific titles available in translation, please email us at <a href="mailto:communication@gbif.org">communication@gbif.org</a>. We will do what we can gauge interest from others in the community and provide coordination support.</p>
+</div>
+<div class="paragraph">
+<p>If you’re interested in the details of how our documentation system implements translations, see the <a href="#translation-setup">relevant section in the technical guidance</a> below.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="decommissioning-old-documents">
+<a class="anchor" href="#decommissioning-old-documents"></a>4. ‘Decommissioning’ old documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As a matter of practice, the Secretariat will ‘decommission’ and remove earlier versions of documents from GBIF through the following series of steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Register a GBIF DOI via DataCite for the previous version of the document (provided that one does not already exist)</p>
+</li>
+<li>
+<p>Produce an archival standard version (PDF/A) of the document—or documents, if translations are available</p>
+</li>
+<li>
+<p>Deposit the file(s) in Zenodo with the assigned DOI</p>
+</li>
+<li>
+<p>Update the DataCite metadata to resolve the DOI to the new Zenodo deposit</p>
+</li>
+<li>
+<p>Include a reference to the earlier version in the current document’s metadata on GBIF.org (e.g. <a href="https://www.gbif.org/document/80925" class="bare">https://www.gbif.org/document/80925</a>)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This approach achieves several key goals:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Previous versions will be permanently discoverable using a persistent identifier</p>
+</li>
+<li>
+<p>GBIF will no longer have to manage either the old file or its URL (or, as is more often the case, URLs, plural)</p>
+</li>
+<li>
+<p>Users searching on GBIF.org will retrieve only the current documents, which then reference older versions</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="panel">
+<a class="anchor" href="#panel"></a>5. Documentation Steering Panel</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Steering Panel consists of a volunteer group of experts that, in coordination with GBIF Secretariat staff, provides oversight and guidance for the selection and community-review of GBIF documentation.</p>
+</div>
+<div class="sect2">
+<h3 id="structure-and-operations">
+<a class="anchor" href="#structure-and-operations"></a>5.1. Structure and operations</h3>
+<div class="paragraph">
+<p>The panel consists of 8-10 members comprised of individuals from GBIF regions and the Secretariat staff. The panel meets (no more than quarterly) to discuss existing documentation and to provide recommendations to the GBIF Secretariat on commissioning high-priority guidance from subject-matter experts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="responsibilities">
+<a class="anchor" href="#responsibilities"></a>5.2. Responsibilities</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Assist with setting annual priorities for documentation needs and make recommendations for calls for documentation as and when appropriate.</p>
+</li>
+<li>
+<p>Consult widely with other experts, institutions, initiatives and projects within the biodiversity informatics community at-large when considering updates to and for new documentation.</p>
+</li>
+<li>
+<p>Review and make recommendations regarding the documentation system for future sustainability.</p>
+</li>
+<li>
+<p>Participate in the vetting process to ensure that commissioned documentation is of high quality and serves the intended audiences.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="panel-members">
+<a class="anchor" href="#panel-members"></a>5.3. Panel members</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Chair</strong>: Sharon Grant, <a href="https://www.gbif.org/the-gbif-network/north-america" target="_blank" rel="noopener">North America</a></p>
+</li>
+<li>
+<p><strong>Vice-chair</strong>: Patricia Mergen, <a href="https://www.gbif.org/the-gbif-network/europe" target="_blank" rel="noopener">Europe and Central Asia</a></p>
+</li>
+<li>
+<p>Pierre Radji, <a href="https://www.gbif.org/the-gbif-network/africa" target="_blank" rel="noopener">Africa</a></p>
+</li>
+<li>
+<p>Maofang Luo, <a href="https://www.gbif.org/the-gbif-network/asia" target="_blank" rel="noopener">Asia</a></p>
+</li>
+<li>
+<p>Paula Zermoglio, <a href="https://www.gbif.org/the-gbif-network/latin-america" target="_blank" rel="noopener">Latin American and the Caribbean</a></p>
+</li>
+<li>
+<p>Chantal Huijbers, <a href="https://www.gbif.org/the-gbif-network/oceania" target="_blank" rel="noopener">Oceania</a></p>
+</li>
+<li>
+<p>Andrea Hahn, GBIF Secretariat</p>
+</li>
+<li>
+<p>Dmitry Schigel, GBIF Secretariat</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>GBIF Secretariat staff liaisons</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kyle Copas</p>
+</li>
+<li>
+<p>Laura Anne Russell</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="technical-guidance">
+<a class="anchor" href="#technical-guidance"></a>6. Technical guidance</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="for-authors">
+<a class="anchor" href="#for-authors"></a>6.1. For authors</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This section provides some basic technical orientation for authors commissioned to write documents. Both the <a href="https://asciidoctor.org/docs/asciidoc-writers-guide/">AsciiDoc Writer’s Guide</a> and <a href="https://docs.asciidoctor.org/asciidoc/latest/">AsciiDoctor User Guide</a> provides much more detailed and comprehensive references for how to work with this lightweight markup format.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="structuring-the-document">
+<a class="anchor" href="#structuring-the-document"></a>Structuring the document</h4>
+<div class="paragraph">
+<p>All documents whose primary language is English start from the file <code>index.en.adoc</code>.  Using the <a href="https://docs.asciidoctor.org/asciidoc/latest/directives/include/"><code>include</code> directive</a> allows a single document to be spread across multiple files.  This makes editing (especially collaborative editing) easier, helps translators, and simplifies reordering sections of a document.</p>
+</div>
+<div class="paragraph">
+<p>Except for the primary file being called <code>index.en.adoc</code>, there are no hard restrictions on how a document must be structured.  It is probably easiest for editors to structure documents with number-prefixed filenames, preferably with large intervals to allow new sections to be inserted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>├── index.en.adoc
+├── 100.en.adoc
+├── 200.en.adoc
+├── 250.en.adoc <i class="conum" data-value="1"></i><b>(1)</b>
+├── 300.en.adoc
+└── 400.en.adoc</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td>
+<i class="conum" data-value="1"></i><b>1</b>
+</td>
+<td>This file was presumably added later, between <code>200</code> and <code>300</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See the section on <a href="#translation">translating documents</a> when adding, changing or deleting document files.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="writing-in-asciidoctor">
+<a class="anchor" href="#writing-in-asciidoctor"></a>Writing in AsciiDoctor</h4>
+<div class="paragraph">
+<p>AsciiDoctor is a text document format for writing (among other things) books, ebooks, and documentation. It is similar to wiki markup — if you can write a Wikipedia article, then you’ll have no problem with AsciiDoctor.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">AsciiDoctor User Guide</div>
+<div class="paragraph">
+<p>The <a href="https://docs.asciidoctor.org/asciidoctor/latest/">AsciiDoctor User Guide</a> provides an excellent reference to what’s possible with AsciiDoctor.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here are the most common parts of AsciiDoctor markup:</p>
+</div>
+<div class="sect4">
+<h5 id="text">
+<a class="anchor" href="#text"></a>Text</h5>
+<div class="paragraph">
+<p>Regular paragraph text does not need any special markup in AsciiDoctor. Just add a blank line both above and below each paragraph, and the first word in the paragraph should not have a space before it. Here are some example paragraphs in AsciiDoctor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>This is an example paragraph written in AsciiDoctor. See, it's just plain text; no special markup necessary! Do make sure there aren't spaces or manual indentations at the beginning of your paragraph text.
+
+This is a second example paragraph in AsciiDoctor. Note that there's a line break and a blank line between paragraphs.</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="chapters">
+<a class="anchor" href="#chapters"></a>Chapters and headings</h5>
+<div class="paragraph">
+<p>The top of each chapter file should begin with a chapter title preceded by two equals signs. It’s good practice to always include a unique ID string above the chapter title, surrounded in double brackets, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[[unique_chapter_id]]
+== Chapter Title
+Chapter text begins here.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The unique ID string is used to link directly to a chapter or section, such as <a href="#chapters">this link to this section</a>.  Readers can also link directly to a section, by using the § link that appears when the mouse hovers over a chapter heading.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="top-level-heading">
+<a class="anchor" href="#top-level-heading"></a>Top-level heading</h5>
+<div class="paragraph">
+<p>Within a chapter, the first and highest heading level uses three equals signs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>=== Top-Level Heading</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lower-level headings continue with additional <code>=</code> signs.</p>
+</div>
+<div class="paragraph">
+<p><em><a href="https://docs.asciidoctor.org/asciidoc/latest/sections/titles-and-levels/">Continue reading about section headings in the AsciiDoctor User Guide</a>.</em></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="inline-markup">
+<a class="anchor" href="#inline-markup"></a>Inline Markup</h5>
+<div class="paragraph">
+<p>Here are some standard typographical conventions with explanations of how they’re commonly used:</p>
+</div>
+<div class="paragraph">
+<p><code>_Italic_</code> One underscore character on either side of text marks it as <em>italics</em> in AsciiDoctor.</p>
+</div>
+<div class="paragraph">
+<p><code>*Bold*</code> <strong>Bolded text</strong> is used to emphasize a word or phrase. The AsciiDoctor markup is one asterisk on either side of the text to be bolded.</p>
+</div>
+<div class="paragraph">
+<p><code>`Constant Width`</code>
+Constant width, or <code>monospaced</code>, text is used for code, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords. The AsciiDoctor markup is one grave accent sign on either side of the text to monospaced.</p>
+</div>
+<div class="paragraph">
+<p>Hyperlinks:
+For hyperlinks to external sources, just add the full URL string followed by brackets containing the text you’d like to appear with the URL. The bracketed text will become a clickable link in web versions. In print versions, it will appear in the text, followed by the actual URL in parenthesis.</p>
+</div>
+<div class="paragraph">
+<p>The markup looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Visit https://www.gbif.org/[GBIF.org].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em><a href="https://docs.asciidoctor.org/asciidoc/latest/text/">Continue reading about text formatting in the AsciiDoctor User Guide</a>.</em></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="admonitions">
+<a class="anchor" href="#admonitions"></a>Admonitions</h4>
+<div class="paragraph">
+<p>AsciiDoctor allows authors to call out supplemental admonitions in the form of notes, tips, warnings and cautions.</p>
+</div>
+<div class="paragraph">
+<p>For a note, the markup looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[NOTE]
+====
+Past trends are no guarantee of future performance.
+====</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here’s how it renders:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Past trends are no guarantee of future performance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>There is also a short form, which is appropriate for a single sentence:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NOTE: Past trends are no guarantee of future performance</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em><a href="https://docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/">Continue reading about admonitions and other block formatting in the AsciiDoctor User Guide</a>.</em>  The guide also covers other formatting, such as bulleted or numbered lists, tables and images.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="gbif-extensions-to-asciidoctor">
+<a class="anchor" href="#gbif-extensions-to-asciidoctor"></a>6.1.1. GBIF extensions to AsciiDoctor</h4>
+<div class="paragraph">
+<p>The document system recognizes some small additions to standard AsciiDoctor markup.</p>
+</div>
+<div class="sect4">
+<h5 id="terms">
+<a class="anchor" href="#terms"></a>Terms</h5>
+<div class="paragraph">
+<p>Terms, including Darwin Core terms, can be shown in a special style and with a link to the definition as <a class="term" href="http://rs.tdwg.org/dwc/terms/decimalLatitude" target="_blank">decimalLatitude</a> or <a class="term" href="http://rs.tdwg.org/dwc/terms/eventDate" target="_blank">dwc:eventDate</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>term:dwc[decimalLatitude] or term:dwc[dwc:eventDate]</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="table-cell-wrapping">
+<a class="anchor" href="#table-cell-wrapping"></a>Table cell wrapping</h5>
+<div class="paragraph">
+<p>By applying the role <code>break-all</code>, the contents of a table cell will break (wrap) at any position, rather than only between words.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">DNA sequence example</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="break-all">TCTATCCTCAATTATAGGTCATAATTCACCATCAGTAGATTTAGGAATTTTCTCTATTCATATTGCAGGTGTATCATCAATTATAGGATCAATTAATTTTATTGTAACAATTTTAAATATACATACAAAAACTCATTCATTAAACTTTTTACCATTATTTTCATGATCAGTTCTAGTTACAGCAATTCTCCTTTTATTATCATTA</span></p></td>
+<td class="tableblock halign-left valign-top"><div class="content">
+<div class="paragraph">
+<p>The markup is <code>[.break-all]#TCTA…ATTA#]</code></p>
+</div>
+<div class="paragraph">
+<p>Without it, the DNA sequence would stretch the table cell beyond the width of the page.</p>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="outstanding-issues">
+<a class="anchor" href="#outstanding-issues"></a>6.1.2. Outstanding issues</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Demonstrate embedding an image, and alternative (translated) images (<a href="https://doi.org/10.15468/doc-z79c-sa53">doc-effective-nodes-guidance</a> has this)</p>
+</li>
+<li>
+<p>Apply a custom style to the document (<a href="https://doi.org/10.15468/doc-z79c-sa53">doc-effective-nodes-guidance</a> also has this)</p>
+</li>
+<li>
+<p>Document a release process, possibly involving assigning DOIs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="for-editors">
+<a class="anchor" href="#for-editors"></a>6.2. For editors</h3>
+<div class="sect3">
+<h4 id="source_code">
+<a class="anchor" href="#source_code"></a>6.2.1. Document “source code”</h4>
+<div class="paragraph">
+<p>The plain text files and other assets (images, data tables) that form each document comprises the <em>source code</em>.</p>
+</div>
+<div class="paragraph">
+<p>These source files are stored in a <em>Git repository</em>, which (for GBIF) is managed by a commercial service, <em>GitHub</em>.</p>
+</div>
+<div class="paragraph">
+<p>The source code for this document is stored at <a href="https://github.com/gbif/doc-documentation-guidelines/" class="bare">https://github.com/gbif/doc-documentation-guidelines/</a>, the source code for this part of the document can be seen <a href="https://raw.githubusercontent.com/gbif/doc-documentation-guidelines/master/600.en.adoc">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Contributors can edit the source code either in a web browser using the GitHub interface or on a computer (including when offline) using Git. They may also submit <a href="https://github.com/gbif/doc-documentation-guidelines/issues">issues</a> that comment or flag problems for others to address, including outdated information, broken links, misspellings and the like.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Many tutorials for using both Git and Github are available on the web.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="document-versions">
+<a class="anchor" href="#document-versions"></a>6.2.2. Document versions</h4>
+<div class="paragraph">
+<p>Some documents are published as multiple versions.  This is done using <em>branches</em> in Git: the name of the branch, such as <code>1.0</code> or <code>2019</code>, is the identifier for the version.  This allows for edits to old versions, such as updating a link or correcting a syntax error in the document.</p>
+</div>
+<div class="paragraph">
+<p>The version (branch name) is used as part of the URL for the document, e.g. <a href="https://docs.gbif.org/effective-nodes-guidance/1.0/">https://docs.gbif.org/effective-nodes-guidance/<strong>1.0</strong>/</a>.  This allows for multiple versions to be retained on the webserver.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="translation">
+<a class="anchor" href="#translation"></a>6.2.3. Translated documents</h4>
+<div class="paragraph">
+<p>The translation system uses <code>.po</code> “<em>Portable Object</em>” files, which are commonly used for translating software and websites.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A file <code>po4a.conf</code> needs to exist, as shown in <a href="#translation-setup">Translation setup (po4a)</a>.  Each <code>*.en.adoc</code> file needs an entry in <code>po4a.conf</code>:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>[type:asciidoc] 100.en.adoc $lang:100.$lang.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The build system will warn if any <code>*.en.adoc</code> files are not present in <code>po4a.conf</code>.  (This is why the <code>README.adoc</code> and <code>LICENSE.adoc</code> files, not part of the document, do not include <code>.en</code> in their filenames.)</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Whenever the document text is changed, the build server will update the translation template file <code>translations/index.pot</code> with the source (English) text.</p>
+</li>
+<li>
+<p>Crowdin will detect the change to <code>translations/index.pot</code> and notify translators.</p>
+</li>
+<li>
+<p>As translators add translations to the text, Crowdin will make a pull request on the repository.  This should be merged.</p>
+</li>
+<li>
+<p>The build server will then rebuild the document with the translated text.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<details>
+<summary class="title">Alternatives to Crowdin</summary>
+<div class="content">
+<div class="paragraph">
+<p>It is also possible to translate documents without Crowdin, using desktop tools instead.  The translators then need to use Git/GitHub.  These additional steps are needed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For a new language, copy the generated <code>index.pot</code> (<em>Portable Object Template</em>) file to the new file <code>xx.po</code>, where <code>xx</code> is the <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">language code</a>.  For example this would be <code>da.po</code> for a Danish translation.</p>
+</li>
+<li>
+<p>To update a translation, open the <code>xx.po</code> file in a po-file editor and choose the option to “Update from POT file” or similar.</p>
+</li>
+<li>
+<p>Use a po-file editor to make the translations.  Examples are <a href="https://poedit.net/">Poedit</a> (software) or <a href="https://localise.biz/free/poeditor">poeditor</a> (website).</p>
+</li>
+<li>
+<p>Use Git/GitHub to replace the old translation file with your updated translation file.</p>
+</li>
+<li>
+<p>Push the changes, and the build server will rebuild the document</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>It is not recommended to use both methods on the same document.  If translations conflict they would not be lost, but the resulting mess can be confusing to sort out using Git.</strong></p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect3">
+<h4 id="publishing-a-document">
+<a class="anchor" href="#publishing-a-document"></a>6.2.4. Publishing a document</h4>
+<div class="paragraph">
+<p>Here, publishing a document means building the document for <code><strong>docs.gbif.org</strong></code>, rather than the test system <code><strong>docs.gbif-uat.org</strong></code>.</p>
+</div>
+<div class="paragraph">
+<p>To publish a document, go to the GitHub repository in a web browser.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If required, review and merge any translation pull requests.</p>
+</li>
+<li>
+<p>Check the most recent output from the document build in Jenkins.  This is easily accessed using the "Build Status" button on the repository.  Check for</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Incorrect spelling</p>
+</li>
+<li>
+<p>Warnings about broken crossreferences</p>
+</li>
+<li>
+<p>Warnings about incomplete translation</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Review the document on <a href="https://docs.gbif-uat.org/" class="bare">https://docs.gbif-uat.org/</a>, including the PDF.</p>
+</li>
+<li>
+<p>Use the GitHub interface to make a <em>release</em>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-documentation-system-software">
+<a class="anchor" href="#the-documentation-system-software"></a>6.3. The documentation system software</h3>
+<div class="paragraph">
+<p>The documents combine several small Linux tools:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Git, for source control,</p>
+</li>
+<li>
+<p><a href="https://asciidoctor.org/">AsciiDoctor</a>, chosen with essentially the same reasoning as <a href="https://github.com/KiCad/kicad-doc/blob/5.1.0/doc_alternatives/README.adoc">the KiCad documentation authors</a> (and following their approach to translation),</p>
+</li>
+<li>
+<p><a href="http://aspell.net/">GNU Aspell</a>, for spell checking,</p>
+</li>
+<li>
+<p><a href="https://po4a.org/">po4a</a>, for translations,</p>
+</li>
+<li>
+<p><a href="https://builds.gbif.org/">GBIF’s Jenkins server</a>, for document compilation,</p>
+</li>
+<li>
+<p>Docker, to ensure consistent builds,</p>
+</li>
+<li>
+<p>Apache, to serve the finished documents.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The result is mostly contained in a <a href="https://github.com/gbif/gbif-asciidoctor-toolkit">Docker container</a>, with some integration in the Jenkins build job.</p>
+</div>
+<div class="sect3">
+<h4 id="generating-the-document">
+<a class="anchor" href="#generating-the-document"></a>6.3.1. Generating the document</h4>
+<div class="paragraph">
+<p>The source <code>.adoc</code> files in the repository are converted into the finished HTML and PDF documents using the <em>AsciiDoctor</em> tool.  Every time a change is made to the repository, the <a href="https://builds.gbif.org/">GBIF build server</a> is notified.  It retrieves the document source code, generates the document (in HTML and PDF, and in all available languages), then copies the formatted documents to a webserver.</p>
+</div>
+<div class="paragraph">
+<p>A log file of recent builds is kept by the build server.  If there is a syntax error preventing the document from being generated, you may need to inspect the log file to see what the problem is.  The log file also contains a list of possible spelling errors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="local-document-build">
+<a class="anchor" href="#local-document-build"></a>6.3.2. Local document build</h4>
+<div class="paragraph">
+<p>If you are familiar with software development tools you can build a document on your own computer — this is useful for previewing changes.  You will first need to setup <a href="https://www.docker.com/">Docker</a>.  Then, open a terminal window and navigate using the <code>cd</code> command to the top-level directory of your document — for this document, it would be <code>doc-documentation-guidelines</code>.  You can then build the HTML document with this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-shell" data-lang="shell">docker run --rm -it --user $(id -u):$(id -g) -v $PWD:/documents/ docker.gbif.org/asciidoctor-toolkit</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assuming all is well, the resulting documents are in subdirectories coded by language (such as <code>en</code>), including both HTML and PDF files.  The output from the command should provide clues if there are problems.</p>
+</div>
+<div class="paragraph">
+<p>You can also add <code>continuous</code> to the end of this command.  This will rebuild the document every time it is changed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="information-for-gbif-developers">
+<a class="anchor" href="#information-for-gbif-developers"></a>7. Information for GBIF developers</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This section is technical information for GBIF software developers maintaining the system that powers these documents.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="new-documents">
+<a class="anchor" href="#new-documents"></a>7.1. New documents</h3>
+<div class="paragraph">
+<p>To make a new document:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new repository using the <a href="https://github.com/gbif/doc-template">doc-template</a> template repository (”Use this template”), with a name beginning with <code>doc-</code>, or <code>course-</code> for a training course.</p>
+</li>
+<li>
+<p>Edit the <code>README.adoc</code> to update the links, license, DOI etc.</p>
+</li>
+<li>
+<p>Set the branch name appropriately (<code>1.0</code>), if published versions of the document should be retained</p>
+</li>
+<li>
+<p>Add a new job to Jenkins,</p>
+</li>
+<li>
+<p>If required, create a <code>po4a.conf</code> file and add the document to Crowdin.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="jenkins-setup">
+<a class="anchor" href="#jenkins-setup"></a>7.1.1. Jenkins setup</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a new job, based on:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the existing <code>doc-template</code> job, for unversioned documents</p>
+</li>
+<li>
+<p>the existing <code>doc-test-document</code> job, for versioned documents</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You need to change the Git repository paths (“Source Code Management” section)</p>
+</div>
+</li>
+<li>
+<p>Change the <code>Authentication Token</code> to something new (“Build Triggers” section)</p>
+</li>
+<li>
+<p>Within GitHub, set up a new webhook with the path:</p>
+<div class="listingblock">
+<div class="content">
+<pre>https://builds.gbif.org/job/doc-XXXXXXXXXXXX/buildWithParameters?token=XXXXXXXXXX</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The secret text does not matter</p>
+</li>
+<li>
+<p>Select the individual events <code>Pushes</code> and <code>Releases</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<details>
+<summary class="title">Full Jenkins configuration</summary>
+<div class="content">
+<div class="paragraph">
+<p>These things will have been copied across from the existing build:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Discard old builds: 15</p>
+</li>
+<li>
+<p>GitHub project</p>
+</li>
+<li>
+<p>A <code>payload</code> parameter to receive information from GitHub.</p>
+</li>
+<li>
+<p><strong>Source Code Management</strong>: Under advanced Git settings, set the branches to build to <code>origin/*</code> and <code>Check out to specific local branch</code> to <code>**</code>.  This supports versioned documents, and updating the translation index.</p>
+</li>
+<li>
+<p>A build script, either <code>VERSIONED=true /usr/local/bin/document-build-deploy</code> or just <code>/usr/local/bin/document-build-deploy</code>.</p>
+</li>
+<li>
+<p>Git Publisher post-build action: to merge changes to the translation index.</p>
+</li>
+<li>
+<p>Set GitHub commit status (so users can see if they have committed invalid syntax).</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+</div>
+<div class="sect3">
+<h4 id="translation-setup">
+<a class="anchor" href="#translation-setup"></a>7.1.2. Translation setup (po4a)</h4>
+<div class="paragraph">
+<p>Do this before setting up Crowdin</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a <code>po4a.conf</code> file, based on this template:</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre># This is the translation configuration file.
+#
+# Any new file that requires translation must be added
+
+[po_directory] translations
+[options] opt:"-M utf-8 -A utf-8 -L utf-8 -k 0"
+
+[type:asciidoc] index.en.adoc $lang:index.$lang.adoc add_$lang:?translations/$lang.add
+[type:asciidoc] 100.en.adoc $lang:100.$lang.adoc
+[type:asciidoc] 200.en.adoc $lang:200.$lang.adoc
+…</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(This should be automated at some point.)</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Push the change.  The build should generate a <code>translations/index.pot</code> file, the translation index.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="crowdin-setup">
+<a class="anchor" href="#crowdin-setup"></a>7.1.3. Crowdin setup</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>First ensure appropriate version branches are set up, and the translation (po4a) set up.</p>
+</li>
+<li>
+<p>Add the gbif-crowdin GitHub user to the project, with “Admin” rights</p>
+</li>
+<li>
+<p>Use a private browser tab to log in to Crowdin, select the project, and add a new GitHub integration (GitHub authentication will be required).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Select the repository</p>
+</li>
+<li>
+<p>Select the branch</p>
+</li>
+<li>
+<p>Change the “Service Branch Name” to <code>translation_*branchname*</code> (thus avoiding the awkward abbreviation “i18n”)</p>
+</li>
+<li>
+<p>Set the Branch Configuration:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Set the source to <code>/translations/index.pot</code></p>
+</li>
+<li>
+<p>Set the translation to <code>/translations/%two_letters_code%.po</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Save all this.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/1265538197-Cyperus-papyrus.jpg" alt="Photograph of _Cyperus papyrus_ L.">
+</div>
+<div class="title">Figure 1. Egyptian paperplant (<em>Cyperus papyrus</em>), Chapultepec, Mexico City. Photo 2016 Alfonso Gutiérrez Aldana via <a href="https://www.gbif.org/occurrence/1265538197">iNaturalist Research-grade Observations</a> licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="colophon">
+<a class="anchor" href="#colophon"></a>Colophon</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="suggested-citation">
+<a class="anchor" href="#suggested-citation"></a>Suggested citation</h3>
+<div class="paragraph">
+<p>GBIF Secretariat (2020) GBIF Documentation Guidelines. Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/doc-5xs6-hm38" class="bare">https://doi.org/10.35035/doc-5xs6-hm38</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributors">
+<a class="anchor" href="#contributors"></a>Contributors</h3>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0002-1920-5298">Laura Russell</a>, <a href="https://orcid.org/0000-0003-0623-6682">Matthew Blissett</a> &amp; <a href="https://orcid.org/0000-0002-6590-599X">Kyle Copas</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="licence">
+<a class="anchor" href="#licence"></a>Licence</h3>
+<div class="paragraph">
+<p>The document <em>GBIF Documentation Guidelines</em> is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 Unported License</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistent-uri">
+<a class="anchor" href="#persistent-uri"></a>Persistent URI</h3>
+<div class="paragraph">
+<p><a href="https://doi.org/10.35035/doc-5xs6-hm38" class="bare">https://doi.org/10.35035/doc-5xs6-hm38</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="document-control">
+<a class="anchor" href="#document-control"></a>Document control</h3>
+<div class="paragraph">
+<p>Updated July 2020</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cover-image">
+<a class="anchor" href="#cover-image"></a>Cover image</h3>
+<div class="paragraph">
+<p>Egyptian paperplant (<em>Cyperus papyrus</em>), Chapultepec, Mexico City. Photo 2016 Alfonso Gutiérrez Aldana via <a href="https://www.gbif.org/occurrence/1265538197">iNaturalist Research-grade Observations</a> licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version HEAD detached<br>
+Last updated 2023-06-14 08:24:08 UTC
+</div>
+</div>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script type="text/javascript">
+      var inputField = document.getElementById('search_input');
+
+      function searchResults(query) {
+        var documentContent = document.getElementById('content');
+
+        while (documentContent.firstChild) {
+          documentContent.removeChild(documentContent.firstChild)
+        }
+
+        var searchResultsHeader = document.createElement('h2');
+        documentContent.appendChild(searchResultsHeader);
+        searchResultsHeader.innerHTML = `Search results`
+        window.scrollTo(searchResultsHeader);
+
+        var searchResultsDescription = document.createElement('div');
+        documentContent.appendChild(searchResultsDescription);
+        searchResultsDescription.innerHTML = `Search results for “${query}”`
+
+        var searchResults = document.createElement('ul');
+        documentContent.appendChild(searchResults);
+
+        return searchResults;
+      }
+
+      function submitForm(event) {
+        event.preventDefault();
+
+        const query = inputField.value;
+
+        const resultsHTML = searchResults(query);
+
+        fetch('lunr-index.json')
+          .then((response) => response.json())
+          .then((data) => {
+            idx = lunr.Index.load(data.index);
+            store = data.store;
+            var results = idx.search(query);
+            console.log("Search for", query, "gave", results.length, "results.");
+            if (results.length === 0) {
+              resultsHTML.innerHTML = 'No results';
+              return true;
+            }
+            var pages = results.map((x) => {
+              var anchorPosition = -1; //x.ref.indexOf('#');
+              var storeKey = anchorPosition > 0 ? x.ref.substr(0, anchorPosition) : x.ref;
+              return { data: store[storeKey], match: x };
+            });
+            var list = pages.map((x) => template(x));
+            resultsHTML.innerHTML = list.join('');
+          })
+          .catch((err) => function(err){
+            console.error(err);
+            resultsHTML.innerHTML = 'Unable to complete search - please report the error';
+          });
+
+        return true;
+      }
+
+      var hlStart = '<span class="hl">';
+      var hlEnd = '</span>';
+      var template = ({ data, match }) => {
+        var metadata = match.matchData.metadata;
+
+        // use first 200 chars as fallback
+        var text = `${data.text.substr(0, 200)}${data.text.length > 199 ? '...' : ''}`;
+
+        // Lunr has no concept of highlighting it seems. The developer says it is the most frequent request.
+
+        // Instead we try to do a lazy highlighting - I suspect that it will be fine in most cases.
+        // If it isn't then we should look at something like mark.js which seem to solve this issue.
+
+        // if there only one search term, then try to highlight it
+        if (Object.keys(metadata).length === 1) {
+          // only attempt with the first occurrences of the word
+          // (though there may be many more)
+          var matchedTerm = metadata[Object.keys(metadata)[0]];
+
+          // sometimes it can be an a title that match. Lunr does not tell us which. WE cannot do much in that case
+          if (matchedTerm.text && matchedTerm.text.position) {
+            var matchText = matchedTerm.text.position[0];
+
+            text = data.text.slice(0, matchText[0]) + hlStart + data.text.slice(matchText[0]);
+            text = text.slice(0, matchText[0] + matchText[1] + hlStart.length) + hlEnd + text.slice(matchText[0] + matchText[1] + hlStart.length);
+            var start = matchText[0];
+            var length = matchText[1] + hlStart.length + hlEnd.length + 200;
+            var begin = Math.max(0, start - 100);
+            text = text.substr(begin, length)
+          }
+        }
+
+        return `
+        <li>
+          <article>
+            <h5>
+              <a href="${match.ref}">${data.title}</a>
+            </h5>
+            <div>
+              ... ${text} ...
+            </div>
+          </article>
+        </li>
+        `;
+      };
+    </script>
+    
+<script defer data-domain="docs.gbif.org,gbif.org" src="https://plausible.io/js/script.file-downloads.js"></script>
+</body>
+</html>
+ contentType 9 text/html url 54 https://docs.gbif.org:443/documentation-guidelines/en/ responseCode 3 200 

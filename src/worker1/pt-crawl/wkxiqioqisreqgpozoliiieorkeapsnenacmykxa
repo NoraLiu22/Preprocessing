@@ -1,0 +1,144 @@
+wkxiqioqisreqgpozoliiieorkeapsnenacmykxa length 5 23279 page 23279 
+<html>
+<head>
+<title>r66200 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r66200 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/66200" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./66199.html" title="Special:Code/MediaWiki/66199">r66199</a>‎ | <b>r66200</b> | <a href="./66201.html" title="Special:Code/MediaWiki/66201">r66201</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>16:24, 11 May 2010</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/mgrabovsky" title="Special:Code/MediaWiki/author/mgrabovsky">mgrabovsky</a></td></tr>
+<tr><td>Status:</td><td>ok (<a href="#code-comments">Comments</a>)
+</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">(<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=23426">bug 23426</a>) The {{REVISIONMONTH}} variable is now zero-padded and added new variable {{REVISIONMONTH1}} when unpadded version is needed.</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/MagicWord.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FMagicWord.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/parser/Parser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2Fparser%2FParser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/messages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2Fmessages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/66200&amp;action=purge" title="Special:Code/MediaWiki/66200">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -160,6 +160,8 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">161</td><td class="linenumbers">161</td><td class="unchanged"><span> * (bug 23422) mp3 files can now be moved</span></td></tr>
+<tr id="7"><td class="linenumbers">162</td><td class="linenumbers">162</td><td class="unchanged"><span> * (bug 23448) MediaWiki:Summary-preview is now displayed instead of</span></td></tr>
+<tr id="8"><td class="linenumbers">163</td><td class="linenumbers">163</td><td class="unchanged"><span>   MediaWiki:Subject-preview when previewing summary</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">164</td><td class="ins"><ins>+* (bug 23426) The {{REVISIONMONTH}} variable is now zero-padded and added new</ins></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">165</td><td class="ins"><ins>+  variable {{REVISIONMONTH1}} when unpadded version is needed.</ins></td></tr>
+<tr id="11"><td class="linenumbers">164</td><td class="linenumbers">166</td><td class="unchanged"><span> </span></td></tr>
+<tr id="12"><td class="linenumbers">165</td><td class="linenumbers">167</td><td class="unchanged"><span> === API changes in 1.17 ===</span></td></tr>
+<tr id="13"><td class="linenumbers">166</td><td class="linenumbers">168</td><td class="unchanged"><span> * (bug 22738) Allow filtering by action type on query=logevent</span></td></tr>
+<tr id="14" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/messages/MessagesEn.php</td></tr>
+
+
+
+<tr id="18"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -311,6 +311,7 @@</span></td></tr>
+<tr id="19"><td class="linenumbers">312</td><td class="linenumbers">312</td><td class="unchanged"><span> 	'revisionday'            => array( 1,    'REVISIONDAY'            ),</span></td></tr>
+<tr id="20"><td class="linenumbers">313</td><td class="linenumbers">313</td><td class="unchanged"><span> 	'revisionday2'           => array( 1,    'REVISIONDAY2'           ),</span></td></tr>
+<tr id="21"><td class="linenumbers">314</td><td class="linenumbers">314</td><td class="unchanged"><span> 	'revisionmonth'          => array( 1,    'REVISIONMONTH'          ),</span></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">315</td><td class="ins"><ins>+	'revisionmonth1'         => array( 1,    'REVISIONMONTH1'         ),</ins></td></tr>
+<tr id="23"><td class="linenumbers">315</td><td class="linenumbers">316</td><td class="unchanged"><span> 	'revisionyear'           => array( 1,    'REVISIONYEAR'           ),</span></td></tr>
+<tr id="24"><td class="linenumbers">316</td><td class="linenumbers">317</td><td class="unchanged"><span> 	'revisiontimestamp'      => array( 1,    'REVISIONTIMESTAMP'      ),</span></td></tr>
+<tr id="25"><td class="linenumbers">317</td><td class="linenumbers">318</td><td class="unchanged"><span> 	'revisionuser'           => array( 1,    'REVISIONUSER'           ),</span></td></tr>
+<tr id="26" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/parser/Parser.php</td></tr>
+
+
+
+<tr id="30"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -2528,6 +2528,13 @@</span></td></tr>
+<tr id="31"><td class="linenumbers">2529</td><td class="linenumbers">2529</td><td class="unchanged"><span> 				# *after* a revision ID has been assigned. This is for null edits.</span></td></tr>
+<tr id="32"><td class="linenumbers">2530</td><td class="linenumbers">2530</td><td class="unchanged"><span> 				$this->mOutput->setFlag( 'vary-revision' );</span></td></tr>
+<tr id="33"><td class="linenumbers">2531</td><td class="linenumbers">2531</td><td class="unchanged"><span> 				wfDebug( __METHOD__ . ": {{REVISIONMONTH}} used, setting vary-revision...\n" );</span></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">2532</td><td class="ins"><ins>+				$value = substr( $this->getRevisionTimestamp(), 4, 2 );</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">2533</td><td class="ins"><ins>+				break;</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">2534</td><td class="ins"><ins>+			case 'revisionmonth1':</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">2535</td><td class="ins"><ins>+				# Let the edit saving system know we should parse the page</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">2536</td><td class="ins"><ins>+				# *after* a revision ID has been assigned. This is for null edits.</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">2537</td><td class="ins"><ins>+				$this->mOutput->setFlag( 'vary-revision' );</ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">2538</td><td class="ins"><ins>+				wfDebug( __METHOD__ . ": {{REVISIONMONTH1}} used, setting vary-revision...\n" );</ins></td></tr>
+<tr id="41"><td class="linenumbers">2532</td><td class="linenumbers">2539</td><td class="unchanged"><span> 				$value = intval( substr( $this->getRevisionTimestamp(), 4, 2 ) );</span></td></tr>
+<tr id="42"><td class="linenumbers">2533</td><td class="linenumbers">2540</td><td class="unchanged"><span> 				break;</span></td></tr>
+<tr id="43"><td class="linenumbers">2534</td><td class="linenumbers">2541</td><td class="unchanged"><span> 			case 'revisionyear':</span></td></tr>
+<tr id="44" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/MagicWord.php</td></tr>
+
+
+
+<tr id="48"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -79,6 +79,7 @@</span></td></tr>
+<tr id="49"><td class="linenumbers">80</td><td class="linenumbers">80</td><td class="unchanged"><span> 		'revisionday',</span></td></tr>
+<tr id="50"><td class="linenumbers">81</td><td class="linenumbers">81</td><td class="unchanged"><span> 		'revisionday2',</span></td></tr>
+<tr id="51"><td class="linenumbers">82</td><td class="linenumbers">82</td><td class="unchanged"><span> 		'revisionmonth',</span></td></tr>
+<tr id="52"><td class="linenumbers"> </td><td class="linenumbers">83</td><td class="ins"><ins>+		'revisionmonth1',</ins></td></tr>
+<tr id="53"><td class="linenumbers">83</td><td class="linenumbers">84</td><td class="unchanged"><span> 		'revisionyear',</span></td></tr>
+<tr id="54"><td class="linenumbers">84</td><td class="linenumbers">85</td><td class="unchanged"><span> 		'revisiontimestamp',</span></td></tr>
+<tr id="55"><td class="linenumbers">85</td><td class="linenumbers">86</td><td class="unchanged"><span> 		'revisionuser',</span></td></tr>
+</table>
+</div>
+<h2 id='code-references'>Follow-up revisions</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-ok'><td><a href="./81414.html" title="Special:Code/MediaWiki/81414">r81414</a></td><td>Test suite for revisions and date related magic variables....</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/hashar" title="Special:Code/MediaWiki/author/hashar">hashar</a></td><td>21:04, 2 February 2011</td></tr></table><h2 id='code-comments'>Comments</h2>
+<div class='mw-codereview-comments'><div class="mw-codereview-comment" id="c6762" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c6762" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Raymond" class="mw-userlink" title="User:Raymond"><bdi>Raymond</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Raymond" class="mw-usertoollinks-talk" title="User talk:Raymond">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Raymond" class="mw-usertoollinks-contribs" title="Special:Contributions/Raymond">contribs</a>)</span> &#160; 18:29, 11 May 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Wouldn't it be more consistent to name them:
+</p>
+<ul><li>{{REVISIONMONTH}} = unpadded (unchanged behaviour)</li>
+<li>{{REVISIONMONTH2}} = zero-padded</li></ul>
+<p>like we already have:
+</p>
+<ul><li>{{REVISIONDAY}} = 7 = unpadded</li>
+<li>{{REVISIONDAY2}} = 07 = zero-padded</li></ul></div></div>
+<div class="mw-codereview-comment" id="c6764" style="margin-left: 48px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c6764" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Mat%C4%9Bj_Grabovsk%C3%BD" class="mw-userlink" title="User:Matěj Grabovský"><bdi>Matěj Grabovský</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Mat%C4%9Bj_Grabovsk%C3%BD" class="mw-usertoollinks-talk" title="User talk:Matěj Grabovský">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Mat%C4%9Bj_Grabovsk%C3%BD" class="mw-usertoollinks-contribs" title="Special:Contributions/Matěj Grabovský">contribs</a>)</span> &#160; 18:43, 11 May 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Actually the current consistency is that month is zero-padded by default and day is unpadded by default.
+</p><p>See
+</p>
+<ul><li>CURRENTMONTH, LOCALMONTH – zero-padded</li>
+<li>CURRENTMONTH1, LOCALMONTH1 – unpadded</li></ul>
+<p>and
+</p>
+<ul><li>CURRENTDAY, LOCALDAY – unpadded</li>
+<li>CURRENTDAY2, LOCALDAY2 – zero-padded</li></ul>
+<p>If we do the proposed change with REVISIONMONTH we should also do this CURRENT/LOCALMONTH.
+</p></div></div>
+<div class="mw-codereview-comment" id="c11752" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c11752" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Hashar" class="mw-userlink" title="User:Hashar"><bdi>Hashar</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Hashar" class="mw-usertoollinks-talk" title="User talk:Hashar">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Hashar" class="mw-usertoollinks-contribs" title="Special:Contributions/Hashar">contribs</a>)</span> &#160; 22:13, 7 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Subscribing to this revision notification. I am writing unit tests for this.
+</p></div></div>
+<div class="mw-codereview-comment" id="c12696" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c12696" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Reedy" class="mw-userlink" title="User:Reedy"><bdi>Reedy</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Reedy" class="mw-usertoollinks-talk" title="User talk:Reedy">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Reedy" class="mw-usertoollinks-contribs" title="Special:Contributions/Reedy">contribs</a>)</span> &#160; 03:15, 6 January 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Ping
+</p></div></div>
+<div class="mw-codereview-comment" id="c12699" style="margin-left: 48px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c12699" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Hashar" class="mw-userlink" title="User:Hashar"><bdi>Hashar</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Hashar" class="mw-usertoollinks-talk" title="User talk:Hashar">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Hashar" class="mw-usertoollinks-contribs" title="Special:Contributions/Hashar">contribs</a>)</span> &#160; 07:38, 6 January 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>I am still working on the tests although I did not made any progress with the Xmas break&#160;;-b
+</p></div></div>
+<div class="mw-codereview-comment" id="c13779" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c13779" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Hashar" class="mw-userlink" title="User:Hashar"><bdi>Hashar</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Hashar" class="mw-usertoollinks-talk" title="User talk:Hashar">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Hashar" class="mw-usertoollinks-contribs" title="Special:Contributions/Hashar">contribs</a>)</span> &#160; 21:05, 2 February 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>test suite with <a href="./81414.html" title="Special:Code/MediaWiki/81414">r81414</a>. Still need to decide what we want to do.
+</p></div></div>
+<div class="mw-codereview-comment" id="c16024" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c16024" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:%F0%9F%98%82" class="mw-userlink" title="User:😂"><bdi>😂</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:%F0%9F%98%82" class="mw-usertoollinks-talk" title="User talk:😂">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/%F0%9F%98%82" class="mw-usertoollinks-contribs" title="Special:Contributions/😂">contribs</a>)</span> &#160; 22:59, 15 April 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Can we please just decide something? This has been sitting here for almost a year now. One way or the other, pick one.
+</p><p>Ping Raymond, Matěj, Hashar, please.
+</p></div></div>
+<div class="mw-codereview-comment" id="c16038" style="margin-left: 48px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c16038" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Bryan" class="mw-userlink" title="User:Bryan"><bdi>Bryan</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Bryan" class="mw-usertoollinks-talk" title="User talk:Bryan">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Bryan" class="mw-usertoollinks-contribs" title="Special:Contributions/Bryan">contribs</a>)</span> &#160; 08:13, 16 April 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>It has been deployed like this already, so changing it would break stuff. I'd say we'll keep it as it is and mark this ok.
+</p></div></div>
+<div class="mw-codereview-comment" id="c16467" style="margin-left: 48px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c16467" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Hashar" class="mw-userlink" title="User:Hashar"><bdi>Hashar</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Hashar" class="mw-usertoollinks-talk" title="User talk:Hashar">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Hashar" class="mw-usertoollinks-contribs" title="Special:Contributions/Hashar">contribs</a>)</span> &#160; 18:16, 1 May 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>I personally don't care. I was just raising the possible inconstancy enlighten by <a href="./81414.html" title="Special:Code/MediaWiki/81414">r81414</a> tests:
+</p>
+<pre>[x] Currentday is un padded
+[x] Currentdaytwo is zero padded
+[x] Localday is un padded
+[x] Localdaytwo is zero padded
+[x] Currentmonth is zero padded
+[x] Currentmonthone is un padded
+[x] Localmonth is zero padded
+[x] Localmonthone is un padded
+[x] Revisionday is un padded
+[x] Revisiondaytwo is zero padded
+[x] Revisionmonth is zero padded
+[x] Revisionmonthone is un padded
+</pre>
+<p>It should be revisionmonttwo to be consistant with our other uses.
+</p></div></div>
+<div class="mw-codereview-comment" id="c16619" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./66200.html#c16619" title="Special:Code/MediaWiki/66200">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Bryan" class="mw-userlink" title="User:Bryan"><bdi>Bryan</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Bryan" class="mw-usertoollinks-talk" title="User talk:Bryan">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Bryan" class="mw-usertoollinks-contribs" title="Special:Contributions/Bryan">contribs</a>)</span> &#160; 11:58, 6 May 2011 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Has already been deployed and almost released. Let's not break stuff again, so marking this as ok.
+</p></div></div></div><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:26, 2 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:%F0%9F%98%82" class="mw-userlink" title="User:😂"><bdi>😂</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:%F0%9F%98%82" class="mw-usertoollinks-talk" title="User talk:😂">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/%F0%9F%98%82" class="mw-usertoollinks-contribs" title="Special:Contributions/😂">contribs</a>)</span>&#160;changed the <b>tags</b> for r66200 <i>[<b>removed:</b> post1.17]</i></li>
+<li>04:20, 17 June 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Tim_Starling" class="mw-userlink" title="User:Tim Starling"><bdi>Tim Starling</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Tim_Starling" class="mw-usertoollinks-talk" title="User talk:Tim Starling">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Tim_Starling" class="mw-usertoollinks-contribs" title="Special:Contributions/Tim Starling">contribs</a>)</span>&#160;changed the <b>tags</b> for r66200 <i>[<b>added:</b> post1.17]</i></li>
+<li>03:41, 17 June 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Tim_Starling" class="mw-userlink" title="User:Tim Starling"><bdi>Tim Starling</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Tim_Starling" class="mw-usertoollinks-talk" title="User talk:Tim Starling">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Tim_Starling" class="mw-usertoollinks-contribs" title="Special:Contributions/Tim Starling">contribs</a>)</span>&#160;changed the <b>tags</b> for r66200 <i>[<b>removed:</b> 1.18]</i></li>
+<li>11:58, 6 May 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Bryan" class="mw-userlink" title="User:Bryan"><bdi>Bryan</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Bryan" class="mw-usertoollinks-talk" title="User talk:Bryan">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Bryan" class="mw-usertoollinks-contribs" title="Special:Contributions/Bryan">contribs</a>)</span>&#160;changed the <b>status</b> of r66200 <i>[<b>removed:</b> fixme&#160;<b>added:</b> ok]</i></li>
+<li>22:34, 3 February 2011&#160;<a href="https://www.mediawiki.org/wiki/User:MarkAHershberger" class="mw-userlink" title="User:MarkAHershberger"><bdi>MarkAHershberger</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:MarkAHershberger" class="mw-usertoollinks-talk" title="User talk:MarkAHershberger">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/MarkAHershberger" class="mw-usertoollinks-contribs" title="Special:Contributions/MarkAHershberger">contribs</a>)</span>&#160;changed the <b>tags</b> for r66200 <i>[<b>added:</b> 1.18]</i></li>
+<li>18:29, 11 May 2010&#160;<a href="https://www.mediawiki.org/wiki/User:Raymond" class="mw-userlink" title="User:Raymond"><bdi>Raymond</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Raymond" class="mw-usertoollinks-talk" title="User talk:Raymond">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Raymond" class="mw-usertoollinks-contribs" title="Special:Contributions/Raymond">contribs</a>)</span>&#160;changed the <b>status</b> of r66200 <i>[<b>removed:</b> new&#160;<b>added:</b> fixme]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/66200.html responseCode 3 200 

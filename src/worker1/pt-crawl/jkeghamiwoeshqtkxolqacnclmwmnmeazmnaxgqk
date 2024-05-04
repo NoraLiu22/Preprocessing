@@ -1,0 +1,147 @@
+jkeghamiwoeshqtkxolqacnclmwmnmeazmnaxgqk length 5 22739 page 22739 
+<html>
+<head>
+<title>r64726 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r64726 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/64726" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./64725.html" title="Special:Code/MediaWiki/64725">r64725</a>‎ | <b>r64726</b> | <a href="./64727.html" title="Special:Code/MediaWiki/64727">r64727</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>00:29, 8 April 2010</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/conrad" title="Special:Code/MediaWiki/author/conrad">conrad</a></td></tr>
+<tr><td>Status:</td><td>ok (<a href="#code-comments">Comments</a>)
+</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message"><a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=22474">Bug 22474</a>, urlencode now takes a parameter to change escaping style</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/parser/CoreParserFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2Fparser%2FCoreParserFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/messages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2Fmessages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/maintenance/parserTests.txt</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fmaintenance%2FparserTests.txt" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/64726&amp;action=purge" title="Special:Code/MediaWiki/64726">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/parser/CoreParserFunctions.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -124,8 +124,37 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">125</td><td class="linenumbers">125</td><td class="unchanged"><span> 		return wfUrlencode( str_replace( ' ', '_', self::ns( $parser, $part1 ) ) );</span></td></tr>
+<tr id="7"><td class="linenumbers">126</td><td class="linenumbers">126</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="8"><td class="linenumbers">127</td><td class="linenumbers">127</td><td class="unchanged"><span> </span></td></tr>
+<tr id="9"><td class="linenumbers">128</td><td class="linenumbers"> </td><td class="del"><del>-	static function urlencode( $parser, $s = '' ) {</del></td></tr>
+<tr id="10"><td class="linenumbers">129</td><td class="linenumbers"> </td><td class="del"><del>-		return urlencode( $s );</del></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">128</td><td class="ins"><ins>+	/**</ins></td></tr>
+<tr id="12"><td class="linenumbers"> </td><td class="linenumbers">129</td><td class="ins"><ins>+	 * urlencodes a string according to one of three patterns: (bug 22474)</ins></td></tr>
+<tr id="13"><td class="linenumbers"> </td><td class="linenumbers">130</td><td class="ins"><ins>+	 *</ins></td></tr>
+<tr id="14"><td class="linenumbers"> </td><td class="linenumbers">131</td><td class="ins"><ins>+	 * By default (for HTTP "query" strings), spaces are encoded as '+'.</ins></td></tr>
+<tr id="15"><td class="linenumbers"> </td><td class="linenumbers">132</td><td class="ins"><ins>+	 * Or to encode a value for the HTTP "path", spaces are encoded as '%20'.</ins></td></tr>
+<tr id="16"><td class="linenumbers"> </td><td class="linenumbers">133</td><td class="ins"><ins>+	 * For links to "wiki"s, or similar software, spaces are encoded as '_',</ins></td></tr>
+<tr id="17"><td class="linenumbers"> </td><td class="linenumbers">134</td><td class="ins"><ins>+	 *</ins></td></tr>
+<tr id="18"><td class="linenumbers"> </td><td class="linenumbers">135</td><td class="ins"><ins>+	 * @param $parser.</ins></td></tr>
+<tr id="19"><td class="linenumbers"> </td><td class="linenumbers">136</td><td class="ins"><ins>+	 * @param $s String: The text to encode.</ins></td></tr>
+<tr id="20"><td class="linenumbers"> </td><td class="linenumbers">137</td><td class="ins"><ins>+	 * @param $arg String (optional): The type of encoding.</ins></td></tr>
+<tr id="21"><td class="linenumbers"> </td><td class="linenumbers">138</td><td class="ins"><ins>+	 */</ins></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">139</td><td class="ins"><ins>+	static function urlencode( $parser, $s = '', $arg = null ) {</ins></td></tr>
+<tr id="23"><td class="linenumbers"> </td><td class="linenumbers">140</td><td class="ins"><ins>+		static $magicWords = null;</ins></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">141</td><td class="ins"><ins>+		if ( is_null( $magicWords ) ) {</ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">142</td><td class="ins"><ins>+			$magicWords = new MagicWordArray( array( 'url_path', 'url_query', 'url_wiki' ) );</ins></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">143</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">144</td><td class="ins"><ins>+		switch( $magicWords->matchStartToEnd( $arg ) ) {</ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">145</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">146</td><td class="ins"><ins>+			// Encode as though it's a wiki page, '_' for ' '.</ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">147</td><td class="ins"><ins>+			case 'url_wiki':</ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">148</td><td class="ins"><ins>+				return wfUrlencode( str_replace( ' ', '_', $s ) );</ins></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">149</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">150</td><td class="ins"><ins>+			// Encode for an HTTP Path, '%20' for ' '.</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">151</td><td class="ins"><ins>+			case 'url_path':</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">152</td><td class="ins"><ins>+				return rawurlencode( $s );</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">153</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">154</td><td class="ins"><ins>+			// Encode for HTTP query, '+' for ' '.</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">155</td><td class="ins"><ins>+			case 'url_query':</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">156</td><td class="ins"><ins>+			default:</ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">157</td><td class="ins"><ins>+				return urlencode( $s );</ins></td></tr>
+<tr id="41"><td class="linenumbers"> </td><td class="linenumbers">158</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="42"><td class="linenumbers">130</td><td class="linenumbers">159</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="43"><td class="linenumbers">131</td><td class="linenumbers">160</td><td class="unchanged"><span> </span></td></tr>
+<tr id="44"><td class="linenumbers">132</td><td class="linenumbers">161</td><td class="unchanged"><span> 	static function lcfirst( $parser, $s = '' ) {</span></td></tr>
+<tr id="45" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/messages/MessagesEn.php</td></tr>
+
+
+
+<tr id="49"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -352,6 +352,9 @@</span></td></tr>
+<tr id="50"><td class="linenumbers">353</td><td class="linenumbers">353</td><td class="unchanged"><span> 	'staticredirect'         => array( 1,    '__STATICREDIRECT__'     ),</span></td></tr>
+<tr id="51"><td class="linenumbers">354</td><td class="linenumbers">354</td><td class="unchanged"><span> 	'protectionlevel'        => array( 1,    'PROTECTIONLEVEL'        ),</span></td></tr>
+<tr id="52"><td class="linenumbers">355</td><td class="linenumbers">355</td><td class="unchanged"><span> 	'formatdate'             => array( 0,    'formatdate', 'dateformat' ),</span></td></tr>
+<tr id="53"><td class="linenumbers"> </td><td class="linenumbers">356</td><td class="ins"><ins>+	'url_path'               => array( 0,    'PATH' ),</ins></td></tr>
+<tr id="54"><td class="linenumbers"> </td><td class="linenumbers">357</td><td class="ins"><ins>+	'url_wiki'               => array( 0,    'WIKI' ),</ins></td></tr>
+<tr id="55"><td class="linenumbers"> </td><td class="linenumbers">358</td><td class="ins"><ins>+	'url_query'              => array( 0,    'QUERY' ),</ins></td></tr>
+<tr id="56"><td class="linenumbers">356</td><td class="linenumbers">359</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="57"><td class="linenumbers">357</td><td class="linenumbers">360</td><td class="unchanged"><span> </span></td></tr>
+<tr id="58"><td class="linenumbers">358</td><td class="linenumbers">361</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="59" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="63"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -41,6 +41,8 @@</span></td></tr>
+<tr id="64"><td class="linenumbers">42</td><td class="linenumbers">42</td><td class="unchanged"><span>   changes list</span></td></tr>
+<tr id="65"><td class="linenumbers">43</td><td class="linenumbers">43</td><td class="unchanged"><span> * (bug 22925) "sp-contributions-blocked-notice-anon" message now displayed when</span></td></tr>
+<tr id="66"><td class="linenumbers">44</td><td class="linenumbers">44</td><td class="unchanged"><span>   viewing contributions of a blocked IP address</span></td></tr>
+<tr id="67"><td class="linenumbers"> </td><td class="linenumbers">45</td><td class="ins"><ins>+* (bug 22474) {{urlencode:}} now takes an optional second paramter for type of</ins></td></tr>
+<tr id="68"><td class="linenumbers"> </td><td class="linenumbers">46</td><td class="ins"><ins>+  escaping.</ins></td></tr>
+<tr id="69"><td class="linenumbers">45</td><td class="linenumbers">47</td><td class="unchanged"><span> </span></td></tr>
+<tr id="70"><td class="linenumbers">46</td><td class="linenumbers">48</td><td class="unchanged"><span> === Bug fixes in 1.17 ===</span></td></tr>
+<tr id="71"><td class="linenumbers">47</td><td class="linenumbers">49</td><td class="unchanged"><span> * (bug 17560) Half-broken deletion moved image files to deletion archive</span></td></tr>
+<tr id="72" class="patchedfile"><td colspan="3">Index: trunk/phase3/maintenance/parserTests.txt</td></tr>
+
+
+
+<tr id="76"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -2177,6 +2177,21 @@</span></td></tr>
+<tr id="77"><td class="linenumbers">2178</td><td class="linenumbers">2178</td><td class="unchanged"><span> !! end</span></td></tr>
+<tr id="78"><td class="linenumbers">2179</td><td class="linenumbers">2179</td><td class="unchanged"><span> </span></td></tr>
+<tr id="79"><td class="linenumbers">2180</td><td class="linenumbers">2180</td><td class="unchanged"><span> </span></td></tr>
+<tr id="80"><td class="linenumbers"> </td><td class="linenumbers">2181</td><td class="ins"><ins>+!! test</ins></td></tr>
+<tr id="81"><td class="linenumbers"> </td><td class="linenumbers">2182</td><td class="ins"><ins>+Urlencode</ins></td></tr>
+<tr id="82"><td class="linenumbers"> </td><td class="linenumbers">2183</td><td class="ins"><ins>+!! input</ins></td></tr>
+<tr id="83"><td class="linenumbers"> </td><td class="linenumbers">2184</td><td class="ins"><ins>+{{urlencode:hi world?!}}</ins></td></tr>
+<tr id="84"><td class="linenumbers"> </td><td class="linenumbers">2185</td><td class="ins"><ins>+{{urlencode:hi world?!|WIKI}}</ins></td></tr>
+<tr id="85"><td class="linenumbers"> </td><td class="linenumbers">2186</td><td class="ins"><ins>+{{urlencode:hi world?!|PATH}}</ins></td></tr>
+<tr id="86"><td class="linenumbers"> </td><td class="linenumbers">2187</td><td class="ins"><ins>+{{urlencode:hi world?!|QUERY}}</ins></td></tr>
+<tr id="87"><td class="linenumbers"> </td><td class="linenumbers">2188</td><td class="ins"><ins>+!! result</ins></td></tr>
+<tr id="88"><td class="linenumbers"> </td><td class="linenumbers">2189</td><td class="ins"><ins>+&lt;p>hi+world%3F%21</ins></td></tr>
+<tr id="89"><td class="linenumbers"> </td><td class="linenumbers">2190</td><td class="ins"><ins>+hi_world%3F!</ins></td></tr>
+<tr id="90"><td class="linenumbers"> </td><td class="linenumbers">2191</td><td class="ins"><ins>+hi%20world%3F%21</ins></td></tr>
+<tr id="91"><td class="linenumbers"> </td><td class="linenumbers">2192</td><td class="ins"><ins>+hi+world%3F%21</ins></td></tr>
+<tr id="92"><td class="linenumbers"> </td><td class="linenumbers">2193</td><td class="ins"><ins>+&lt;/p></ins></td></tr>
+<tr id="93"><td class="linenumbers"> </td><td class="linenumbers">2194</td><td class="ins"><ins>+!! end</ins></td></tr>
+<tr id="94"><td class="linenumbers"> </td><td class="linenumbers">2195</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="95"><td class="linenumbers">2181</td><td class="linenumbers">2196</td><td class="unchanged"><span> ###</span></td></tr>
+<tr id="96"><td class="linenumbers">2182</td><td class="linenumbers">2197</td><td class="unchanged"><span> ### Magic links</span></td></tr>
+<tr id="97"><td class="linenumbers">2183</td><td class="linenumbers">2198</td><td class="unchanged"><span> ###</span></td></tr>
+</table>
+</div>
+<h2 id='code-comments'>Comments</h2>
+<div class='mw-codereview-comments'><div class="mw-codereview-comment" id="c11833" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./64726.html#c11833" title="Special:Code/MediaWiki/64726">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Werdna" class="mw-userlink" title="User:Werdna"><bdi>Werdna</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Werdna" class="mw-usertoollinks-talk" title="User talk:Werdna">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Werdna" class="mw-usertoollinks-contribs" title="Special:Contributions/Werdna">contribs</a>)</span> &#160; 03:44, 9 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Seems OK to me, but I'm not familiar enough with magic words to mark as ok.
+</p></div></div>
+<div class="mw-codereview-comment" id="c11896" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./64726.html#c11896" title="Special:Code/MediaWiki/64726">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:MarkAHershberger" class="mw-userlink" title="User:MarkAHershberger"><bdi>MarkAHershberger</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:MarkAHershberger" class="mw-usertoollinks-talk" title="User talk:MarkAHershberger">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/MarkAHershberger" class="mw-usertoollinks-contribs" title="Special:Contributions/MarkAHershberger">contribs</a>)</span> &#160; 17:25, 10 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>+			case 'url_query':
+</p>
+<pre>+			default:
+</pre>
+<p>Looks good, but I would add another magic word test, say |UNKNOWN so that this could be tested in cases where it is changed.
+</p></div></div>
+<div class="mw-codereview-comment" id="c11899" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./64726.html#c11899" title="Special:Code/MediaWiki/64726">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Conrad.Irwin" class="mw-userlink" title="User:Conrad.Irwin"><bdi>Conrad.Irwin</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Conrad.Irwin" class="mw-usertoollinks-talk" title="User talk:Conrad.Irwin">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Conrad.Irwin" class="mw-usertoollinks-contribs" title="Special:Contributions/Conrad.Irwin">contribs</a>)</span> &#160; 20:01, 10 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>The point of the default is not to provide behaviour for "UNKNOWN" — just to replicate the behaviour when there is no parameter specified, which is tested. If you think that passing an unknown parameter should always work as though no parameter is passed, then maybe it needs testing too. I would prefer to leave that behaviour undefined until it's clear that showing an error message is the wrong thing to do.
+</p></div></div>
+<div class="mw-codereview-comment" id="c11902" style="margin-left: 48px"><div class="mw-codereview-comment-meta"><a href="./64726.html#c11902" title="Special:Code/MediaWiki/64726">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:MarkAHershberger" class="mw-userlink" title="User:MarkAHershberger"><bdi>MarkAHershberger</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:MarkAHershberger" class="mw-usertoollinks-talk" title="User talk:MarkAHershberger">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/MarkAHershberger" class="mw-usertoollinks-contribs" title="Special:Contributions/MarkAHershberger">contribs</a>)</span> &#160; 20:25, 10 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>If an unknown parameter is specified, and you think the proper thing to do is return an error, then you should do that and test for this behavior.
+</p></div></div>
+<div class="mw-codereview-comment" id="c11903" style="margin-left: 96px"><div class="mw-codereview-comment-meta"><a href="./64726.html#c11903" title="Special:Code/MediaWiki/64726">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Conrad.Irwin" class="mw-userlink" title="User:Conrad.Irwin"><bdi>Conrad.Irwin</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Conrad.Irwin" class="mw-usertoollinks-talk" title="User talk:Conrad.Irwin">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Conrad.Irwin" class="mw-usertoollinks-contribs" title="Special:Contributions/Conrad.Irwin">contribs</a>)</span> &#160; 20:36, 10 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>I don't know what the proper behaviour is — that's why I didn't test for it :p. I'm not too fussed either way, on the one hand I like to encourage people to use the right syntax, on the other, it's pretty unfriendly if it "just breaks".
+</p></div></div>
+<div class="mw-codereview-comment" id="c11913" style="margin-left: 144px"><div class="mw-codereview-comment-meta"><a href="./64726.html#c11913" title="Special:Code/MediaWiki/64726">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:MarkAHershberger" class="mw-userlink" title="User:MarkAHershberger"><bdi>MarkAHershberger</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:MarkAHershberger" class="mw-usertoollinks-talk" title="User talk:MarkAHershberger">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/MarkAHershberger" class="mw-usertoollinks-contribs" title="Special:Contributions/MarkAHershberger">contribs</a>)</span> &#160; 23:10, 10 December 2010 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>I understand, My intention was to suggest that the tests reflect the current behavior (error or no) so that the software does not change behavior unexpectedly.
+</p></div></div></div><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>01:23, 7 January 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Tim_Starling" class="mw-userlink" title="User:Tim Starling"><bdi>Tim Starling</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Tim_Starling" class="mw-usertoollinks-talk" title="User talk:Tim Starling">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Tim_Starling" class="mw-usertoollinks-contribs" title="Special:Contributions/Tim Starling">contribs</a>)</span>&#160;changed the <b>tags</b> for r64726 <i>[<b>removed:</b> tstarling]</i></li>
+<li>01:23, 7 January 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Tim_Starling" class="mw-userlink" title="User:Tim Starling"><bdi>Tim Starling</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Tim_Starling" class="mw-usertoollinks-talk" title="User talk:Tim Starling">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Tim_Starling" class="mw-usertoollinks-contribs" title="Special:Contributions/Tim Starling">contribs</a>)</span>&#160;changed the <b>status</b> of r64726 <i>[<b>removed:</b> new&#160;<b>added:</b> ok]</i></li>
+<li>00:19, 7 January 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Reedy" class="mw-userlink" title="User:Reedy"><bdi>Reedy</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Reedy" class="mw-usertoollinks-talk" title="User talk:Reedy">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Reedy" class="mw-usertoollinks-contribs" title="Special:Contributions/Reedy">contribs</a>)</span>&#160;changed the <b>tags</b> for r64726 <i>[<b>added:</b> tstarling]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/64726.html responseCode 3 200 

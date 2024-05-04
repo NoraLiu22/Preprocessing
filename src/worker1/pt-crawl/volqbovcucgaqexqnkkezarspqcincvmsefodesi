@@ -1,0 +1,60 @@
+volqbovcucgaqexqnkkezarspqcincvmsefodesi length 4 6375 page 6375 
+<html>
+<head>
+<title>r32012 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r32012 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/32012" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./32011.html" title="Special:Code/MediaWiki/32011">r32011</a>‎ | <b>r32012</b> | <a href="./32013.html" title="Special:Code/MediaWiki/32013">r32013</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>10:39, 15 March 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/nikerabbit" title="Special:Code/MediaWiki/author/nikerabbit">nikerabbit</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">* Magic word formatnum can now take raw suffix to undo formatting</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/CoreParserFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FCoreParserFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/32012&amp;action=purge" title="Special:Code/MediaWiki/32012">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/CoreParserFunctions.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -138,8 +138,12 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">139</td><td class="linenumbers">139</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="7"><td class="linenumbers">140</td><td class="linenumbers">140</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="8"><td class="linenumbers">141</td><td class="linenumbers">141</td><td class="unchanged"><span> </span></td></tr>
+<tr id="9"><td class="linenumbers">142</td><td class="linenumbers"> </td><td class="del"><del>-	static function formatNum( $parser, $num = '' ) {</del></td></tr>
+<tr id="10"><td class="linenumbers">143</td><td class="linenumbers"> </td><td class="del"><del>-		return $parser->getFunctionLang()->formatNum( $num );</del></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">142</td><td class="ins"><ins>+	static function formatNum( $parser, $num = '', $raw = null) {</ins></td></tr>
+<tr id="12"><td class="linenumbers"> </td><td class="linenumbers">143</td><td class="ins"><ins>+		if ( self::israw( $raw ) ) {</ins></td></tr>
+<tr id="13"><td class="linenumbers"> </td><td class="linenumbers">144</td><td class="ins"><ins>+			return $parser->getFunctionLang()->parseFormattedNumber( $num );</ins></td></tr>
+<tr id="14"><td class="linenumbers"> </td><td class="linenumbers">145</td><td class="ins"><ins>+		} else {</ins></td></tr>
+<tr id="15"><td class="linenumbers"> </td><td class="linenumbers">146</td><td class="ins"><ins>+			return $parser->getFunctionLang()->formatNum( $num );</ins></td></tr>
+<tr id="16"><td class="linenumbers"> </td><td class="linenumbers">147</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="17"><td class="linenumbers">144</td><td class="linenumbers">148</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="18"><td class="linenumbers">145</td><td class="linenumbers">149</td><td class="unchanged"><span> </span></td></tr>
+<tr id="19"><td class="linenumbers">146</td><td class="linenumbers">150</td><td class="unchanged"><span> 	static function grammar( $parser, $case = '', $word = '' ) {</span></td></tr>
+<tr id="20" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="24"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -44,6 +44,7 @@</span></td></tr>
+<tr id="25"><td class="linenumbers">45</td><td class="linenumbers">45</td><td class="unchanged"><span> * When a page doesn't exist, the tab should say "create", not "edit"</span></td></tr>
+<tr id="26"><td class="linenumbers">46</td><td class="linenumbers">46</td><td class="unchanged"><span> * (bug 12882) Added a span with class "patrollink" arround "Mark as patrolled"</span></td></tr>
+<tr id="27"><td class="linenumbers">47</td><td class="linenumbers">47</td><td class="unchanged"><span>   link on diffs</span></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">48</td><td class="ins"><ins>+* Magic word formatnum can now take raw suffix to undo formatting</ins></td></tr>
+<tr id="29"><td class="linenumbers">48</td><td class="linenumbers">49</td><td class="unchanged"><span> </span></td></tr>
+<tr id="30"><td class="linenumbers">49</td><td class="linenumbers">50</td><td class="unchanged"><span> === Bug fixes in 1.13 ===</span></td></tr>
+<tr id="31"><td class="linenumbers">50</td><td class="linenumbers">51</td><td class="unchanged"><span> </span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:25, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r32012 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/32012.html responseCode 3 200 

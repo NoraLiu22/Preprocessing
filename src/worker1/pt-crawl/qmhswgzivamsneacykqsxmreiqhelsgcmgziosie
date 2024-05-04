@@ -1,0 +1,710 @@
+qmhswgzivamsneacykqsxmreiqhelsgcmgziosie length 5 32890 page 32890 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building a Go Project - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/languages/go/ />
+<meta property="og:description" content="Building a Go Project" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+
+ <meta class="swiftype" name="tags" data-type="string" content="golang" />
+
+ <meta class="swiftype" name="tags" data-type="string" content="go lang" />
+
+ <meta class="swiftype" name="tags" data-type="string" content="go" />
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/languages/go.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">Building a Go Project</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#what-this-guide-covers">What This Guide Covers</a></li>
+  <li><a href="#specifying-a-go-version-to-use">Specifying a Go version to use</a></li>
+  <li><a href="#go-modules">Go Modules</a></li>
+  <li><a href="#go-import-path">Go Import Path</a></li>
+  <li><a href="#dependency-management">Dependency Management</a></li>
+  <li><a href="#default-build-script">Default Build Script</a></li>
+  <li><a href="#environment-variable">Environment Variable</a></li>
+  <li><a href="#build-config-reference">Build Config Reference</a></li>
+  <li><a href="#examples">Examples</a></li>
+</ul>
+
+            </div>
+          
+
+          <h2 id="what-this-guide-covers">What This Guide Covers <a href="#what-this-guide-covers" class="toc-anchor">#</a></h2>
+
+<aside class="ataglance">
+
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: left">Go</th>
+        <th style="text-align: left">Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: left"><a href="#dependency-management">Default <code class="highlighter-rouge">install</code></a></td>
+        <td style="text-align: left"><code class="highlighter-rouge">travis_install_go_dependencies &lt;go-version&gt; [gobuild-args]</code></td>
+      </tr>
+      <tr>
+        <td style="text-align: left"><a href="#default-build-script">Default <code class="highlighter-rouge">script</code></a></td>
+        <td style="text-align: left"><code class="highlighter-rouge">travis_script_go {gobuild-args}</code></td>
+      </tr>
+      <tr>
+        <td style="text-align: left"><a href="#build-matrix">Matrix keys</a></td>
+        <td style="text-align: left"><code class="highlighter-rouge">go</code>, <code class="highlighter-rouge">env</code></td>
+      </tr>
+      <tr>
+        <td style="text-align: left">Support</td>
+        <td style="text-align: left"><a href="mailto:support@travis-ci.com">Travis CI</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Minimal example:</p>
+
+  <div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">go</span>
+</code></pre></div>  </div>
+
+  <p>Note that, in order to choose Go 1.10, you must use <code class="highlighter-rouge">go: "1.10"</code> (a string), not
+<code class="highlighter-rouge">go: 1.10</code> (a float).  Using a float results in the use of Go 1.1.</p>
+</aside>
+
+<blockquote>
+  <p>For Language versions and other build-environment specific
+information visit our reference pages:</p>
+  <ul>
+    <li><a href="/user/reference/precise/">Precise</a></li>
+    <li><a href="/user/reference/trusty/">Trusty</a></li>
+    <li><a href="/user/reference/xenial/">Xenial</a></li>
+    <li><a href="/user/reference/bionic/">Bionic</a></li>
+    <li><a href="/user/reference/focal/">Focal</a></li>
+    <li><a href="/user/reference/jammy/">Jammy</a></li>
+    <li><a href="/user/reference/windows/">Windows</a></li>
+    <li><a href="/user/reference/freebsd/">FreeBSD</a></li>
+  </ul>
+</blockquote>
+
+<p>The rest of this guide covers configuring Go projects in Travis CI. If you’re
+new to Travis CI please read our <a href="/user/tutorial/">Tutorial</a> and <a href="/user/customizing-the-build/">build
+configuration</a> guides first.</p>
+
+<h2 id="specifying-a-go-version-to-use">Specifying a Go version to use <a href="#specifying-a-go-version-to-use" class="toc-anchor">#</a></h2>
+
+<p>You can use any tagged version of Go, a version with <code class="highlighter-rouge">x</code> in place of the minor
+or patch level to use the latest for a given major or minor version, or use
+<code class="highlighter-rouge">master</code> to get the latest version from source. All go version management is
+handled by <a href="https://github.com/travis-ci/gimme">gimme</a>.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">go</span>
+
+<span class="na">go</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">1.x</span>
+<span class="pi">-</span> <span class="s2">"</span><span class="s">1.10"</span>
+<span class="pi">-</span> <span class="s">1.11.x</span>
+<span class="pi">-</span> <span class="s">master</span>
+</code></pre></div></div>
+
+<h2 id="go-modules">Go Modules <a href="#go-modules" class="toc-anchor">#</a></h2>
+
+<p>Any value set for <code class="highlighter-rouge">GO111MODULE</code> via <code class="highlighter-rouge">.travis.yml</code> or repository settings is left
+as-is. If absent, a default value of <code class="highlighter-rouge">GO111MODULE=auto</code> is set.</p>
+
+<h2 id="go-import-path">Go Import Path <a href="#go-import-path" class="toc-anchor">#</a></h2>
+
+<p>The project source code will be placed in <code class="highlighter-rouge">GOPATH/src/{repo-source}</code>, but if
+<a href="https://golang.org/cmd/go/#hdr-Remote_import_paths">vanity imports</a> are
+necessary (especially for <a href="https://golang.org/cmd/go/#hdr-Internal_Directories"><code class="highlighter-rouge">internal</code> package
+imports</a>),
+<code class="highlighter-rouge">go_import_path:</code> may be specified at the top level of the config, e.g.:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">go_import_path</span><span class="pi">:</span> <span class="s">example.org/pkg/foo</span>
+</code></pre></div></div>
+
+<h2 id="dependency-management">Dependency Management <a href="#dependency-management" class="toc-anchor">#</a></h2>
+
+<p>The default <code class="highlighter-rouge">install</code> step of <code class="highlighter-rouge">travis_install_go_dependencies &lt;go-version&gt;
+[gobuild-args]</code> will behave differently depending on the Go version specified,
+as well as the presence of certain environment variables and file paths.</p>
+
+<p>If a Makefile is present by any of the following names, then no further actions
+are taken in the <code class="highlighter-rouge">install</code> step:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">GNUMakefile</code></li>
+  <li><code class="highlighter-rouge">Makefile</code></li>
+  <li><code class="highlighter-rouge">BSDmakefile</code></li>
+  <li><code class="highlighter-rouge">makefile</code></li>
+</ul>
+
+<p>In all other cases, the command <code class="highlighter-rouge">go get ${gobuild_args} ./...</code> is run.</p>
+
+<h3 id="godep-support">godep support <a href="#godep-support" class="toc-anchor">#</a></h3>
+
+<p>There is support included for <a href="https://github.com/tools/godep">godep</a> when used
+with vendored dependencies such that the <code class="highlighter-rouge">GOPATH</code> will be prefixed with
+<code class="highlighter-rouge">${TRAVIS_BUILD_DIR}/Godeps/_workspace</code> and <code class="highlighter-rouge">PATH</code> will be prefixed with
+<code class="highlighter-rouge">${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin</code>. Additionally, if the
+<code class="highlighter-rouge">Godeps/_workspace/src</code> directory does not exist,<code class="highlighter-rouge">godep</code> will be installed and
+a <code class="highlighter-rouge">godep restore</code> will be run.</p>
+
+<p>It is important to note that using the older style <code class="highlighter-rouge">Godeps.json</code> at the top
+level is not supported.</p>
+
+<p>All of the <code class="highlighter-rouge">godep</code> integration steps are performed prior to the separate
+<code class="highlighter-rouge">go get</code> and makefile steps listed above.</p>
+
+<p>Note that the <code class="highlighter-rouge">godep</code> support is only activated if a custom <code class="highlighter-rouge">install</code> step is
+not specified.</p>
+
+<h3 id="installing-private-dependencies">Installing Private Dependencies <a href="#installing-private-dependencies" class="toc-anchor">#</a></h3>
+
+<p>As <code class="highlighter-rouge">go get</code> uses HTTPS to clone dependencies from GitHub rather than SSH, it
+requires a different workaround from our <a href="/user/private-dependencies">recommended way of handling private
+dependencies</a>.</p>
+
+<p>When cloning via HTTPS, git uses curl under the covers, which in turn allows
+you to specify a <a href="http://manpages.ubuntu.com/manpages/precise/man5/netrc.5.html">.netrc</a>
+file, where you can store custom authentication credentials for specific
+domains, github.com for instance.</p>
+
+<p>Go to your <a href="https://github.com/settings/applications">GitHub account</a> and
+create a personal access token.</p>
+
+<p><img src="/images/personal-token.jpg" alt="Screenshot of GitHub personal token" /></p>
+
+<p>Make sure to give it the <code class="highlighter-rouge">repo</code> scope, which allows accessing private
+repositories.</p>
+
+<p>To reduce access rights of the token, you can also create a separate user
+account with access to only the repositories you need for a particular project.</p>
+
+<p>Copy the token and store it in a .netrc in your repository, with the following
+data:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>machine github.com
+  login &lt;username&gt;
+  password &lt;token&gt;
+</code></pre></div></div>
+
+<p>Add this to your repository and add the following steps to your .travis.yml:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">cp .netrc ~/.netrc</span>
+<span class="pi">-</span> <span class="s">chmod 600 ~/.netrc</span>
+</code></pre></div></div>
+
+<h2 id="default-build-script">Default Build Script <a href="#default-build-script" class="toc-anchor">#</a></h2>
+
+<p>Go projects assume that either Make or Go build tool are used by default. In
+case there is a Makefile in the repository root, the default command Travis CI
+will use to run your project test suite is</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>In case there is no Makefile, it will be</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go <span class="nb">test</span> <span class="k">${</span><span class="nv">gobuild_args</span><span class="k">}</span> ./...
+</code></pre></div></div>
+
+<p>instead.</p>
+
+<p>These default commands can be overridden as described in the <a href="/user/customizing-the-build/">general build
+configuration</a> guide. For example, to add the
+<code class="highlighter-rouge">-v</code> flag, override the <code class="highlighter-rouge">script:</code> key in <code class="highlighter-rouge">.travis.yml</code> like this:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">script</span><span class="pi">:</span> <span class="s">go test -v ./...</span>
+</code></pre></div></div>
+
+<p>The arguments passed to the default <code class="highlighter-rouge">go test</code> command may be overridden by
+specifying <code class="highlighter-rouge">gobuild_args:</code> at the top level of the config, e.g.:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">gobuild_args</span><span class="pi">:</span> <span class="s">-x -ldflags "-X main.VersionString v1.2.3"</span>
+</code></pre></div></div>
+
+<p>which will result in the script step being:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go <span class="nb">test</span> <span class="nt">-x</span> <span class="nt">-ldflags</span> <span class="s2">"-X main.VersionString v1.2.3"</span> ./...
+</code></pre></div></div>
+
+<p>To build by running Scons without arguments, use this:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">script</span><span class="pi">:</span> <span class="s">scons</span>
+</code></pre></div></div>
+
+<h2 id="environment-variable">Environment Variable <a href="#environment-variable" class="toc-anchor">#</a></h2>
+
+<p>The version of Go a job is using is available as:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TRAVIS_GO_VERSION
+</code></pre></div></div>
+
+<p>This may contain <code class="highlighter-rouge">.x</code> at the end, as described above.
+Use of this variable in the deployment condition should
+take this possibility into consideration.
+For example:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">go</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">1.7.x</span>
+<span class="s">⋮</span>
+<span class="na">deploy</span><span class="pi">:</span>
+  <span class="s">...</span>
+  <span class="s">on</span><span class="pi">:</span>
+    <span class="na">condition</span><span class="pi">:</span> <span class="s">$TRAVIS_GO_VERSION =~ ^1\.7</span>
+</code></pre></div></div>
+
+<h2 id="build-config-reference">Build Config Reference <a href="#build-config-reference" class="toc-anchor">#</a></h2>
+
+<p>You can find more information on the build config format for <a href="https://config.travis-ci.com/ref/language/go">Go</a> in our <a href="https://config.travis-ci.com/">Travis CI Build Config Reference</a>.</p>
+
+<h2 id="examples">Examples <a href="#examples" class="toc-anchor">#</a></h2>
+
+<ul>
+  <li><a href="https://github.com/streadway/amqp/blob/master/.travis.yml">Go AMQP client</a></li>
+  <li><a href="https://github.com/mrb/hob/blob/master/.travis.yml">mrb/hob</a></li>
+</ul>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 49 https://docs.travis-ci.com:443/user/languages/go/ responseCode 3 200 

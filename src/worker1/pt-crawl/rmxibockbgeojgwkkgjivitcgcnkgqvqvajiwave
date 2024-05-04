@@ -1,0 +1,374 @@
+rmxibockbgeojgwkkgjivitcgcnkgqvqvajiwave length 5 26749 page 26749 <!DOCTYPE HTML><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="https://www.giss.nasa.gov/css/css2104.css" media="all" />
+
+
+<title>Data.GISS: Model E: CMIP5 Simulation Configurations</title>
+
+<style type="text/css">
+table.xlist {
+margin-top:8px;
+border-collapse:collapse;
+}
+table.xlist tr th,
+table.xlist tr td {
+border:solid 1px black;
+padding:3px 5px 3px 5px;
+margin:0;
+}
+.tt {
+font-family: monospace;
+}
+</style>
+
+<link rel="apple-touch-icon" href="/gfx/apple-touch-icon-180x180.png" />
+<link rel="apple-touch-icon-precomposed" href="/gfx/apple-touch-icon-180x180.png" />
+<link rel="apple-touch-icon" sizes="192x192" href="/gfx/apple-touch-icon-192x192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/gfx/apple-touch-icon-180x180.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="/gfx/apple-touch-icon-152x152.png" />
+<link rel="apple-touch-icon" sizes="128x128" href="/gfx/apple-touch-icon-128x128.png" />
+<link rel="apple-touch-icon" sizes="76x76" href="/gfx/apple-touch-icon-76x76.png" />
+<meta name="orgcode" content="611" />
+<meta name="rno" content="Gavin.A.Schmidt.1" />
+<meta name="content-owner" content="Robert.B.Schmunk.1" />
+<meta name="webmaster" content="Robert.B.Schmunk.1" />
+<meta name="viewport" content="width=956, initial-scale=1" /><script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&amp;subagency=GISS&amp;yt=true&amp;dclink=true&amp;pua=UA-52099626-1" async="async"></script>
+</head>
+<body>
+<div id="bkg1"><div id="bkg2"></div><!-- end bkg2 --></div><!-- end bkg1 -->
+<div id="page">
+<div class="hidden">
+<a href="#content" title="Go to Main Content" accesskey="2">Go to Main Content (Accesskey 2)</a><br /><a href="#nav" title="Go to Site Menu" accesskey="3">Go to Site Menu (Accesskey 3)</a></div><!-- end hidden -->
+<div id="header">
+<div id="headerlogo">
+<a href="https://www.nasa.gov/"><img src="https://www.giss.nasa.gov/gfx/2013/nasa_x2.png" alt="NASA Logo, National Aeronautics and Space Administration" style="width:140px;height:98px" /></a></div><!-- end headerlogo -->
+<div id="centername">
+<h1><a href="https://www.nasa.gov/">National Aeronautics and Space Administration</a></h1>
+<h2><a href="https://www.giss.nasa.gov/">Goddard Institute for Space Studies</a></h2></div><!-- end centername -->
+<div id="hierarchy">
+<h2><a href="https://www.nasa.gov/goddard/">Goddard Space Flight Center</a><br /><a href="https://science.gsfc.nasa.gov/sci">Sciences and Exploration Directorate</a><br /><a href="https://science.gsfc.nasa.gov/earth">Earth Sciences Division</a></h2></div><!-- end hierarchy --></div><!-- end header -->
+<div id="paper">
+<div id="content"><div id="cpad">
+
+
+
+<h2>ModelE CMIP5 Climate Simulations</h2>
+
+<h3>Configurations for CMIP5 Simulations, Updates, and Issues</h3>
+
+<p>GISS submitted a number of different configurations to the <a href="http://cmip-pcmdi.llnl.gov/cmip5/">CMIP5</a> model data repository via the <a href="http://esgf.nccs.nasa.gov/">Earth System Grid Federation (ESGF)</a> (or via <a href="https://pcmdi9.llnl.gov/">PCMDI</a>).
+We have also submitted versions of this model to the ACCMIP project. The configurations vary as a function of the degree of interactivity in the atmospheric composition, the carbon cycle, the ocean model and the atmospheric grid. Each configuration corresponds to a rundeck in the <a href="https://www.giss.nasa.gov/tools/modelE/">Model E distribution</a>, as follows:</p>
+
+<ul> 
+<li><b>GISS-E2-R: ModelE/Russell 2&#215;2.5&#215;L40.</b>
+  This uses the ModelE atmospheric code on a lat-lon grid, with 40 layers in the vertical, a model top at 0.1 mb and is coupled to the Russell ocean model (1&#215;1.25&#215;L32). 
+  There are three versions of this model that vary in how aerosols and atmospheric chemistry are handled:
+<ul>
+<li> <span class="tt">physics_version=1</span> (NINT), aerosols and ozone are read in via pre-computed transient aerosol and ozone fields. The aerosol indirect effect is parameterized. This corresponds to the rundeck E_AR5_NINT_oR.R</li>
+<li> <span class="tt">physics_version=2</span> (TCAD), aerosols and atmospheric chemistry are calculated online as a function of atmospheric state and tranisent emissions inventories. The aerosol indirect effect is paramterised. This corresponds to the rundeck E_AR5_CAD_oR.R</li>
+<li> <span class="tt">physics_version=3</span> (TCADI), atmospheric composition is calculated as for <span class="tt">physics_version=2</span>, but the aerosol impacts on clouds (and hence the AIE) is calculated. This corresponds to the rundeck E_AR5_CADI_oR.R</li>
+</ul>
+</li>
+<li><b>GISS-E2-H: ModelE/Hycom 2&#215;2.5&#215;L40.</b>
+  This uses the same ModelE atmospheric code as above but is coupled to the HYCOM ocean model (tripolar grid ~1&#215;1&#215;L26 - Note that HYCOM output diagnostics are made available remapped to a cartesian 1x1 grid with a uniform 33 levels). There are also three physics versions as described above.</li>
+<li><b>GISS-E2-R-CC: ModelE/Russell 2&#215;2.5&#215;L40. Interactive Carbon Cycle</b>
+  As for GISS-E2-R with interactive terrestrial carbon cycle and oceanic bio-geochemistry. This corresponds to the rundeck E_AR5_NINT_oR_CC.R</li>
+<li><b>GISS-E2-H-CC: ModelE/Russell 2&#215;2.5&#215;L40.</b>
+  As for GISS-E2-H with interactive terrestrial carbon cycle and oceanic bio-geochemistry. E_AR5_NINT_oH_CC.R</li>
+</ul>
+
+<p> For the <a href="https://www.giss.nasa.gov/projects/accmip/">ACCMIP</a> experiments we have an additional <span class="tt">physics-version=4</span>, which is identical to TCADI (<span class="tt">physics-version=3</span>), but with a different aerosol module, based on TOMAS (<a href="#references">Lee et al, 2009</a>).</p>
+
+<p>For some experiments, we have performed the experiments with variations in the forcings. Due to the file system setup for the CMIP5 archive this variations are denoted by additional variations in the <span class="tt">physics-version</span> parameter. For these 'variations on a theme', the <span class="tt">physics-version</span> will be denoted by a 3 digit integer: <span class="tt">pNMM</span>. The first digit <span class="tt">N</span> = {1,2,3} is the physics-version as defined above. The next two digits denote the specific forcing variation according to the following tables.</p>
+
+<h4>Experiment: Simulations from 1850 to 2005 ("historicalMisc")</h4>
+
+<table class="xlist" role="presentation">
+<tr>
+  <td>00</td>
+  <td>all forcings except aerosol indirect effects (<span class="tt">pN00</span> is equivalent to <span class="tt">pN</span> in this experiment)</td></tr> 
+<tr>
+  <td>01</td>
+  <td>orbital only</td></tr>
+<tr>
+  <td>02</td>
+  <td>solar only</td></tr>
+<tr>
+  <td>03</td>
+  <td>volcanic only<sup>*</sup></td></tr>
+<tr>
+  <td>04</td>
+  <td>land-use only</td></tr>
+<tr>
+  <td>05</td>
+  <td>ozone only (strat+trop) taken from p3 experiment</td></tr>
+<tr>
+  <td>06</td>
+  <td>anthro tropospheric aerosol (direct effect) only (conc)</td></tr>
+<tr>
+  <td>07</td>
+  <td>anthro tropospheric aerosol (direct and indirect effects) only (conc)</td></tr>
+<tr>
+  <td>08</td>
+  <td>BC on snow only</td></tr>
+<tr>
+  <td>09</td>
+  <td>All anthropogenic (WMGHG+O3+AER+AIE+BCsnow+LU)</td></tr>
+<tr>
+  <td>10</td>
+  <td>anthro tropospheric aerosol (via emissions of SO2, BC, OC, NH3)</td></tr>
+<tr>
+  <td>11</td>
+  <td>anthro tropospheric reactive gases (emissions of NOx, CO, VOCs, CH4)</td></tr>
+<tr>
+  <td>12</td>
+  <td>ozone depleting substances (emissions of CFCs)</td></tr>
+<tr>
+  <td>13</td>
+  <td>Long-lived GHGs (CO2, N2O, CFCs, small miscellaneous gases, but not CH4)</td></tr>
+<tr>
+  <td>14</td>
+  <td>ozone only (strat+trop) taken from p1 experiment</td></tr>
+<tr>
+  <td>15</td>
+  <td>Stratospheric and Tropospheric aerosols (via emissions in the tropospheric plus volcanic AOD in the stratosphere)</td></tr>
+<tr>
+  <td>16</td>
+  <td>All forcings except volcanic aerosols**</td></tr>
+<tr>
+  <td>17</td>
+  <td>Long-lived GHGs (CO2, N2O, small miscellaneous gases, but no CFC or CH4 changes)*</td></tr>
+</table>
+
+<p>Note: for <span class="tt">r[1-5]i1p100/p1</span> in this experiment only, the solar forcing is as observed only to the end of 2000, and is a repeated 11 yr cycle subsequently. All other simulations used solar forcing as observed up to the end of 2005.</p> 
+<p>Note p114 is a rerun of p105 with the ozone forcing used in the historical NINT simulations and should be used in preference to p105 in attributing changes in the NINT simulations (along with p101/102/103/104/106/107/108/109).</p>  
+<p>Note that 'WMGHG only' is covered by historicalGHG, and 'orb+volc+solar' is covered by historicalNat.</p>
+<p>ERRATA: The p303 runs for both GISS-E2-R and GISS-E2-H as currently archived inadvertently included the forcings from p310 (anthropogenic aerosol emissions) as well as volcanic aerosols. The replacements runs p3031 are correctly Volcanic forcing only.  
+<p> In the event that we do multiple versions of any specific forcing we will add another digit: pNMMV (V={0,1,2....}), and explain the difference here and at PCMDI. <span class="tt">MM</span> of 10-13 apply only to the interactive model versions (TCAD, TCADI, <span class="tt">physics-version={2,3}</span>).</p>
+<p> The simulations (using TCADI) denoted by <span class="tt">p3001</span> are continuations from 1991 of the <span class="tt">p3</span> simulations including further updates to the volcanic and solar forcings through to 2012. The volcanic forcings are from a more recent version of the Sato et al. data than used in the historicalExt runs described below.</p>
+<p>*Note that the description of the p317 simulations has been corrected. These did not include CH<sub>4</sub> or CFCs.</p>
+<p>**Note that the description of the p316 simulations has been corrected. These were without volcanic forcings only, not all aerosols.</p>
+
+<h4>Experiment: historicalExt</h4>
+
+<p> Extended historical simulations for 2006 to 2012 were archived for many runs, either within the same directory as the years up to 2005, or for some earlier runs, as a specific historicalExt run. The extensions consist of an updated volcanic forcing, updated solar (observed to 2010, and repeats fo 1998 and 1999 for 2011 and 2012 respectively), aerosol emissions/concentrations from RCP45, GHGs as observed to 2012. Note that the volcanic forcing in these extensions was an intermediate version of the updated Sato et al. data.</p>
+ 
+<h4>Experiment: last millennium ("past1000")</h4>
+<p>The experiments for the Last Millennium are also being archived with multiple forcings, similarly denoted by the <span class="tt">physics-version</span> parameter as <span class="tt">pNMM</span>, where <span class="tt">N</span> is the physics-version as denoted above, and <span class="tt">MM</span> are forcings corresponding to the following table:</p>
+
+<table class="xlist" role="presentation">
+<tr>
+  <td>21</td>
+  <td>Solar: SBF, Volcanic: CEA,  LULC: PEA,  GHG transient, orbital</td></tr>
+<tr>
+  <td>22</td>
+  <td>Solar: SBF, Volcanic: GRA,  LULC: PEA,  GHG transient, orbital</td></tr>
+<tr>
+  <td>23</td>
+  <td>Solar: SBF, Volcanic: None, LULC: PEA,  GHG transient, orbital</td></tr>
+<tr>
+  <td>24</td>
+  <td>Solar: VK,  Volcanic: CEA,  LULC: PEA,  GHG transient, orbital</td></tr>
+<tr>
+  <td>25</td>
+  <td>Solar: VK,  Volcanic: GRA,  LULC: KK10, GHG transient, orbital</td></tr>
+<tr>
+  <td>26</td>
+  <td>Solar: VK,  Volcanic: None, LULC: PEA,  GHG transient, orbital</td></tr>
+<tr>
+  <td>27</td>
+  <td>Solar: VK,  Volcanic: CEA,  LULC: KK10, GHG transient, orbital</td></tr>
+<tr>
+  <td>28</td>
+  <td>Solar: VK,  Volcanic: GRA,  LULC: PEA,  GHG transient, orbital</td></tr>
+</table>	    
+<p>where the forcings are as defined in <a href="#references">Schmidt et al. (2011)</a>. Please note that the continuations of these simulations past 1850 to 2005 are stored under the 'historical' simulations (with the same <span class="tt">rip</span> tag) if they are not with the 'past1000' directories. Note that the control run will not be the same as for the other 'historical' simulations and aerosol and ozone forcings are slightly different too.</p>
+
+<p> One run <span class="tt">p122</span> had an unreproducable excursion in the middle of the run, for unknown reasons. For consistency we have rerun this simulation (denoted <span class="tt">p1221</span>).</p>
+	 	 
+<h4>Experiment: last glacial maximum ("lgm")</h4>
+
+<table class="xlist" role="presentation">
+<tr>
+  <td>50</td>
+  <td>GHG, orbital 21K, ICE-5G ice sheet, RA vegetation</td></tr>
+<tr>
+  <td>51</td>
+  <td>GHG, orbital 21K, ICE-5G ice sheet (adjusted Laurentide), RA vegetation</td></tr>
+</table>
+<p>Note that the control for these simulations is <span class="tt">pN42</span> (see below).</p>
+
+<p>There are also multiple pre-industrial control runs:</P>
+
+<h4> Experiment: pre-Industrial Control ("picontrol")</h4>
+
+<table class="xlist" role="presentation">
+<tr>
+  <td>00</td>
+  <td>1850 conditions (<span class="tt">pN00</span> is equivalent to <span class="tt">pN</span> in this experiment)</td></tr>
+<tr>
+  <td> </td>
+  <td>Solar: WLS (1850); Volcanic: Mean of Sato et al (1850-1999); LULC: PEA (1850); GHG (1850); Orbit: 1850</tr>
+<tr>
+  <td>41</td>
+  <td>850 conditions: Solar: SBF (850); Volcanic: Mean of CEA over 850-1999; LULC: PEA (850); GHG (850); Orbit: 850</td></tr>
+<tr>
+  <td>42</td>
+  <td>1850 conditions: As <span class="tt">pN00</span>, but with different background non-anthropogenic aerosols</td></tr>  
+</table>	    
+
+<h4> GISS-E2-[R/H]-CC Carbon cycle models</h4>
+
+<p>Initial experiments with the CC models (i.e. GISS-E2-R/H-CC historical/rcp45 r1i1p1) were run with observed atmospheric concentrations of CO<sub>2</sub> and only with the ocean carbon cycle reacting to climate and atm. pCO<sub>2</sub>.</p>
+
+<h4>Data Access</h4>
+
+<p>Other variations on these themes are possible and can also be accessed.
+We have posted a local page for <b><a href="/modelE/ar5plots/">some basic analyses</a></b> of commonly looked at fields available at GISS, but most data will be served via the ESGF. All simulation data from GISS is made available for unrestricted use. Registration is required at ESGF. When searching for GISS data, please ensure that the "Search All Sites" tickbox is checked.</p>
+
+<p>We will endeavour to keep track of the various corrections and known problems with our simulations, which will be listed below. Metadata for these simulations is available via the <a href="http://q.cmip5.ceda.ac.uk/">Metafor CMIP5 documentation project</a> and should be linked from the <a href="http://www.earthsystemgrid.org/search.htm?type=Simulation+Metadata&text=NASA">ESG portal</a>.</p>
+
+<p>If you require any further details on these configurations, please read the submitted papers, or contact us as described below.</p>
+
+<h4>Errata and comments</h4>
+
+<ul>
+<li> All zos, zosga and zostoga diagnostics for GISS-E2-H (all physics-versions) were incorrect as originally archived.
+<li> All zostaga in GISS-E2-R are incorrect as originally archived, but have been reprocessed.
+<li> Since zostoga fields are a post-processed diagnostic that uses the integrated freshwater imbalance and the zosga timeseries, there can be discontinuities between distinct runs (i.e. historical and historicalExt and the rcp runs). 
+<li> The zostoga fields do not appear to be comparable with estimate of thermosteric changes derived by using changes in temperature and the equation of state. This is being investigated.
+<li> sic fields for GISS-E2-H/R are actually provided on the Atmosphere grid, not the ocean gird.
+<li> volcello fields are not provided for the ocean models since neither of them are volume conserving.
+<li> All RCP simulations (rcp26, rcp45, rcp60, rcp85) using physics_version=1 (NINT) have fixed concentrations of tropospheric ozone and aerosols from 2000 onwards. GHGs and land use follow the RCP scenarios, while stratospheric ozone has an imposed recovery. RCP scenarios for physics_version={2,3} have emission driven changes in all composition fields - including CH<sub>4</sub>.</li>
+<li> Some fields in historicalMisc GISS-E2-R r[24]i1p107 are odd in a couple of months: Dec 1920 in r2i1p107, and May 1921 in r4i1p107. We are investigating the cause.</li> 
+<li> For <span class="tt">r*i1p100/p1</span> in historicalMisc, the solar forcing is as observed only to the end of 2000, and is a repeated 11 yr cycle subsequently. All other simulations used solar forcing as observed up to the end of 2005 (or to 2010 in the extended simulations, with 1998 and 1999 standing in for 2011 and 2012).</li>
+<li> Due to an oversight, orbital forcing was not included in the historical and RCP p1 (NINT) simulations. These were run with constant 2000 conditions.</li> 
+<li> The mrro diagnostic is defined as total runoff, however, only underground runoff was included. To get total runoff, please add mrro to mrros (surface runoff).</li>
+<li> The Gao et al. volcanic forcing prior to 1850 in past1000 simulations <span class="tt">p122, p125</span> and <span class="tt">p128</span> was approximately a factor of 2 larger than intended.</li>
+<li> Relative humidity diagnostics are all relative to liquid saturation.</li>
+<li> p303 (Volanic only) simulations (TCADI) for both GISS-E2-R and GISS-E2-H include anthropogenic aerosol emissions as well by mistake. These have been re-run and are available as p3031. 
+</ul> 
+
+
+<h4 id="references">References</h4>
+
+
+<p>Lee, Y.H., J.R. Pierce, and P.J. Adams, 2013: <a href="https://pubs.giss.nasa.gov/abs/le07500a.html">Representation of nucleation mode microphysics in global aerosol microphysics models</a>. <cite>Geosci. Model Dev.</cite>, <b>6</b>, 1221-1232, doi:10.5194/gmd-6-1221-2013.</p>
+
+<p>Miller, R.L., G.A. Schmidt, L.S. Nazarenko, N. Tausnev, S.E. Bauer, A.D. Del Genio, M. Kelley, K.K. Lo, R. Ruedy, D.T. Shindell, I. Aleinov, M. Bauer, R. Bleck, V. Canuto, Y. Chen, Y. Cheng, T.L. Clune, G. Faluvegi, J.E. Hansen, R.J. Healy, N.Y. Kiang, D. Koch, A.A. Lacis, A.N. LeGrande, J. Lerner, S. Menon, V. Oinas, C. Perez Garca-Pando, J.P. Perlwitz, M.J. Puma, D. Rind, A. Romanou, G.L. Russell, Mki. Sato, S. Sun, K. Tsigaridis, N. Unger, A. Voulgarakis, M.-S. Yao, and J. Zhang, 2014: <a href="https://pubs.giss.nasa.gov/abs/mi08910y.html">CMIP5 historical simulations (1850-2012) with GISS ModelE2</a>. <cite>J. Adv. Model. Earth Syst.</cite>, <b>6</b>, no. 2, 441-477, doi:10.1002/2013MS000266.</p>
+
+<p>Nazarenko, L., G.A. Schmidt, R.L. Miller, N. Tausnev, M. Kelley, R. Ruedy, G.L. Russell, I. Aleinov, M. Bauer, S. Bauer, R. Bleck, V. Canuto, Y. Cheng, T.L. Clune, A.D. Del Genio, G. Faluvegi, J.E. Hansen, R.J. Healy, N.Y. Kiang, D. Koch, A.A. Lacis, A.N. LeGrande, J. Lerner, K.K. Lo, S. Menon, V. Oinas, J.P. Perlwitz, M.J. Puma, D. Rind, A. Romanou, Mki. Sato, D.T. Shindell, S. Sun, K. Tsigaridis, N. Unger, A. Voulgarakis, M.-S. Yao, and J. Zhang, 2015: <a href="https://pubs.giss.nasa.gov/abs/na08200a.html">Future climate change under RCP emission scenarios with GISS ModelE2</a>. <cite>J. Adv. Model. Earth Syst.</cite>, <b>7</b>, no. 1, 244-267, doi:10.1002/2014MS000403.</p>
+
+<p>Schmidt, G.A., J.H. Jungclaus, C.M. Ammann, E. Bard, P. Braconnot, T.J. Crowley, G. Delaygue, F. Joos, N.A. Krivova, R. Muscheler, B.L. Otto-Bliesner, J. Pongratz, <span class="gissauthor">D.T. Shindell</span>, S.K. Solanki, F. Steinhilber, and L.E.A. Vieira, 2011: <a href="https://pubs.giss.nasa.gov/abs/sc07400c.html">Climate forcing reconstructions for use in PMIP simulations of the last millennium (v1.0)</a>. <cite>Geosci. Model Dev.</cite>, <b>4</b>, 33-45, doi:10.5194/gmd-4-33-2011.</p>
+
+<p>Schmidt, G.A., M. Kelley, L. Nazarenko, R. Ruedy, G.L. Russell, I. Aleinov, M. Bauer, S.E. Bauer, M.K. Bhat, R. Bleck, V. Canuto, Y.-H. Chen, Y. Cheng, T.L. Clune, A. Del Genio, R. de Fainchtein, G. Faluvegi, J.E. Hansen, R.J. Healy, N.Y. Kiang, D. Koch, A.A. Lacis, A.N. LeGrande, J. Lerner, K.K. Lo, E.E. Matthews, S. Menon, R.L. Miller, V. Oinas, A.O. Oloso, J.P. Perlwitz, M.J. Puma, W.M. Putman, D. Rind, A. Romanou, Mki. Sato, D.T. Shindell, S. Sun, R.A. Syed, N. Tausnev, K. Tsigaridis, N. Unger, A. Voulgarakis, M.-S. Yao, and J. Zhang, 2014: <a href="https://pubs.giss.nasa.gov/abs/sc02500z.html">Configuration and assessment of the GISS ModelE2 contributions to the CMIP5 archive</a>. <cite>J. Adv. Model. Earth Syst.</cite>, <b>6</b>, no. 1, 141-184, doi:10.1002/2013MS000265</p>
+
+
+
+<h4>Contact</h4>
+
+<p>Please notify us about any additional issues or anomalies that you come across and we will endeavour to deal with them.</p>
+
+<blockquote>
+  <a href="https://www.giss.nasa.gov/staff/gschmidt.html">Dr. Gavin Schmidt</a><br />
+  NASA Goddard Institute for Space Studies<br />
+  2880 Broadway,
+  New York, NY 10025 USA<br />
+  <a href="&#109;ailto:&#103;avin&#46;a&#46;schmidt&#64;n&#97;s&#97;&#46;&#103;ov">&#103;avin&#46;a&#46;schmidt&#64;n&#97;s&#97;&#46;&#103;ov</a>
+</blockquote>
+
+
+
+
+<h4 class="goback">+ <a href="../">Return to ModelE Climate Simulations Homepage</a></h4>
+
+
+<div class="clear"></div></div><!-- end cpad --></div><!-- end content -->
+<div id="nav"><h3>Site Menu</h3>
+<ul id="mnav">
+<li><a href="https://www.giss.nasa.gov/">GISS Home</a></li>
+<li><a href="https://www.giss.nasa.gov/research/">News &amp; Features</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/research/">News &amp; Features Overview</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/projects/">Projects &amp; Groups</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/projects/">Projects Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/projects/gcm/">Global Climate Modeling</a></li>
+<li><a href="https://www.giss.nasa.gov/projects/astrobio/">Astrobiology / ROCKE-3D</a></li>
+<li><a href="https://www.giss.nasa.gov/projects/impacts/">Climate Impacts</a></li>
+<li><a href="https://isccp.giss.nasa.gov/">ISCCP</a></li></ul><!-- end mnav2 --></li><li class="sel"><a href="https://data.giss.nasa.gov/">Datasets</a>
+<ul class="mnav2">
+<li><a href="https://data.giss.nasa.gov/">Datasets Overview</a></li>
+<li><a href="https://data.giss.nasa.gov/gistemp/">GISTEMP Surface Temperature</a></li>
+<li><a href="https://data.giss.nasa.gov/modelE/">Model E Simulations</a></li>
+<li><a href="https://data.giss.nasa.gov/modelforce/">Model Forcings</a></li>
+<li><a href="https://data.giss.nasa.gov/rocke3d/maps/">ROCKE-3D Simulations</a></li>
+<li><a href="https://isccp.giss.nasa.gov/products/onlineData.html">ISCCP Data Products</a></li>
+<li><a href="https://gacp.giss.nasa.gov/datasets/">GACP Data Products</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://pubs.giss.nasa.gov/">Publications</a>
+<ul class="mnav2">
+<li><a href="https://pubs.giss.nasa.gov/">Publications Overview</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2024.html">2024 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2023.html">2023 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2022.html">2022 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2021.html">2021 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/2020.html">2020 Publications</a></li>
+<li><a href="https://pubs.giss.nasa.gov/year/inpress.html">Accepted &amp; In Press</a></li>
+<li><a href="https://pubs.giss.nasa.gov/authors/">Author Bibliographies</a></li>
+<li><a href="https://pubs.giss.nasa.gov/best.html">Annual Best</a></li>
+<li><a href="https://pubs.giss.nasa.gov/cited.html">Most Cited</a></li>
+<li><a href="https://pubs.giss.nasa.gov/dissertations.html">Dissertations</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/tools/">Software</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/tools/">Software Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/modelE/">GCM Model E</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/panoply/">Panoply Data Viewer</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/gprojector/">G.Projector</a></li>
+<li><a href="https://www.giss.nasa.gov/tools/mars24/">Mars24 Sunclock</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/edu/">Education</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/edu/">Education Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/intern/">Internships</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/ccri/">CCRI</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/grad/">Graduate Study</a></li>
+<li><a href="https://www.giss.nasa.gov/about/jobs/postdoc.html">Postdoc Research</a></li>
+<li><a href="https://www.giss.nasa.gov/edu/res/">STEM Curriculum Modules</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/events/">Events</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/events/">Events Overview</a></li>
+<li><a href="https://www.giss.nasa.gov/events/lunch/">Lunch Seminars</a></li>
+<li><a href="https://www.giss.nasa.gov/events/past.html">Past Events</a></li></ul><!-- end mnav2 --></li>
+<li><a href="https://www.giss.nasa.gov/about/">About GISS</a>
+<ul class="mnav2">
+<li><a href="https://www.giss.nasa.gov/about/">About GISS</a></li>
+<li><a href="https://www.giss.nasa.gov/about/management.html">Management Staff</a></li>
+<li><a href="https://www.giss.nasa.gov/staff/">Personnel Directory</a></li>
+<li><a href="https://www.giss.nasa.gov/about/visiting/">Visitors' Info</a></li>
+<li><a href="https://www.giss.nasa.gov/about/jobs/">Employment</a></li></ul><!-- end mnav2 --></li></ul><!-- end mnav --></div><!-- end nav -->
+
+<div id="endpaper"></div></div><!-- end paper -->
+<div id="footer">
+<div id="footerlogo">
+<a href="https://www.nasa.gov"><img src="https://www.giss.nasa.gov/gfx/2013/nasa_x2.png" alt="NASA Logo, National Aeronautics and Space Administration" style="width:140px;height:98px" /></a></div><!-- end footerlogo -->
+<div id="footersig"><a href="https://www.nasa.gov/goddard/" class="imageLink"><img src="https://www.giss.nasa.gov/gfx/2013/gsig.png" alt="Goddard Space Flight Center" style="width:172px;height:68px" /></a></div><!-- end footersig -->
+<div id="footerinfo">
+<p>Page updated: Jan 31, 2020</p>
+<p>Website Curator:
+<a href="https://www.giss.nasa.gov/staff/rschmunk.html">
+Robert B. Schmunk</a>
+&mdash;
+NASA Official:
+<a href="https://www.giss.nasa.gov/staff/gschmidt.html">
+Gavin A. Schmidt</a></p>
+<p><a href="https://www.giss.nasa.gov/about/contact.html">Contact GISS</a> &mdash;
+<a href="https://www.nasa.gov/about/highlights/HP_Privacy.html">NASA Privacy Policy</a> &mdash;
+<a href="https://www.nasa.gov/general/accessibility/">Accessibility</a></p></div><!-- end footerinfo --></div><!-- end footer --></div><!-- end page --></body>
+
+</html>
+
+
+
+
+
+ contentType 9 text/html url 44 https://data.giss.nasa.gov:443/modelE/cmip5/ responseCode 3 200 

@@ -1,0 +1,120 @@
+qabkngnsoswgpexcigreggrcdifqdktcacwihkfi length 5 18732 page 18732 
+<html>
+<head>
+<title>r48149 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r48149 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/48149" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./48148.html" title="Special:Code/MediaWiki/48148">r48148</a>‎ | <b>r48149</b> | <a href="./48150.html" title="Special:Code/MediaWiki/48150">r48150</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>23:01, 7 March 2009</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/pinky" title="Special:Code/MediaWiki/author/pinky">pinky</a></td></tr>
+<tr><td>Status:</td><td>resolved (<a href="#code-comments">Comments</a>)
+</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">(<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=10336">bug 10336</a>) Added new magic word {{REVISIONUSER}}, which displays the user name of the last user to edit the page</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/MagicWord.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FMagicWord.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/parser/Parser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2Fparser%2FParser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/messages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2Fmessages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/48149&amp;action=purge" title="Special:Code/MediaWiki/48149">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/parser/Parser.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -2450,6 +2450,12 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">2451</td><td class="linenumbers">2451</td><td class="unchanged"><span> 				$this->mOutput->setFlag( 'vary-revision' );</span></td></tr>
+<tr id="7"><td class="linenumbers">2452</td><td class="linenumbers">2452</td><td class="unchanged"><span> 				wfDebug( __METHOD__ . ": {{REVISIONTIMESTAMP}} used, setting vary-revision...\n" );</span></td></tr>
+<tr id="8"><td class="linenumbers">2453</td><td class="linenumbers">2453</td><td class="unchanged"><span> 				return $this->getRevisionTimestamp();</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">2454</td><td class="ins"><ins>+			case 'revisionuser':</ins></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">2455</td><td class="ins"><ins>+                                // Let the edit saving system know we should parse the page</ins></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">2456</td><td class="ins"><ins>+                                // *after* a revision ID has been assigned. This is for null edits.</ins></td></tr>
+<tr id="12"><td class="linenumbers"> </td><td class="linenumbers">2457</td><td class="ins"><ins>+				$this->mOutput->setFlag( 'vary-revision' );</ins></td></tr>
+<tr id="13"><td class="linenumbers"> </td><td class="linenumbers">2458</td><td class="ins"><ins>+				wfDebug( __METHOD__ . ": {{REVISIONUSER}} used, setting vary-revision...\n" );</ins></td></tr>
+<tr id="14"><td class="linenumbers"> </td><td class="linenumbers">2459</td><td class="ins"><ins>+				return $this->getRevisionUser();</ins></td></tr>
+<tr id="15"><td class="linenumbers">2454</td><td class="linenumbers">2460</td><td class="unchanged"><span> 			case 'namespace':</span></td></tr>
+<tr id="16"><td class="linenumbers">2455</td><td class="linenumbers">2461</td><td class="unchanged"><span> 				return str_replace('_',' ',$wgContLang->getNsText( $this->mTitle->getNamespace() ) );</span></td></tr>
+<tr id="17"><td class="linenumbers">2456</td><td class="linenumbers">2462</td><td class="unchanged"><span> 			case 'namespacee':</span></td></tr>
+<tr id="18"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -4626,6 +4632,23 @@</span></td></tr>
+<tr id="19"><td class="linenumbers">4627</td><td class="linenumbers">4633</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="20"><td class="linenumbers">4628</td><td class="linenumbers">4634</td><td class="unchanged"><span> </span></td></tr>
+<tr id="21"><td class="linenumbers">4629</td><td class="linenumbers">4635</td><td class="unchanged"><span> 	/**</span></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">4636</td><td class="ins"><ins>+	 * Get the name of the user that edited the last revision</ins></td></tr>
+<tr id="23"><td class="linenumbers"> </td><td class="linenumbers">4637</td><td class="ins"><ins>+	 */</ins></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">4638</td><td class="ins"><ins>+	function getRevisionUser() {</ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">4639</td><td class="ins"><ins>+		// if this template is subst: the revision id will be blank,</ins></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">4640</td><td class="ins"><ins>+		// so just use the current user's name</ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">4641</td><td class="ins"><ins>+		if( $this->mRevisionId ) {</ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">4642</td><td class="ins"><ins>+	                $dbr = wfGetDB( DB_SLAVE );</ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">4643</td><td class="ins"><ins>+	                $revuser = $dbr->selectField( 'revision', 'rev_user_text',</ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">4644</td><td class="ins"><ins>+ 				array( 'rev_id' => $this->mRevisionId ), __METHOD__ );</ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">4645</td><td class="ins"><ins>+		} else {</ins></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">4646</td><td class="ins"><ins>+			global $wgUser;</ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">4647</td><td class="ins"><ins>+			$revuser = $wgUser->getName();</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">4648</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">4649</td><td class="ins"><ins>+		return $revuser;</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">4650</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">4651</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">4652</td><td class="ins"><ins>+	/**</ins></td></tr>
+<tr id="39"><td class="linenumbers">4630</td><td class="linenumbers">4653</td><td class="unchanged"><span> 	 * Mutator for $mDefaultSort</span></td></tr>
+<tr id="40"><td class="linenumbers">4631</td><td class="linenumbers">4654</td><td class="unchanged"><span> 	 *</span></td></tr>
+<tr id="41"><td class="linenumbers">4632</td><td class="linenumbers">4655</td><td class="unchanged"><span> 	 * @param $sort New value</span></td></tr>
+<tr id="42" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/MagicWord.php</td></tr>
+
+
+
+<tr id="46"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -78,6 +78,7 @@</span></td></tr>
+<tr id="47"><td class="linenumbers">79</td><td class="linenumbers">79</td><td class="unchanged"><span> 		'revisionmonth',</span></td></tr>
+<tr id="48"><td class="linenumbers">80</td><td class="linenumbers">80</td><td class="unchanged"><span> 		'revisionyear',</span></td></tr>
+<tr id="49"><td class="linenumbers">81</td><td class="linenumbers">81</td><td class="unchanged"><span> 		'revisiontimestamp',</span></td></tr>
+<tr id="50"><td class="linenumbers"> </td><td class="linenumbers">82</td><td class="ins"><ins>+		'revisionuser',</ins></td></tr>
+<tr id="51"><td class="linenumbers">82</td><td class="linenumbers">83</td><td class="unchanged"><span> 		'subpagename',</span></td></tr>
+<tr id="52"><td class="linenumbers">83</td><td class="linenumbers">84</td><td class="unchanged"><span> 		'subpagenamee',</span></td></tr>
+<tr id="53"><td class="linenumbers">84</td><td class="linenumbers">85</td><td class="unchanged"><span> 		'displaytitle',</span></td></tr>
+<tr id="54" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/messages/MessagesEn.php</td></tr>
+
+
+
+<tr id="58"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -300,6 +300,7 @@</span></td></tr>
+<tr id="59"><td class="linenumbers">301</td><td class="linenumbers">301</td><td class="unchanged"><span> 	'revisionmonth'          => array( 1,    'REVISIONMONTH'          ),</span></td></tr>
+<tr id="60"><td class="linenumbers">302</td><td class="linenumbers">302</td><td class="unchanged"><span> 	'revisionyear'           => array( 1,    'REVISIONYEAR'           ),</span></td></tr>
+<tr id="61"><td class="linenumbers">303</td><td class="linenumbers">303</td><td class="unchanged"><span> 	'revisiontimestamp'      => array( 1,    'REVISIONTIMESTAMP'      ),</span></td></tr>
+<tr id="62"><td class="linenumbers"> </td><td class="linenumbers">304</td><td class="ins"><ins>+	'revisionuser'           => array( 1,    'REVISIONUSER'           ),</ins></td></tr>
+<tr id="63"><td class="linenumbers">304</td><td class="linenumbers">305</td><td class="unchanged"><span> 	'plural'                 => array( 0,    'PLURAL:'                ),</span></td></tr>
+<tr id="64"><td class="linenumbers">305</td><td class="linenumbers">306</td><td class="unchanged"><span> 	'fullurl'                => array( 0,    'FULLURL:'               ),</span></td></tr>
+<tr id="65"><td class="linenumbers">306</td><td class="linenumbers">307</td><td class="unchanged"><span> 	'fullurle'               => array( 0,    'FULLURLE:'              ),</span></td></tr>
+<tr id="66" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="70"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -132,6 +132,8 @@</span></td></tr>
+<tr id="71"><td class="linenumbers">133</td><td class="linenumbers">133</td><td class="unchanged"><span> * (bug 17844) Redirect users to a specific page when they log in, see </span></td></tr>
+<tr id="72"><td class="linenumbers">134</td><td class="linenumbers">134</td><td class="unchanged"><span>   $wgRedirectOnLogin</span></td></tr>
+<tr id="73"><td class="linenumbers">135</td><td class="linenumbers">135</td><td class="unchanged"><span> * Added a link to Special:UserRights on Special:Contributions for privileged users</span></td></tr>
+<tr id="74"><td class="linenumbers"> </td><td class="linenumbers">136</td><td class="ins"><ins>+* (bug 10336) Added new magic word {{REVISIONUSER}}, which displays the user</ins></td></tr>
+<tr id="75"><td class="linenumbers"> </td><td class="linenumbers">137</td><td class="ins"><ins>+  name of the last user to edit the page</ins></td></tr>
+<tr id="76"><td class="linenumbers">136</td><td class="linenumbers">138</td><td class="unchanged"><span> </span></td></tr>
+<tr id="77"><td class="linenumbers">137</td><td class="linenumbers">139</td><td class="unchanged"><span> === Bug fixes in 1.15 ===</span></td></tr>
+<tr id="78"><td class="linenumbers">138</td><td class="linenumbers">140</td><td class="unchanged"><span> * (bug 16968) Special:Upload no longer throws useless warnings.</span></td></tr>
+</table>
+</div>
+<h2 id='code-references'>Follow-up revisions</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-ok'><td><a href="./48334.html" title="Special:Code/MediaWiki/48334">r48334</a></td><td>Follow up on <a href="./48149.html" title="Special:Code/MediaWiki/48149">r48149</a>, update RELEASE-NOTES</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/pinky" title="Special:Code/MediaWiki/author/pinky">pinky</a></td><td>23:02, 11 March 2009</td></tr>
+<tr class='mw-codereview-status-ok'><td><a href="./48342.html" title="Special:Code/MediaWiki/48342">r48342</a></td><td>Tweaked <a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=10336">bug 10336</a> notes</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/aaron" title="Special:Code/MediaWiki/author/aaron">aaron</a></td><td>06:28, 12 March 2009</td></tr></table><h2 id='code-comments'>Comments</h2>
+<div class='mw-codereview-comments'><div class="mw-codereview-comment" id="c1944" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./48149.html#c1944" title="Special:Code/MediaWiki/48149">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Aaron_Schulz" class="mw-userlink" title="User:Aaron Schulz"><bdi>Aaron Schulz</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Aaron_Schulz" class="mw-usertoollinks-talk" title="User talk:Aaron Schulz">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Aaron_Schulz" class="mw-usertoollinks-contribs" title="Special:Contributions/Aaron Schulz">contribs</a>)</span> &#160; 05:03, 8 March 2009 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>RELEASE-NOTES look wrong, should be "edit of this revision" not "last editor"
+</p></div></div>
+<div class="mw-codereview-comment" id="c1956" style="margin-left: 48px"><div class="mw-codereview-comment-meta"><a href="./48149.html#c1956" title="Special:Code/MediaWiki/48149">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Pinky" class="mw-userlink" title="User:Pinky"><bdi>Pinky</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Pinky" class="mw-usertoollinks-talk" title="User talk:Pinky">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Pinky" class="mw-usertoollinks-contribs" title="Special:Contributions/Pinky">contribs</a>)</span> &#160; 00:50, 10 March 2009 </div><div class="mw-codereview-comment-text mw-content-ltr"><ul><li>(<a class="external text" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=10336">bug 10336</a>) Added new magic word , which displays the editor of the current revision's user name -- better?</li></ul></div></div>
+<div class="mw-codereview-comment" id="c1980" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./48149.html#c1980" title="Special:Code/MediaWiki/48149">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Pinky" class="mw-userlink" title="User:Pinky"><bdi>Pinky</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Pinky" class="mw-usertoollinks-talk" title="User talk:Pinky">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Pinky" class="mw-usertoollinks-contribs" title="Special:Contributions/Pinky">contribs</a>)</span> &#160; 23:04, 11 March 2009 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Updated in <a href="./48334.html" title="Special:Code/MediaWiki/48334">r48334</a>
+</p></div></div>
+<div class="mw-codereview-comment" id="c1981" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./48149.html#c1981" title="Special:Code/MediaWiki/48149">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Jack_Phoenix" class="mw-userlink" title="User:Jack Phoenix"><bdi>Jack Phoenix</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Jack_Phoenix" class="mw-usertoollinks-talk" title="User talk:Jack Phoenix">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Jack_Phoenix" class="mw-usertoollinks-contribs" title="Special:Contributions/Jack Phoenix">contribs</a>)</span> &#160; 23:04, 11 March 2009 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Resolved in <a href="./48334.html" title="Special:Code/MediaWiki/48334">r48334</a>.
+</p></div></div></div><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>23:04, 11 March 2009&#160;<a href="https://www.mediawiki.org/wiki/User:Jack_Phoenix" class="mw-userlink" title="User:Jack Phoenix"><bdi>Jack Phoenix</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Jack_Phoenix" class="mw-usertoollinks-talk" title="User talk:Jack Phoenix">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Jack_Phoenix" class="mw-usertoollinks-contribs" title="Special:Contributions/Jack Phoenix">contribs</a>)</span>&#160;changed the <b>status</b> of r48149 <i>[<b>removed:</b> fixme&#160;<b>added:</b> resolved]</i></li>
+<li>05:03, 8 March 2009&#160;<a href="https://www.mediawiki.org/wiki/User:Aaron_Schulz" class="mw-userlink" title="User:Aaron Schulz"><bdi>Aaron Schulz</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Aaron_Schulz" class="mw-usertoollinks-talk" title="User talk:Aaron Schulz">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Aaron_Schulz" class="mw-usertoollinks-contribs" title="Special:Contributions/Aaron Schulz">contribs</a>)</span>&#160;changed the <b>status</b> of r48149 <i>[<b>removed:</b> new&#160;<b>added:</b> fixme]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/48149.html responseCode 3 200 

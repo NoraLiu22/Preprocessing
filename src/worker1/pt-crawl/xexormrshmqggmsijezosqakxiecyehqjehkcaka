@@ -1,0 +1,147 @@
+xexormrshmqggmsijezosqakxiecyehqjehkcaka length 5 19039 page 19039 
+<html>
+<head>
+<title>r20839 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r20839 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/20839" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./20838.html" title="Special:Code/MediaWiki/20838">r20838</a>‎ | <b>r20839</b> | <a href="./20840.html" title="Special:Code/MediaWiki/20840">r20840</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>13:28, 30 March 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/daniel" title="Special:Code/MediaWiki/author/daniel">daniel</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">removing empty spans for w3c conformity, as suggested by Miki11</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/CategoryTree/CategoryTree.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTree.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/CategoryTreeFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTreeFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/20839&amp;action=purge" title="Special:Code/MediaWiki/20839">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTreeFunctions.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -331,13 +331,13 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">332</td><td class="linenumbers">332</td><td class="unchanged"><span> 		$s .= wfOpenElement( 'div', array( 'class' => 'CategoryTreeSection' ) );</span></td></tr>
+<tr id="7"><td class="linenumbers">333</td><td class="linenumbers">333</td><td class="unchanged"><span> 		$s .= wfOpenElement( 'div', array( 'class' => 'CategoryTreeItem' ) );</span></td></tr>
+<tr id="8"><td class="linenumbers">334</td><td class="linenumbers">334</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="9"><td class="linenumbers">335</td><td class="linenumbers"> </td><td class="del"><del>-		$s .= wfOpenElement( 'span', array( 'class' => 'CategoryTreeBullet' ) );</del></td></tr>
+<tr id="10"><td class="linenumbers">336</td><td class="linenumbers">335</td><td class="unchanged"><span> 		if ( $ns == NS_CATEGORY ) {</span></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">336</td><td class="ins"><ins>+			$s .= wfOpenElement( 'span', array( 'class' => 'CategoryTreeBullet' ) );</ins></td></tr>
+<tr id="12"><td class="linenumbers">337</td><td class="linenumbers">337</td><td class="unchanged"><span> 			$s .= '[' . wfElement( 'a', $linkattr, $txt ) . '] ';</span></td></tr>
+<tr id="13"><td class="linenumbers"> </td><td class="linenumbers">338</td><td class="ins"><ins>+			$s .= wfCloseElement( 'span' );</ins></td></tr>
+<tr id="14"><td class="linenumbers">338</td><td class="linenumbers">339</td><td class="unchanged"><span> 		} else {</span></td></tr>
+<tr id="15"><td class="linenumbers">339</td><td class="linenumbers">340</td><td class="unchanged"><span> 			$s .= ' ';</span></td></tr>
+<tr id="16"><td class="linenumbers">340</td><td class="linenumbers">341</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="17"><td class="linenumbers">341</td><td class="linenumbers"> </td><td class="del"><del>-		$s .= wfCloseElement( 'span' );</del></td></tr>
+<tr id="18"><td class="linenumbers">342</td><td class="linenumbers">342</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="19"><td class="linenumbers">343</td><td class="linenumbers">343</td><td class="unchanged"><span> 		$s .= wfOpenElement( 'a', array( 'class' => $labelClass, 'href' => $wikiLink ) ) . $label . wfCloseElement( 'a' );</span></td></tr>
+<tr id="20"><td class="linenumbers">344</td><td class="linenumbers">344</td><td class="unchanged"><span> 		$s .= wfCloseElement( 'div' );</span></td></tr>
+<tr id="21" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTree.php</td></tr>
+
+
+
+<tr id="25"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -34,11 +34,10 @@</span></td></tr>
+<tr id="26"><td class="linenumbers">35</td><td class="linenumbers">35</td><td class="unchanged"><span>  * $wgCategoryTreeUseCache - enable HTTP cache for anon users. Default is false.</span></td></tr>
+<tr id="27"><td class="linenumbers">36</td><td class="linenumbers">36</td><td class="unchanged"><span>  * $wgCategoryTreeUnifiedView - use unified view on category pages, instead of "tree" or "traditional list". Default is true.</span></td></tr>
+<tr id="28"><td class="linenumbers">37</td><td class="linenumbers">37</td><td class="unchanged"><span>  * $wgCategoryTreeOmitNamespace - never show namespace prefix. Default is false</span></td></tr>
+<tr id="29"><td class="linenumbers">38</td><td class="linenumbers"> </td><td class="del"><del>-</del></td></tr>
+<tr id="30"><td class="linenumbers">39</td><td class="linenumbers"> </td><td class="del"><del>- * $wgCategoryMaxDepth - maximum value for depth argument; can be an</del></td></tr>
+<tr id="31"><td class="linenumbers">40</td><td class="linenumbers"> </td><td class="del"><del>- *                       integer, or an array of two integers.  The first element is the maximum</del></td></tr>
+<tr id="32"><td class="linenumbers">41</td><td class="linenumbers"> </td><td class="del"><del>- *                       depth for the "pages" and "all" modes; the second is for the categories</del></td></tr>
+<tr id="33"><td class="linenumbers">42</td><td class="linenumbers"> </td><td class="del"><del>- *                       mode.  Ignored if $wgCategoryTreeDynamicTag is true.</del></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">38</td><td class="ins"><ins>+ * $wgCategoryTreeMaxDepth - maximum value for depth argument; An array that maps mode values to</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">39</td><td class="ins"><ins>+ *                           the maximum depth acceptable for the depth option. </ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">40</td><td class="ins"><ins>+ *                           Per default, the "categories" mode has a max depth of 2,</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">41</td><td class="ins"><ins>+ *                           all other modes have a max depth of 1.</ins></td></tr>
+<tr id="38"><td class="linenumbers">43</td><td class="linenumbers">42</td><td class="unchanged"><span>  */  </span></td></tr>
+<tr id="39"><td class="linenumbers">44</td><td class="linenumbers">43</td><td class="unchanged"><span> </span></td></tr>
+<tr id="40"><td class="linenumbers">45</td><td class="linenumbers">44</td><td class="unchanged"><span> $wgCategoryTreeMaxChildren = 200;</span></td></tr>
+<tr id="41"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -48,7 +47,7 @@</span></td></tr>
+<tr id="42"><td class="linenumbers">49</td><td class="linenumbers">48</td><td class="unchanged"><span> $wgCategoryTreeHTTPCache = false;</span></td></tr>
+<tr id="43"><td class="linenumbers">50</td><td class="linenumbers">49</td><td class="unchanged"><span> $wgCategoryTreeUnifiedView = true;</span></td></tr>
+<tr id="44"><td class="linenumbers">51</td><td class="linenumbers">50</td><td class="unchanged"><span> $wgCategoryTreeOmitNamespace = false;</span></td></tr>
+<tr id="45"><td class="linenumbers">52</td><td class="linenumbers"> </td><td class="del"><del>-$wgCategoryMaxDepth = array(1,2);</del></td></tr>
+<tr id="46"><td class="linenumbers"> </td><td class="linenumbers">51</td><td class="ins"><ins>+$wgCategoryTreeMaxDepth = array(CT_MODE_PAGES => 1, CT_MODE_ALL => 1, CT_MODE_CATEGORIES => 2);</ins></td></tr>
+<tr id="47"><td class="linenumbers">53</td><td class="linenumbers">52</td><td class="unchanged"><span> </span></td></tr>
+<tr id="48"><td class="linenumbers">54</td><td class="linenumbers">53</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="49"><td class="linenumbers">55</td><td class="linenumbers">54</td><td class="unchanged"><span>  * Register extension setup hook and credits</span></td></tr>
+<tr id="50"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -122,39 +121,23 @@</span></td></tr>
+<tr id="51"><td class="linenumbers">123</td><td class="linenumbers">122</td><td class="unchanged"><span>  * Internal function to cap depth</span></td></tr>
+<tr id="52"><td class="linenumbers">124</td><td class="linenumbers">123</td><td class="unchanged"><span>  */</span></td></tr>
+<tr id="53"><td class="linenumbers">125</td><td class="linenumbers">124</td><td class="unchanged"><span> </span></td></tr>
+<tr id="54"><td class="linenumbers">126</td><td class="linenumbers"> </td><td class="del"><del>-function efCategoryTreeCapDepth( $mode, $depth ) </del></td></tr>
+<tr id="55"><td class="linenumbers">127</td><td class="linenumbers"> </td><td class="del"><del>-{</del></td></tr>
+<tr id="56"><td class="linenumbers"> </td><td class="linenumbers">125</td><td class="ins"><ins>+function efCategoryTreeCapDepth( $mode, $depth ) {</ins></td></tr>
+<tr id="57"><td class="linenumbers"> </td><td class="linenumbers">126</td><td class="ins"><ins>+	global $wgCategoryTreeMaxDepth;</ins></td></tr>
+<tr id="58"><td class="linenumbers">128</td><td class="linenumbers">127</td><td class="unchanged"><span> </span></td></tr>
+<tr id="59"><td class="linenumbers">129</td><td class="linenumbers"> </td><td class="del"><del>-  if (is_numeric($depth))</del></td></tr>
+<tr id="60"><td class="linenumbers">130</td><td class="linenumbers"> </td><td class="del"><del>-    $depth = intval($depth);</del></td></tr>
+<tr id="61"><td class="linenumbers">131</td><td class="linenumbers"> </td><td class="del"><del>-  else</del></td></tr>
+<tr id="62"><td class="linenumbers">132</td><td class="linenumbers"> </td><td class="del"><del>-    $depth = 1;</del></td></tr>
+<tr id="63"><td class="linenumbers">133</td><td class="linenumbers"> </td><td class="del"><del>-  </del></td></tr>
+<tr id="64"><td class="linenumbers"> </td><td class="linenumbers">128</td><td class="ins"><ins>+	if (is_numeric($depth))</ins></td></tr>
+<tr id="65"><td class="linenumbers"> </td><td class="linenumbers">129</td><td class="ins"><ins>+		$depth = intval($depth);</ins></td></tr>
+<tr id="66"><td class="linenumbers"> </td><td class="linenumbers">130</td><td class="ins"><ins>+	else return 1;</ins></td></tr>
+<tr id="67"><td class="linenumbers">134</td><td class="linenumbers">131</td><td class="unchanged"><span> </span></td></tr>
+<tr id="68"><td class="linenumbers">135</td><td class="linenumbers"> </td><td class="del"><del>-  global $wgCategoryMaxDepth;</del></td></tr>
+<tr id="69"><td class="linenumbers">136</td><td class="linenumbers"> </td><td class="del"><del>-  if (is_array($wgCategoryMaxDepth)) {</del></td></tr>
+<tr id="70"><td class="linenumbers">137</td><td class="linenumbers"> </td><td class="del"><del>-    switch($mode) {</del></td></tr>
+<tr id="71"><td class="linenumbers">138</td><td class="linenumbers"> </td><td class="del"><del>-    case CT_MODE_PAGES:</del></td></tr>
+<tr id="72"><td class="linenumbers">139</td><td class="linenumbers"> </td><td class="del"><del>-    case CT_MODE_ALL:</del></td></tr>
+<tr id="73"><td class="linenumbers">140</td><td class="linenumbers"> </td><td class="del"><del>-      $max = isset($wgCategoryMaxDepth[0])?$wgCategoryMaxDepth[0]:1;</del></td></tr>
+<tr id="74"><td class="linenumbers">141</td><td class="linenumbers"> </td><td class="del"><del>-      break;</del></td></tr>
+<tr id="75"><td class="linenumbers">142</td><td class="linenumbers"> </td><td class="del"><del>-    case CT_MODE_CATEGORIES:</del></td></tr>
+<tr id="76"><td class="linenumbers">143</td><td class="linenumbers"> </td><td class="del"><del>-    default:</del></td></tr>
+<tr id="77"><td class="linenumbers">144</td><td class="linenumbers"> </td><td class="del"><del>-      $max = isset($wgCategoryMaxDepth[1])?$wgCategoryMaxDepth[1]:1;</del></td></tr>
+<tr id="78"><td class="linenumbers">145</td><td class="linenumbers"> </td><td class="del"><del>-      break;</del></td></tr>
+<tr id="79"><td class="linenumbers">146</td><td class="linenumbers"> </td><td class="del"><del>-    }</del></td></tr>
+<tr id="80"><td class="linenumbers">147</td><td class="linenumbers"> </td><td class="del"><del>-  } elseif (is_numeric($wgCategoryMaxDepth)) {</del></td></tr>
+<tr id="81"><td class="linenumbers">148</td><td class="linenumbers"> </td><td class="del"><del>-    $max = $wgCategoryMaxDepth;</del></td></tr>
+<tr id="82"><td class="linenumbers">149</td><td class="linenumbers"> </td><td class="del"><del>-  } else {</del></td></tr>
+<tr id="83"><td class="linenumbers">150</td><td class="linenumbers"> </td><td class="del"><del>-    wfDebug( 'efCategoryTreeCapDepth: $wgCategoryMaxDepth is invalid.' );</del></td></tr>
+<tr id="84"><td class="linenumbers">151</td><td class="linenumbers"> </td><td class="del"><del>-    $max = 1;</del></td></tr>
+<tr id="85"><td class="linenumbers">152</td><td class="linenumbers"> </td><td class="del"><del>-  }</del></td></tr>
+<tr id="86"><td class="linenumbers">153</td><td class="linenumbers"> </td><td class="del"><del>-  </del></td></tr>
+<tr id="87"><td class="linenumbers">154</td><td class="linenumbers"> </td><td class="del"><del>-  //echo "mode $mode:max is $max\n";</del></td></tr>
+<tr id="88"><td class="linenumbers">155</td><td class="linenumbers"> </td><td class="del"><del>-  if ($depth>$max)</del></td></tr>
+<tr id="89"><td class="linenumbers">156</td><td class="linenumbers"> </td><td class="del"><del>-    $depth = $max;</del></td></tr>
+<tr id="90"><td class="linenumbers">157</td><td class="linenumbers"> </td><td class="del"><del>-  </del></td></tr>
+<tr id="91"><td class="linenumbers">158</td><td class="linenumbers"> </td><td class="del"><del>-  return $depth;</del></td></tr>
+<tr id="92"><td class="linenumbers"> </td><td class="linenumbers">132</td><td class="ins"><ins>+	if (is_array($wgCategoryTreeMaxDepth)) {</ins></td></tr>
+<tr id="93"><td class="linenumbers"> </td><td class="linenumbers">133</td><td class="ins"><ins>+		$max = isset($wgCategoryTreeMaxDepth[$mode]) ? $wgCategoryTreeMaxDepth[$mode] : 1;</ins></td></tr>
+<tr id="94"><td class="linenumbers"> </td><td class="linenumbers">134</td><td class="ins"><ins>+	} elseif (is_numeric($wgCategoryTreeMaxDepth)) {</ins></td></tr>
+<tr id="95"><td class="linenumbers"> </td><td class="linenumbers">135</td><td class="ins"><ins>+		$max = $wgCategoryTreeMaxDepth;</ins></td></tr>
+<tr id="96"><td class="linenumbers"> </td><td class="linenumbers">136</td><td class="ins"><ins>+	} else {</ins></td></tr>
+<tr id="97"><td class="linenumbers"> </td><td class="linenumbers">137</td><td class="ins"><ins>+		wfDebug( 'efCategoryTreeCapDepth: $wgCategoryTreeMaxDepth is invalid.' );</ins></td></tr>
+<tr id="98"><td class="linenumbers"> </td><td class="linenumbers">138</td><td class="ins"><ins>+		$max = 1;</ins></td></tr>
+<tr id="99"><td class="linenumbers"> </td><td class="linenumbers">139</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="100"><td class="linenumbers"> </td><td class="linenumbers">140</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="101"><td class="linenumbers"> </td><td class="linenumbers">141</td><td class="ins"><ins>+	return min($depth, $max);</ins></td></tr>
+<tr id="102"><td class="linenumbers">159</td><td class="linenumbers">142</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="103"><td class="linenumbers">160</td><td class="linenumbers">143</td><td class="unchanged"><span> </span></td></tr>
+<tr id="104"><td class="linenumbers">161</td><td class="linenumbers">144</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="105"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -205,13 +188,10 @@</span></td></tr>
+<tr id="106"><td class="linenumbers">206</td><td class="linenumbers">189</td><td class="unchanged"><span> </span></td></tr>
+<tr id="107"><td class="linenumbers">207</td><td class="linenumbers">190</td><td class="unchanged"><span> 	$depth = efCategoryTreeCapDepth($mode,@$argv[ 'depth' ]);</span></td></tr>
+<tr id="108"><td class="linenumbers">208</td><td class="linenumbers">191</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="109"><td class="linenumbers">209</td><td class="linenumbers"> </td><td class="del"><del>-	if ( $onlyroot ) $display = 'onlyroot';</del></td></tr>
+<tr id="110"><td class="linenumbers">210</td><td class="linenumbers"> </td><td class="del"><del>-	else if ( $hideroot ) $display = 'hideroot';</del></td></tr>
+<tr id="111"><td class="linenumbers">211</td><td class="linenumbers"> </td><td class="del"><del>-	else $display = 'expandroot';</del></td></tr>
+<tr id="112"><td class="linenumbers"> </td><td class="linenumbers">192</td><td class="ins"><ins>+	if ( $onlyroot ) $depth = 0;</ins></td></tr>
+<tr id="113"><td class="linenumbers">212</td><td class="linenumbers">193</td><td class="unchanged"><span> </span></td></tr>
+<tr id="114"><td class="linenumbers">213</td><td class="linenumbers">194</td><td class="unchanged"><span> 	$ct = new CategoryTree;</span></td></tr>
+<tr id="115"><td class="linenumbers">214</td><td class="linenumbers">195</td><td class="unchanged"><span> 	return $ct->getTag( $parser, $cat, $mode, $hideroot, $style, $depth );</span></td></tr>
+<tr id="116"><td class="linenumbers">215</td><td class="linenumbers"> </td><td class="del"><del>-	return $ct->getTag( $parser, $cat, $mode, $display, $style, $depth );</del></td></tr>
+<tr id="117"><td class="linenumbers">216</td><td class="linenumbers">196</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="118"><td class="linenumbers">217</td><td class="linenumbers">197</td><td class="unchanged"><span> </span></td></tr>
+<tr id="119"><td class="linenumbers">218</td><td class="linenumbers">198</td><td class="unchanged"><span> /**</span></td></tr>
+</table>
+</div>
+</form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/20839.html responseCode 3 200 
