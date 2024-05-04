@@ -1,0 +1,41 @@
+cctatmxqfcjkskkicqemictkqqkahcbsaceecqem length 4 3700 page 3700 
+<html>
+<head>
+<title>r20411 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r20411 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/20411" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./20410.html" title="Special:Code/MediaWiki/20410">r20410</a>‎ | <b>r20411</b> | <a href="./20412.html" title="Special:Code/MediaWiki/20412">r20412</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>22:29, 13 March 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/aaron" title="Special:Code/MediaWiki/author/aaron">aaron</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">*check for sanitized IPv6 IPs</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/includes/SpecialContributions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FSpecialContributions.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/20411&amp;action=purge" title="Special:Code/MediaWiki/20411">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/SpecialContributions.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -76,6 +76,9 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">77</td><td class="linenumbers">77</td><td class="unchanged"><span> 			if( substr( $this->username, -2 ) == 24 ) $ipmask = $abcd[0] . '.' . $abcd[1] . '.' . $abcd[2] . '.%';</span></td></tr>
+<tr id="7"><td class="linenumbers">78</td><td class="linenumbers">78</td><td class="unchanged"><span> 			else $ipmask=$abcd[0] . '.' . $abcd[1] . '.%';</span></td></tr>
+<tr id="8"><td class="linenumbers">79</td><td class="linenumbers">79</td><td class="unchanged"><span> 			$condition = 'rev_user_text LIKE ' . $this->dbr->addQuotes($ipmask);</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">80</td><td class="ins"><ins>+		} else if ( IP::isIPv6( $this->username ) ) {</ins></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">81</td><td class="ins"><ins>+			# All stored IPs should be sanitized from now on, check for exact matches for reverse compatibility</ins></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">82</td><td class="ins"><ins>+			$condition = '(rev_user_text=' . $this->dbr->addQuotes(IP::sanitizeIP($this->username)) . ' OR rev_user_text=' . $this->dbr->addQuotes($this->username) . ')';</ins></td></tr>
+<tr id="12"><td class="linenumbers">80</td><td class="linenumbers">83</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="13"><td class="linenumbers">81</td><td class="linenumbers">84</td><td class="unchanged"><span> </span></td></tr>
+<tr id="14"><td class="linenumbers">82</td><td class="linenumbers">85</td><td class="unchanged"><span> 		if ( $condition == '' ) {</span></td></tr>
+</table>
+</div>
+</form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/20411.html responseCode 3 200 

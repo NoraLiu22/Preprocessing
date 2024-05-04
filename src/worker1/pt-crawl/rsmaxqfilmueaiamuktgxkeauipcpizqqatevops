@@ -1,0 +1,234 @@
+rsmaxqfilmueaiamuktgxkeauipcpizqqatevops length 5 33617 page 33617 
+<html>
+<head>
+<title>r36892 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r36892 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/36892" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./36891.html" title="Special:Code/MediaWiki/36891">r36891</a>‎ | <b>r36892</b> | <a href="./36893.html" title="Special:Code/MediaWiki/36893">r36893</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>09:49, 2 July 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/daniel" title="Special:Code/MediaWiki/author/daniel">daniel</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">added inverse mode to navigate parent categories</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/CategoryTree/CategoryTree.i18n.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTree.i18n.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/CategoryTree.js</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTree.js" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/CategoryTree.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTree.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/CategoryTreeFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTreeFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/CategoryTree/CategoryTreePage.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FCategoryTree%2FCategoryTreePage.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/36892&amp;action=purge" title="Special:Code/MediaWiki/36892">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTreePage.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -81,7 +81,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">82</td><td class="linenumbers">82</td><td class="unchanged"><span> 				$parents = $this->tree->renderParents( $title );</span></td></tr>
+<tr id="7"><td class="linenumbers">83</td><td class="linenumbers">83</td><td class="unchanged"><span> </span></td></tr>
+<tr id="8"><td class="linenumbers">84</td><td class="linenumbers">84</td><td class="unchanged"><span> 				if ( $parents == '' ) {</span></td></tr>
+<tr id="9"><td class="linenumbers">85</td><td class="linenumbers"> </td><td class="del"><del>-					$wgOut->addHtml( wfMsgExt( 'categorytree-nothing-found', 'parseinline' ) );</del></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">85</td><td class="ins"><ins>+					$wgOut->addHtml( wfMsgExt( 'categorytree-no-parent-categories', 'parseinline' ) );</ins></td></tr>
+<tr id="11"><td class="linenumbers">86</td><td class="linenumbers">86</td><td class="unchanged"><span> 				} else {</span></td></tr>
+<tr id="12"><td class="linenumbers">87</td><td class="linenumbers">87</td><td class="unchanged"><span> 					$wgOut->addHtml( $parents );</span></td></tr>
+<tr id="13"><td class="linenumbers">88</td><td class="linenumbers">88</td><td class="unchanged"><span> 				}</span></td></tr>
+<tr id="14" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTree.i18n.php</td></tr>
+
+
+
+<tr id="18"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -43,6 +43,7 @@</span></td></tr>
+<tr id="19"><td class="linenumbers">44</td><td class="linenumbers">44</td><td class="unchanged"><span> 	'categorytree-loading'          => 'loading…',</span></td></tr>
+<tr id="20"><td class="linenumbers">45</td><td class="linenumbers">45</td><td class="unchanged"><span> 	'categorytree-nothing-found'    => 'nothing found',</span></td></tr>
+<tr id="21"><td class="linenumbers">46</td><td class="linenumbers">46</td><td class="unchanged"><span> 	'categorytree-no-subcategories' => 'no subcategories',</span></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">47</td><td class="ins"><ins>+	'categorytree-no-parent-categories' => 'no parent categories',</ins></td></tr>
+<tr id="23"><td class="linenumbers">47</td><td class="linenumbers">48</td><td class="unchanged"><span> 	'categorytree-no-pages'         => 'no pages or subcategories',</span></td></tr>
+<tr id="24"><td class="linenumbers">48</td><td class="linenumbers">49</td><td class="unchanged"><span> 	'categorytree-not-found'        => 'Category &lt;i>$1&lt;/i> not found',</span></td></tr>
+<tr id="25"><td class="linenumbers">49</td><td class="linenumbers">50</td><td class="unchanged"><span> 	'categorytree-error'            => 'Problem loading data.',</span></td></tr>
+<tr id="26"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -610,6 +611,7 @@</span></td></tr>
+<tr id="27"><td class="linenumbers">611</td><td class="linenumbers">612</td><td class="unchanged"><span> 	'categorytree-nothing-found'    => 'Nichts gefunden',</span></td></tr>
+<tr id="28"><td class="linenumbers">612</td><td class="linenumbers">613</td><td class="unchanged"><span> 	'categorytree-no-subcategories' => 'Keine Unterkategorien',</span></td></tr>
+<tr id="29"><td class="linenumbers">613</td><td class="linenumbers">614</td><td class="unchanged"><span> 	'categorytree-no-pages'         => 'Keine Seite oder Unterkategorien',</span></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">615</td><td class="ins"><ins>+	'categorytree-no-parent-categories' => 'Keine Oberkategorien',</ins></td></tr>
+<tr id="31"><td class="linenumbers">614</td><td class="linenumbers">616</td><td class="unchanged"><span> 	'categorytree-not-found'        => "Kategorie „$1“ nicht gefunden",</span></td></tr>
+<tr id="32"><td class="linenumbers">615</td><td class="linenumbers">617</td><td class="unchanged"><span> 	'categorytree-error'            => 'Probleme beim Laden der Daten.',</span></td></tr>
+<tr id="33"><td class="linenumbers">616</td><td class="linenumbers">618</td><td class="unchanged"><span> 	'categorytree-retry'            => 'Bitte warte einen Moment und versuche es dann erneut.',</span></td></tr>
+<tr id="34" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTree.php</td></tr>
+
+
+
+<tr id="38"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -22,6 +22,7 @@</span></td></tr>
+<tr id="39"><td class="linenumbers">23</td><td class="linenumbers">23</td><td class="unchanged"><span> define('CT_MODE_CATEGORIES', 0);</span></td></tr>
+<tr id="40"><td class="linenumbers">24</td><td class="linenumbers">24</td><td class="unchanged"><span> define('CT_MODE_PAGES', 10);</span></td></tr>
+<tr id="41"><td class="linenumbers">25</td><td class="linenumbers">25</td><td class="unchanged"><span> define('CT_MODE_ALL', 20);</span></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">26</td><td class="ins"><ins>+define('CT_MODE_PARENTS', 100);</ins></td></tr>
+<tr id="43"><td class="linenumbers">26</td><td class="linenumbers">27</td><td class="unchanged"><span> </span></td></tr>
+<tr id="44"><td class="linenumbers">27</td><td class="linenumbers">28</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="45"><td class="linenumbers">28</td><td class="linenumbers">29</td><td class="unchanged"><span> * Constants for use with the hideprefix option,</span></td></tr>
+<tr id="46"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -64,6 +65,7 @@</span></td></tr>
+<tr id="47"><td class="linenumbers">65</td><td class="linenumbers">66</td><td class="unchanged"><span> </span></td></tr>
+<tr id="48"><td class="linenumbers">66</td><td class="linenumbers">67</td><td class="unchanged"><span> $wgCategoryTreeExtPath = '/extensions/CategoryTree';</span></td></tr>
+<tr id="49"><td class="linenumbers">67</td><td class="linenumbers">68</td><td class="unchanged"><span> $wgCategoryTreeVersion = '2';  #NOTE: bump this when you change the CSS or JS files!</span></td></tr>
+<tr id="50"><td class="linenumbers"> </td><td class="linenumbers">69</td><td class="ins"><ins>+$wgCategoryTreeUseCategoryTable = version_compare( $wgVersion, "1.13", '>=' );</ins></td></tr>
+<tr id="51"><td class="linenumbers">68</td><td class="linenumbers">70</td><td class="unchanged"><span> </span></td></tr>
+<tr id="52"><td class="linenumbers">69</td><td class="linenumbers">71</td><td class="unchanged"><span> $wgCategoryTreeOmitNamespace = CT_HIDEPREFIX_CATEGORIES;</span></td></tr>
+<tr id="53"><td class="linenumbers">70</td><td class="linenumbers">72</td><td class="unchanged"><span> $wgCategoryTreeDefaultMode = CT_MODE_CATEGORIES;</span></td></tr>
+<tr id="54" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTree.js</td></tr>
+
+
+
+<tr id="58"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -133,6 +133,7 @@</span></td></tr>
+<tr id="59"><td class="linenumbers">134</td><td class="linenumbers">134</td><td class="unchanged"><span> </span></td></tr>
+<tr id="60"><td class="linenumbers">135</td><td class="linenumbers">135</td><td class="unchanged"><span>                     if ( options.mode == 0 ) result= categoryTreeNoSubcategoriesMsg;</span></td></tr>
+<tr id="61"><td class="linenumbers">136</td><td class="linenumbers">136</td><td class="unchanged"><span>                     else if ( options.mode == 10 ) result= categoryTreeNoPagesMsg;</span></td></tr>
+<tr id="62"><td class="linenumbers"> </td><td class="linenumbers">137</td><td class="ins"><ins>+                    else if ( options.mode == 100 ) result= categoryTreeNoParentCategoriesMsg;</ins></td></tr>
+<tr id="63"><td class="linenumbers">137</td><td class="linenumbers">138</td><td class="unchanged"><span>                     else result= categoryTreeNothingFoundMsg;</span></td></tr>
+<tr id="64"><td class="linenumbers">138</td><td class="linenumbers">139</td><td class="unchanged"><span> </span></td></tr>
+<tr id="65"><td class="linenumbers">139</td><td class="linenumbers">140</td><td class="unchanged"><span>                     result+= '&lt;/i>';</span></td></tr>
+<tr id="66" class="patchedfile"><td colspan="3">Index: trunk/extensions/CategoryTree/CategoryTreeFunctions.php</td></tr>
+
+
+
+<tr id="70"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -31,6 +31,11 @@</span></td></tr>
+<tr id="71"><td class="linenumbers">32</td><td class="linenumbers">32</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="72"><td class="linenumbers">33</td><td class="linenumbers">33</td><td class="unchanged"><span> </span></td></tr>
+<tr id="73"><td class="linenumbers">34</td><td class="linenumbers">34</td><td class="unchanged"><span> 		$this->mOptions['mode'] = self::decodeMode( $this->mOptions['mode'] );</span></td></tr>
+<tr id="74"><td class="linenumbers"> </td><td class="linenumbers">35</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="75"><td class="linenumbers"> </td><td class="linenumbers">36</td><td class="ins"><ins>+		if ( $this->mOptions['mode'] == CT_MODE_PARENTS ) {</ins></td></tr>
+<tr id="76"><td class="linenumbers"> </td><td class="linenumbers">37</td><td class="ins"><ins>+			 $this->mOptions['namespaces'] = false; #namespace filter makes no sense with CT_MODE_PARENTS</ins></td></tr>
+<tr id="77"><td class="linenumbers"> </td><td class="linenumbers">38</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="78"><td class="linenumbers"> </td><td class="linenumbers">39</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="79"><td class="linenumbers">35</td><td class="linenumbers">40</td><td class="unchanged"><span> 		$this->mOptions['hideprefix'] = self::decodeHidePrefix( $this->mOptions['hideprefix'] );</span></td></tr>
+<tr id="80"><td class="linenumbers">36</td><td class="linenumbers">41</td><td class="unchanged"><span> 		$this->mOptions['showcount']  = self::decodeBoolean( $this->mOptions['showcount'] );</span></td></tr>
+<tr id="81"><td class="linenumbers">37</td><td class="linenumbers">42</td><td class="unchanged"><span> 		$this->mOptions['namespaces']  = self::decodeNamespaces( $this->mOptions['namespaces'] );</span></td></tr>
+<tr id="82"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -52,6 +57,10 @@</span></td></tr>
+<tr id="83"><td class="linenumbers">53</td><td class="linenumbers">58</td><td class="unchanged"><span> 		return $this->mOptions[$name];</span></td></tr>
+<tr id="84"><td class="linenumbers">54</td><td class="linenumbers">59</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="85"><td class="linenumbers">55</td><td class="linenumbers">60</td><td class="unchanged"><span> </span></td></tr>
+<tr id="86"><td class="linenumbers"> </td><td class="linenumbers">61</td><td class="ins"><ins>+	function isInverse( ) {</ins></td></tr>
+<tr id="87"><td class="linenumbers"> </td><td class="linenumbers">62</td><td class="ins"><ins>+		return $this->getOption('mode') == CT_MODE_PARENTS;</ins></td></tr>
+<tr id="88"><td class="linenumbers"> </td><td class="linenumbers">63</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="89"><td class="linenumbers"> </td><td class="linenumbers">64</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="90"><td class="linenumbers">56</td><td class="linenumbers">65</td><td class="unchanged"><span> 	static function decodeNamespaces( $nn ) {</span></td></tr>
+<tr id="91"><td class="linenumbers">57</td><td class="linenumbers">66</td><td class="unchanged"><span> 		global $wgContLang;</span></td></tr>
+<tr id="92"><td class="linenumbers">58</td><td class="linenumbers">67</td><td class="unchanged"><span> </span></td></tr>
+<tr id="93"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -99,7 +108,8 @@</span></td></tr>
+<tr id="94"><td class="linenumbers">100</td><td class="linenumbers">109</td><td class="unchanged"><span> </span></td></tr>
+<tr id="95"><td class="linenumbers">101</td><td class="linenumbers">110</td><td class="unchanged"><span> 		if ( $mode == 'all' ) $mode = CT_MODE_ALL;</span></td></tr>
+<tr id="96"><td class="linenumbers">102</td><td class="linenumbers">111</td><td class="unchanged"><span> 		else if ( $mode == 'pages' ) $mode = CT_MODE_PAGES;</span></td></tr>
+<tr id="97"><td class="linenumbers">103</td><td class="linenumbers"> </td><td class="del"><del>-		else if ( $mode == 'categories' ) $mode = CT_MODE_CATEGORIES;</del></td></tr>
+<tr id="98"><td class="linenumbers"> </td><td class="linenumbers">112</td><td class="ins"><ins>+		else if ( $mode == 'categories' || $mode == 'sub' ) $mode = CT_MODE_CATEGORIES;</ins></td></tr>
+<tr id="99"><td class="linenumbers"> </td><td class="linenumbers">113</td><td class="ins"><ins>+		else if ( $mode == 'parents' || $mode == 'super' || $mode == 'inverse' ) $mode = CT_MODE_PARENTS;</ins></td></tr>
+<tr id="100"><td class="linenumbers">104</td><td class="linenumbers">114</td><td class="unchanged"><span> 		else if ( $mode == 'default' ) $mode = $wgCategoryTreeDefaultOptions['mode'];</span></td></tr>
+<tr id="101"><td class="linenumbers">105</td><td class="linenumbers">115</td><td class="unchanged"><span> </span></td></tr>
+<tr id="102"><td class="linenumbers">106</td><td class="linenumbers">116</td><td class="unchanged"><span> 		return (int)$mode;</span></td></tr>
+<tr id="103"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -188,6 +198,7 @@</span></td></tr>
+<tr id="104"><td class="linenumbers">189</td><td class="linenumbers">199</td><td class="unchanged"><span> 			var categoryTreeLoadingMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-loading'))."\";</span></td></tr>
+<tr id="105"><td class="linenumbers">190</td><td class="linenumbers">200</td><td class="unchanged"><span> 			var categoryTreeNothingFoundMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-nothing-found'))."\";</span></td></tr>
+<tr id="106"><td class="linenumbers">191</td><td class="linenumbers">201</td><td class="unchanged"><span> 			var categoryTreeNoSubcategoriesMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-no-subcategories'))."\";</span></td></tr>
+<tr id="107"><td class="linenumbers"> </td><td class="linenumbers">202</td><td class="ins"><ins>+			var categoryTreeNoParentCategoriesMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-no-parent-categories'))."\";</ins></td></tr>
+<tr id="108"><td class="linenumbers">192</td><td class="linenumbers">203</td><td class="unchanged"><span> 			var categoryTreeNoPagesMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-no-pages'))."\";</span></td></tr>
+<tr id="109"><td class="linenumbers">193</td><td class="linenumbers">204</td><td class="unchanged"><span> 			var categoryTreeErrorMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-error'))."\";</span></td></tr>
+<tr id="110"><td class="linenumbers">194</td><td class="linenumbers">205</td><td class="unchanged"><span> 			var categoryTreeRetryMsg = \"".Xml::escapeJsString(wfMsgNoTrans('categorytree-retry'))."\";</span></td></tr>
+<tr id="111"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -379,7 +390,7 @@</span></td></tr>
+<tr id="112"><td class="linenumbers">380</td><td class="linenumbers">391</td><td class="unchanged"><span> 	* $title must be a Title object</span></td></tr>
+<tr id="113"><td class="linenumbers">381</td><td class="linenumbers">392</td><td class="unchanged"><span> 	*/</span></td></tr>
+<tr id="114"><td class="linenumbers">382</td><td class="linenumbers">393</td><td class="unchanged"><span> 	function renderChildren( &amp;$title, $depth=1 ) {</span></td></tr>
+<tr id="115"><td class="linenumbers">383</td><td class="linenumbers"> </td><td class="del"><del>-		global $wgCategoryTreeMaxChildren, $wgVersion;</del></td></tr>
+<tr id="116"><td class="linenumbers"> </td><td class="linenumbers">394</td><td class="ins"><ins>+		global $wgCategoryTreeMaxChildren, $wgCategoryTreeUseCategoryTable;</ins></td></tr>
+<tr id="117"><td class="linenumbers">384</td><td class="linenumbers">395</td><td class="unchanged"><span> </span></td></tr>
+<tr id="118"><td class="linenumbers">385</td><td class="linenumbers">396</td><td class="unchanged"><span> 		if( $title->getNamespace() != NS_CATEGORY ) {</span></td></tr>
+<tr id="119"><td class="linenumbers">386</td><td class="linenumbers">397</td><td class="unchanged"><span> 			// Non-categories can't have children. :)</span></td></tr>
+<tr id="120"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -388,20 +399,30 @@</span></td></tr>
+<tr id="121"><td class="linenumbers">389</td><td class="linenumbers">400</td><td class="unchanged"><span> </span></td></tr>
+<tr id="122"><td class="linenumbers">390</td><td class="linenumbers">401</td><td class="unchanged"><span> 		$dbr =&amp; wfGetDB( DB_SLAVE );</span></td></tr>
+<tr id="123"><td class="linenumbers">391</td><td class="linenumbers">402</td><td class="unchanged"><span> </span></td></tr>
+<tr id="124"><td class="linenumbers">392</td><td class="linenumbers"> </td><td class="del"><del>-</del></td></tr>
+<tr id="125"><td class="linenumbers"> </td><td class="linenumbers">403</td><td class="ins"><ins>+		$inverse = $this->isInverse();</ins></td></tr>
+<tr id="126"><td class="linenumbers">393</td><td class="linenumbers">404</td><td class="unchanged"><span> 		$mode = $this->getOption('mode');</span></td></tr>
+<tr id="127"><td class="linenumbers">394</td><td class="linenumbers">405</td><td class="unchanged"><span> 		$namespaces = $this->getOption('namespaces');</span></td></tr>
+<tr id="128"><td class="linenumbers">395</td><td class="linenumbers">406</td><td class="unchanged"><span> </span></td></tr>
+<tr id="129"><td class="linenumbers">396</td><td class="linenumbers"> </td><td class="del"><del>-		#namespace filter. </del></td></tr>
+<tr id="130"><td class="linenumbers">397</td><td class="linenumbers"> </td><td class="del"><del>-		if ( $namespaces ) {</del></td></tr>
+<tr id="131"><td class="linenumbers">398</td><td class="linenumbers"> </td><td class="del"><del>-			#NOTE: we assume that the $namespaces array contains only integers!</del></td></tr>
+<tr id="132"><td class="linenumbers">399</td><td class="linenumbers"> </td><td class="del"><del>-			if ( sizeof( $namespaces ) === 1 ) $nsmatch = ' AND cat.page_namespace = ' . $namespaces[0] . ' ';</del></td></tr>
+<tr id="133"><td class="linenumbers">400</td><td class="linenumbers"> </td><td class="del"><del>-			else $nsmatch = ' AND cat.page_namespace IN ( ' . implode( ', ', $namespaces ) . ') ';</del></td></tr>
+<tr id="134"><td class="linenumbers"> </td><td class="linenumbers">407</td><td class="ins"><ins>+		if ( $inverse ) {</ins></td></tr>
+<tr id="135"><td class="linenumbers"> </td><td class="linenumbers">408</td><td class="ins"><ins>+			$ctJoinCond = ' cl_to = cat.page_title AND cat.page_namespace = ' . NS_CATEGORY;</ins></td></tr>
+<tr id="136"><td class="linenumbers"> </td><td class="linenumbers">409</td><td class="ins"><ins>+			$ctWhere = " cl_from = " . $title->getArticleId();</ins></td></tr>
+<tr id="137"><td class="linenumbers"> </td><td class="linenumbers">410</td><td class="ins"><ins>+			$nsmatch = '';</ins></td></tr>
+<tr id="138"><td class="linenumbers">401</td><td class="linenumbers">411</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="139"><td class="linenumbers">402</td><td class="linenumbers">412</td><td class="unchanged"><span> 		else {</span></td></tr>
+<tr id="140"><td class="linenumbers">403</td><td class="linenumbers"> </td><td class="del"><del>-			if ( $mode == CT_MODE_ALL ) $nsmatch = '';</del></td></tr>
+<tr id="141"><td class="linenumbers">404</td><td class="linenumbers"> </td><td class="del"><del>-			else if ( $mode == CT_MODE_PAGES ) $nsmatch = ' AND cat.page_namespace != ' . NS_IMAGE;</del></td></tr>
+<tr id="142"><td class="linenumbers">405</td><td class="linenumbers"> </td><td class="del"><del>-			else $nsmatch = ' AND cat.page_namespace = ' . NS_CATEGORY;</del></td></tr>
+<tr id="143"><td class="linenumbers"> </td><td class="linenumbers">413</td><td class="ins"><ins>+			$ctJoinCond = ' cl_from = cat.page_id ';</ins></td></tr>
+<tr id="144"><td class="linenumbers"> </td><td class="linenumbers">414</td><td class="ins"><ins>+			$ctWhere = " cl_to = " . $dbr->addQuotes( $title->getDBkey() );</ins></td></tr>
+<tr id="145"><td class="linenumbers"> </td><td class="linenumbers">415</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="146"><td class="linenumbers"> </td><td class="linenumbers">416</td><td class="ins"><ins>+			#namespace filter. </ins></td></tr>
+<tr id="147"><td class="linenumbers"> </td><td class="linenumbers">417</td><td class="ins"><ins>+			if ( $namespaces ) {</ins></td></tr>
+<tr id="148"><td class="linenumbers"> </td><td class="linenumbers">418</td><td class="ins"><ins>+				#NOTE: we assume that the $namespaces array contains only integers! decodeNamepsaces makes it so.</ins></td></tr>
+<tr id="149"><td class="linenumbers"> </td><td class="linenumbers">419</td><td class="ins"><ins>+				if ( sizeof( $namespaces ) === 1 ) $nsmatch = ' AND cat.page_namespace = ' . $namespaces[0] . ' ';</ins></td></tr>
+<tr id="150"><td class="linenumbers"> </td><td class="linenumbers">420</td><td class="ins"><ins>+				else $nsmatch = ' AND cat.page_namespace IN ( ' . implode( ', ', $namespaces ) . ') ';</ins></td></tr>
+<tr id="151"><td class="linenumbers"> </td><td class="linenumbers">421</td><td class="ins"><ins>+			}</ins></td></tr>
+<tr id="152"><td class="linenumbers"> </td><td class="linenumbers">422</td><td class="ins"><ins>+			else {</ins></td></tr>
+<tr id="153"><td class="linenumbers"> </td><td class="linenumbers">423</td><td class="ins"><ins>+				if ( $mode == CT_MODE_ALL ) $nsmatch = '';</ins></td></tr>
+<tr id="154"><td class="linenumbers"> </td><td class="linenumbers">424</td><td class="ins"><ins>+				else if ( $mode == CT_MODE_PAGES ) $nsmatch = ' AND cat.page_namespace != ' . NS_IMAGE;</ins></td></tr>
+<tr id="155"><td class="linenumbers"> </td><td class="linenumbers">425</td><td class="ins"><ins>+				else $nsmatch = ' AND cat.page_namespace = ' . NS_CATEGORY;</ins></td></tr>
+<tr id="156"><td class="linenumbers"> </td><td class="linenumbers">426</td><td class="ins"><ins>+			}</ins></td></tr>
+<tr id="157"><td class="linenumbers">406</td><td class="linenumbers">427</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="158"><td class="linenumbers">407</td><td class="linenumbers">428</td><td class="unchanged"><span> </span></td></tr>
+<tr id="159"><td class="linenumbers">408</td><td class="linenumbers">429</td><td class="unchanged"><span> 		#additional stuff to be used if "transaltion" by interwiki-links is desired</span></td></tr>
+<tr id="160"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -410,7 +431,7 @@</span></td></tr>
+<tr id="161"><td class="linenumbers">411</td><td class="linenumbers">432</td><td class="unchanged"><span> 		$transWhere = '';</span></td></tr>
+<tr id="162"><td class="linenumbers">412</td><td class="linenumbers">433</td><td class="unchanged"><span> </span></td></tr>
+<tr id="163"><td class="linenumbers">413</td><td class="linenumbers">434</td><td class="unchanged"><span> 		# fetch member count if possible</span></td></tr>
+<tr id="164"><td class="linenumbers">414</td><td class="linenumbers"> </td><td class="del"><del>-		$doCount = version_compare( $wgVersion, "1.12", '>' );</del></td></tr>
+<tr id="165"><td class="linenumbers"> </td><td class="linenumbers">435</td><td class="ins"><ins>+		$doCount = !$inverse &amp;&amp; $wgCategoryTreeUseCategoryTable;</ins></td></tr>
+<tr id="166"><td class="linenumbers">415</td><td class="linenumbers">436</td><td class="unchanged"><span> </span></td></tr>
+<tr id="167"><td class="linenumbers">416</td><td class="linenumbers">437</td><td class="unchanged"><span> 		$countFields = '';</span></td></tr>
+<tr id="168"><td class="linenumbers">417</td><td class="linenumbers">438</td><td class="unchanged"><span> 		$countJoin = '';</span></td></tr>
+<tr id="169"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -428,10 +449,10 @@</span></td></tr>
+<tr id="170"><td class="linenumbers">429</td><td class="linenumbers">450</td><td class="unchanged"><span> 					  $transFields</span></td></tr>
+<tr id="171"><td class="linenumbers">430</td><td class="linenumbers">451</td><td class="unchanged"><span> 					  $countFields</span></td></tr>
+<tr id="172"><td class="linenumbers">431</td><td class="linenumbers">452</td><td class="unchanged"><span> 				FROM $page as cat</span></td></tr>
+<tr id="173"><td class="linenumbers">432</td><td class="linenumbers"> </td><td class="del"><del>-				JOIN $categorylinks ON cl_from = cat.page_id</del></td></tr>
+<tr id="174"><td class="linenumbers"> </td><td class="linenumbers">453</td><td class="ins"><ins>+				JOIN $categorylinks ON $ctJoinCond</ins></td></tr>
+<tr id="175"><td class="linenumbers">433</td><td class="linenumbers">454</td><td class="unchanged"><span> 				$transJoin</span></td></tr>
+<tr id="176"><td class="linenumbers">434</td><td class="linenumbers">455</td><td class="unchanged"><span> 				$countJoin</span></td></tr>
+<tr id="177"><td class="linenumbers">435</td><td class="linenumbers"> </td><td class="del"><del>-				WHERE cl_to = " . $dbr->addQuotes( $title->getDBkey() ) . "</del></td></tr>
+<tr id="178"><td class="linenumbers"> </td><td class="linenumbers">456</td><td class="ins"><ins>+				WHERE $ctWhere</ins></td></tr>
+<tr id="179"><td class="linenumbers">436</td><td class="linenumbers">457</td><td class="unchanged"><span> 				$nsmatch</span></td></tr>
+<tr id="180"><td class="linenumbers">437</td><td class="linenumbers">458</td><td class="unchanged"><span> 				"./*AND cat.page_is_redirect = 0*/"</span></td></tr>
+<tr id="181"><td class="linenumbers">438</td><td class="linenumbers">459</td><td class="unchanged"><span> 				$transWhere</span></td></tr>
+<tr id="182"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -527,7 +548,11 @@</span></td></tr>
+<tr id="183"><td class="linenumbers">528</td><td class="linenumbers">549</td><td class="unchanged"><span> 	* $title must be a Title object</span></td></tr>
+<tr id="184"><td class="linenumbers">529</td><td class="linenumbers">550</td><td class="unchanged"><span> 	*/</span></td></tr>
+<tr id="185"><td class="linenumbers">530</td><td class="linenumbers">551</td><td class="unchanged"><span> 	function renderNode( $title, $children = 0, $loadchildren = false ) {</span></td></tr>
+<tr id="186"><td class="linenumbers">531</td><td class="linenumbers"> </td><td class="del"><del>-		if ( $title->getNamespace() == NS_CATEGORY ) $cat = Category::newFromTitle( $title );</del></td></tr>
+<tr id="187"><td class="linenumbers"> </td><td class="linenumbers">552</td><td class="ins"><ins>+		global $wgCategoryTreeUseCategoryTable;</ins></td></tr>
+<tr id="188"><td class="linenumbers"> </td><td class="linenumbers">553</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="189"><td class="linenumbers"> </td><td class="linenumbers">554</td><td class="ins"><ins>+		if ( $wgCategoryTreeUseCategoryTable &amp;&amp; $title->getNamespace() == NS_CATEGORY &amp;&amp; !$this->isInverse() ) {</ins></td></tr>
+<tr id="190"><td class="linenumbers"> </td><td class="linenumbers">555</td><td class="ins"><ins>+			$cat = Category::newFromTitle( $title );</ins></td></tr>
+<tr id="191"><td class="linenumbers"> </td><td class="linenumbers">556</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="192"><td class="linenumbers">532</td><td class="linenumbers">557</td><td class="unchanged"><span> 		else $cat = NULL;</span></td></tr>
+<tr id="193"><td class="linenumbers">533</td><td class="linenumbers">558</td><td class="unchanged"><span> </span></td></tr>
+<tr id="194"><td class="linenumbers">534</td><td class="linenumbers">559</td><td class="unchanged"><span> 		return $this->renderNodeInfo( $title, $cat, $children, $loadchildren );</span></td></tr>
+<tr id="195"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -658,6 +683,7 @@</span></td></tr>
+<tr id="196"><td class="linenumbers">659</td><td class="linenumbers">684</td><td class="unchanged"><span> 				$s .= Xml::openElement( 'i', array( 'class' => 'CategoryTreeNotice' ) );</span></td></tr>
+<tr id="197"><td class="linenumbers">660</td><td class="linenumbers">685</td><td class="unchanged"><span> 				if ( $mode == CT_MODE_CATEGORIES ) $s .= wfMsgExt( 'categorytree-no-subcategories', 'parsemag');</span></td></tr>
+<tr id="198"><td class="linenumbers">661</td><td class="linenumbers">686</td><td class="unchanged"><span> 				else if ( $mode == CT_MODE_PAGES ) $s .= wfMsgExt( 'categorytree-no-pages', 'parsemag');</span></td></tr>
+<tr id="199"><td class="linenumbers"> </td><td class="linenumbers">687</td><td class="ins"><ins>+				else if ( $mode == CT_MODE_PARENTS ) $s .= wfMsgExt( 'categorytree-no-parent-categories', 'parsemag');</ins></td></tr>
+<tr id="200"><td class="linenumbers">662</td><td class="linenumbers">688</td><td class="unchanged"><span> 				else $s .= wfMsgExt( 'categorytree-nothing-found', 'parsemag');</span></td></tr>
+<tr id="201"><td class="linenumbers">663</td><td class="linenumbers">689</td><td class="unchanged"><span> 				$s .= Xml::closeElement( 'i' );</span></td></tr>
+<tr id="202"><td class="linenumbers">664</td><td class="linenumbers">690</td><td class="unchanged"><span> 			} else {</span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:28, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r36892 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/36892.html responseCode 3 200 

@@ -1,0 +1,735 @@
+rkfkzcbiwgxkvoamjcqmomlkgqwibcreaiwmjibo length 5 31941 page 31941 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Config Validation - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/build-config-validation/ />
+<meta property="og:description" content="Build Config Validation" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/build-config-validation.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">Build Config Validation</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#beta-opt-in">Beta opt-in</a></li>
+  <li><a href="#build-config-validation">Build config validation</a></li>
+  <li><a href="#validation-messages">Validation messages</a></li>
+  <li><a href="#validation-message-types">Validation message types</a></li>
+</ul>
+
+            </div>
+          
+
+          <blockquote class="beta">
+  <p>
+    This page documents the new build config validation feature that is currently in beta.
+  </p>
+</blockquote>
+
+<h2 id="beta-opt-in">Beta opt-in <a href="#beta-opt-in" class="toc-anchor">#</a></h2>
+
+<p>You can opt in using the repository setting “Build config validation” in the
+Travis CI UI, or by specifying the <code class="highlighter-rouge">version</code> in your <code class="highlighter-rouge">.travis.yml</code> file:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s">~&gt; </span><span class="m">1.0</span>
+</code></pre></div></div>
+
+<h2 id="build-config-validation">Build config validation <a href="#build-config-validation" class="toc-anchor">#</a></h2>
+
+<p>When active the <a href="https://github.com/travis-ci/travis-yml">build config validation</a>
+feature will validate and normalize any incoming build config sources (e.g.
+your <code class="highlighter-rouge">.travis.yml</code> file and configs from build requests created via API).</p>
+
+<p>It uses a formal <a href="https://github.com/travis-ci/travis-yml/blob/master/schema.json">config format specification</a>
+which comes in the well known and well-supported format <a href="https://json-schema.org/">JSON Schema</a>.
+This feature replaces any previous linting and validation tooling.</p>
+
+<p>Reference documentation autogenerated from this specification can be found
+<a href="http://config.travis-ci.com">here</a>.</p>
+
+<p>You can try out and check how YAML build config sources will be normalized
+on the <a href="http://config.travis-ci.com/explore">Travis CI build config explorer</a>
+(experimental).</p>
+
+<h2 id="validation-messages">Validation messages <a href="#validation-messages" class="toc-anchor">#</a></h2>
+
+<p>Validating build configs produces validation messages that you can review
+on the respective build’s “View Config” tab in the Travis CI UI.</p>
+
+<p>This gives you direct insights into how your build config has been processed,
+what issues Travis CI might have found, and how to resolve them.</p>
+
+<p>The messages have 4 severity levels:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">alert</code> - The build config might be leaking secrets. You should pay special attention to these messages.</li>
+  <li><code class="highlighter-rouge">error</code> - The build config contains severe errors that our system cannot recover from, so it will ignore the respective config sections.</li>
+  <li><code class="highlighter-rouge">warn</code>  - The build config contains mistakes that our system can repair. It is safe to ignore these messages.</li>
+  <li><code class="highlighter-rouge">info</code>  - The build config parser has made changes to the config that you might want to be informed of. It is safe to ignore these messages.</li>
+</ul>
+
+<h2 id="validation-message-types">Validation message types <a href="#validation-message-types" class="toc-anchor">#</a></h2>
+
+<p>This table lists build config validation message types, and explains how to respond to these messages.</p>
+
+<div id="config-validation-message-types"></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Key</th>
+      <th>Meaning</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alert</td>
+      <td><a id="secure"><code class="highlighter-rouge">secure</code></a></td>
+      <td>The key expects an encrypted value, but an unencrypted value was given. This might leak credentials.</td>
+      <td>Encrypt the given secret.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="duplicate_key"><code class="highlighter-rouge">duplicate_key</code></a></td>
+      <td>The key was given multiple times, only the value last one will remain, as defined in YAML.</td>
+      <td>Merge the sections on the given keys into one.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="invalid_condition"><code class="highlighter-rouge">invalid_condition</code></a></td>
+      <td>The condition could not be parsed.</td>
+      <td>Fix the condition. See <a href="https://docs.travis-ci.com/user/conditions-testing">Testing Conditions</a> for how to validate conditions locally.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="invalid_env_var"><code class="highlighter-rouge">invalid_env_var</code></a></td>
+      <td>The env var could not be parsed.</td>
+      <td>Fix the env var.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="invalid_format"><code class="highlighter-rouge">invalid_format</code></a></td>
+      <td>The value has an invalid format.</td>
+      <td>Fix the format used.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="invalid_type"><code class="highlighter-rouge">invalid_type</code></a></td>
+      <td>The section has an invalid type, and cannot be used.</td>
+      <td>Check the documentation on this config section, and use the appropriate YAML type.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="overwrite"><code class="highlighter-rouge">overwrite</code></a></td>
+      <td>Two keys were given that overwrite each other.</td>
+      <td>Use only one of the given keys, and combine their values into one.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="required"><code class="highlighter-rouge">required</code></a></td>
+      <td>The required key has not been given.</td>
+      <td>Specify the key.</td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td><a id="unknown_value"><code class="highlighter-rouge">unknown_value</code></a></td>
+      <td>The value is not known.</td>
+      <td>Remove the value, or use the equivalent, known value.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="clean_key"><code class="highlighter-rouge">clean_key</code></a></td>
+      <td>The key is unknown, and contains special characters. Removing the special characters results in a known key. The known key will be used.</td>
+      <td>Remove the special characters.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="clean_value"><code class="highlighter-rouge">clean_value</code></a></td>
+      <td>The value is unknown, and contains special characters. Removing the special characters results in a known value. The known value will be used.</td>
+      <td>Remove the special characters.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="empty"><code class="highlighter-rouge">empty</code></a></td>
+      <td>The section was empty, and will be dropped.</td>
+      <td>None needed. In order to remove the message remove the key, or add content.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="find_key"><code class="highlighter-rouge">find_key</code></a></td>
+      <td>The key is not known. Instead, another similar key is known, and this is assumed to be a typo. The other key will be used.</td>
+      <td>Fix the typo or remove the key.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="find_value"><code class="highlighter-rouge">find_value</code></a></td>
+      <td>The value is not known. Instead, another similar value is known, and this is assumed to be a typo. The other value will be used.</td>
+      <td>Fix the typo or remove the key.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="strip_key"><code class="highlighter-rouge">strip_key</code></a></td>
+      <td>The key contains whitespace. Removing the special characters results in a known key. The known key will be used.</td>
+      <td>Remove the whitespace.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="unexpected_seq"><code class="highlighter-rouge">unexpected_seq</code></a></td>
+      <td>The key does not expect a sequence (array, list). This is a common error when working with YAML, so it is assumed that the first entry in the sequence represents the intended configuration. The first value in the sequence will be used.</td>
+      <td>Remove the extra dash that turns the section into a YAML sequence.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="unknown_key"><code class="highlighter-rouge">unknown_key</code></a></td>
+      <td>The key is not known.</td>
+      <td>Remove the key, or use the equivalent, known key.</td>
+    </tr>
+    <tr>
+      <td>Warn</td>
+      <td><a id="unknown_var"><code class="highlighter-rouge">unknown_var</code></a></td>
+      <td>The template variable is not known, and might result in an error or a broken notification.</td>
+      <td>Remove the variable or use the equivalent, known variable.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="alias_key"><code class="highlighter-rouge">alias_key</code></a></td>
+      <td>The key is an alias for another key. The aliased key will be used.</td>
+      <td>None needed. In order to remove the message use the aliased key.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="alias_value"><code class="highlighter-rouge">alias_value</code></a></td>
+      <td>The value is an alias for another value. The aliased value will be used.</td>
+      <td>None needed. In order to remove the message use the aliased value.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="default"><code class="highlighter-rouge">default</code></a></td>
+      <td>The key has not been given, the default value for this key will be used.</td>
+      <td>None needed. In order to remove the message specify a value.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="deprecated"><code class="highlighter-rouge">deprecated</code></a></td>
+      <td>The feature has been deprecated.</td>
+      <td>Follow the instruction indicated by the message.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="deprecated_key"><code class="highlighter-rouge">deprecated_key</code></a></td>
+      <td>The key has been deprecated.</td>
+      <td>Use the key or resolution mentioned in the message.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="deprecated_value"><code class="highlighter-rouge">deprecated_value</code></a></td>
+      <td>The value has been deprecated.</td>
+      <td>Use the value or resolution mentioned in the message.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="downcase"><code class="highlighter-rouge">downcase</code></a></td>
+      <td>The string contains uppercase letters.</td>
+      <td>The downcased version of the string will be used.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="duplicate"><code class="highlighter-rouge">duplicate</code></a></td>
+      <td>The value is duplicated.</td>
+      <td>None needed. In order to remove the message use unique values.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="edge"><code class="highlighter-rouge">edge</code></a></td>
+      <td>The feature is an edge feature.</td>
+      <td>None needed. Be aware that the behavior of this feature can change, or go away.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="skip_allow_failure"><code class="highlighter-rouge">skip_allow_failure</code></a></td>
+      <td>The build has skipped a jobs allow failure rule because its condition did not match.</td>
+      <td>None needed.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="skip_exclude"><code class="highlighter-rouge">skip_exclude</code></a></td>
+      <td>The build has skipped a jobs exclude rule because its condition did not match.</td>
+      <td>None needed.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="skip_import"><code class="highlighter-rouge">skip_import</code></a></td>
+      <td>The build has skipped an import because its condition did not match.</td>
+      <td>None needed.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="skip_job"><code class="highlighter-rouge">skip_job</code></a></td>
+      <td>The build has skipped a job because its condition did not match.</td>
+      <td>None needed.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="skip_notification"><code class="highlighter-rouge">skip_notification</code></a></td>
+      <td>The build has skipped a notification target because its condition did not match.</td>
+      <td>None needed.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="skip_stage"><code class="highlighter-rouge">skip_stage</code></a></td>
+      <td>The build has skipped a stage because its condition did not match.</td>
+      <td>None needed.</td>
+    </tr>
+    <tr>
+      <td>Info</td>
+      <td><a id="underscore_key"><code class="highlighter-rouge">underscore_key</code></a></td>
+      <td>The key contains dashes. Replacing the dashes results in a known key. The known key will be used.</td>
+      <td>Use underscores, not dashes.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 60 https://docs.travis-ci.com:443/user/build-config-validation/ responseCode 3 200 

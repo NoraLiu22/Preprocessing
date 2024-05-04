@@ -1,0 +1,67 @@
+iikgiclarghcbqrokcrsxgeegisszcziiseqdmum length 4 5025 page 5025 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Wikimedia Hashtags tool</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link rel="icon" type="image/png" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/skeleton.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/advance.js"></script>
+</head>
+<body>
+  <div class="section page-header">
+    <div class="container">
+      <div class="row">
+	      <div class="full column" style="margin-top: 5%">
+            <h1><a href="/">Wikimedia hashtag search</a></h1>
+          	<p> Search for <a href="http://blog.hatnote.com/post/112756032432/the-humble-hashtag-now-on-wikipedia">hashtags</a> in Wikimedia edit summaries </p>
+	      </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="container docs">
+    <h2>Documentation</h2>
+    <p>On Wikimedia projects, anyone can include a hashtag in their edit summary when adding to the sum of human knowledge:</p>
+    <img src="http://31.media.tumblr.com/89e0dadf1eb2059d6811134ecd75e92c/tumblr_inline_nkq9fdb40Z1ql4e1e.png">
+    <p>Learn more <a href="http://blog.hatnote.com/post/112756032432/the-humble-hashtag-now-on-wikipedia">on the Hatnote blog</a>.</p>
+    <h3>What is a hashtag?</h3>
+    <p>We follow <a href="https://github.com/twitter/twitter-text/blob/master/conformance/autolink.yml#L128">Twitter's specification</a> (mostly) for hashtags: a hash mark (#) followed by one or more alphanumeric characters.</p>
+    <p>We do, however, ignore any hashtags which <i>only</i> contain numbers, as these usually denote someone counting rather than a use of a hashtag we would be interested in tracking.</p>
+    <h3><a name="download"></a>Downloading results</h3>
+    <p>You can download CSV results for a hashtag at <code>http://hashtags.wmflabs.org/csv/?query&lt;hashtag&gt;</code>. You can also optionally provide a <code>project</code> parameter to limit your results to one Wikimedia project (e.g. <code>fr.wikisource.org</code>, and <code>startdate</code> and/or <code>enddate</code> parameters to limit your search by date (date must be formatted as YYYY-MM-DD).</p>
+    <h3>See statistics</h3>
+    <p>
+      To get into more details for a particular search, click on the <code>Show statistics</code> button. Currently, three graphs will be displayed - Top projects, Top users and Edits over time. 
+      The Top projects and Top users graphs show the top 10 Wikimedia projects and top 10 users respectively, both sorted by decreasing number of edits. To view the full list of projects and users click on <code>View full stats</code> button.
+      The Edits over time graph shows edits over days if the range of search results is less than 90 days, edits over months if the range is more than 90 days but less than 3 years, and edits per year in other cases.
+      You can also download each of these statistics as a CSV file by clicking the <code>Download CSV</code> button.
+    </p>
+    <h3>Is this a new version of the tool?</h3>
+    <p>Yes! Partly. The hashtags tool was originally created by Stephen LaPorte and Mahmoud Hashemi in 2016. It was hosted on Toolforge and was used by Wikimedia editors and program leaders from all around the Wikimedia movement. By 2018, however, the tool had outgrown its setup and hosting - a database with over 8 million hashtag entries had accumulated and the tool was sluggish, often unresponsive, and was <a href="https://phabricator.wikimedia.org/T188205">becoming a drain on other Toolforge tools' databases</a>.</p>
+    <p>In August 2018, Sam Walton started work revitalising the tool, switching the backend from Flask to Django and setting it up on a dedicated Cloud VPS Project with dedicated database resources. This version of the tool also monitors the <a href="https://wikitech.wikimedia.org/wiki/EventStreams">recentchanges MediaWiki EventStream</a> directly instead of periodically reading from the recentchanges database table. This means it now updates in near-realtime and covers all Wikimedia projects (except Wikidata, for now). The tool no longer tracks bot-flagged edits to avoid filling up with edits that can be easily tracked in other ways (e.g. InternetArchiveBot).
+  </div>
+
+
+  <div class="section page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="full width">
+          <p><a href="/docs/">Learn more</a>. Built by <a href="https://blog.hatnote.com/">Hatnote</a>, <a href="https://meta.wikimedia.org/wiki/The_Wikipedia_Library">The Wikipedia Library</a>, and <a href="https://github.com/WikipediaLibrary/hashtags/graphs/contributors">contributors</a>. Our source code is <a href="https://github.com/WikipediaLibrary/hashtags"> available on github </a>.</p>
+          <p><a href="https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?tags=hashtags">Report a bug</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+ contentType 9 text/html url 38 https://hashtags.wmcloud.org:443/docs/ responseCode 3 200 

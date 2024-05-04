@@ -1,0 +1,786 @@
+eozqdcralelidqoejqceuqqscmpsnodctsdewcvm length 5 35847 page 35847 <!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="http://images.china.cn/images1/ch/2021Chengde/css/css-20210209.css">
+    <script type="text/javascript" src="http://images.china.cn/images1/ch/2021Chengde/js/jquery-1.7.2.min.js"></script>
+    <title>
+常德
+</title>
+<base target="_blank" />
+    <script language="javascript" src="http://images.china.cn/images1/ch/2021Chengde/js/__body_head.js"></script>
+    <style>
+.nav_20210210 em {
+	color: #fff;
+	margin: 0px 10px;
+}
+.ba_rt .tit {
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFF;
+	background: #ac0802;
+	padding-right: 20px;
+}
+.ba_rt dl {
+	border-top: 2px solid #ac0802;
+}
+.ba_rt dt a {
+	color: #ac0802;
+	display: inline-block;
+	max-width: 95%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.ba_rt .more {
+	float: right;
+	font-size: 15px;
+	color: #ac0802;
+}
+.hm_top .more {
+	color: #ac0802;
+}
+.hr_bottom span:last-child {
+	display: none;
+}
+</style>
+ 
+    </head>
+
+    <body style="background: url(http://images.china.cn/images1/ch/2021Chengde/image/banner.png) no-repeat; background-position-y: 600px;background-size: 100% 300px;">
+<script language="javascript" src="static/js/__body_head.js"></script><script language="javascript">
+        (function() {
+
+            //顶端adver渐隐
+
+            function FadeAdver(args) {
+                for (var i in args) {
+                    this[i] = args[i];
+                }
+                this.speed = args.speed ? args.speed : 5000; //间隔时间默认5秒
+                this.sTime = args.sTime ? args.sTime : 500; //渐进时间，默认1秒
+                this.load();
+                this.start();
+            }
+
+            FadeAdver.prototype = {
+                constructor: this,
+                load: function() {
+                    var _this = this;
+                    this.num = 0; //计时器
+                    this.mNum = this.num + 1; //轮播计时
+                    this.len = this.divs.length;
+
+                    //所有div设置absolute并排好index
+                    this.divs.each(function(num) {
+                        var z_index = 50 - num;
+                        $(this).css({
+                            "position": "absolute",
+                            "left": 0,
+                            "top": 0,
+                            "z-index": z_index,
+                            "display": "none"
+                        })
+                    });
+
+                    $(this.divs[0]).show();
+
+                    //所有div设置absolute并排好index
+
+
+                    this.btns.each(function(num) {
+                        $(this).mouseover(function() {
+                            _this.show(num);
+                            _this.stop();
+                        }).mouseout(function() {
+                            _this.start();
+                        });
+                    });
+
+                    //左右按钮的使用
+                    if (!!this.preBtn && !!this.nextBtn) {
+                        this.preBtn.css("z-index", 60);
+                        this.preBtn.click(function() {
+                            var num = _this.num - 1;
+                            if (num < 0) {
+                                num = _this.len - 1;
+                            }
+                            _this.show(num);
+                        });
+                        this.nextBtn.css("z-index", 60);
+                        this.nextBtn.click(function() {
+                            var num = _this.num + 1;
+                            if (num >= _this.len) {
+                                num = 0;
+                            }
+                            _this.show(num);
+                        });
+                    }
+
+                    this.divs.each(function(num) {
+                        $(this).mouseover(function() {
+                            _this.stop();
+                        }).mouseout(function() {
+                            _this.start();
+                        });
+                    });
+                },
+                show: function(num) {
+                    if (num == this.num) return; //同一个返回
+
+
+                    var _this = this;
+                    this.flag = false; //关闭控制开关
+                    this.btns.each(function(i) {
+                        if (i == num) {
+                            $(this).addClass("hover");
+                        } else {
+                            $(this).removeClass("hover");
+                        }
+                    });
+
+                    $(this.divs[this.num]).fadeOut(this.sTime); //旧的淡出
+
+                    $(this.divs[num]).fadeIn(_this.sTime); //新的淡入
+                    _this.num = num;
+                    _this.mNum = num + 1;
+
+                },
+                start: function() {
+                    var _this = this;
+                    this.interval = setInterval(function() {
+                        if (_this.mNum >= _this.len) {
+                            _this.mNum = 0;
+                        }
+                        _this.show(_this.mNum);
+                    }, this.speed);
+                },
+                stop: function() {
+                    clearInterval(this.interval);
+                }
+            };
+
+            window.FadeAdver = FadeAdver;
+            //顶端adver	
+
+            //新tabs切换
+            function tabs(handles, cons) {
+                $(handles).each(function(num) {
+                    $(this).click(function() {
+                        $(handles).removeClass("hover");
+                        $(this).addClass("hover");
+                        $(cons).removeClass("show");
+                        $($(cons)[num]).addClass("show");
+                    });
+                });
+            }
+
+            window.tabs = tabs;
+
+
+
+            function tabs2(handles, cons) {
+                $(handles).each(function(num) {
+                    $(this).mouseover(function() {
+                        $(handles).removeClass("hover");
+                        $(this).addClass("hover");
+                        $(cons).removeClass("show");
+                        $($(cons)[num]).addClass("show");
+                    });
+                });
+            }
+
+            window.tabs2 = tabs2;
+
+            //文字滚动类
+            function TextSlider(args) {
+                for (var i in args) {
+                    this[i] = args[i];
+                }
+                this.speed = args.speed ? args.speed : 50;
+                this.direction = args.direction ? args.direction : "top";
+                this.load();
+                this.start();
+            }
+
+            TextSlider.prototype = {
+                constructor: this,
+                load: function() {
+                    var _this = this;
+
+                    if (this.direction == "left") { //left的浮动处理
+                        var child = this.inner.children();
+                        childWidth = child.width() + parseInt(child.css("border-left-width")) + parseInt(child.css("border-right-width")) + parseInt(child.css("margin-left")) + parseInt(child.css("margin-right"));
+                        this.inner.css({
+                            "width": childWidth * child.length,
+                            "float": "left"
+                        });
+                        this.inner.parent().css("width", this.inner.width() * 2);
+                    }
+
+                    this.inner.clone(true).appendTo(this.inner.parent());
+                    this.outer.hover(function() {
+                        _this.stop();
+                    }, function() {
+                        _this.start();
+                    });
+                },
+                start: function() {
+                    var _this = this;
+
+                    if (this.direction == "top") {
+                        this.inter = setInterval(function() {
+                            var _top = _this.outer.scrollTop() + 1;
+                            if (_top > _this.inner.height()) {
+                                _top = 0;
+                            }
+                            _this.outer.scrollTop(_top);
+                        }, this.speed);
+                    } else {
+                        this.inter = setInterval(function() {
+                            var _left = _this.outer.scrollLeft() + 1;
+                            if (_left > _this.inner.width()) {
+                                _left = 0;
+                            }
+                            _this.outer.scrollLeft(_left);
+                        }, this.speed);
+                    }
+
+                },
+                stop: function() {
+                    if (this.inter) {
+                        clearInterval(this.inter);
+                    }
+                }
+            };
+
+            window.TextSlider = TextSlider;
+            //文字滚动类
+
+        })();
+
+        $(function() {
+
+
+        });
+
+
+        (function() {
+
+        })();
+
+        $(function() {
+
+            new FadeAdver({
+                btns: $(".banner .btns span"),
+                divs: $(".banner .pics li"),
+                speed: 5000
+            });
+
+        });
+    </script>
+    <div>
+    
+<iframe id="topifr" name="topifr" src="http://changde.china.com.cn/node_1010239.html" width="100%" height="100" scrolling="no" marginheight="0" frameborder="0"></iframe>
+
+
+    </div>
+<div class="wrapin" style="background: url(http://images.china.cn/images1/ch/2021Chengde/image/0430-01.jpg) center no-repeat; height: 600px; width: 100%; background-size: 100% 100%;"></div>
+<div class="wrapin">
+      <div class="hm_top">
+    <div class="t1" style="position: relative;background: #fff;">
+          
+<a href="http://changde.china.com.cn/2022-04/07/content_41928604.html">常德全面开启新一轮全国文明城市创建工作</a>
+
+          <span style="display: inline-block;width: 70px;  height: 100%; background: url(http://images.china.cn/images1/ch/2021Chengde/image/toutiao_bg.jpg)no-repeat; background-size: 100% 100%;  position: absolute;top: 0; left: 0;"></span> </div>
+    <div class="t2">
+          
+<a href="http://changde.china.com.cn/2024-02/21/content_42701978.html">“发现城市美好 感知身边温度”先进典型评选表彰宣传活动启动</a> 
+<a href="http://changde.china.com.cn/2024-02/21/content_42701978.html" class="more" style="float: none;">更多>></a>
+
+        </div>
+  </div>
+      <div class="banner">
+    <ul class="pics">
+          
+<li>
+<div class="name">
+<span class="nm">动起来!汉寿县万人健步跑超燃开跑</span>
+</div>
+<a href="http://changde.china.com.cn/2024-04/30/content_42777439.html" target="_self" class="photo"><img src="http://changde.china.com.cn/pic/2024-04/30/48425e1a-0809-4a7e-91a7-952752eaa701.jpg" alt="动起来!汉寿县万人健步跑超燃开跑"></a>
+</li>
+<li>
+<div class="name">
+<span class="nm">鼎城区疾控中心开展“4·25”全国儿童预防接种日宣传系列活动 筑牢全民健康“第一道防线”</span>
+</div>
+<a href="http://changde.china.com.cn/2024-04/29/content_42775649.html" target="_self" class="photo"><img src="http://changde.china.com.cn/pic/2024-04/29/ddaf8cda-d336-47d8-a601-f16a0b73801f.jpg" alt="鼎城区疾控中心开展“4·25”全国儿童预防接种日宣传系列活动 筑牢全民健康“第一道防线”"></a>
+</li>
+<li>
+<div class="name">
+<span class="nm">湖南省退役军人暨军人军属(环洞庭湖片区)专场招聘系列活动在常德举行</span>
+</div>
+<a href="http://changde.china.com.cn/2024-04/09/content_42750704.html" target="_self" class="photo"><img src="http://changde.china.com.cn/pic/2024-04/09/d73bb2db-fba3-43fa-b935-f44a45602694.jpg" alt="湖南省退役军人暨军人军属(环洞庭湖片区)专场招聘系列活动在常德举行"></a>
+</li>
+<li>
+<div class="name">
+<span class="nm">常德市首部“多规合一”国土空间总体规划发布</span>
+</div>
+<a href="http://changde.china.com.cn/2024-04/03/content_42746405.html" target="_self" class="photo"><img src="http://changde.china.com.cn/pic/2024-04/03/8f4e5966-4484-4a45-b234-1ad2a62c8612.jpg" alt="常德市首部“多规合一”国土空间总体规划发布"></a>
+</li>
+
+        </ul>
+    <div class="btns"> <span class="hover"></span> <span></span> <span></span> <span></span> </div>
+  </div>
+      <div class="ba_rt">
+    <div class="head" style="margin-bottom: 0;">
+          <div class="tit">要闻</div>
+          
+<a href="http://changde.china.com.cn/node_1010193.html" class="more">更多>></a>
+
+        </div>
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2024-04/30/content_42777439.html">动起来!汉寿县万人健步跑超燃开跑</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775680.html">常德市出台加强耕地保护十项措施</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775678.html">常德军分区领导调研退役军人事务工作</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771873.html">常德推出近百项文旅惠民活动迎“五一”</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/24/content_42767090.html">李爱武在常德调研文化旅游工作</a></dd>
+
+        </dl>
+    <div class="head" style="margin-bottom: 0;">
+          <div class="tit">乡村振兴</div>
+          
+<a href="http://changde.china.com.cn/node_1010194.html" class="more">更多>></a>
+
+        </div>
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2024-02/28/content_42709476.html">一场跨越千里的温情帮扶</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775776.html">架起“连心桥” 真帮实扶惠民生——常德职业技术学院深入石门县清官渡村助力乡村振兴</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775687.html">传好驻村帮扶接力棒 常德中院乡村振兴工作队轮换交接</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/24/content_42767082.html">常德职业技术学院：党日活动进班级 联班联寝赴基层</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/08/content_42749247.html">共享一棵桃 ，“益”起奔赴春暖花开</a></dd>
+
+        </dl>
+  </div>
+      <!--<div class="clear" style="width: 100%; height: 300px;padding-top: 20px;">
+    
+<div style="width: 100%; height: 140px;background: url(http://changde.china.com.cn/pic/2023-11/07/0e72d556-ed6e-40e3-bee8-033fc15f6dd6.jpg) no-repeat; background-size: 100% 100%; margin-bottom: 20px;"></div>
+
+    <div style=" width: 100%; height: 140px;position: relative;">
+          
+<div style=" background: url(http://changde.china.com.cn/pic/2021-04/30/ae23223b-6b8e-405c-acaf-cb369281c1a9.jpg) no-repeat; background-size: 100% 100%; position: absolute;top: 0;left: 0;width: 600px;height: 140px;"></div>
+<div style=" background: url(http://changde.china.com.cn/pic/2021-04/30/efd22ab1-ca0d-420c-bd89-1285bbbddf8b.jpg) no-repeat; background-size: 100% 100%; position: absolute;top: 0;left: 0;width: 600px;height: 140px;"></div>
+
+        </div>
+  </div>-->
+  <div class="clear" style="width: 100%; height: 300px;padding-top: 20px;">
+            
+<div style="width: 100%; height: 140px; margin-bottom: 20px;">
+<a href="http://changde.china.com.cn/node_1010198.html"><img style="width:100%; height:140px;" src="http://changde.china.com.cn/pic/2023-11/07/0e72d556-ed6e-40e3-bee8-033fc15f6dd6.jpg" /></a></div>
+
+
+
+            <div style=" width: 100%; height: 140px;position: relative;">
+                
+<div style=" position: absolute;top: 0;left: 0;width: 600px;height: 140px;">
+<img style="width:600px; height:140px" src="http://changde.china.com.cn/pic/2021-04/30/ae23223b-6b8e-405c-acaf-cb369281c1a9.jpg" /></div>
+
+
+<div style="position: absolute;top: 0;right: 0;width: 600px;height: 140px;">
+<img style="width:600px; height:140px" src="http://changde.china.com.cn/pic/2021-04/30/efd22ab1-ca0d-420c-bd89-1285bbbddf8b.jpg" /></div>
+
+
+            </div>
+            </div>
+      <div class="sz_left" style="margin-bottom: 20px;">
+    <div class="head">
+          <div class="tit">文旅教育</div>
+          
+<a href="http://changde.china.com.cn/node_1010195.html" class="more" style="margin-right: 37px;">更多<em>+</em></a>
+
+        </div>
+    
+<a href="http://changde.china.com.cn/2024-01/11/content_42668105.html" class="photo">
+<div class="name">
+<span class="nm">穿越千年的邂逅!常德科技职院学子自制汉服上演服装秀</span>
+</div>
+<img src="http://changde.china.com.cn/pic/2024-01/11/e17257a1-15c6-4d54-a1c8-089efc284256.jpg" alt="穿越千年的邂逅!常德科技职院学子自制汉服上演服装秀">
+</a>
+
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2024-01/11/content_42668105.html" class="na">穿越千年的邂逅!常德科技职院学子自制汉服上演服装秀</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/30/content_42777462.html">“五一” 常德河街周边市直单位院内停车场免费开放</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775779.html">桃喜山谷开启试营业 “五一”亲子游添新乐园</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771900.html">中国曲艺名家来桃花源调研采风</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771895.html">桃花源旅游管理区召开2024年文旅产业发展大会暨全区招商引资工作推进会</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771790.html">“五一”期间，《柳叶船说》对劳动模范和先进工作者免票</a></dd>
+
+        </dl>
+    <div class="head">
+          <div class="tit">法治常德</div>
+          
+<a href="http://changde.china.com.cn/node_1010196.html" class="more" style=" margin-right: 37px;">更多<em>+</em></a>
+
+        </div>
+    
+<a href="http://changde.china.com.cn/2024-04/25/content_42770089.html" class="photo">
+<div class="name">
+<span class="nm">武陵区法院“人大代表联络站”揭牌成立</span>
+</div>
+<img src="http://changde.china.com.cn/pic/2024-04/25/1438a058-d46a-47d5-8557-db5f5aca19f8.jpg" alt="武陵区法院“人大代表联络站”揭牌成立">
+</a>
+
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2024-04/25/content_42770089.html" class="na">武陵区法院“人大代表联络站”揭牌成立</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/30/content_42777489.html">武陵区检察院开展夜市摊食品安全检查 守护城市“烟火气”</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/30/content_42777486.html">武陵法院：反诈宣传进社区</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775771.html">安乡法院举行2024年“五四”青年干警座谈会</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775698.html">桃源法院：土地纠纷十余载 多方联调一朝解</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771881.html">津市市人民检察院举行检察开放日活动</a></dd>
+
+        </dl>
+  </div>
+      <div class="ne_right" style="padding-top:10px;">
+    <div class="nr_sp">
+          <div class="head2">
+        <div class="tit">便民专区</div>
+        
+<a href="http://changde.china.com.cn/node_1010197.html" class="more">更多<em>+</em></a>
+
+      </div>
+          
+<a target="_blank" href="http://changde.china.com.cn/2023-06/15/content_42411429.html" class="nr_vdo" style="position: relative;">
+<div class="plalinkurly"></div>
+<div class="na">村民用水难，消防化身“送水工”解燃眉之急</div>
+<img src="http://changde.china.com.cn/pic/2023-06/15/0b5effbe-1f10-4a2e-b26f-f739225bf3f8.jpg" alt="">
+<span style="display: inline-block; width: 50px; height: 50px; background: url(static/image/play.png) no-repeat; background-size: 100% 100%;  position: absolute;top: 52px; left: 147px;"></span>
+</a>
+<a target="_blank" href="http://changde.china.com.cn/2022-03/21/content_41911695.html" class="nr_vdo" style="position: relative;">
+<div class="plalinkurly"></div>
+<div class="na">常德市住房公积金电子档案系统全面升级</div>
+<img src="http://changde.china.com.cn/pic/2022-03/21/d83022a3-5b8a-4006-a8cc-e40168ca1133.jpg" alt="">
+<span style="display: inline-block; width: 50px; height: 50px; background: url(static/image/play.png) no-repeat; background-size: 100% 100%;  position: absolute;top: 52px; left: 147px;"></span>
+</a>
+<a target="_blank" href="http://changde.china.com.cn/2021-12/27/content_41835794.html" class="nr_vdo" style="position: relative;">
+<div class="plalinkurly"></div>
+<div class="na">处理事故新模式  “警保联动”便民利民</div>
+<img src="http://changde.china.com.cn/pic/2021-12/27/634f8e34-8d35-4535-9e07-32ef7331d094.jpg" alt="">
+<span style="display: inline-block; width: 50px; height: 50px; background: url(static/image/play.png) no-repeat; background-size: 100% 100%;  position: absolute;top: 52px; left: 147px;"></span>
+</a>
+
+        </div>
+  </div>
+      <div class="tu_wen">
+    
+<div class="head" style="height: 140px;background: url(http://changde.china.com.cn/pic/2021-05/08/2d824539-770e-4ad9-a308-21fc44df2bf2.jpg);background-size: 100% 100%;border: none;"></div>
+
+  </div>
+      <div class="wrapin">
+    <div class="head">
+          <div class="tit"><i></i>创新突破 产业突围</div>
+          
+<a href="http://changde.china.com.cn/node_1010198.html" class="more">更多<em>+</em></a>
+
+        </div>
+    <style>
+                .head {
+                    height: 50px;
+                    line-height: 50px;
+                    background: #f5f5f5;
+                    clear: both;
+                    margin-bottom: 10px;
+                }
+                
+                .tit {
+                    float: left;
+                    padding-left: 20px;
+                    position: relative;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #263f89;
+                }
+                
+                .tit i {
+                    display: block;
+                    width: 8px;
+                    height: 28px;
+                    position: absolute;
+                    left: 4px;
+                    top: 50%;
+                    margin-top: -14px;
+                    background: #ff0000;
+                }
+                
+                .more {
+                    float: right;
+                    margin-right: 14px;
+                    font-size: 16px;
+                }
+                
+                .more em {
+                    color: #ff9600;
+                }
+            </style>
+    <div class="ts">
+          <ul>
+        
+<li style="background: url(http://changde.china.com.cn/pic/2023-10/12/293ed119-01f1-4ba2-89e7-48f6b2a04f32.jpg)no-repeat; background-size: 100% 100%;">
+<span><a href="http://changde.china.com.cn/2023-10/12/content_42549630.html" style="color: #fff;">常德经开区为产业链融通发展搭“鹊桥”——124家企业达成意向协议，15对企业现场“牵手”</a></span>
+</li>
+<li style="background: url(http://changde.china.com.cn/pic/2022-08/01/fcfb8afe-5b55-4088-a9f0-eb7981eb419f.jpg)no-repeat; background-size: 100% 100%;">
+<span><a href="http://changde.china.com.cn/2022-08/01/content_42055403.html" style="color: #fff;">常德经开区12个重大项目集中签约总投资29.2亿元</a></span>
+</li>
+<li style="background: url(http://changde.china.com.cn/pic/2022-04/20/f37b803f-c47b-41bc-8c87-4809204f4bb1.jpg)no-repeat; background-size: 100% 100%;">
+<span><a href="http://changde.china.com.cn/2022-04/20/content_41945391.html" style="color: #fff;">鼎城区（常德高新区）二季度集中签约    12个项目总投资30.6亿元</a></span>
+</li>
+<li style="background: url(http://changde.china.com.cn/pic/2021-12/24/78c84f12-3450-4e85-8cf2-8461140eef74.jpg)no-repeat; background-size: 100% 100%;">
+<span><a href="http://changde.china.com.cn/2021-12/24/content_41833589.html" style="color: #fff;">总投资22亿元 常德高新区10个项目集中签约</a></span>
+</li>
+
+      </ul>
+          <style>
+                    .ts ul li {
+                        position: relative;
+                        margin-left: 10px;
+                        margin-right: 10px;
+                        float: left;
+                        width: 285px;
+                        height: 300px;
+                        background-color: tomato;
+                    }
+                    
+                    .ts ul li span {
+                        overflow: hidden;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        display: inline-block;
+                        width: 100%;
+                        height: 40px;
+                        background: rgba(0, 0, 0, .5);
+                        text-align: center;
+                        line-height: 40px;
+                    }
+                </style>
+        </div>
+  </div>
+      <div class="tu_wen" style="margin-top: 15px;">
+    
+<div class="head" style="height: 140px;background: url(http://changde.china.com.cn/pic/2021-04/30/5ebcdddc-2954-4f94-9a37-8c2f48afa09d.jpg);background-size: 100% 100%;border: none;">
+</div>
+
+  </div>
+      <div style="height:20px;"></div>
+      <div class="clear"></div>
+    </div>
+<style>
+        .hm_news {
+            margin-left: 14px;
+            width: 380px;
+            height: 470px;
+            float: left;
+            margin-right: 12px;
+        }
+    </style>
+<div style="overflow: hidden; " class="tu_wen">
+      <div class="hm_news">
+    <div class="head" style="border: none; padding: 0;">
+          <div class="tit"><i></i>交通应急</div>
+          
+<a href="http://changde.china.com.cn/node_1010199.html" class="more">更多<em>+</em></a>
+
+        </div>
+    
+<a href="http://changde.china.com.cn/2023-12/14/content_42636514.html" class="photo">
+<div class="name"><span class="nm">常德公安交警:掀起“冬季攻势”宣传热潮</span></div>
+<img src="http://changde.china.com.cn/pic/2023-12/14/aed35959-0a40-495a-b45e-f1252b53385d.jpg" alt="常德公安交警:掀起“冬季攻势”宣传热潮">
+</a>
+
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2023-12/14/content_42636514.html">常德公安交警:掀起“冬季攻势”宣传热潮</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/30/content_42777476.html">欢乐“五一”，十大安全提示!</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/30/content_42777463.html">常德公安交警：警企携手宣传“五一”平安行</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775638.html">桃源交警：掀起道路交通隐患治理大排查大整治行动高潮</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771892.html">暖心!鼎城交警送迷途老人回家</a></dd>
+
+        </dl>
+  </div>
+      <div class="hm_news">
+    <div class="head" style="border: none; padding: 0;">
+          <div class="tit"><i></i>康养生活</div>
+          
+<a href="http://changde.china.com.cn/node_1010200.html" class="more">更多<em>+</em></a>
+
+        </div>
+    
+<a href="http://changde.china.com.cn/2024-02/28/content_42709464.html" class="photo">
+<div class="name"><span class="nm">常德市妇幼保健院召开第六届第四次职代会</span></div>
+<img src="http://changde.china.com.cn/pic/2024-02/28/5769f125-db34-42d6-90d4-07fc409ecff1.jpg" alt="常德市妇幼保健院召开第六届第四次职代会">
+</a>
+
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2024-02/28/content_42709464.html">常德市妇幼保健院召开第六届第四次职代会</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/30/content_42777472.html">常德市第四人民医院开展肿瘤宣传周系列活动</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775695.html">市直卫生健康系统举行健康跑活动</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/29/content_42775682.html">常德市开展2024年《职业病防治法》宣传周主题活动</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-04/26/content_42771804.html">常德市疾控中心开展“4·25全国儿童预防接种日”系列宣传活动</a></dd>
+
+        </dl>
+  </div>
+      <div class="hm_news">
+    <div class="head" style="border: none; padding: 0;">
+          <div class="tit"><i></i>生态环境</div>
+          
+<a href="http://changde.china.com.cn/node_1010201.html" class="more">更多<em>+</em></a>
+
+        </div>
+    
+<a href="http://changde.china.com.cn/2023-08/17/content_42487017.html" class="photo">
+<div class="name"><span class="nm">新时代中国调研行·长江篇|湖南常德：探索建立全域湿地保护管理体系</span></div>
+<img src="http://changde.china.com.cn/pic/2023-08/17/708168d5-fe8f-4caa-a2c6-74c0ba3901fb.jpg" alt="新时代中国调研行·长江篇|湖南常德：探索建立全域湿地保护管理体系">
+</a>
+
+    <dl>
+          
+<dt><a href="http://changde.china.com.cn/2023-08/17/content_42487017.html">新时代中国调研行·长江篇|湖南常德：探索建立全域湿地保护管理体系</a></dt>
+
+          
+<dd><a href="http://changde.china.com.cn/2024-04/17/content_42760109.html">常德全面加强矿山生态环境问题整治</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-01/29/content_42686307.html">湖南壶瓶山国家级自然保护区2023年发现鸟类新记录种8种</a></dd>
+<dd><a href="http://changde.china.com.cn/2024-01/22/content_42678532.html">常德市生态环境保护大会召开 曹志强周振宇出席并讲话</a></dd>
+<dd><a href="http://changde.china.com.cn/2023-12/12/content_42633137.html">常德临澧县烟草专卖局：践行绿色烘烤 让烟区更美好</a></dd>
+
+        </dl>
+  </div>
+    </div>
+<div class="wrapin" style="height: 450px;">
+<div class="ts" style="position: relative;">
+      <div style="position: absolute;top: 0;left: 0;background-color: whitesmoke; width: 600px;height: 450px;">
+    <div class="head">
+          <div class="tit"><i></i>地方动态</div>
+          
+<a href="http://changde.china.com.cn/node_1010202.html" class="more">更多<em>+</em></a>
+
+        </div>
+    
+<div style="width: 100%; height: 240px;background: url(http://changde.china.com.cn/pic/2021-04/30/298944a7-287c-47c8-b250-9402945152b5.jpg); background-size: 100% 100%;">
+</div>
+
+    <div>
+          
+<p style="padding: 20px;font-size: 20px;font-weight: 600;padding-bottom: 10px;">常德市召开中央生态环保督察信访突出问题交办件办理工作调度会</p>
+
+          
+ <p style="padding: 20px;font-size: 16px;"><a href="http://changde.china.com.cn/2021-04/30/content_41548687.html">4月28日，常德市召开中央环保督察信访突出问题交办件办理工作调度会。会议通报了群众信访投诉件办理工作情况。</a></p>
+
+        </div>
+  </div>
+      <div style="position: absolute;top: 0;right: 0;background-color: whitesmoke; width: 600px;height: 450px;">
+    <div class="head">
+          <div class="tit"><i></i>文明</div>
+          
+<a href="http://changde.china.com.cn/node_1010203.html" class="more">更多<em>+</em></a>
+
+        </div>
+    
+<div style="width: 100%; height: 240px;background: url(http://changde.china.com.cn/pic/2023-06/05/86caf2d7-500c-4b23-afcd-6600be8afd8f.jpg); background-size: 100% 100%;">
+</div>
+
+    <div>
+          
+<p style="padding: 20px;font-size: 20px;font-weight: 600;padding-bottom: 10px;">常德公安交警无偿献血献爱心</p>
+
+          
+ <p style="padding: 20px;font-size: 16px;"><a href="http://changde.china.com.cn/2023-06/05/content_42397111.html"></a></p>
+
+        </div>
+  </div>
+    </div>
+    </div>
+<div class="picShow swiper-container" style="width: 1220px; margin: 0 auto;margin-top: 40px;">
+      <div class="head">
+    <div class="tit"><i></i>图说常德</div>
+    
+<a href="http://changde.china.com.cn/node_1010204.html" class="more">更多<em>+</em></a> 
+
+  </div>
+      <ul class="picList swiper-wrapper">
+    
+<li class="swiper-slide">
+<a href="http://changde.china.com.cn/2021-08/30/content_41658948.html"><img src="http://changde.china.com.cn/pic/2021-08/30/ba7604ef-c4d3-499c-a6e7-dce9da6137d8.png" alt=""></a>
+<span><a href="http://changde.china.com.cn/2021-08/30/content_41658948.html">常德米粉，“霸蛮”！</a></span>
+</li>
+<li class="swiper-slide">
+<a href="http://changde.china.com.cn/2021-05/24/content_41571353.html"><img src="http://changde.china.com.cn/pic/2021-05/24/1e27513d-4f81-464a-8e3d-17ff5c33edcd.jpg" alt=""></a>
+<span><a href="http://changde.china.com.cn/2021-05/24/content_41571353.html">常德丝弦</a></span>
+</li>
+<li class="swiper-slide">
+<a href="http://changde.china.com.cn/2021-04/30/content_41548742.html"><img src="http://changde.china.com.cn/pic/2021-04/30/8f86cc1c-a26b-4cc6-ae2b-16f633b09181.jpg" alt=""></a>
+<span><a href="http://changde.china.com.cn/2021-04/30/content_41548742.html">木雕师傅邱青山</a></span>
+</li>
+<li class="swiper-slide">
+<a href="http://changde.china.com.cn/2021-04/30/content_41548740.html"><img src="http://changde.china.com.cn/pic/2021-04/30/91c792de-b6c3-43cc-b7f6-6d14e6b6cf8d.jpg" alt=""></a>
+<span><a href="http://changde.china.com.cn/2021-04/30/content_41548740.html">50年前的遥感影像再现常德旧城原貌</a></span>
+</li>
+
+  </ul>
+    </div>
+<style>
+        .swiper-slide {
+            position: relative;
+        }
+        
+        .swiper-slide a img {
+            width: 400px;
+            height: 280px;
+            background-size: 100% 100%;
+        }
+        
+        .swiper-slide span {
+            display: inline-block;
+            width: 100%;
+            height: 40px;
+            background: rgba(0, 0, 0, .5);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 3px;
+            text-align: center;
+            line-height: 40px;
+        }
+        
+        .swiper-slide span a {
+            color: #fff;
+        }
+    </style>
+<div style="clear:both;">
+    
+<iframe id="bottomifr" name="bottomifr" src="http://changde.china.com.cn/node_1010240.html" width="100%" height="100" scrolling="no" marginheight="0" frameborder="0"></iframe>
+
+
+    </div>
+<link rel="stylesheet" type="text/css" href="http://images.china.cn/images1/ch/2021Chengde/css/swiper.min.css">
+<link rel="stylesheet" type="text/css" href="http://images.china.cn/images1/ch/2021Chengde/css/index.css">
+<script type="text/javascript" src="http://images.china.cn/images1/ch/2021Chengde/js/jquery-1.12.4.min.js"></script> 
+<script type="text/javascript" src="http://images.china.cn/images1/ch/2021Chengde/js/swiper.min.js"></script> 
+<script type="text/javascript" src="http://images.china.cn/images1/ch/2021Chengde/js/index.js"></script>
+</body>
+</html> contentType 9 text/html url 31 http://changde.china.com.cn:80/ responseCode 3 200 

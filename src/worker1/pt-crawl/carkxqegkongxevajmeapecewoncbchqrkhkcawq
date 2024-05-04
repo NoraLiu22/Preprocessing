@@ -1,0 +1,175 @@
+carkxqegkongxevajmeapecewoncbchqrkhkcawq length 5 24397 page 24397 
+<html>
+<head>
+<title>r29482 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r29482 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/29482" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./29481.html" title="Special:Code/MediaWiki/29481">r29481</a>‎ | <b>r29482</b> | <a href="./29483.html" title="Special:Code/MediaWiki/29483">r29483</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>07:13, 9 January 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/tstarling" title="Special:Code/MediaWiki/author/tstarling">tstarling</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">Added {{#tag:}}: generic adaptor from parser function syntax to XML-style extension tag. Allows any extension tag (including nowiki and pre) to be called with input given by a template expansion. Inspired by [[Extension:TagParser]].</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/includes/CoreParserFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FCoreParserFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/Parser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FParser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/messages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2Fmessages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/29482&amp;action=purge" title="Special:Code/MediaWiki/29482">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/CoreParserFunctions.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -211,5 +211,56 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">212</td><td class="linenumbers">212</td><td class="unchanged"><span> 			return '';</span></td></tr>
+<tr id="7"><td class="linenumbers">213</td><td class="linenumbers">213</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="8"><td class="linenumbers">214</td><td class="linenumbers">214</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">215</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">216</td><td class="ins"><ins>+	/**</ins></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">217</td><td class="ins"><ins>+	 * Parser function to extension tag adaptor</ins></td></tr>
+<tr id="12"><td class="linenumbers"> </td><td class="linenumbers">218</td><td class="ins"><ins>+	 */</ins></td></tr>
+<tr id="13"><td class="linenumbers"> </td><td class="linenumbers">219</td><td class="ins"><ins>+	public static function tagObj( $parser, $frame, $args ) {</ins></td></tr>
+<tr id="14"><td class="linenumbers"> </td><td class="linenumbers">220</td><td class="ins"><ins>+		$xpath = false;</ins></td></tr>
+<tr id="15"><td class="linenumbers"> </td><td class="linenumbers">221</td><td class="ins"><ins>+		if ( !count( $args ) ) {</ins></td></tr>
+<tr id="16"><td class="linenumbers"> </td><td class="linenumbers">222</td><td class="ins"><ins>+			return '';</ins></td></tr>
+<tr id="17"><td class="linenumbers"> </td><td class="linenumbers">223</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="18"><td class="linenumbers"> </td><td class="linenumbers">224</td><td class="ins"><ins>+		$tagName = strtolower( trim( $frame->expand( array_shift( $args ) ) ) );</ins></td></tr>
+<tr id="19"><td class="linenumbers"> </td><td class="linenumbers">225</td><td class="ins"><ins>+		$stripList = $parser->getStripList();</ins></td></tr>
+<tr id="20"><td class="linenumbers"> </td><td class="linenumbers">226</td><td class="ins"><ins>+		if ( !in_array( $tagName, $stripList ) ) {</ins></td></tr>
+<tr id="21"><td class="linenumbers"> </td><td class="linenumbers">227</td><td class="ins"><ins>+			return '&lt;span class="error">' . </ins></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">228</td><td class="ins"><ins>+				wfMsg( 'unknown_extension_tag', $tagName ) . </ins></td></tr>
+<tr id="23"><td class="linenumbers"> </td><td class="linenumbers">229</td><td class="ins"><ins>+				'&lt;/span>';</ins></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">230</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">231</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">232</td><td class="ins"><ins>+		$lastNumberedNode = false;</ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">233</td><td class="ins"><ins>+		$attributes = array();</ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">234</td><td class="ins"><ins>+		foreach ( $args as $arg ) {</ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">235</td><td class="ins"><ins>+			if ( !$xpath ) {</ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">236</td><td class="ins"><ins>+				$xpath = new DOMXPath( $arg->ownerDocument );</ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">237</td><td class="ins"><ins>+			}</ins></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">238</td><td class="ins"><ins>+			$names = $xpath->query( 'name', $arg );</ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">239</td><td class="ins"><ins>+			if ( $names->item( 0 )->hasAttributes() ) {</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">240</td><td class="ins"><ins>+				$lastNumberedNode = $arg;</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">241</td><td class="ins"><ins>+			} else {</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">242</td><td class="ins"><ins>+				$name = $frame->expand( $names->item( 0 ), PPFrame::STRIP_COMMENTS );</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">243</td><td class="ins"><ins>+				if ( preg_match( '/^\d+$/', $name ) ) {</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">244</td><td class="ins"><ins>+					// For = suppression syntax {{#tag|thing|1=2=3=4}}</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">245</td><td class="ins"><ins>+					$lastNumberedNode = $arg;</ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">246</td><td class="ins"><ins>+				} else {</ins></td></tr>
+<tr id="41"><td class="linenumbers"> </td><td class="linenumbers">247</td><td class="ins"><ins>+					$values = $xpath->query( 'value', $arg );</ins></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">248</td><td class="ins"><ins>+					$attributes[$name] = trim( $frame->expand( $values->item( 0 ) ) );</ins></td></tr>
+<tr id="43"><td class="linenumbers"> </td><td class="linenumbers">249</td><td class="ins"><ins>+				}</ins></td></tr>
+<tr id="44"><td class="linenumbers"> </td><td class="linenumbers">250</td><td class="ins"><ins>+			}	</ins></td></tr>
+<tr id="45"><td class="linenumbers"> </td><td class="linenumbers">251</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="46"><td class="linenumbers"> </td><td class="linenumbers">252</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="47"><td class="linenumbers"> </td><td class="linenumbers">253</td><td class="ins"><ins>+		if ( !$lastNumberedNode ) {</ins></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">254</td><td class="ins"><ins>+			$inner = null;</ins></td></tr>
+<tr id="49"><td class="linenumbers"> </td><td class="linenumbers">255</td><td class="ins"><ins>+		} else {</ins></td></tr>
+<tr id="50"><td class="linenumbers"> </td><td class="linenumbers">256</td><td class="ins"><ins>+			$values = $xpath->query( 'value', $lastNumberedNode );</ins></td></tr>
+<tr id="51"><td class="linenumbers"> </td><td class="linenumbers">257</td><td class="ins"><ins>+			$inner = $frame->expand( $values->item( 0 ) );</ins></td></tr>
+<tr id="52"><td class="linenumbers"> </td><td class="linenumbers">258</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="53"><td class="linenumbers"> </td><td class="linenumbers">259</td><td class="ins"><ins>+		$params = array(</ins></td></tr>
+<tr id="54"><td class="linenumbers"> </td><td class="linenumbers">260</td><td class="ins"><ins>+			'name' => $tagName,</ins></td></tr>
+<tr id="55"><td class="linenumbers"> </td><td class="linenumbers">261</td><td class="ins"><ins>+			'inner' => $inner,</ins></td></tr>
+<tr id="56"><td class="linenumbers"> </td><td class="linenumbers">262</td><td class="ins"><ins>+			'attributes' => $attributes</ins></td></tr>
+<tr id="57"><td class="linenumbers"> </td><td class="linenumbers">263</td><td class="ins"><ins>+		);</ins></td></tr>
+<tr id="58"><td class="linenumbers"> </td><td class="linenumbers">264</td><td class="ins"><ins>+		return $parser->extensionSubstitution( $params, $frame );</ins></td></tr>
+<tr id="59"><td class="linenumbers"> </td><td class="linenumbers">265</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="60"><td class="linenumbers">215</td><td class="linenumbers">266</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="61"><td class="linenumbers">216</td><td class="linenumbers">267</td><td class="unchanged"><span> </span></td></tr>
+<tr id="62" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/Parser.php</td></tr>
+
+
+
+<tr id="66"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -166,6 +166,7 @@</span></td></tr>
+<tr id="67"><td class="linenumbers">167</td><td class="linenumbers">167</td><td class="unchanged"><span> 		$this->setFunctionHook( 'special',          array( 'CoreParserFunctions', 'special'          ) );</span></td></tr>
+<tr id="68"><td class="linenumbers">168</td><td class="linenumbers">168</td><td class="unchanged"><span> 		$this->setFunctionHook( 'defaultsort',      array( 'CoreParserFunctions', 'defaultsort'      ), SFH_NO_HASH );</span></td></tr>
+<tr id="69"><td class="linenumbers">169</td><td class="linenumbers">169</td><td class="unchanged"><span> 		$this->setFunctionHook( 'filepath',         array( 'CoreParserFunctions', 'filepath'         ), SFH_NO_HASH );</span></td></tr>
+<tr id="70"><td class="linenumbers"> </td><td class="linenumbers">170</td><td class="ins"><ins>+		$this->setFunctionHook( 'tag',              array( 'CoreParserFunctions', 'tagObj'           ), SFH_OBJECT_ARGS );</ins></td></tr>
+<tr id="71"><td class="linenumbers">170</td><td class="linenumbers">171</td><td class="unchanged"><span> </span></td></tr>
+<tr id="72"><td class="linenumbers">171</td><td class="linenumbers">172</td><td class="unchanged"><span> 		if ( $wgAllowDisplayTitle ) {</span></td></tr>
+<tr id="73"><td class="linenumbers">172</td><td class="linenumbers">173</td><td class="unchanged"><span> 			$this->setFunctionHook( 'displaytitle', array( 'CoreParserFunctions', 'displaytitle' ), SFH_NO_HASH );</span></td></tr>
+<tr id="74"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -3661,7 +3662,8 @@</span></td></tr>
+<tr id="75"><td class="linenumbers">3662</td><td class="linenumbers">3663</td><td class="unchanged"><span> 	 *</span></td></tr>
+<tr id="76"><td class="linenumbers">3663</td><td class="linenumbers">3664</td><td class="unchanged"><span> 	 * @param array $params Associative array of parameters:</span></td></tr>
+<tr id="77"><td class="linenumbers">3664</td><td class="linenumbers">3665</td><td class="unchanged"><span> 	 *     name       DOMNode for the tag name</span></td></tr>
+<tr id="78"><td class="linenumbers">3665</td><td class="linenumbers"> </td><td class="del"><del>-	 *     attrText   DOMNode for unparsed text where tag attributes are thought to be</del></td></tr>
+<tr id="79"><td class="linenumbers"> </td><td class="linenumbers">3666</td><td class="ins"><ins>+	 *     attr       DOMNode for unparsed text where tag attributes are thought to be</ins></td></tr>
+<tr id="80"><td class="linenumbers"> </td><td class="linenumbers">3667</td><td class="ins"><ins>+	 *     attributes Optional associative array of parsed attributes</ins></td></tr>
+<tr id="81"><td class="linenumbers">3666</td><td class="linenumbers">3668</td><td class="unchanged"><span> 	 *     inner      Contents of extension element</span></td></tr>
+<tr id="82"><td class="linenumbers">3667</td><td class="linenumbers">3669</td><td class="unchanged"><span> 	 *     noClose    Original text did not have a close tag</span></td></tr>
+<tr id="83"><td class="linenumbers">3668</td><td class="linenumbers">3670</td><td class="unchanged"><span> 	 * @param PPFrame $frame</span></td></tr>
+<tr id="84"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -3671,15 +3673,18 @@</span></td></tr>
+<tr id="85"><td class="linenumbers">3672</td><td class="linenumbers">3674</td><td class="unchanged"><span> 		static $n = 1;</span></td></tr>
+<tr id="86"><td class="linenumbers">3673</td><td class="linenumbers">3675</td><td class="unchanged"><span> </span></td></tr>
+<tr id="87"><td class="linenumbers">3674</td><td class="linenumbers">3676</td><td class="unchanged"><span> 		$name = $frame->expand( $params['name'] );</span></td></tr>
+<tr id="88"><td class="linenumbers">3675</td><td class="linenumbers"> </td><td class="del"><del>-		$attrText = is_null( $params['attr'] ) ? null : $frame->expand( $params['attr'] );</del></td></tr>
+<tr id="89"><td class="linenumbers">3676</td><td class="linenumbers"> </td><td class="del"><del>-		$content = is_null( $params['inner'] ) ? null : $frame->expand( $params['inner'] );</del></td></tr>
+<tr id="90"><td class="linenumbers"> </td><td class="linenumbers">3677</td><td class="ins"><ins>+		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );</ins></td></tr>
+<tr id="91"><td class="linenumbers"> </td><td class="linenumbers">3678</td><td class="ins"><ins>+		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );</ins></td></tr>
+<tr id="92"><td class="linenumbers">3677</td><td class="linenumbers">3679</td><td class="unchanged"><span> </span></td></tr>
+<tr id="93"><td class="linenumbers">3678</td><td class="linenumbers">3680</td><td class="unchanged"><span> 		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $n++) . $this->mMarkerSuffix;</span></td></tr>
+<tr id="94"><td class="linenumbers">3679</td><td class="linenumbers">3681</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="95"><td class="linenumbers">3680</td><td class="linenumbers">3682</td><td class="unchanged"><span> 		if ( $this->ot['html'] ) {</span></td></tr>
+<tr id="96"><td class="linenumbers">3681</td><td class="linenumbers">3683</td><td class="unchanged"><span> 			$name = strtolower( $name );</span></td></tr>
+<tr id="97"><td class="linenumbers">3682</td><td class="linenumbers">3684</td><td class="unchanged"><span> </span></td></tr>
+<tr id="98"><td class="linenumbers">3683</td><td class="linenumbers"> </td><td class="del"><del>-			$params = Sanitizer::decodeTagAttributes( $attrText );</del></td></tr>
+<tr id="99"><td class="linenumbers"> </td><td class="linenumbers">3685</td><td class="ins"><ins>+			$attributes = Sanitizer::decodeTagAttributes( $attrText );</ins></td></tr>
+<tr id="100"><td class="linenumbers"> </td><td class="linenumbers">3686</td><td class="ins"><ins>+			if ( isset( $params['attributes'] ) ) {</ins></td></tr>
+<tr id="101"><td class="linenumbers"> </td><td class="linenumbers">3687</td><td class="ins"><ins>+				$attributes = $attributes + $params['attributes'];</ins></td></tr>
+<tr id="102"><td class="linenumbers"> </td><td class="linenumbers">3688</td><td class="ins"><ins>+			}</ins></td></tr>
+<tr id="103"><td class="linenumbers">3684</td><td class="linenumbers">3689</td><td class="unchanged"><span> 			switch ( $name ) {</span></td></tr>
+<tr id="104"><td class="linenumbers">3685</td><td class="linenumbers">3690</td><td class="unchanged"><span> 				case 'html':</span></td></tr>
+<tr id="105"><td class="linenumbers">3686</td><td class="linenumbers">3691</td><td class="unchanged"><span> 					if( $wgRawHtml ) {</span></td></tr>
+<tr id="106"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -3693,15 +3698,15 @@</span></td></tr>
+<tr id="107"><td class="linenumbers">3694</td><td class="linenumbers">3699</td><td class="unchanged"><span> 					break;</span></td></tr>
+<tr id="108"><td class="linenumbers">3695</td><td class="linenumbers">3700</td><td class="unchanged"><span> 				case 'math':</span></td></tr>
+<tr id="109"><td class="linenumbers">3696</td><td class="linenumbers">3701</td><td class="unchanged"><span> 					$output = $wgContLang->armourMath(</span></td></tr>
+<tr id="110"><td class="linenumbers">3697</td><td class="linenumbers"> </td><td class="del"><del>-						MathRenderer::renderMath( $content, $params ) );</del></td></tr>
+<tr id="111"><td class="linenumbers"> </td><td class="linenumbers">3702</td><td class="ins"><ins>+						MathRenderer::renderMath( $content, $attributes ) );</ins></td></tr>
+<tr id="112"><td class="linenumbers">3698</td><td class="linenumbers">3703</td><td class="unchanged"><span> 					break;</span></td></tr>
+<tr id="113"><td class="linenumbers">3699</td><td class="linenumbers">3704</td><td class="unchanged"><span> 				case 'gallery':</span></td></tr>
+<tr id="114"><td class="linenumbers">3700</td><td class="linenumbers"> </td><td class="del"><del>-					$output = $this->renderImageGallery( $content, $params );</del></td></tr>
+<tr id="115"><td class="linenumbers"> </td><td class="linenumbers">3705</td><td class="ins"><ins>+					$output = $this->renderImageGallery( $content, $attributes );</ins></td></tr>
+<tr id="116"><td class="linenumbers">3701</td><td class="linenumbers">3706</td><td class="unchanged"><span> 					break;</span></td></tr>
+<tr id="117"><td class="linenumbers">3702</td><td class="linenumbers">3707</td><td class="unchanged"><span> 				default:</span></td></tr>
+<tr id="118"><td class="linenumbers">3703</td><td class="linenumbers">3708</td><td class="unchanged"><span> 					if( isset( $this->mTagHooks[$name] ) ) {</span></td></tr>
+<tr id="119"><td class="linenumbers">3704</td><td class="linenumbers">3709</td><td class="unchanged"><span> 						$output = call_user_func_array( $this->mTagHooks[$name],</span></td></tr>
+<tr id="120"><td class="linenumbers">3705</td><td class="linenumbers"> </td><td class="del"><del>-							array( $content, $params, $this ) );</del></td></tr>
+<tr id="121"><td class="linenumbers"> </td><td class="linenumbers">3710</td><td class="ins"><ins>+							array( $content, $attributes, $this ) );</ins></td></tr>
+<tr id="122"><td class="linenumbers">3706</td><td class="linenumbers">3711</td><td class="unchanged"><span> 					} else {</span></td></tr>
+<tr id="123"><td class="linenumbers">3707</td><td class="linenumbers">3712</td><td class="unchanged"><span> 						throw new MWException( "Invalid call hook $name" );</span></td></tr>
+<tr id="124"><td class="linenumbers">3708</td><td class="linenumbers">3713</td><td class="unchanged"><span> 					}</span></td></tr>
+<tr id="125" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/messages/MessagesEn.php</td></tr>
+
+
+
+<tr id="129"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -335,6 +335,7 @@</span></td></tr>
+<tr id="130"><td class="linenumbers">336</td><td class="linenumbers">336</td><td class="unchanged"><span> 	'special'                => array( 0,    'special',               ),</span></td></tr>
+<tr id="131"><td class="linenumbers">337</td><td class="linenumbers">337</td><td class="unchanged"><span> 	'defaultsort'            => array( 1,    'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),</span></td></tr>
+<tr id="132"><td class="linenumbers">338</td><td class="linenumbers">338</td><td class="unchanged"><span> 	'filepath'               => array( 0,    'FILEPATH:'              ),</span></td></tr>
+<tr id="133"><td class="linenumbers"> </td><td class="linenumbers">339</td><td class="ins"><ins>+	'tag'                    => array( 0,    'tag'                    ),</ins></td></tr>
+<tr id="134"><td class="linenumbers">339</td><td class="linenumbers">340</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="135"><td class="linenumbers">340</td><td class="linenumbers">341</td><td class="unchanged"><span> </span></td></tr>
+<tr id="136"><td class="linenumbers">341</td><td class="linenumbers">342</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="137"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -3115,4 +3116,7 @@</span></td></tr>
+<tr id="138"><td class="linenumbers">3116</td><td class="linenumbers">3117</td><td class="unchanged"><span> 'signature'      => '[[{{ns:user}}:$1|$2]]', # don't translate or duplicate this message to other languages</span></td></tr>
+<tr id="139"><td class="linenumbers">3117</td><td class="linenumbers">3118</td><td class="unchanged"><span> 'signature-anon' => '[[{{#special:Contributions}}/$1|$2]]', # don't translate or duplicate this message to other languages</span></td></tr>
+<tr id="140"><td class="linenumbers">3118</td><td class="linenumbers">3119</td><td class="unchanged"><span> </span></td></tr>
+<tr id="141"><td class="linenumbers"> </td><td class="linenumbers">3120</td><td class="ins"><ins>+# CoreParserFunctions</ins></td></tr>
+<tr id="142"><td class="linenumbers"> </td><td class="linenumbers">3121</td><td class="ins"><ins>+'unknown_extension_tag'   => 'Unknown extension tag "$1"',</ins></td></tr>
+<tr id="143"><td class="linenumbers"> </td><td class="linenumbers">3122</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="144"><td class="linenumbers">3119</td><td class="linenumbers">3123</td><td class="unchanged"><span> );</span></td></tr>
+</table>
+</div>
+<h2 id='code-references'>Follow-up revisions</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-old'><td><a href="./29493.html" title="Special:Code/MediaWiki/29493">r29493</a></td><td>* Added Persian translations...</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/huji" title="Special:Code/MediaWiki/author/huji">huji</a></td><td>13:54, 9 January 2008</td></tr></table><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:23, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r29482 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/29482.html responseCode 3 200 

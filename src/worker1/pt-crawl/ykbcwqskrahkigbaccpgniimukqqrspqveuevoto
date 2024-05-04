@@ -1,0 +1,144 @@
+ykbcwqskrahkigbaccpgniimukqqrspqveuevoto length 5 17879 page 17879 
+<html>
+<head>
+<title>r25824 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r25824 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/25824" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./25823.html" title="Special:Code/MediaWiki/25823">r25823</a>‎ | <b>r25824</b> | <a href="./25825.html" title="Special:Code/MediaWiki/25825">r25825</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>09:07, 13 September 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/david" title="Special:Code/MediaWiki/author/david">david</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">a bit more work on watches</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/branches/liquidthreads/extensions/LqtBaseView.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Fbranches%2Fliquidthreads%2Fextensions%2FLqtBaseView.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/branches/liquidthreads/extensions/LqtPages.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Fbranches%2Fliquidthreads%2Fextensions%2FLqtPages.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/branches/liquidthreads/skins/monobook/main.css</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Fbranches%2Fliquidthreads%2Fskins%2Fmonobook%2Fmain.css" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/25824&amp;action=purge" title="Special:Code/MediaWiki/25824">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: branches/liquidthreads/skins/monobook/main.css</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -31,6 +31,10 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">32</td><td class="linenumbers">32</td><td class="unchanged"><span> 	margin-bottom: .1em;</span></td></tr>
+<tr id="7"><td class="linenumbers">33</td><td class="linenumbers">33</td><td class="unchanged"><span> }*/</span></td></tr>
+<tr id="8"><td class="linenumbers">34</td><td class="linenumbers">34</td><td class="unchanged"><span> </span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">35</td><td class="ins"><ins>+.lqt_newmessages_section {</ins></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">36</td><td class="ins"><ins>+	border-bottom: 0px;</ins></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">37</td><td class="ins"><ins>+}</ins></td></tr>
+<tr id="12"><td class="linenumbers"> </td><td class="linenumbers">38</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="13"><td class="linenumbers">35</td><td class="linenumbers">39</td><td class="unchanged"><span> .lqt_disabled_link {</span></td></tr>
+<tr id="14"><td class="linenumbers">36</td><td class="linenumbers">40</td><td class="unchanged"><span> 	color: #999;</span></td></tr>
+<tr id="15"><td class="linenumbers">37</td><td class="linenumbers">41</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="16" class="patchedfile"><td colspan="3">Index: branches/liquidthreads/extensions/LqtPages.php</td></tr>
+
+
+
+<tr id="20"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -905,6 +905,31 @@</span></td></tr>
+<tr id="21"><td class="linenumbers">906</td><td class="linenumbers">906</td><td class="unchanged"><span> 		$this->output->addScript($s);</span></td></tr>
+<tr id="22"><td class="linenumbers">907</td><td class="linenumbers">907</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="23"><td class="linenumbers">908</td><td class="linenumbers">908</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">909</td><td class="ins"><ins>+	function preShowThread($t) {</ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">910</td><td class="ins"><ins>+		$this->output->addHTML(&lt;&lt;&lt;HTML</ins></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">911</td><td class="ins"><ins>+		&lt;table >&lt;tr></ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">912</td><td class="ins"><ins>+		&lt;td style="padding-right: 1em; vertical-align: top; padding-top: 1em;" ></ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">913</td><td class="ins"><ins>+		&lt;form method="POST"></ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">914</td><td class="ins"><ins>+		&lt;input type="submit" value="Read" title="Remove this thread from New Messages." /></ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">915</td><td class="ins"><ins>+		&lt;/form></ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">916</td><td class="ins"><ins>+		&lt;/td></ins></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">917</td><td class="ins"><ins>+		&lt;td></ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">918</td><td class="ins"><ins>+HTML</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">919</td><td class="ins"><ins>+		);</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">920</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">921</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">922</td><td class="ins"><ins>+	function postShowThread($t) {</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">923</td><td class="ins"><ins>+		$this->output->addHTML(&lt;&lt;&lt;HTML</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">924</td><td class="ins"><ins>+		&lt;/td></ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">925</td><td class="ins"><ins>+		&lt;/tr>&lt;/table></ins></td></tr>
+<tr id="41"><td class="linenumbers"> </td><td class="linenumbers">926</td><td class="ins"><ins>+HTML</ins></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">927</td><td class="ins"><ins>+		);</ins></td></tr>
+<tr id="43"><td class="linenumbers"> </td><td class="linenumbers">928</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="44"><td class="linenumbers"> </td><td class="linenumbers">929</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="45"><td class="linenumbers"> </td><td class="linenumbers">930</td><td class="ins"><ins>+	private function showClearButtonForThread($thread) {</ins></td></tr>
+<tr id="46"><td class="linenumbers"> </td><td class="linenumbers">931</td><td class="ins"><ins>+		$this->output->addHTML('&lt;input type="submit">');</ins></td></tr>
+<tr id="47"><td class="linenumbers"> </td><td class="linenumbers">932</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">933</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="49"><td class="linenumbers">909</td><td class="linenumbers">934</td><td class="unchanged"><span> 	function postDivClass($thread) {</span></td></tr>
+<tr id="50"><td class="linenumbers">910</td><td class="linenumbers">935</td><td class="unchanged"><span> 		</span></td></tr>
+<tr id="51"><td class="linenumbers">911</td><td class="linenumbers">936</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="52"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -914,7 +939,9 @@</span></td></tr>
+<tr id="53"><td class="linenumbers">915</td><td class="linenumbers">940</td><td class="unchanged"><span> </span></td></tr>
+<tr id="54"><td class="linenumbers">916</td><td class="linenumbers">941</td><td class="unchanged"><span> 		$threads = NewMessages::newUserMessages($this->user);</span></td></tr>
+<tr id="55"><td class="linenumbers">917</td><td class="linenumbers">942</td><td class="unchanged"><span> 		foreach($threads as $t) {</span></td></tr>
+<tr id="56"><td class="linenumbers"> </td><td class="linenumbers">943</td><td class="ins"><ins>+			$this->preShowThread($t);</ins></td></tr>
+<tr id="57"><td class="linenumbers">918</td><td class="linenumbers">944</td><td class="unchanged"><span> 			$this->showThread($t);</span></td></tr>
+<tr id="58"><td class="linenumbers"> </td><td class="linenumbers">945</td><td class="ins"><ins>+			$this->postShowThread($t);</ins></td></tr>
+<tr id="59"><td class="linenumbers">919</td><td class="linenumbers">946</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="60"><td class="linenumbers">920</td><td class="linenumbers">947</td><td class="unchanged"><span> 		return false;</span></td></tr>
+<tr id="61"><td class="linenumbers">921</td><td class="linenumbers">948</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="62"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -928,6 +955,7 @@</span></td></tr>
+<tr id="63"><td class="linenumbers">929</td><td class="linenumbers">956</td><td class="unchanged"><span>     $wgMessageCache->addMessage( 'newmessages', 'New Messages' );</span></td></tr>
+<tr id="64"><td class="linenumbers">930</td><td class="linenumbers">957</td><td class="unchanged"><span>     </span></td></tr>
+<tr id="65"><td class="linenumbers">931</td><td class="linenumbers">958</td><td class="unchanged"><span>     class SpecialNewMessages extends SpecialPage {</span></td></tr>
+<tr id="66"><td class="linenumbers"> </td><td class="linenumbers">959</td><td class="ins"><ins>+		private $user, $output, $request, $title;</ins></td></tr>
+<tr id="67"><td class="linenumbers">932</td><td class="linenumbers">960</td><td class="unchanged"><span> </span></td></tr>
+<tr id="68"><td class="linenumbers">933</td><td class="linenumbers">961</td><td class="unchanged"><span>         function __construct() {</span></td></tr>
+<tr id="69"><td class="linenumbers">934</td><td class="linenumbers">962</td><td class="unchanged"><span>             SpecialPage::SpecialPage( 'Newmessages' );</span></td></tr>
+<tr id="70"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -935,17 +963,24 @@</span></td></tr>
+<tr id="71"><td class="linenumbers">936</td><td class="linenumbers">964</td><td class="unchanged"><span>             $this->includable( true );</span></td></tr>
+<tr id="72"><td class="linenumbers">937</td><td class="linenumbers">965</td><td class="unchanged"><span>         }</span></td></tr>
+<tr id="73"><td class="linenumbers">938</td><td class="linenumbers">966</td><td class="unchanged"><span> </span></td></tr>
+<tr id="74"><td class="linenumbers">939</td><td class="linenumbers"> </td><td class="del"><del>-</del></td></tr>
+<tr id="75"><td class="linenumbers">940</td><td class="linenumbers">967</td><td class="unchanged"><span>         function execute( $par = null ) {</span></td></tr>
+<tr id="76"><td class="linenumbers">941</td><td class="linenumbers"> </td><td class="del"><del>-            global $wgOut, $wgRequest, $wgUser;</del></td></tr>
+<tr id="77"><td class="linenumbers"> </td><td class="linenumbers">968</td><td class="ins"><ins>+		    global $wgOut, $wgRequest, $wgTitle, $wgUser;</ins></td></tr>
+<tr id="78"><td class="linenumbers"> </td><td class="linenumbers">969</td><td class="ins"><ins>+			$this->user = $wgUser;</ins></td></tr>
+<tr id="79"><td class="linenumbers"> </td><td class="linenumbers">970</td><td class="ins"><ins>+			$this->output = $wgOut;</ins></td></tr>
+<tr id="80"><td class="linenumbers"> </td><td class="linenumbers">971</td><td class="ins"><ins>+			$this->request = $wgRequest;</ins></td></tr>
+<tr id="81"><td class="linenumbers"> </td><td class="linenumbers">972</td><td class="ins"><ins>+			$this->title = $wgTitle;</ins></td></tr>
+<tr id="82"><td class="linenumbers">942</td><td class="linenumbers">973</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="83"><td class="linenumbers">943</td><td class="linenumbers">974</td><td class="unchanged"><span>             $this->setHeaders();</span></td></tr>
+<tr id="84"><td class="linenumbers">944</td><td class="linenumbers">975</td><td class="unchanged"><span> </span></td></tr>
+<tr id="85"><td class="linenumbers">945</td><td class="linenumbers"> </td><td class="del"><del>-			$title = $this->getTitle();</del></td></tr>
+<tr id="86"><td class="linenumbers">946</td><td class="linenumbers"> </td><td class="del"><del>-			$view = new NewUserMessagesView( $wgOut, new Article($title), $title, $wgUser, $wgRequest );</del></td></tr>
+<tr id="87"><td class="linenumbers">947</td><td class="linenumbers"> </td><td class="del"><del>-			return $view->show();</del></td></tr>
+<tr id="88"><td class="linenumbers"> </td><td class="linenumbers">976</td><td class="ins"><ins>+			$this->output->addHTML('&lt;h2 class="lqt_newmessages_section">Messages sent to you:&lt;/h2>');</ins></td></tr>
+<tr id="89"><td class="linenumbers">948</td><td class="linenumbers">977</td><td class="unchanged"><span> 			</span></td></tr>
+<tr id="90"><td class="linenumbers"> </td><td class="linenumbers">978</td><td class="ins"><ins>+			$view = new NewUserMessagesView( $this->output, new Article($this->title),</ins></td></tr>
+<tr id="91"><td class="linenumbers"> </td><td class="linenumbers">979</td><td class="ins"><ins>+							$this->title, $this->user, $this->request );</ins></td></tr>
+<tr id="92"><td class="linenumbers"> </td><td class="linenumbers">980</td><td class="ins"><ins>+			$view->setHeaderLevel(3);</ins></td></tr>
+<tr id="93"><td class="linenumbers"> </td><td class="linenumbers">981</td><td class="ins"><ins>+			$view->show();</ins></td></tr>
+<tr id="94"><td class="linenumbers"> </td><td class="linenumbers">982</td><td class="ins"><ins>+			</ins></td></tr>
+<tr id="95"><td class="linenumbers">949</td><td class="linenumbers">983</td><td class="unchanged"><span> 			// and then the same for the other talkpage messagess.</span></td></tr>
+<tr id="96"><td class="linenumbers"> </td><td class="linenumbers">984</td><td class="ins"><ins>+			$this->output->addHTML('&lt;h2 class="lqt_newmessages_section">Messages on other talkpages:&lt;/h2>');</ins></td></tr>
+<tr id="97"><td class="linenumbers">950</td><td class="linenumbers">985</td><td class="unchanged"><span>         }</span></td></tr>
+<tr id="98"><td class="linenumbers">951</td><td class="linenumbers">986</td><td class="unchanged"><span>     }</span></td></tr>
+<tr id="99"><td class="linenumbers">952</td><td class="linenumbers">987</td><td class="unchanged"><span>     </span></td></tr>
+<tr id="100" class="patchedfile"><td colspan="3">Index: branches/liquidthreads/extensions/LqtBaseView.php</td></tr>
+
+
+
+<tr id="104"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -149,6 +149,10 @@</span></td></tr>
+<tr id="105"><td class="linenumbers">150</td><td class="linenumbers">150</td><td class="unchanged"><span> 		$this->queries = $this->initializeQueries();</span></td></tr>
+<tr id="106"><td class="linenumbers">151</td><td class="linenumbers">151</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="107"><td class="linenumbers">152</td><td class="linenumbers">152</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="108"><td class="linenumbers"> </td><td class="linenumbers">153</td><td class="ins"><ins>+	function setHeaderLevel($int) {</ins></td></tr>
+<tr id="109"><td class="linenumbers"> </td><td class="linenumbers">154</td><td class="ins"><ins>+		$this->headerLevel = $int;</ins></td></tr>
+<tr id="110"><td class="linenumbers"> </td><td class="linenumbers">155</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="111"><td class="linenumbers"> </td><td class="linenumbers">156</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="112"><td class="linenumbers">153</td><td class="linenumbers">157</td><td class="unchanged"><span> 	function initializeQueries() {</span></td></tr>
+<tr id="113"><td class="linenumbers">154</td><td class="linenumbers">158</td><td class="unchanged"><span> 		$g = new QueryGroup();</span></td></tr>
+<tr id="114"><td class="linenumbers">155</td><td class="linenumbers">159</td><td class="unchanged"><span> 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();</span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:20, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r25824 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/25824.html responseCode 3 200 

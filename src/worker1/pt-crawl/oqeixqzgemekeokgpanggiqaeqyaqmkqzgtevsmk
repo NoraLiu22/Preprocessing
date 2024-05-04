@@ -1,0 +1,82 @@
+oqeixqzgemekeokgpanggiqaeqyaqmkqzgtevsmk length 4 9446 page 9446 
+<html>
+<head>
+<title>r16279 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r16279 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/16279" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./16278.html" title="Special:Code/MediaWiki/16278">r16278</a>‎ | <b>r16279</b> | <a href="./16280.html" title="Special:Code/MediaWiki/16280">r16280</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>07:51, 30 August 2006</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/robchurch" title="Special:Code/MediaWiki/author/robchurch">robchurch</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">* (<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=7059">bug 7059</a>) Introduce &quot;anchorencode&quot; colon function</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/CoreParserFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FCoreParserFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/Parser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FParser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/16279&amp;action=purge" title="Special:Code/MediaWiki/16279">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/MessagesEn.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -283,6 +283,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">284</td><td class="linenumbers">284</td><td class="unchanged"><span> 	'newsectionlink'         => array( 1,    '__NEWSECTIONLINK__'     ),</span></td></tr>
+<tr id="7"><td class="linenumbers">285</td><td class="linenumbers">285</td><td class="unchanged"><span> 	'currentversion'         => array( 1,    'CURRENTVERSION'         ),</span></td></tr>
+<tr id="8"><td class="linenumbers">286</td><td class="linenumbers">286</td><td class="unchanged"><span> 	'urlencode'              => array( 0,    'URLENCODE:'             ),</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">287</td><td class="ins"><ins>+	'anchorencode'			 => array( 0,	 'ANCHORENCODE'			  ),</ins></td></tr>
+<tr id="10"><td class="linenumbers">287</td><td class="linenumbers">288</td><td class="unchanged"><span> 	'currenttimestamp'       => array( 1,    'CURRENTTIMESTAMP'       ),</span></td></tr>
+<tr id="11"><td class="linenumbers">288</td><td class="linenumbers">289</td><td class="unchanged"><span> 	'localtimestamp'         => array( 1,    'LOCALTIMESTAMP'         ),</span></td></tr>
+<tr id="12"><td class="linenumbers">289</td><td class="linenumbers">290</td><td class="unchanged"><span> 	'directionmark'          => array( 1,    'DIRECTIONMARK', 'DIRMARK' ),</span></td></tr>
+<tr id="13" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="17"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -162,6 +162,7 @@</span></td></tr>
+<tr id="18"><td class="linenumbers">163</td><td class="linenumbers">163</td><td class="unchanged"><span> * (bug 366) Add local-system-timezone equivalents for date/time variables</span></td></tr>
+<tr id="19"><td class="linenumbers">164</td><td class="linenumbers">164</td><td class="unchanged"><span> * (bug 7109) Fix Atom feed version number in header links</span></td></tr>
+<tr id="20"><td class="linenumbers">165</td><td class="linenumbers">165</td><td class="unchanged"><span> * (bug 7075) List registered parser function hooks on Special:Version</span></td></tr>
+<tr id="21"><td class="linenumbers"> </td><td class="linenumbers">166</td><td class="ins"><ins>+* (bug 7059) Introduce "anchorencode" colon function</ins></td></tr>
+<tr id="22"><td class="linenumbers">166</td><td class="linenumbers">167</td><td class="unchanged"><span> </span></td></tr>
+<tr id="23"><td class="linenumbers">167</td><td class="linenumbers">168</td><td class="unchanged"><span> == Languages updated ==</span></td></tr>
+<tr id="24"><td class="linenumbers">168</td><td class="linenumbers">169</td><td class="unchanged"><span> </span></td></tr>
+<tr id="25" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/CoreParserFunctions.php</td></tr>
+
+
+
+<tr id="29"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -163,6 +163,10 @@</span></td></tr>
+<tr id="30"><td class="linenumbers">164</td><td class="linenumbers">164</td><td class="unchanged"><span> 		return self::pad( $string, $length, $char );</span></td></tr>
+<tr id="31"><td class="linenumbers">165</td><td class="linenumbers">165</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="32"><td class="linenumbers">166</td><td class="linenumbers">166</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">167</td><td class="ins"><ins>+	function anchorencode( $parser, $text ) {</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">168</td><td class="ins"><ins>+		return str_replace( '%', '.', urlencode( $text ) );</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">169</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">170</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="37"><td class="linenumbers">167</td><td class="linenumbers">171</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="38"><td class="linenumbers">168</td><td class="linenumbers">172</td><td class="unchanged"><span> </span></td></tr>
+<tr id="39"><td class="linenumbers">169</td><td class="linenumbers">173</td><td class="unchanged"><span> ?></span></td></tr>
+<tr id="40" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/Parser.php</td></tr>
+
+
+
+<tr id="44"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -160,6 +160,7 @@</span></td></tr>
+<tr id="45"><td class="linenumbers">161</td><td class="linenumbers">161</td><td class="unchanged"><span> 		$this->setFunctionHook( 'language', array( 'CoreParserFunctions', 'language' ), SFH_NO_HASH );</span></td></tr>
+<tr id="46"><td class="linenumbers">162</td><td class="linenumbers">162</td><td class="unchanged"><span> 		$this->setFunctionHook( 'padleft', array( 'CoreParserFunctions', 'padleft' ), SFH_NO_HASH );</span></td></tr>
+<tr id="47"><td class="linenumbers">163</td><td class="linenumbers">163</td><td class="unchanged"><span> 		$this->setFunctionHook( 'padright', array( 'CoreParserFunctions', 'padright' ), SFH_NO_HASH );</span></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">164</td><td class="ins"><ins>+		$this->setFunctionHook( 'anchorencode', array( 'CoreParserFunctions', 'anchorencode' ), SFH_NO_HASH );</ins></td></tr>
+<tr id="49"><td class="linenumbers">164</td><td class="linenumbers">165</td><td class="unchanged"><span> </span></td></tr>
+<tr id="50"><td class="linenumbers">165</td><td class="linenumbers">166</td><td class="unchanged"><span> 		if ( $wgAllowDisplayTitle ) {</span></td></tr>
+<tr id="51"><td class="linenumbers">166</td><td class="linenumbers">167</td><td class="unchanged"><span> 			$this->setFunctionHook( 'displaytitle', array( 'CoreParserFunctions', 'displaytitle' ), SFH_NO_HASH );</span></td></tr>
+</table>
+</div>
+<h2 id='code-references'>Follow-up revisions</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-old'><td><a href="./16675.html" title="Special:Code/MediaWiki/16675">r16675</a></td><td>(<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=7059">bug 7059</a>) 'anchorencode' colon function needs one more replace '+' -&gt; '_'</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/collinj" title="Special:Code/MediaWiki/author/collinj">collinj</a></td><td>18:24, 27 September 2006</td></tr></table></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/16279.html responseCode 3 200 

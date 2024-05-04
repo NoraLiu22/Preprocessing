@@ -1,0 +1,157 @@
+eslsgmioyqfkbgqsdodszouezoasxocmtcoezara length 5 21139 page 21139 
+<html>
+<head>
+<title>r20841 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r20841 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/20841" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./20840.html" title="Special:Code/MediaWiki/20840">r20840</a>‎ | <b>r20841</b> | <a href="./20842.html" title="Special:Code/MediaWiki/20842">r20842</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>13:44, 30 March 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/raymond" title="Special:Code/MediaWiki/author/raymond">raymond</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">* (<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=4939">bug 4939</a>) Renameuser extension:<br />
+  1) Don't allow renaming a user to an invalid username.<br />
+  2) Do allow renaming an invalid username to a valid one.<br />
+Found another bug (and fixed it): oldusername was written with NS0 instead of NS2 into logs</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/Renameuser/SpecialRenameuser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FRenameuser%2FSpecialRenameuser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/Renameuser/SpecialRenameuser_body.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FRenameuser%2FSpecialRenameuser_body.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/20841&amp;action=purge" title="Special:Code/MediaWiki/20841">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/Renameuser/SpecialRenameuser_body.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -4,10 +4,10 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">5</td><td class="linenumbers">5</td><td class="unchanged"><span> 	function Renameuser() {</span></td></tr>
+<tr id="7"><td class="linenumbers">6</td><td class="linenumbers">6</td><td class="unchanged"><span> 		SpecialPage::SpecialPage('Renameuser', 'renameuser');</span></td></tr>
+<tr id="8"><td class="linenumbers">7</td><td class="linenumbers">7</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="9"><td class="linenumbers">8</td><td class="linenumbers"> </td><td class="del"><del>-	</del></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">8</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="11"><td class="linenumbers">9</td><td class="linenumbers">9</td><td class="unchanged"><span> 	function execute() {</span></td></tr>
+<tr id="12"><td class="linenumbers">10</td><td class="linenumbers">10</td><td class="unchanged"><span> 		global $wgOut, $wgUser, $wgTitle, $wgRequest, $wgContLang, $wgLang;</span></td></tr>
+<tr id="13"><td class="linenumbers">11</td><td class="linenumbers"> </td><td class="del"><del>-		global $wgVersion, $wgMaxNameChars;</del></td></tr>
+<tr id="14"><td class="linenumbers"> </td><td class="linenumbers">11</td><td class="ins"><ins>+		global $wgVersion, $wgMaxNameChars, $wgCapitalLinks;</ins></td></tr>
+<tr id="15"><td class="linenumbers">12</td><td class="linenumbers">12</td><td class="unchanged"><span> </span></td></tr>
+<tr id="16"><td class="linenumbers">13</td><td class="linenumbers">13</td><td class="unchanged"><span> 		$fname = 'Renameuser::execute';</span></td></tr>
+<tr id="17"><td class="linenumbers">14</td><td class="linenumbers">14</td><td class="unchanged"><span> </span></td></tr>
+<tr id="18"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -27,10 +27,9 @@</span></td></tr>
+<tr id="19"><td class="linenumbers">28</td><td class="linenumbers">28</td><td class="unchanged"><span> 			$wgOut->versionRequired( '1.7.0' );</span></td></tr>
+<tr id="20"><td class="linenumbers">29</td><td class="linenumbers">29</td><td class="unchanged"><span> 			return;</span></td></tr>
+<tr id="21"><td class="linenumbers">30</td><td class="linenumbers">30</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="22"><td class="linenumbers">31</td><td class="linenumbers"> </td><td class="del"><del>-		</del></td></tr>
+<tr id="23"><td class="linenumbers">32</td><td class="linenumbers"> </td><td class="del"><del>-		$oldusername = Title::newFromText( $wgRequest->getText( 'oldusername' ) );</del></td></tr>
+<tr id="24"><td class="linenumbers">33</td><td class="linenumbers"> </td><td class="del"><del>-		$newusername = Title::newFromText( $wgRequest->getText( 'newusername' ) );</del></td></tr>
+<tr id="25"><td class="linenumbers">34</td><td class="linenumbers">31</td><td class="unchanged"><span> </span></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">32</td><td class="ins"><ins>+		$oldusername = Title::newFromText( $wgRequest->getText( 'oldusername' ), NS_USER );</ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">33</td><td class="ins"><ins>+		$newusername = Title::newFromText( $wgContLang->ucfirst( $wgRequest->getText( 'newusername' ) ), NS_USER ); // Force uppercase of newusername otherweise wikis with wgCapitalLinks=false can create lc usernames</ins></td></tr>
+<tr id="28"><td class="linenumbers">35</td><td class="linenumbers">34</td><td class="unchanged"><span> 		$action = $wgTitle->escapeLocalUrl();</span></td></tr>
+<tr id="29"><td class="linenumbers">36</td><td class="linenumbers">35</td><td class="unchanged"><span> 		$renameuserold = wfMsgHtml( 'renameuserold' );</span></td></tr>
+<tr id="30"><td class="linenumbers">37</td><td class="linenumbers">36</td><td class="unchanged"><span> 		$renameusernew = wfMsgHtml( 'renameusernew' );</span></td></tr>
+<tr id="31"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -77,32 +76,57 @@</span></td></tr>
+<tr id="32"><td class="linenumbers">78</td><td class="linenumbers">77</td><td class="unchanged"><span> </span></td></tr>
+<tr id="33"><td class="linenumbers">79</td><td class="linenumbers">78</td><td class="unchanged"><span> 		if ( !is_object( $oldusername ) || !is_object( $newusername ) || $oldusername->getText() == $newusername->getText() )</span></td></tr>
+<tr id="34"><td class="linenumbers">80</td><td class="linenumbers">79</td><td class="unchanged"><span> 			return;</span></td></tr>
+<tr id="35"><td class="linenumbers">81</td><td class="linenumbers"> </td><td class="del"><del>-		</del></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">80</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="37"><td class="linenumbers">82</td><td class="linenumbers">81</td><td class="unchanged"><span> 		$wgOut->addHTML( '&lt;hr />' );</span></td></tr>
+<tr id="38"><td class="linenumbers">83</td><td class="linenumbers"> </td><td class="del"><del>-		</del></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">82</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="40"><td class="linenumbers">84</td><td class="linenumbers">83</td><td class="unchanged"><span> 		// Suppress username validation of old username</span></td></tr>
+<tr id="41"><td class="linenumbers">85</td><td class="linenumbers">84</td><td class="unchanged"><span> 		$olduser = User::newFromName( $oldusername->getText(), false );</span></td></tr>
+<tr id="42"><td class="linenumbers">86</td><td class="linenumbers">85</td><td class="unchanged"><span> 		$newuser = User::newFromName( $newusername->getText() );</span></td></tr>
+<tr id="43"><td class="linenumbers">87</td><td class="linenumbers">86</td><td class="unchanged"><span> </span></td></tr>
+<tr id="44"><td class="linenumbers">88</td><td class="linenumbers">87</td><td class="unchanged"><span> 		// It won't be an object if for instance "|" is supplied as a value</span></td></tr>
+<tr id="45"><td class="linenumbers">89</td><td class="linenumbers">88</td><td class="unchanged"><span> 		if ( !is_object( $olduser ) ) {</span></td></tr>
+<tr id="46"><td class="linenumbers">90</td><td class="linenumbers"> </td><td class="del"><del>-			$wgOut->addWikiText( wfMsg( 'renameusererrorinvalid', $oldusername->getText() ) );</del></td></tr>
+<tr id="47"><td class="linenumbers"> </td><td class="linenumbers">89</td><td class="ins"><ins>+			$wgOut->addWikiText( "&lt;div class=\"errorbox\">" . wfMsg( 'renameusererrorinvalid', $oldusername->getText() ) . "&lt;/div>" );</ins></td></tr>
+<tr id="48"><td class="linenumbers">91</td><td class="linenumbers">90</td><td class="unchanged"><span> 			return;</span></td></tr>
+<tr id="49"><td class="linenumbers">92</td><td class="linenumbers">91</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="50"><td class="linenumbers">93</td><td class="linenumbers">92</td><td class="unchanged"><span> </span></td></tr>
+<tr id="51"><td class="linenumbers">94</td><td class="linenumbers">93</td><td class="unchanged"><span> 		if ( !is_object( $newuser ) ) {</span></td></tr>
+<tr id="52"><td class="linenumbers">95</td><td class="linenumbers"> </td><td class="del"><del>-			$wgOut->addWikiText( wfMsg( 'renameusererrorinvalid', $newusername->getText() ) );</del></td></tr>
+<tr id="53"><td class="linenumbers"> </td><td class="linenumbers">94</td><td class="ins"><ins>+			$wgOut->addWikiText( "&lt;div class=\"errorbox\">" . wfMsg( 'renameusererrorinvalid', $newusername->getText() ) . "&lt;/div>" );</ins></td></tr>
+<tr id="54"><td class="linenumbers">96</td><td class="linenumbers">95</td><td class="unchanged"><span> 			return;</span></td></tr>
+<tr id="55"><td class="linenumbers">97</td><td class="linenumbers">96</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="56"><td class="linenumbers">98</td><td class="linenumbers"> </td><td class="del"><del>-		</del></td></tr>
+<tr id="57"><td class="linenumbers">99</td><td class="linenumbers"> </td><td class="del"><del>-		$uid = $olduser->idForName();</del></td></tr>
+<tr id="58"><td class="linenumbers"> </td><td class="linenumbers">97</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="59"><td class="linenumbers"> </td><td class="linenumbers">98</td><td class="ins"><ins>+		// Check for the existence of lowercase oldusername in database.</ins></td></tr>
+<tr id="60"><td class="linenumbers"> </td><td class="linenumbers">99</td><td class="ins"><ins>+		// Until r19631 it was possible to rename a user to a name with first character as lowercase</ins></td></tr>
+<tr id="61"><td class="linenumbers"> </td><td class="linenumbers">100</td><td class="ins"><ins>+		if ( $wgRequest->getText( 'oldusername' ) !== $wgContLang->ucfirst( $wgRequest->getText( 'oldusername' ) ) ) {</ins></td></tr>
+<tr id="62"><td class="linenumbers"> </td><td class="linenumbers">101</td><td class="ins"><ins>+			// oldusername was entered as lowercase -> check for existence in table 'user'</ins></td></tr>
+<tr id="63"><td class="linenumbers"> </td><td class="linenumbers">102</td><td class="ins"><ins>+			$dbr_lc = wfGetDB( DB_SLAVE );</ins></td></tr>
+<tr id="64"><td class="linenumbers"> </td><td class="linenumbers">103</td><td class="ins"><ins>+			$s = trim( $wgRequest->getText( 'oldusername' ) );</ins></td></tr>
+<tr id="65"><td class="linenumbers"> </td><td class="linenumbers">104</td><td class="ins"><ins>+			$uid = $dbr_lc->selectField( 'user', 'user_id', array( 'user_name' => $s ), __METHOD__ );</ins></td></tr>
+<tr id="66"><td class="linenumbers"> </td><td class="linenumbers">105</td><td class="ins"><ins>+			if ( $uid === false ) {</ins></td></tr>
+<tr id="67"><td class="linenumbers"> </td><td class="linenumbers">106</td><td class="ins"><ins>+				if ( !$wgCapitalLinks ) {</ins></td></tr>
+<tr id="68"><td class="linenumbers"> </td><td class="linenumbers">107</td><td class="ins"><ins>+					$uid = 0; // We are on a lowercase wiki but lowercase username does not exists</ins></td></tr>
+<tr id="69"><td class="linenumbers"> </td><td class="linenumbers">108</td><td class="ins"><ins>+				} else {</ins></td></tr>
+<tr id="70"><td class="linenumbers"> </td><td class="linenumbers">109</td><td class="ins"><ins>+					$uid = $olduser->idForName(); // We are on a standard uppercase wiki, use normal </ins></td></tr>
+<tr id="71"><td class="linenumbers"> </td><td class="linenumbers">110</td><td class="ins"><ins>+				}</ins></td></tr>
+<tr id="72"><td class="linenumbers"> </td><td class="linenumbers">111</td><td class="ins"><ins>+			} else {</ins></td></tr>
+<tr id="73"><td class="linenumbers"> </td><td class="linenumbers">112</td><td class="ins"><ins>+				// username with lowercase exists</ins></td></tr>
+<tr id="74"><td class="linenumbers"> </td><td class="linenumbers">113</td><td class="ins"><ins>+				// Title::newFromText was nice, but forces uppercase</ins></td></tr>
+<tr id="75"><td class="linenumbers"> </td><td class="linenumbers">114</td><td class="ins"><ins>+				// for older rename accidents on lowercase wikis we need the lowercase username as entered in the form</ins></td></tr>
+<tr id="76"><td class="linenumbers"> </td><td class="linenumbers">115</td><td class="ins"><ins>+				$oldusername->mTextform = $wgRequest->getText( 'oldusername' );</ins></td></tr>
+<tr id="77"><td class="linenumbers"> </td><td class="linenumbers">116</td><td class="ins"><ins>+				$oldusername->mUrlform = $wgRequest->getText( 'oldusername' );</ins></td></tr>
+<tr id="78"><td class="linenumbers"> </td><td class="linenumbers">117</td><td class="ins"><ins>+				$oldusername->mDbkeyform = $wgRequest->getText( 'oldusername' );</ins></td></tr>
+<tr id="79"><td class="linenumbers"> </td><td class="linenumbers">118</td><td class="ins"><ins>+			}</ins></td></tr>
+<tr id="80"><td class="linenumbers"> </td><td class="linenumbers">119</td><td class="ins"><ins>+		} else {</ins></td></tr>
+<tr id="81"><td class="linenumbers"> </td><td class="linenumbers">120</td><td class="ins"><ins>+			// oldusername was entered as upperase -> standard procedure</ins></td></tr>
+<tr id="82"><td class="linenumbers"> </td><td class="linenumbers">121</td><td class="ins"><ins>+			$uid = $olduser->idForName();</ins></td></tr>
+<tr id="83"><td class="linenumbers"> </td><td class="linenumbers">122</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="84"><td class="linenumbers"> </td><td class="linenumbers">123</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="85"><td class="linenumbers">100</td><td class="linenumbers">124</td><td class="unchanged"><span> 		if ($uid == 0) {</span></td></tr>
+<tr id="86"><td class="linenumbers">101</td><td class="linenumbers"> </td><td class="del"><del>-			$wgOut->addWikiText( wfMsg( 'renameusererrordoesnotexist', $oldusername->getText() ) );</del></td></tr>
+<tr id="87"><td class="linenumbers"> </td><td class="linenumbers">125</td><td class="ins"><ins>+			$wgOut->addWikiText( "&lt;div class=\"errorbox\">" . wfMsg( 'renameusererrordoesnotexist' , $oldusername->getText() ) . "&lt;/div>" );</ins></td></tr>
+<tr id="88"><td class="linenumbers">102</td><td class="linenumbers">126</td><td class="unchanged"><span> 			return;</span></td></tr>
+<tr id="89"><td class="linenumbers">103</td><td class="linenumbers">127</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="90"><td class="linenumbers">104</td><td class="linenumbers"> </td><td class="del"><del>-		</del></td></tr>
+<tr id="91"><td class="linenumbers"> </td><td class="linenumbers">128</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="92"><td class="linenumbers">105</td><td class="linenumbers">129</td><td class="unchanged"><span> 		if ($newuser->idForName() != 0) {</span></td></tr>
+<tr id="93"><td class="linenumbers">106</td><td class="linenumbers"> </td><td class="del"><del>-			$wgOut->addWikiText( wfMsg( 'renameusererrorexists', $newusername->getText() ) );</del></td></tr>
+<tr id="94"><td class="linenumbers"> </td><td class="linenumbers">130</td><td class="ins"><ins>+			$wgOut->addWikiText( "&lt;div class=\"errorbox\">" . wfMsg( 'renameusererrorexists', $newusername->getText() ) . "&lt;/div>" );</ins></td></tr>
+<tr id="95"><td class="linenumbers">107</td><td class="linenumbers">131</td><td class="unchanged"><span> 			return;</span></td></tr>
+<tr id="96"><td class="linenumbers">108</td><td class="linenumbers">132</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="97"><td class="linenumbers">109</td><td class="linenumbers">133</td><td class="unchanged"><span> </span></td></tr>
+<tr id="98"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -110,13 +134,13 @@</span></td></tr>
+<tr id="99"><td class="linenumbers">111</td><td class="linenumbers">135</td><td class="unchanged"><span> 		if ( !$wgUser->isAllowed( 'siteadmin' ) ) {</span></td></tr>
+<tr id="100"><td class="linenumbers">112</td><td class="linenumbers">136</td><td class="unchanged"><span> 			$contribs = User::edits( $uid );</span></td></tr>
+<tr id="101"><td class="linenumbers">113</td><td class="linenumbers">137</td><td class="unchanged"><span> 			if ( RENAMEUSER_CONTRIBLIMIT != 0 &amp;&amp; $contribs > RENAMEUSER_CONTRIBLIMIT ) {</span></td></tr>
+<tr id="102"><td class="linenumbers">114</td><td class="linenumbers"> </td><td class="del"><del>-				$wgOut->addWikiText(</del></td></tr>
+<tr id="103"><td class="linenumbers"> </td><td class="linenumbers">138</td><td class="ins"><ins>+				$wgOut->addWikiText( "&lt;div class=\"errorbox\">" . </ins></td></tr>
+<tr id="104"><td class="linenumbers">115</td><td class="linenumbers">139</td><td class="unchanged"><span> 					wfMsg( 'renameusererrortoomany',</span></td></tr>
+<tr id="105"><td class="linenumbers">116</td><td class="linenumbers">140</td><td class="unchanged"><span> 						$oldusername->getText(),</span></td></tr>
+<tr id="106"><td class="linenumbers">117</td><td class="linenumbers">141</td><td class="unchanged"><span> 						$wgLang->formatNum( $contribs ),</span></td></tr>
+<tr id="107"><td class="linenumbers">118</td><td class="linenumbers">142</td><td class="unchanged"><span> 						$wgLang->formatNum( RENAMEUSER_CONTRIBLIMIT )</span></td></tr>
+<tr id="108"><td class="linenumbers">119</td><td class="linenumbers">143</td><td class="unchanged"><span> 					)</span></td></tr>
+<tr id="109"><td class="linenumbers">120</td><td class="linenumbers"> </td><td class="del"><del>-				);</del></td></tr>
+<tr id="110"><td class="linenumbers"> </td><td class="linenumbers">144</td><td class="ins"><ins>+				 . "&lt;/div>" );</ins></td></tr>
+<tr id="111"><td class="linenumbers">121</td><td class="linenumbers">145</td><td class="unchanged"><span> 				return;</span></td></tr>
+<tr id="112"><td class="linenumbers">122</td><td class="linenumbers">146</td><td class="unchanged"><span> 			}</span></td></tr>
+<tr id="113"><td class="linenumbers">123</td><td class="linenumbers">147</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="114" class="patchedfile"><td colspan="3">Index: trunk/extensions/Renameuser/SpecialRenameuser.php</td></tr>
+
+
+
+<tr id="118"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -18,7 +18,7 @@</span></td></tr>
+<tr id="119"><td class="linenumbers">19</td><td class="linenumbers">19</td><td class="unchanged"><span> $wgExtensionCredits['specialpage'][] = array(</span></td></tr>
+<tr id="120"><td class="linenumbers">20</td><td class="linenumbers">20</td><td class="unchanged"><span> 	'name' => 'Renameuser',</span></td></tr>
+<tr id="121"><td class="linenumbers">21</td><td class="linenumbers">21</td><td class="unchanged"><span> 	'author' => 'Ævar Arnfjörð Bjarmason',</span></td></tr>
+<tr id="122"><td class="linenumbers">22</td><td class="linenumbers"> </td><td class="del"><del>-	'url' => 'http://meta.wikimedia.org/wiki/Renameuser',</del></td></tr>
+<tr id="123"><td class="linenumbers"> </td><td class="linenumbers">22</td><td class="ins"><ins>+	'url' => 'http://www.mediawiki.org/wiki/Extension:Renameuser',</ins></td></tr>
+<tr id="124"><td class="linenumbers">23</td><td class="linenumbers">23</td><td class="unchanged"><span> 	'description' => 'Rename a user (need \'\'renameuser\'\' right)',</span></td></tr>
+<tr id="125"><td class="linenumbers">24</td><td class="linenumbers">24</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="126"><td class="linenumbers">25</td><td class="linenumbers">25</td><td class="unchanged"><span> </span></td></tr>
+</table>
+</div>
+</form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/20841.html responseCode 3 200 
