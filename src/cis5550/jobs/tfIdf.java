@@ -48,8 +48,6 @@ public class tfIdf {
         long startTime = System.currentTimeMillis();
         long endTime = System.currentTimeMillis();
         Set<String> stopwords = StopWordsLoader.stopWords();
-        KVSClient kvs = context.getKVS();
-        String finalTableName = "pt-final";
         try { // compute each word's idf
             FlameRDD indexflameRdd = context.fromTable("pt-index", row -> {
 
@@ -232,11 +230,6 @@ public class tfIdf {
                         }
                         // String.valueOf((normalizedTfMap.get(entry.getKey()))*(idfMap.get(entry.getKey())))
                         if (value >= threshold && !entry.getKey().isEmpty()) {
-                            try {
-                                kvs.put(finalTableName, entry.getKey(), url, String.valueOf(value));
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
                             pairs.add(new FlamePair(url + "|" + entry.getKey(), String.valueOf(value)));
                         }
 
@@ -268,32 +261,32 @@ public class tfIdf {
             // System.out.println("Time taken in part 6: " + (endTime - startTime) + "ms");
             // flamePairRdd.saveAsTable("pt-tfIdf");
             ///////////////////
-            // startTime = System.currentTimeMillis();
+            startTime = System.currentTimeMillis();
 
-            // String tableName = "pt-final";
-            // KVSClient kvs = context.getKVS();
+            String tableName = "pt-final";
+            KVSClient kvs = context.getKVS();
 
-            // List<FlamePair> pairList = flamePairRdd.collect();
-            // for (FlamePair pair : pairList) {
-            // String urlword = pair._1();
-            // String tfidf = pair._2();
+            List<FlamePair> pairList = flamePairRdd.collect();
+            for (FlamePair pair : pairList) {
+                String urlword = pair._1();
+                String tfidf = pair._2();
 
-            // String word = urlword.split("\\|", 2)[1];
-            // String url = urlword.split("\\|", 2)[0];
-            // // Row row = new Row(word);
-            // // row.put(url, tfidf);
-            // // kvs.putRow(tableName, row);
+                String word = urlword.split("\\|", 2)[1];
+                String url = urlword.split("\\|", 2)[0];
+                // Row row = new Row(word);
+                // row.put(url, tfidf);
+                // kvs.putRow(tableName, row);
 
-            // try {
-            // kvs.put(tableName, word, url, tfidf);
-            // } catch (Exception e) {
-            // e.printStackTrace();
-            // }
-            // }
+                try {
+                    kvs.put(tableName, word, url, tfidf);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
-            // endTime = System.currentTimeMillis();
-            // System.out.println("Time taken to write pt-final: " + (endTime - startTime) +
-            // "ms");
+            endTime = System.currentTimeMillis();
+            System.out.println("Time taken to write pt-final: " + (endTime - startTime) +
+                    "ms");
             ///////////////////////
 
             // flamePairRdd.saveAsTable("pt-tfIdf");
