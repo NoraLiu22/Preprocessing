@@ -1,5 +1,6 @@
 package cis5550.jobs;
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import cis5550.flame.FlameContext;
@@ -25,7 +26,7 @@ public class tfIdf {
     static int Titleweight = 4;
     static int H1weight = 3;
     static int H2weight = 2;
-    static Double threshold = 1.0;
+    static Double threshold = 0.0;
 
     private static HashSet<String> stemWords(Set<String> words) {
         Stemmer s = new Stemmer();
@@ -40,8 +41,8 @@ public class tfIdf {
         return stemmedWords;
     }
 
-    public static void run(FlameContext context, String[] args) {
-        int N = 9;
+    public static void run(FlameContext context, String[] args) throws IOException {
+        int N = context.getKVS().count("pt-crawl");
         Set<String> stopwords = StopWordsLoader.stopWords();
         long startTime = System.currentTimeMillis();
         long endTime = System.currentTimeMillis();
@@ -207,27 +208,19 @@ public class tfIdf {
                 h2Words = stemWords(h2Words);
 
                 for (Map.Entry<String, Double> entry : normalizedTfMap.entrySet()) {
-                    // put tf + normalizedTf
                     if (entry.getKey() == null)
                         continue;
                     if (idfMap.get(entry.getKey()) != null) {
                         Double value = (normalizedTfMap.get(entry.getKey())) * (idfMap.get(entry.getKey()));
                         if (Title.contains(entry.getKey())) {
-                            // System.out.println("加了title权重");
-                            // System.out.println("加了title权重之前: "+value);
                             value = Titleweight * value;
-                            // System.out.println("加了title权重之后: "+value);
 
                         } else if (h1Words.contains(entry.getKey())) {
-                            // System.out.println("加了Header1权重");
-                            // System.out.println("加了Header1权重之前: "+value);
                             value = H1weight * value;
-                            // System.out.println("加了Header1权重之后: "+value);
                         } else if (h2Words.contains(entry.getKey())) {
-                            // System.out.println("加了Header2权重");
                             value = H2weight * value;
                         }
-                        // String.valueOf((normalizedTfMap.get(entry.getKey()))*(idfMap.get(entry.getKey())))
+
                         if (value >= threshold) {
                             pairs.add(new FlamePair(url + "?" + entry.getKey(), String.valueOf(value)));
                         }
