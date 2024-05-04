@@ -31,6 +31,7 @@ public class Indexer
     {    
 
         Set<String> stopwords=StopWordsLoader.stopWords();
+        Set<String> wordSet=DictionaryFilter.loader();
         try
         {
             
@@ -51,13 +52,6 @@ public class Indexer
         //s 是来自于 flameRdd 中的每一个元素，即 fromTable 方法中每一行经过处理后得到的结果
         
             FlamePairRDD flamePairRdd = flameRdd.mapToPair(s -> new FlamePair(s.split(",")[0], s.split(",",2)[1]));
-            //public FlamePairRDD flatMapToPair(PairToPairIterable lambda) throws Exception;
-            // List<String> h1Words = new ArrayList<>();
-            // List<String> h2Words = new ArrayList<>();
-            // List<String> h3Words = new ArrayList<>();
-            // List<String> h4Words = new ArrayList<>();
-            // List<String> h5Words = new ArrayList<>();
-            // List<String> h6Words = new ArrayList<>();
             flamePairRdd=flamePairRdd.flatMapToPair( pair -> 
             {
                 String url = pair._1();
@@ -70,47 +64,17 @@ public class Indexer
                 page=cleaner.clean2(page);
                 // Split into words
 		        String[] words = page.split("\\s+");
-                // // Remove content from meta, script and link tags
-		        // String patternString = "<(meta|script|link)(\\s[^>]*)?>.*?</(meta|script|link)>";
-		        // // Compile the pattern
-		        // Pattern pattern = Pattern.compile(patternString, Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-		        // // Match the pattern against the HTML string
-		        //  Matcher matcher = pattern.matcher(page);
-		        //  page = matcher.replaceAll(" ");
-		        //  // Remove HTML tags
-		        // page = page.replaceAll("<.*?>", " ");
-		        // // Remove punctuation
-		        // page = page.replaceAll("[.,:;!?'\"\\(\\)-]", " ");   
-		        // //Remove non alpha numeric characters
-                // //[^a-zA-Z0-9]
-		        // page = page.replaceAll("[^a-zA-Z]", " ");
-		        // //Remove non ASCII characters
-		        // page = page.replaceAll("[^\\p{ASCII}]", " ");
-                // page = page.replaceAll("[\\r\\n\\t]", " ");
-                // page=page.toLowerCase();
-                //System.out.println(page);
-                // drop stop words
-                //System.out.println("Original Num of Words: " + words.length);
-                int stopwordsCount = stopwords.size();
-                //System.out.println("Num of StopWords: " + stopwordsCount);
                 List<String> filteredWords = Arrays.stream(words)
-                .filter(word -> !stopwords.contains(word))
+                .filter(word -> !stopwords.contains(word) && wordSet.contains(word))
                 .sorted() // 对过滤好的单词进行排序
                 .collect(Collectors.toList());
                 // 将排序后的单词重新存储在String[] words中
                 words = filteredWords.toArray(new String[0]);
+
                 //System.out.println("filtered Num of Words: " + words.length);
                 // do stemming
                 Stemmer s = new Stemmer();
                 List<String> Stemmedwords= new ArrayList<>();;
-                // for(String word:words)
-                // {
-                // s.add(word.toCharArray(), word.length());
-		        // s.stem();
-                // Stemmedwords.add(s.toString());
-                // }
-                // Collections.sort(Stemmedwords);
-                // words = Stemmedwords.toArray(new String[0]);
                 Set<FlamePair> pairs = new HashSet<>();
                 //是一个文档中的每个词出现位置的对照表
                 Map<String, Set<Integer>> wordPositions = new ConcurrentHashMap<>();
@@ -132,50 +96,9 @@ public class Indexer
                         pos++;
                     }
                 }
-                //compute L2 norm over all document level term frequencies
-	            // Double DocvectorLength = 0.0;
-	        	// for (Map.Entry<String, Set<Integer>> entry : wordPositions.entrySet()) 
-                // {
-	        	// 	Integer wordTf = entry.getValue().size();
-	        	// 	DocvectorLength+=(wordTf*wordTf);
-	        	// }
 
-	        	// DocvectorLength = Math.sqrt(DocvectorLength);//compute each doc's vector length
-	            // // Compute term frequency (tf) and normalizedTf
-				// Map<String, Integer> tfMap = new ConcurrentHashMap<>();
-				// Map<String, Double> normalizedTfMap = new ConcurrentHashMap<>();
-				// for (Map.Entry<String, Set<Integer>> entry : wordPositions.entrySet()) 
-                // {
-				// 	String word = entry.getKey();
-				// 	Set<Integer> positions = entry.getValue();
-
-				// 	// Compute term frequency
-				// 	Double normalizedTf = positions.size() / DocvectorLength;
-				// 	tfMap.put(word,positions.size());
-				// 	normalizedTfMap.put(word, normalizedTf);
-				// }
                 Collections.sort(Stemmedwords);
                 words = Stemmedwords.toArray(new String[0]);
-
-                // pos = 1;
-		        // //also added the stemmed version of all words
-		        // for (String word : words) 
-                // {
-		            
-                //     word = word.trim();
-                //     word = word.toLowerCase();	
-                //     PorterStemmer s = new PorterStemmer();
-		        //     if(!word.isEmpty()) 
-                //     {
-		            		
-		        //     	word = word.toLowerCase();
-		        //     	s.add(word.toCharArray(), word.length());
-		        //     	s.stem();
-		        //     	wordPositions.putIfAbsent(s.toString(),new TreeSet<>());
-		        //     	wordPositions.get(s.toString()).add(pos);
-		        //     	pos++;
-		        //     }
-		        // }
 
                 for (Map.Entry<String, Set<Integer>> entry : wordPositions.entrySet()) 
                 {
