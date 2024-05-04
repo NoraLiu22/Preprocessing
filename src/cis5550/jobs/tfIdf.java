@@ -283,34 +283,42 @@ public class tfIdf
             ///////////////////
             startTime = System.currentTimeMillis();
 
-            String tableName = "pt-final";
-            KVSClient kvs = context.getKVS();
-
             List<FlamePair> pairList = flamePairRdd.collect();
-            for (FlamePair pair : pairList) {
-                String urlword = pair._1();
-                String tfidf = pair._2();
+            FlamePairRDD finalRDD = flamePairRdd.flatMapToPair(pair -> {
+                List<FlamePair> list = new ArrayList<>();
+                list.add(new FlamePair(pair._1().split("\\|", 2)[1], pair._2()));
+                return list;
+            });
+            finalRDD.saveAsTable("pt-final");
 
-                String word = urlword.split("\\|", 2)[1];
-                String url = urlword.split("\\|", 2)[0];
-                // Row row = new Row(word);
-                // row.put(url, tfidf);
-                // kvs.putRow(tableName, row);
-
-                try {
-                    kvs.put(tableName, word, url, tfidf);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            endTime = System.currentTimeMillis();
-            System.out.println("Time taken to write pt-final: " + (endTime - startTime) + "ms");
+             endTime = System.currentTimeMillis();
+             System.out.println("Part 7: Time taken to create pt-final: " + (endTime - startTime) + "ms");
+//             startTime = System.currentTimeMillis();
+//
+//            for (FlamePair pair : pairList) {
+//                String urlword = pair._1();
+//                String tfidf = pair._2();
+//
+//                String word = urlword.split("\\|", 2)[1];
+//                String url = urlword.split("\\|", 2)[0];
+//                // Row row = new Row(word);
+//                // row.put(url, tfidf);
+//                // kvs.putRow(tableName, row);
+//
+//                try {
+//                    kvs.put(tableName, word, url, tfidf);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            endTime = System.currentTimeMillis();
+//            System.out.println("Time taken to write pt-final: " + (endTime - startTime) + "ms");
             ///////////////////////
 
             // flamePairRdd.saveAsTable("pt-tfIdf");
             // part 7
-            startTime = System.currentTimeMillis();
+//            startTime = System.currentTimeMillis();
 
             ///////////////////////
 
@@ -318,35 +326,35 @@ public class tfIdf
             //flamePairRdd.saveAsTable("pt-tfIdf");
 
             //构建Table的TFIDF值，来表示Table的重要性
-            FlamePairRDD flamePairRdd2=flamePairRdd.flatMapToPair( pair -> 
-            {
-                String urlword = pair._1();
-		        String tfidf = pair._2();
-                //String word=urlword.split("?",2)[1];
-                String url=urlword.split("\\|",2)[0];
-                Set<FlamePair> pairs = new HashSet<>();
-                pairs.add(new FlamePair(url ,tfidf ));
-                return pairs;
-            });
-            
-            flamePairRdd2=flamePairRdd2.foldByKey("0.0", (u1, u2) -> {
-                if (u1.isEmpty()) return u2;
-                if (u2.isEmpty()) return u1;
-                // 将两个字符串转换为整数并累加
-                Double sum = Double.parseDouble(u1) + Double.parseDouble(u2);
-                // 将累加结果转换回字符串
-                return String.valueOf(sum);
-            });
-
-            flamePairRdd.saveAsTable("pt-tfIdf");
-            flamePairRdd2.saveAsTable("pt-TableTFIDF");
-            endTime = System.currentTimeMillis();
-            System.out.println("Time taken in part 7: " + (endTime - startTime) + "ms");
+//            FlamePairRDD flamePairRdd2=flamePairRdd.flatMapToPair( pair ->
+//            {
+//                String urlword = pair._1();
+//		        String tfidf = pair._2();
+//                //String word=urlword.split("?",2)[1];
+//                String url=urlword.split("\\|",2)[0];
+//                Set<FlamePair> pairs = new HashSet<>();
+//                pairs.add(new FlamePair(url ,tfidf ));
+//                return pairs;
+//            });
+//
+//            flamePairRdd2=flamePairRdd2.foldByKey("0.0", (u1, u2) -> {
+//                if (u1.isEmpty()) return u2;
+//                if (u2.isEmpty()) return u1;
+//                // 将两个字符串转换为整数并累加
+//                Double sum = Double.parseDouble(u1) + Double.parseDouble(u2);
+//                // 将累加结果转换回字符串
+//                return String.valueOf(sum);
+//            });
+//
+//            flamePairRdd.saveAsTable("pt-tfIdf");
+//            flamePairRdd2.saveAsTable("pt-TableTFIDF");
+//            endTime = System.currentTimeMillis();
+//            System.out.println("Time taken in part 7: " + (endTime - startTime) + "ms");
 
             
         
-        }catch(Exception e)
-        {
+        } catch(Exception e) {
+            e.printStackTrace();
         }
         
     
