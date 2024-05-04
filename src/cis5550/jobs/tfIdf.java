@@ -244,21 +244,23 @@ public class tfIdf {
             System.out.println(
                     "Time taken in part 5: " + (endTime - startTime) + "ms, size: " + flamePairRdd.collect().size());
             // part 6
-            // startTime = System.currentTimeMillis();
+            startTime = System.currentTimeMillis();
 
-            // flamePairRdd=flamePairRdd.foldByKey("0.0", (u1, u2) -> {
-            // if (u1.isEmpty()) return u2;
-            // if (u2.isEmpty()) return u1;
-            // // 将两个字符串转换为整数并累加
-            // Double sum = Double.parseDouble(u1) + Double.parseDouble(u2);
-            // // 将累加结果转换回字符串
-            // return String.valueOf(sum);
-            // });
+            flamePairRdd = flamePairRdd.foldByKey("0.0", (u1, u2) -> {
+                if (u1.isEmpty())
+                    return u2;
+                if (u2.isEmpty())
+                    return u1;
+                // 将两个字符串转换为整数并累加
+                Double sum = Double.parseDouble(u1) + Double.parseDouble(u2);
+                // 将累加结果转换回字符串
+                return String.valueOf(sum);
+            });
 
-            // ///////////////////
+            ///////////////////
 
-            // endTime = System.currentTimeMillis();
-            // System.out.println("Time taken in part 6: " + (endTime - startTime) + "ms");
+            endTime = System.currentTimeMillis();
+            System.out.println("Time taken in part 6: " + (endTime - startTime) + "ms");
             // flamePairRdd.saveAsTable("pt-tfIdf");
             ///////////////////
             startTime = System.currentTimeMillis();
