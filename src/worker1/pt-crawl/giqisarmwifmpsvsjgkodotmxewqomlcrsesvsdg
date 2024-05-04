@@ -1,0 +1,271 @@
+giqisarmwifmpsvsjgkodotmxewqomlcrsesvsdg length 5 13010 page 13010 <!DOCTYPE html>
+<html>
+<head>
+    <title>TigerWEB</title>
+    <meta charset="utf-8" />
+    <!--Define the versions of IE that will be used to render the page. See Microsoft documentation for details. Optional.-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- End Responsive -->
+    <!-- Mobile -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <!-- SEO -->
+    <meta name="Keywords" content="TigerWEB, Geography, Census" />
+    <meta name="Description" content="" />
+    <!-- End SEO -->
+    <!-- Facebook -->
+    <meta property="og:title" content="TigerWEB" />
+    <meta property="og:image" content="images/item.png" />
+    <meta property="og:site_name" content="esri" />
+    <!-- End Facebook -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//tigerweb.geo.census.gov/tigerweb/css/bootstrap.css" media="screen">
+    <!-- <link rel="stylesheet" href="//tigerweb.test.geo.census.gov/tigerweb/css/bootstrap.css" media="screen"> -->
+
+
+    <!--Use protocol relative urls that way if the browser is viewing the page via HTTPS the js/css file will be requested using the HTTPS protocol-->
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.10/js/dojo/dijit/themes/claro/claro.css" />
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.10/js/esri/css/esri.css" />
+
+    <!--<link rel="stylesheet" type="text/css" href="http://esri.github.io/bootstrap-map-js/src/css/bootstrapmap.css">-->
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,400,700" />
+    <!--Load any application specific styles-->
+    <link id="claroTheme" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/dijit.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/fontello.css" />
+    <link rel="stylesheet" type="text/css" href="css/TableOfContents.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/HomeButton.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/LocateButton.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/SimpleSlider.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/LargeSlider.css" />
+    <link rel="stylesheet" type="text/css" href="css/popup.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/dialogs.css" />
+    <link rel="stylesheet" type="text/css" href="css/geocoder.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/AreaOfInterest.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/AboutDialog.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/QueryDialog.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/TemplateBuilder.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="census/agsjs/css/agsjs.min.css" />
+    <link rel="stylesheet" type="text/css" href="census/basemapswitcher/css/BasemapSwitcher.min.css" />
+
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/fontello-ie7.min.css" /><![endif]-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/Modenizr.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/transition.js"></script>
+    <script src="js/moment.min.js"></script>
+</head>
+<body class="calcite app-loading">
+    <!--The ArcGIS API for JavaScript provides bidirectional support.  When viewing the application in an right to left (rtl) language like Hebrew and Arabic the map needs to remain in left-to-right (ltr) mode. Specify this by setting the dir attribute on the div to ltr. -->
+    <div class="loading-indicator">
+        <div class="loading-error">
+            <div class="icon-emo-unhappy"></div>
+            <div class="error-message-text" id="error_message"></div>
+        </div>
+    </div>
+    <div id="bc_outer" class="border-container-outer">
+        <div id="cp_outer_left" class="content-pane-left">
+            <div id="drawer_menus"></div>
+        </div>
+        <div id="cp_outer_center" class="content-pane-center">
+            <div id="geoData"></div>
+
+            <div class="top-bar">
+                <div id="hamburger_button" class="hamburger-button toggle-grey" title="Click to Open/Close Menus">
+                    <div class="icon-button2"></div>
+                </div>
+                <a href="http://www.census.gov" title="Go To Census Site" target="_blank" class="home-link"
+                       style="display:block; text-decoration:none; position:absolute; left: 48px; height: 53px; width: 105px;"></a>
+                <div class="titlebar">
+		    
+                    <span id="title" class="app-title"></span><br/>
+                    <hr class="title-hr"/>
+                    <span id="subtitle" class="app-subtitle"></span>
+                </div>
+                <div class="top-menu-right">
+                    <div id="menus">
+                        <div id="AboutDialog"></div>
+                        <div id="PrintDialog"></div> 
+                        <div id="QueryDialog"></div>
+                        <div id="IdentifyDialog"></div>
+                        <div id="CompareDialog"></div>
+                    
+                        
+                        <!--
+                        <div id="clearButton" class="icon-right" title="Clear Map" role="presentation" style="display:none;">
+                            <div title="Clear Map" class="button-container toggle-grey" role="button">
+                                <div>
+                                    <img class="my-icon-clear" src="data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw=="></img>
+                                </div>                   
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <div class="locate-box">
+                        <div id="geocoderSearch"></div>
+                    </div>
+                    <div id="mobileGeocoderIcon" class="mobile-geocoder-icon icon-right">
+                        <div id="mobileGeocoderIconContainer" class="button-container toggle-grey">
+                            <div class="icon-buttons">
+                                <img class="my-icon-search" src="images/icons/i_searchtext.png" alt="Geocode Address" />
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="mobileSearch" class="mobile-locate-box-hidden">
+                <div class="mobile-search-container">
+                    <div id="geocoderMobile"></div>
+                    <div id="btnCloseGeocoder" class="close-geocoder-button">Cancel</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div id="mapButtons" class="map-buttons">
+                <div id="LocateButton"></div>
+                <div id="HomeButton"></div>
+                <div id="ClearButton" class="ClearButton">
+                    <div id="clearContainer" class="clearContainer">
+                        <div class="clearMapButton clear-icon" role="button" title="Clear Map">
+                            <span>Clear The Map</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="BasemapSwitcher"></div>
+            <div id="mapDiv" class="map" dir="ltr">
+                <div id="slider">
+                    <div id="zoomIn" title="Zoom In"></div>
+                    <div id="mapSlider" title="Drag to zoom"></div>
+                    <div id="zoomOut" title="Zoom Out"></div>
+                </div>
+                
+                <div id="swipeDiv2"></div>
+                <span id="scale"></span>
+                <span id="currentZoom"></span>
+            </div>
+            <div id="statusBar">
+                <div id="mapStatus">
+                    <span id="currentExtent"></span>
+                </div>
+                <div id="messages">
+                    <div id="message">
+                        <span id="messageText"></span>
+                    </div>
+                    <div id="busy">
+                        <span id="cancelButton" title="Click to cancel running task(s)" style="position:absolute; right: 13px; top: 5px; cursor: pointer; display:none;">x</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        $(function () {
+            if (window.location.href.indexOf("tigerweb2010") > -1) {
+                document.title = "TIGERweb Decennial";
+            }
+
+            if (!Modernizr.input.placeholder) {
+                $('input[type="text"][placeholder]').each(function () {
+                    var $this = $(this);
+                    if ($this.attr('placeholder') != '') {
+                        if ($this.val() == '') {
+                            $this.val($this.attr('placeholder'));
+                        }
+                        $this.focus(function () {
+                            if ($this.val() == $this.attr('placeholder')) {
+                                $this.val('');
+                            }
+                        });
+                        $this.blur(function () {
+                            if ($this.val() == '') {
+                                $this.val($this.attr('placeholder'));
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        var package_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+
+        var dojoConfig = {
+            //The location.pathname.replace() logic below may look confusing but all its doing is
+            // enabling us to load the api from a CDN and load local modules from the correct location.
+            packages: [{
+                name: "application",
+                location: package_path + '/js'
+            }, {
+                name: "config",
+                location: package_path + '/config'
+            }, {
+                name: "arcgis_templates",
+                location: package_path + '/..'
+            }, {
+                name: "census",
+                location: package_path + '/census'
+            }]
+        };
+    </script>
+    <script type="text/javascript" src="//js.arcgis.com/3.10/init.js"></script>
+    <script type="text/javascript">
+        require([
+            "application/template",
+            "application/main"
+        ], function (
+            Template,
+            Main
+        ) {
+            // create the template. This will take care of all the logic required for template applications
+            var myTemplate = new Template();
+            // create my main application. Start placing your logic in the main.js file.
+            var myApp = new Main();
+            // start template
+            myTemplate.startup().then(function (config) {
+                myApp.startup(config);
+            }, function (error) {
+                // something went wrong. Let's report it.
+                myApp.reportError(error);
+            });
+        });
+    </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64433124-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <!--[if lt IE 9]><script type="text/javascript" src="js/respond.min.js"></script><![endif]-->
+</body>
+</html> contentType 9 text/html url 45 https://tigerweb.geo.census.gov:443/tigerweb/ responseCode 3 200 
