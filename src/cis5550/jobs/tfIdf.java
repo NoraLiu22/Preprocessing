@@ -225,6 +225,7 @@ public class tfIdf {
 
                         if (value >= threshold) {
                             pairs.add(new FlamePair(url + "|" + entry.getKey(), String.valueOf(value)));
+
                         }
 
                     }
@@ -265,7 +266,12 @@ public class tfIdf {
 
                 String word = urlword.split("\\|", 2)[1];
                 String url = urlword.split("\\|", 2)[0];
-                Row row = new Row(word);
+                Row row;
+                if (kvs.existsRow(tableName, word)) {
+                    row = kvs.getRow(tableName, word);
+                } else {
+                    row = new Row(word);
+                }
                 try {
                     row.put(url, tfidf);
                     kvs.putRow(tableName, row);
