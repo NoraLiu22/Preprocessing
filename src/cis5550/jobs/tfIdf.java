@@ -222,7 +222,7 @@ public class tfIdf {
                         }
 
                         if (value >= threshold) {
-                            pairs.add(new FlamePair(url + "?" + entry.getKey(), String.valueOf(value)));
+                            pairs.add(new FlamePair(url + "|" + entry.getKey(), String.valueOf(value)));
                         }
 
                     }
@@ -260,8 +260,8 @@ public class tfIdf {
                 String urlword = pair._1();
                 String tfidf = pair._2();
 
-                String word = urlword.split("\\?", 2)[1];
-                String url = urlword.split("\\?", 2)[0];
+                String word = urlword.split("\\|", 2)[1];
+                String url = urlword.split("\\|", 2)[0];
                 Row row = new Row(word);
                 row.put(url, tfidf);
                 kvs.putRow(tableName, row);
@@ -279,7 +279,7 @@ public class tfIdf {
                 String urlword = pair._1();
                 String tfidf = pair._2();
                 // String word=urlword.split("?",2)[1];
-                String url = urlword.split("\\?", 2)[0];
+                String url = urlword.split("\\|", 2)[0];
                 Set<FlamePair> pairs = new HashSet<>();
                 pairs.add(new FlamePair(url, tfidf));
                 return pairs;
