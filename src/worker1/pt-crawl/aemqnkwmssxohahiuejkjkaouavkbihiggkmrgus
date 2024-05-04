@@ -1,0 +1,4970 @@
+aemqnkwmssxohahiuejkjkaouavkbihiggkmrgus length 5 90043 page 90043 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The macOS Build Environment - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/reference/osx/ />
+<meta property="og:description" content="The macOS Build Environment" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/reference/osx.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">The macOS Build Environment</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#using-macos">Using macOS</a></li>
+  <li><a href="#macos-version">macOS Version</a></li>
+  <li><a href="#homebrew">Homebrew</a></li>
+  <li><a href="#file-system">File System</a></li>
+  <li><a href="#jdk-and-macos">JDK and macOS</a></li>
+  <li><a href="#compilers-and-build-toolchain">Compilers and Build toolchain</a></li>
+  <li><a href="#languages">Languages</a></li>
+  <li><a href="#runtimes">Runtimes</a></li>
+  <li><a href="#ruby-versionsimplementations">Ruby versions/implementations</a></li>
+  <li><a href="#gems-in-the-global-gem-set">Gems in the global gem set</a></li>
+  <li><a href="#python-related-tools">Python related tools</a></li>
+  <li><a href="#xcode-version">Xcode version</a></li>
+</ul>
+
+            </div>
+          
+
+          <h3 id="what-this-guide-covers">What This Guide Covers <a href="#what-this-guide-covers" class="toc-anchor">#</a></h3>
+
+<p>This guide explains what packages, tools and settings are available in the
+Travis macOS CI environment (often referred to as the “CI environment”).</p>
+
+<h2 id="overview">Overview <a href="#overview" class="toc-anchor">#</a></h2>
+
+<p>Travis CI runs builds in virtual machines that are snapshotted before each build
+and rolled back at the end of it. This offers a number of benefits:</p>
+
+<ul>
+  <li>Host OS is not affected by test suites</li>
+  <li>No state persists between runs</li>
+  <li>Passwordless sudo is available</li>
+  <li>It is possible for test suites to install various services via <code class="highlighter-rouge">brew</code>
+and then customize the configuration of those services at the
+beginning of each build.</li>
+</ul>
+
+<p>The environment available to test suites is known as the <em>Travis CI
+environment</em>.</p>
+
+<h2 id="using-macos">Using macOS <a href="#using-macos" class="toc-anchor">#</a></h2>
+
+<p>To use our macOS build infrastructure, add the following to your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">os</span><span class="pi">:</span> <span class="s">osx</span>
+</code></pre></div></div>
+
+<p>Travis CI also supports the <a href="/user/reference/linux/">Ubuntu Linux Environment</a>, <a href="/user/reference/windows/">Windows Environment</a> and <a href="/user/reference/freebsd/">FreeBSD Environment</a>.</p>
+
+<h2 id="macos-version">macOS Version <a href="#macos-version" class="toc-anchor">#</a></h2>
+
+<p>Travis CI uses macOS 10.13 and Xcode 9.4.1 by default. You can use another version of macOS (and Xcode) by specifying the corresponding <code class="highlighter-rouge">osx_image</code> key from the following table:</p>
+
+<table>
+
+<tr align="left"><th>osx_image value</th><th>Xcode version</th><th>Xcode build version</th><th>macOS version</th><th>JDK</th></tr>
+
+<tr>
+  <td><code>osx_image: xcode14.2</code></td>
+  <td><a href="#xcode-142">Xcode 14.2</a></td>
+  <td>14C18</td>
+  <td>macOS 12.6</td>
+  <td>19.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode14.1</code></td>
+  <td><a href="#xcode-141">Xcode 14.1</a></td>
+  <td>14B47b</td>
+  <td>macOS 12.6</td>
+  <td>19.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode14</code></td>
+  <td><a href="#xcode-14">Xcode 14.0.1</a></td>
+  <td>14A400</td>
+  <td>macOS 12.6</td>
+  <td>19</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.4</code></td>
+  <td><a href="#xcode-134">Xcode 13.4.1</a></td>
+  <td>13F100</td>
+  <td>macOS 12.4</td>
+  <td>18.0.1.1+0</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.3</code></td>
+  <td><a href="#xcode-133">Xcode 13.2.1</a></td>
+  <td>13E113</td>
+  <td>macOS 12.3</td>
+  <td>17+35-2724</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.2</code></td>
+  <td><a href="#xcode-132">Xcode 13.2.1</a></td>
+  <td>13C100</td>
+  <td>macOS 12.1</td>
+  <td>17+35-2724</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.1</code></td>
+  <td><a href="#xcode-131">Xcode 13.1</a></td>
+  <td>13A1030d</td>
+  <td>macOS 11.6</td>
+  <td>17+35-2724</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.5</code></td>
+  <td><a href="#xcode-125">Xcode 12.5</a></td>
+  <td>12E262</td>
+  <td>macOS 11.3</td>
+  <td>16.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.4</code></td>
+  <td><a href="#xcode-124">Xcode 12.4</a></td>
+  <td>12D4e</td>
+  <td>macOS 11.2.1</td>
+  <td>15.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.3</code></td>
+  <td><a href="#xcode-123">Xcode 12.3</a></td>
+  <td>12C33</td>
+  <td>macOS 11.1</td>
+  <td>15.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.2</code></td>
+  <td><a href="#xcode-122">Xcode 12.2</a></td>
+  <td>12B5018i</td>
+  <td>macOS 10.15.7</td>
+  <td>14.0.2</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12u</code></td>
+  <td><a href="#xcode-12 (universal)">Xcode 12.0</a></td>
+  <td>12A8161k</td>
+  <td>macOS 10.15.5</td>
+  <td>14.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12</code></td>
+  <td><a href="#xcode-12">Xcode 12.0.1</a></td>
+  <td>12A7300</td>
+  <td>macOS 10.15.7</td>
+  <td>14.0.2</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.6</code></td>
+  <td><a href="#xcode-116">Xcode 11.6</a></td>
+  <td>11E708</td>
+  <td>macOS 10.15.5</td>
+  <td>14.0.2</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.5</code></td>
+  <td><a href="#xcode-115">Xcode 11.5</a></td>
+  <td>11E608c</td>
+  <td>macOS 10.15.4</td>
+  <td>14.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.4</code></td>
+  <td><a href="#xcode-1141">Xcode 11.4.1</a></td>
+  <td>11E503a</td>
+  <td>macOS 10.15.4</td>
+  <td>14.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.3</code></td>
+  <td><a href="#xcode-1131">Xcode 11.3.1</a></td>
+  <td>11C505</td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.2</code></td>
+  <td><a href="#xcode-1121">Xcode 11.2.1</a></td>
+  <td>11B500</td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.1</code></td>
+  <td><a href="#xcode-111">Xcode 11.1</a></td>
+  <td>11A1027</td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11</code></td>
+  <td><a href="#xcode-110">Xcode 11.0</a></td>
+  <td>11A420a</td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10.3</code></td>
+  <td><a href="#xcode-103">Xcode 10.3</a></td>
+  <td>18E226</td>
+  <td>macOS 10.14.4</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10.2</code></td>
+  <td><a href="#xcode-102">Xcode 10.2.1</a></td>
+  <td>10E1001</td>
+  <td>macOS 10.14</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10.1</code></td>
+  <td><a href="#xcode-101">Xcode 10.1</a></td>
+  <td>10B61</td>
+  <td>macOS 10.13</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10</code></td>
+  <td><a href="#xcode-100">Xcode 10.0</a></td>
+  <td>10A255</td>
+  <td>macOS 10.13</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.4</code>  <em>Default</em> </td>
+  <td><a href="#xcode-94">Xcode 9.4.1</a></td>
+  <td>9F2000</td>
+  <td>macOS 10.13</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.3</code></td>
+  <td><a href="#xcode-93">Xcode 9.3</a></td>
+  <td>9E145</td>
+  <td>macOS 10.13</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.2</code></td>
+  <td><a href="#xcode-92">Xcode 9.2</a></td>
+  <td>9C40b</td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.1</code></td>
+  <td><a href="#xcode-91">Xcode 9.1</a></td>
+  <td>9B55</td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9</code></td>
+  <td><a href="#xcode-90">Xcode 9.0</a></td>
+  <td>9A235</td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode8.3</code></td>
+  <td><a href="#xcode-83">Xcode 8.3.3</a></td>
+  <td>8E3004b</td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode8</code></td>
+  <td><a href="#xcode-8">Xcode 8.0</a></td>
+  <td>8A218a</td>
+  <td>macOS 10.11</td>
+  <td>1.8.0_92-b14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode7.3</code></td>
+  <td><a href="#xcode-73">Xcode 7.3.1</a></td>
+  <td>7D1014</td>
+  <td>macOS 10.11</td>
+  <td>1.8.0_92-b14</td>
+  </tr>
+
+</table>
+
+<h2 id="homebrew">Homebrew <a href="#homebrew" class="toc-anchor">#</a></h2>
+
+<p>Homebrew is installed and updated every time the virtual machines are updated.</p>
+
+<blockquote>
+  <p>The <a href="/user/installing-dependencies/#installing-packages-on-macos">Travis Homebrew addon</a> is the simplest, fastest and most reliable way to install dependencies.</p>
+</blockquote>
+
+<p>The Homebrew addon correctly handles up-to-date, outdated, and missing packages. Manual Homebrew dependency scripts are error-prone, and we recommend against using them.</p>
+
+<p>The Homebrew addon uses the Homebrew database on the build image by default, but can be configured to run <code class="highlighter-rouge">brew update</code> if needed.</p>
+
+<h2 id="file-system">File System <a href="#file-system" class="toc-anchor">#</a></h2>
+
+<p>VMs running macOS 10.13 use HFS+, VMs running macOS 10.14 and newer use APFS.</p>
+
+<h2 id="jdk-and-macos">JDK and macOS <a href="#jdk-and-macos" class="toc-anchor">#</a></h2>
+
+<p>Note the pre-installed JDK version (OracleJDK) for each image in the table below.
+While Mac jobs can test against multiple JDK versions using the <a href="/user/languages/java/#testing-against-multiple-jdks"><code class="highlighter-rouge">jdk</code> key</a>,
+macOS images up to <code class="highlighter-rouge">xcode9.3</code> can only switch up to Java 8, and images <code class="highlighter-rouge">xcode9.4</code> and later can switch to Java 10 (if pre-installed) and later.
+In practical terms, if your Mac build requires Java 8 and below, use <code class="highlighter-rouge">xcode9.3</code> (or below); if your build requires Java 10
+and later, use <code class="highlighter-rouge">xcode9.4</code> (or later).</p>
+
+<table>
+
+<tr align="left"><th>osx_image value</th><th>Xcode version</th><th>macOS version</th><th>JDK</th></tr>
+
+<tr>
+  <td><code>osx_image: xcode14.2</code></td>
+  <td><a href="#xcode-142">Xcode 14.2</a></td>
+  <td>macOS 12.6</td>
+  <td>19.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode14.1</code></td>
+  <td><a href="#xcode-141">Xcode 14.1</a></td>
+  <td>macOS 12.6</td>
+  <td>19.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode14</code></td>
+  <td><a href="#xcode-14">Xcode 14.0.1</a></td>
+  <td>macOS 12.6</td>
+  <td>19</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.4</code></td>
+  <td><a href="#xcode-134">Xcode 13.4.1</a></td>
+  <td>macOS 12.4</td>
+  <td>18.0.1.1+0</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.3</code></td>
+  <td><a href="#xcode-133">Xcode 13.2.1</a></td>
+  <td>macOS 12.3</td>
+  <td>17+35-2724</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.2</code></td>
+  <td><a href="#xcode-132">Xcode 13.2.1</a></td>
+  <td>macOS 12.1</td>
+  <td>17+35-2724</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode13.1</code></td>
+  <td><a href="#xcode-131">Xcode 13.1</a></td>
+  <td>macOS 11.6</td>
+  <td>17+35-2724</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.5</code></td>
+  <td><a href="#xcode-125">Xcode 12.5</a></td>
+  <td>macOS 11.3</td>
+  <td>16.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.4</code></td>
+  <td><a href="#xcode-124">Xcode 12.4</a></td>
+  <td>macOS 11.2.1</td>
+  <td>15.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.3</code></td>
+  <td><a href="#xcode-123">Xcode 12.3</a></td>
+  <td>macOS 11.1</td>
+  <td>15.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12.2</code></td>
+  <td><a href="#xcode-122">Xcode 12.2</a></td>
+  <td>macOS 10.15.7</td>
+  <td>14.0.2</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12u</code></td>
+  <td><a href="#xcode-12 (universal)">Xcode 12.0</a></td>
+  <td>macOS 10.15.5</td>
+  <td>14.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode12</code></td>
+  <td><a href="#xcode-12">Xcode 12.0.1</a></td>
+  <td>macOS 10.15.7</td>
+  <td>14.0.2</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.6</code></td>
+  <td><a href="#xcode-116">Xcode 11.6</a></td>
+  <td>macOS 10.15.5</td>
+  <td>14.0.2</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.5</code></td>
+  <td><a href="#xcode-115">Xcode 11.5</a></td>
+  <td>macOS 10.15.4</td>
+  <td>14.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.4</code></td>
+  <td><a href="#xcode-1141">Xcode 11.4.1</a></td>
+  <td>macOS 10.15.4</td>
+  <td>14.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.3</code></td>
+  <td><a href="#xcode-1131">Xcode 11.3.1</a></td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.2</code></td>
+  <td><a href="#xcode-1121">Xcode 11.2.1</a></td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11.1</code></td>
+  <td><a href="#xcode-111">Xcode 11.1</a></td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode11</code></td>
+  <td><a href="#xcode-110">Xcode 11.0</a></td>
+  <td>macOS 10.14.6</td>
+  <td>14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10.3</code></td>
+  <td><a href="#xcode-103">Xcode 10.3</a></td>
+  <td>macOS 10.14.4</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10.2</code></td>
+  <td><a href="#xcode-102">Xcode 10.2.1</a></td>
+  <td>macOS 10.14</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10.1</code></td>
+  <td><a href="#xcode-101">Xcode 10.1</a></td>
+  <td>macOS 10.13</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode10</code></td>
+  <td><a href="#xcode-100">Xcode 10.0</a></td>
+  <td>macOS 10.13</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.4</code>  <em>Default</em> </td>
+  <td><a href="#xcode-94">Xcode 9.4.1</a></td>
+  <td>macOS 10.13</td>
+  <td>13.0.1</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.3</code></td>
+  <td><a href="#xcode-93">Xcode 9.3</a></td>
+  <td>macOS 10.13</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.2</code></td>
+  <td><a href="#xcode-92">Xcode 9.2</a></td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9.1</code></td>
+  <td><a href="#xcode-91">Xcode 9.1</a></td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode9</code></td>
+  <td><a href="#xcode-90">Xcode 9.0</a></td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode8.3</code></td>
+  <td><a href="#xcode-83">Xcode 8.3.3</a></td>
+  <td>macOS 10.12</td>
+  <td>1.8.0_112-b16</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode8</code></td>
+  <td><a href="#xcode-8">Xcode 8.0</a></td>
+  <td>macOS 10.11</td>
+  <td>1.8.0_92-b14</td>
+  </tr>
+
+<tr>
+  <td><code>osx_image: xcode7.3</code></td>
+  <td><a href="#xcode-73">Xcode 7.3.1</a></td>
+  <td>macOS 10.11</td>
+  <td>1.8.0_92-b14</td>
+  </tr>
+
+</table>
+
+<h2 id="compilers-and-build-toolchain">Compilers and Build toolchain <a href="#compilers-and-build-toolchain" class="toc-anchor">#</a></h2>
+
+<ul>
+  <li>automake</li>
+  <li>clang</li>
+  <li>cmake</li>
+  <li>gcc</li>
+  <li>maven</li>
+  <li>mercurial</li>
+  <li>pkg-config</li>
+  <li>wget</li>
+  <li>xctool</li>
+</ul>
+
+<h2 id="languages">Languages <a href="#languages" class="toc-anchor">#</a></h2>
+
+<ul>
+  <li>C</li>
+  <li>C++</li>
+  <li>Go</li>
+  <li>Java</li>
+  <li>Nodejs</li>
+  <li>Python</li>
+  <li>Ruby</li>
+</ul>
+
+<h2 id="runtimes">Runtimes <a href="#runtimes" class="toc-anchor">#</a></h2>
+
+<p>Every worker has at least one version of Go, Java, Python, Ruby and NodeJS to accommodate
+projects that may need one of those runtimes during the build.</p>
+
+<h2 id="ruby-versionsimplementations">Ruby versions/implementations <a href="#ruby-versionsimplementations" class="toc-anchor">#</a></h2>
+
+<p>Default macOS Ruby (depends on macOS version) – You need to use <code class="highlighter-rouge">sudo</code> to install gems with this Ruby and you can also use the <a href="https://rubies.travis-ci.org/">pre-compiled Ruby binaries</a> we made available.</p>
+
+<p>Rubies are built using <a href="http://rvm.io/">RVM</a> that is installed per-user.</p>
+
+<h2 id="gems-in-the-global-gem-set">Gems in the global gem set <a href="#gems-in-the-global-gem-set" class="toc-anchor">#</a></h2>
+
+<ul>
+  <li>bundler</li>
+  <li>rake</li>
+  <li>cocoapods</li>
+</ul>
+
+<h2 id="python-related-tools">Python related tools <a href="#python-related-tools" class="toc-anchor">#</a></h2>
+
+<ul>
+  <li>pyenv (via homebrew)</li>
+  <li>virtualenv (via pip)</li>
+  <li>numpy (via pip)</li>
+  <li>scipy (via pip)</li>
+  <li>tox (via pip)</li>
+</ul>
+
+<h2 id="xcode-version">Xcode version <a href="#xcode-version" class="toc-anchor">#</a></h2>
+
+<p>Xcode 9.4.1 is installed with all available simulators and SDKs.
+Command Line Tools are also installed.</p>
+
+<h3 id="xcode-142">Xcode 14.2 <a href="#xcode-142" class="toc-anchor">#</a></h3>
+
+<p>Xcode 14.2 is available by adding <code class="highlighter-rouge">osx_image: xcode14.2</code> to your .travis.yml.</p>
+
+<p>Our Xcode 14.2 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos16.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator16.2</p>
+  </li>
+  <li>
+    <p>macosx13.1</p>
+  </li>
+  <li>
+    <p>appletvos16.1</p>
+  </li>
+  <li>
+    <p>appletvsimulator16.1</p>
+  </li>
+  <li>
+    <p>watchos9.1</p>
+  </li>
+  <li>
+    <p>watchsimulator9.1</p>
+  </li>
+</ul>
+
+<p>The Xcode 14.2 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>iOS 15.2</p>
+  </li>
+  <li>
+    <p>iOS 15.4</p>
+  </li>
+  <li>
+    <p>iOS 15.5</p>
+  </li>
+  <li>
+    <p>iOS 16.0</p>
+  </li>
+  <li>
+    <p>iOS 16.2</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 15.2</p>
+  </li>
+  <li>
+    <p>tvOS 15.4</p>
+  </li>
+  <li>
+    <p>tvOS 16.0</p>
+  </li>
+  <li>
+    <p>tvOS 16.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+  <li>
+    <p>watchOS 8.3</p>
+  </li>
+  <li>
+    <p>watchOS 8.5</p>
+  </li>
+  <li>
+    <p>watchOS 9.0</p>
+  </li>
+  <li>
+    <p>watchOS 9.1</p>
+  </li>
+</ul>
+
+<h3 id="xcode-141">Xcode 14.1 <a href="#xcode-141" class="toc-anchor">#</a></h3>
+
+<p>Xcode 14.1 is available by adding <code class="highlighter-rouge">osx_image: xcode14.1</code> to your .travis.yml.</p>
+
+<p>Our Xcode 14.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos16.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator16.0</p>
+  </li>
+  <li>
+    <p>macosx12.3</p>
+  </li>
+  <li>
+    <p>appletvos16.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator16.0</p>
+  </li>
+  <li>
+    <p>watchos9.0</p>
+  </li>
+  <li>
+    <p>watchsimulator9.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 14.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>iOS 15.2</p>
+  </li>
+  <li>
+    <p>iOS 15.4</p>
+  </li>
+  <li>
+    <p>iOS 15.5</p>
+  </li>
+  <li>
+    <p>iOS 16.0</p>
+  </li>
+  <li>
+    <p>iOS 16.1</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 15.2</p>
+  </li>
+  <li>
+    <p>tvOS 15.4</p>
+  </li>
+  <li>
+    <p>tvOS 16.0</p>
+  </li>
+  <li>
+    <p>tvOS 16.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+  <li>
+    <p>watchOS 8.3</p>
+  </li>
+  <li>
+    <p>watchOS 8.5</p>
+  </li>
+  <li>
+    <p>watchOS 9.0</p>
+  </li>
+  <li>
+    <p>watchOS 9.1</p>
+  </li>
+</ul>
+
+<h3 id="xcode-14">Xcode 14 <a href="#xcode-14" class="toc-anchor">#</a></h3>
+
+<p>Xcode 14.0.1 is available by adding <code class="highlighter-rouge">osx_image: xcode14</code> to your .travis.yml.</p>
+
+<p>Our Xcode 14.0.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos16.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator16.0</p>
+  </li>
+  <li>
+    <p>macosx12.3</p>
+  </li>
+  <li>
+    <p>appletvos16.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator16.0</p>
+  </li>
+  <li>
+    <p>watchos9.0</p>
+  </li>
+  <li>
+    <p>watchsimulator9.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 14.0.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 14.5</p>
+  </li>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>iOS 15.2</p>
+  </li>
+  <li>
+    <p>iOS 15.4</p>
+  </li>
+  <li>
+    <p>iOS 15.5</p>
+  </li>
+  <li>
+    <p>iOS 16.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 15.2</p>
+  </li>
+  <li>
+    <p>tvOS 15.4</p>
+  </li>
+  <li>
+    <p>tvOS 16.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+  <li>
+    <p>watchOS 8.3</p>
+  </li>
+  <li>
+    <p>watchOS 8.5</p>
+  </li>
+  <li>
+    <p>watchOS 9.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-134">Xcode 13.4 <a href="#xcode-134" class="toc-anchor">#</a></h3>
+
+<p>Xcode 13.4.1 is available by adding <code class="highlighter-rouge">osx_image: xcode13.4</code> to your .travis.yml.</p>
+
+<p>Our Xcode 13.4.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos15.5</p>
+  </li>
+  <li>
+    <p>iphonesimulator15.5</p>
+  </li>
+  <li>
+    <p>macosx12.3</p>
+  </li>
+  <li>
+    <p>appletvos15.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator15.4</p>
+  </li>
+  <li>
+    <p>watchos8.5</p>
+  </li>
+  <li>
+    <p>watchsimulator8.5</p>
+  </li>
+</ul>
+
+<p>The Xcode 13.4.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 14.4</p>
+  </li>
+  <li>
+    <p>iOS 14.5</p>
+  </li>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>iOS 15.2</p>
+  </li>
+  <li>
+    <p>iOS 15.4</p>
+  </li>
+  <li>
+    <p>iOS 15.5</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>tvOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 15.2</p>
+  </li>
+  <li>
+    <p>tvOS 15.4</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+  <li>
+    <p>watchOS 8.3</p>
+  </li>
+  <li>
+    <p>watchOS 8.5</p>
+  </li>
+</ul>
+
+<h3 id="xcode-133">Xcode 13.3 <a href="#xcode-133" class="toc-anchor">#</a></h3>
+
+<p>Xcode 13.2.1 is available by adding <code class="highlighter-rouge">osx_image: xcode13.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 13.2.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos15.4</p>
+  </li>
+  <li>
+    <p>iphonesimulator15.4</p>
+  </li>
+  <li>
+    <p>macosx12.3</p>
+  </li>
+  <li>
+    <p>appletvos15.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator15.4</p>
+  </li>
+  <li>
+    <p>watchos8.5</p>
+  </li>
+  <li>
+    <p>watchsimulator8.5</p>
+  </li>
+</ul>
+
+<p>The Xcode 13.2.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 14.3</p>
+  </li>
+  <li>
+    <p>iOS 14.4</p>
+  </li>
+  <li>
+    <p>iOS 14.5</p>
+  </li>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>iOS 15.2</p>
+  </li>
+  <li>
+    <p>iOS 15.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>tvOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 15.2</p>
+  </li>
+  <li>
+    <p>tvOS 15.4</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+  <li>
+    <p>watchOS 8.3</p>
+  </li>
+  <li>
+    <p>watchOS 8.5</p>
+  </li>
+</ul>
+
+<h3 id="xcode-132">Xcode 13.2 <a href="#xcode-132" class="toc-anchor">#</a></h3>
+
+<p>Xcode 13.2.1 is available by adding <code class="highlighter-rouge">osx_image: xcode13.2</code> to your .travis.yml.</p>
+
+<p>Our Xcode 13.2.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos15.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator15.2</p>
+  </li>
+  <li>
+    <p>macosx12.1</p>
+  </li>
+  <li>
+    <p>appletvos15.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator15.2</p>
+  </li>
+  <li>
+    <p>watchos8.3</p>
+  </li>
+  <li>
+    <p>watchsimulator8.3</p>
+  </li>
+</ul>
+
+<p>The Xcode 13.2.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>iOS 14.1</p>
+  </li>
+  <li>
+    <p>iOS 14.2</p>
+  </li>
+  <li>
+    <p>iOS 14.3</p>
+  </li>
+  <li>
+    <p>iOS 14.4</p>
+  </li>
+  <li>
+    <p>iOS 14.5</p>
+  </li>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.2</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>tvOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-131">Xcode 13.1 <a href="#xcode-131" class="toc-anchor">#</a></h3>
+
+<p>Xcode 13.1 is available by adding <code class="highlighter-rouge">osx_image: xcode13.1</code> to your .travis.yml.</p>
+
+<p>Our Xcode 13.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.5</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.5</p>
+  </li>
+  <li>
+    <p>macosx11.3</p>
+  </li>
+  <li>
+    <p>appletvos14.5</p>
+  </li>
+  <li>
+    <p>appletvsimulator14.5</p>
+  </li>
+  <li>
+    <p>watchos7.4</p>
+  </li>
+  <li>
+    <p>watchsimulator7.4</p>
+  </li>
+</ul>
+
+<p>The Xcode 13.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>iOS 14.1</p>
+  </li>
+  <li>
+    <p>iOS 14.2</p>
+  </li>
+  <li>
+    <p>iOS 14.3</p>
+  </li>
+  <li>
+    <p>iOS 14.4</p>
+  </li>
+  <li>
+    <p>iOS 14.5</p>
+  </li>
+  <li>
+    <p>iOS 15.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.2</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>tvOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 15.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+  <li>
+    <p>watchOS 8.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-125">Xcode 12.5 <a href="#xcode-125" class="toc-anchor">#</a></h3>
+
+<p>Xcode 12.5 is available by adding <code class="highlighter-rouge">osx_image: xcode12.5</code> to your .travis.yml.</p>
+
+<p>Our Xcode 12.5 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.5</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.5</p>
+  </li>
+  <li>
+    <p>macosx11.3</p>
+  </li>
+  <li>
+    <p>appletvos14.5</p>
+  </li>
+  <li>
+    <p>appletvsimulator14.5</p>
+  </li>
+  <li>
+    <p>watchos7.4</p>
+  </li>
+  <li>
+    <p>watchsimulator7.4</p>
+  </li>
+</ul>
+
+<p>The Xcode 12.5 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>iOS 13.1</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>iOS 13.6</p>
+  </li>
+  <li>
+    <p>iOS 13.7</p>
+  </li>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>iOS 14.1</p>
+  </li>
+  <li>
+    <p>iOS 14.2</p>
+  </li>
+  <li>
+    <p>iOS 14.3</p>
+  </li>
+  <li>
+    <p>iOS 14.4</p>
+  </li>
+  <li>
+    <p>iOS 14.5</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.2</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>tvOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.5</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.0</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.4</p>
+  </li>
+</ul>
+
+<h3 id="xcode-124">Xcode 12.4 <a href="#xcode-124" class="toc-anchor">#</a></h3>
+
+<p>Xcode 12.4 is available by adding <code class="highlighter-rouge">osx_image: xcode12.4</code> to your .travis.yml.</p>
+
+<p>Our Xcode 12.4 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.4</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.4</p>
+  </li>
+  <li>
+    <p>driverkit.macosx20.2</p>
+  </li>
+  <li>
+    <p>macosx11.1</p>
+  </li>
+  <li>
+    <p>appletvos14.3</p>
+  </li>
+  <li>
+    <p>appletvsimulator14.3</p>
+  </li>
+  <li>
+    <p>watchos7.2</p>
+  </li>
+  <li>
+    <p>watchsimulator7.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 12.4 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>iOS 13.1</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>iOS 13.6</p>
+  </li>
+  <li>
+    <p>iOS 13.7</p>
+  </li>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>iOS 14.1</p>
+  </li>
+  <li>
+    <p>iOS 14.2</p>
+  </li>
+  <li>
+    <p>iOS 14.3</p>
+  </li>
+  <li>
+    <p>iOS 14.4</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.2</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.0</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-123">Xcode 12.3 <a href="#xcode-123" class="toc-anchor">#</a></h3>
+
+<p>Xcode 12.3 is available by adding <code class="highlighter-rouge">osx_image: xcode12.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 12.3 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.3</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.3</p>
+  </li>
+  <li>
+    <p>macosx11.1</p>
+  </li>
+  <li>
+    <p>appletvos14.3</p>
+  </li>
+  <li>
+    <p>appletvsimulator14.3</p>
+  </li>
+  <li>
+    <p>watchos7.2</p>
+  </li>
+  <li>
+    <p>watchsimulator7.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 12.3 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>iOS 13.1</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>iOS 13.6</p>
+  </li>
+  <li>
+    <p>iOS 13.7</p>
+  </li>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>iOS 14.1</p>
+  </li>
+  <li>
+    <p>iOS 14.2</p>
+  </li>
+  <li>
+    <p>iOS 14.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 14.2</p>
+  </li>
+  <li>
+    <p>tvOS 14.3</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.0</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+  <li>
+    <p>watchOS 7.1</p>
+  </li>
+  <li>
+    <p>watchOS 7.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-122">Xcode 12.2 <a href="#xcode-122" class="toc-anchor">#</a></h3>
+
+<p>Xcode 12.2 is available by adding <code class="highlighter-rouge">osx_image: xcode12.2</code> to your .travis.yml.</p>
+
+<p>Our Xcode 12.2 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.2</p>
+  </li>
+  <li>
+    <p>macosx11.0</p>
+  </li>
+  <li>
+    <p>appletvos14.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator14.2</p>
+  </li>
+  <li>
+    <p>watchos7.1</p>
+  </li>
+  <li>
+    <p>watchsimulator7.1</p>
+  </li>
+</ul>
+
+<p>The Xcode 12.2 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>iOS 13.1</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-12-universal">Xcode 12 (Universal) <a href="#xcode-12-universal" class="toc-anchor">#</a></h3>
+
+<p>Xcode 12.0 is available by adding <code class="highlighter-rouge">osx_image: xcode12u</code> to your .travis.yml.</p>
+
+<p>Our Xcode 12.0 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.0</p>
+  </li>
+  <li>
+    <p>driverkit.macosx20.0</p>
+  </li>
+  <li>
+    <p>macosx11.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 12.0 image also comes with the following simulators:</p>
+
+<ul>
+  <li>iOS 14.0</li>
+</ul>
+
+<h3 id="xcode-12">Xcode 12 <a href="#xcode-12" class="toc-anchor">#</a></h3>
+
+<p>Xcode 12.0.1 is available by adding <code class="highlighter-rouge">osx_image: xcode12</code> to your .travis.yml.</p>
+
+<p>Our Xcode 12.0.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos14.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator14.0</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos14.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator14.0</p>
+  </li>
+  <li>
+    <p>watchos7</p>
+  </li>
+  <li>
+    <p>watchsimulator7</p>
+  </li>
+</ul>
+
+<p>The Xcode 12.0.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>iOS 13.1</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>iOS 14.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>tvOS 14.0</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+  <li>
+    <p>watchOS 7.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-116">Xcode 11.6 <a href="#xcode-116" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.6 is available by adding <code class="highlighter-rouge">osx_image: xcode11.6</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.6 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.6</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.6</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.4</p>
+  </li>
+  <li>
+    <p>watchos6.2</p>
+  </li>
+  <li>
+    <p>watchsimulator6.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.6 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>iOS 13.6</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-115">Xcode 11.5 <a href="#xcode-115" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.5 is available by adding <code class="highlighter-rouge">osx_image: xcode11.5</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.5 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.5</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.5</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.4</p>
+  </li>
+  <li>
+    <p>watchos6.2</p>
+  </li>
+  <li>
+    <p>watchsimulator6.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.5 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>iOS 13.5</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-1141">Xcode 11.4.1 <a href="#xcode-1141" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.4.1 is available by adding <code class="highlighter-rouge">osx_image: xcode11.4</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.4.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.4</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.4</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.4</p>
+  </li>
+  <li>
+    <p>watchos6.2</p>
+  </li>
+  <li>
+    <p>watchsimulator6.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.4.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>iOS 13.4</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 13.4</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-1131">Xcode 11.3.1 <a href="#xcode-1131" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.3.1 is available by adding <code class="highlighter-rouge">osx_image: xcode11.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.3.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.2</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.2</p>
+  </li>
+  <li>
+    <p>watchos6.1</p>
+  </li>
+  <li>
+    <p>watchsimulator6.1</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.3.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>iOS 13.3</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 13.3</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+</ul>
+
+<h3 id="xcode-1121">Xcode 11.2.1 <a href="#xcode-1121" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.2.1 is available by adding <code class="highlighter-rouge">osx_image: xcode11.2</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.2.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.2</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.2</p>
+  </li>
+  <li>
+    <p>watchos6.1</p>
+  </li>
+  <li>
+    <p>watchsimulator6.1</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.2.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>iOS 13.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 13.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+  <li>
+    <p>watchOS 6.1</p>
+  </li>
+</ul>
+
+<h3 id="xcode-111">Xcode 11.1 <a href="#xcode-111" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.1 is available by adding <code class="highlighter-rouge">osx_image: xcode11.1</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.1</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.1</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.0</p>
+  </li>
+  <li>
+    <p>watchos6.0</p>
+  </li>
+  <li>
+    <p>watchsimulator6.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>iOS 13.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-110">Xcode 11.0 <a href="#xcode-110" class="toc-anchor">#</a></h3>
+
+<p>Xcode 11.0 is available by adding <code class="highlighter-rouge">osx_image: xcode11</code> to your .travis.yml.</p>
+
+<p>Our Xcode 11.0 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>iphoneos13.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator13.0</p>
+  </li>
+  <li>
+    <p>macosx10.15</p>
+  </li>
+  <li>
+    <p>appletvos13.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator13.0</p>
+  </li>
+  <li>
+    <p>watchos6.0</p>
+  </li>
+  <li>
+    <p>watchsimulator6.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 11.0 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 13.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 13.0</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 6.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-103">Xcode 10.3 <a href="#xcode-103" class="toc-anchor">#</a></h3>
+
+<p>Xcode 10.3 is available by adding <code class="highlighter-rouge">osx_image: xcode10.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 10.3 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.14</p>
+  </li>
+  <li>
+    <p>iphoneos12.4</p>
+  </li>
+  <li>
+    <p>iphonesimulator12.4</p>
+  </li>
+  <li>
+    <p>appletvos12.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator12.4</p>
+  </li>
+  <li>
+    <p>watchos5.3</p>
+  </li>
+  <li>
+    <p>watchsimulator5.3</p>
+  </li>
+</ul>
+
+<p>The Xcode 10.3 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>iOS 12.4</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 12.4</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.3</p>
+  </li>
+</ul>
+
+<h3 id="xcode-102">Xcode 10.2 <a href="#xcode-102" class="toc-anchor">#</a></h3>
+
+<p>Xcode 10.2.1 is available by adding <code class="highlighter-rouge">osx_image: xcode10.2</code> to your .travis.yml.</p>
+
+<p>Our Xcode 10.2.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.14</p>
+  </li>
+  <li>
+    <p>iphoneos12.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator12.2</p>
+  </li>
+  <li>
+    <p>appletvos12.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator12.2</p>
+  </li>
+  <li>
+    <p>watchos5.2</p>
+  </li>
+  <li>
+    <p>watchsimulator5.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 10.2.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>iOS 12.2</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 12.2</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+  <li>
+    <p>watchOS 5.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-101">Xcode 10.1 <a href="#xcode-101" class="toc-anchor">#</a></h3>
+
+<p>Xcode 10.1 is available by adding <code class="highlighter-rouge">osx_image: xcode10.1</code> to your .travis.yml.</p>
+
+<p>Our Xcode 10.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.14</p>
+  </li>
+  <li>
+    <p>iphoneos12.1</p>
+  </li>
+  <li>
+    <p>iphonesimulator12.1</p>
+  </li>
+  <li>
+    <p>appletvos12.1</p>
+  </li>
+  <li>
+    <p>appletvsimulator12.1</p>
+  </li>
+  <li>
+    <p>watchos5.1</p>
+  </li>
+  <li>
+    <p>watchsimulator5.1</p>
+  </li>
+</ul>
+
+<p>The Xcode 10.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>iOS 12.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 12.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+  <li>
+    <p>watchOS 5.1</p>
+  </li>
+</ul>
+
+<h3 id="xcode-100">Xcode 10.0 <a href="#xcode-100" class="toc-anchor">#</a></h3>
+
+<p>Xcode 10.0 is available by adding <code class="highlighter-rouge">osx_image: xcode10</code> to your .travis.yml.</p>
+
+<p>Our Xcode 10.0 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.14</p>
+  </li>
+  <li>
+    <p>iphoneos12.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator12.0</p>
+  </li>
+  <li>
+    <p>appletvos12.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator12.0</p>
+  </li>
+  <li>
+    <p>watchos5.0</p>
+  </li>
+  <li>
+    <p>watchsimulator5.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 10.0 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>iOS 12.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 12.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 5.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-94">Xcode 9.4 <a href="#xcode-94" class="toc-anchor">#</a></h3>
+
+<p>Xcode 9.4.1 is available by adding <code class="highlighter-rouge">osx_image: xcode9.4</code> to your .travis.yml.</p>
+
+<p>– <strong>Default when no other <code class="highlighter-rouge">osx_image:</code> is specified</strong></p>
+
+<p>Our Xcode 9.4.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.13</p>
+  </li>
+  <li>
+    <p>iphoneos11.4</p>
+  </li>
+  <li>
+    <p>iphonesimulator11.4</p>
+  </li>
+  <li>
+    <p>appletvos11.4</p>
+  </li>
+  <li>
+    <p>appletvsimulator11.4</p>
+  </li>
+  <li>
+    <p>watchos4.3</p>
+  </li>
+  <li>
+    <p>watchsimulator4.3</p>
+  </li>
+</ul>
+
+<p>The Xcode 9.4.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>iOS 11.4</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 11.4</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.3</p>
+  </li>
+</ul>
+
+<h3 id="xcode-93">Xcode 9.3 <a href="#xcode-93" class="toc-anchor">#</a></h3>
+
+<p>Xcode 9.3 is available by adding <code class="highlighter-rouge">osx_image: xcode9.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 9.3 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.13</p>
+  </li>
+  <li>
+    <p>iphoneos11.3</p>
+  </li>
+  <li>
+    <p>iphonesimulator11.3</p>
+  </li>
+  <li>
+    <p>appletvos11.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator11.3</p>
+  </li>
+  <li>
+    <p>watchos4.3</p>
+  </li>
+  <li>
+    <p>watchsimulator4.3</p>
+  </li>
+</ul>
+
+<p>The Xcode 9.3 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>iOS 11.3</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.3</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.3</p>
+  </li>
+</ul>
+
+<h3 id="xcode-92">Xcode 9.2 <a href="#xcode-92" class="toc-anchor">#</a></h3>
+
+<p>Xcode 9.2 is available by adding <code class="highlighter-rouge">osx_image: xcode9.2</code> to your .travis.yml.</p>
+
+<p>Our Xcode 9.2 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.13</p>
+  </li>
+  <li>
+    <p>iphoneos11.2</p>
+  </li>
+  <li>
+    <p>iphonesimulator11.2</p>
+  </li>
+  <li>
+    <p>appletvos11.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator11.2</p>
+  </li>
+  <li>
+    <p>watchos4.2</p>
+  </li>
+  <li>
+    <p>watchsimulator4.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 9.2 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>iOS 11.2</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 11.2</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+  <li>
+    <p>watchOS 4.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-91">Xcode 9.1 <a href="#xcode-91" class="toc-anchor">#</a></h3>
+
+<p>Xcode 9.1 is available by adding <code class="highlighter-rouge">osx_image: xcode9.1</code> to your .travis.yml.</p>
+
+<p>Our Xcode 9.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.13</p>
+  </li>
+  <li>
+    <p>iphoneos11.1</p>
+  </li>
+  <li>
+    <p>iphonesimulator11.1</p>
+  </li>
+  <li>
+    <p>appletvos11.1</p>
+  </li>
+  <li>
+    <p>appletvsimulator11.1</p>
+  </li>
+  <li>
+    <p>watchos4.1</p>
+  </li>
+  <li>
+    <p>watchsimulator4.1</p>
+  </li>
+</ul>
+
+<p>The Xcode 9.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>iOS 11.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 11.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+  <li>
+    <p>watchOS 4.1</p>
+  </li>
+</ul>
+
+<h3 id="xcode-90">Xcode 9.0 <a href="#xcode-90" class="toc-anchor">#</a></h3>
+
+<p>Xcode 9.0 is available by adding <code class="highlighter-rouge">osx_image: xcode9</code> to your .travis.yml.</p>
+
+<p>Our Xcode 9.0 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.13</p>
+  </li>
+  <li>
+    <p>iphoneos11.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator11.0</p>
+  </li>
+  <li>
+    <p>appletvos11.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator11.0</p>
+  </li>
+  <li>
+    <p>watchos4.0</p>
+  </li>
+  <li>
+    <p>watchsimulator4.0</p>
+  </li>
+</ul>
+
+<p>The Xcode 9.0 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>iOS 11.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>tvOS 11.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+  <li>
+    <p>watchOS 4.0</p>
+  </li>
+</ul>
+
+<h3 id="xcode-83">Xcode 8.3 <a href="#xcode-83" class="toc-anchor">#</a></h3>
+
+<p>Xcode 8.3.3 is available by adding <code class="highlighter-rouge">osx_image: xcode8.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 8.3.3 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.12</p>
+  </li>
+  <li>
+    <p>iphoneos10.3</p>
+  </li>
+  <li>
+    <p>iphonesimulator10.3</p>
+  </li>
+  <li>
+    <p>appletvos10.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator10.2</p>
+  </li>
+  <li>
+    <p>watchos3.2</p>
+  </li>
+  <li>
+    <p>watchsimulator3.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 8.3.3 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 10.1</p>
+  </li>
+  <li>
+    <p>iOS 10.2</p>
+  </li>
+  <li>
+    <p>iOS 10.3</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.1</p>
+  </li>
+  <li>
+    <p>tvOS 10.2</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>watchOS 3.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-8">Xcode 8 <a href="#xcode-8" class="toc-anchor">#</a></h3>
+
+<p>Xcode 8.0 is available by adding <code class="highlighter-rouge">osx_image: xcode8</code> to your .travis.yml.</p>
+
+<p>Our Xcode 8.0 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.11</p>
+  </li>
+  <li>
+    <p>iphoneos10.0</p>
+  </li>
+  <li>
+    <p>iphonesimulator10.0</p>
+  </li>
+  <li>
+    <p>appletvos10.0</p>
+  </li>
+  <li>
+    <p>appletvsimulator10.0</p>
+  </li>
+  <li>
+    <p>watchos3.0</p>
+  </li>
+  <li>
+    <p>watchsimulator3.0</p>
+  </li>
+  <li>
+    <p>iphoneos9.3</p>
+  </li>
+  <li>
+    <p>iphonesimulator9.3</p>
+  </li>
+  <li>
+    <p>appletvos9.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator9.2</p>
+  </li>
+  <li>
+    <p>watchos2.2</p>
+  </li>
+  <li>
+    <p>watchsimulator2.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 8.0 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 10.0</p>
+  </li>
+  <li>
+    <p>watchOS 3.0</p>
+  </li>
+  <li>
+    <p>tvOS 10.0</p>
+  </li>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+</ul>
+
+<h3 id="xcode-73">Xcode 7.3 <a href="#xcode-73" class="toc-anchor">#</a></h3>
+
+<p>Xcode 7.3.1 is available by adding <code class="highlighter-rouge">osx_image: xcode7.3</code> to your .travis.yml.</p>
+
+<p>Our Xcode 7.3.1 images have the following SDKs preinstalled:</p>
+
+<ul>
+  <li>
+    <p>macosx10.11</p>
+  </li>
+  <li>
+    <p>iphoneos9.3</p>
+  </li>
+  <li>
+    <p>iphonesimulator9.3</p>
+  </li>
+  <li>
+    <p>appletvos9.2</p>
+  </li>
+  <li>
+    <p>appletvsimulator9.2</p>
+  </li>
+  <li>
+    <p>watchos2.2</p>
+  </li>
+  <li>
+    <p>watchsimulator2.2</p>
+  </li>
+</ul>
+
+<p>The Xcode 7.3.1 image also comes with the following simulators:</p>
+
+<ul>
+  <li>
+    <p>iOS 8.1</p>
+  </li>
+  <li>
+    <p>iOS 8.2</p>
+  </li>
+  <li>
+    <p>iOS 8.3</p>
+  </li>
+  <li>
+    <p>iOS 8.4</p>
+  </li>
+  <li>
+    <p>iOS 9.0</p>
+  </li>
+  <li>
+    <p>iOS 9.1</p>
+  </li>
+  <li>
+    <p>iOS 9.2</p>
+  </li>
+  <li>
+    <p>iOS 9.3</p>
+  </li>
+  <li>
+    <p>watchOS 2.0</p>
+  </li>
+  <li>
+    <p>watchOS 2.1</p>
+  </li>
+  <li>
+    <p>watchOS 2.2</p>
+  </li>
+  <li>
+    <p>tvOS 9.0</p>
+  </li>
+  <li>
+    <p>tvOS 9.1</p>
+  </li>
+  <li>
+    <p>tvOS 9.2</p>
+  </li>
+</ul>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 50 https://docs.travis-ci.com:443/user/reference/osx/ responseCode 3 200 

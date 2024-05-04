@@ -1,0 +1,1309 @@
+iahskklczosmnavmfsuknauqcgzmpigcrmqsogso length 5 82188 page 82188 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuring Build Notifications - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/notifications/ />
+<meta property="og:description" content="Configuring Build Notifications" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/notifications.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">Configuring Build Notifications</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#default-notification-settings">Default notification settings</a></li>
+  <li><a href="#conditional-notifications">Conditional notifications</a></li>
+  <li><a href="#changing-notification-frequency">Changing notification frequency</a></li>
+  <li><a href="#configuring-email-notifications">Configuring email notifications</a></li>
+  <li><a href="#configuring-irc-notifications">Configuring IRC notifications</a></li>
+  <li><a href="#configuring-campfire-notifications">Configuring campfire notifications</a></li>
+  <li><a href="#configuring-flowdock-notifications">Configuring flowdock notifications</a></li>
+  <li><a href="#configuring-hipchat-notifications">Configuring HipChat notifications</a></li>
+  <li><a href="#configuring-pushover-notifications">Configuring Pushover notifications</a></li>
+  <li><a href="#configuring-slack-notifications">Configuring Slack notifications</a></li>
+  <li><a href="#configuring-webhook-notifications">Configuring webhook notifications</a></li>
+  <li><a href="#configuring-opsgenie-notifications">Configuring OpsGenie notifications</a></li>
+  <li><a href="#configuring-multiple-notification-targets-with-different-configurations">Configuring multiple notification targets with different configurations</a></li>
+</ul>
+
+            </div>
+          
+
+          <blockquote>
+  <p>Note that if you’re still using <a href="http://www.travis-ci.org">travis-ci.org</a> you need to use <code class="highlighter-rouge">--org</code> instead of <code class="highlighter-rouge">--com</code> in all of the commands shown on this page.</p>
+</blockquote>
+
+<p>Travis CI can notify you about your build results through email, IRC, chat or custom webhooks.</p>
+
+<h2 id="default-notification-settings">Default notification settings <a href="#default-notification-settings" class="toc-anchor">#</a></h2>
+
+<p>By default, email notifications are sent to the committer and the commit
+author when they are members of the repository, that is they have</p>
+
+<ul>
+  <li>push or admin permissions for public repositories.</li>
+  <li>pull, push or admin permissions for private repositories.</li>
+</ul>
+
+<p>Emails are sent when, on the given branch:</p>
+
+<ul>
+  <li>a build was just broken or still is broken.</li>
+  <li>a previously broken build was just fixed.</li>
+</ul>
+
+<p>For more information, please read <a href="#how-is-the-build-email-receiver-determined">default email
+addresses</a>, <a href="#changing-the-email-address-for-build-notifications">changing the email
+address</a> or
+<a href="#missing-build-notifications">troubleshooting email
+notification</a>.</p>
+
+<p>If you add another notification channel, e.g. HipChat or Slack, the
+default is to send a notification on every build.</p>
+
+<h2 id="conditional-notifications">Conditional notifications <a href="#conditional-notifications" class="toc-anchor">#</a></h2>
+
+<p>You can filter out and reject notifications by specifying a condition in your build configuration (your <code class="highlighter-rouge">.travis.yml</code> file) using <code class="highlighter-rouge">if</code>.</p>
+
+<p>For example, this will send <a href="#configuring-slack-notifications">Slack notifications</a> only on builds on the <code class="highlighter-rouge">master</code> branch:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># require the branch name to be master (note for PRs this is the base branch name)</span>
+<span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">branch = master</span>
+</code></pre></div></div>
+
+<p>See <a href="/user/conditions-v1">Conditions</a> for details on specifying conditions.</p>
+
+<p>You can find more information on the build config format for <a href="https://config.travis-ci.com/ref/notifications/email">email notifications</a> in our <a href="https://config.travis-ci.com/">Travis CI Build Config Reference</a>.</p>
+
+<h2 id="changing-notification-frequency">Changing notification frequency <a href="#changing-notification-frequency" class="toc-anchor">#</a></h2>
+
+<p>You can change the conditions for any notification channels by setting the
+<code class="highlighter-rouge">on_success</code> or <code class="highlighter-rouge">on_failure</code> flag to one of:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">always</code>: always send a notification.</li>
+  <li><code class="highlighter-rouge">never</code>: never send a notification.</li>
+  <li><code class="highlighter-rouge">change</code>: send a notification when the build status changes.</li>
+</ul>
+
+<p>For example, to always send slack notifications on successful builds:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">always</span>
+</code></pre></div></div>
+
+<p><strong>Note:</strong> These webhooks are executed at the end of a build, and not by individual jobs
+(see <a href="/user/for-beginners/#builds-jobs-stages-and-phases">builds vs jobs</a>).
+This means that environment variables from the build are not available in this section.</p>
+
+<p>There is currently no way of limiting the notification to a specific branch, but
+the payload will contain all relevant data to do so at the receiving end (see
+<a href="#webhooks-delivery-format">Webhooks Delivery Format</a>).</p>
+
+<h3 id="note-on-ssltls-ciphers">Note on SSL/TLS Ciphers <a href="#note-on-ssltls-ciphers" class="toc-anchor">#</a></h3>
+
+<p>When posting notifications over SSL/TLS, be mindful of what ciphers are accepted
+by the receiving server. Notifications will fail if none of the server’s ciphers work.</p>
+
+<p>Currently, the following ciphers (as defined by the <a href="http://ruby-doc.org/stdlib-2.6.3/libdoc/openssl/rdoc/OpenSSL.html">openssl gem</a>)
+are known to work:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AES-128-CBC AES-128-CBC-HMAC-SHA1 AES-128-CBC-HMAC-SHA256 AES-128-CCM
+AES-128-CFB AES-128-CFB1 AES-128-CFB8 AES-128-CTR AES-128-ECB AES-128-GCM
+AES-128-OCB AES-128-OFB AES-128-XTS AES-192-CBC AES-192-CCM AES-192-CFB
+AES-192-CFB1 AES-192-CFB8 AES-192-CTR AES-192-ECB AES-192-GCM AES-192-OCB
+AES-192-OFB AES-256-CBC AES-256-CBC-HMAC-SHA1 AES-256-CBC-HMAC-SHA256
+AES-256-CCM AES-256-CFB AES-256-CFB1 AES-256-CFB8 AES-256-CTR AES-256-ECB
+AES-256-GCM AES-256-OCB AES-256-OFB AES-256-XTS AES128 AES128-WRAP AES192
+AES192-WRAP AES256 AES256-WRAP ARIA-128-CBC ARIA-128-CCM ARIA-128-CFB
+ARIA-128-CFB1 ARIA-128-CFB8 ARIA-128-CTR ARIA-128-ECB ARIA-128-GCM ARIA-128-OFB
+ARIA-192-CBC ARIA-192-CCM ARIA-192-CFB ARIA-192-CFB1 ARIA-192-CFB8 ARIA-192-CTR
+ARIA-192-ECB ARIA-192-GCM ARIA-192-OFB ARIA-256-CBC ARIA-256-CCM ARIA-256-CFB
+ARIA-256-CFB1 ARIA-256-CFB8 ARIA-256-CTR ARIA-256-ECB ARIA-256-GCM ARIA-256-OFB
+ARIA128 ARIA192 ARIA256 BF BF-CBC BF-CFB BF-ECB BF-OFB BLOWFISH
+CAMELLIA-128-CBC CAMELLIA-128-CFB CAMELLIA-128-CFB1 CAMELLIA-128-CFB8
+CAMELLIA-128-CTR CAMELLIA-128-ECB CAMELLIA-128-OFB CAMELLIA-192-CBC
+CAMELLIA-192-CFB CAMELLIA-192-CFB1 CAMELLIA-192-CFB8 CAMELLIA-192-CTR
+CAMELLIA-192-ECB CAMELLIA-192-OFB CAMELLIA-256-CBC CAMELLIA-256-CFB
+CAMELLIA-256-CFB1 CAMELLIA-256-CFB8 CAMELLIA-256-CTR CAMELLIA-256-ECB
+CAMELLIA-256-OFB CAMELLIA128 CAMELLIA192 CAMELLIA256 CAST CAST-CBC CAST5-CBC
+CAST5-CFB CAST5-ECB CAST5-OFB CHACHA20 CHACHA20-POLY1305 DES DES-CBC DES-CFB
+DES-CFB1 DES-CFB8 DES-ECB DES-EDE DES-EDE-CBC DES-EDE-CFB DES-EDE-ECB
+DES-EDE-OFB DES-EDE3 DES-EDE3-CBC DES-EDE3-CFB DES-EDE3-CFB1 DES-EDE3-CFB8
+DES-EDE3-ECB DES-EDE3-OFB DES-OFB DES3 DES3-WRAP DESX DESX-CBC ID-AES128-CCM
+ID-AES128-GCM ID-AES128-WRAP ID-AES128-WRAP-PAD ID-AES192-CCM ID-AES192-GCM
+ID-AES192-WRAP ID-AES192-WRAP-PAD ID-AES256-CCM ID-AES256-GCM ID-AES256-WRAP
+ID-AES256-WRAP-PAD ID-SMIME-ALG-CMS3DESWRAP RC2 RC2-128 RC2-40 RC2-40-CBC
+RC2-64 RC2-64-CBC RC2-CBC RC2-CFB RC2-ECB RC2-OFB RC4 RC4-40 RC4-HMAC-MD5 SEED
+SEED-CBC SEED-CFB SEED-ECB SEED-OFB SM4 SM4-CBC SM4-CFB SM4-CTR SM4-ECB SM4-OFB
+</code></pre></div></div>
+
+<p>Also, consult <a href="https://www.openssl.org/docs/manmaster/man1/openssl.html">cipher suite names mapping</a>.</p>
+
+<h3 id="note-on-ip-addresses">Note on IP addresses <a href="#note-on-ip-addresses" class="toc-anchor">#</a></h3>
+
+<p>All notifications that use HTTP are sent through a proxy with static IP
+addresses to ensure safelist and firewall rule stability.  The current IP
+addresses are:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>54.173.229.200
+54.175.230.252
+</code></pre></div></div>
+
+<h2 id="configuring-email-notifications">Configuring email notifications <a href="#configuring-email-notifications" class="toc-anchor">#</a></h2>
+
+<p>Specify recipients that will be notified about build results:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">email</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">one@example.com</span>
+    <span class="pi">-</span> <span class="s">other@example.com</span>
+</code></pre></div></div>
+
+<p>Turn off email notifications entirely:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">email</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>Specify when you want to <a href="#changing-notification-frequency">get notified</a>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">email</span><span class="pi">:</span>
+    <span class="na">recipients</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">one@example.com</span>
+      <span class="pi">-</span> <span class="s">other@example.com</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">never</span> <span class="c1"># default: change</span>
+    <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span> <span class="c1"># default: always</span>
+</code></pre></div></div>
+
+<p>Pull Request builds do not trigger email notifications.</p>
+
+<h3 id="how-is-the-build-email-receiver-determined">How is the build email receiver determined? <a href="#how-is-the-build-email-receiver-determined" class="toc-anchor">#</a></h3>
+
+<p>By default, a build email is sent to the committer and the author, but only if
+they have access to the repository the commit was pushed to. This prevents forks
+active on Travis CI from notifying the upstream repository’s owners when they’re
+pushing any upstream changes to their fork. It also prevents build notifications
+from going to folks not registered on Travis CI.</p>
+
+<p>The email address is then determined based on the email address in the commit,
+but only if it matches one of the email addresses in our database. We
+synchronize all your email addresses from GitHub, solely for the purpose of
+build notifications.</p>
+
+<p>The default can be overridden in the <code class="highlighter-rouge">.travis.yml</code> as shown above. If there’s a
+setting specified, Travis CI only sends an emails to the addresses specified
+there, rather than to the committer and author.</p>
+
+<h3 id="changing-the-email-address-for-build-notifications">Changing the email address for build notifications <a href="#changing-the-email-address-for-build-notifications" class="toc-anchor">#</a></h3>
+
+<p>Travis CI only sends build notifications to email addresses registered on GitHub.
+If you have multiple addresses registered you can set the email address for a specific
+ repository using <code class="highlighter-rouge">git</code>:</p>
+
+<blockquote>
+  <p>Note that this also changes the commit email address, not just the Travis CI notification settings.</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config user.email <span class="s2">"mynewemail@example.com"</span>
+</code></pre></div></div>
+
+<p>Or set the email for all of your git repositories:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.email <span class="s2">"mynewemail@example.com"</span>
+</code></pre></div></div>
+
+<p>Note that we currently don’t respect the <a href="https://github.com/settings/notifications">detailed notifications
+settings</a> on
+GitHub, as they’re not exposed via an API at this point.</p>
+
+<h3 id="missing-build-notifications">Missing build notifications <a href="#missing-build-notifications" class="toc-anchor">#</a></h3>
+
+<p>The most common cause for not receiving build notifications, beyond not having a
+user account on Travis CI, is the use of an email address that’s not registered
+and verified on GitHub. See above on how to change the email address to one
+that’s registered or make sure to add the email address used in this repository
+to <a href="https://github.com/settings/emails">your verified email addresses</a> on GitHub.</p>
+
+<h2 id="configuring-irc-notifications">Configuring IRC notifications <a href="#configuring-irc-notifications" class="toc-anchor">#</a></h2>
+
+<p>You can also send notifications to an IRC channel.
+Notifications are sent from <code class="highlighter-rouge">travis-ci</code>, which auto-authenticates on Freenode.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+</code></pre></div></div>
+
+<p>Or multiple channels:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#some-other-channel"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">irc://chat.freenode.net:8000/#plaintext_channel"</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">ircs://chat.freenode.net:7070/#ssl_tls_channel"</span>
+</code></pre></div></div>
+
+<p>As with other notification types you can specify when IRC notifications will be sent:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">channels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#some-other-channel"</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">change</span> <span class="c1"># default: always</span>
+    <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span> <span class="c1"># default: always</span>
+</code></pre></div></div>
+
+<p>Customize the message that will be sent to the channel(s) with a template:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">channels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#some-other-channel"</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}</span><span class="nv"> </span><span class="s">(%{commit})</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{message}"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">details:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+</code></pre></div></div>
+
+<p>You can interpolate the following variables:</p>
+
+<ul>
+  <li><em>repository_slug</em>: your GitHub repo identifier (like <code class="highlighter-rouge">svenfuchs/minimal</code>)</li>
+  <li><em>repository_name</em>: the slug without the username</li>
+  <li><em>repository</em>: same as repository_slug [Deprecated]</li>
+  <li><em>build_number</em>: build number</li>
+  <li><em>build_id</em>: build id</li>
+  <li><em>branch</em>: branch build name</li>
+  <li><em>commit</em>: shortened commit SHA</li>
+  <li><em>author</em>: commit author name</li>
+  <li><em>commit_message</em>: commit message of build</li>
+  <li><em>commit_subject</em>: first line of the commit message</li>
+  <li><em>result</em>: result of build</li>
+  <li><em>message</em>: travis message to the build</li>
+  <li><em>duration</em>: total duration of all builds in the matrix</li>
+  <li><em>elapsed_time</em>: time between build start and finish</li>
+  <li><em>compare_url</em>: commit change view URL</li>
+  <li><em>build_url</em>: URL of the build detail</li>
+</ul>
+
+<p>The default template is:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}#%{build_number}</span><span class="nv"> </span><span class="s">(%{branch}</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">%{commit}</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{author}):</span><span class="nv"> </span><span class="s">%{message}"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Change</span><span class="nv"> </span><span class="s">view</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{compare_url}"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">details</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+</code></pre></div></div>
+
+<p>If you want the bot to use notices instead of regular messages the <code class="highlighter-rouge">use_notice</code> flag can be used:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">channels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#some-other-channel"</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">change</span> <span class="c1"># default: always</span>
+    <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span> <span class="c1"># default: always</span>
+    <span class="na">use_notice</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>and if you want the bot not to join before sending the messages, use the <code class="highlighter-rouge">skip_join</code> flag:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">channels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#some-other-channel"</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">change</span> <span class="c1"># default: always</span>
+    <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span> <span class="c1"># default: always</span>
+    <span class="na">use_notice</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">skip_join</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>If you enable <code class="highlighter-rouge">skip_join</code>, remember to remove the <code class="highlighter-rouge">NO_EXTERNAL_MSGS</code> flag (n) on the IRC channel(s) the bot notifies.</p>
+
+<p>Pull Request builds do not trigger IRC notifications.</p>
+
+<h3 id="channel-key">Channel key <a href="#channel-key" class="toc-anchor">#</a></h3>
+
+<p>If you want the bot to send messages to channels protected with a channel key (ie, set with <code class="highlighter-rouge">/mode #channel +k password</code>), use the <code class="highlighter-rouge">channel_key</code> variable:</p>
+
+<blockquote>
+  <p>Note: We highly recommend you <a href="/user/encryption-keys/">encrypt</a> this value if
+your .travis.yml is stored in a public repository.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt password <span class="nt">--add</span> notifications.irc.channel_key
+</code></pre></div>  </div>
+</blockquote>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">channels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+    <span class="na">channel_key</span><span class="pi">:</span> <span class="s1">'</span><span class="s">password'</span>
+</code></pre></div></div>
+
+<h3 id="password-protected-servers">Password protected servers <a href="#password-protected-servers" class="toc-anchor">#</a></h3>
+
+<p>You may also authenticate to an IRC server with user:</p>
+
+<blockquote>
+  <p>Note: We highly recommend you <a href="/user/encryption-keys/">encrypt</a> this value if
+your .travis.yml is stored in a public repository.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt password <span class="nt">--add</span> notifications.irc.channel_key
+travis encrypt password <span class="nt">--add</span> notifications.irc.password
+</code></pre></div>  </div>
+</blockquote>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">irc</span><span class="pi">:</span>
+    <span class="na">channels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">chat.freenode.net#my-channel"</span>
+    <span class="na">channel_key</span><span class="pi">:</span> <span class="s1">'</span><span class="s">password'</span>
+    <span class="na">nick</span><span class="pi">:</span> <span class="s">travisci</span>
+    <span class="na">password</span><span class="pi">:</span> <span class="s">super_secret</span>
+</code></pre></div></div>
+
+<h2 id="configuring-campfire-notifications">Configuring campfire notifications <a href="#configuring-campfire-notifications" class="toc-anchor">#</a></h2>
+
+<p>Notifications can also be sent to Campfire chat rooms, using the following format:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">campfire</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[subdomain]:[api</span><span class="nv"> </span><span class="s">token]@[room</span><span class="nv"> </span><span class="s">id]"</span>
+</code></pre></div></div>
+
+<ul>
+  <li><em>subdomain</em>: is your campfire subdomain (i.e. <code class="highlighter-rouge">your-subdomain</code> if you visit <code class="highlighter-rouge">https://your-subdomain.campfirenow.com</code>)</li>
+  <li><em>api token</em>: is the token of the user you want to use to post the notifications.</li>
+  <li><em>room id</em>: this is the room id, not the name.</li>
+</ul>
+
+<blockquote>
+  <p>Note: We highly recommend you <a href="/user/encryption-keys/">encrypt</a> this value if
+your .travis.yml is stored in a public repository:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt subdomain:api_token@room_id <span class="nt">--add</span> notifications.campfire.rooms
+</code></pre></div>  </div>
+</blockquote>
+
+<p>You can also customise the notifications, like with <a href="#configuring-irc-notifications">IRC notifications</a>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">campfire</span><span class="pi">:</span>
+    <span class="na">rooms</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[subdomain]:[api</span><span class="nv"> </span><span class="s">token]@[room</span><span class="nv"> </span><span class="s">id]"</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}</span><span class="nv"> </span><span class="s">(%{commit})</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{message}"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">details:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+</code></pre></div></div>
+
+<p>Other flags, such as <code class="highlighter-rouge">on_success</code> and <code class="highlighter-rouge">on_failure</code> also work like they do in IRC notification configuration.</p>
+
+<p>Pull Request builds do not trigger Campfire notifications.</p>
+
+<h2 id="configuring-flowdock-notifications">Configuring flowdock notifications <a href="#configuring-flowdock-notifications" class="toc-anchor">#</a></h2>
+
+<p>Notifications can be sent to your Flowdock Team Inbox using the following format:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">flowdock</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]"</span>
+</code></pre></div></div>
+
+<ul>
+  <li><em>api token</em>: is your API Token for the Team Inbox you wish to notify. You may pass multiple tokens as a comma separated string or an array.</li>
+</ul>
+
+<blockquote>
+  <p>Note: We highly recommend you <a href="/user/encryption-keys/">encrypt</a> this value if your .travis.yml is stored in a public repository:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt api_token <span class="nt">--add</span> notifications.flowdock
+</code></pre></div>  </div>
+</blockquote>
+
+<p>Pull Request builds do not trigger Flowdock notifications.</p>
+
+<h2 id="configuring-hipchat-notifications">Configuring HipChat notifications <a href="#configuring-hipchat-notifications" class="toc-anchor">#</a></h2>
+
+<p>Send notifications to your HipChat rooms using the following key in your
+<code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">hipchat</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]@[room</span><span class="nv"> </span><span class="s">id</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">name]"</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">api token</code>: token of the user you want to post the notifications as. One of
+    <ul>
+      <li>API v1 token your group administrator gives you.</li>
+      <li>API v2 token you manage.</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">hostname</code>: optional, defaults to api.hipchat.com, but can be specified for HipChat Server instances.</li>
+  <li><code class="highlighter-rouge">room id</code> or <code class="highlighter-rouge">name</code>: id or name (case-sensitive) of the room you want to notify. If your room name contains spaces then use room id.</li>
+</ul>
+
+<blockquote>
+  <p>Always <a href="/user/encryption-keys/">encrypt</a> this value if
+your <code class="highlighter-rouge">.travis.yml</code> is stored in a public repository:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt api_token@room_id_or_name <span class="nt">--add</span> notifications.hipchat.rooms
+</code></pre></div>  </div>
+</blockquote>
+
+<p>If you are running HipChat Server, specify the hostname like this instead:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">hipchat</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]@[hostname]/[room</span><span class="nv"> </span><span class="s">id</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">name]"</span>
+</code></pre></div></div>
+
+<p>HipChat notifications support templates too, so you can customize the appearance of the notifications, e.g. reduce it to a single line:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">hipchat</span><span class="pi">:</span>
+    <span class="na">rooms</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]@[room</span><span class="nv"> </span><span class="s">id</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">name]"</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}#%{build_number}</span><span class="nv"> </span><span class="s">(%{branch}</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">%{commit}</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{author}):</span><span class="nv"> </span><span class="s">%{message}"</span>
+</code></pre></div></div>
+
+<p>If you want to send HTML notifications you need to add <code class="highlighter-rouge">format: html</code> like this
+(note that this is not compatible with some features like @mentions and autolinking):</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">hipchat</span><span class="pi">:</span>
+    <span class="na">rooms</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]@[room</span><span class="nv"> </span><span class="s">id</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">name]"</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}#%{build_number}</span><span class="nv"> </span><span class="s">(%{branch}</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">%{commit}</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{author}):</span><span class="nv"> </span><span class="s">%{message}</span><span class="nv"> </span><span class="s">(&lt;a</span><span class="nv"> </span><span class="s">href='%{build_url}'&gt;Details&lt;/a&gt;/&lt;a</span><span class="nv"> </span><span class="s">href='%{compare_url}'&gt;Change</span><span class="nv"> </span><span class="s">view&lt;/a&gt;)"</span>
+    <span class="na">format</span><span class="pi">:</span> <span class="s">html</span>
+</code></pre></div></div>
+
+<p>With the V2 API, you can trigger a user notification by setting <code class="highlighter-rouge">notify: true</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">hipchat</span><span class="pi">:</span>
+    <span class="na">rooms</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]@[room</span><span class="nv"> </span><span class="s">id</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">name]"</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}#%{build_number}</span><span class="nv"> </span><span class="s">(%{branch}</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">%{commit}</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{author}):</span><span class="nv"> </span><span class="s">%{message}"</span>
+    <span class="na">notify</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<h3 id="setting-the-from-value-in-notifications">Setting the From value in notifications <a href="#setting-the-from-value-in-notifications" class="toc-anchor">#</a></h3>
+
+<p>When a V1 token is used, the notification is posted by “Travis CI”.</p>
+
+<p>With a V2 token, this value is set by the token’s Label.
+Create a special-purpose room notification token (“Tokens” under the room’s “Administration” section)
+with a desired label, and use this token.</p>
+
+<figure>
+  <img src="/images/hipchat_token_screen.png" alt="HipChat Room Notification Tokens screenshot" width="550px" />
+</figure>
+
+<h3 id="notifications-of-pr-builds">Notifications of PR builds <a href="#notifications-of-pr-builds" class="toc-anchor">#</a></h3>
+
+<p>By default, Hipchat will be notified both for push builds and pull request
+builds.</p>
+
+<p>Turn pull request notifications off by adding <code class="highlighter-rouge">on_pull_requests: false</code> to the
+<code class="highlighter-rouge">hipchat</code> section of your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">hipchat</span><span class="pi">:</span>
+    <span class="na">on_pull_requests</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<h2 id="configuring-pushover-notifications">Configuring Pushover notifications <a href="#configuring-pushover-notifications" class="toc-anchor">#</a></h2>
+
+<p>Notifications can also be sent via <a href="https://pushover.net/">Pushover</a> via the following format:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">pushover</span><span class="pi">:</span>
+    <span class="na">api_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]"</span>
+    <span class="na">users</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[user</span><span class="nv"> </span><span class="s">key]"</span>
+</code></pre></div></div>
+
+<ul>
+  <li><em>api token</em>: API Token/Key for a Pushover Application (create this under “Your Applications” after logging in to Pushover; it’s recommended to create one specific to Travis CI).</li>
+  <li><em>user key</em>: The User Key for a user to be notified (this can be seen after logging in to Pushover). A list of multiple users is supported.</li>
+</ul>
+
+<blockquote>
+  <p>Note: We highly recommend you <a href="/user/encryption-keys/">encrypt</a> these values
+if your .travis.yml is stored in a public repository; this will add (or
+overwrite) your api_token,
+and append the specified user_key to the list of users.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt <span class="o">[</span>api_token] <span class="nt">--add</span> notifications.pushover.api_key
+travis encrypt <span class="o">[</span>user_key] <span class="nt">--add</span> notifications.pushover.users <span class="nt">--append</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<p>You can also customise the notifications, like with IRC notifications:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">pushover</span><span class="pi">:</span>
+    <span class="na">api_key</span><span class="pi">:</span> <span class="s2">"</span><span class="s">[api</span><span class="nv"> </span><span class="s">token]"</span>
+    <span class="na">users</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[user</span><span class="nv"> </span><span class="s">key]"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">[user</span><span class="nv"> </span><span class="s">key]"</span>
+    <span class="na">template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">%{repository_slug}</span><span class="nv"> </span><span class="s">(%{commit})</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{message}</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Build</span><span class="nv"> </span><span class="s">details:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+</code></pre></div></div>
+
+<p>Other flags, such as <code class="highlighter-rouge">on_success</code> and <code class="highlighter-rouge">on_failure</code> also work like the IRC notification config.</p>
+
+<p>Pull Request builds do not trigger Pushover notifications.</p>
+
+<h2 id="configuring-slack-notifications">Configuring Slack notifications <a href="#configuring-slack-notifications" class="toc-anchor">#</a></h2>
+
+<p>Travis CI can send notifications to your <a href="https://slack.com">Slack</a> channels
+about build results.</p>
+
+<p>On Slack, set up a <a href="https://my.slack.com/services/new/travis">new Travis CI
+integration</a>.</p>
+
+<p><img src="/images/notifications/slack-integration.png" alt="Screenshot of adding Slack integration" title="Screenshot of adding Slack integration" /></p>
+
+<p>Copy and paste the settings, which already include the proper token, into
+your <code class="highlighter-rouge">.travis.yml</code>, and you’re good to go.</p>
+
+<blockquote>
+  <p>Note: We highly recommend you <a href="/user/encryption-keys/">encrypt</a> this value if
+your .travis.yml is stored in a public repository:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt <span class="s2">"&lt;account&gt;:&lt;token&gt;"</span> <span class="nt">--add</span> notifications.slack.rooms
+</code></pre></div>  </div>
+</blockquote>
+
+<p>The simplest configuration requires your account name and the token you just
+generated.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;account&gt;:&lt;token&gt;'</span>
+</code></pre></div></div>
+
+<p>To specify a different channel, add it to the configuration with a
+<code class="highlighter-rouge">#</code> separating the channel from the account and token:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;account&gt;:&lt;token&gt;#development'</span>
+</code></pre></div></div>
+
+<p>To specify a different channel when using with encrypted credentials use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt <span class="s2">"&lt;account&gt;:&lt;token&gt;#channel"</span> <span class="nt">--add</span> notifications.slack.rooms
+</code></pre></div></div>
+
+<p>You can specify multiple channels as well.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">rooms</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">&lt;account&gt;:&lt;token&gt;#development</span>
+      <span class="pi">-</span> <span class="s">&lt;account&gt;:&lt;token&gt;#general</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">change</span> <span class="c1"># default: always</span>
+    <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span> <span class="c1"># default: always</span>
+</code></pre></div></div>
+
+<p>Similarly, you can use the channel override syntax with encrypted credentials as well.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>travis encrypt <span class="s2">"&lt;account&gt;:&lt;token&gt;#channel"</span> <span class="nt">--add</span> notifications.slack.rooms
+</code></pre></div></div>
+
+<p>This is how a setup with encrypted credentials could look like:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">rooms</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">secure</span><span class="pi">:</span> <span class="s2">"</span><span class="s">sdfusdhfsdofguhdfgubdsifgudfbgs3453durghssecurestringidsuag34522irueg="</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">always</span>
+</code></pre></div></div>
+
+<p>Once everything’s set up, push a new commit and you’ll get a message in the slack channel.</p>
+
+<h3 id="notifications-of-pr-builds-1">Notifications of PR builds <a href="#notifications-of-pr-builds-1" class="toc-anchor">#</a></h3>
+
+<p>Turn pull request notifications off by adding <code class="highlighter-rouge">on_pull_requests: false</code> to the <code class="highlighter-rouge">slack</code> section of your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">on_pull_requests</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<h3 id="customizing-slack-notifications">Customizing slack notifications <a href="#customizing-slack-notifications" class="toc-anchor">#</a></h3>
+
+<p>Customize the notification message by editing the template, as in this example:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">template</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}</span><span class="nv"> </span><span class="s">(%{commit})</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{message}"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">details:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+</code></pre></div></div>
+
+<p>The default template for push builds is:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">template</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">&lt;%{build_url}|#%{build_number}&gt;</span><span class="nv"> </span><span class="s">(&lt;%{compare_url}|%{commit}&gt;)</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">%{repository_slug}@%{branch}</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">%{author}</span><span class="nv"> </span><span class="s">%{result}</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">%{duration}"</span>
+</code></pre></div></div>
+
+<p>while the default template for pull request builds is:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="na">template</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">&lt;%{build_url}|#%{build_number}&gt;</span><span class="nv"> </span><span class="s">(&lt;%{compare_url}|%{commit}&gt;)</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">%{repository_slug}@%{branch}</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">PR</span><span class="nv"> </span><span class="s">&lt;%{pull_request_url}|#%{pull_request_number}&gt;</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">%{author}</span><span class="nv"> </span><span class="s">%{result}</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">%{duration}"</span>
+</code></pre></div></div>
+
+<p>You can also use Slack-style markup using <code class="highlighter-rouge">```</code>, <code class="highlighter-rouge">`</code>, <code class="highlighter-rouge">_</code>, <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">~</code>.
+See <a href="https://api.slack.com/docs/message-formatting">Slack documentation</a>
+for more information on message formatting.</p>
+
+<p>You can interpolate the following variables for push builds:</p>
+
+<ul>
+  <li><em>repository_slug</em>: your GitHub repo identifier (like <code class="highlighter-rouge">svenfuchs/minimal</code>)</li>
+  <li><em>repository_name</em>: the slug without the username</li>
+  <li><em>repository</em>: same as repository_slug [Deprecated]</li>
+  <li><em>build_number</em>: build number</li>
+  <li><em>build_id</em>: build id</li>
+  <li><em>branch</em>: branch build name</li>
+  <li><em>commit</em>: shortened commit SHA</li>
+  <li><em>author</em>: commit author name</li>
+  <li><em>commit_message</em>: commit message of build</li>
+  <li><em>commit_subject</em>: first line of the commit message</li>
+  <li><em>result</em>: result of build</li>
+  <li><em>message</em>: travis message to the build</li>
+  <li><em>duration</em>: total duration of all builds in the matrix</li>
+  <li><em>elapsed_time</em>: time between build start and finish</li>
+  <li><em>compare_url</em>: commit change view URL</li>
+  <li><em>build_url</em>: URL of the build detail</li>
+</ul>
+
+<p>You can interpolate the following variables for PR builds alongwith the variables available for push builds:</p>
+
+<ul>
+  <li><em>pull_request</em>: Returns <code class="highlighter-rouge">true</code> for PR builds</li>
+  <li><em>pull_request_number</em>: the PR number</li>
+  <li><em>pull_request_url</em>: the PR URL</li>
+</ul>
+
+<h2 id="configuring-webhook-notifications">Configuring webhook notifications <a href="#configuring-webhook-notifications" class="toc-anchor">#</a></h2>
+
+<p>You can define webhooks to be notified about build results:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">webhooks</span><span class="pi">:</span> <span class="s">http://your-domain.com/notifications</span>
+</code></pre></div></div>
+
+<p>Or multiple URLs:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">webhooks</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">http://your-domain.com/notifications</span>
+    <span class="pi">-</span> <span class="s">http://another-domain.com/notifications</span>
+</code></pre></div></div>
+
+<p>As with other notifications types you can specify when webhook payloads will be sent:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">webhooks</span><span class="pi">:</span>
+    <span class="na">urls</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">http://hooks.mydomain.com/travisci</span>
+      <span class="pi">-</span> <span class="s">http://hooks.mydomain.com/events</span>
+    <span class="na">on_success</span><span class="pi">:</span> <span class="s">change</span> <span class="c1"># default: always</span>
+    <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span> <span class="c1"># default: always</span>
+    <span class="na">on_start</span><span class="pi">:</span>   <span class="s">change</span> <span class="c1"># default: never</span>
+    <span class="na">on_cancel</span><span class="pi">:</span>  <span class="s">always</span> <span class="c1"># default: always</span>
+    <span class="na">on_error</span><span class="pi">:</span>   <span class="s">always</span> <span class="c1"># default: always</span>
+</code></pre></div></div>
+
+<h3 id="webhooks-delivery-format">Webhooks Delivery Format <a href="#webhooks-delivery-format" class="toc-anchor">#</a></h3>
+
+<p>Webhooks are delivered with a <code class="highlighter-rouge">application/x-www-form-urlencoded</code> content type using HTTP POST, with the body including a <code class="highlighter-rouge">payload</code> parameter that contains the JSON webhook payload in a URL-encoded format.</p>
+
+<p>Here is the payload sent to <a href="https://github.com/travis-ci/docs-travis-ci-com">the Travis CI documentation application</a>:</p>
+
+<script src="https://gist.github.com/4e317d6e71be6d0278be46bb751b2f78.js" data-proofer-ignore=""></script>
+
+<p>You will see one of the following values in the <code class="highlighter-rouge">status</code>/<code class="highlighter-rouge">result</code> fields that represent the state of the build.</p>
+
+<ul>
+  <li><em>0</em>: Represents a build that has completed successfully</li>
+  <li><em>1</em>: Represents a build that has not yet completed or has completed and failed</li>
+</ul>
+
+<p>Additionally a message will be present in the <code class="highlighter-rouge">status_message</code>/<code class="highlighter-rouge">result_message</code> fields that further describe the status of the build.</p>
+
+<ul>
+  <li><em>Pending</em>: A build has been requested</li>
+  <li><em>Passed</em>: The build completed successfully</li>
+  <li><em>Fixed</em>: The build completed successfully after a previously failed build</li>
+  <li><em>Broken</em>: The build completed in failure after a previously successful build</li>
+  <li><em>Failed</em>: The build is the first build for a new branch and has failed</li>
+  <li><em>Still Failing</em>: The build completed in failure after a previously failed build</li>
+  <li><em>Canceled</em>: The build was canceled</li>
+  <li><em>Errored</em>: The build has errored</li>
+</ul>
+
+<p>The <code class="highlighter-rouge">type</code> field can be used to find the event type that caused this build to
+run. Its value is one of <code class="highlighter-rouge">push</code>, <code class="highlighter-rouge">pull_request</code>, <code class="highlighter-rouge">cron</code>, or <code class="highlighter-rouge">api</code>.  For pull requests,
+the <code class="highlighter-rouge">type</code> field will have the value <code class="highlighter-rouge">pull_request</code>, and a <code class="highlighter-rouge">pull_request_number</code> field
+is included too, pointing to the pull request’s issue number on GitHub.</p>
+
+<p>To quickly identify the repository involved, we include a <code class="highlighter-rouge">Travis-Repo-Slug</code> header, with a format of <code class="highlighter-rouge">account/repository</code>, so for instance <code class="highlighter-rouge">travis-ci/travis-ci</code>.</p>
+
+<h3 id="verifying-webhook-requests">Verifying Webhook requests <a href="#verifying-webhook-requests" class="toc-anchor">#</a></h3>
+
+<p>To ensure the integrity of your workflow, we strongly encourage you to
+verify the POST request before acting on it.</p>
+
+<p>The POST request comes with the custom HTTP header <code class="highlighter-rouge">Signature</code>.
+Using the published SSL public key, you can verify the signature of the
+payload.</p>
+
+<ol>
+  <li>Pick up the <code class="highlighter-rouge">payload</code> data from the HTTP request’s body.</li>
+  <li>Obtain the <code class="highlighter-rouge">Signature</code> header value, and base64-decode it.</li>
+  <li>Obtain the public key corresponding to the private key that signed
+the payload. This is available at the <code class="highlighter-rouge">/config</code> endpoint’s
+<code class="highlighter-rouge">config.notifications.webhook.public_key</code> on the relevant API server.
+(e.g., <a href="https://api.travis-ci.com/config">https://api.travis-ci.com/config</a>)</li>
+  <li>Verify the signature using the public key and SHA1 digest.</li>
+</ol>
+
+<h4 id="examples">Examples <a href="#examples" class="toc-anchor">#</a></h4>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/travis-ci/webhook-signature-verifier">WebhookSignatureVerifier</a>
+is a small Sinatra app which shows you how this works.</p>
+  </li>
+  <li>
+    <p>This documentation site receives a webhook notification, verifies the request
+and updates the Gist showing the payload example above.
+See <a href="https://github.com/travis-ci/docs-travis-ci-com/tree/master/_plugins/webhoook_payload_doc_handler.rb">the code</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://gist.github.com/andrewgross/8ba32af80ecccb894b82774782e7dcd4">Travis Webhook Checker</a>
+is an example Django view which implements this in Python.</p>
+  </li>
+  <li>
+    <p><a href="https://gist.github.com/theshapguy/7d10ea4fa39fab7db393021af959048e">Travis Golang Hooks Verification</a>
+is a small webapp in Go which verifies the hook.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/Brodan/travis-webhook-verification-nodejs">travis-webhook-verification-nodejs</a>
+contains two examples for verifying webhooks in Node.js using <a href="https://github.com/Brodan/travis-webhook-verification-nodejs/blob/master/express.js">express</a>
+and <a href="https://github.com/Brodan/travis-webhook-verification-nodejs/blob/master/hapi.js">hapi.js</a></p>
+  </li>
+</ol>
+
+<h2 id="configuring-opsgenie-notifications">Configuring OpsGenie notifications <a href="#configuring-opsgenie-notifications" class="toc-anchor">#</a></h2>
+<p>By using <a href="https://docs.opsgenie.com/v1.0/docs/travisci-integration">OpsGenie Travis CI Integration</a>, you can forward Travis CI alerts to OpsGenie. OpsGenie can determine the right people to notify based on on-call schedules, using email, text messages (SMS), phone calls and iPhone &amp; Android push notifications, and escalating alerts until the alert is acknowledged or closed.</p>
+
+<h3 id="functionality-of-the-integration">Functionality of the integration <a href="#functionality-of-the-integration" class="toc-anchor">#</a></h3>
+<ul>
+  <li>When the status of a project is failing, broken or errored on Travis CI, an alert is created in OpsGenie automatically through the integration.</li>
+  <li>When the status is passed or fixed on Travis CI, the alert is closed in OpsGenie.</li>
+</ul>
+
+<h3 id="add-travis-ci-integration-in-opsgenie">Add Travis CI Integration in OpsGenie <a href="#add-travis-ci-integration-in-opsgenie" class="toc-anchor">#</a></h3>
+<ol>
+  <li>Please create an OpsGenie account if you haven’t already</li>
+  <li>Go to OpsGenie Travis CI Integration page,</li>
+  <li>Specify who should be notified for Travis CI alerts using the “Teams” field. Auto-complete suggestions will be provided as you type.</li>
+  <li>Copy the Webhook URL by clicking on the copy button or selecting.</li>
+  <li>Click on “Save Integration”.</li>
+</ol>
+
+<h3 id="configuration-in-travis-ci">Configuration in Travis CI <a href="#configuration-in-travis-ci" class="toc-anchor">#</a></h3>
+<ol>
+  <li>Activate your Github repositories that you want to monitor by enabling the service hook for Travis CI on Github.</li>
+  <li>Add .travis.yml file to your repository.</li>
+  <li>Add the following configuration to your .travis.yml file.
+<em>notifications:</em>
+_webhooks: <webhook-url>_</webhook-url></li>
+  <li>Commit the <em>.travis.yml</em> file to the root of your repository.</li>
+</ol>
+
+<h2 id="configuring-multiple-notification-targets-with-different-configurations">Configuring multiple notification targets with different configurations <a href="#configuring-multiple-notification-targets-with-different-configurations" class="toc-anchor">#</a></h2>
+
+<p>Each of the notifiers described above can also take an array of hashes as configurations,
+each element being a configuration of that notifier as described above.
+This is useful when you want different notification behaviors based on build results.</p>
+
+<p>For example, you might have separate Slack channels for notifying successful builds and failing builds, using non-default templates:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">notifications</span><span class="pi">:</span>
+  <span class="na">slack</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">rooms</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">&lt;account&gt;:&lt;token&gt;#failures</span>
+      <span class="na">on_success</span><span class="pi">:</span> <span class="s">never</span>
+      <span class="na">on_failure</span><span class="pi">:</span> <span class="s">always</span>
+      <span class="na">template</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}</span><span class="nv"> </span><span class="s">(%{commit})</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{message}"</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">details:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+    <span class="pi">-</span> <span class="na">rooms</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">&lt;account&gt;:&lt;token&gt;#successes</span>
+      <span class="na">on_success</span><span class="pi">:</span> <span class="s">always</span>
+      <span class="na">on_failure</span><span class="pi">:</span> <span class="s">never</span>
+      <span class="na">template</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">%{repository_slug}</span><span class="nv"> </span><span class="s">(%{commit})</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">%{message}"</span>
+        <span class="pi">-</span> <span class="s2">"</span><span class="s">Build</span><span class="nv"> </span><span class="s">details:</span><span class="nv"> </span><span class="s">%{build_url}"</span>
+</code></pre></div></div>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 50 https://docs.travis-ci.com:443/user/notifications/ responseCode 3 200 

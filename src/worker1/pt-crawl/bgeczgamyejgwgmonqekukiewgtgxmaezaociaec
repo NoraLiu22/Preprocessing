@@ -1,0 +1,72 @@
+bgeczgamyejgwgmonqekukiewgtgxmaezaociaec length 4 7840 page 7840 
+<html>
+<head>
+<title>r36921 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r36921 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/36921" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./36920.html" title="Special:Code/MediaWiki/36920">r36920</a>‎ | <b>r36921</b> | <a href="./36922.html" title="Special:Code/MediaWiki/36922">r36922</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>15:21, 2 July 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/yaron" title="Special:Code/MediaWiki/author/yaron">yaron</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">Added check for wfLoadExtensionMessages() call</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/SemanticDrilldown/specials/SD_BrowseData.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FSemanticDrilldown%2Fspecials%2FSD_BrowseData.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/SemanticDrilldown/specials/SD_CreateFilter.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FSemanticDrilldown%2Fspecials%2FSD_CreateFilter.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/SemanticDrilldown/specials/SD_Filters.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FSemanticDrilldown%2Fspecials%2FSD_Filters.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/36921&amp;action=purge" title="Special:Code/MediaWiki/36921">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/SemanticDrilldown/specials/SD_Filters.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -14,7 +14,8 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">15</td><td class="linenumbers">15</td><td class="unchanged"><span> 	 */</span></td></tr>
+<tr id="7"><td class="linenumbers">16</td><td class="linenumbers">16</td><td class="unchanged"><span> 	function SDFilters() {</span></td></tr>
+<tr id="8"><td class="linenumbers">17</td><td class="linenumbers">17</td><td class="unchanged"><span> 		SpecialPage::SpecialPage('Filters');</span></td></tr>
+<tr id="9"><td class="linenumbers">18</td><td class="linenumbers"> </td><td class="del"><del>-		wfLoadExtensionMessages('SemanticDrilldown');</del></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">18</td><td class="ins"><ins>+		if (function_exists('wfLoadExtensionMessages'))</ins></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">19</td><td class="ins"><ins>+			wfLoadExtensionMessages('SemanticDrilldown');</ins></td></tr>
+<tr id="12"><td class="linenumbers">19</td><td class="linenumbers">20</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="13"><td class="linenumbers">20</td><td class="linenumbers">21</td><td class="unchanged"><span> </span></td></tr>
+<tr id="14"><td class="linenumbers">21</td><td class="linenumbers">22</td><td class="unchanged"><span> 	function execute() {</span></td></tr>
+<tr id="15" class="patchedfile"><td colspan="3">Index: trunk/extensions/SemanticDrilldown/specials/SD_CreateFilter.php</td></tr>
+
+
+
+<tr id="19"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -15,7 +15,8 @@</span></td></tr>
+<tr id="20"><td class="linenumbers">16</td><td class="linenumbers">16</td><td class="unchanged"><span> 	 */</span></td></tr>
+<tr id="21"><td class="linenumbers">17</td><td class="linenumbers">17</td><td class="unchanged"><span> 	public function SDCreateFilter() {</span></td></tr>
+<tr id="22"><td class="linenumbers">18</td><td class="linenumbers">18</td><td class="unchanged"><span> 		SpecialPage::SpecialPage('CreateFilter');</span></td></tr>
+<tr id="23"><td class="linenumbers">19</td><td class="linenumbers"> </td><td class="del"><del>-		wfLoadExtensionMessages('SemanticDrilldown');</del></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">19</td><td class="ins"><ins>+		if (function_exists('wfLoadExtensionMessages'))</ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">20</td><td class="ins"><ins>+			wfLoadExtensionMessages('SemanticDrilldown');</ins></td></tr>
+<tr id="26"><td class="linenumbers">20</td><td class="linenumbers">21</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="27"><td class="linenumbers">21</td><td class="linenumbers">22</td><td class="unchanged"><span> </span></td></tr>
+<tr id="28"><td class="linenumbers">22</td><td class="linenumbers">23</td><td class="unchanged"><span> 	function execute() {</span></td></tr>
+<tr id="29" class="patchedfile"><td colspan="3">Index: trunk/extensions/SemanticDrilldown/specials/SD_BrowseData.php</td></tr>
+
+
+
+<tr id="33"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -16,7 +16,8 @@</span></td></tr>
+<tr id="34"><td class="linenumbers">17</td><td class="linenumbers">17</td><td class="unchanged"><span> 	 */</span></td></tr>
+<tr id="35"><td class="linenumbers">18</td><td class="linenumbers">18</td><td class="unchanged"><span> 	public function SDBrowseData() {</span></td></tr>
+<tr id="36"><td class="linenumbers">19</td><td class="linenumbers">19</td><td class="unchanged"><span> 		SpecialPage::SpecialPage('BrowseData');</span></td></tr>
+<tr id="37"><td class="linenumbers">20</td><td class="linenumbers"> </td><td class="del"><del>-		wfLoadExtensionMessages('SemanticDrilldown');</del></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">20</td><td class="ins"><ins>+		if (function_exists('wfLoadExtensionMessages'))</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">21</td><td class="ins"><ins>+			wfLoadExtensionMessages('SemanticDrilldown');</ins></td></tr>
+<tr id="40"><td class="linenumbers">21</td><td class="linenumbers">22</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="41"><td class="linenumbers">22</td><td class="linenumbers">23</td><td class="unchanged"><span> </span></td></tr>
+<tr id="42"><td class="linenumbers">23</td><td class="linenumbers">24</td><td class="unchanged"><span> 	function execute() {</span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:28, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r36921 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/36921.html responseCode 3 200 

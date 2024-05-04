@@ -1,0 +1,1101 @@
+ksggxmtgtiqitatcrexovcjspiacyegajoospktq length 5 67567 page 67567 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Common Build Problems - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/common-build-problems/ />
+<meta property="og:description" content="Common Build Problems" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/common-build-problems.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">Common Build Problems</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#my-tests-broke-but-were-working-yesterday">My tests broke but were working yesterday</a></li>
+  <li><a href="#my-build-script-is-killed-without-any-error">My build script is killed without any error</a></li>
+  <li><a href="#my-build-fails-unexpectedly">My build fails unexpectedly</a></li>
+  <li><a href="#segmentation-faults-from-the-language-interpreter-ruby-python-php-nodejs-etc">Segmentation faults from the language interpreter (Ruby, Python, PHP, Node.js, etc.)</a></li>
+  <li><a href="#ruby-rspec-returns-0-even-though-the-build-failed"><strong>Ruby</strong>: RSpec returns 0 even though the build failed</a></li>
+  <li><a href="#capybara-im-getting-errors-about-elements-not-being-found"><strong>Capybara</strong>: I’m getting errors about elements not being found</a></li>
+  <li><a href="#ruby-installing-the-debugger_ruby-core-source-library-fails"><strong>Ruby</strong>: Installing the debugger_ruby-core-source library fails</a></li>
+  <li><a href="#ruby-tests-frozen-and-cancelled-after-10-minute-log-silence"><strong>Ruby</strong>: Tests frozen and cancelled after 10 minute log silence</a></li>
+  <li><a href="#mac-macos-mavericks-109-code-signing-errors"><strong>Mac</strong>: macOS Mavericks (10.9) Code Signing Errors</a></li>
+  <li><a href="#mac-macos-sierra-1012-code-signing-errors"><strong>Mac</strong>: macOS Sierra (10.12) Code Signing Errors</a></li>
+  <li><a href="#mac-errors-running-cocoapods"><strong>Mac</strong>: Errors running CocoaPods</a></li>
+  <li><a href="#system-required-language-pack-isnt-installed"><strong>System</strong>: Required language pack isn’t installed</a></li>
+  <li><a href="#linux-apt-fails-to-install-package-with-404-error"><strong>Linux</strong>: apt fails to install package with 404 error</a></li>
+  <li><a href="#windows-common-build-problems-and-known-issues"><strong>Windows</strong>: common build problems and known issues</a></li>
+  <li><a href="#travis-ci-does-not-preserve-the-state-between-builds">Travis CI does not preserve the state between builds</a></li>
+  <li><a href="#ssh-is-not-working-as-expected">SSH is not working as expected</a></li>
+  <li><a href="#git-submodules-are-not-updated-correctly">Git submodules are not updated correctly</a></li>
+  <li><a href="#git-cannot-clone-my-submodules">Git cannot clone my Submodules</a></li>
+  <li><a href="#my-builds-are-timing-out">My builds are timing out</a></li>
+  <li><a href="#running-builds-in-debug-mode">Running builds in debug mode</a></li>
+  <li><a href="#log-length-exceeded">Log length exceeded</a></li>
+  <li><a href="#ftpsmtpother-protocol-do-not-work">FTP/SMTP/other protocol do not work</a></li>
+  <li><a href="#i-pushed-a-commit-and-cant-find-its-corresponding-build">I pushed a commit and can’t find its corresponding build</a></li>
+  <li><a href="#im-running-out-of-disk-space-in-my-build">I’m running out of disk space in my build</a></li>
+  <li><a href="#uploading-artifacts-to-sonatype">Uploading artifacts to sonatype</a></li>
+  <li><a href="#travis-cli-does-not-recognize-my-valid-github-token">Travis CLI does not recognize my valid Github token</a></li>
+  <li><a href="#duplicateunknown-job-shows-up-in-my-build">Duplicate/Unknown job shows up in my build</a></li>
+  <li><a href="#node-script-execution-before-dependency-installation-causes-build-failures"><strong>Node</strong>: Script execution before dependency installation causes build failures</a></li>
+  <li><a href="#node-npmyarn-throw-error-connect-enetunreach-or-build-hangs-in-the-install-phase-ie-npm-install-or-yarn-install-for-nodejs-versions-16-on-lxd-images-ppc64le-arm64-and-s390x"><strong>Node</strong>: NPM/YARN throw <strong><em>Error: connect ENETUNREACH</em></strong> or build hangs in the install phase i.e. <code class="highlighter-rouge">npm install</code> or <code class="highlighter-rouge">yarn install</code> for NodeJs versions 16+ on LXD images (ppc64le, arm64 and s390x)</a></li>
+</ul>
+
+            </div>
+          
+
+          <h2 id="my-tests-broke-but-were-working-yesterday">My tests broke but were working yesterday <a href="#my-tests-broke-but-were-working-yesterday" class="toc-anchor">#</a></h2>
+
+<p>A very common cause when a test is suddenly breaking without any major code
+changes involved is a change in upstream dependencies.</p>
+
+<p>This can be an Ubuntu package or any of your project’s language dependencies,
+like RubyGems, NPM packages, Pip, Composer, etc.</p>
+
+<p>To find out if this is the case:</p>
+<ul>
+  <li>
+    <p>Restart a build that used to be green, the last known working one, for instance.
+If that build suddenly fails too, there’s a good chance, that a dependency was
+updated and is causing the breakage.</p>
+  </li>
+  <li>
+    <p>Check the list of dependencies in the build log, usually output
+including versions and see, if there’s anything that’s changed.</p>
+  </li>
+</ul>
+
+<p>Sometimes, this can also be caused by an indirect dependency that was updated.</p>
+
+<ul>
+  <li>
+    <p>After figuring out which dependency was updated, lock it to the last known
+version.</p>
+  </li>
+  <li>
+    <p>Additionally, we update our build environment regularly, which brings in newer
+versions of languages and the running services.</p>
+  </li>
+</ul>
+
+<h2 id="my-build-script-is-killed-without-any-error">My build script is killed without any error <a href="#my-build-script-is-killed-without-any-error" class="toc-anchor">#</a></h2>
+
+<p>Sometimes, you’ll see a build script causing an error and the message in
+the log will be something like <code class="highlighter-rouge">Killed</code>.</p>
+
+<p>This is usually caused by the script or one of the programs it runs exhausting
+the memory available in the build sandbox, which is currently 3GB. Plus, there
+are two cores available, bursted.</p>
+
+<p>Depending on the tool in use, this can be caused by a few things:</p>
+
+<ul>
+  <li>Ruby test suite consuming too much memory</li>
+  <li>Tests running in parallel using too many processes or threads (e.g. using the
+<code class="highlighter-rouge">parallel_test</code> gem)</li>
+  <li>g++ needing too much memory to compile files, for instance with a lot of
+templates included.</li>
+</ul>
+
+<h3 id="parallel-processes">Parallel processes <a href="#parallel-processes" class="toc-anchor">#</a></h3>
+
+<p>For parallel processes running at the same time, try to reduce the number. More
+than two to four processes should be fine, beyond that, resources are likely to
+be exhausted.</p>
+
+<h3 id="ruby-processes">Ruby processes <a href="#ruby-processes" class="toc-anchor">#</a></h3>
+
+<p>With Ruby processes, check the memory consumption on your local machine, it’s
+likely to show similar causes. It can be caused by memory leaks or by custom
+settings for the garbage collector, for instance to delay a sweep for as long as
+possible. Dialing these numbers down should help.</p>
+
+<h2 id="my-build-fails-unexpectedly">My build fails unexpectedly <a href="#my-build-fails-unexpectedly" class="toc-anchor">#</a></h2>
+
+<p>One possible cause for builds failing unexpectedly can be calling <code class="highlighter-rouge">set -e</code> (also known as <code class="highlighter-rouge">set errexit</code>), either <em>directly in</em> your <code class="highlighter-rouge">.travis.yml</code>, or <code class="highlighter-rouge">source</code>ing a script which does. This causes any error causing a non-zero return status in your script to stop and fail the build immediately.</p>
+
+<blockquote>
+  <p>Note that using <code class="highlighter-rouge">set -e</code> in external scripts does not cause this problem, as the <code class="highlighter-rouge">errexit</code> is effective only in the external script.</p>
+</blockquote>
+
+<p>See also <a href="/user/customizing-the-build/#implementing-complex-build-steps">Complex Build Steps</a>.</p>
+
+<p>Another reason could be that the repo setting <strong>Clone or import</strong> is set to <code class="highlighter-rouge">OFF.</code> In this case, no information from the repository is shared and it is possible some builds using private dependencies between repos can break.
+If you want to avoid the situation when all of your repositories stop sharing dependencies, please go to the repository settings and explicitly set <strong>Clone or Import</strong> to <code class="highlighter-rouge">ON.</code> In this case, your builds keep running as usual.</p>
+
+<h2 id="segmentation-faults-from-the-language-interpreter-ruby-python-php-nodejs-etc">Segmentation faults from the language interpreter (Ruby, Python, PHP, Node.js, etc.) <a href="#segmentation-faults-from-the-language-interpreter-ruby-python-php-nodejs-etc" class="toc-anchor">#</a></h2>
+
+<p>If your build is failing due to unexpected segmentation faults in the language interpreter, this may be caused by corrupt or invalid caches of your extension codes (gems, modules, etc). This can happen with any interpreted language, such as Ruby, Python, PHP, Node.js, etc.</p>
+
+<p>Fix the problem by</p>
+<ul>
+  <li>clearing the cache or</li>
+  <li>removing the cache key from your .travis.yml (you can add it back in a subsequent commit).</li>
+</ul>
+
+<h2 id="ruby-rspec-returns-0-even-though-the-build-failed"><strong>Ruby</strong>: RSpec returns 0 even though the build failed <a href="#ruby-rspec-returns-0-even-though-the-build-failed" class="toc-anchor">#</a></h2>
+
+<p>In some scenarios, when running <code class="highlighter-rouge">rake rspec</code> or even rspec directly, the command
+returns 0 even though the build failed. This is commonly due to some RubyGem
+overwriting the <code class="highlighter-rouge">at_exit</code> handler of another RubyGem, in this case RSpec’s.</p>
+
+<p>The workaround is to install this <code class="highlighter-rouge">at_exit</code> handler in your code, as pointed out
+in <a href="http://www.davekonopka.com/2013/rspec-exit-code.html">this article</a>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="k">defined?</span><span class="p">(</span><span class="no">RUBY_ENGINE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="no">RUBY_ENGINE</span> <span class="o">==</span> <span class="s2">"ruby"</span> <span class="o">&amp;&amp;</span> <span class="no">RUBY_VERSION</span> <span class="o">&gt;=</span> <span class="s2">"1.9"</span>
+  <span class="k">module</span> <span class="nn">Kernel</span>
+    <span class="k">alias</span> <span class="ss">:__at_exit</span> <span class="ss">:at_exit</span>
+    <span class="k">def</span> <span class="nf">at_exit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+      <span class="n">__at_exit</span> <span class="k">do</span>
+        <span class="n">exit_status</span> <span class="o">=</span> <span class="vg">$!</span><span class="p">.</span><span class="nf">status</span> <span class="k">if</span> <span class="vg">$!</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">SystemExit</span><span class="p">)</span>
+        <span class="n">block</span><span class="p">.</span><span class="nf">call</span>
+        <span class="nb">exit</span> <span class="n">exit_status</span> <span class="k">if</span> <span class="n">exit_status</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>If your project is using the <a href="/user/code-climate/">Code Climate integration</a> or
+Simplecov, this issue can also come up with the 0.8 branch of Simplecov. The fix
+is to downgrade to the last 0.7 release until the issue is fixed.</p>
+
+<h2 id="capybara-im-getting-errors-about-elements-not-being-found"><strong>Capybara</strong>: I’m getting errors about elements not being found <a href="#capybara-im-getting-errors-about-elements-not-being-found" class="toc-anchor">#</a></h2>
+
+<p>In scenarios that involve JavaScript, you can occasionally see errors that
+indicate that an element is missing, a button, a link, or some other resource
+that is updated or created by asynchronous JavaScript.</p>
+
+<p>This can indicate that the timeouts used for Selenium or one of its drivers are
+set too low.</p>
+
+<p>Capybara has a timeout setting which you can increase to a minimum of 15
+seconds:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Capybara</span><span class="p">.</span><span class="nx">default_max_wait_time</span> <span class="o">=</span> <span class="mi">15</span>
+</code></pre></div></div>
+
+<p>Poltergeist has its own setting for timeouts:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Capybara</span><span class="p">.</span><span class="nx">register_driver</span> <span class="p">:</span><span class="nx">poltergeist</span> <span class="k">do</span> <span class="o">|</span><span class="nx">app</span><span class="o">|</span>
+  <span class="nx">Capybara</span><span class="p">::</span><span class="nx">Poltergeist</span><span class="p">::</span><span class="nx">Driver</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">timeout</span><span class="p">:</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nx">end</span>
+</code></pre></div></div>
+
+<p>If you’re still seeing timeouts after increasing it initially, set it to
+something much higher for one test run. Should the error still persist, there’s
+possibly a deeper issue on the page, for instance compiling the assets.</p>
+
+<h2 id="ruby-installing-the-debugger_ruby-core-source-library-fails"><strong>Ruby</strong>: Installing the debugger_ruby-core-source library fails <a href="#ruby-installing-the-debugger_ruby-core-source-library-fails" class="toc-anchor">#</a></h2>
+
+<p>This Ruby library unfortunately has a history of breaking with even patchlevel
+releases of Ruby. It’s commonly a dependency of libraries like linecache or
+other Ruby debugging libraries.</p>
+
+<p>We recommend moving these libraries to a separate group in your Gemfile and then
+to install RubyGems on Travis CI without this group. As these libraries are only
+useful for local development, you’ll even gain a speedup during the installation
+process of your build.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gemfile</span>
+<span class="n">group</span> <span class="ss">:debug</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'debugger'</span>
+  <span class="n">gem</span> <span class="s1">'debugger-linecache'</span>
+  <span class="n">gem</span> <span class="s1">'rblineprof'</span>
+<span class="k">end</span>
+
+<span class="c1"># .travis.yml</span>
+<span class="ss">bundler_args: </span><span class="o">--</span><span class="n">without</span> <span class="n">development</span> <span class="n">debug</span>
+</code></pre></div></div>
+
+<h2 id="ruby-tests-frozen-and-cancelled-after-10-minute-log-silence"><strong>Ruby</strong>: Tests frozen and cancelled after 10 minute log silence <a href="#ruby-tests-frozen-and-cancelled-after-10-minute-log-silence" class="toc-anchor">#</a></h2>
+
+<p>In some cases, the use of the <code class="highlighter-rouge">timecop</code> gem can result in seemingly sporadic
+“freezing” due to issues with ordering calls of <code class="highlighter-rouge">Timecop.return</code>,
+<code class="highlighter-rouge">Timecop.freeze</code>, and <code class="highlighter-rouge">Timecop.travel</code>.  For example, if using RSpec, be sure to
+have a <code class="highlighter-rouge">Timecop.return</code> configured to run <em>after</em> all examples:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># in, e.g. spec/spec_helper.rb</span>
+<span class="no">RSpec</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+  <span class="n">c</span><span class="p">.</span><span class="nf">after</span> <span class="ss">:all</span> <span class="k">do</span>
+    <span class="no">Timecop</span><span class="p">.</span><span class="nf">return</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="mac-macos-mavericks-109-code-signing-errors"><strong>Mac</strong>: macOS Mavericks (10.9) Code Signing Errors <a href="#mac-macos-mavericks-109-code-signing-errors" class="toc-anchor">#</a></h2>
+
+<p>With Mavericks quite a lot has changed in terms of code signing and the keychain application.</p>
+
+<p>Signs of issues can be error messages stating that an identity can’t be found and that “User
+interaction is not allowed.”</p>
+
+<p>The keychain must be marked as the default keychain, must be unlocked explicitly and the build needs to make sure that the keychain isn’t locked before the critical point in the build is reached. The following set of commands takes care
+of this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>KEY_CHAIN=ios-build.keychain
+security create-keychain -p travis $KEY_CHAIN
+# Make the keychain the default so identities are found
+security default-keychain -s $KEY_CHAIN
+# Unlock the keychain
+security unlock-keychain -p travis $KEY_CHAIN
+# Set keychain locking timeout to 3600 seconds
+security set-keychain-settings -t 3600 -u $KEY_CHAIN
+</code></pre></div></div>
+
+<h2 id="mac-macos-sierra-1012-code-signing-errors"><strong>Mac</strong>: macOS Sierra (10.12) Code Signing Errors <a href="#mac-macos-sierra-1012-code-signing-errors" class="toc-anchor">#</a></h2>
+
+<p>With the introduction of macOS Sierra (10.12) on our infrastructure, we’ve seen build jobs that were hanging at the codesigning step of the build process. Here’s some information on how to recognize this issue and fix it.</p>
+
+<p>Your build is running on macOS Sierra (10.12), if the <code class="highlighter-rouge">osx_image</code> in your .travis.yml file is <code class="highlighter-rouge">xcode8.3</code> or higher. See <a href="https://docs.travis-ci.com/user/reference/osx/">the macOS Build Environment documentation</a> to know which macOS version is associated with each image.</p>
+
+<p>The following lines in your build log possibly indicate an occurrence of this issue:</p>
+
+<p><strong>Example: Signing</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>▸ Signing /Users/travis/Library/Developer/Xcode/DerivedData/PresenterKit-ggzwtlifkopsnbffbqrmtydtmafv/Build/Intermediates/CodeCoverage/Products/Debug-iphonesimulator/project.xctest
+
+No output has been received in the last 10m0s, this potentially indicates a stalled build or something wrong with the build itself.
+Check the details on how to adjust your build configuration on: https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received
+
+The build has been terminated
+</code></pre></div></div>
+
+<p><strong>Example: Embed Pods Frameworks</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>▸ Running script '[CP] Embed Pods Frameworks'
+
+No output has been received in the last 10m0s, this potentially indicates a stalled build or something wrong with the build itself.
+Check the details on how to adjust your build configuration on: https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received
+
+The build has been terminated
+</code></pre></div></div>
+
+<p>To fix this issue, you will need to add the following command <strong>after</strong> you have imported your certificate:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>security set-key-partition-list -S apple-tool:,apple: -s -k keychainPass keychainName
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">keychainPass</code> is the password of your keychain</li>
+  <li><code class="highlighter-rouge">keychainName</code> is the name of your keychain</li>
+</ul>
+
+<p>Here’s an example of where to put the command in context:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create the keychain with a password</span>
+security create-keychain <span class="nt">-p</span> travis ios-build.keychain
+
+<span class="c"># Make the custom keychain default, so xcodebuild will use it for signing</span>
+security default-keychain <span class="nt">-s</span> ios-build.keychain
+
+<span class="c"># Unlock the keychain</span>
+security unlock-keychain <span class="nt">-p</span> travis ios-build.keychain
+
+<span class="c"># Add certificates to keychain and allow codesign to access them</span>
+security import ./Provisioning/certs/apple.cer <span class="nt">-k</span> ~/Library/Keychains/ios-build.keychain <span class="nt">-T</span> /usr/bin/codesign
+security import ./Provisioning/certs/distribution.cer <span class="nt">-k</span> ~/Library/Keychains/ios-build.keychain <span class="nt">-T</span> /usr/bin/codesign
+security import ./Provisioning/certs/distribution.p12 <span class="nt">-k</span> ~/Library/Keychains/ios-build.keychain <span class="nt">-P</span> <span class="nv">$KEY_PASSWORD</span> <span class="nt">-T</span> /usr/bin/codesign
+
+security set-key-partition-list <span class="nt">-S</span> apple-tool:,apple: <span class="nt">-s</span> <span class="nt">-k</span> travis ios-build.keychain
+</code></pre></div></div>
+
+<blockquote>
+  <p>IMPORTANT: It’s mandatory to create a keychain with a password for the command <code class="highlighter-rouge">security set-key-partition-list</code> to work.</p>
+</blockquote>
+
+<h3 id="fastlane">Fastlane <a href="#fastlane" class="toc-anchor">#</a></h3>
+
+<p>If you are using <a href="https://fastlane.tools/">Fastlane</a> to sign your app (e.g. with <a href="https://github.com/fastlane/fastlane/tree/master/match">Fastlane Match</a>), you will need to do something similar to the following in your <code class="highlighter-rouge">Fastfile</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    create_keychain(
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
+
+    match(
+      type: "adhoc",
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_PASSWORD"],
+      readonly: true
+    )
+</code></pre></div></div>
+
+<p>If you are using <code class="highlighter-rouge">import_certificate</code> directly to import your certificates, it’s mandatory to pass your keychain’s password as a parameter e.g.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keychain_name = "ios-build.keychain"
+keychain_password = SecureRandom.base64
+
+create_keychain(
+    name: keychain_name,
+    password: keychain_password,
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    add_to_search_list: true
+)
+
+import_certificate(
+    certificate_path: "fastlane/Certificates/dist.p12",
+    certificate_password: ENV["KEY_PASSWORD"],
+    keychain_name: keychain_name
+    keychain_password: keychain_password
+)
+</code></pre></div></div>
+
+<p>You can also have more details in <a href="https://github.com/travis-ci/travis-ci/issues/6791">this GitHub issue</a> starting at <a href="https://github.com/travis-ci/travis-ci/issues/6791#issuecomment-261071904">this comment</a>.</p>
+
+<h2 id="mac-errors-running-cocoapods"><strong>Mac</strong>: Errors running CocoaPods <a href="#mac-errors-running-cocoapods" class="toc-anchor">#</a></h2>
+
+<p>CocoaPods usage can fail for a few reasons currently.</p>
+
+<h3 id="newer-version-of-cocoapods-required">Newer version of CocoaPods required <a href="#newer-version-of-cocoapods-required" class="toc-anchor">#</a></h3>
+
+<p>Most Pods now require CocoaPods 0.32.1, but we still have 0.21 preinstalled. If
+you’re seeing this error, add this to your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">gem install cocoapods -v '0.32.1'</span>
+</code></pre></div></div>
+
+<h3 id="cocoapods-cant-be-found">CocoaPods can’t be found <a href="#cocoapods-cant-be-found" class="toc-anchor">#</a></h3>
+
+<p>CocoaPods isn’t currently installed on all available Rubies, which unfortunately
+means it will fail when using the default Ruby, which is 2.0.0.</p>
+
+<p>To work around this issue, you can either install CocoaPods manually as shown
+above, or you can switch to Ruby 1.9.3 in your <code class="highlighter-rouge">.travis.yml</code>, which should work
+without any issues:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">rvm</span><span class="pi">:</span> <span class="s">1.9.3</span>
+</code></pre></div></div>
+
+<h3 id="cocoapods-fails-with-a-segmentation-fault">CocoaPods fails with a segmentation fault <a href="#cocoapods-fails-with-a-segmentation-fault" class="toc-anchor">#</a></h3>
+
+<p>On Ruby 2.0.0, CocoaPods has been seen crashing with a segmentation fault.</p>
+
+<p>You can work around the issue by using Ruby 1.9.3, which hasn’t shown these
+issues. Add this to your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">rvm</span><span class="pi">:</span> <span class="s">1.9.3</span>
+</code></pre></div></div>
+
+<h2 id="system-required-language-pack-isnt-installed"><strong>System</strong>: Required language pack isn’t installed <a href="#system-required-language-pack-isnt-installed" class="toc-anchor">#</a></h2>
+
+<p>The Travis CI build environments currently have only the en_US language pack
+installed. If you get an error similar to : “Error: unsupported locale
+setting”, then you may need to install another language pack during your test
+run.</p>
+
+<p>This can be done with the follow addition to your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sudo apt-get update &amp;&amp; sudo apt-get --reinstall install -qq language-pack-en language-pack-de</span>
+</code></pre></div></div>
+
+<p>The above addition will reinstall the en_US language pack as well as the de_DE
+language pack.</p>
+
+<p>If you are running on the container-based infrastructure and don’t have access
+to the <code class="highlighter-rouge">sudo</code> command, install locales <a href="/user/installing-dependencies/#installing-packages-with-the-apt-addon">using the APT addon</a>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">language-pack-en</span>
+      <span class="pi">-</span> <span class="s">language-pack-de</span>
+</code></pre></div></div>
+
+<h2 id="linux-apt-fails-to-install-package-with-404-error"><strong>Linux</strong>: apt fails to install package with 404 error <a href="#linux-apt-fails-to-install-package-with-404-error" class="toc-anchor">#</a></h2>
+
+<p>This is often caused by old package database and can be fixed by adding the following to <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sudo apt-get update</span>
+</code></pre></div></div>
+
+<h2 id="windows-common-build-problems-and-known-issues"><strong>Windows</strong>: common build problems and known issues <a href="#windows-common-build-problems-and-known-issues" class="toc-anchor">#</a></h2>
+
+<p>For a list of common build problems on Windows, known issues and workarounds, please visit the [Travis CI community forum].(https://travis-ci.community/t/current-known-issues-please-read-this-before-posting-a-new-topic/264).
+The <a href="https://travis-ci.community">Travis CI community forum</a> provides better visibility on the issues customers are running into and how to solve them.</p>
+
+<h2 id="travis-ci-does-not-preserve-the-state-between-builds">Travis CI does not preserve the state between builds <a href="#travis-ci-does-not-preserve-the-state-between-builds" class="toc-anchor">#</a></h2>
+
+<p>Travis CI uses virtual machine snapshotting to make sure no state is preserved between
+builds. If you modify the CI environment by writing something to a data store, creating
+files or installing a package via apt, it does not affect subsequent builds.</p>
+
+<h2 id="ssh-is-not-working-as-expected">SSH is not working as expected <a href="#ssh-is-not-working-as-expected" class="toc-anchor">#</a></h2>
+
+<p>Travis CI runs all commands over SSH in isolated virtual machines. Commands that
+modify SSH session states are “sticky” and persist throughout the build. For example,
+if you <code class="highlighter-rouge">cd</code> into a directory, all subsequent commands are run from that directory.</p>
+
+<h2 id="git-submodules-are-not-updated-correctly">Git submodules are not updated correctly <a href="#git-submodules-are-not-updated-correctly" class="toc-anchor">#</a></h2>
+
+<p>Travis CI automatically initializes and updates submodules when there’s a <code class="highlighter-rouge">.gitmodules</code> file in the root of the repository.</p>
+
+<p>To turn this off, set:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">git</span><span class="pi">:</span>
+  <span class="na">submodules</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>If your project requires specific options for your Git submodules, which Travis CI
+does not support out of the box, turn off the automatic integration and use the
+<code class="highlighter-rouge">before_install</code> hook to initializes and update them.</p>
+
+<p>For example, to update nested submodules:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">git submodule update --init --recursive</span>
+</code></pre></div></div>
+
+<h2 id="git-cannot-clone-my-submodules">Git cannot clone my Submodules <a href="#git-cannot-clone-my-submodules" class="toc-anchor">#</a></h2>
+
+<p>If your project uses Git submodules, make sure you use public Git URLs. For example, on GitHub, instead of</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git@github.com:someuser/somelibrary.git
+</code></pre></div></div>
+
+<p>use</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/someuser/somelibrary.git
+</code></pre></div></div>
+
+<p>Otherwise, Travis CI builders won’t be able to clone your project because they don’t have your private SSH key.</p>
+
+<h2 id="my-builds-are-timing-out">My builds are timing out <a href="#my-builds-are-timing-out" class="toc-anchor">#</a></h2>
+
+<p>Builds can unfortunately time out, either during installation of dependencies or during the build itself, for instance because of a command that’s taking a longer amount of time to run while not producing any output.</p>
+
+<p>Our builds have a global timeout and a timeout that’s based on the output. If no output is received from a build for 10 minutes, it’s assumed to have stalled for unknown reasons and is subsequently killed.</p>
+
+<p>At other times, installation of dependencies can timeout. Bundler and RubyGems are a relevant example. Network connectivity between our servers can sometimes affect connectivity to APT, Maven or other repositories.</p>
+
+<p>There are few ways to work around that.</p>
+
+<h3 id="timeouts-installing-dependencies">Timeouts installing dependencies <a href="#timeouts-installing-dependencies" class="toc-anchor">#</a></h3>
+
+<p>If you are getting network timeouts when trying to download dependencies, either
+use the built in retry feature of your dependency manager or wrap your install
+commands in the <code class="highlighter-rouge">travis_retry</code> function.</p>
+
+<h4 id="bundler">Bundler <a href="#bundler" class="toc-anchor">#</a></h4>
+
+<p>Bundler retries three times by default, but if you need to increase that number,
+use the following syntax in your <code class="highlighter-rouge">.travis.yml</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundler_args: <span class="nt">--retry</span> 5
+</code></pre></div></div>
+
+<h4 id="travis_retry">travis_retry <a href="#travis_retry" class="toc-anchor">#</a></h4>
+
+<p>For commands which do not have a built-in retry feature, use the <code class="highlighter-rouge">travis_retry</code>
+function to retry it up to three times, if the return code is non-zero:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">install</span>: travis_retry pip <span class="nb">install </span>myawesomepackage
+</code></pre></div></div>
+
+<p>Most of our internal build commands are wrapped with <code class="highlighter-rouge">travis_retry</code> to reduce the
+impact of network timeouts.</p>
+
+<blockquote>
+  <p>Note that <code class="highlighter-rouge">travis_retry</code> does not work in the <code class="highlighter-rouge">deploy</code> step of the build, although it
+does work in the <a href="/user/job-lifecycle/">other steps</a>.</p>
+</blockquote>
+
+<h3 id="build-times-out-because-no-output-was-received">Build times out because no output was received <a href="#build-times-out-because-no-output-was-received" class="toc-anchor">#</a></h3>
+
+<p>When a long running command or compile step regularly takes longer than 10 minutes without producing any output, you can adjust your build configuration to take that into consideration.</p>
+
+<p>The shell environment in our build system provides a function that helps to work around that, at least for longer than 10 minutes.</p>
+
+<p>If you have a command that doesn’t produce output for more than 10 minutes, you can prefix it with <code class="highlighter-rouge">travis_wait</code>, a function that’s exported by our build environment. For example:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">install</span><span class="pi">:</span> <span class="s">travis_wait mvn install</span>
+</code></pre></div></div>
+
+<p>spawns a process running <code class="highlighter-rouge">mvn install</code>.
+<code class="highlighter-rouge">travis_wait</code> then writes a short line to the build log every minute for 20 minutes, extending the amount of time your command has to finish.</p>
+
+<p>If you expect the command to take more than 20 minutes, prefix the command with <code class="highlighter-rouge">travis_wait n</code> where <code class="highlighter-rouge">n</code> is the number of minutes by which the waiting time is extended.</p>
+
+<p>Continuing the example above to extend the waiting time to 30 minutes:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">install</span><span class="pi">:</span> <span class="s">travis_wait 30 mvn install</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>We recommend to carefully use <code class="highlighter-rouge">travis_wait</code>, as overusing it can extend your build time when there could be a deeper underlying issue. When in doubt, <a href="mailto:support@travis-ci.com">email us</a> first to see if something could be improved about this particular command first.</p>
+</blockquote>
+
+<h4 id="limitations-of-travis_wait">Limitations of <code class="highlighter-rouge">travis_wait</code> <a href="#limitations-of-travis_wait" class="toc-anchor">#</a></h4>
+
+<p><code class="highlighter-rouge">travis_wait</code> works by starting a process, sending it to the background, and watching the background
+process.
+If the command you pass to <code class="highlighter-rouge">travis_wait</code> does not persist, then <code class="highlighter-rouge">travis_wait</code> does not extend the timeout.</p>
+
+<h2 id="running-builds-in-debug-mode">Running builds in debug mode <a href="#running-builds-in-debug-mode" class="toc-anchor">#</a></h2>
+
+<p>In private repositories and those public repositories for which the feature is enabled,
+it is possible to run builds and jobs in debug mode.
+Using this feature, you can interact with the live VM where your builds run.</p>
+
+<p>For more information, please consult <a href="/user/running-build-in-debug-mode/">the debug VM documentation</a>.</p>
+
+<h2 id="log-length-exceeded">Log length exceeded <a href="#log-length-exceeded" class="toc-anchor">#</a></h2>
+
+<p>The log for each build is limited to approximately 4 MB. When it reaches that length, the build is terminated and you’ll see the following message at the end of your build log:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The log length has exceeded the limit of 4 Megabytes (this usually means that test suite is raising the same exception over and over).
+
+The build has been terminated.
+</code></pre></div></div>
+
+<h2 id="ftpsmtpother-protocol-do-not-work">FTP/SMTP/other protocol do not work <a href="#ftpsmtpother-protocol-do-not-work" class="toc-anchor">#</a></h2>
+
+<p>Some protocols such as FTP and SMTP are not directly supported due to the
+infrastructure requirements in place for security and fair usage. Using
+alternate <q>stateless</q> protocols such as HTTPS is best, but tunneling is
+also known to work, such as by using SFTP in the specific case of FTP, or a VPN
+connection for a wide variety of protocols, e.g.:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">openvpn</span>
+
+<span class="na">before_install</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">sudo openvpn path/to/conf.ovpn &amp;&gt;&gt;openvpn-client.log &amp;</span>
+</code></pre></div></div>
+
+<h2 id="i-pushed-a-commit-and-cant-find-its-corresponding-build">I pushed a commit and can’t find its corresponding build <a href="#i-pushed-a-commit-and-cant-find-its-corresponding-build" class="toc-anchor">#</a></h2>
+
+<p>The build request events that Travis CI receives are listed in your repository’s Requests page. You can find it under the <strong>More Options</strong> dropdown menu, choosing <strong>Requests</strong>.</p>
+
+<p><img src="/images/common-build-problems/repository-requests-page.png" alt="More Options dropdown menu, choosing Requests" /></p>
+
+<p>Whenever your build has been processed, you’ll see the message: <strong>“Build created successfully”</strong>.</p>
+
+<p>If a build hasn’t been triggered for your commit, these are the possible build request messages:</p>
+
+<ul>
+  <li><strong>“Could not authorize build request”</strong>, usually means that the account’s subscription expired or that it ran out of build credits.</li>
+  <li><strong>“Build skipped via commit message”</strong>, this commit contains <a href="/user/customizing-the-build/#skipping-a-build">the skip command</a>.</li>
+  <li><strong>“GitHub payload is missing a merge commit”</strong>, please confirm your pull request is open and mergeable. You may also have unresolved conflicts in a particular branch.</li>
+  <li><strong>“Branch excluded per configuration”</strong> or <strong>“Branch not included per configuration”</strong>, please make sure your branch is not <a href="/user/customizing-the-build/#safelisting-or-blocklisting-branches">explicitly excluded</a> or <a href="/user/customizing-the-build/#safelisting-or-blocklisting-branches">not included</a> in your <code class="highlighter-rouge">.travis.yml</code> file.</li>
+  <li><strong>“Build type disabled via repository settings”</strong>, please make sure your Push or Pull Request builds are still active.</li>
+  <li><strong>“Build config did not create any jobs.”</strong>, please make sure the conditions in your <code class="highlighter-rouge">.travis.yml</code> file are able to created a job.</li>
+</ul>
+
+<blockquote>
+  <p>Please note that Travis CI does not receive a Webhook event when more than three commits are tagged. So if you do <code class="highlighter-rouge">git push --tags</code>, and more than three tags that are present locally, are not known on GitHub, Travis will not be told about any of those events, and the tagged commits will not be built.</p>
+</blockquote>
+
+<h2 id="im-running-out-of-disk-space-in-my-build">I’m running out of disk space in my build <a href="#im-running-out-of-disk-space-in-my-build" class="toc-anchor">#</a></h2>
+
+<p>Approximate available disk space is listed in the <a href="/user/reference/overview/#virtualisation-environment-vs-operating-system">build environment overview</a>.</p>
+
+<p>The best way to find out what is available on your specific image is to run <code class="highlighter-rouge">df -h</code> as part of your build script.
+If you need a bit more space in your Ubuntu builds, we recommend using <code class="highlighter-rouge">language: minimal</code>, which will route you to a base image with less tools and languages preinstalled. This image has approximately ~24GB of free space.</p>
+
+<h2 id="uploading-artifacts-to-sonatype">Uploading artifacts to sonatype <a href="#uploading-artifacts-to-sonatype" class="toc-anchor">#</a></h2>
+
+<p>When publishing via the <code class="highlighter-rouge">nexus-staging-maven-plugin</code> to Sonatype OSS Repository, IP addresses used by TravisCI change due to our <a href="https://blog.travis-ci.com/2018-07-23-the-tale-of-ftp-at-travis-ci">NAT layer</a>. To get around this, please use a <code class="highlighter-rouge">stagingProfileId</code> as <a href="https://travis-ci.community/t/sonatype-deployment-problems/1353/2?u=mzk">explained in this document</a>.</p>
+
+<h2 id="travis-cli-does-not-recognize-my-valid-github-token">Travis CLI does not recognize my valid Github token <a href="#travis-cli-does-not-recognize-my-valid-github-token" class="toc-anchor">#</a></h2>
+
+<p>When using the <a href="https://github.com/travis-ci/travis.rb#readme">Travis CLI tool</a> to interact with the Travis CI platform, if you receive an <code class="highlighter-rouge">insufficient_oauth_permissions</code> error or similar, please ensure the Github Token supplied via <code class="highlighter-rouge">--github-token</code> has <strong>repo</strong> scope as <a href="https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/">explained in this document</a>.</p>
+
+<h2 id="duplicateunknown-job-shows-up-in-my-build">Duplicate/Unknown job shows up in my build <a href="#duplicateunknown-job-shows-up-in-my-build" class="toc-anchor">#</a></h2>
+
+<p>When specifying stages, users often unknowingly add an implicit job to the list of jobs in a stage using YAML that is otherwise syntactically correct.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">c</span>
+<span class="nn">...</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">include</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">stage</span><span class="pi">:</span> <span class="s">Breakfast</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Peanut Butter and Bread</span>
+    <span class="na">script</span><span class="pi">:</span> <span class="s">./brew_hot_coffee.sh</span>
+</code></pre></div></div>
+
+<p>The above definition, creates a stage called <strong>Breakfast</strong> and 2 jobs. The first job is an <em>implicit</em> job that inherits all the default values for the programming language specified. In the example above, the <a href="/user/languages/c/#what-this-guide-covers">default values for <code class="highlighter-rouge">C</code></a> will be used while the second job is the <em>Peanut Butter and Bread</em>, which you have explicitly defined.</p>
+
+<p>To remove this <em>implicit</em> job, you would edit the above to look like:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">c</span>
+<span class="nn">...</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">include</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">stage</span><span class="pi">:</span> <span class="s">Breakfast</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Peanut Butter and Bread</span>
+    <span class="na">script</span><span class="pi">:</span> <span class="s">./brew_hot_coffee.sh</span>
+
+</code></pre></div></div>
+
+<p>This creates only one job,  <em>Peanut Butter and Bread</em> under the stage named <em>Breakfast</em> as you have defined. It is important to note that in YAML, the <code class="highlighter-rouge">-</code> symbol is used to create a list of items and the earlier example creates a list of 2 items, while you actually wanted 1. You can read more on <a href="/user/build-stages/#how-to-define-build-stages">How to define Build Stages</a> and YAML lists syntax in the official <a href="https://yaml.org/spec/1.2/spec.html#id2759963">documentation</a>.</p>
+
+<h2 id="node-script-execution-before-dependency-installation-causes-build-failures"><strong>Node</strong>: Script execution before dependency installation causes build failures <a href="#node-script-execution-before-dependency-installation-causes-build-failures" class="toc-anchor">#</a></h2>
+
+<p>When adding custom setup instructions to a NodeJS build, add them in the <code class="highlighter-rouge">before_script</code> phase and not before <em>dependencies are installed</em>. The <code class="highlighter-rouge">before_script</code> phase is the safest place to add custom setup scripts. Symptoms of this problem include previously succeeding builds suddenly failing due to the addition of a new dependency.</p>
+
+<h2 id="node-npmyarn-throw-error-connect-enetunreach-or-build-hangs-in-the-install-phase-ie-npm-install-or-yarn-install-for-nodejs-versions-16-on-lxd-images-ppc64le-arm64-and-s390x"><strong>Node</strong>: NPM/YARN throw <strong><em>Error: connect ENETUNREACH</em></strong> or build hangs in the install phase i.e. <code class="highlighter-rouge">npm install</code> or <code class="highlighter-rouge">yarn install</code> for NodeJs versions 16+ on LXD images (ppc64le, arm64 and s390x) <a href="#node-npmyarn-throw-error-connect-enetunreach-or-build-hangs-in-the-install-phase-ie-npm-install-or-yarn-install-for-nodejs-versions-16-on-lxd-images-ppc64le-arm64-and-s390x" class="toc-anchor">#</a></h2>
+
+<p>This seems to be a known bug and the details can be reviewed at https://github.com/npm/cli/issues/4163. Add the following to resolve the issue:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">env</span><span class="pi">:</span>
+  <span class="na">global</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">NODE_OPTIONS="--dns-result-order=ipv4first"</span>
+</code></pre></div></div>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 58 https://docs.travis-ci.com:443/user/common-build-problems/ responseCode 3 200 

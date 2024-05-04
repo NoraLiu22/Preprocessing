@@ -1,0 +1,111 @@
+tksalajmdstanqwiuamaycvmvkhedgfkpapcdgoe length 5 14643 page 14643 
+<html>
+<head>
+<title>r33551 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r33551 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/33551" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./33550.html" title="Special:Code/MediaWiki/33550">r33550</a>‎ | <b>r33551</b> | <a href="./33552.html" title="Special:Code/MediaWiki/33552">r33552</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>15:01, 18 April 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/simetrical" title="Special:Code/MediaWiki/author/simetrical">simetrical</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">(<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=12698">bug 12698</a>) Create PAGESIZE parser function, to return the size of a page.  Quite possibly this is getting out of hand; in that case, revert.  Patch based on one by CBM/carl-m.</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/CoreParserFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FCoreParserFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/messages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2Fmessages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/33551&amp;action=purge" title="Special:Code/MediaWiki/33551">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/CoreParserFunctions.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -42,6 +42,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">43</td><td class="linenumbers">43</td><td class="unchanged"><span> 		$parser->setFunctionHook( 'defaultsort',      array( __CLASS__, 'defaultsort'      ), SFH_NO_HASH );</span></td></tr>
+<tr id="7"><td class="linenumbers">44</td><td class="linenumbers">44</td><td class="unchanged"><span> 		$parser->setFunctionHook( 'filepath',         array( __CLASS__, 'filepath'         ), SFH_NO_HASH );</span></td></tr>
+<tr id="8"><td class="linenumbers">45</td><td class="linenumbers">45</td><td class="unchanged"><span> 		$parser->setFunctionHook( 'pagesincategory',  array( __CLASS__, 'pagesincategory'  ), SFH_NO_HASH );</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">46</td><td class="ins"><ins>+		$parser->setFunctionHook( 'pagesize',         array( __CLASS__, 'pagesize'         ), SFH_NO_HASH );</ins></td></tr>
+<tr id="10"><td class="linenumbers">46</td><td class="linenumbers">47</td><td class="unchanged"><span> 		$parser->setFunctionHook( 'tag',              array( __CLASS__, 'tagObj'           ), SFH_OBJECT_ARGS );</span></td></tr>
+<tr id="11"><td class="linenumbers">47</td><td class="linenumbers">48</td><td class="unchanged"><span> </span></td></tr>
+<tr id="12"><td class="linenumbers">48</td><td class="linenumbers">49</td><td class="unchanged"><span> 		if ( $wgAllowDisplayTitle ) {</span></td></tr>
+<tr id="13"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -241,6 +242,43 @@</span></td></tr>
+<tr id="14"><td class="linenumbers">242</td><td class="linenumbers">243</td><td class="unchanged"><span> 		return self::formatRaw( $count, $raw );</span></td></tr>
+<tr id="15"><td class="linenumbers">243</td><td class="linenumbers">244</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="16"><td class="linenumbers">244</td><td class="linenumbers">245</td><td class="unchanged"><span> </span></td></tr>
+<tr id="17"><td class="linenumbers"> </td><td class="linenumbers">246</td><td class="ins"><ins>+	/**</ins></td></tr>
+<tr id="18"><td class="linenumbers"> </td><td class="linenumbers">247</td><td class="ins"><ins>+	 * Return the size of the given page, or 0 if it's nonexistent.  This is an</ins></td></tr>
+<tr id="19"><td class="linenumbers"> </td><td class="linenumbers">248</td><td class="ins"><ins>+	 * expensive parser function and can't be called too many times per page.</ins></td></tr>
+<tr id="20"><td class="linenumbers"> </td><td class="linenumbers">249</td><td class="ins"><ins>+	 *</ins></td></tr>
+<tr id="21"><td class="linenumbers"> </td><td class="linenumbers">250</td><td class="ins"><ins>+	 * @FIXME This doesn't work correctly on preview for getting the size of</ins></td></tr>
+<tr id="22"><td class="linenumbers"> </td><td class="linenumbers">251</td><td class="ins"><ins>+	 *   the current page.</ins></td></tr>
+<tr id="23"><td class="linenumbers"> </td><td class="linenumbers">252</td><td class="ins"><ins>+	 * @FIXME Title::getLength() documentation claims that it adds things to</ins></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">253</td><td class="ins"><ins>+	 *   the link cache, so the local cache here should be unnecessary, but in</ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">254</td><td class="ins"><ins>+	 *   fact calling getLength() repeatedly for the same $page does seem to</ins></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">255</td><td class="ins"><ins>+	 *   run one query for each call?</ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">256</td><td class="ins"><ins>+	 */</ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">257</td><td class="ins"><ins>+	static function pagesize( $parser, $page = '', $raw = null ) {</ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">258</td><td class="ins"><ins>+		static $cache = array();</ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">259</td><td class="ins"><ins>+		$title = Title::newFromText($page);</ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">260</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="32"><td class="linenumbers"> </td><td class="linenumbers">261</td><td class="ins"><ins>+		if( !is_object( $title ) ) {</ins></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">262</td><td class="ins"><ins>+			$cache[$page] = 0;</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">263</td><td class="ins"><ins>+			return self::formatRaw( 0, $raw );</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">264</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">265</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">266</td><td class="ins"><ins>+		# Normalize name for cache</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">267</td><td class="ins"><ins>+		$page = $title->getPrefixedText();</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">268</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">269</td><td class="ins"><ins>+		$length = 0;</ins></td></tr>
+<tr id="41"><td class="linenumbers"> </td><td class="linenumbers">270</td><td class="ins"><ins>+		if( isset( $cache[$page] ) ) {</ins></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">271</td><td class="ins"><ins>+			$length = $cache[$page];</ins></td></tr>
+<tr id="43"><td class="linenumbers"> </td><td class="linenumbers">272</td><td class="ins"><ins>+		} elseif( $parser->incrementExpensiveFunctionCount() ) {</ins></td></tr>
+<tr id="44"><td class="linenumbers"> </td><td class="linenumbers">273</td><td class="ins"><ins>+			$length = $cache[$page] = $title->getLength();</ins></td></tr>
+<tr id="45"><td class="linenumbers"> </td><td class="linenumbers">274</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="46"><td class="linenumbers"> </td><td class="linenumbers">275</td><td class="ins"><ins>+			// Register dependency in templatelinks</ins></td></tr>
+<tr id="47"><td class="linenumbers"> </td><td class="linenumbers">276</td><td class="ins"><ins>+			$id = $title->getArticleId();</ins></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">277</td><td class="ins"><ins>+			$revid = Revision::newFromTitle($title);</ins></td></tr>
+<tr id="49"><td class="linenumbers"> </td><td class="linenumbers">278</td><td class="ins"><ins>+			$parser->mOutput->addTemplate($title, $id, $revid);</ins></td></tr>
+<tr id="50"><td class="linenumbers"> </td><td class="linenumbers">279</td><td class="ins"><ins>+		}	</ins></td></tr>
+<tr id="51"><td class="linenumbers"> </td><td class="linenumbers">280</td><td class="ins"><ins>+		return self::formatRaw( $length, $raw );</ins></td></tr>
+<tr id="52"><td class="linenumbers"> </td><td class="linenumbers">281</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="53"><td class="linenumbers"> </td><td class="linenumbers">282</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="54"><td class="linenumbers">245</td><td class="linenumbers">283</td><td class="unchanged"><span> 	static function language( $parser, $arg = '' ) {</span></td></tr>
+<tr id="55"><td class="linenumbers">246</td><td class="linenumbers">284</td><td class="unchanged"><span> 		global $wgContLang;</span></td></tr>
+<tr id="56"><td class="linenumbers">247</td><td class="linenumbers">285</td><td class="unchanged"><span> 		$lang = $wgContLang->getLanguageName( strtolower( $arg ) );</span></td></tr>
+<tr id="57" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/messages/MessagesEn.php</td></tr>
+
+
+
+<tr id="61"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -339,6 +339,7 @@</span></td></tr>
+<tr id="62"><td class="linenumbers">340</td><td class="linenumbers">340</td><td class="unchanged"><span> 	'tag'                    => array( 0,    'tag'                    ),</span></td></tr>
+<tr id="63"><td class="linenumbers">341</td><td class="linenumbers">341</td><td class="unchanged"><span> 	'hiddencat'              => array( 1,    '__HIDDENCAT__'          ),</span></td></tr>
+<tr id="64"><td class="linenumbers">342</td><td class="linenumbers">342</td><td class="unchanged"><span> 	'pagesincategory'        => array( 1,    'PAGESINCATEGORY', 'PAGESINCAT' ),</span></td></tr>
+<tr id="65"><td class="linenumbers"> </td><td class="linenumbers">343</td><td class="ins"><ins>+	'pagesize'               => array( 1,    'PAGESIZE'               ),</ins></td></tr>
+<tr id="66"><td class="linenumbers">343</td><td class="linenumbers">344</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="67"><td class="linenumbers">344</td><td class="linenumbers">345</td><td class="unchanged"><span> </span></td></tr>
+<tr id="68"><td class="linenumbers">345</td><td class="linenumbers">346</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="69" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="73"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -82,6 +82,7 @@</span></td></tr>
+<tr id="74"><td class="linenumbers">83</td><td class="linenumbers">83</td><td class="unchanged"><span> * Allow \C and \Q as TeX commands to match \R, \N, \Z</span></td></tr>
+<tr id="75"><td class="linenumbers">84</td><td class="linenumbers">84</td><td class="unchanged"><span> * On Special:UserRights, when you can add a group you can't remove or remove</span></td></tr>
+<tr id="76"><td class="linenumbers">85</td><td class="linenumbers">85</td><td class="unchanged"><span>   one you can't add, a notice is printed to warn you</span></td></tr>
+<tr id="77"><td class="linenumbers"> </td><td class="linenumbers">86</td><td class="ins"><ins>+* (bug 12698) Create PAGESIZE parser function, to return the size of a page</ins></td></tr>
+<tr id="78"><td class="linenumbers">86</td><td class="linenumbers">87</td><td class="unchanged"><span> </span></td></tr>
+<tr id="79"><td class="linenumbers">87</td><td class="linenumbers">88</td><td class="unchanged"><span> === Bug fixes in 1.13 ===</span></td></tr>
+<tr id="80"><td class="linenumbers">88</td><td class="linenumbers">89</td><td class="unchanged"><span> </span></td></tr>
+</table>
+</div>
+<h2 id='code-referenced'>Past revisions this follows-up on</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-old'><td><a href="./33549.html" title="Special:Code/MediaWiki/33549">r33549</a></td><td>* Add Parser::incrementExpensiveFunctionCount() and use it in CoreParserFunct...</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/simetrical" title="Special:Code/MediaWiki/author/simetrical">simetrical</a></td><td>14:34, 18 April 2008</td></tr></table><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:26, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r33551 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/33551.html responseCode 3 200 

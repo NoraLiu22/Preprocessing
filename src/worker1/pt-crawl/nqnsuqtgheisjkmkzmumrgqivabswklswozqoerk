@@ -1,0 +1,96 @@
+nqnsuqtgheisjkmkzmumrgqivabswklswozqoerk length 5 10978 page 10978 
+<html>
+<head>
+<title>r14490 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r14490 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/14490" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./14489.html" title="Special:Code/MediaWiki/14489">r14489</a>‎ | <b>r14490</b> | <a href="./14491.html" title="Special:Code/MediaWiki/14491">r14491</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>01:41, 31 May 2006</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/robchurch" title="Special:Code/MediaWiki/author/robchurch">robchurch</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">(<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=3926">bug 3926</a>) Introduce {{#language:}} magic word</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/MagicWord.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FMagicWord.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/Parser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FParser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/Language.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2FLanguage.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/14490&amp;action=purge" title="Special:Code/MediaWiki/14490">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/Language.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -289,6 +289,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">290</td><td class="linenumbers">290</td><td class="unchanged"><span> 	MAG_URLENCODE            => array( 0,    'URLENCODE:'             ),</span></td></tr>
+<tr id="7"><td class="linenumbers">291</td><td class="linenumbers">291</td><td class="unchanged"><span> 	MAG_CURRENTTIMESTAMP     => array( 1,    'CURRENTTIMESTAMP'       ),</span></td></tr>
+<tr id="8"><td class="linenumbers">292</td><td class="linenumbers">292</td><td class="unchanged"><span> 	MAG_DIRECTIONMARK        => array( 1,    'DIRECTIONMARK', 'DIRMARK' ),</span></td></tr>
+<tr id="9"><td class="linenumbers"> </td><td class="linenumbers">293</td><td class="ins"><ins>+	MAG_LANGUAGE			 => array( 0,	 '#LANGUAGE:' ),</ins></td></tr>
+<tr id="10"><td class="linenumbers">293</td><td class="linenumbers">294</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="11"><td class="linenumbers">294</td><td class="linenumbers">295</td><td class="unchanged"><span> </span></td></tr>
+<tr id="12"><td class="linenumbers">295</td><td class="linenumbers">296</td><td class="unchanged"><span> if (!$wgCachedMessageArrays) {</span></td></tr>
+<tr id="13" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="17"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -386,6 +386,7 @@</span></td></tr>
+<tr id="18"><td class="linenumbers">387</td><td class="linenumbers">387</td><td class="unchanged"><span> * (bug 6106) Update to Indonesian localisation (id) #17</span></td></tr>
+<tr id="19"><td class="linenumbers">388</td><td class="linenumbers">388</td><td class="unchanged"><span> * (bug 6125) Add links to edit old versions to diff views</span></td></tr>
+<tr id="20"><td class="linenumbers">389</td><td class="linenumbers">389</td><td class="unchanged"><span> * (bug 5127) Auto edit summary when creating redirect page</span></td></tr>
+<tr id="21"><td class="linenumbers"> </td><td class="linenumbers">390</td><td class="ins"><ins>+* (bug 3926) Introduce {{#language:}} magic word</ins></td></tr>
+<tr id="22"><td class="linenumbers">390</td><td class="linenumbers">391</td><td class="unchanged"><span> </span></td></tr>
+<tr id="23"><td class="linenumbers">391</td><td class="linenumbers">392</td><td class="unchanged"><span> == Compatibility ==</span></td></tr>
+<tr id="24"><td class="linenumbers">392</td><td class="linenumbers">393</td><td class="unchanged"><span> </span></td></tr>
+<tr id="25" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/Parser.php</td></tr>
+
+
+
+<tr id="29"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -2713,6 +2713,16 @@</span></td></tr>
+<tr id="30"><td class="linenumbers">2714</td><td class="linenumbers">2714</td><td class="unchanged"><span> 			}</span></td></tr>
+<tr id="31"><td class="linenumbers">2715</td><td class="linenumbers">2715</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="32"><td class="linenumbers">2716</td><td class="linenumbers">2716</td><td class="unchanged"><span> </span></td></tr>
+<tr id="33"><td class="linenumbers"> </td><td class="linenumbers">2717</td><td class="ins"><ins>+		# #LANGUAGE:</ins></td></tr>
+<tr id="34"><td class="linenumbers"> </td><td class="linenumbers">2718</td><td class="ins"><ins>+		if( !$found ) {</ins></td></tr>
+<tr id="35"><td class="linenumbers"> </td><td class="linenumbers">2719</td><td class="ins"><ins>+			$mwLanguage =&amp; MagicWord::get( MAG_LANGUAGE );</ins></td></tr>
+<tr id="36"><td class="linenumbers"> </td><td class="linenumbers">2720</td><td class="ins"><ins>+			if( $mwLanguage->matchStartAndRemove( $part1 ) ) {</ins></td></tr>
+<tr id="37"><td class="linenumbers"> </td><td class="linenumbers">2721</td><td class="ins"><ins>+				$lang = $wgContLang->getLanguageName( strtolower( $part1 ) );</ins></td></tr>
+<tr id="38"><td class="linenumbers"> </td><td class="linenumbers">2722</td><td class="ins"><ins>+				$text = $linestart . ( $lang != '' ? $lang : $part1 );</ins></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">2723</td><td class="ins"><ins>+				$found = true;</ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">2724</td><td class="ins"><ins>+			}		</ins></td></tr>
+<tr id="41"><td class="linenumbers"> </td><td class="linenumbers">2725</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">2726</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="43"><td class="linenumbers">2717</td><td class="linenumbers">2727</td><td class="unchanged"><span> 		# Extensions</span></td></tr>
+<tr id="44"><td class="linenumbers">2718</td><td class="linenumbers">2728</td><td class="unchanged"><span> 		if ( !$found &amp;&amp; substr( $part1, 0, 1 ) == '#' ) {</span></td></tr>
+<tr id="45"><td class="linenumbers">2719</td><td class="linenumbers">2729</td><td class="unchanged"><span> 			$colonPos = strpos( $part1, ':' );</span></td></tr>
+<tr id="46" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/MagicWord.php</td></tr>
+
+
+
+<tr id="50"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -91,6 +91,7 @@</span></td></tr>
+<tr id="51"><td class="linenumbers">92</td><td class="linenumbers">92</td><td class="unchanged"><span> 	'MAG_URLENCODE',</span></td></tr>
+<tr id="52"><td class="linenumbers">93</td><td class="linenumbers">93</td><td class="unchanged"><span> 	'MAG_CURRENTTIMESTAMP',</span></td></tr>
+<tr id="53"><td class="linenumbers">94</td><td class="linenumbers">94</td><td class="unchanged"><span> 	'MAG_DIRECTIONMARK',</span></td></tr>
+<tr id="54"><td class="linenumbers"> </td><td class="linenumbers">95</td><td class="ins"><ins>+	'MAG_LANGUAGE',</ins></td></tr>
+<tr id="55"><td class="linenumbers">95</td><td class="linenumbers">96</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="56"><td class="linenumbers">96</td><td class="linenumbers">97</td><td class="unchanged"><span> if ( ! defined( 'MEDIAWIKI_INSTALL' ) )</span></td></tr>
+<tr id="57"><td class="linenumbers">97</td><td class="linenumbers">98</td><td class="unchanged"><span> 	wfRunHooks( 'MagicWordMagicWords', array( &amp;$magicWords ) );</span></td></tr>
+<tr id="58"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -144,6 +145,7 @@</span></td></tr>
+<tr id="59"><td class="linenumbers">145</td><td class="linenumbers">146</td><td class="unchanged"><span> 	MAG_URLENCODE,</span></td></tr>
+<tr id="60"><td class="linenumbers">146</td><td class="linenumbers">147</td><td class="unchanged"><span> 	MAG_CURRENTTIMESTAMP,</span></td></tr>
+<tr id="61"><td class="linenumbers">147</td><td class="linenumbers">148</td><td class="unchanged"><span> 	MAG_DIRECTIONMARK,</span></td></tr>
+<tr id="62"><td class="linenumbers"> </td><td class="linenumbers">149</td><td class="ins"><ins>+	MAG_LANGUAGE,</ins></td></tr>
+<tr id="63"><td class="linenumbers">148</td><td class="linenumbers">150</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="64"><td class="linenumbers">149</td><td class="linenumbers">151</td><td class="unchanged"><span> if ( ! defined( 'MEDIAWIKI_INSTALL' ) )</span></td></tr>
+<tr id="65"><td class="linenumbers">150</td><td class="linenumbers">152</td><td class="unchanged"><span> 	wfRunHooks( 'MagicWordwgVariableIDs', array( &amp;$wgVariableIDs ) );</span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>01:58, 13 October 2010&#160;<a href="https://www.mediawiki.org/wiki/User:%F0%9F%98%82" class="mw-userlink" title="User:😂"><bdi>😂</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:%F0%9F%98%82" class="mw-usertoollinks-talk" title="User talk:😂">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/%F0%9F%98%82" class="mw-usertoollinks-contribs" title="Special:Contributions/😂">contribs</a>)</span>&#160;changed the <b>status</b> of r14490 <i>[<b>removed:</b> new&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/14490.html responseCode 3 200 

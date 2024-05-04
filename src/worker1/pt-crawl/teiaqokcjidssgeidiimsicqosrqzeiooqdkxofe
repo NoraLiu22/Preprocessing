@@ -1,0 +1,93 @@
+teiaqokcjidssgeidiimsicqosrqzeiooqdkxofe length 4 3109 page 3109 <!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Settings for the City Poplation website.">
+	<title>City Population - Settings</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<script src="/js/cp_data_m.js"></script>
+	<script src="/js/cp_menu.js"></script>
+	<script src="/js/cp_cityindex_m.js"></script>
+	<script>doAdv = false; doAnalytics = false;</script>
+</head>
+
+<body onload="start('en'); loadjqueryui('initPrefs()')">
+<script>writeMenu('en')</script>
+<div class="mobiadv">
+	<script>show_mobiadv(false)</script>
+</div>
+<div id="headline">
+	<div id="orient"><a href="/">Home</a> &#8594; <a href="..">Help</a></div>
+</div>
+
+<div class="cindex">
+
+<header>
+	<img src="/images/icons/settings.svg" alt="Icon" class="headicon">
+	<h1>Settings</h1>
+	<p>Settings for the »City Population« website (requires cookies for storing your preferences)</p>
+</header>
+
+<div id="continentadv">
+	<script type="text/javascript">show_adv("indexadv")</script>
+</div>
+
+<section class="content">
+<h2>Use of Google Search</h2>
+<p>Should the search for places also use the Google search?</p>
+<form id="dogooglesearchform">
+<p>	<input type="radio" name="gsearch" id="gsearchtrue" onclick="cp.data.setProperty('gsearch',true)">
+	<label for="metr">yes</label>
+	<input type="radio" name="gsearch" id="gsearchfalse" onclick="cp.data.setProperty('gsearch',false)">
+	<label for="imp">no</label></p>
+</form>
+</section>
+
+<section class="content">
+<h2>Measures</h2>
+<p>Define the measure that is used for area, density, elevation, scale and temperature figures.</p>
+<form id="measureform">
+<p>	<input type="radio" name="measure" id="metr" value="metr" onclick="cp.data.setMeasure('metr')">
+	<label for="metr">Metric / °Celsius</label></p>
+<p>	<input type="radio" name="measure" id="imp" value="imp" onclick="cp.data.setMeasure('imp')">
+	<label for="imp">Imperial / °Fahrenheit</label></p>
+</form>
+<p><em>Note:</em> Area figures in table columns are always metric. Click on a table row or on a map feature for getting more and personalized information.</p>
+</section>
+
+<section class="content">
+<h2>Wikipedia Language Priority</h2>
+<p>Define the priority for the language of Wikipedia links and Wikidata content.</p>
+<form id="wikiform" action="javascript:savePref()">
+<ul id="wikilist">
+<script>
+	var m = cp.data.getMeasure();
+	$("#"+m).attr("checked","checked")
+	m = cp.data.getProperty('gsearch');
+	$("#gsearch"+m).attr("checked","checked")
+
+	var text = { en: "English", de: "German", us: "User Language", pg: "Country Language" }
+	var wikipref = cp.wd.getPref();
+	var langs = wikipref.split("|");
+	for (var i=0; i<langs.length; i++)
+		document.writeln('<li id="'+langs[i]+'">↕ &nbsp; '+text[langs[i]]+'</li>');
+</script>
+</ul>
+<p><input value="Save Language Priority" type="submit"></p>
+</form>
+</section>
+
+<div class="copy">
+	<script>writeFooter()</script>
+</div>
+
+</div>
+
+<div id="advindex">
+	<script>show_adv('index_l')</script>
+</div>
+<div id="social"></div>
+
+</body>
+</html>
+ contentType 9 text/html url 49 http://www.citypopulation.de:80/en/help/settings/ responseCode 3 200 

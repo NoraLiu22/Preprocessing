@@ -1,0 +1,521 @@
+iiicokoqhkjonedsaonaioakgqkeembcvazefguk length 5 32512 page 32512 <!doctype html>
+
+
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Software Search - zbMATH Open</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=0.1, maximum-scale=5.0">
+        <meta name="robots" content="noarchive">
+        <meta name="referrer" content="origin-when-cross-origin">
+        <link href="https://static.zbmath.org/contrib/bootstrap/v3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen,print">
+        <link href="https://static.zbmath.org/contrib/bootstrap/v3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" media="screen,print">
+        <link href="https://static.zbmath.org/contrib/bootstrap-lightbox/v0.7.0/bootstrap-lightbox.min.css" rel="stylesheet" media="screen,print">
+
+        
+
+        <link href="/static/css/smoothness/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" media="screen">
+        <link href="/static/styles.css?v=20240304" rel="stylesheet" media="screen,print">
+        <link href="https://static.zbmath.org/zbMathJax/v0.1.38/zbmathjax.css" rel="stylesheet" media="screen,print">
+        <link rel="shortcut icon" href="/static/swmath.ico">
+        <script type="application/ld+json">
+            {
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "url": "https://zbmath.org/",
+              "logo": "https://zbmath.org/static/zbMATH.png"
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="line"></div>
+
+        <span id="clear" style="cursor: pointer;">&times;</span>
+
+        <div id="page">
+            <div id="head" class="start">
+                <nav id="menu" class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zbnav" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">
+                                <img class="logo" src="/static/zbmath.gif" alt="zbMATH Open logo">
+                            </a>
+                        </div>
+                        <div id="zbnav" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav pages">
+                                <li class="about">
+                                    <a href="/about/">About</a>
+                                </li>
+                                <li class="frequently-asked-questions">
+                                    <a href="/frequently-asked-questions/">FAQ</a>
+                                </li>
+                                
+                                <li class="reviewer-service">
+                                    <a href="https://zbmath.org/reviewer-service/" target="_self" >Reviewer Service</a>
+                                </li>
+                                
+                                <li class="contact">
+                                    <a href="/contact/">Contact</a>
+                                </li>
+                                
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right prefs">
+                                <li class="preferences dropdown">
+                                    <a data-toggle="dropdown" href="#">Preferences <i class="caret"></i></a>
+                                    <ul class="dropdown-menu preferences">
+                                        <li>
+                                            <form
+                                                id="preferences"
+                                                class="navbar-form"
+                                                method="post"
+                                                action="/preferences/"
+                                                
+                                                    onsubmit="return confirm('This website uses cookies for the purposes of storing preference information. Do you agree to this?\n\nPlease refer to our Privacy Policy to learn more about our use of cookies.')"
+                                                
+                                            >
+                                                <input type="hidden" name="path" value="/software/?">
+                                                <span class="count">
+                                                    <label class="title">Hits per Page</label>
+                                                    <div class="form-group">
+                                                        <input id="count-10" type="radio" name="count" value="10">
+                                                        <label for="count-10" class="radio">10</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-20" type="radio" name="count" value="20">
+                                                        <label for="count-20" class="radio">20</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-50" type="radio" name="count" value="50">
+                                                        <label for="count-50" class="radio">50</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-100" type="radio" name="count" value="100" checked>
+                                                        <label for="count-100" class="radio">100 (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-200" type="radio" name="count" value="200">
+                                                        <label for="count-200" class="radio">200</label>
+                                                    </div>
+                                                </span>
+                                                <span class="format">
+                                                    <label class="title">Display Format</label>
+                                                    <div class="form-group">
+                                                        <input id="format-mathjax" type="radio" name="format" value="mathjax" checked>
+                                                        <label for="format-mathjax" class="radio">MathJax (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="format-amstex" type="radio" name="format" value="latex">
+                                                        <label for="format-amstex" class="radio">LaTeX</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Documents Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="documents-ranking-default" type="radio" name="documents_ranking" value="date" checked>
+                                                        <label for="documents-ranking-default" class="radio">Newest first (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="documents-ranking-references" type="radio" name="documents_ranking" value="references">
+                                                        <label for="documents-ranking-references" class="radio">Citations</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="documents-ranking-relevance" type="radio" name="documents_ranking" value="relevance">
+                                                        <label for="documents-ranking-relevance" class="radio">Relevance</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Authors Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="authors-ranking-default" type="radio" name="authors_ranking" value="alpha" checked>
+                                                        <label for="authors-ranking-default" class="radio">Alphabetically (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="authors-ranking-references" type="radio" name="authors_ranking" value="references">
+                                                        <label for="authors-ranking-references" class="radio">Citations</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Serials Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="serials-ranking-default" type="radio" name="serials_ranking" value="alpha" checked>
+                                                        <label for="serials-ranking-default" class="radio">Alphabetically (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="serials-ranking-references" type="radio" name="serials_ranking" value="references">
+                                                        <label for="serials-ranking-references" class="radio">Citations</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Software Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="software-ranking-default" type="radio" name="software_ranking" value="references" checked>
+                                                        <label for="software-ranking-default" class="radio">Citations (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="software-ranking-alpha" type="radio" name="software_ranking" value="alpha">
+                                                        <label for="software-ranking-alpha" class="radio">Alphabetically</label>
+                                                    </div>
+                                                </span>
+                                                <button type="submit" class="btn btn-default">OK</button>
+                                                <div class="clearfix">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div id="tabs" class="start">
+                    <h1 class="logo">
+                        <a class="logo" href="/">
+                            <img
+                            class="LOGO-swMATH"
+                                
+                                    src="/static/swMATH.png"
+                                    alt="swMATH &mdash; an information service for mathematical software"
+                                
+                            >
+                        </a>
+                    </h1>
+                    <nav>
+                        <ul class="nav nav-tabs">
+                            <li class="tab-documents">
+                                <a href="/">Documents</a>
+                            </li>
+                            <li class="tab-authors">
+                                <a href="/authors/">Authors</a>
+                            </li>
+                            <li class="tab-serials">
+                                <a href="/serials/">Serials</a>
+                            </li>
+                            <li class="tab-software active">
+                                <a href="/software/">Software</a>
+                            </li>
+                            <li class="tab-classification">
+                                <a href="/classification/">Classification</a>
+                            </li>
+                            <li class="tab-formulae">
+                                <a href="/formulae/">Formulæ</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="clearfix"></div>
+                </div>
+                
+    <div class="content-fixed">
+        <div class="content-formular">
+    
+    <form class="form-inline" name="software" method="get" action="/software/">
+        <div class="software one-line" style="display:block;">
+            
+                <div class="forms">
+                    <ul class="nav forms">
+                        <li class="structured"><a href="#">Structured Search <span class="glyphicon glyphicon-list"></span></a></li>
+                    </ul>
+                </div>
+            
+            <div id="search-row" class="input-group box">
+                <span>
+                    <div id="search-field">
+                        
+                            
+                                <input class="query form-control" type="text" name="q" value="" aria-label="Search for software" placeholder="Search for software" autocomplete="off">
+                            
+                        
+                    </div>
+                    <div class="search-buttons input-group-btn">
+                        <div class="btn-group">
+                            <button class="btn btn-default search" type="submit"><span class="virtual">Search</span>
+                            <span class="glyphicon glyphicon-search" style="top: 2px;"></span></button>
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <div class="search-buttons input-group-btn">
+                        <div class="btn-group">
+                            
+                                <div class="btn-group fields">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Fields <i class="caret"></i></button>
+                                    <ul id="fields" class="dropdown-menu pull-right">
+                                        <li><a href="#"><span class="token item">any:</span><span>&nbsp;</span>anywhere (default)</a></li>
+                                        <li><a href="#"><span class="token item">ab:</span><span>&nbsp;&nbsp;</span>description</a></li>
+                                        <li><a href="#"><span class="token item">au:</span><span>&nbsp;&nbsp;</span>author</a></li>
+                                        <li><a href="#"><span class="token item">cc:</span><span>&nbsp;&nbsp;</span>classification</a></li>
+                                        <li><a href="#"><span class="token item">pl:</span><span>&nbsp;&nbsp;</span>programming language</a></li>
+                                        <li><a href="#"><span class="token item">si:</span><span>&nbsp;&nbsp;</span>swMATH ID</a></li>
+                                        <li><a href="#"><span class="token item">sw:</span><span>&nbsp;&nbsp;</span>software name</a></li>
+                                        <li><a href="#"><span class="token item">ut:</span><span>&nbsp;&nbsp;</span>keywords</a></li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="btn-group operators">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Operators <i class="caret"></i></button>
+                                    <ul id="operators" class="dropdown-menu pull-right">
+                                        <li><a href="#"><span class="token">a&nbsp;<span class="item">&</span>&nbsp;b&nbsp;</span><span>&nbsp;</span>logical and (default)</a></li>
+                                        <li><a href="#"><span class="token">a&nbsp;<span class="item">|</span>&nbsp;b&nbsp;</span><span>&nbsp;</span>logical or</a></li>
+                                        <li><a href="#"><span class="token"><span class="item">!</span>ab&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span>logical not</a></li>
+                                        <li><a href="#"><span class="token">abc<span class="item">*</span>&nbsp;&nbsp;</span><span>&nbsp;</span>right wildcard</a></li>
+                                        <li><a href="#"><span class="token"><span class="item">"</span>ab&nbsp;c<span class="item">"</span></span><span>&nbsp;</span>phrase</a></li>
+                                        <li><a href="#"><span class="token"><span class="item">(</span>ab&nbsp;c<span class="item">)</span></span><span>&nbsp;</span>parentheses</a></li>
+                                    </ul>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <div class="special">
+                        <ul class="nav help-button">
+                            <li class="dropdown pull-right">
+                                <a href="#">Help <i class="caret"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+            <div class="help"><h2>Examples</h2>
+
+<div id="help-terms" role="table">
+    
+        <div class="help-item" role="row">
+            <span class="search-example" role="rowheader"><a href="/software/?q=sw%3ASage%2A">sw:Sage*</a></span>
+            <span class="search-explanation" role="cell">Search for a specific software package.</span>
+        </div>
+    
+        <div class="help-item" role="row">
+            <span class="search-example" role="rowheader"><a href="/software/?q=ab%3Ageometry+%26+ut%3AORMS">ab:geometry &amp; ut:ORMS</a></span>
+            <span class="search-explanation" role="cell">Search for software packages with the word &#34;geometry&#34; in the description, and which have the keyword ORMS (Oberwolfach Registry of Mathematical Software). The operator &#34;&amp;&#34; is the default and may be omitted.</span>
+        </div>
+    
+        <div class="help-item" role="row">
+            <span class="search-example" role="rowheader"><a href="/software/?q=cc%3A13+%7C+14">cc:13 | 14</a></span>
+            <span class="search-explanation" role="cell">Search for software packages which are cited by articles belonging to the MSC sections 13 and 14.</span>
+        </div>
+    
+        <div class="help-item" role="row">
+            <span class="search-example" role="rowheader"><a href="/software/?q=GAP+au%3AEick">GAP au:Eick</a></span>
+            <span class="search-explanation" role="cell">Search for a term in the &#34;any&#34; index (which also includes dependencies) and by software author.</span>
+        </div>
+    
+        <div class="help-item" role="row">
+            <span class="search-example" role="rowheader"><a href="/software/?q=pl%3AJava+%26+ab%3AR">pl:Java &amp; ab:R</a></span>
+            <span class="search-explanation" role="cell">Search for software package programmed in Java whose description contains &#34;R&#34;</span>
+        </div>
+    
+</div></div>
+        </div>
+    </form>
+
+
+    
+        <div id="start" class="start">
+            <p>
+                The zbMATH Software Search is based on results of the swMATH Project, which is currently conducted by
+                <a href="https://www.fiz-karlsruhe.de/en/produkte-und-dienstleistungen/swmath">FIZ Karlsruhe</a>
+                and
+                <a href="https://www.zib.de/projects/swmath-information-system-mathematical-software">Zuse Institute Berlin (ZIB)</a>
+                within the scope of
+                <a href="https://www.forschungscampus.bmbf.de/forschungscampi/modal">Forschungscampus Modal</a>
+                funded by the BMBF.
+            </p>
+        </div>
+    
+
+    <form class="form-inline" name="software" method="GET" action="/software/">
+        <div class="software structured" style="display: none;">
+            <div class="forms">
+                <ul class="nav forms">
+                    <li class="one-line"><span tabindex="0" class="glyphicon glyphicon-question-sign" title="One-Line Search allows for free logical combinations of search fields" aria-label="One-Line Search allows for free logical combinations of search fields" data-placement="bottom"></span>&nbsp;<a style="display: inline-block;" href="#">One-Line Search <span class="glyphicon glyphicon-search"></span></a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="container-fluid two-columns">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group field sw">
+                            <label for="sw">Software Name:</label>
+                            <input id="sw" name="sw" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field au">
+                            <label for="au">Software Authors:</label>
+                            <input id="au" name="au" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field ab">
+                            <label for="ab">Description:</label>
+                            <input id="ab" name="ab" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field pl">
+                            <label for="pl">Languages:</label>
+                            <input id="pl" name="pl" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" data-placement="bottom" title="programming languages the software is written in" aria-label="programming languages the software is written in"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group field si">
+                            <label for="si">swMATH ID:</label>
+                            <input id="si" name="si" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field cc">
+                            <label for="cc">Main Fields:</label>
+                            <input id="cc" name="cc" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" data-placement="bottom" title="field given by first two MSC digits" aria-label="field given by first two MSC digits"></span>
+                        </div>
+                        <div class="form-group field ut">
+                            <label for="ut">Keywords:</label>
+                            <input id="ut" name="ut" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field any">
+                            <label for="any">Anywhere:</label>
+                            <input id="any" name="any" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="container-fluid">
+                <div class="row buttons">
+                    <div class="col-xs-6">
+                        <a tabindex="0" class="btn btn-default clear-all">Clear all <span class="glyphicon glyphicon-remove"></span></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="submit">
+                            <button class="btn btn-default search" type="submit">Search <span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div><div class="content-shadow"></div>
+    </div>
+
+            </div>
+
+            <div id="body">
+                <div id="main" class="start">
+                    <div class="messages">
+                        
+                    </div>
+                    
+    
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div id="foot"><div class="container-fluid logos software-foot">
+                            <div class="row">
+                                <div class="col-sm-4 col-xs-12 logo-vertical-center">
+                                    <a class="logo no-new-tab-icon" href="https://www.fiz-karlsruhe.de/en/produkte-und-dienstleistungen/swmath">
+                                        <img src="/static/FIZ_Logo_fbg_engl.png" alt="logo of FIZ Karlsruhe GmbH" title="FIZ Karlsruhe (opens in new tab)">
+                                    </a>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 logo-vertical-center">
+                                    <a class="logo no-new-tab-icon" href="https://www.zib.de/projects/swmath-information-system-mathematical-software">
+                                        <img src="/static/ZIB-Primary-Logo_Blue-RGB.png" alt="logo of Zuse Institute Berlin (ZIB)" title="Zuse Institute Berlin (ZIB)">
+                                    </a>
+                                </div>
+                                <div class="col-sm-4 col-xs-12 logo-vertical-center">
+                                    <a class="logo no-new-tab-icon" href="https://www.forschungscampus.bmbf.de/forschungscampi/modal">
+                                        <img src="/static/lw_cropper_bild.jpg" alt="logo of Forschungscampus Modal" title="Heidelberg Academy of Sciences and Humanities">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div><div class="copyright">
+                    &copy; 2024
+                    <a target="fiz" href="https://www.fiz-karlsruhe.de/en">FIZ Karlsruhe GmbH</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <a href="/legal-notices/">Legal Notices</a>
+                    <a href="/terms-conditions/">Terms &amp; Conditions</a>
+
+                    <div class="info">
+                        <ul class="nav">
+                            <li class="mastodon">
+                                <a href="https://mathstodon.xyz/@zbMATH" target="_blank" class="no-new-tab-icon">
+                                    <img src="/static/mastodon.png" title="zbMATH at Mathstodon (opens in new tab)" alt="Mastodon logo">
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix" style="height: 0px;"></div>
+            </div>
+        </div>
+
+        <script src="https://static.zbmath.org/contrib/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/jquery-caret/1.5.2/jquery.caret.min.js"></script>
+        <script src="/static/js/jquery-ui-1.10.1.custom.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/bootstrap/v3.3.7zb1/js/bootstrap.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/bootstrap-lightbox/v0.7.0/bootstrap-lightbox.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/retina/unknown/retina.js"></script>
+        
+        
+        <script>
+            var SCRIPT_ROOT = "";
+        </script>
+        <script src="/static/scripts.js?v=20240313">
+        </script>
+
+        <script src="https://static.zbmath.org/contrib/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    "HTML-CSS": {
+                        preferredFont: "TeX",
+                        availableFonts: [ "STIX", "TeX" ],
+                        linebreaks: { automatic: true },
+                        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+                    },
+                    tex2jax: {
+                        processEscapes: true,
+                        ignoreClass: "tex2jax_ignore|dno"
+                    },
+                    TeX: {
+                        Macros: {
+                            Aut: "\\operatorname{Aut}",
+                            Hom: "\\operatorname{Hom}"
+                        },
+                        noUndefined: {
+                            attributes: {
+                                mathcolor: "#039", //"red",
+                                mathbackground: "white", //"#FFEEEE",
+                                mathsize: "90%"
+                            }
+                        }
+                    },
+                    messageStyle: "none"
+                });
+            </script>
+        <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#MathInput").stop(true, true).keyup(function() {
+                        $.ajax({
+                            url: "/mwsq/",
+                            type: "POST",
+                            data: { query : $("#MathInput").val() },
+                            dataType: "text"
+                        })
+                        .done(function(xml) {
+                            $("#MathPreview").html(xml);
+                            $(window).resize();
+                        });
+                    });
+                    var press = jQuery.Event("keyup");
+                    press.ctrlKey = false;
+                    press.which = 40;
+                    $("#MathInput").trigger(press);
+                });
+            </script>
+        <div id="new_tab_icon" style="display: none">&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="sr-only">(opens in new tab)</span></div>
+    </body>
+</html> contentType 9 text/html url 32 https://zbmath.org:443/software/ responseCode 3 200 

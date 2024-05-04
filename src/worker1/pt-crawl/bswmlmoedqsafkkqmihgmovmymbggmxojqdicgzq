@@ -1,0 +1,1020 @@
+bswmlmoedqsafkkqmihgmovmymbggmxojqdicgzq length 5 57288 page 57288 <!DOCTYPE HTML>
+<html lang="en">
+  <head>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N3RT7TD');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setting up Databases and Services - Travis CI</title>
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
+<link rel="alternate" type="application/rss+xml" title="Travis CI Build Environment Updates" href="https://docs.travis-ci.com/feed.build-env-updates.xml">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" defer></script>
+
+<script src="/assets/javascripts/main.js" type="text/javascript" charset="utf-8" defer></script>
+<script src="/assets/javascripts/prism.js" type="text/javascript" charset="utf-8" defer></script>
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@travisci" />
+<meta name="twitter:creator" content="@travisci" />
+<meta property="og:title" content="Travis CI Documentation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content=/user/database-setup/ />
+<meta property="og:description" content="Setting up Databases and Services" />
+<meta property="og:image" content="/images/TravisCI-Full-Color.png" }} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="642" />
+<meta property="og:image:height" content="201" />
+<meta property="og:image:alt" content="Travis CI logo" />
+
+
+ 
+
+  </head>
+  <body>
+<!-- PDTQ-131 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3RT7TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrapper">
+
+      <header class="top">
+  <div class="row topbar">
+    <h1 id="logo" class="logo">
+  <a href="https://travis-ci.com/" title="Travis CI">Travis</a>
+</h1>
+
+    <nav>
+      <ul id="navigation" class="navigation">
+        <li><a href="https://blog.travis-ci.com">Blog</a></li>
+        <li><a href="/">Docs</a></li>
+        <li class="toggle"><button type="button" id="toggle-menu" class="button--teal">Menu</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+      <div id="content" class="row">
+
+        <div id="sidebar" class="sidebar">
+  <div>
+    <!-- <h2>Search</h2> -->
+    <div class="searchbox">
+      <form>
+        <input type="text" id="st-search-input" class="searchbox-input" placeholder="Search the docs" />
+      </form>
+      <script type="text/javascript">
+      var Swiftype = window.Swiftype || {};
+        (function() {
+          Swiftype.key = 'tXvDDzd4fNTBnLvxfEyx';
+
+          Swiftype.searchSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          Swiftype.autocompleteSearchFields = {
+            "page": ["title, body, tags"]
+          };
+          /** DO NOT EDIT BELOW THIS LINE **/
+          var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+          script.src = "//swiftype.com/embed.js";
+          var entry = document.getElementsByTagName('script')[0];
+          document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+        }());
+      </script>
+    </div>
+  </div>
+
+  <section class="sidebar-navigation">
+    <nav>
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="/user/for-beginners/">Core Concepts for Beginners</a></li>
+        <li><a href="/user/tutorial/">Travis CI Tutorial</a></li>
+        <li><a href="/user/customizing-the-build/">Customizing the Build</a></li>
+        <li><a href="/user/speeding-up-the-build/">Speeding up the Build</a></li>
+        <li><a href="/user/docker/">Using Docker in your Build</a></li>
+        <li><a href="/user/gui-and-headless-browsers/">Headless Testing with Browsers</a></li>
+        <li><a href="/user/pull-requests/">Building Pull Requests</a></li>
+        <li><a href="/user/cron-jobs/">Cron Jobs</a></li>
+        <li><a href="/user/common-build-problems/">Common Build Problems</a></li>
+        <li><a href="https://github.com/travis-ci/travis#readme">Command Line Client</a></li>
+        <li><a href="/user/build-config-imports/">Build Config Imports</a></li>
+        <li><a href="/user/build-config-validation/">Build Config Validation</a></li>
+      </ul>
+
+      <h3>Jobs, Builds, Matrices and Stages</h3>
+      <ul>
+        <li><a href="/user/job-lifecycle/">Job Lifecycle</a></li>
+        <li><a href="/user/build-matrix/">Build Matrix</a></li>
+        <li><a href="/user/build-stages/">Build Stages</a></li>
+        <li><a href="/user/conditional-builds-stages-jobs/">Conditional Builds, Stages, and Jobs</a></li>
+      </ul>
+
+      <h3>Installing Dependencies</h3>
+      <ul>
+        <li><a href="/user/installing-dependencies/">Installing Dependencies</a></li>
+        <li><a href="/user/private-dependencies/">Private Dependencies GitHub</a></li>
+        <li><a href="/user/private-dependencies-bb/">Private Dependencies Bitbucket</a></li>
+        <li><a href="/user/database-setup/">Setting up Services and Databases</a></li>
+        <li><a href="/user/caching/">Caching Dependencies</a></li>
+        <li><a href="/user/using-workspaces/">Caching Dependencies within a Build (Workspaces)</a></li>
+        <li><a href="/user/ssh-known-hosts/">Adding to SSH Known Hosts</a></li>
+      </ul>
+
+      <h3>Programming Languages</h3>
+      <ul>
+      
+        <li><a href="/user/languages/android/">Android</a></li>
+      
+        <li><a href="/user/languages/c/">C</a></li>
+      
+        <li><a href="/user/languages/csharp/">C#</a></li>
+      
+        <li><a href="/user/languages/cpp/">C++</a></li>
+      
+        <li><a href="/user/languages/clojure/">Clojure</a></li>
+      
+        <li><a href="/user/languages/crystal/">Crystal</a></li>
+      
+        <li><a href="/user/languages/d/">D</a></li>
+      
+        <li><a href="/user/languages/dart/">Dart</a></li>
+      
+        <li><a href="/user/languages/elixir/">Elixir</a></li>
+      
+        <li><a href="/user/languages/elm/">Elm</a></li>
+      
+        <li><a href="/user/languages/erlang/">Erlang</a></li>
+      
+        <li><a href="/user/languages/csharp/">F#</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Generic</a></li>
+      
+        <li><a href="/user/languages/go/">Go</a></li>
+      
+        <li><a href="/user/languages/groovy/">Groovy</a></li>
+      
+        <li><a href="/user/languages/haskell/">Haskell</a></li>
+      
+        <li><a href="/user/languages/haxe/">Haxe</a></li>
+      
+        <li><a href="/user/languages/java/">Java</a></li>
+      
+        <li><a href="/user/languages/javascript-with-nodejs/">JavaScript <small>(with Node.js)</small></a></li>
+      
+        <li><a href="/user/languages/julia/">Julia</a></li>
+      
+        <li><a href="/user/languages/matlab/">MATLAB</a></li>
+      
+        <li><a href="/user/languages/minimal-and-generic/">Minimal</a></li>
+      
+        <li><a href="/user/languages/nix/">Nix</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Objective-C</a></li>
+      
+        <li><a href="/user/languages/perl/">Perl</a></li>
+      
+        <li><a href="/user/languages/perl6/">Perl6</a></li>
+      
+        <li><a href="/user/languages/php/">PHP</a></li>
+      
+        <li><a href="/user/languages/python/">Python</a></li>
+      
+        <li><a href="/user/languages/r/">R</a></li>
+      
+        <li><a href="/user/languages/ruby/">Ruby</a></li>
+      
+        <li><a href="/user/languages/rust/">Rust</a></li>
+      
+        <li><a href="/user/languages/scala/">Scala</a></li>
+      
+        <li><a href="/user/languages/smalltalk/">Smalltalk</a></li>
+      
+        <li><a href="/user/languages/objective-c/">Swift</a></li>
+      
+        <li><a href="/user/languages/csharp/">Visual Basic</a></li>
+      
+        <li><a href="/user/languages/community-supported-languages/">Adding a language</a></li>
+      </ul>
+
+      <h3>Deployments and Uploads</h3>
+      <ul>
+        
+          <li class="is-overview"><a href="/user/deployment/">Overview</a></li>
+          
+        
+        
+          <li><a href="/user/deployment/anynines/">anynines</a></li>
+        
+          <li><a href="/user/deployment/atlas/">Atlas</a></li>
+        
+          <li><a href="/user/deployment/codedeploy/">AWS CodeDeploy</a></li>
+        
+          <li><a href="/user/deployment/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+        
+          <li><a href="/user/deployment/lambda/">AWS Lambda</a></li>
+        
+          <li><a href="/user/deployment/opsworks/">AWS OpsWorks</a></li>
+        
+          <li><a href="/user/deployment/s3/">AWS S3</a></li>
+        
+          <li><a href="/user/deployment/azure-web-apps/">Azure Web Apps</a></li>
+        
+          <li><a href="/user/deployment/bintray/">bintray</a></li>
+        
+          <li><a href="/user/deployment/bitballoon/">BitBalloon</a></li>
+        
+          <li><a href="/user/deployment/bluemixcloudfoundry/">Bluemix CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/boxfuse/">Boxfuse</a></li>
+        
+          <li><a href="/user/deployment/catalyze/">Catalyze</a></li>
+        
+          <li><a href="/user/deployment/chefsupermarket/">Chef Supermarket</a></li>
+        
+          <li><a href="/user/deployment/cloud66/">Cloud 66</a></li>
+        
+          <li><a href="/user/deployment/cloudfoundry/">CloudFoundry</a></li>
+        
+          <li><a href="/user/deployment/cargo/">Cargo</a></li>
+        
+          <li><a href="/user/deployment/engineyard/">Engine Yard</a></li>
+        
+          <li><a href="/user/deployment/pages/">GitHub Pages</a></li>
+        
+          <li><a href="/user/deployment/releases/">GitHub Releases</a></li>
+        
+          <li><a href="/user/deployment/google-app-engine/">Google App Engine</a></li>
+        
+          <li><a href="/user/deployment/gcs/">Google Cloud Storage</a></li>
+        
+          <li><a href="/user/deployment/firebase/">Google Firebase</a></li>
+        
+          <li><a href="/user/deployment/hackage/">Hackage</a></li>
+        
+          <li><a href="/user/deployment/hephy/">Hephy</a></li>
+        
+          <li><a href="/user/deployment/heroku/">Heroku</a></li>
+        
+          <li><a href="/user/deployment/launchpad/">Launchpad</a></li>
+        
+          <li><a href="/user/deployment/npm/">npm</a></li>
+        
+          <li><a href="/user/deployment/openshift/">OpenShift</a></li>
+        
+          <li><a href="/user/deployment/packagecloud/">packagecloud.io</a></li>
+        
+          <li><a href="/user/deployment/puppetforge/">Puppet Forge</a></li>
+        
+          <li><a href="/user/deployment/pypi/">PyPI</a></li>
+        
+          <li><a href="/user/deployment/cloudfiles/">Rackspace Cloud Files</a></li>
+        
+          <li><a href="/user/deployment/rubygems/">RubyGems</a></li>
+        
+          <li><a href="/user/deployment/scalingo/">Scalingo</a></li>
+        
+          <li><a href="/user/deployment/script/">Script</a></li>
+        
+          <li><a href="/user/deployment/snaps/">Snap Store</a></li>
+        
+          <li><a href="/user/deployment/surge/">Surge.sh</a></li>
+        
+          <li><a href="/user/deployment/testfairy/">TestFairy</a></li>
+        
+          <li><a href="/user/deployment/transifex/">Transifex</a></li>
+        
+        <li><a href="/user/uploading-artifacts/">Uploading Build Artifacts</a></li>
+      </ul>
+
+      <h3>CI Environment Reference</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/reference/overview/">Overview</a></li>
+        <li><a href="/user/reference/linux/">Ubuntu Linux CI Environment References</a></li>
+        <li><a href="/user/reference/osx/">macOS CI Environment Reference</a></li>
+        <li><a href="/user/reference/windows/">Windows CI Environment Reference</a></li>
+        <li><a href="/user/reference/freebsd/">FreeBSD CI Environment Reference</a></li>
+        <li><a href="/user/multi-os/">Building on Multiple Operating Systems</a></li>
+        <li><a href="/user/multi-cpu-architectures/">Building on Multiple CPU Architectures</a></li>
+        <li><a href="/user/environment-variables/">Environment Variables</a></li>
+        <li><a href="/user/build-environment-updates/">Build Environment Updates</a></li>
+        <li><a href="/user/ip-addresses/">Build Machines IP Addresses</a></li>
+      </ul>
+
+      <h3>Security and Secure Software Supply Chain</h3>
+      <ul>
+        <li><a href="/user/encryption-keys/">Encrypting Sensitive Data</a></li>
+        <li><a href="/user/encrypting-files/">Encrypting Files</a></li>
+        <li><a href="/user/github-oauth-scopes/">GitHub Permissions used by Travis CI</a></li>
+        <li><a href="/user/bb-oauth-scopes/">Bitbucket Permissions used by Travis CI</a></li>
+        <li><a href="/user/assembla-oauth-scopes/">Assembla Permissions used by Travis CI</a></li>
+        <li><a href="/user/gl-oauth-scopes/">GitLab Permissions used by Travis CI</a></li>
+        <li><a href="/user/disable-job-logs/">Disable Job Logs Availability</a></li>
+        <li><a href="/user/best-practices-security/">Best Practices in Securing Your Data</a></li>
+        <li><a href="/user/securely-signing-software">Securely Signing Software</a></li>
+        <li><a href="/user/sbom">Software Bill of Materials</a></li>
+      </ul>
+
+      <h3>Integrations and Notifications</h3>
+      <ul>
+        <li><a href="/user/notifications/">Configuring Notifications</a></li>
+        <li><a href="/user/status-images/">Showing Build Status Images</a></li>
+        <li><a href="/user/code-climate/">Code Climate</a></li>
+        <li><a href="/user/deepsource/">DeepSource</a></li>
+        <li><a href="/user/coveralls/">Coveralls</a></li>
+        <li><a href="/user/coverity-scan/">Coverity Scan</a></li>
+        <li><a href="/user/browserstack/">BrowserStack</a></li>
+        <li><a href="/user/sauce-connect/">Sauce Labs</a></li>
+        <li><a href="/user/sonarcloud/">SonarCloud</a></li>
+        <li><a href="/user/sourceclear/">SourceClear</a></li>
+        <li><a href="/user/build-feeds/">Atom Feeds</a></li>
+        <li><a href="/user/cc-menu/">CCMenu / CCTray Feeds</a></li>
+        <li><a href="/user/integration/platformio/">Embedded Builds with PlatformIO</a></li>
+        <li><a href="/user/hashicorp-vault-integration">Hashicorp Vault</a></li>
+        <li><a href="/user/apps/">3rd Party Apps, Clients and Tools</a></li>
+      </ul>
+
+      <h3>Developer Program</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/developer/">Overview</a></li>
+        <li><a href="https://developer.travis-ci.com/">API V3</a></li>
+        <li><a href="/user/triggering-builds/">Triggering Builds with API V3</a></li>
+        <li><a href="https://github.com/travis-ci/travis#ruby-library">The Ruby Library</a></li>
+      </ul>
+      
+      <h3>Hosted Billing</h3>
+      <ul>
+        <li class="is-overview"><a href="/user/billing-overview/">Overview</a></li>
+        <li><a href="/user/billing-autorefill/">Auto-refill</a></li>
+        <li><a href="/user/billing-faq/">FAQ</a></li>
+      </ul>
+
+      <h3>Travis CI Enterprise</h3>
+      <ul>
+        <li><a href="/user/enterprise/">Enterprise Docs</a></li>
+      </ul>
+
+    </nav>
+  </section>
+
+  <section class="sidebar-notice">
+    <p>This documentation site is Open Source.
+      The <a href="https://github.com/travis-ci/docs-travis-ci-com">README in our Git repository</a> explains how to contribute.</p>
+    <p>Travis CI relies on Open Source <a href="/user/open_source_license/">licensing information</a>.</p>
+  </section>
+
+</div><!-- /#sidebar -->
+
+
+        <main id="main" class="main" data-swiftype-index='true'>
+          
+            <aside class="improve-page" data-swiftype-index='false'><a href="https://github.com/travis-ci/docs-travis-ci-com/edit/master/user/database-setup.md" target="_blank" title="Edit this page on GitHub" class="button-pen" data-proofer-ignore>Improve this page on GitHub</a></aside>
+            <h1 class="title">Setting up Databases and Services</h1>
+          
+
+          
+
+
+          
+            <div id="toc" class="toc">
+              <ul class="list-language">
+  <li><a href="#starting-services">Starting Services</a></li>
+  <li><a href="#mysql">MySQL</a></li>
+  <li><a href="#postgresql">PostgreSQL</a></li>
+  <li><a href="#mariadb">MariaDB</a></li>
+  <li><a href="#sqlite3">SQLite3</a></li>
+  <li><a href="#mongodb">MongoDB</a></li>
+  <li><a href="#couchdb">CouchDB</a></li>
+  <li><a href="#rabbitmq">RabbitMQ</a></li>
+  <li><a href="#riak">Riak</a></li>
+  <li><a href="#memcached">Memcached</a></li>
+  <li><a href="#redis">Redis</a></li>
+  <li><a href="#cassandra">Cassandra</a></li>
+  <li><a href="#neo4j">Neo4j</a></li>
+  <li><a href="#elasticsearch">ElasticSearch</a></li>
+  <li><a href="#rethinkdb">RethinkDB</a></li>
+  <li><a href="#multiple-database-builds">Multiple Database Builds</a></li>
+</ul>
+
+            </div>
+          
+
+          <p>This guide covers setting up the most popular databases and other services in the Travis CI environment.</p>
+
+<p>You can check databases and services availability in the build environment you are using <a href="https://docs.travis-ci.com/user/reference/overview/">here</a>.</p>
+
+<p>All services use default settings, with the exception of some added users and relaxed security settings.</p>
+
+<h2 id="starting-services">Starting Services <a href="#starting-services" class="toc-anchor">#</a></h2>
+
+<p>Travis CI environments do not start services by default, to make more RAM available
+to build scripts. Start services by adding them to the <code class="highlighter-rouge">services:</code> section of your
+<code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span> <span class="s">mongodb</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>If you install a service in the <code class="highlighter-rouge">addons:</code> section, such as MariaDB, you do not need to add it to the <code class="highlighter-rouge">services:</code> section as well.</p>
+</blockquote>
+
+<p>To start several services:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">riak</span>
+  <span class="pi">-</span> <span class="s">rabbitmq</span>
+  <span class="pi">-</span> <span class="s">memcached</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>If you download and install a service manually, you also have to start it in a <code class="highlighter-rouge">before_install</code> step. The <code class="highlighter-rouge">services</code> key only works for services we provision.</p>
+</blockquote>
+
+<h2 id="mysql">MySQL <a href="#mysql" class="toc-anchor">#</a></h2>
+
+<p>Start MySQL in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">mysql</span>
+</code></pre></div></div>
+
+<p>MySQL binds to <code class="highlighter-rouge">127.0.0.1</code> and a socket defined in <code class="highlighter-rouge">~travis/.my.cnf</code> and
+requires authentication.  You can connect using the username <code class="highlighter-rouge">travis</code> or <code class="highlighter-rouge">root</code>
+and a blank password.</p>
+
+<blockquote>
+  <p>Note that the <code class="highlighter-rouge">travis</code> user does not have the heightened privileges that the
+<code class="highlighter-rouge">root</code> user does.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left">Ubuntu Precise</th>
+      <th style="text-align: left">Ubuntu Trusty</th>
+      <th style="text-align: left">Ubuntu Xenial</th>
+      <th style="text-align: left">Ubuntu Bionic</th>
+      <th style="text-align: left">Ubuntu Focal</th>
+      <th style="text-align: left">Ubuntu Jammy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">MySQL</td>
+      <td style="text-align: left">5.5.x</td>
+      <td style="text-align: left">5.6.x</td>
+      <td style="text-align: left">5.7.x</td>
+      <td style="text-align: left">5.7.x</td>
+      <td style="text-align: left">8.0.x</td>
+      <td style="text-align: left">8.0.x</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can also <a href="#mysql-57">install MySQL 5.7</a> on Ubuntu Trusty.</p>
+
+<h3 id="using-mysql-with-activerecord">Using MySQL with ActiveRecord <a href="#using-mysql-with-activerecord" class="toc-anchor">#</a></h3>
+
+<p><code class="highlighter-rouge">config/database.yml</code> example for Ruby projects using ActiveRecord:</p>
+
+<div data-file="config/database.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">test</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql2</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_test</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">travis</span>
+  <span class="na">encoding</span><span class="pi">:</span> <span class="s">utf8</span>
+</code></pre></div></div>
+
+<p>You might have to create the <code class="highlighter-rouge">myapp_test</code> database first, for example in
+the <code class="highlighter-rouge">before_install</code> step in <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">mysql -e 'CREATE DATABASE myapp_test;'</span>
+</code></pre></div></div>
+
+<h3 id="note-on-test-database">Note on <code class="highlighter-rouge">test</code> database <a href="#note-on-test-database" class="toc-anchor">#</a></h3>
+
+<p>In older versions of MySQL, the Ubuntu package provided the <code class="highlighter-rouge">test</code> database by
+default.  This is no longer the case as of version 5.5.37 due to security
+concerns (See <a href="http://changelogs.ubuntu.com/changelogs/pool/main/m/mysql-5.5/mysql-5.5_5.5.47-0ubuntu0.12.04.1/changelog">change
+log</a>).</p>
+
+<p>The <code class="highlighter-rouge">test</code> database may be created if needed, for example in the
+<code class="highlighter-rouge">before_install</code> step in <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">mysql -e 'CREATE DATABASE IF NOT EXISTS test;'</span>
+</code></pre></div></div>
+
+<h3 id="mysql-57">MySQL 5.7 <a href="#mysql-57" class="toc-anchor">#</a></h3>
+
+<p>MySQL 5.7 is the default on the Xenial (<code class="highlighter-rouge">dist: xenial</code>) and Bionic (<code class="highlighter-rouge">dist: bionic</code>) images.</p>
+
+<blockquote>
+  <p>Since July 21st 2019, MySQL 5.7 is not supported on Ubuntu Trusty (14.04) anymore. See <a href="https://www.mysql.com/support/eol-notice.html">MySQL Product Support EOL Announcements</a> and <a href="https://forums.mysql.com/read.php?11,677237,677268#msg-677268">this post</a> in the MySQL Forums.</p>
+</blockquote>
+
+<h2 id="postgresql">PostgreSQL <a href="#postgresql" class="toc-anchor">#</a></h2>
+
+<p>Start PostgreSQL in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">postgresql</span>
+</code></pre></div></div>
+
+<h3 id="using-postgresql-in-your-builds">Using PostgreSQL in your Builds <a href="#using-postgresql-in-your-builds" class="toc-anchor">#</a></h3>
+
+<p>The default user for accessing the local PostgreSQL server is <code class="highlighter-rouge">postgres</code> with a blank password.</p>
+
+<p>Create a database for your application by adding a line to your .travis.yml:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">psql -c 'create database travis_ci_test;' -U postgres</span>
+</code></pre></div></div>
+
+<p>For a Rails application, you can now use the following <code class="highlighter-rouge">database.yml</code> configuration to access the database locally:</p>
+
+<div data-file="database.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">test</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">travis_ci_test</span>
+</code></pre></div></div>
+
+<p>If your local test setup uses different credentials or settings to access the local test database, we recommend putting these settings in a <code class="highlighter-rouge">database.yml.travis</code> in your repository and copying that over as part of your build:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">cp config/database.yml.travis config/database.yml</span>
+</code></pre></div></div>
+
+<h3 id="using-a-different-postgresql-version">Using a different PostgreSQL Version <a href="#using-a-different-postgresql-version" class="toc-anchor">#</a></h3>
+
+<p>The Travis CI build environments use version 9.2 by default on Trusty images, but other versions
+from the official <a href="http://apt.postgresql.org">PostgreSQL APT repository</a> are
+also available. To use a version other than the default, specify only the
+<strong>major.minor</strong> version in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">postgresql</span><span class="pi">:</span> <span class="s2">"</span><span class="s">9.4"</span>
+</code></pre></div></div>
+
+<p>Many PostgreSQL versions have been preinstalled in our build environments, and
+others may be added and activated at build time by using a combination of the
+<code class="highlighter-rouge">postgresql</code> and <code class="highlighter-rouge">apt</code> addons along with a global env var override for <code class="highlighter-rouge">PGPORT</code> and for <code class="highlighter-rouge">PGUSER</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">postgresql</span><span class="pi">:</span> <span class="s2">"</span><span class="s">11"</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">postgresql-11</span>
+    <span class="pi">-</span> <span class="s">postgresql-client-11</span>
+<span class="na">env</span><span class="pi">:</span>
+  <span class="na">global</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">PGPORT=5433</span>
+  <span class="pi">-</span> <span class="s">PGUSER=travis</span>
+</code></pre></div></div>
+
+<p>In the Xenial images Postgres 9.4 through 9.6 just need the version specified and use the user 
+<code class="highlighter-rouge">postgres</code> by default and the default port of 5432.</p>
+
+<p>For PostgreSQL 10 you must specify the packages
+to install it and the user is <code class="highlighter-rouge">postgres</code> and the port is 5432.  For PostgreSQL 11 and 12 you must
+ specify the packages, but the user is <code class="highlighter-rouge">travis</code> and the port is 5433 instead. So you must specify the PGPORT</p>
+
+<h3 id="using-postgis">Using PostGIS <a href="#using-postgis" class="toc-anchor">#</a></h3>
+
+<p>Install the version of PostGIS that matches your PostgreSQL version, and activate the PostGIS extension using:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">postgresql</span><span class="pi">:</span> <span class="m">9.6</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">postgresql-9.6-postgis-2.3</span>
+<span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">psql -U postgres -c "create extension postgis"</span>
+</code></pre></div></div>
+
+<h3 id="postgresql-and-locales">PostgreSQL and Locales <a href="#postgresql-and-locales" class="toc-anchor">#</a></h3>
+
+<p>The Travis CI build environment comes with a number of pre-installed locales, but you can also install additional ones, should you require them.</p>
+
+<h4 id="installing-locales">Installing Locales <a href="#installing-locales" class="toc-anchor">#</a></h4>
+
+<p>The following example shows the lines you need to add to your <code class="highlighter-rouge">.travis.yml</code> to install the Spanish language pack.</p>
+
+<blockquote>
+  <p>Note that you need to remove the PostgreSQL version from the <code class="highlighter-rouge">addons</code> section of your .travis.yml:</p>
+</blockquote>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sudo apt-get update</span>
+  <span class="pi">-</span> <span class="s">sudo apt-get install language-pack-es</span>
+  <span class="pi">-</span> <span class="s">sudo /etc/init.d/postgresql stop</span>
+  <span class="pi">-</span> <span class="s">sudo /etc/init.d/postgresql start </span><span class="m">9.3</span>
+</code></pre></div></div>
+
+<h3 id="using-pg_config">Using <code class="highlighter-rouge">pg_config</code> <a href="#using-pg_config" class="toc-anchor">#</a></h3>
+
+<p>If your builds rely on the <code class="highlighter-rouge">pg_config</code> command, you need to install an additional
+apt package <code class="highlighter-rouge">postgresql-server-dev-X.Y</code>, where <code class="highlighter-rouge">X.Y</code> matches the version of PostgreSQL
+you are using.</p>
+
+<p>For example:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">postgresql</span><span class="pi">:</span> <span class="s1">'</span><span class="s">9.4'</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">postgresql-server-dev-9.4</span>
+</code></pre></div></div>
+
+<p>See <a href="https://github.com/travis-ci/travis-ci/issues/9011">this GitHub issue</a> for additional details.</p>
+
+<h2 id="mariadb">MariaDB <a href="#mariadb" class="toc-anchor">#</a></h2>
+
+<p>MariaDB is a community-developed fork of MySQL. It is available as an addon on Travis CI.</p>
+
+<p>To use MariaDB, specify the “major.minor” version you want to use in your <code class="highlighter-rouge">.travis.yml</code>. Versions are listed on the <a href="https://downloads.mariadb.org/">MariaDB web page</a>.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">mariadb</span><span class="pi">:</span> <span class="s1">'</span><span class="s">10.0'</span>
+</code></pre></div></div>
+
+<p>The version number is exported as the <code class="highlighter-rouge">TRAVIS_MARIADB_VERSION</code> environment variable.</p>
+
+<h2 id="sqlite3">SQLite3 <a href="#sqlite3" class="toc-anchor">#</a></h2>
+
+<p>The easiest and simplest relational database.</p>
+
+<h3 id="sqlite3-in-ruby-projects">SQLite3 in Ruby Projects <a href="#sqlite3-in-ruby-projects" class="toc-anchor">#</a></h3>
+
+<p>Add the sqlite3 ruby bindings to your bundle:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Gemfile</span>
+<span class="c1"># for CRuby, Rubinius, including Windows and RubyInstaller</span>
+<span class="n">gem</span> <span class="s2">"sqlite3"</span><span class="p">,</span> <span class="ss">:platform</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:ruby</span><span class="p">,</span> <span class="ss">:mswin</span><span class="p">,</span> <span class="ss">:mingw</span><span class="p">]</span>
+
+<span class="c1"># for JRuby</span>
+<span class="n">gem</span> <span class="s2">"jdbc-sqlite3"</span><span class="p">,</span> <span class="ss">:platform</span> <span class="o">=&gt;</span> <span class="ss">:jruby</span>
+</code></pre></div></div>
+
+<p>If you use ActiveRecord, add the following to your <code class="highlighter-rouge">config/database.yml</code>:</p>
+
+<div data-file="config/database.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">test</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">sqlite3</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s2">"</span><span class="s">:memory:"</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">500</span>
+</code></pre></div></div>
+
+<p>Or if you’re not using a <code class="highlighter-rouge">config/database.yml</code>, connect to the database manually:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span> <span class="ss">:adapter</span> <span class="o">=&gt;</span> <span class="s1">'sqlite3'</span><span class="p">,</span>
+                                        <span class="ss">:database</span> <span class="o">=&gt;</span> <span class="s1">':memory:'</span>
+</code></pre></div></div>
+
+<h2 id="mongodb">MongoDB <a href="#mongodb" class="toc-anchor">#</a></h2>
+
+<p>Start MongoDB in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">mongodb</span>
+</code></pre></div></div>
+
+<p>MongoDB binds to 127.0.0.1 and requires no authentication or database creation up front. If you add an <code class="highlighter-rouge">admin</code> user authentication is enabled, since <code class="highlighter-rouge">mongod</code> is started with the <code class="highlighter-rouge">--auth</code> argument.</p>
+
+<blockquote>
+  <p>Note: Admin users are users created in the admin database.</p>
+</blockquote>
+
+<p>To create users for your database, add a <code class="highlighter-rouge">before_script</code> section to your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'</span>
+</code></pre></div></div>
+
+<h3 id="mongodb-does-not-immediately-accept-connections">MongoDB does not immediately accept connections <a href="#mongodb-does-not-immediately-accept-connections" class="toc-anchor">#</a></h3>
+
+<p>A few users have reported that MongoDB does not accept connections when from the build script.</p>
+
+<p>The issue is intermittent, and the only reliable way to avoid it is to
+inject an artificial wait before making the first connection:</p>
+
+<p>Add the following <code class="highlighter-rouge">before_script</code> to your <code class="highlighter-rouge">.travis.yml</code> to wait before connecting to MongoDB:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sleep </span><span class="m">15</span>
+  <span class="pi">-</span> <span class="s">mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});'</span>
+</code></pre></div></div>
+
+<h2 id="couchdb">CouchDB <a href="#couchdb" class="toc-anchor">#</a></h2>
+
+<p>Start CouchDB in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">couchdb</span>
+</code></pre></div></div>
+
+<p>CouchDB binds to 127.0.0.1, uses default configuration on <code class="highlighter-rouge">dist:xenial</code> and earlier Linux distributions and does not require authentication (in CouchDB terms it runs in admin party).</p>
+
+<p>However for <code class="highlighter-rouge">bionic</code>, authentication is required with username <code class="highlighter-rouge">admin</code> and password <code class="highlighter-rouge">travis</code> e.g. <code class="highlighter-rouge">curl -X PUT http://admin:travis@localhost:5984/&lt;db_name&gt;</code>.</p>
+
+<p>Before using CouchDB you need to create the database as part of your build process:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">curl -X PUT localhost:5984/myapp_test</span>
+</code></pre></div></div>
+
+<h2 id="rabbitmq">RabbitMQ <a href="#rabbitmq" class="toc-anchor">#</a></h2>
+
+<p>RabbitMQ requires <code class="highlighter-rouge">setuid</code> flags, so you can only run RabbitMQ as a service on macOS or Ubuntu Trusty infrastructure.</p>
+
+<p>Start RabbitMQ in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">rabbitmq</span>
+</code></pre></div></div>
+
+<p>RabbitMQ uses the default configuration:</p>
+
+<ul>
+  <li>vhost: <code class="highlighter-rouge">/</code></li>
+  <li>username: <code class="highlighter-rouge">guest</code></li>
+  <li>password: <code class="highlighter-rouge">guest</code></li>
+</ul>
+
+<p>You can set up more vhosts and roles in the <code class="highlighter-rouge">before_script</code> section of your <code class="highlighter-rouge">.travis.yml</code>.</p>
+
+<p>RabbitMQ <a href="https://docs.travis-ci.com/user/reference/xenial/#third-party-apt-repositories-removed">can be launched</a> on Ubuntu Xenial using the APT addon in <code class="highlighter-rouge">.travis.yml</code>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">rabbitmq-server</span> 
+</code></pre></div></div>
+
+<h2 id="riak">Riak <a href="#riak" class="toc-anchor">#</a></h2>
+
+<blockquote>
+  <p>Riak is only available in the <a href="/user/reference/trusty/">Ubuntu Trusty environment</a>.</p>
+</blockquote>
+
+<p>Start Riak in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">riak</span>
+</code></pre></div></div>
+
+<p>Riak uses the default configuration with Bitcask as storage backend.</p>
+
+<p>Riak Search is deactivated by default.</p>
+
+<h2 id="memcached">Memcached <a href="#memcached" class="toc-anchor">#</a></h2>
+
+<p>Start Memcached service in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">memcached</span>
+</code></pre></div></div>
+
+<p>Memcached uses the default configuration and binds to localhost.</p>
+
+<h2 id="redis">Redis <a href="#redis" class="toc-anchor">#</a></h2>
+
+<p>Start Redis in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">redis-server</span>
+</code></pre></div></div>
+
+<p>Redis uses the default configuration and is available on localhost.</p>
+
+<h2 id="cassandra">Cassandra <a href="#cassandra" class="toc-anchor">#</a></h2>
+
+<p>Start Cassandra in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">cassandra</span>
+</code></pre></div></div>
+
+<p>Cassandra is downloaded from the <a href="http://www.apache.org/dist/cassandra/debian">Apache apt repository</a> and uses the default configuration. It is available on 127.0.0.1.</p>
+
+<h3 id="installing-older-versions-of-cassandra">Installing older versions of Cassandra <a href="#installing-older-versions-of-cassandra" class="toc-anchor">#</a></h3>
+
+<p>Use the following example to install a specific older version of Cassandra in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sudo rm -rf /var/lib/cassandra/*</span>
+  <span class="pi">-</span> <span class="s">wget http://www.us.apache.org/dist/cassandra/1.2.18/apache-cassandra-1.2.18-bin.tar.gz &amp;&amp; tar -xvzf apache-cassandra-1.2.18-bin.tar.gz &amp;&amp; sudo sh apache-cassandra-1.2.18/bin/cassandra</span>
+</code></pre></div></div>
+
+<h2 id="neo4j">Neo4j <a href="#neo4j" class="toc-anchor">#</a></h2>
+
+<p>Start Neo4j in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">neo4j</span>
+</code></pre></div></div>
+
+<p>Neo4j Server uses default configuration and binds to localhost on port 7474.</p>
+
+<h2 id="elasticsearch">ElasticSearch <a href="#elasticsearch" class="toc-anchor">#</a></h2>
+
+<p>Start ElasticSearch in your <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">elasticsearch</span>
+</code></pre></div></div>
+
+<p>ElasticSearch takes few seconds to start, to make sure it is available when the build script runs add a small delay to your build script:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sleep </span><span class="m">10</span>
+</code></pre></div></div>
+
+<p>ElasticSearch uses the default configuration and is available on 127.0.0.1.</p>
+
+<h3 id="installing-specific-versions-of-elasticsearch">Installing specific versions of ElasticSearch <a href="#installing-specific-versions-of-elasticsearch" class="toc-anchor">#</a></h3>
+
+<p>You can overwrite the installed ElasticSearch with the version you need (e.g., 7.6.2) with the following:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_install</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-amd64.deb -o elasticsearch.deb</span>
+  <span class="pi">-</span> <span class="s">sudo dpkg -i --force-confnew elasticsearch.deb</span>
+  <span class="pi">-</span> <span class="s">sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch</span>
+  <span class="pi">-</span> <span class="s">sudo service elasticsearch restart</span>
+</code></pre></div></div>
+
+<p>We advise verifying the validity of the download URL <a href="https://www.elastic.co/downloads/elasticsearch">on ElasticSearch’s website</a>.</p>
+
+<h3 id="truncated-output-in-the-build-log">Truncated Output in the Build Log <a href="#truncated-output-in-the-build-log" class="toc-anchor">#</a></h3>
+
+<p>When ElasticSearch starts, you may see a truncated error message such as:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo service elasticsearch start
+ * Starting ElasticSearch Server       ission denied on key 'vm.max_map_count'
+</code></pre></div></div>
+
+<p>This is due to a <a href="https://github.com/elasticsearch/elasticsearch/issues/4397">recent change in ElasticSearch</a>,
+as reported <a href="https://github.com/elasticsearch/elasticsearch/issues/4978">here</a>.
+The message is harmless, and the service is functional.</p>
+
+<h2 id="rethinkdb">RethinkDB <a href="#rethinkdb" class="toc-anchor">#</a></h2>
+
+<p>To use RethinkDB with Travis CI, list it as an addon in the <code class="highlighter-rouge">.travis.yml</code> configuration file, specifying the version number as a string.</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">addons</span><span class="pi">:</span>
+  <span class="na">rethinkdb</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2.3.4'</span>
+</code></pre></div></div>
+
+<p>If you specify a partial version number, the addon will install and run the latest version that matches. For example, <code class="highlighter-rouge">'2.3'</code> will match the latest RethinkDB version in the <code class="highlighter-rouge">2.3.x</code> line.</p>
+
+<p>Two environment variables are exported:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">TRAVIS_RETHINKDB_VERSION</code> is the version specified in the configuration (e.g., <code class="highlighter-rouge">'2.3.4'</code>, or <code class="highlighter-rouge">'2.3'</code>).</li>
+  <li><code class="highlighter-rouge">TRAVIS_RETHINKDB_PACKAGE_VERSION</code> is the full version of the package that was installed (e.g., <code class="highlighter-rouge">'2.3.4+1~0precise'</code>).</li>
+</ul>
+
+<p>When enabled, RethinkDB will start on <code class="highlighter-rouge">localhost</code> at the default port (<code class="highlighter-rouge">28015</code>).</p>
+
+<h2 id="multiple-database-builds">Multiple Database Builds <a href="#multiple-database-builds" class="toc-anchor">#</a></h2>
+
+<p>If you need to run multiple builds using different databases, you can configure environment variables
+and a <code class="highlighter-rouge">before_script</code> or <code class="highlighter-rouge">before_install</code> line to create a build matrix.</p>
+
+<h3 id="using-environment-variables-and-a-before_script-step">Using environment variables and a before_script step <a href="#using-environment-variables-and-a-before_script-step" class="toc-anchor">#</a></h3>
+
+<p>Use the <code class="highlighter-rouge">DB</code> environment variable to specify the name of the database configuration. Locally you would run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">DB</span><span class="o">=</span>postgres <span class="o">[</span>commands to run your tests]
+</code></pre></div></div>
+
+<p>On Travis CI you want to create a <a href="/user/customizing-the-build/#build-matrix">build matrix</a> of three builds each having the <code class="highlighter-rouge">DB</code> variable exported with a different value, and for that you can use the <code class="highlighter-rouge">env</code> option in <code class="highlighter-rouge">.travis.yml</code>:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">env</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">DB=sqlite</span>
+  <span class="pi">-</span> <span class="s">DB=mysql</span>
+  <span class="pi">-</span> <span class="s">DB=postgres</span>
+</code></pre></div></div>
+
+<p>Then you can use those values in a <code class="highlighter-rouge">before_install</code> (or <code class="highlighter-rouge">before_script</code>) step to
+set up each database. For example:</p>
+
+<div data-file=".travis.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">before_script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">sh -c "if [ '$DB' = 'postgres' ]; then psql -c 'DROP DATABASE IF EXISTS tests;' -U postgres; fi"</span>
+  <span class="pi">-</span> <span class="s">sh -c "if [ '$DB' = 'postgres' ]; then psql -c 'DROP DATABASE IF EXISTS tests_tmp;' -U postgres; fi"</span>
+  <span class="pi">-</span> <span class="s">sh -c "if [ '$DB' = 'postgres' ]; then psql -c 'CREATE DATABASE tests;' -U postgres; fi"</span>
+  <span class="pi">-</span> <span class="s">sh -c "if [ '$DB' = 'postgres' ]; then psql -c 'CREATE DATABASE tests_tmp;' -U postgres; fi"</span>
+  <span class="pi">-</span> <span class="s">sh -c "if [ '$DB' = 'mysql' ]; then mysql -e 'CREATE DATABASE IF NOT EXISTS tests_tmp; CREATE DATABASE IF NOT EXISTS tests;'; fi"</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Travis CI does not have any special support for these variables, it just
+creates three builds with different exported values. It is up to your build
+script and <code class="highlighter-rouge">before_install</code> or <code class="highlighter-rouge">before_script</code> steps to make use of them.</p>
+</blockquote>
+
+<p>For a real example, see <a href="https://github.com/doctrine/doctrine2/blob/master/.travis.yml">doctrine/doctrine2
+.travis.yml</a>.</p>
+
+<h3 id="using-ruby">Using Ruby <a href="#using-ruby" class="toc-anchor">#</a></h3>
+
+<p>Another approach is put all database configuration in one YAML file (<code class="highlighter-rouge">test/database.yml</code> for example), like ActiveRecord does:</p>
+
+<div data-file="test/database.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sqlite</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">sqlite3</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s2">"</span><span class="s">:memory:"</span>
+  <span class="na">timeout</span><span class="pi">:</span> <span class="m">500</span>
+<span class="na">mysql</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql2</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_test</span>
+  <span class="na">username</span><span class="pi">:</span>
+  <span class="na">encoding</span><span class="pi">:</span> <span class="s">utf8</span>
+<span class="na">postgres</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_test</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">postgres</span>
+</code></pre></div></div>
+
+<p>Then, in your test suite, read that data into a configurations hash:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">configs</span> <span class="o">=</span> <span class="no">YAML</span><span class="p">.</span><span class="nf">load_file</span><span class="p">(</span><span class="s1">'test/database.yml'</span><span class="p">)</span>
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">configurations</span> <span class="o">=</span> <span class="n">configs</span>
+
+<span class="n">db_name</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'DB'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">'sqlite'</span>
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">establish_connection</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
+<span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">default_timezone</span> <span class="o">=</span> <span class="ss">:utc</span>
+</code></pre></div></div>
+
+
+        </main>
+      </div><!-- /#content -->
+
+      <footer class="footer">
+  <div class="layout-inner">
+    <div class="footer-elem">
+      <svg width="142px" height="45.381px" viewBox="0 0 142 45.381" enable-background="new 0 0 142 45.381" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <title>Travis CI Mascot</title>
+        <image xlink:href="https://styleguide.travis-ci.com/images/logos/travis-footer-logo-new.svg" x="0" y="0" width="142px" height="45.381px" />
+      </svg>
+    </div>
+
+    <div class="footer-elem"></div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">©Travis CI, GmbH</h3>
+      <address>Rigaer Straße 8<br>10247 Berlin, Germany</address>
+      <ul>
+        <li><a href="https://travisci.workable.com/" title="Jobs at Travis CI">Work with Travis CI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Help</h3>
+      <ul>
+        <li><a href="https://docs.travis-ci.com" title="Travis CI Docs">Documentation</a></li>
+        <li><a href="https://changelog.travis-ci.com/">Changelog</a></li>
+        <li><a href="https://blog.travis-ci.com/" title="Travis CI Blog">Blog</a></li>
+        <li><a href="mailto:support@travis-ci.com" title="Email Travis CI support">Email</a></li>
+        <li><a href="https://twitter.com/travisci" title="Travis CI on Twitter">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Company</h3>
+      <ul>
+        <li><a href="/imprint.html" title="Imprint">Imprint</a></li>
+        <li><a href="https://ideracorp.com/legal/TravisCI">Legal</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-elem">
+      <h3 class="footer-title">Travis CI Status</h3>
+      <ul>
+        <li><div class="status-circle none">Status:</div>
+          <a href="http://www.traviscistatus.com/">Travis CI Status</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+ fetch('https://pnpcptp8xh9k.statuspage.io/api/v2/status.json').then(function(response) {
+   return response.json();
+ }).then(function(data) {
+   if (data.status && data.status.indicator) {
+     document.querySelector('.status-circle').classList.add(data.status.indicator);
+   }
+ });
+</script>
+
+    </div><!-- /.wrapper -->
+  </body>
+</html>
+ contentType 9 text/html url 51 https://docs.travis-ci.com:443/user/database-setup/ responseCode 3 200 

@@ -1,0 +1,63 @@
+nszeekncfgosdoucsqngskakbenmpquknkrebouo length 4 6924 page 6924 
+<html>
+<head>
+<title>r36918 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r36918 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/36918" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./36917.html" title="Special:Code/MediaWiki/36917">r36917</a>‎ | <b>r36918</b> | <a href="./36919.html" title="Special:Code/MediaWiki/36919">r36919</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>15:00, 2 July 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/demon" title="Special:Code/MediaWiki/author/demon">demon</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">(<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=13918">bug 13918</a>), make CAPTCHA less obtrusive. Added a new global $wgCaptchaBadLoginAttempts which can be set to allow 1 (or more) failed attempts before triggering the captcha on login. Default is 0 (current behavior).</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/extensions/ConfirmEdit/ConfirmEdit.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FConfirmEdit%2FConfirmEdit.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/extensions/ConfirmEdit/ConfirmEdit_body.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fextensions%2FConfirmEdit%2FConfirmEdit_body.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/36918&amp;action=purge" title="Special:Code/MediaWiki/36918">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/extensions/ConfirmEdit/ConfirmEdit_body.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -204,8 +204,8 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">205</td><td class="linenumbers">205</td><td class="unchanged"><span> 	 * @access private</span></td></tr>
+<tr id="7"><td class="linenumbers">206</td><td class="linenumbers">206</td><td class="unchanged"><span> 	 */</span></td></tr>
+<tr id="8"><td class="linenumbers">207</td><td class="linenumbers">207</td><td class="unchanged"><span> 	function isBadLoginTriggered() {</span></td></tr>
+<tr id="9"><td class="linenumbers">208</td><td class="linenumbers"> </td><td class="del"><del>-		global $wgMemc;</del></td></tr>
+<tr id="10"><td class="linenumbers">209</td><td class="linenumbers"> </td><td class="del"><del>-		return intval( $wgMemc->get( $this->badLoginKey() ) ) > 0;</del></td></tr>
+<tr id="11"><td class="linenumbers"> </td><td class="linenumbers">208</td><td class="ins"><ins>+		global $wgMemc, $wgCaptchaBadLoginAttempts;</ins></td></tr>
+<tr id="12"><td class="linenumbers"> </td><td class="linenumbers">209</td><td class="ins"><ins>+		return intval( $wgMemc->get( $this->badLoginKey() ) ) > $wgCaptchaBadLoginAttempts;</ins></td></tr>
+<tr id="13"><td class="linenumbers">210</td><td class="linenumbers">210</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="14"><td class="linenumbers">211</td><td class="linenumbers">211</td><td class="unchanged"><span> 	</span></td></tr>
+<tr id="15"><td class="linenumbers">212</td><td class="linenumbers">212</td><td class="unchanged"><span> 	/**</span></td></tr>
+<tr id="16" class="patchedfile"><td colspan="3">Index: trunk/extensions/ConfirmEdit/ConfirmEdit.php</td></tr>
+
+
+
+<tr id="20"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -149,6 +149,14 @@</span></td></tr>
+<tr id="21"><td class="linenumbers">150</td><td class="linenumbers">150</td><td class="unchanged"><span> global $ceAllowConfirmedEmail;</span></td></tr>
+<tr id="22"><td class="linenumbers">151</td><td class="linenumbers">151</td><td class="unchanged"><span> $ceAllowConfirmedEmail = false;</span></td></tr>
+<tr id="23"><td class="linenumbers">152</td><td class="linenumbers">152</td><td class="unchanged"><span> </span></td></tr>
+<tr id="24"><td class="linenumbers"> </td><td class="linenumbers">153</td><td class="ins"><ins>+/** </ins></td></tr>
+<tr id="25"><td class="linenumbers"> </td><td class="linenumbers">154</td><td class="ins"><ins>+ * Number of bad login attempts allowed before triggering the captcha.</ins></td></tr>
+<tr id="26"><td class="linenumbers"> </td><td class="linenumbers">155</td><td class="ins"><ins>+ * </ins></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">156</td><td class="ins"><ins>+ * Default is 0.</ins></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">157</td><td class="ins"><ins>+ */</ins></td></tr>
+<tr id="29"><td class="linenumbers"> </td><td class="linenumbers">158</td><td class="ins"><ins>+global $wgCaptchaBadLoginAttempts;</ins></td></tr>
+<tr id="30"><td class="linenumbers"> </td><td class="linenumbers">159</td><td class="ins"><ins>+$wgCaptchaBadLoginAttempts = 0;</ins></td></tr>
+<tr id="31"><td class="linenumbers"> </td><td class="linenumbers">160</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="32"><td class="linenumbers">153</td><td class="linenumbers">161</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="33"><td class="linenumbers">154</td><td class="linenumbers">162</td><td class="unchanged"><span>  * Regex to whitelist URLs to known-good sites...</span></td></tr>
+<tr id="34"><td class="linenumbers">155</td><td class="linenumbers">163</td><td class="unchanged"><span>  * For instance:</span></td></tr>
+</table>
+</div>
+<h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:28, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r36918 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/36918.html responseCode 3 200 
