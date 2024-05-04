@@ -53,7 +53,7 @@ public class tfIdf {
                 List<String> list = new ArrayList<>(row.columns());
                 String colName = list.get(0);
                 // System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhh"+colName);
-                String result = row.key() + "!" + row.get(colName);
+                String result = row.key() + "|" + row.get(colName);
                 // System.out.println("这是contextfromtable的输出"+result);
                 return result;
             });
@@ -64,14 +64,14 @@ public class tfIdf {
             startTime = System.currentTimeMillis();
 
             FlamePairRDD indexflamePairRdd = indexflameRdd
-                    .mapToPair(s -> new FlamePair(s.split("!")[0], s.split("!", 2)[1]));
-            Map<String, Double> wordIdf = new ConcurrentHashMap<>();
+                    .mapToPair(s -> new FlamePair(s.split("\\|")[0], s.split("\\|", 2)[1]));
+            // Map<String, Double> wordIdf = new ConcurrentHashMap<>();
 
-            AtomicInteger i = new AtomicInteger();
+            // AtomicInteger i = new AtomicInteger();
 
-            AtomicLong finalEndTime = new AtomicLong(endTime);
-            AtomicLong finalStartTime = new AtomicLong(startTime);
-            long startTimeFinal = startTime;
+            // AtomicLong finalEndTime = new AtomicLong(endTime);
+            // AtomicLong finalStartTime = new AtomicLong(startTime);
+            // long startTimeFinal = startTime;
             indexflamePairRdd = indexflamePairRdd.flatMapToPair(pair -> {
                 // i.getAndIncrement();
                 //
