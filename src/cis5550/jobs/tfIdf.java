@@ -43,7 +43,7 @@ public class tfIdf {
 
     public static void run(FlameContext context, String[] args) {
 
-        int N = 9;
+        int N = 1317;
         System.err.println(N);
         long startTime = System.currentTimeMillis();
         long endTime = System.currentTimeMillis();
