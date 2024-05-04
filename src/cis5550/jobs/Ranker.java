@@ -52,32 +52,46 @@ class Ranker extends cis5550.generic.Worker {
         String coordinatorArg = "localhost:8000";
         KVSClient kvs = new KVSClient(coordinatorArg);
 
-        post("/rank/:query", (req, res) -> {
-            String query = req.params("query");
+        post("/rank", (req, res) -> {
+            String query = req.body();
 
+            System.out.println("Query: " + query);
             // number of urls to return
             int N = 10;
-            query = "hello world";
+            // query = "hello world";
             Set<String> stopwords = StopWordsLoader.stopWords();
 
             String[] keyWords = query.split(" ");
+            // for (String word : keyWords) {
+            // System.out.println(word);
+            // System.out.println(stemmedWord(word));
+            // }
 
             List<String> filteredWords = Arrays.stream(keyWords)
                     .map(word -> stemmedWord(word))
-                    .filter(word -> !stopwords.contains(word))
+                    // .filter(word -> !stopwords.contains(word))
                     .collect(Collectors.toList());
 
+            // output filteredWords
+            for (String word : filteredWords) {
+                System.out.println(word);
+            }
             // String[] keyWords = { "attack" };
             String tableName = "pt-final";
             Map<String, Double> urlValue = new HashMap<String, Double>();
             try { // compute each word's idf
                 for (String kw : filteredWords) {
                     Row row = kvs.getRow(tableName, kw);
+                    if (row == null) {
+                        continue;
+                    }
                     for (String url : row.columns()) {
                         String value = row.get(url);
                         if (urlValue.containsKey(url)) {
+                            // System.out.println(url);
                             urlValue.put(url, urlValue.get(url) + Double.parseDouble(value));
                         } else {
+                            // System.out.println(url);
                             urlValue.put(url, Double.parseDouble(value));
                         }
                     }
@@ -89,6 +103,7 @@ class Ranker extends cis5550.generic.Worker {
 
                 // show the top urls
                 int size = Math.min(N, list.size());
+                System.out.println("Top " + size + " urls:");
                 for (int i = 0; i < size; i++) {
                     System.out.println(list.get(i).getKey() + " " + list.get(i).getValue());
                 }
@@ -96,6 +111,7 @@ class Ranker extends cis5550.generic.Worker {
                 // pass the top urls to the front end
 
             } catch (Exception e) {
+                e.printStackTrace();
             }
             return null;
         });
