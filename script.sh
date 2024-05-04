@@ -9,6 +9,7 @@ rm -r worker1/pt-tfIdf
 # rm -r worker1/pt-tfIdf
 # rm -r worker1/pt-idf
 # rm -r worker1/pt-tf
+rm -r worker1/pt-final
 rm -r worker1/pt-TableTFIDF
 
 
