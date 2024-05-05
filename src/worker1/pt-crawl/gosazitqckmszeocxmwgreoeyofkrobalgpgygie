@@ -1,0 +1,176 @@
+gosazitqckmszeocxmwgreoeyofkrobalgpgygie length 5 17515 page 17515 <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="This is the home for experimental binaries and documentation related to R for macOS. To learn more about the R software or download released versions, please visit www.r-project.org.">
+  <meta property="og:title" content="R for macOS Developers">
+  <meta property="og:site_name" content="R for macOS Developers">
+  <meta property="og:url" content="https://mac.r-project.org/">
+  <meta property="og:description" content="This is the home for experimental binaries and documentation related to R for macOS. To learn more about the R software or download released versions, please visit www.r-project.org.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.r-project.org/Rlogo.png">  
+  <title>R for macOS Developers</title>
+  <link rel=stylesheet href='main.css' type='text/css'>
+</head>
+
+<body bgcolor="white">
+
+<h1>R for macOS Developers</h1>
+
+This is the home for experimental binaries and documentation related to R for macOS. To learn more about the R software or download released versions, please visit <a href=https://www.r-project.org/>www.r-project.org</a>.
+<p>
+<!--<b><i>All software on this page is strictly experimental and subject to acceptance of the supplied R license agreement and the disclaimer at the end of the page.</i></b>
+<p> In addition to this nightly generated page, visit the <a href=building.html>Building R</a> page for the most recent tips. -->
+
+<p>
+  Starting with R 4.0.0 we are building R using standard Apple tools (Xcode) and GNU Fortran (see <a href=tools/>tools</a> for downloads and details). As of R 4.3.0 we maintain two binary builds:
+<ul>
+  <!-- <li><b>high-sierra</b> build supporting legacy Intel Macs from macOS 10.13 (High Sierra) and higher</li> -->
+  <li><b>big-sur-x86_64</b> build supports legacy Intel Macs from macOS 11 (Big Sur) and higher</li>
+  <li><b>big-sur-arm64</b> build supports arm64 Macs (M1+) from macOS 11 (Big Sur) and higher</li>
+</ul>
+We are no longer building binaries for macOS versions before 11 (as they are no longer supported by Apple).
+
+<h2>Nightly Build Installers</h2>
+
+<table class='build noborder'><thead class='build noborder'><tr><th>Build</th><th>OS</th><th>Download</th></tr></thead>
+<tbody class='build noborder'>
+<tr class='build alt-1'><td><b>R-4.4-branch</b><br>4.4.0 Patched<br>(2024/05/03, r86521)
+</td><td>big-sur-arm64</td><td>Installer: <a href='big-sur-arm64/R-4.4-branch/R-4.4-branch-arm64.pkg'>R-4.4-branch-arm64.pkg</a> (94Mb, notarized)<br>(for M1/M2 Macs only!)</td></tr>
+<tr class='build alt-2'><td><b>R-4.4-branch</b><br>4.4.0 Patched<br>(2024/05/03, r86521)
+</td><td>big-sur-x86_64</td><td>Installer: <a href='big-sur-x86_64/R-4.4-branch/R-4.4-branch-x86_64.pkg'>R-4.4-branch-x86_64.pkg</a> (97Mb, notarized)<br>(for Intel Macs)</td></tr>
+<tr class='build alt-1'><td><b>R-4.3-branch</b><br>4.3.3 Patched<br>(2024/04/09, r86521)
+</td><td>big-sur-arm64</td><td>Installer: <a href='big-sur-arm64/R-4.3-branch/R-4.3-branch-arm64.pkg'>R-4.3-branch-arm64.pkg</a> (92Mb, notarized)<br>(for M1/M2 Macs only!)</td></tr>
+<tr class='build alt-2'><td><b>R-4.3-branch</b><br>4.3.3 Patched<br>(2024/04/09, r86521)
+</td><td>big-sur-x86_64</td><td>Installer: <a href='big-sur-x86_64/R-4.3-branch/R-4.3-branch-x86_64.pkg'>R-4.3-branch-x86_64.pkg</a> (94Mb, notarized)<br>(for Intel Macs)</td></tr>
+</tbody></table>
+
+
+<h2>Changes since R 4.3.0 Builds</h2>
+R 4.3.0 CRAN builds are using Xcode 14.2/14.3, macOS 11.3 SDK and targetting macOS 11 (Big Sur) and <a href=https://github.com/R-macos/gcc-12-branch/releases/tag/12.2-darwin-r0>GNU Fortran 12.2</a>. This is now true for both x86_64 and arm64 builds. The corresponding package types (<tt>.Platform$pkgType</tt>) are <tt>"mac.binary.big-sur-x86_64"</tt> for Intel and <tt>"mac.binary.big-sur-arm64"</tt> for Apple silicon Macs.
+<p>
+Note that although M1 Macs can run the Intel build via Rosetta2 the native arm64 build is typically faster. All dependent static libraries are available in the <a href=bin/>bin</a> directory. Please make sure you remove any modifications to build flags from your home (<tt>~/.R</tt>) since no custom compilers are used anymore. For more information about alternative OpenMP options (as in older version) see <a href=openmp>the openmp page</a> of this site.
+</p>
+<p>
+  <!--
+<b>Apple silicon update</b>: it is now possible to build R for the Apple silicon arm64 architecture (new Macs with the M1 processor) - see <a href="https://developer.r-project.org/Blog/public/2020/11/02/will-r-work-on-apple-silicon/index.html">our R developer blog post</a> and the instructions in the R manual. R 4.1.0 has been released both for the Intel architecture (High Sierra build) as well as for arm64 (Big Sur build) - and more details on the latter in the <a href="#M1">Apple silicon</a> section. Note that the tools are still highly experimental (due to lack of stable Fortran) so the arm build is also experimental and things may change as we go. That said, our current Intel releases work just fine on the new Macs as well using Rosetta 2. -->
+</div>
+<p>
+<h2>Index</h2>
+<ul>
+<li><a href=#nightly>Nightly builds of R for Mac OS X</a></li>
+<!-- <li><a href=#leopard>Leopard release build (OS X 10.5 and 10.6)</a></li> -->
+<li><a href=#GUI>Nightly builds of the R.app GUI</a></li>
+<li><a href=/tools/>Tools for R development</a></li>
+<li><a href=/man/>Most current R manuals</a></li>
+<li><a href=/src/>Sources for tools and libraries</a></li>
+<!-- <li><a href=#pkg>Experimental binary packages</a></li> -->
+<!-- <li><a href=#bioc>Experimental Bioconductor packages</a></li> -->
+<!-- <li><a href=/exp/>Experimental 64-bit build of R</a></li> -->
+<li><a href=#old>Legacy OS X support</a></li>
+<li><a href=#other>Other binaries and tools (e.g. RSwitch, Graphviz, GTK+, ..)</a></li>
+<li><a href="https://developer.r-project.org/Blog/public/2020/11/02/will-r-work-on-apple-silicon/index.html" rel="nofollow">Will R Work on Apple Silicon?</a> <i>(Information on the status of the port to Apple's new M1 architecture.)</i>
+</ul>
+
+<a name=nightly></a>
+<h2>Nightly builds for macOS</h2>
+<h3>R framework</h3>
+
+<table class='build noborder'><thead class='build noborder'><tr><th>Build</th><th>OS</th><th>Date</th><th>Status</th><th>Download</th></tr></thead>
+<tbody class='build noborder'>
+<tr class='build alt-1'><td><b>R-4.3-branch</b><br>4.3.3 Patched<br>(2024/04/09, r86521)
+</td><td>big-sur</td><td>May 4 19:36</td><td><b>arm64</b>: OK (<a href="logs/log-R-4.3-branch.big-sur.arm64.html">log</a>)<br><b>x86_64</b>: OK (<a href="logs/log-R-4.3-branch.big-sur.x86_64.html">log</a>)<br></td><td><br><a href=big-sur/R-4.3-branch/arm64/R-4.3-branch.tar.gz>arm64/R-4.3-branch.tar.gz</a> (arm64, 80Mb)<br><a href=big-sur/last-success/R-4.3-branch-arm64.tar.xz>R-4.3-branch-arm64.tar.xz</a> (arm64 framework, 68Mb)<br><a href=big-sur-arm64/R-4.3-branch/R-4.3-branch-arm64.pkg>R-4.3-branch-arm64.pkg</a> (92Mb, installer incl. GUI)<br><br><a href=big-sur/R-4.3-branch/x86_64/R-4.3-branch.tar.gz>x86_64/R-4.3-branch.tar.gz</a> (x86_64, 82Mb)<br><a href=big-sur/last-success/R-4.3-branch-x86_64.tar.xz>R-4.3-branch-x86_64.tar.xz</a> (x86_64 framework, 70Mb)<br><a href=big-sur-x86_64/R-4.3-branch/R-4.3-branch-x86_64.pkg>R-4.3-branch-x86_64.pkg</a> (94Mb, installer incl. GUI)<br></td></tr>
+<tr class='build alt-2'><td><b>R-4.4-branch</b><br>4.4.0 Patched<br>(2024/05/03, r86521)
+</td><td>big-sur</td><td>May 4 19:58</td><td><b>arm64</b>: OK (<a href="logs/log-R-4.4-branch.big-sur.arm64.html">log</a>)<br><b>x86_64</b>: OK (<a href="logs/log-R-4.4-branch.big-sur.x86_64.html">log</a>)<br></td><td><br><a href=big-sur/R-4.4-branch/arm64/R-4.4-branch.tar.gz>arm64/R-4.4-branch.tar.gz</a> (arm64, 82Mb)<br><a href=big-sur/last-success/R-4.4-branch-arm64.tar.xz>R-4.4-branch-arm64.tar.xz</a> (arm64 framework, 69Mb)<br><a href=big-sur-arm64/R-4.4-branch/R-4.4-branch-arm64.pkg>R-4.4-branch-arm64.pkg</a> (94Mb, installer incl. GUI)<br><br><a href=big-sur/R-4.4-branch/x86_64/R-4.4-branch.tar.gz>x86_64/R-4.4-branch.tar.gz</a> (x86_64, 84Mb)<br><a href=big-sur/last-success/R-4.4-branch-x86_64.tar.xz>R-4.4-branch-x86_64.tar.xz</a> (x86_64 framework, 72Mb)<br><a href=big-sur-x86_64/R-4.4-branch/R-4.4-branch-x86_64.pkg>R-4.4-branch-x86_64.pkg</a> (97Mb, installer incl. GUI)<br></td></tr>
+</tbody></table>
+
+
+<!-- <p><font color=#800>Important:</font> The <b>big-sur</b> builds are compatible with the M1 arm-based Macs <u>only</u>. Intel Macs are supported by the <b>high-sierra</b> build which works on any macOS &gt;=10.13 including Big Sur. -->
+<!-- The Monterey build is likely temporary while we are testing new <a href=https://github.com/s-u/macosvm target=_new>macOS 12 virtualization</a> for our build setup and is only intended for testing at this point. -->
+<p>
+The installer image (<tt>*.pkg</tt>) is packaged exactly the same way as the CRAN release of R (including the GUI) and it will update your R version (unless you use <tt>pkgutil</tt> - see instructions during installation and/or the <i>"Multiple versions"</i> <a href="https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Multiple-versions">section of the R Installation and Administration manual</a>).
+
+<p>
+Alternatively, you can use the tar-ball (<tt>*.tar.gz</tt>) in the table above. The tar-ball must be unpacked in the root directory using:
+<blockquote>
+$ <tt>tar fvxz R*.tar.gz -C /</tt>
+</blockquote>
+<p>
+NOTE: The tar-ball does not contain the GUI (see below for a separate download), it only contains files under <tt>/Library/Frameworks/R.framework</tt> so either run it via <tt>/Library/Frameworks/R.framework/Resources/bin/R</tt> or create a convenience symlink if desired. The installer includes Tcl/Tk package which will install in <tt>/opt/R/arm64</tt> or <tt>/opt/R/x86_64</tt>. It is optional (only needed for the <tt>tcltk</tt> R package) and can be unchecked at installation time.
+<p>
+If you see any issues with the builds, please contact Simon Urbanek (the macOS maintainer of R) or report on the R-SIG-Mac mailing list.
+<p>
+For old OS X El Capitan nightly builds of R 3.x.x please see the <a href=old.html>old OS X builds page</a>.
+<p>
+  Recently, we have introduced "last-success" binaries which are always available (even if the nightly build fails) and intended mostly for CI/CD automated systems to install latest versions. The two locations are split by the build: <a href=/high-sierra/last-success>high-sierra</a> (x86_64) and <a href=/big-sur/last-success>big-sur</a> (x86_64 and arm64). The <tt>xz</tt> tar balls contain only the <tt>R.framework</tt> directory of the final package, so must be unpacked into <tt>/Library/Frameworks</tt>.
+  <p>
+  <a name=gui></a>
+<h3>Mac OS X GUI</h3>
+
+<table class='gui noborder'><thead class='gui noborder'><tr><th>Version</th><th>Build</th><th>Download</th></tr></thead>
+<tbody class='gui noborder'>
+<tr class='gui alt-1'><td>Mac OS X GUI rev. 8388 for R 4.3.x</td><td>big-sur-arm64-Debug.dmg</td><td><a href=big-sur/R-4.3-branch/R-GUI-8388-4.3-big-sur-arm64-Debug.dmg>R-GUI-8388-4.3-big-sur-arm64-Debug.dmg</a></td></tr>
+<tr class='gui alt-2'><td>Mac OS X GUI rev. 8388 for R 4.3.x</td><td>big-sur-x86_64-Debug.dmg</td><td><a href=big-sur/R-4.3-branch/R-GUI-8388-4.3-big-sur-x86_64-Debug.dmg>R-GUI-8388-4.3-big-sur-x86_64-Debug.dmg</a></td></tr>
+<tr class='gui alt-1'><td>Mac OS X GUI rev. 8388 for R 4.3.x</td><td>big-sur-arm64-Release.dmg</td><td><a href=big-sur/R-4.3-branch/R-GUI-8388-4.3-big-sur-arm64-Release.dmg>R-GUI-8388-4.3-big-sur-arm64-Release.dmg</a></td></tr>
+<tr class='gui alt-2'><td>Mac OS X GUI rev. 8388 for R 4.3.x</td><td>big-sur-x86_64-Release.dmg</td><td><a href=big-sur/R-4.3-branch/R-GUI-8388-4.3-big-sur-x86_64-Release.dmg>R-GUI-8388-4.3-big-sur-x86_64-Release.dmg</a></td></tr>
+<tr class='gui alt-1'><td>Mac OS X GUI rev. 8388 for R 4.4.x</td><td>big-sur-arm64-Debug.dmg</td><td><a href=big-sur/R-4.4-branch/R-GUI-8388-4.4-big-sur-arm64-Debug.dmg>R-GUI-8388-4.4-big-sur-arm64-Debug.dmg</a></td></tr>
+<tr class='gui alt-2'><td>Mac OS X GUI rev. 8388 for R 4.4.x</td><td>big-sur-x86_64-Debug.dmg</td><td><a href=big-sur/R-4.4-branch/R-GUI-8388-4.4-big-sur-x86_64-Debug.dmg>R-GUI-8388-4.4-big-sur-x86_64-Debug.dmg</a></td></tr>
+<tr class='gui alt-1'><td>Mac OS X GUI rev. 8388 for R 4.4.x</td><td>big-sur-arm64-Release.dmg</td><td><a href=big-sur/R-4.4-branch/R-GUI-8388-4.4-big-sur-arm64-Release.dmg>R-GUI-8388-4.4-big-sur-arm64-Release.dmg</a></td></tr>
+<tr class='gui alt-2'><td>Mac OS X GUI rev. 8388 for R 4.4.x</td><td>big-sur-x86_64-Release.dmg</td><td><a href=big-sur/R-4.4-branch/R-GUI-8388-4.4-big-sur-x86_64-Release.dmg>R-GUI-8388-4.4-big-sur-x86_64-Release.dmg</a></td></tr>
+</tbody></table>
+
+
+<p>To install, open the image and drag the <b>R</b> icon to your <tt>Applications</tt> folder. Alternatively the GUI can be run directly off that image without copying if you just want to test it. Build configurations with "64" suffix are 64-bit builds, all others are 32-bit (except for Debug). If you want to use both, rename one of them or place them in different directories.
+
+<a name=tools></a>
+<h2>Tools</h2>
+
+In order to compile R and R packages you will need <b>Xcode Developer Tools</b> and a Fortran compiler. For details and download, please read the <a href=/tools/>Tools page</a>. The R 4.3.0 and higer binaries are built using Xcode 14.3 and universal GNU Fortran 12.2 <a href=https://github.com/R-macos/gcc-12-branch/releases>from here</a>.
+
+<h2>CRAN macOS master</h2>
+This is now the master repository for released R package binaries. If you have issues with other mirrors, try using <tt>https://mac.r-project.org/</tt> as your mirror since it is updated first.
+
+<a name=M1></a>
+<h2>Apple silicon (aka arm64, aarch64, M1)</h2>
+
+To avoid clashes with the Intel builds, we use separate tools and libraries for the <tt>arm64</tt> builds of R on macOS. This is only relevant if you want to compile R packages yourself. All tools and libraries live in <tt>/opt/R/arm64</tt> from <a href=bin/>bin</a> and <a href=tools/>tools</a> respectively. It is assumed that <tt>/usr/local</tt> is unsafe as it may contain Intel binaries which don't mix, therefore R will not try to use <tt>/usr/local</tt> unless a manual flags override is issued. However, it also means that it is safe to use our arm64 binaries without affecting your legacy Intel ecosystem.
+
+<p>
+The <b>big-sur</b> build of R requires <a href=https://www.xquartz.org target=_new>XQuartz</a> 2.8.5 or higher to use the X11 components.
+
+<!--
+<div class="code-block-indent">
+  <tt>options(repos=c(CRAN="https://mac.r-project.org/"))</tt>
+</div> -->
+
+<a name=old></a>
+<h2>Legacy R</h2>
+The current build supports only macOS 11 (Big Sur) or higher. Older versions of macOS are not supported in binary form, but R can be compiled from sources for such legacy OS versions. Last released version for Mac OS X 10.4 (Tiger) was <b>R 2.10.1</b>, last release for Mac OS X 10.5 (Leopard) was <b>R 2.15.3</b>, last release for Mac OS X 10.11 (El Capitan) was <b> R 3.6.3</b> and last release for macOS 10.13 (High Sierra) was <b>R 4.2.3</b>.
+
+<a name=other></a>
+<h2>Other legacy binaries</h2>
+
+The following binaries are not maintained or supported by R-core and are provided without any guarantee and for convenience only (Mac OS X 10.4.4 or higher required). They match the binaries used on the CRAN binary build machine at the time, but are no longer used.
+<ul>
+<li><b>GTK+ 2.24.17 framework</b> - 64-bit build of GTK+ 2.24.17, necessary for binary R packages that use GTK+ version 2 (such as RGtk2+). <i>R 3.0.0 and higher, Snow Leopard build</i><br>
+Download: <a href=/libs/GTK_2.24.17-X11.pkg>GTK_2.24.17-X11.pkg</a> (ca. 41MB)<br>&nbsp;
+<li><b>GTK+ 2.18.5 framework</b> - universal build of GTK+ 2.18.5, necessary for binary R packages that use GTK+ version 2 (such as RGtk2+). <i>R 2.10.0 - 2.15.3, Leopard build</i><br>
+Download: <a href=/libs/GTK_2.18.5-X11.pkg>GTK_2.18.5-X11.pkg</a> (ca. 58MB)<br>&nbsp;
+<li><b>RSwitch</b> - a small GUI that allows you to switch between R versions quickly (if you have multiple versions of R framework installed).<br>
+Download: <a href=RSwitch-1.2.dmg>RSwitch-1.2.dmg</a> (ca 67kB, universal, <font color=red>updated 2011/03/24</font> to support R 2.13.0 and up)<br>
+Sources: <a href=RSwitch-1.2.tar.gz>RSwitch-1.2.tar.gz</a> (Xcode project and sources)<br>
+<p>
+NOTE: Bob Rudis is maintaining a new version of a tool which has RSwitch functionality and more - see <a href=https://git.rud.is/hrbrmstr/RSwitch target=_new>3rd party RSwitch replacement</a> (NOT related to R-Foundation or CRAN!).
+</li>
+</ul>
+<p>
+
+<h2>Disclaimer</h2>
+<b><i>
+All software is provided "as is" and any express or implied warranties, including, but but not limited to the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the publisher, copyright owner or contributors be liable for any direct, indirect, incidental,special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
+</i></b>
+
+</body>
+</html>
+ contentType 9 text/html url 30 https://mac.R-project.org:443/ responseCode 3 200 

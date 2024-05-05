@@ -1,0 +1,159 @@
+wohopcwcxokeyavmosekxieexiworazmeqhcaele length 5 18568 page 18568 <html>
+<head>
+<title>GKA - Software Utilities</title>
+<link href="../css_info/gka.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="../GKAicon.ico" />
+<meta name="keywords" content="MBR parser, boot sector parser, FAT directory parser, INFO2 parser, MFT parser, file signatures, HTML include, livesystem, pingsweep, picture reporter, latitude converter, longitude converter, Nitrox gas blending calculator, AIS parser, AIS decoder, AIS encoder, NMEA 0183 decoder, NMEA 0183 encoder, AIS Blacktoolkit, file signatures, file headers" />
+</head>
+<body text=#000000>
+
+<table width="800" cellspacing="0" cellpadding="0">
+<tr><td>
+
+<table width="90% cellspacing="0" cellpadding="0" align="center">
+<tr><td>
+
+<center>
+<br>
+<span class="Title">Gary Kessler Associates</span>
+<br><br>
+<span class="PageHeader">Just a few software utilities...</span>
+</center>
+
+<br>
+<hr>
+<br>
+<p>
+Over the years, I have written a few little software utilities that I have shared with some others and they have encouraged me to make them more readily available.</p>
+<p>
+Most of these programs are written in Perl. If you have a MacOS X, Linux, or Unix system, a Perl interpreter is part of the operating system. For Windows users, you can run these programs in a <a href="http://www.cygwin.com" target="_blank"> Cygwin</a> environment or, even easier, use one of the many Perl interpreters for Windows, such as <a href="http://strawberryperl.com/" target="_blank"> Strawberry Perl</a> or <a href="http://www.activestate.com/activeperl" target="_blank"> ActivePerl</a>.
+<p align="center">
+<font color="red"><b>See <a href="#l&w">License and Warranty</a> section below for additional information.</b></font>
+</p>
+
+<ul>
+<li><p id="ais"><b>AIS-related tools</a></b>:</p>
+<ul>
+<li><i><a href="https://github.com/trendmicro/ais" target="_blank">AIS BlackToolkit</a></i> (12/04/2018): Two programs &#151; a preprocessor/user interface and NMEA encoder &#151; both written in Perl, contributed to the TrendMicro AIS BlackToolkit project at GitHub.</p></li>
+<li><p><i><a href="ais_tools_latest.zip">AIS Tools</a></i> (04/25/2024): A set of Perl scripts, as described below, to customize and parse NMEA 0183/ITU-R M.1371 sentences for AIS applications. All 27 message types can be created and parsed, including nearly three dozen Type 6 and 8 Application-Specific Messages (ASMs). The README.TXT file provides details about the package and each file has a help message (use the -h or --help switch). These programs, although relatively stable, continue to be under development. See also my <a href="../library/ais_pi.html" target="_blank"> "AIS Research Using a Raspberry Pi"</a> page.<br>
+<font size=-2>[MD5: b6acc79d945bad75dd21af7c27c458db | SHA1: 877fa51ba34d856b5d1a9f7e79b7e65273f062da]</font></li>
+<ul>
+<li><i>AIS_menu.pl</i> (v4.8.9, 04/04/2024) is a preprocessor to create an input command line to AIS Ping.</li>
+<li><i>AIS_ping.pl</i> (v7.3.7, 03/04/2024) creates custom AIS messages; the program produces output for AIS NMEA or for the GnuRadio program found in the AIS BlackToolkit.</li>
+<li><i>AIS_NMEA.pl</i> (v5.4.4, 01/02/2023) accepts the binary output from AIS Ping to form NMEA_formatted AIS sentences.</li>
+<li><i>AIS_parser.pl</i> (v4.8.6, 11/09/2023) decodes an NMEA binary string or AIS sentence to display the contents, field by field.</li>
+<li><i>parser2html.pl</i> (v1.5, 05/11/2019) produces an HTML file from the output of the parser program.</li>
+<li><i>ais_tools.sh</i> is a Linux/Unix script file that will auto-run AIS_menu, AIS_ping, and AIS_NMEA.</li>
+<li><i>ais_tools.bat</i> is a Windows batch file that will auto-run AIS_menu, AIS_ping, and AIS_NMEA. (Contributed by Glenn Dardick.)</li>
+<li><i>MaritimeIdentificationDigits-ITU.csv</a></i> (05/21/2022) contains a list of Maritime Identification Digits (MID) codes for use with the AIS Parser.</li>
+<li><i>README.TXT</i> (11/06/2023) is the README file for these programs. It is essential reading to understand how the programs work and, in particular, how they work together. It also contains detailed information about what parameters are used with what message types, all message formats, and even a few programming notes to make the code a bit more understandable.</li>
+</ul>
+<li><p id="timestamp"><i><a href="timestamp_data_latest.zip">timestamp_data</a></i> (v2.2, 09/14/2019): A small Perl program that can connect to a TCP or UDP socket on a local or remote host, and read a data stream for a specified amount of time. This was intended to read AIS sentences from a program such as OpenCPN and add timestamps. Output is directed to a "|"-separated file that also contains a timestamp of when the data was received. Users can, optionally, also see the data in real-time. Use the --help (or -h) switch for instructions.<br>
+<font size=-2>[MD5: 79722ab1e985c0381ce33e31e6382cc5 | SHA1: fd064cf4ad3ee89b66c69dcced918caa55f66266]</font></li>
+<li><p id="play"><i><a href="play_ais_latest.zip">play_ais</a></i> (v2.4.3, 04/25/2024): A Perl program that can read AIS sentences with a timestamp from a file, then connect to a TCP or UDP socket on a local or remote host, and replay the data stream in relative real-time. This is intended to read the output from timestamp_data.pl but can read any file that has records with a timestamp (seconds) and an AIS message. Also intended to send output to chartplotter software such as <a href="https://opencpn.org/" target="_blank"> OpenCPN</a>. Use the --help (or -h) switch for instructions.<br>
+<font size=-2>[MD5: dfa38849408f1154cb7c0eced89f2b75 | SHA1:  8a73e20343df494bc7362e1b413e5ef92d88bdf9]</font></li>
+</ul>
+</li>
+
+<li><p id="parsers"><b>Boot record and other parsers</a></b>: These are a number of programs that parse a variety of file system and other logical structures. All of the programs are written in Perl:</p>
+<ul>
+<li><i><a href="apmparser_v1.5.zip">apmparser</a></i> (v1.5, 3/14/2013) parses an Apple Partition Map (APM)<br>
+<font size=-2>[MD5: 590e3edf6c5d3017d68768265bfb2f10 | SHA1: 53f824ab07d6621dfeded5ee907186bb523143b8]</font></li>
+<li><i><a href="bsparser_v3.1.zip">bsparser</a></i> (v3.1, 3/13/2013) parses a FAT or NTFS boot sector<br>
+<font size=-2>[MD5: c3cc1a6a8ead08eabdcbc9c5d1375049 | SHA1: e210994cebdffbe079f934de1ccd9bb2229a3619]</font></li>
+<li><i><a href="dirparser_v2.1.zip">dirparser</a></i> (v2.1,01/03/2018) parses a FAT directory<br>
+<font size=-2>[MD5: cd3f1ee8cef58e6eb5491931537761b9 | SHA1: 9d15d4a6319ac60fc925b60010445b7b75cb40e8]</font></li>
+<li><i><a href="fatparser_v2.1.zip">fatparser</a></i> (v2.1, 07/01/2016) parses a FAT12, FAT16, or FAT32 table. Output can be directed to the screen or CSV file.<br>
+<font size=-2>[MD5: c19e7d9774f9d1b79992b5803303ed9b | SHA1: 0f155a7193f000697599213b1255b16d91ab82ef]</font></li>
+<li><i><a href="gptparser_v1.4beta.zip">gptparser</a></i> (v1.4beta, 3/14/2013) parses a GUID Partition Table (GPT) header<br>
+<font size=-2>[MD5: f0dcf44dd888e985461e455ca9f1cfcb | SHA1: 5fe142bf783ffdab829291a91a46c5095fa2403a]</font></li>
+<li><i><a href="info2parser_v1.4.zip">info2parser</a></i> (v1.4, 4/9/2013) parses an NTFS INFO2 file<br>
+<font size=-2>[MD5: 3a31e5bce5fa103e16304f89fb514e1f | SHA1: 04d1e967a19c0fb30ce75bab3284826c321e93aa]</font></li>
+<li><i><a href="mbrparser_v2.1.zip">mbrparser</a></i> (v2.1, 3/13/2013) parses a standard DOS/Windows Master Boot Record (MBR)<br>
+<font size=-2>[MD5: 8fa2f1654b956c4c8870cdba4de3b8b1 | SHA1: b6cee0e7eb35a0a499d1d0e18bd78dd719bcc6af]</font></li>
+<li><i><a href="mftparser_v2.1.zip">mftparser</a></i> (v2.1, 6/11/2013) parses NTFS Master File Table (MFT) records<br>
+<font size=-2>[MD5: 0a5d22d2e513f45befd1da30706e2b39 | SHA1: abc17f54c64ae6422c33e1f2d04658a0d2d82b2a]</font></li>
+</ul>
+</li>
+
+<li><p id="cisco7"><b><a href="cisco7_v1.0a.zip">cisco7</a></b> (v1.0a, 4/24/2012): Two programs -- one in C and one in Perl -- that "cracks" a Cisco Type 7 password. Not much to the cracking, actually, since the password is merely an XOR applied to the password and a fixed string. Well, read more in the README file or in my <a href="../library/crypto.html#stream" target="_blank"> crypto paper</a>.<br>
+<font size=-2>[MD5: 48aaf634c34052e08254c996245b8df2 | SHA1: 963297758563a34120d7d2e64cabf6dce2c30b71]</font></p></li>
+
+<li><p id=="entropy"><b><a href="entropy_v1.5.zip">entropy</a></b> (v1.5, 03/30/2017): This Perl program calculates the entropy (randomness) of a given file. The program displays entropy as a value from 1-8, and can optionally show a histogram and/or percentage of each of the 256 values of the bytes in the file.<br>
+<font size=-2>]MD5: 0344ce782ec607dcaf56f7c49f03e35d | SHA1: 28133f52f10d88449fdf1ea0ea376c4d2a0e4e47]</font></p></li>
+
+<li><p id="filesigs"><b><a href="FileSigs.zip">FileSigs</a></b> (06/03/2023): This ZIP archive contains versions of my <a href="../library/file_sigs.html" target="_blank"> File Signatures Table</a> in a format usable by AccessData's Forensic Toolkit (FTK)<sup>&reg;</sup>, <a href="https://github.com/sleuthkit/scalpel" target="_blank"> Scalpel</a> (supported for historical purposes only), Tim Coakley's <a href="http://www.simplecarver.com/" target="_blank"> Simple Carver</a> and Simple Carver Lite, and Marco Pontello's <a href="http://mark0.net/soft-trid-e.html" target="_blank"> TrID - File Identifier</a> utility, as well as raw comma-delimited (CSV) and JSON text files. The _README.txt file describes how the files can be used and their formats. <i>If there are other useful formats, please let me know and I will try to accomodate.</i><br>
+<font size=-2>[MD5: 21add6332fd66798095dd84a108426fb | SHA1: 91606b61a69fd763bc18188cdb745ec586996ff8]</font></p></li>
+
+<li><p><b><a href="include_v2.2.zip">include</a></b> (v2.2, 2/2/2011): For good or for bad, I have been writing my own HTML code since about 1993. This program is a small Perl script that allows you to insert a small block of HTML code into multiple HTML files without the use of server-side scripting or that kind of stuff. As an example, all of the main pages on the GKA Web site have a consistent left navigation bar; it has the look and feel of using frames but each page is actually stand-alone. I can change the leftnav bar on all of the site's pages in a few seconds merely by updating a file that contains just the leftnav code and running a script that inserts the new code into the HTML files. The Perl program and documentation are in the ZIP file.<br>
+<font size=-2>[MD5: 8ff5ada1ab89fe7a2ee6eaf81f269ff1 | SHA1: 369166f4f1d273f776b9a1729ab62d072428ec89]</font></p></li>
+
+<li><p id="livesystem"><b><a href="LiveSystem_v5.0a.zip">LiveSystem</a></b> (v5.0a, 02/28/2015): This ZIP file contains a set of free utilities from a variety of sources that can be used to acquire volatile data from a running Windows system. The type of information includes currently open TCP/UDP ports and the processes associated with those ports, currently logged on users, running processes, and more! Read the _README.TXT file for more information.<br>
+<font size=-2>[MD5: cefd3114da216e621673e44487ec61f4 | SHA1: 3fbdd731ca690561f645de4d846d9760f7f393f2]</font></p></li>
+
+<li><p id="Luhn"><b><a href="Luhn_test_v1.4.zip">Luhn Test</a></b> (v1.4, 07/20/2014): This Perl program will inspect a numeric string &#151; ostensibly a credit card number &#151; and indicate whether it is valid per the Luhn algorithm, the scheme commonly used to validate credit card numbers. In addition, if the number is a valid Luhn value, it is checked against a list of credit card format templates to see whether it could be an actual valid credit card number. Run with the <i>-h</i> switch for more information; some sample numbers are provided for testing.<br>
+<font size=-2>[MD5: 9fd1fd1b8438840d4c24395497f0cd59 | SHA1: d30dc81a24e3d04949da2fa20925f2755c01fa54]</font></p></li>
+
+<li><p id="manual_crypto"><b><a href="ManualCrypto_v0.8.05.zip">Manual Cryptography</a></b> (v0.8.05, 06/08/2018): A Perl program that implements a variety of manual crypto schemes, including the (misnamed) Vigen&egrave;re cipher, Autokey cipher, Beaufort cipher, ADFGVX, and one-time pad. Good for playing around....<br>
+<font size=-2>[MD5: f6b82e0adaf535318a39330cbcabbe22 | SHA1: 0bbfdd6ad1721d98b98f136f11dd02e9224e26eb]</font></p></li>
+
+<li><p id="picturealbum"><b><a href="PictureAlbum_v4.4.zip">PictureAlbum</a></b> (v4.4, 03/15/2019): Picture Album is a Perl program that provides a simple way to take directories of pictures and create an HTML-formatted album suitable for posting on a Web site; one example of such a photo album can be found at <a href="https://scuba.garykessler.net/photos/index.html" target="_blank">GCK's SCUBA Photos</a>. PictureAlbum will organize photographs by directory, showing a series of thumbnail images that are hot-linked to full-size images. A user manual describes how to set up the directories. <b>NOTE: This program requires that <a href="http://www.imagemagick.org/script/index.php" target="_blank"> ImageMagick</a> be installed on your computer.</b><br>
+<font size=-2>[MD5: e78672ca24ad16a0f98c22dcce77d6e9 | SHA1: 99b7e1fc1d03a66cba566d255600db0e6d8b6c31]</font></p></li>
+
+<li><p id="picturereporter"><b><a href="PictureReporter_v2.1.zip">PictureReporter</a></b> (v2.1, 02/19/2016): Picture Reporter is a Perl program that offers a simple way to take directories of pictures and create an HTML-formatted report. This was designed primarily for digital forensics examiners who might take a series of screen shots, for example, categorizing the pictures by placing them in different subdirectories. PictureReporter will organize the pictures by directory, showing a series of thumbnail images that are hot-linked to full-size images. A user manual describes how to set up the directories.<br>
+<font size=-2>[MD5: faec37011e70a699139fce34223a9358 | SHA1: 8737fa4315709adf53ba787bc4a5c252554de121]</font></p></li>
+
+<li><p id="pingsweep"><b><a href="pingsweep_v1.6.zip">pingsweep</a></b> (v1.6, 12/22/2015): A simple Perl program that pings a range of hosts in a Class C address range. Use the <i>-h</i> switch for the help file.<br>
+<font size=-2>[MD5: 863b76dc8dd728eda89b8a755c25cf61 | SHA1: db00a9b875177ddf5e5808403f5f364252f4278e]</font></p></li>
+
+<li><p id="RC4"><b><a href="RC4_v1_3.zip">RC4</a></b> (v1.3, 11/23/2012): RC4 is a simple Perl implementation of the Rivest Cipher 4 (or Ron's Code 4) algorithm. The program is intended as a teaching tool rather than as a serious encryption application since it does not protect the key in any way, such as erasing it from RAM after use. Use the <i>-h</i> switch to get a list of program options or the <i>-a</i> switch to learn how the program works.<br>
+<font size=-2>[MD5: 1b41ea3771c243f2a9a8d50990bff703 | SHA1: 91c0e133c2ce42578926657d52dba6a9e56849df]</font></p></li>
+
+<hr width=50%>
+<li><p id="scuba"><b>SCUBA-related utilities</b>: See the online browser-based versions of my Dive Table Calculators (PADI and NAUI), Nitrox MOD Calculators (PADI and NAUI), and EAN Partial Pressure Mixing Calculators (psi and bar) at <a href="https://scuba.garykessler.net/resources.html" target="_blank"> my SCUBA Resources page</a>.</li>
+
+<li><p id="EAN"><b><a href="EAN_gas_mix_v3.1.zip">EAN Gas Mix Calculator</a></b> (v3.1, 06/23/2015): This Excel spreadsheet is a utility for partial pressure gas blending for Enhanced Air Nitrox mixes. Given a starting pO2 and tank pressure, and desired pO2 and tank pressure, the spreadsheet will indicate how much fill gas to add, followed by top off gas. Fill gas and top off gas default to 100% O<sub>2</sub> and air (20.9% O<sub>2</sub>), respectively, but these parameters can be changed in the spreadsheet. One tab of the spreadsheet shows calculations in <i>psi</i> and another tab in <i>bar</i>.<br>
+<font size=-2>[MD5: 7a9b78b0170f828811948ada857bb0b2 | SHA1: 1796ea02d553d4dc6988e8aed77f7d375640011d]</font></p>
+
+<li><p id="latlong"><b><a href="DMS_GPS_Decimal.xlsx">Latitude/Longitude Coordinate Converter</a></b> (v1.0, 2/17/2012): This Excel spreadsheet converts between degree/minute/second (D&#176;M"S'), GPS (D&#176;M.MMM), and decimal (D.DDD&#176;) formats for expressing latitude and longitude.<br>
+<font size=-2>[MD5: f5f38218531f3883213739f6810a36c9 | SHA1: 5d83827a4223ce0ebc644f3d05a6d9a629bc396d]</font></p></li>
+</ul>
+<br>
+
+<hr width=50%>
+<blockquote>
+<center><h4 id="l&w">License and Warranty</h4></center>
+<img src="../images/MIT_license.png" align="right" height=72 width=97>
+<p>
+Effective 0001 UTC, 21 November 2019, all software on this page is distributed as <a href="http://opensource.org/docs/definition.php" target="_blank"> open source</a> under the <a href="https://opensource.org/licenses/MIT" target="_blank"> The MIT License</a>.</p>
+<p>
+Copyright 2019-<script>document.write(new Date().getFullYear())</script> Gary C. Kessler (gck@garykessler.net)</p>
+<p>
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</blockquote>
+
+<hr width=50%>
+<blockquote>
+<!-- Start of footer common code -->
+<!--#INCLUDE footer.txt -->
+<font size=-2>
+<p align="justify"><b>All material on this site &copy; 1996-<script>document.write(new Date().getFullYear())</script>, Gary C. Kessler.</b> All rights reserved. Permission to use the material on this site is extended for individual personal use and for non-commercial distribution, as long as appropriate attribution is provided and the information is not altered in any way without express written permission from the author.</p>
+</font>
+
+<!--#EOI -->
+</blockquote>
+<hr>
+<br><br>
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+</body>
+</html>
+ contentType 9 text/html url 51 https://www.garykessler.net:443/software/index.html responseCode 3 200 

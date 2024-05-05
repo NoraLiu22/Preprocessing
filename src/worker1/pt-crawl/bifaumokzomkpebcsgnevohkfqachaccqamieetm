@@ -1,0 +1,666 @@
+bifaumokzomkpebcsgnevohkfqachaccqamieetm length 5 19111 page 19111 
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Meta info -->
+		<meta charset="UTF-8">
+		<meta name="language" content="english">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<meta name="author" content="NASA Scientific Visualization Studio">
+		<meta
+			name="description"
+			content="
+	Search through the works of the NASA Scientific Visualization Studio and its content partners.
+"
+		>
+		<meta
+			name="keywords"
+			content="NASA, SVS, Scientific Visualization Studio, Scientific Visualization, 
+	search, visualizations, animations, movies, images, repository, database
+"
+		>
+
+		<!-- Open graph protocol properties --> 
+		<meta property="og:title" content="
+	SVS Search
+">
+		<meta property="og:type" content="
+	website
+">
+		<meta property="og:image" content="/static/svs/images/nasa-meatball.svg">
+		<meta property="og:description" content="
+	Search through the works of the NASA Scientific Visualization Studio and its content partners.
+">
+		
+		
+		
+		<meta property="og:url" content="https://svs.gsfc.nasa.gov/search/">
+		<meta property="og:locale" content="en_US">
+		<meta property="og:site_name" content="NASA Scientific Visualization Studio">
+
+		<!-- json-ld properties -->
+		<script type="application/ld+json">
+		
+	{
+	"@context": "http://schema.org",
+	"@type": "WebPage",
+	"headline": "Search",
+	"url": "https://svs.gsfc.nasa.gov/search/",
+	"thumbnailUrl": "/static/svs/images/nasa-meatball.svg"
+	}
+
+		</script>
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="/static/svs/images/favicon.ico">
+
+		<!-- Tab title -->
+		<title>
+	NASA SVS | Search
+</title>
+
+		<!-- Resources -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+			onerror="document.write(`<script src='/static/svs/js/jquery-3.6.0.min.js'>\x3C/script>`)"
+		>
+		</script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"
+			onerror="document.write(`<script src='/static/svs/js/underscore-umd-min.js'>\x3C/script>`)"
+		>
+		</script>
+		
+	<script
+		src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"
+		onerror="document.write(`<script src='/static/svs/js/jquery.mark.min.js'>\x3C/script>`)"
+	></script>
+
+
+		<!-- Stylesheets -->
+		<link href="/static/svs/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/svs/css/bootstrap-icons.min.css" rel="stylesheet">
+		<link href="/static/svs/css/style.css" rel="stylesheet">
+		
+	<link href="/static/search/css/style.css" rel="stylesheet">
+
+	</head>
+	<body>
+		<header>
+			<!-- Top navigation bar -->
+			<nav id="top-navbar" class="navbar navbar-expand-md navbar-dark position-fixed">
+				<div class="container-fluid">
+					<!-- NASA brand -->
+					<a class="navbar-brand p-0 m-0" href="https://www.nasa.gov/">
+						<img
+							src="/static/svs/images/nasa-meatball.svg"
+							alt="NASA Logo"
+							height="40px"
+						>
+					</a>
+
+					<span class="d-flex flex-nowrap overflow-hidden">
+						
+							<!-- SVS brand -->
+							<a class="navbar-brand py-0 px-2 m-0 svs-brand svs-brand-svs" href="/">Scientific Visualization Studio</a>
+						
+
+						
+							
+						
+					</span>
+
+					<!-- Toggle button for collapsed navbar links -->
+					<button
+						class="navbar-toggler ms-auto"
+						type="button"
+						data-bs-toggle="offcanvas"
+						data-bs-target="#navbar-offcanvas"
+						aria-controls="navbar-offcanvas"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<!-- Nav links + search box -->
+					<div class="offcanvas offcanvas-end text-bg-dark flex-shrink-0 flex-grow-1" tabindex="-1" id="navbar-offcanvas">
+						<div class="offcanvas-header position-absolute top-0 end-0">
+							<button type="button" class="btn-close btn-close-white p-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+						<div class="offcanvas-body">
+							<ul class="navbar-nav ms-auto justify-content-end">
+								<!-- Nav links -->
+								
+									
+									<li class="nav-item">
+										<a class="nav-link" href="/gallery/the-galleries/"><span class="bi bi-images" aria-hidden="true"></span> Galleries</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/help/"><span class="bi bi-question-circle" aria-hidden="true"></span> Help</a>
+									</li>
+								
+								
+								
+								
+									<!-- Search box -->
+									<form id="navbar_search_form" class="ps-0 ps-md-2" role="search" action="/search" method="get">
+										<div class="input-group flex-nowrap w-100">
+	
+		
+		<input
+			type="text"
+			id="navbar_search_box"
+			class="form-control ckempty border border-end-0  text-light bg-dark border-light"
+			name="search"
+			value=""
+			placeholder="Search..."
+			aria-label="Search..."
+		>
+		<button
+			id="navbar_search_box_clear"
+			type="reset"
+			class="btn btn-primary border-start-0 border border-end-0 pe-1 bg-dark border-light"
+			title="Clear search text"
+			aria-label="Clear search text"
+			
+			onclick="$('#navbar_search_box').val('')"
+			
+		>
+			<span
+				class="bi bi-backspace text-light"
+				aria-hidden="true"
+			> </span>
+		</button>
+		<button
+			id="navbar_search_box_submit"
+			type="submit"
+			title="Search!"
+			aria-label="Search!"
+			class="btn btn-primary border border-start-0 pe-3 bg-dark border-light"
+		>
+			<span
+				class="bi bi-search text-light"
+				aria-hidden="true"
+			> </span>
+		</button>
+	
+</div>
+
+									</form>
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main class="flex-fill">
+			<div id="alerts" class="position-fixed w-100" style="z-index: 999">
+				<div class="m-2 m-md-3 m-lg-4">
+					
+						
+
+					
+					
+						
+					
+				</div>
+			</div>
+			<div id="main-container" class="position-relative container-xl py-2">
+				
+	<h1 class="visually-hidden">Search</h1>
+	<form id="search_form" method="POST">
+		<input type="hidden" name="csrfmiddlewaretoken" value="rG5ENFW3douyOi95lqfA2JG2wXx28HnMq8jOJo70GJ3BTqv5BP9GcURh1IyxXAKi">
+		<section id="search_box">
+			<div class="row g-2 mb-2">
+				<h2 class="visually-hidden">Search Box</h2>
+				<!-- Search box -->
+				<div class="col-12 order-1">
+					<div class="input-group flex-nowrap w-100">
+	
+		
+			<button
+				id="id_search_help"
+				type="button"
+				class="btn btn-primary border border-end-0 bg-transparent border"
+				title="Help"
+				aria-label="Help"
+				data-bs-toggle="tooltip"
+				data-bs-placement="bottom"
+				data-bs-html="true"
+				data-bs-title="&lt;div class=&#x27;text-start&#x27;&gt;
+	Advanced search options
+	&lt;ul&gt;
+		&lt;li&gt;
+			&lt;b&gt;Specific phrases&lt;/b&gt;:
+			&lt;br&gt;
+			&lt;i&gt;&amp;quot;Apollo 11&amp;quot;&lt;/i&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;b&gt;Excluded terms&lt;/b&gt;:
+			&lt;br&gt;
+			&lt;i&gt;-Moon&lt;/i&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;"
+			>
+				<span
+					class="bi bi-question-circle text-body"
+					aria-hidden="true"
+				> </span>
+			</button>
+		
+		<input
+			type="text"
+			id="id_search"
+			class="form-control ckempty border border-end-0 border-start-0 text-body bg-transparent border"
+			name="search"
+			value=""
+			placeholder="Search..."
+			aria-label="Search..."
+		>
+		<button
+			id="id_search_clear"
+			type="reset"
+			class="btn btn-primary border-start-0 border border-end-0 pe-1 bg-transparent border"
+			title="Clear search text"
+			aria-label="Clear search text"
+			
+			onclick="$(&#x27;#id_search&#x27;).val(&#x27;&#x27;); $(&#x27;#search_form&#x27;).trigger(&#x27;submit&#x27;);"
+			
+		>
+			<span
+				class="bi bi-backspace text-body"
+				aria-hidden="true"
+			> </span>
+		</button>
+		<button
+			id="id_search_submit"
+			type="submit"
+			title="Search!"
+			aria-label="Search!"
+			class="btn btn-primary border border-start-0 pe-3 bg-transparent border"
+		>
+			<span
+				class="bi bi-search text-body"
+				aria-hidden="true"
+			> </span>
+		</button>
+	
+</div>
+				</div>
+				<!-- Sort by -->
+				<div class="col-12 col-md-6 order-2">
+					<div class="input-group flex-nowrap w-100">
+	
+		
+			<input
+				id="id_sort_by_0"
+				name="sort_by_0"
+				value=""
+				class="d-none"
+				aria-hidden="true"
+				aria-label="Order input"
+			>
+			<button
+				class="btn btn-primary bg-transparent border border-end-0 rounded-start "
+				title="Toggle sort direction"
+				onclick="
+					let order = $('#id_sort_by_0')
+					if(order.val() === 'ASC') {
+					order.val('DESC');
+					} else {
+					order.val('ASC');
+					}
+					order.change()
+					"
+			>
+				
+					<i class="bi bi-sort-down me-2 text-body" aria-label="Toggle order; currently descending order"></i>
+				
+				<span class="text-body" aria-hidden="true">Sort by:</span>
+			</button>
+		
+	
+	
+		<select
+			id="id_sort_by_1"
+			name="sort_by_1"
+			class="form-control "
+			aria-label="Sort category"
+		>
+			
+			
+				
+				
+					
+						<option value="release_date">Release date</option>
+
+					
+				
+				
+			
+				
+				
+					
+						<option value="popularity">Popularity (last 10 days)</option>
+
+					
+				
+				
+			
+				
+				
+					
+						<option value="id">Page ID</option>
+
+					
+				
+				
+			
+		</select>
+	
+</div> 
+				</div>
+				<!-- Links -->
+				<div class="col col-md-6 order-5 order-md-3">
+					<ul class="list-unstyled hstack gap-2">
+						<li class="ms-auto">
+							<a
+								href="/api/search/?people=Justin+Kasper"
+								target="_blank"
+								class="btn btn-sm p-0 fs-4"
+								title="View the current search in our API"
+								aria-label="View the current search in our API"
+							>
+								<span class="bi bi-file-earmark-code" aria-hidden="true"></span>
+							</a>
+						</li>
+						<li class="vr"></li>
+						
+
+<li>
+	
+
+
+	<button
+		type="button"
+		class="btn btn-sm p-0 fs-4"
+		onclick="
+			tooltip = bootstrap.Tooltip.getOrCreateInstance($(this));
+			navigator.clipboard.writeText('https://svs.gsfc.nasa.gov/search/');
+			tooltip.show();
+			setTimeout(function () { tooltip.hide(); }, 800);
+			"
+		title="Copy a link to this page"
+		tabindex="0"
+		aria-label="Copy a link to this page"
+		data-bs-title="Copied!"
+		data-bs-trigger="manual"
+	><span class="bi bi-link-45deg" aria-hidden="true"></span></button>
+
+
+</li>
+<li>
+	<a
+		href="https://twitter.com/intent/tweet"
+		target="_blank"
+		class="btn p-0"
+		title="Share this page on Twitter"
+	>
+		<span class="bi bi-twitter fs-4" aria-hidden="true"></span>
+	</a>
+</li>
+<li>
+	
+	<a
+		href="https://www.facebook.com/share.php?u=https%3A//svs.gsfc.nasa.gov/search/%3Fpeople%3DJustin%2BKasper"
+		target="_blank"
+		class="btn p-0"
+		title="Share this page on Facebook"
+	>
+		<span class="bi bi-facebook fs-4" aria-hidden="true"></span>
+	</a>
+</li>
+
+						<li class="vr"></li>
+						<li>
+							<div class="hstack gap-2">
+								<span class="bi bi-rss fs-4" aria-hidden="true"></span>
+								<div class="vstack">
+									<a
+										href="/api/search/rss?people=Justin+Kasper"
+										target="_blank"
+										class="link small"
+										title="View the current search as an RSS feed"
+									>
+										(RSS)
+									</a>
+									<a
+										href="/api/search/atom?people=Justin+Kasper"
+										target="_blank"
+										class="link small"
+										title="View the current search as an Atom feed"
+									>
+										(Atom)
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- Toggle filters button (on mobile) -->
+				<div class="col-auto order-4 d-block d-xl-none">
+					<button
+						class="btn btn-primary"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#filters"
+						aria-controls="filters"
+					>
+						<span class="bi bi-funnel-fill" aria-hidden="true"></span> Filters <span class="bi bi-chevron-compact-down" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+		</section>
+		<div class="row g-2 gx-3">
+			<section id="filters" class="collapse d-xl-block order-3 order-md-1 col-xl-3">
+				<h2 class="visually-hidden">Filters</h2>
+				<div class="vstack gap-2">
+					<div id="filters_loader" class="position-relative w-100 overflow-hidden" aria-label="Loading...">
+						<div class="position-absolute w-100 h-100">
+							<div class="d-flex justify-content-center align-items-center w-100 h-100">
+								<div class="loader"></div>
+							</div>
+						</div>
+						<div class="placeholder-wave">
+							<div class="card border-0 placeholder bg-gray-300 w-100" style="height: 540px"></div>
+						</div>
+					</div>
+					<div
+						id="filters_results"
+						class="card card-body bg-gray-300 border-0"
+						style="display: none"
+						data-url="/api/search/filters/sidebar/?people=Justin+Kasper"
+					>
+						
+						<ul class="list-unstyled hide-last-hr vstack mb-0 w-100">
+							<!-- This gets filled in with the filters once they're fetched via AJAX -->
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section id="results" class="order-4 col-xl-9">
+				<h2 class="visually-hidden">Results</h2>
+				<section id="results_count">
+					<div id="results_count_loader" class="position-relative w-100 overflow-hidden mb-0" aria-label="Loading...">
+						<div class="position-absolute w-100 h-100">
+							<div class="d-flex justify-content-center align-items-center w-100 h-100">
+								<div class="loader"></div>
+							</div>
+						</div>
+						<div class="placeholder-wave">
+							<div class="card border-0 bg-gray-300 placeholder w-100" style="height: 80px"></div>
+						</div>
+					</div>
+					<div id="results_count_results" data-url="/api/search/results/count/?people=Justin+Kasper">
+
+					</div>
+				</section>
+				
+				<section id="results_list">
+					 
+
+
+
+<div id="search_form_results" class="item-list-ajax-wrapper">
+	<input type="hidden" id="search_form_results_var_can_load" value="true">
+	<input type="hidden" id="search_form_results_var_is_loading" value="false" class="item-list-ajax-trigger">
+	<input type="hidden" id="search_form_results_var_chunk" name="chunk" value="0">
+	<input type="hidden" id="search_form_results_var_url" value="/api/search/results/list">
+	<input type="hidden" id="search_form_results_var_params" value="people=Justin+Kasper">
+	
+	
+	<div class="vstack gap-2 mt-2">
+		<h3 class="visually-hidden">Results</h3>
+		<ul id="search_form_results_results" class="list-unstyled vstack gap-2 mb-0" style="display: none">
+			<!-- This gets filled in with the actual items while they're fetched via AJAX -->
+		</ul>
+		<div id="search_form_results_loader" class="list-item list-item-body position-relative overflow-hidden" aria-label="Loading...">
+			<div class="position-absolute w-100 h-100">
+				<div class="d-flex justify-content-center align-items-center h-100">
+					<div class="loader"></div>
+				</div>
+			</div>
+			<div class="placeholder-wave">
+				<div class="card list-item list-item-body border-0 bg-gray-300 placeholder w-100"></div>
+			</div>
+		</div>
+		<div id="search_form_results_no_results_warning" class="w-100 h-100 position-relative" style="display: none;">
+			<div class="d-flex justify-content-center align-items-center h-100">
+				<h4 class="fs-3 my-auto">No results.</h4>
+			</div>
+		</div>
+		<div id="search_form_results_end_of_results_warning" class="w-100 h-100 position-relative" style="display: none;">
+			<div class="d-flex justify-content-center align-items-center h-100">
+				<div class="hstack gap-2 fs-3">
+					<h4 class="fs-3 mb-0">You've reached the edge of the universe!</h4>
+					<span class="vr"></span> <a href="#" class="link" onclick="scrollToTop()">Back to top<span class="bi bi-chevron-bar-up ms-2" aria-hidden="true"></span></a>
+				</div>
+			</div>
+		</div>
+		<div id="search_form_results_error_warning" class="w-100 h-100 position-relative" style="display: none;">
+			<div class="d-flex justify-content-center align-items-center h-100">
+				<h4 class="fs-3 my-auto">An error occurred. Please reload this page and try again.</h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+				</section>
+			</section>
+		</div>
+		<!-- Scroll top button -->
+		<div id="scroll_top_button" class="position-fixed bottom-0 end-0 p-4" style="display: none; z-index: 103">
+			<a href="#" class="btn btn-primary" onclick="scrollToTop()">Back to top <span class="bi bi-chevron-bar-up" aria-hidden="true"></span></a>
+		</div>
+	</form>
+
+			</div>
+		</main>
+		<footer>
+			<!-- Footer Javascript -->
+			
+				
+				<script id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC&yt=true&dclink=true"></script>
+				<script id="parsely-cfg" src="https://cdn.parsely.com/keys/svs.gsfc.nasa.gov/p.js" async="" defer=""></script>
+			
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+				onerror="document.write(`<script src='/static/svs/js/bootstrap.bundle.min.js'>\x3C/script>`)"
+			></script>
+
+			<script src="/static/svs/js/script.js"></script>
+			
+	<script src="/static/svs/js/item-lists.js"></script>
+
+	<script src="/static/search/js/script.js"></script>
+
+
+			<!-- Bottom navigation bar -->
+			<nav id="bottom-navbar" class="navbar navbar-dark text-light">
+				<div class="container">
+					<div class="row w-100">
+						<!-- Brands -->
+						<div class="col-12 col-lg d-flex justify-content-center align-items-center">
+							<!-- NASA brand -->
+							<a href="https://www.nasa.gov/" class="link">
+								<img src="/static/svs/images/nasa-meatball.svg" height="60" alt="NASA Home Page">
+							</a>
+							<!-- USA.gov brand -->
+							<a
+								href="https://www.usa.gov/" class="link"
+							>
+								<img src="/static/svs/images/USAgov_logo.svg" height="60" alt="USA.gov Home Page">
+							</a>
+						</div>
+						<hr class="d-block d-lg-none my-2">
+						<div class="col-12 col-sm d-flex align-items-center">
+							<!-- Privacy and guidelines links -->
+							<div class="text-sm-end w-100">
+								
+									<div class="navbar-text">
+										<a href="https://www.nasa.gov/about/highlights/HP_Privacy.html" class="link link-light">Privacy Policy and Important Notices</a>
+										<br>
+										<a href="https://www.nasa.gov/multimedia/guidelines/index.html" class="link link-light">Reproduction Guidelines</a>
+									</div>
+								
+							</div>
+						</div>
+						<div class="col-auto d-none d-sm-flex align-items-center justify-content-center">
+							<div class="vr h-100 start-50"></div>
+						</div>
+						<div class="col-12 col-sm d-flex align-items-center">
+							<!-- Contact links -->
+							<div class="text-sm-start w-100">
+								
+									<div id="site-contacts" class="navbar-text">
+										<div>
+	NASA Official: <span class="email-link flex-nowrap" data-user="mark.u.subbarao" data-linktext="Mark SubbaRao"></span>
+</div>
+
+										
+											<div>
+	SVS Contact: <span class="email-link flex-nowrap" data-user="alex.kekesi" data-linktext="Alex Kekesi"></span>
+</div>
+
+										
+										<div>
+	Site Curator: <span class="email-link flex-nowrap" data-user="ella.kaplan" data-linktext="Ella Kaplan"></span>
+</div>
+
+										
+	<div>
+	Web Page Design: <span class="email-link flex-nowrap" data-user="leann.m.johnson" data-linktext="Leann Johnson"></span>
+</div>
+
+
+									</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</footer>
+	</body>
+</html>
+ contentType 9 text/html url 60 https://svs.gsfc.nasa.gov:443/search/?people=Justin%20Kasper responseCode 3 200 

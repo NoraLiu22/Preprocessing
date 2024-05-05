@@ -1,0 +1,198 @@
+mmtktovepkwqmoggkmpojaxobgbejevskakgvopo length 4 7927 page 7927 <!DOCTYPE html>
+<html lang="en">
+    <head prefix="
+        og: http://ogp.me/ns#
+        profile: http://ogp.me/ns/profile#
+        article: https://ogp.me/ns/article#
+        book: https://ogp.me/ns/book#
+        music: https://ogp.me/ns/music#
+        video: https://ogp.me/ns/video#
+    ">
+        <meta charset="utf-8"/>
+        <title>Research Portal</title>
+        <base href="/esploro/"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="index, follow" name="robots"/>
+        <style type="text/css">
+            .loader-container {
+                display: flex;
+                position: fixed;
+                z-index: 1;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                inset: 0;
+            }
+
+            esp-root:not(:empty) + .loader-container {
+                display: none;
+            }
+
+            #esp-init-loader {
+                max-width: 100px;
+                animation: 2s linear infinite svg-animation;
+            }
+
+            @keyframes svg-animation {
+                0% {
+                    transform: rotateZ(0deg);
+                }
+
+                100% {
+                    transform: rotateZ(360deg);
+                }
+            }
+
+            @keyframes circle-animation {
+                0%,
+                25% {
+                    transform: rotate(0);
+                    stroke-dashoffset: 280;
+                }
+
+                50%,
+                75% {
+                    transform: rotate(45deg);
+                    stroke-dashoffset: 45;
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                    stroke-dashoffset: 280;
+                }
+            }
+
+            #esp-init-loader circle {
+                display: block;
+                transform-origin: 50% 50%;
+                animation: 1.4s ease-in-out infinite both circle-animation;
+                stroke-width: 10px;
+                stroke-linecap: round;
+                stroke-dasharray: 283;
+                stroke-dashoffset: 0;
+                fill: transparent;
+            }
+
+            #esp-init-loader .spinner-color-start {
+                stop-color: var(--spinner-color-start, var(--custom-accent, var(--rgb-accent-500, #d23b21)));
+            }
+
+            #esp-init-loader .spinner-color-end {
+                stop-color: var(--spinner-color-end, var(--custom-primary, var(--rgb-primary-500, #397593)));
+            }
+
+            #esp-init-loader-message {
+                display: none;
+                align-items: flex-end;
+                margin: 2rem;
+                color: #000;
+            }
+
+            #esp-init-loader-message span {
+                margin-inline-end: 1rem;
+            }
+
+            #esp-init-loader-message img {
+                max-height: 33px;
+            }
+        </style>
+    <link rel="stylesheet" href="styles.4a42b94d9deea3a9.css"></head>
+    <body>
+        <esp-root>
+            <div class="loader-container">
+                <svg height="4rem" id="esp-init-loader" viewBox="0 0 100 100" width="4rem" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gradient" x1="100%" x2="0%" y1="100%" y2="0%">
+                            <stop class="spinner-color-start" offset="0%"></stop>
+                            <stop class="spinner-color-end" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+
+                    <circle cx="50" cy="50" r="45" stroke="url(#gradient)"/>
+                </svg>
+
+                <a href="https://exlibrisgroup.com/products/esploro-research-services-platform" id="esp-init-loader-message" target="_blank">
+                    <span>Powered by</span>
+                    <img alt="ExLibris Esploro" src="assets/images/esploro-logo.png"/>
+                </a>
+            </div>
+        </esp-root>
+        <input class="ot-sdk-show-settings" id="ot-sdk-btn" type="hidden"/>
+        <script>
+            async function getConfig() {
+                const parsedUrl = new URL(window.location.href);
+                const institution = parsedUrl.searchParams.get('institution');
+                const response = await fetch(
+                    '/esplorows/rest/research/configuration' + (institution ? `?institution=${institution}` : '')
+                );
+                return response.json();
+            }
+
+            function OptanonWrapper() {}
+
+            function useVariables() {
+                if (localStorage.getItem('espHideLogo') !== 'true') {
+                    document.getElementById('esp-init-loader-message').style.display = 'flex';
+                }
+
+                const otKey = localStorage.getItem('espOneTrustKey');
+                if (localStorage.getItem('espOneTrust') === 'true' && otKey !== 'null') {
+                    const script1 = document.createElement('script');
+                    script1.id = 'otScript1';
+                    script1.src = `https://cdn.cookielaw.org/consent/${otKey}/OtAutoBlock.js`;
+                    script1.type = 'text/javascript';
+                    const script2 = document.createElement('script');
+                    script2.id = 'otScript2';
+                    script2.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
+                    script2.type = 'text/javascript';
+                    script2.charset = 'UTF-8';
+                    script2.dataset.domainScript = otKey;
+                    if (document.getElementById('otScript1') === null) {
+                        document.head.appendChild(script1);
+                    }
+                    if (document.getElementById('otScript2') === null) {
+                        document.head.appendChild(script2);
+                    }
+                }
+
+                const primaryColor = localStorage.getItem('espPrimary');
+                const accentColor = localStorage.getItem('espAccent');
+                if (primaryColor) {
+                    document.getElementById('esp-init-loader').style.setProperty('--custom-primary', primaryColor);
+                } else {
+                    document.getElementById('esp-init-loader').style.removeProperty('--custom-primary');
+                }
+                if (accentColor) {
+                    document.getElementById('esp-init-loader').style.setProperty('--custom-accent', accentColor);
+                } else {
+                    document.getElementById('esp-init-loader').style.removeProperty('--custom-accent');
+                }
+            }
+
+            useVariables();
+
+            getConfig().then((config) => {
+                const colors = config?.customization?.colors;
+                const keyMap = {
+                    espPrimary: colors?.primary,
+                    espAccent: colors?.accent,
+                    espHideLogo: config.customerParameters['hide_esploro_logo'],
+                    espOneTrust: config.featureFlags['ENABLE_ONETRUST'],
+                    espOneTrustKey: config.customerParameters['esploro_onetrust_licence_key'],
+                };
+                for (const key in keyMap) {
+                    if (keyMap[key]) {
+                        localStorage.setItem(key, keyMap[key]);
+                    } else {
+                        localStorage.removeItem(key);
+                    }
+                }
+                useVariables();
+            });
+        </script>
+    <script src="runtime.cee9208159863b08.js" type="module"></script><script src="polyfills.a1ac61ffb812e936.js" type="module"></script><script src="scripts.f160c46e935f63d7.js" defer></script><script src="main.49d915c036e30ee8.js" type="module"></script></body>
+</html>
+ contentType 9 text/html url 107 https://iro.uiowa.edu:443/esploro/outputs/doctoral/System-polarities-and-alliance-politics/9983777286802771 responseCode 3 200 

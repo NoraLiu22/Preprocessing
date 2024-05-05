@@ -1,0 +1,399 @@
+civqdihqiisehgasmcmibqdguiosomaczevaomto length 5 16755 page 16755 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CelLab</title>
+<meta name="description" content="Cellular Automata Laboratory" />
+<meta name="author" content="by Rudy Rucker and John Walker" />
+<link rel="stylesheet" href="https://www.fourmilab.ch/documents/styles/standard_screen.css"
+    type="text/css" />
+<link rel="stylesheet" href="manual/styles/cellab.css" type="text/css" />
+
+<script type="text/javascript" src="webca/scripts/casim.js">
+</script>
+<script type="text/javascript" src="webca/scripts/dialogue.js">
+</script>
+<script type="text/javascript" src="webca/scripts/display.js">
+</script>
+<script type="text/javascript" src="webca/scripts/map.js">
+</script>
+<script type="text/javascript" src="webca/scripts/palette.js">
+</script>
+<script type="text/javascript" src="webca/scripts/rule.js">
+</script>
+<script type="text/javascript" src="webca/scripts/rulemaker.js">
+</script>
+<script type="text/javascript" src="webca/scripts/ruledefs.js">
+</script>
+<script type="text/javascript" src="webca/scripts/show.js">
+</script>
+</head>
+
+<body class="standard" onload="overrideSearch='?show=logo'; casimInit();">
+
+<div style="margin-left: auto; margin-right: auto; margin-top: 1em; width: 640px;">
+<a href="webca/" class="i"
+    target="CelLabRunRule"><canvas id="display" width="640" height="200">
+<b>Your browser does not support HTML5 canvas.<br />
+   You will not be able to run <cite>CelLab</cite>
+   under this browser.</b>
+<img src="manual/figures/logo_static.png" width="640" height="200"
+    alt="CelLab" />
+</canvas></a>
+
+<h3 class="c" style="margin-top: 4px;">
+    <input type="button" id="pause" value="Start"
+    style="float: right;" onclick="pauseButton();" />
+    by
+    <a href="http://www.rudyrucker.com/">Rudy Rucker</a>
+    and <a href="/">John Walker</a>
+</h3>
+</div>
+
+<hr />
+
+<h2>Introduction (from the
+    <a href="manual/"><cite>User Guide</cite></a>)</h2>
+
+<p>
+Cellular automata (CA) are self-generating computer graphics
+movies.  The most important near-term application of cellular
+automata will be to commercial computer graphics; in five years
+you won't be able to watch television for an hour without seeing
+some kind of CA.  Three other key applications of cellular
+automata will be simulation of biological systems (artificial
+life), simulation of physical phenomena (heat-flow and
+turbulence), and the design of massively parallel computers.
+<br class="cr" />
+</p>
+
+<p>
+Most of the programs in the Rudy Rucker Cellular Automata Lab
+are two-dimensional.  In these programs the
+computer screen is divided into &ldquo;cells&rdquo;, which are
+colored rectangles or dots.  Each cell is repeatedly
+&ldquo;updated&rdquo; by changing its color to a new color. 
+The net effect of the individual updates is that you see an
+ever-evolving sequence of screens.  A graphics program of this
+nature is specifically called a cellular automaton when it is 1)
+parallel, 2) local, and 3) homogeneous.
+</p>
+
+<p>
+(1) <em>Parallelism</em> means that the individual cell updates are
+performed independently.  That is, we think of all of
+the updates being done at once.  (Strictly speaking, your computer
+only updates one cell at a time, but we use a buffer to store the new
+cell values until a whole screen's worth has been computed to refresh
+the display.)
+</p>
+
+<p>
+(2) <em>Locality</em> means that when a cell is updated, its new
+color value is based solely on the old color values of the cell and of
+its nearest neighbors.
+</p>
+
+<p>
+(3) <em>Homogeneity</em> means that all cells are updated according
+to the same rules.  Typically the color values of the cell and of its
+nearest eight neighbors are combined according to some
+logico-algebraic formula, or are used to locate an entry in a preset
+lookup table.
+</p>
+
+<p>
+Cellular automata can act as good models for physical,
+biological, and sociological phenomena because
+each person, or cell, or small region of space
+&ldquo;updates&rdquo; itself independently (parallelism), basing
+its new state on the appearance of its immediate surroundings
+(locality) and on some generally shared laws of change
+(homogeneity).
+</p>
+
+<p>
+As a simple example of a physical CA, imagine sitting at the
+edge of a swimming pool, stirring the water with your feet.  Notice how
+quickly the pool's surface is updated.  The
+&ldquo;computation&rdquo; is so fast because it is parallel: all
+the water molecules are computing at once.  And how does a
+molecule compute? It reacts to forces from its neighbors
+(locality), in accordance with the laws of physics
+(homogeneity).
+</p>
+
+<p>
+<cite>CelLab</cite> allows you to explore cellular automata on
+your own personal computer, using a simulator, <a
+href="manual/webca.html">WebCA</a>, that runs within your Web
+browser, using its JavaScript and HTML5 facilities to provide a
+high-performance emulation of cellular automata. You can <a
+href="manual/ruledef.html">define your own rules</a> by writing
+short programs in
+<a href="manual/ruledef-js.html">JavaScript</a> or
+<a href="manual/ruledef-java.html">Java</a>,
+create patterns of cells and color palettes, then run the rule
+and observe its evolution on the screen.  We supply a wide
+variety of <a href="manual/rules.html">ready-to-run rules</a>,
+simulating processes as varied as heat flow, diffusion of gases,
+annealing of metal, behavior of tubeworms on the ocean floor,
+chemical reactions, and ecosystems of artificial life.  Complete
+source code for all of these rule definitions is included in
+both JavaScript and Java, allowing you to use our rule
+definitions as the point of departure for your own experiments.
+</p>
+
+<p>
+Advanced users can customize WebCA by writing custom evaluators
+in
+<a href="manual/ruledef-eval.html">JavaScript</a>.  Custom
+evaluators can extend the simulator to handle different kinds
+of neighborhoods and visible state in cells, and even
+continuous-valued automata.  Sample evaluators are provided
+to demonstrate these capabilities.
+</p>
+
+<h2>Getting Started</h2>
+
+<p>
+The best introduction to WebCA is to watch the
+<b><a href="webca/?show=demo"
+    target="CelLabRunRule">self-running demo</a></b>,
+which will give you a taste of the kinds of cellular
+automata you can explore with WebCA and what they can
+do (the rules which appear in the demo are explained
+in the &ldquo;<a href="manual/rules.html">Sample
+Rules</a>&rdquo; chapter of the manual).
+Then dive into the <a href="manual/">User Guide</a>,
+where the first chapter is titled
+&ldquo;<a href="manual/chap1.html">Getting Started</a>&rdquo;.
+Or, if you're adventurous, simply
+<a href="webca/"
+    target="CelLabRunRule">plunge directly into WebCA</a>
+and start exploring.
+</p>
+
+<h2 id="manual"><a href="manual/" class="i"><img
+    src="manual/icons/manual.png"
+    alt="" class="button" width="48" height="48" /></a>
+    &nbsp;
+    <a href="manual/"><cite>CelLab</cite> User Guide</a></h2>
+
+<p>
+The <cite>CelLab</cite> user guide, a complete introduction to
+cellular automata and laboratory manual for exploring them using
+the WebCA software, is published on the World-Wide Web.  Click
+the link above to display the table of contents of this on-line
+book.
+</p>
+
+<h2 id="devkit"><a href="download/cellab_devkit-1.0.zip" class="i"><img
+    src="manual/icons/download.png"
+    alt="" class="button" width="48" height="48" /></a>
+    &nbsp;
+    <a href="download/cellab_devkit-1.0.zip"><cite>CelLab</cite>
+    Development Kit</a></h2>
+    
+<p>
+If you are interested in developing your own experiments for
+<cite>CelLab</cite>, you'll probably want to download the
+<a href="download/cellab_devkit-1.0.zip"><cite>CelLab</cite>
+    Development Kit</a>.  It contains all of the standard rule
+definitions (JavaScript, Java, and compiled rules), patterns,
+color palettes, evaluators, shows, and a collection of tools
+we used to create them.  It's often easier, when developing a
+program, to start with a similar program and adapt it to your
+purposes than to begin with a blank sheet.  The development kit includes
+a variety of programs you can use as starting points for your
+own work.  All of these programs are in the public domain and may
+be used in any way without any restrictions whatsoever.  Please
+see the <span class="tt">README.txt</span> file in the archive for
+details of the files it includes.
+</p>
+
+<h2 id="History"><cite>CelLab</cite> History</h2>
+
+<p>
+(A <a href="manual/chap5.html">more detailed history</a> of
+cellular automata appears in the
+<a href="manual/"><cite>CelLab User Guide</cite></a>.)
+</p>
+
+<p>
+The first edition of <cite>CelLab</cite> was developed by Rudy
+Rucker and John Walker in 1988 and 1989 when both were working
+in the
+<a href="/autofile/">Autodesk</a> research lab.  The package was to
+be the first title in the &ldquo;Autodesk Science Series&rdquo;,
+which would use computer simulation to explore aspects of
+science and mathematics. The product was first shipped in June
+of 1989 at a suggested retail price of US$59.95, under the name
+<cite>Rudy Rucker's Cellular Automata Laboratory</cite>.  Rudy
+went on to complete the second title in the Science Series,
+<cite>James Gleick's CHAOS &mdash; The Software</cite> which
+used programs developed by Rudy and another Autodesk programmer,
+Josh Gordon, to illustrate aspects of James Gleick's bestselling
+book. <cite>CHAOS &mdash; The Software</cite> shipped in
+November of 1989. Rudy was working on the third title in the
+series, <cite>Artificial Life Lab</cite>, and John was
+developing the fourth,
+<cite><a href="/homeplanet/">Home Planet</a></cite>,
+when Autodesk's management decided to close the research lab and
+terminate development of the Science Series.  Rudy finished
+<cite>Artificial Life Lab</cite>, which was published as a book
+plus disk by The Waite Group Press in 1993.  John released
+<cite>Home Planet</cite> as a freeware program in the same year,
+and the current version <a href="/homeplanet/">can be
+downloaded</a> from this site.
+</p>
+
+<p>
+The demise of the Science Series orphaned <cite>Cellular
+Automata Laboratory</cite>, which disappeared from the market in
+1994.  Rudy and John explored the idea of a new edition with
+several publishers, but none seemed to be interested.  With the
+advent of the World-Wide Web, software can be distributed at a
+minuscule fraction of the cost of packaged software in the
+1980's, so this seemed a natural way to get <cite>Cellular
+Automata Laboratory</cite> back into the hands of creative
+people interested in exploring massively parallel computing.
+Re-launching a program developed almost a decade ago required a
+modicum of work: a new cellular automata simulator that ran
+under Windows was developed, the User Guide (originally a 265
+page book typeset using LaTeX) was transformed into an HTML
+document for the Web, and Java was added to the languages one
+can use to define cellular automata rules, being ever so much
+more with-it than Pascal, BASIC, and C.  The Web edition of
+<cite>CelLab</cite> was released in 1995, and attracted an
+audience of <em>dozens</em> of enthusiastic users.
+</p>
+
+<p>
+Eventually, as is so often the fate of software developed for
+closed, proprietary platforms, the MS-DOS and 16-bit Windows
+programs developed for <cite>CelLab</cite> stopped working on
+&ldquo;improved&rdquo; versions of Microsoft operating
+systems&mdash;death by Microsoft. Updating them to work on
+current versions of Windows would amount to almost a complete
+re-write, and that would only be jumping back onto the treadmill
+of constantly revising them for each successive release from the
+masters of strategic incompatibility.  Further, it would limit
+the audience for the programs to users of a legacy,
+technologically inferior platform which is continually losing
+market share to better alternatives.  (If you'd like to visit
+<a href="classic/"><cite>CelLab</cite> Classic</a>, go right
+ahead&mdash;we never delete anything&mdash;but you're unlikely
+to find a machine which will run it.)
+</p>
+
+<p>
+In 2017, John had converted a number of resources on
+his <a href="/">Fourmilab</a> site to replace applets written
+in the Java language, which is rapidly being abandoned as a
+means to develop interactive Web pages, with the native facilities
+of HTML5 and JavaScript, which are standards supported by most
+modern Web browsers on both desktop and mobile platforms.  By
+running entirely within the browser, there is no need for the
+user to download or install any software on their own machine,
+nor any worry about that software becoming incompatible with
+future operating systems the user might install.  A Web-based
+application will run on any machine or operating system on
+which a standards-compliant browser is available, and that's
+just about all of them.
+</p>
+
+<p>
+The question was, would JavaScript and HTML5 canvas graphics
+support be fast enough to run the very demanding computation and
+graphics support which <cite>CelLab</cite> required?  When it
+was originally written in 1988 and 1989, <cite>CelLab</cite>
+required every assembly language trick and tweak in the twisted
+minds of clever programmers to squeeze out around one generation
+per second from an IBM PC/AT (a 6 MHz 80286 machine), but in the
+intervening years, typical personal computers, including mobile
+platforms, have become around <em>five hundred times</em>
+faster.  That can make up for a lot of inefficiency in
+programming language implementations.  A prototype was built,
+and the results were stunning: without resorting to any
+off-the-deep-end tricks or techniques which might risk
+incompatibility, JavaScript and HTML5 could deliver stunning
+performance: up to 100 generations per second for most cellular
+automata rules on a modest laptop computer with no special
+graphics hardware.
+</p>
+
+<p>
+Several months later, WebCA is the result. It runs all of the rules
+which the original MS-DOS and Windows graphics mode cellular
+automata simulators ran, and many new rules have been added.
+It is compatible with compiled rule definitions, patterns, and
+color palette files used by the earlier programs.  (User evaluators
+[&ldquo;own code&rdquo;], which were written in 80<em>x</em>86
+assembly language or as Windows DLLs are not compatible, but all
+of the user evaluators included with the earlier programs have
+been re-written in JavaScript and work compatibly with the
+earlier implementations.)  Besides running in the browser on a
+multitude of platforms, the other major innovation in WebCA is
+that rule definition programs and custom user evaluators
+can be written in JavaScript, supported directly inside the
+browser, and do not require users to install a separate
+development environment for a programming language such as
+C, Pascal, Basic, or Java.  (The ability to define rules in
+Java and compile them into rule files has been retained, but
+there is no need to use it&mdash;it is no more efficient than
+JavaScript.)  Now, to explore cellular automata on your own,
+you need nothing more than a rudimentary text editor (such as
+the &ldquo;notepad&rdquo; programs included with all operating
+systems) and your Web browser.
+</p>
+
+<p>
+So now it's finished, or at least at large once again.  Ideally,
+<cite>CelLab</cite> will never be <em>done</em>, not as long as
+folks continue to use it to explore the world of cellular
+automata and share their discoveries with other pioneers on this
+frontier of computing.
+</p>
+
+<p>
+Programmers interested in how WebCA works and its development
+history may consult the <a href="log/log.html">Development
+Log</a>, where all changes to the software are documented.
+</p>
+
+<h2>About the Authors</h2>
+
+<p>
+<a href="http://www.rudyrucker.com/">Rudy Rucker</a>, the author
+of thirty books of science-fiction, popular science and
+mathematics, and computing, is Professor Emeritus of Mathematics
+and Computer Science at San Jose State University.
+<a href="/">John Walker</a> is founder and former president of
+Autodesk, Inc. Autodesk's best-known product is a computer-aided
+design (CAD) graphics program called AutoCAD.
+</p>
+
+<!--  This hidden area contains dummy objects we need to run
+      the simulator in headless mode.  -->
+      
+<div style="display: none;">
+<p>
+Show:    <input type="text" id="P_showurl" size="40" value="" /><br />
+<textarea id="P_show" cols="80" rows="8"></textarea><br />
+Rule program: <input type="text" id="P_ruleprogurl" size="40" value="" /><br />
+<textarea id="P_ruleprog" cols="80" rows="2"></textarea>
+Pattern: <input type="text" id="P_paturl" size="40" value="" /><br />
+Palette: <input type="text" id="P_palurl" size="40" value="" /><br />
+Speed:
+<input id="P_speed" type="range" min="5" max="500" step="5" value="475"
+    style="width: 200px; vertical-align: middle;" /><br />
+Generation: <input type="text" id="P_gen" size="6" value="0" />
+</p>
+</div>
+
+<h3><a href="/">Fourmilab home page</a></h3>
+
+</body>
+</html>
+ contentType 9 text/html url 36 https://www.fourmilab.ch:443/cellab/ responseCode 3 200 
