@@ -1,0 +1,430 @@
+gqykomgqtgvkeiboscssoaueuceqgqgghimqtive length 5 14767 page 14767 <?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/mb.dwt" codeOutsideHTMLIsLocked="false" -->
+<!-- DW6 --> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="copyright"  content="Copyright Menne Biomed Consulting, D-72144 Dusslingen" />
+  <meta name="keywords" content=
+  "Datenaufnahme Medizin,Signalverarbeitung,Biometrie,Statistik,Ultraschall, Software,
+	Klinische Forschung,Klinische Datenbanken,Programmierung, DSP, Consulting" />
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>3D-Display of Peristaltic Waves</title>
+<!-- InstanceEndEditable -->
+<link rel="icon" href="../favicon.ico" />
+<link rel="shortcut icon" href="../favicon.ico" /> 
+<link rel="stylesheet" media="all" href="../menne-biomed.css" type="text/css" />
+<link rel="stylesheet" media="print" href="../menne-biomed_print.css" type="text/css" />
+<!-- InstanceBeginEditable name="head" -->
+<script src="js/three.min.js" type="text/javascript"></script>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/gunzip.min.js" type="text/javascript"></script> 
+<script src="js/TrackballControls.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/dat.gui.min.js" type="text/javascript" ></script>
+<script src="js/jquery-ui.custom.min.js"></script>
+<script src="js/chosen.jquery.min.js" type="text/javascript"></script>
+<link href="css/chosen.min.css" rel="stylesheet" ><!-- http://harvesthq.github.io/chosen/ -->
+<link href="css/jquery-ui.custom.min.css" rel="stylesheet">
+<style type="text/css" media="all">
+  body{font-family:sans-serif;}
+  .bottom {
+  color:white;
+  font-size:10px;
+	position	: absolute;
+	bottom		: 250px;
+	right		: 200px;
+	padding		: 5px;
+}
+#gui{
+  position: absolute;
+  bottom:250px;
+  left:50px;
+}
+</style>
+
+<script type="text/javascript">
+"use strict";
+if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+// Most ideas stolen from: 
+// http://math.hws.edu/eck/cs424/notes2013/threejs/vertex-and-color-animation.html
+var initialTimeScale = 0.2; 
+var initialZScale = 0.005;
+var dataFile, plane, scene,light, renderer, material, 
+  camera, controls,data,highlightColor,text1;
+var colorMap=[]; // Filled by getAllData
+var swallows = []; // List of swallows
+var currentSwallow = 37;
+var gui, shadowConfig = {
+  pressure_Scale: 1,
+  time_Scale:1,
+  position_Scale:1,
+  color_Table: "rainbow"
+};
+
+
+$(document).ready(function(){
+  initGui();
+  $( "#nextbutton" )
+    .button({icons:{primary:"ui-icon-circle-arrow-e"}})
+    .click(function() {
+       nextSwallowFile();
+     });
+  $( "#backbutton" )
+    .button({icons:{secondary:"ui-icon-circle-arrow-w"}})
+    .click(function() {
+       backSwallowFile();
+     });
+  $("#phaseselect")
+     .chosen()
+     .change(function(){   
+       nextSwallowFile();     
+      });  
+  init();
+  animate();
+});
+
+  
+function setCurrentSwallowFile(){
+  var currentSwallowID = swallows[currentSwallow]["swallowID"];
+  var str = '' + currentSwallowID;
+  while (str.length < 4) {
+      str = '0' + str;
+  }   
+  dataFile= "./data/sw" + str + ".txt.gz"; 
+  $("#swallow").text("Record "+currentSwallow);
+  
+}
+
+function showCurrentSwallowFile(){
+  setCurrentSwallowFile();
+  showSwallowData();
+}
+
+function nextSwallowFile(){
+  var phase = $("#phaseselect").find('option:selected').val();
+  do {
+    currentSwallow++;
+    if (currentSwallow === swallows.length) 
+      currentSwallow= 0;
+  } while (phase !== swallows[currentSwallow]["phase"])
+  showCurrentSwallowFile();
+}
+
+function backSwallowFile(){
+  var phase = $("#phaseselect").find('option:selected').val();
+  do {
+    if (currentSwallow === 0) 
+      currentSwallow = swallows.length;
+    currentSwallow--;
+  } while (phase !== swallows[currentSwallow]["phase"])
+  showCurrentSwallowFile();
+}
+
+
+function initGui(){
+  // http://workshop.chromeexperiments.com/examples/gui/#1--Basic-Usage
+  gui = new dat.GUI({autoPlace:false});
+  var customContainer = document.getElementById('gui');
+  customContainer.appendChild(gui.domElement);
+  gui.add( shadowConfig, 'pressure_Scale',0.1,4 ).onChange( function() {
+      plane.scale.set(1,1,shadowConfig.pressure_Scale);
+      render();
+  });  
+  /*
+  gui.add( shadowConfig, 'time_Scale',0.3,4 ).onChange( function() {
+      plane.scale.set(shadowConfig.time_Scale,1,1);
+      render();
+ });  
+  gui.add( shadowConfig, 'position_Scale',0.3,4 ).onChange( function() {
+      plane.scale.set(1,shadowConfig.position_Scale,1);
+      render();
+ });  
+ */
+  gui.add( shadowConfig, 'color_Table',["rainbow","adelaide"]).onChange( function() {
+    scene.remove(plane);
+    getAllData(shadowConfig.color_Table,false);
+ });  
+}
+
+
+function init(){
+  // Read list of swallows
+  $.getJSON('swallows.js', function (json) {
+    for (var key in json) {
+      if (json.hasOwnProperty(key)) {
+        var item = json[key];
+        swallows.push({
+          swallowID: item.SwallowID,
+          phase: item.Phase
+        });            
+      }
+    }
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(30, 
+      window.innerWidth/window.innerHeight, 0.1, 1000);
+    camera.position.set(-1.8, -134, 100);
+    scene.add(camera);
+
+
+    renderer = new THREE.WebGLRenderer();
+	setRenderSize();
+    material = new THREE.MeshBasicMaterial({
+             side: THREE.DoubleSide,
+             vertexColors:THREE.VertexColors
+    });
+    $("#container").append(renderer.domElement);
+    // Mouse controls
+    controls = new THREE.TrackballControls( camera, renderer.domElement );
+    controls.addEventListener( 'change', render );
+    window.addEventListener( 'resize', onWindowResize, false );
+    // Now proceed with data 
+    setCurrentSwallowFile();
+    getAllData(shadowConfig.color_Table);  
+  });
+
+}
+
+function gz2str(buf) {
+  // Convert gz-compressed buffer to string
+  var buf = new Uint16Array (new Zlib.Gunzip( new Uint8Array(buf)).decompress());
+  return String.fromCharCode.apply(null, buf);
+}
+
+function getAllData(colorFile, showNext) {  
+  // Fills global colorMap and vertexes
+  // http://www.html5rocks.com/en/tutorials/file/xhr2/#toc-reponseTypeArrayBuffer
+  showNext = typeof showNext !== 'undefined' ? showNext : false;
+  var xhr1 = new XMLHttpRequest();
+  xhr1.open('GET', colorFile + ".txt.gz", true);
+  xhr1.responseType = 'arraybuffer';
+  xhr1.onload = function() {
+    var colorText = gz2str(this.response);
+    var a = colorText.split('\n');
+    colorMap = new Array();
+    for (var i=0; a[i] != ""; i++){
+      var color = a[i].match(/[-\d]+/g).map(Number);
+      color[1] /= 255;color[2] /= 255;color[3] /= 255;
+      colorMap.push(color); 
+    }
+    if (showNext)
+      nextSwallowFile();
+    else 
+      showSwallowData();
+  }
+  xhr1.send();
+}
+
+function showSwallowData(){
+  if (typeof dataFile === 'undefined') return; 
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', dataFile, true);
+  xhr.responseType = 'arraybuffer';
+  // Callback function after data are loaded 
+  xhr.onload = function() {
+    data = gz2str(this.response).split('\n');
+    plotSwallowData();
+  }
+  xhr.send();
+}
+ 
+function plotSwallowData(){
+  var vertexColors = [];
+  var nTime = Math.round(data[0]); // First number is number of time points
+  var nSensor = Math.round(data[1]);
+  var len1 = nTime *nSensor;
+  var geo = new THREE.PlaneGeometry(nTime*initialTimeScale, nSensor, nTime-1,nSensor-1);
+  var minVal = colorMap[0][0];
+  var maxVal = colorMap[colorMap.length-1][0];
+  vertexColors = new Array(len1);
+  for (var i=2; i<len1+2; i++){
+      var z =  data[i]*initialZScale;
+      geo.vertices[i-2].z = z;
+      var c = new THREE.Color();
+      z = data[i]*0.1; // Integer numbers are pressure*10
+      var colorIndex = Math.round(Math.min(Math.max(minVal,z),maxVal))-minVal;
+      c.setRGB( colorMap[colorIndex][1], colorMap[colorIndex][2],
+           colorMap[colorIndex][3]);
+      vertexColors[i-2] = c;
+  }
+
+  for (i = 0; i < geo.faces.length; i++) {
+    var f = geo.faces[i];
+    f.vertexColors = [ 
+      vertexColors[ f.a ], 
+      vertexColors[ f.b ], 
+      vertexColors[ f.c ]] 
+  }
+  if (plane) scene.remove(plane);
+  plane = new THREE.Mesh(geo, material);
+  plane.scale.set(shadowConfig.time_Scale,shadowConfig.position_Scale,
+    shadowConfig.pressure_Scale);
+  scene.add(plane);
+  if (text1) scene.remove(text1)
+  description(-nTime/10+6);
+  render(); // Force redraw, we are asynchronous
+}
+
+function description(xposition){
+// create a canvas element
+	var canvas1 = document.createElement('canvas');
+  canvas1.height= 770;
+  canvas1.width= 350;
+	var context1 = canvas1.getContext('2d');
+	context1.font = "Bold 20px Arial";
+	context1.fillStyle = "rgba(255,255,255,1)";
+  context1.fillText('Upper', 0, 60);
+  context1.fillText('sphinkter', 0, 80);
+  context1.fillText('Transition', 0, 200);
+  context1.fillText('Zone', 0, 220);
+  context1.fillText('Lower', 0, 550);
+  context1.fillText('sphinkter', 0, 570);
+  context1.fillText('Stomach', 0, 690);
+  context1.fillText('Time', 150, 730);
+	context1.font = "Bold 14px Arial";
+  context1.fillText('Positions are approximate only', 0, 750);
+  
+    
+	// canvas contents will be used for a texture
+	var texture1 = new THREE.Texture(canvas1) 
+	texture1.needsUpdate = true;
+   
+  var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
+  material1.transparent = true;
+
+  text1 = new THREE.Mesh(
+    new THREE.PlaneGeometry(canvas1.width, canvas1.height),
+       material1);
+	text1.position.set(xposition,0,2);
+	text1.scale.set(0.1,0.1,0.1);
+	scene.add( text1 );
+}
+
+function setRenderSize(){
+  renderer.setSize(window.innerWidth, window.innerHeight-300);
+}
+
+function onWindowResize() {
+  setRenderSize();
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  render();
+}
+
+function animate() {
+	requestAnimationFrame( animate );
+  if (controls) 
+	  controls.update();
+}
+
+function render() {
+	renderer.render( scene, camera );
+}
+
+</script>
+
+<!-- InstanceEndEditable -->
+</head>
+<body>
+<div id="masthead"> <!-- InstanceBeginEditable name="masthead" -->
+  <h1>3D-Display of Peristaltic Waves</h1>
+  <!-- InstanceEndEditable --> </div>
+<div id="logo"  >
+  Menne Biomed<br />Consulting<br />
+</div>
+<!-- end masthead -->
+<div id="navbar"> <img alt="Menne-Biomed" src="../images/mennebiomed.gif" /><!-- no line break --><ul>
+    <li id="home"><a href="../index.html" title="Homepage Menne Biomed Consulting">Home</a></li>
+    <li id="moreabout"><a href="../biomed/moreabout.html" title="Projekte von Dieter Menne" >&Uuml;ber</a></li>
+    <li id="publications"><a href="http://scholar.google.de/citations?hl=de&amp;user=juWZAM4AAAAJ" 
+		   title="List of publications of Dieter Menne"  >Publikationen</a></li>
+    <li id="blog"><a href="../blog" 
+		  title="MedStat Stutter Blog -- Phantasies of a physicist fallen among physicians" >Blog</a></li>
+    <li id="gastempt"><a href="../gastempt/index.html" 
+		  title="Tutorial how to analyze gastric emptying curves with R" >GastEmpt</a></li>
+    <li id="gast3d"><a href="../uni/3d" 
+		  title="Gastric content 3D display" >Gastric 3D</a></li>
+    <li id="gast3d"><a href="https://github.com/dmenne" 
+		  title="My github repository" >github</a></li>          
+    <li id="erascore1"><a href="../biomed/erascore1.html" 
+		  title="Definition and on-line calculation of Eraflux Score for gastro-esophageal reflux" >Reflux</a></li>
+    <li id="swallows"><a href="jswallow3d.html" 
+		  title="Interactive 3D-Displays of peristaltic waves in the esophagus" >Peristaltic</a></li>
+    <li id="download"><a href="../download/download.html" 
+		  title="Delphi, LaTeX and R programs for medical signal analysis" >Download</a></li>
+    <li ><a href="http://www.menne-indonesia.de" 
+		  title="Jugendjahre (1955-1962) in Indonesien" >Indonesia</a></li>
+    <li id="PhysikFR"><a href="../PhysikFreiburg1971/index.html" title="Physik Freiburg 1971">Physik FR</a></li>
+    <li ><a href="../biodrei/index.html" 
+		  title="Freiburg, Biologie III" >Bio III FR</a></li>
+  </ul><div class="tiny"> 
+  <img src="../images/neuron300.gif" alt="Zeichnung: Martin Trappe (1979)" /> 
+	  Dr. Dieter Menne<br />
+    Menne Biomed Consulting<br />
+    Irusweg 1<br />
+  D-72144 Dusslingen <img src="../images/phoney.gif" alt="Telefon" /> 07072 1263 688
+  <br />
+    <img src="../images/mailto.gif" alt="E-mail"/>&nbsp;&nbsp;
+    <a href="mailto:%64%69%65%74%65%72%2e%6d%65%6e%6e%65%40%6d%65%6e%6e%65%2d%62%69%6f%6d%65%64%2e%64%65">&#69;&#45;&#77;&#97;&#105;&#108;</a><br />
+    Ust-IdNr DE146923680 </div> 
+</div>
+<div id="content"> <!-- InstanceBeginEditable name="content" --> 
+
+<select id="phaseselect" style="width:10rem;">
+  <option value="Barium">Barium Swallow</option>
+  <option value="Marshmallow">Marshmallow</option>
+  <option value="SpontSeated">Spontaneous Seated</option>
+  <option value="SpontSupine">Spontaneous Supine</option>
+  <option value="WaterSupine">Water Supine</option>
+  <option value="WaterSeated">Water Seated</option>
+</select>
+  <button id="backbutton">Back</button>
+  <button id="nextbutton">Next</button>
+  <span id="swallow">Swallow</span>
+  <div class="bottom">Left mouse:rotate; right mouse:pan; mouse wheel: zoom<br>
+    Data from Dep. Gastroenterology, University Hospital of Zurich.<br>
+		Created with <a href="http://mrdoob.github.com/three.js/">three.js</a></div>
+   <div id="container"></div>
+  <div id="gui" ></div>
+
+<h3><a name="whatsphase"></a>Swallow Phases Explained</h3>
+<p>All swallows were recorded in healthy volunteers in a clinically controlled study at the Department of Gastroenterology, University Hospital of Zurich. </p>
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th scope="col">Phase</th>
+    <th scope="col">What it means </th>
+  </tr>
+  <tr>
+    <td>Water Supine </td>
+    <td>Swallow induced by 10 ml water in supine position</td>
+  </tr>
+  <tr>
+    <td>Water Seated </td>
+    <td>10 ml water, seated position</td>
+  </tr>
+  <tr>
+    <td>Spont Supine </td>
+    <td>Spontaneous swallow in supine position </td>
+  </tr>
+  <tr>
+    <td><p>Spont Seated</p>
+      </td>
+    <td>Spontaneous swallow in seated position </td>
+  </tr>
+  <tr>
+    <td>Barium</td>
+    <td>A sip of water with barium-sulphate, a contrast agent used to clearly mark the bolus in x-ray fluoroscopy</td>
+  </tr>
+  <tr>
+    <td>Marshmallow</td>
+    <td>A delicate marshmallow with a sip of barium as a model of a bolus that is difficult to swallow. </td>
+  </tr>
+</table>
+</div>
+<!-- InstanceEndEditable --> </div>
+</body>
+<!-- InstanceEnd --></html>
+ contentType 9 text/html url 51 https://menne-biomed.de:443/swallow/jswallow3d.html responseCode 3 200 
