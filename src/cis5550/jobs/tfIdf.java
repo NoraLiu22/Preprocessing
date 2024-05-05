@@ -240,9 +240,12 @@ public class tfIdf {
                 // return pairs;
             });
 
+                    
+
             flamePairRdd.saveAsTable("pt-final");
 
             endTime = System.currentTimeMillis();
+
             System.out.println(
                     "Time taken in part 5: " + (endTime - startTime) + "ms");
             // part 6
@@ -278,6 +281,7 @@ public class tfIdf {
 //
 //            endTime = System.currentTimeMillis();
 //            System.out.println("Part 7: Time taken to create pt-final: " + (endTime - startTime) + "ms");
+
 //             startTime = System.currentTimeMillis();
 //
 //            for (FlamePair pair : pairList) {
@@ -337,9 +341,7 @@ public class tfIdf {
 //            endTime = System.currentTimeMillis();
 //            System.out.println("Time taken in part 7: " + (endTime - startTime) + "ms");
 
-
-
-        } catch(Exception e) {
+} catch(Exception e) {
             e.printStackTrace();
         }
 
