@@ -1,0 +1,675 @@
+asdozqpebkvazazijgtgiedsoqfebqsodkzmgmwo length 5 38085 page 38085 <html>           
+           
+<head>           
+<title>Advanced Web Presentation through Data Modeling</title>           
+</head>           
+           
+<body background = "../lgray_bg.gif">           
+           
+<center>          
+<p>          
+<img src = "../mag_bar1.gif">            
+<p>            
+<h1>Advanced Web Presentation through Data Modeling</h1>          
+<h3>An Open Architecture for the Personalized Webs of the Future</h3>           
+<address>           
+<a href=http://athos.rutgers.edu/~shklar/>Leon Shklar</a>           
+<p><A HREF=http://www.bellcore.com>Bellcore</A>,           
+445 South St., Morristown, NJ 07960<br>           
+<A HREF=http://athos.rutgers.edu>Computer Science Department</A>,           
+<A HREF= http://www.rutgers.edu>Rutgers University</A>,           
+New Brunswick, NJ 08903<br>           
+</address>           
+<code><font size=+1><font color=navy>shklar@cs.rutgers.edu</font color></font size></code>           
+<p>          
+<b>D-Lib Magazine</b>, April 1996           
+<p>           
+<h6>ISSN 1082-9873</h6>            
+<p>          
+<img src = "../d-line1.gif">        
+</center        
+<p>         
+<a name="Introduction"><h2>1.0 Introduction</h2></a>           
+           
+<p>           
+The explosion in the amounts and variety of information           
+has made the knowledge about its existence, location, and the means           
+of retrieval very confusing. The information explosion has further           
+accelerated with the acceptance of the World Wide Web           
+[<a href="#ber92">ber92</a>],           
+causing a universal rush to create Web pages and use them to provide           
+on-line access to the vast legacy of existing heterogeneous information.           
+Such information ranges from documents in a variety of proprietary           
+representation formats to engineering and financial databases, and           
+is often accessible only through specialized vendor tools and locally           
+developed applications. Moreover, rapidly increasing sophistication in           
+presenting information on the Web is already forcing us to treat           
+<em>ftp</em> and <em>gopher</em> information sources, and even early           
+<a href="http://www.sandia.gov/sci_compute/html_ref.html">           
+<code><font size=+1>HTML</font></code></a> pages as parts of the same legacy.           
+           
+<p>           
+The main focus of this article is the           
+<code><font size=+1>InfoHarness</font></code>           
+<a href="#TM"><sup><code>TM</code></sup></a>           
+system [<a href="#shk94">shk94</a>,<a href="#shk95-1">shk95-1</a>],           
+which is designed to provide Web access to existing heterogeneous           
+information without any relocation, reformatting and restructuring of data.           
+<code><font size=+1>InfoHarness</font></code>           
+has been productized and is now a part of           
+Bellcore's <code><font size=+1>ADAPT/X</font></code> product line.           
+It has been designed with an open, extensible, and modular architecture.           
+A prototype extension of <code><font size=+1>InfoHarness</font></code>, called           
+<code><font size=+1>GeoHarness</font></code><a href="#F1"><sup>1</sup></a>,           
+is being developed by the members of the           
+<a href="http://usdac2.rutgers.edu">USDAC</a>           
+Consortium<a href="#F2"><sup>2</sup></a> for accessing geospatial data.           
+It is also used to support advanced Web presentation of existing heterogeneous           
+information in other domains, e.g., at Rutgers University for accessing           
+judicial opinions from Federal Appeals courts and the           
+U. S. Supreme Court (see the example in Section <a href="#sec33">3.3</a>).           
+The current prototype supports the largely automatic           
+generation of <code><font size=+1>InfoHarness</font></code> and           
+<code><font size=+1>GeoHarness</font></code> repositories, and provides           
+access to raw data from Mosaic, Netscape and other Web browsers through           
+a gateway program.           
+           
+<p>           
+In Section <a href="#sec2">2</a>, we discuss           
+current methods and tools for providing Web access to existing           
+heterogeneous information.           
+We see the most promising approach in building logical data           
+models and using them to support all kinds of sophisticated           
+presentation of the original information on the World Wide Web.           
+Section <a href="#sec3">3</a> provides a general description of the           
+<code><font size=+1>InfoHarness</font></code> system.           
+In Section <a href="#sec31">3.1</a>, we briefly describe the object model.           
+In Section <a href="#sec32">3.2</a>, we discuss the generation of           
+<code><font size=+1>InfoHarness</font></code> repositories, followed           
+by an example in Section <a href="#sec33">3.3</a>.           
+Section <a href="#sec4">4.0</a> provides a brief summary and a discussion           
+of our current work.           
+           
+<a name="sec2"><h2>2.0 Providing Web Access to Existing Information</h2></a>           
+           
+<p>           
+There have been numerous attempts to provide partial remedies for data           
+heterogeneity by implementing a variety of ever-changing           
+<a href="http://www.ncsa.uiuc.edu/SDG/Software/XMosaic/faq-software.html#editors">           
+filters</a> for format conversions. The filters are used to generate           
+<code><font size=+1>HTML</font></code> documents either dynamically, using the           
+<em>Common Gateway Interface</em>           
+(<a href="http://hoohoo.ncsa.uiuc.edu/cgi/overview.html"><code><font           
+size=+1>CGI</font></code></a>)           
+mechanism, or off-line. The off-line approach           
+requires substantial human and computing resources for the initial conversion           
+and maintenance of information. Maintaining the repositories presents the           
+additional dilemma of either creating new and updating existing information           
+in <code><font size=+1>HTML</font></code>, or           
+continuously managing evolving data in multiple formats.           
+The dynamic approach helps to postpone the conversion until the information           
+is requested and eliminates problems with the initial processing and           
+maintenance of information. However, the access-time conversion may not be           
+appropriate for some rich document formats (framemaker, etc.) for the           
+following reasons:           
+<ol>           
+<li>Slowness of the conversion.           
+<li>Need to &quot;tune&quot; the filters to support local standards.           
+<li>Low quality of generated <code><font size=+1>HTML</font></code>           
+    (may often require human post-processing).           
+</ol>           
+           
+<p>           
+Using the <em>Multipurpose Internet Mail Extensions</em>           
+(<code><font size=+1>MIME</font></code>) [<a href="#bor93">bor93</a>],           
+supported by most Web browsers, helps to avoid data conversion           
+through the use of third-party presentation tools. However, it may require           
+renaming the original files because <code><font size=+1>MIME</font></code>'s           
+type recognition mechanism relies on file extensions.           
+Even though the mapping of file extensions into           
+<code><font size=+1>MIME</font></code> types is customizable, it is still           
+fixed for every given server, unless the type           
+assignment is performed by some specialized gateway program.           
+Adding support for new <code><font size=+1>MIME</font></code>           
+types often requires end users to obtain and install third-party tools.           
+Further, <code><font size=+1>MIME</font></code> alone does not provide any           
+support for logically linking together relevant documents.           
+           
+<p>           
+Nevertheless, many systems rely on           
+<code><font size=+1>MIME</font></code> as their primary presentation           
+mechanism.           
+The <code><font size=+1>OMNIS</font></code> system           
+[<a href="#cla95">cla95</a>] has been           
+designed to provide access to library information that includes both           
+catalogs and digitized texts.           
+The scanned-in documents may contain images, postscript or other formatted           
+information, and are stored in a database. At presentation time, the           
+<code><font size=+1>OMNIS</font></code>           
+gateway converts textual information to           
+<code><font size=+1>HTML</font></code>, while images are converted           
+to common <code><font size=+1>MIME</font></code> types before           
+being passed to the browser. This is quite feasible because           
+<code><font size=+1>OMNIS</font></code> has full           
+control over the format and representation of information that is stored           
+in its database.           
+           
+<p>           
+<code><font size=+1>Harvest</font></code> [<a href="#bow94">bow94</a>]           
+provides support for extracting summaries           
+from distributed heterogeneous information and for executing searches           
+over these summaries.           
+Once the resources have been identified, the responsibility of accessing them           
+is handed over to the Web browsers.           
+<code><font size=+1>Harvest</font></code>           
+provides efficient and flexible methods of indexing widely distributed           
+information. <code><font size=+1>MIME</font></code> mappings           
+are used to provide access to the wide variety of information, so the           
+problems that were described earlier still persist.           
+           
+<p>           
+There have been a number of attempts to build logical models of           
+distributed heterogeneous information and use these models to support           
+advanced Web presentation.           
+The <em>Multimedia-Oriented Repository Environment</em>           
+(<code><font size=+1>MORE</font></code>) [<a href="#eic94">eic94</a>]           
+was designed as a set of <code><font size=+1>CGI</font></code> programs           
+that operate in conjunction with a stock           
+<code><font size=+1>httpd</font></code> server to provide           
+access to a relational database containing meta-information, which            
+specifies how to retrieve physical data. The meta-information is           
+entered into the database off-line by the human librarians.           
+           
+<p>           
+<code><font size=+1>WebMake</font></code> [<a href="#bae95">bae95</a>]           
+introduces methods for building Web structures over existing software,           
+e.g. source and object code for software systems.           
+In <code><font size=+1>WebMake</font></code>, meta-level           
+<em>structural documents</em> are used to create abstractions by           
+logically combining software modules or other structural documents.           
+A set of tools has been developed to provide a distributed           
+software development environment by utilizing the           
+<code><font size=+1>CGI</font></code> mechanism.           
+A specialized Web client is required to obtain full access to the           
+<code><font size=+1>WebMake</font></code> functionality.           
+           
+<p>           
+<code><font size=+1>HyperG</font></code> [<a href="#and95">and95</a>]           
+uses an object-oriented database layer to provide information modeling           
+and model maintenance facilities in addition to integrated attribute           
+and content-based search. The system supports logical grouping of           
+documents into collections that may span multiple           
+<code><font size=+1>HyperG</font></code> servers. Special           
+<em>cluster</em> collections are used to group together related multimedia           
+and multi-lingual information. <code><font size=+1>HyperG</font></code>           
+uses its own <em>HyperG Text Format</em>           
+(<code><font size=+1>HTF</font></code>) that is converted to           
+<code><font size=+1>HTML</font></code> by the           
+<code><font size=+1>HyperG</font></code> servers when they respond to           
+<code><font size=+1>HTTP</font></code> requests.           
+           
+<p>           
+The objective of the <code><font size=+1>InfoHarness</font></code>           
+system [<a href="#shk94">shk94</a>, <a href="#shk95-1">shk95-1</a>]           
+is to provide Web access to large amounts of           
+heterogeneous information in a distributed environment without any           
+relocation, restructuring, or reformatting of data.           
+Like <code><font size=+1>MORE</font></code> and           
+<code><font size=+1>HyperG</font></code>,           
+<code><font size=+1>InfoHarness</font></code>           
+uses metadata for search and retrieval of heterogeneous           
+information (Figure <a href="#figH">3</a>).           
+It provides advanced search and browsing capabilities without           
+imposing constraints on information suppliers or creators.           
+<code><font size=+1>InfoHarness</font></code> utilizes stable abstract class           
+encapsulation and presentation hierarchies that need not be modified to           
+add terminal classes that accommodate new kinds of information and new           
+indexing technologies. <code><font size=+1>InfoHarness</font></code>           
+provides tools for the automatic generation of meta-data based on user           
+inputs and the analysis of existing information.            
+           
+<p>           
+Closely related to this effort is our work on defining an <em>Information           
+Repository Definition Language</em> (<code><font size=+1>IRDL</font></code>)           
+[<a href="#shk95-2">shk95-2</a>] - a high-level language for describing           
+information resources and the desired logical structure of information           
+repositories. The language provides high flexibility in imposing           
+abstractions on heterogeneous information.           
+Presently, the <code><font size=+1>IRDL</font></code>           
+interpreter generates <code><font size=+1>InfoHarness</font></code>           
+metadata entities. With the emergence of           
+<a href="http://www.w3.org/pub/WWW/OOP/">           
+<em>Web objects</em></a>, it should become possible to perform the           
+direct generation of Web data structures.           
+           
+<center>           
+<p><a href="figH.eps"><a name="figH"><img src="figH.gif"></a>           
+<p><strong>Figure 1.</strong> <code><font size=+1>InfoHarness</font></code> Architecture.           
+</center>           
+           
+<a name="sec3"><h2>3.0 The InfoHarness System</h2>           
+           
+<p>           
+The main components of the current           
+<code><font size=+1>InfoHarness</font></code> implementation           
+include (<a href="#figH">Figure 1</a>):           
+<ol>           
+<li> The <code><font size=+1>InfoHarness</font></code> server, which uses           
+     metadata to traverse, search, and retrieve the original information.           
+           
+<li> The <code><font size=+1>CGI</font></code> gateway, which is used to           
+     pass requests from <code><font size=+1>HTTP</font></code> clients to           
+     the <code><font size=+1>InfoHarness</font></code> server           
+     (via an <code><font size=+1>HTTP</font></code> server) and responses           
+     back to the clients.           
+           
+<li> The metadata generator, which supports the off-line generation of           
+     the <code><font size=+1>InfoHarness</font></code> metadata entities           
+     representing the desired logical structure and organization of the           
+     original information. This metadata is used by the           
+     <code><font size=+1>InfoHarness</font></code> server to support           
+     dynamic search and presentation of raw data.           
+</ol>           
+           
+At access-time, the Web clients issue query, traversal, or retrieval requests           
+that are passed on to the gateway, which performs the following operations:           
+<ol>           
+<li> Parses the request, and reads input information when the request is           
+     associated with an <code><font size=+1>HTML</font></code> form.           
+           
+<li> Establishes a socket connection with the           
+     <code><font size=+1>InfoHarness</font></code> server, generates           
+     and sends out a request, and waits for a response.           
+           
+<li> Parses the response, converts it to a combination of           
+     <code><font size=+1>HTML</font></code> forms and hyperlinks, adds           
+     an <code><font size=+1>HTTP</font></code> header, and passes the           
+     transformed response to an <code><font size=+1>HTTP</font></code> browser.           
+</ol>           
+           
+<p>           
+The <code><font size=+1>InfoHarness</font></code> architecture is open,           
+modular, extensible and scalable.           
+The <code><font size=+1>InfoHarness</font></code> server implements the           
+abstract class presentation hierarchy that does not have to be modified           
+to support a new data type, or a new           
+indexing technology [<a href="#shk95-1">shk95-1</a>]. The methods associated           
+with abstract classes are general enough because they are data-driven and           
+can invoke independent programs.           
+The definitions of terminal classes are also data-driven and are not part of           
+the implementation, which makes the system capable of supporting arbitrary           
+information access and management tools (e.g., browsers, indexing           
+technologies, access methods).           
+           
+<center>           
+<p><a href="figO1.eps" name="figO1"><img src="figO1.gif"></a>           
+<p><strong>Figure 2.</strong> Simple and Composite Objects.           
+</center>           
+           
+<a name="sec31"><h3>3.1 The Object Model</h3>           
+           
+<p>           
+As mentioned earlier, an important advantage of           
+<code><font size=+1>InfoHarness</font></code> is that it provides access           
+to heterogeneous information without making any assumptions about its           
+location and representation.           
+This is achieved by generating metadata and associating it with the original           
+information. Metadata entities,           
+which encapsulate units of information that are of interest to end-users,           
+are called encapsulation units (EU). An EU may be associated with a file           
+(e.g., a man page), a portion of a file (e.g., a C function), a set of files           
+(e.g., a set of related man pages), or a request for the retrieval of data           
+from an external source (e.g., a database query). For example, a C file and           
+a function that occurs in this file may, in different contexts, each           
+present a unit of interest to end-users. Consequently, they may be           
+encapsulated by separate metadata entities.           
+           
+<p>           
+An <code><font size=+1>InfoHarness</font></code> object (IHO) is defined           
+recursively as one of the following:           
+<ol>           
+<li>           
+A simple object, composed of a single encapsulation unit and, optionally,           
+attribute-value pairs.           
+<li>           
+A collection object, composed of a set of references to other           
+<code><font size=+1>InfoHarness</font></code>           
+objects (its children) and optional attributes.           
+<li>           
+A composite object that combines a simple object and a set of references           
+to other <code><font size=+1>InfoHarness</font></code> objects.           
+</ol>           
+           
+<p>           
+An <code><font size=+1>InfoHarness</font></code> object contains a unique           
+identifier that is recognized and maintained by the system. Each simple           
+and composite object (Figure 3) stores the possibly remote location of raw           
+data, the logical address of the encapsulated portion of this data (e.g.,           
+name of a C function or title of a document section),           
+and typing information that determines           
+the access-time data presentation method. Data location may be expressed by           
+any legal Uniform Resource Locator (URL), which makes it possible not only           
+to model local legacy information but also to create multiple views of the           
+existing Web resources.           
+           
+<p>           
+For example, an object that encapsulates a <code><font size=+1>C</font></code>           
+function would be assigned a presentation type           
+<code><font size=+1>C</font></code> and would contain both the location of           
+a <code><font size=+1>C</font></code> file containing the function and the            
+name of this function. The type of this object determines the presentation           
+method that would separate out the function at the presentation time.           
+In addition, each object may contain arbitrary number of attribute-value pairs           
+(e.g., owner, last update, security information, decompression method, etc.).           
+           
+<center>           
+<p><a href="figO2.eps" name="figO2"><img src="figO2.gif"></a>           
+<p><strong>Figure 3.</strong> <code><font size=+1>InfoHarness</font></code> Collections.           
+</center>           
+           
+<p>           
+An object that contains references to a set of other           
+<code><font size=+1>InfoHarness</font></code> objects may           
+be either a collection or a composite object. Only composite objects may           
+contain an encapsulation unit (Figure 2). A sample composite object both           
+encapsulates an abstract of a paper and contains references to objects that           
+encapsulate text, HTML, postscript and Latex versions of the full paper.            
+Collection objects may contain references to independent indices           
+that in turn reference their child objects (Figure 3). An index may be created           
+either from the encapsulated contents of child objects or from the values of           
+their attributes (an information source of the index). By an abuse of           
+notation, we will refer to such collection objects as indexed collections,           
+and say that an <code><font size=+1>InfoHarness</font></code> object belongs           
+to an indexed collection if it is a child of a collection object.           
+           
+<p>           
+An indexed collection contains information about the index source, type,           
+and the location of the associated index structures.           
+The type ensures proper selection of query and mapping           
+methods, the latter responsible for mapping selected information into           
+<code><font size=+1>InfoHarness</font></code> objects (Figure 3). Consequently,           
+any indexed collection may make use of external data retrieval methods that           
+are not parts of <code><font size=+1>InfoHarness</font></code>,           
+making it possible to utilize existing heterogeneous index structures.           
+           
+<p>           
+An <code><font size=+1>InfoHarness</font></code> repository is a set of           
+objects that are known to a single           
+<code><font size=+1>InfoHarness</font></code> server.           
+Any object may be a member of an arbitrary number of collections (its parents).           
+An object that has one or more parents always           
+contains unique object identifiers of its parent objects. An object that           
+does not have any parent is unreachable and may only be accessed           
+if used as an initial starting point (or entry point) in the traversal.           
+           
+<a name="sec32"><h3>3.2 Building InfoHarness Repositories</h3>           
+           
+<p>           
+The metadata generator (Figure 1) supports the off-line creation of metadata           
+entities. The generator commands either encapsulate the raw data, or group           
+existing objects into sets. In addition, the generator is responsible for           
+the creation of independent indices that reference members of indexed           
+collections.           
+           
+<p>           
+There are only three different generator commands:           
+<ol>           
+<li>           
+The <em>encapsulate</em> command requires information about type and           
+location of physical data. It returns a set of           
+<code><font size=+1>InfoHarness</font></code> objects,            
+each of which encapsulates a portion of data. Boundaries of these portion           
+are determined by type. For example, an encapsulation command may refer to           
+the type rmail and the location of an RMAIL file. The output in this           
+example is a set of objects, each of which is associated with a separate           
+mail message.           
+           
+<li>           
+The <em>group</em> command requires a set of pointers to individual objects           
+and, optionally, the desired type of the index. The command generates           
+an object associated with the collection, as well as parent-child and           
+child-parent relationships between the collection objects and each member           
+of the input set. The optional type parameter determines the           
+technology to be used for indexing physical data associated with member           
+objects. If the type is not specified, no index is created.           
+           
+<li>           
+The <em>merge</em> command requires an object and a set of references           
+to additional objects. It produces a composite object that encapsulates           
+the same physical data as the input object and contains the mentioned set           
+of references.           
+</ol>           
+           
+To simplify using the generator, <code><font size=+1>InfoHarness</font></code>           
+utilizes a number of macros for standard operations.           
+For a more uniform solution to building information repositories,           
+we have designed a high-level           
+<em>Information Repository Definition Language</em> (IRDL), which supports           
+very compact and simple specifications for building large and complex           
+information repositories [<a href="#shk95-2">shk95-2</a>]. With IRDL,           
+the generator commands are produced by the IRDL Interpreter.           
+           
+<a name="sec33"><h3>3.3 Sample InfoHarness Repository</h3>           
+           
+<p>           
+To illustrate the concepts discussed in Sections <a href="#sec31">3.1</a>           
+and <a href="#sec32">3.2</a>, we discuss how to use           
+<code><font size=+1>InfoHarness</font></code> for advanced           
+search and presentation of judicial opinions from the U.S. Supreme Court           
+that are available as a collection of plain text files at           
+<code><font size=+1>ftp.cwru.edu</font></code>           
+(the life <a href="http://www.cs.rutgers.edu/cgi-bin/nph-gh.cgi?INIT">demo</a>           
+is available).           
+Here, information related to a single court case may be distributed           
+between multiple files.            
+           
+<p>           
+Given the location of the original information, the desired access-time           
+presentation of individual cases, and the desired full-text indexing           
+technology, we have implemented a twenty-line (including declarations)           
+IRDL program that generates the repository of the Supreme Court cases           
+by performing the following steps:           
+           
+<ol>           
+<li> Creates simple objects that encapsulate individual judicial opinions           
+     (one per file). The encapsulation method determines the case           
+     numbers for the opinions and stores them as attributes of the           
+     encapsulating objects.           
+           
+<li> For each object created in step one, finds other objects related to           
+     the same case, encapsulates them together with the presentation type           
+     <code><font size=+1>Case</font></code>, and excludes them from any           
+     further consideration. The presentation method for this type is           
+     responsible for generating the internal hyperlinks to individual           
+     opinions and the external hyperlinks to related information           
+     (the Supreme Court photo, bios of the judges, etc.),           
+     Figure <a href="#fig5">5</a>.           
+           
+<li> Creates an indexed collection of the objects created in step 2 using           
+     the <em>Latent Semantic Indexing</em> technology           
+     [<a href="#dum88">dum88</a>].           
+</ol>           
+           
+<center>           
+<p><strong><a name="figEx1">Figure 4.</strong> 
+<a href="figEx1.gif">  
+Query Interface for the Example in Section 3.3.</a>           
+</center>           
+           
+<center>           
+<p><strong><a name="figEx2"> Figure 5.</strong> 
+<a href="figEx2.gif">          
+Data Presentation for the Example in Section 3.3.</a>           
+</center>           
+           
+<p>           
+In this example, each indexed object is a composite object           
+(Section <a href="#sec31">3.1</a>). Consequently, when presenting           
+the results of a query (Figure <a href="#figEx1">4</a>), for each case we           
+see not only a hyperlink for its content but also hyperlinks for the           
+individual opinions. The internal hyperlinks for individual opinions are           
+also available when presenting an individual case           
+(Figure <a href="#figEx2">5</a>).           
+           
+           
+           
+<a name="sec4"><h2>4.0 Conclusions</h2>           
+           
+<p>           
+We have discussed using <code><font size=+1>InfoHarness</font></code> to           
+provide Web access to existing heterogeneous information.           
+We believe that the system's           
+open and extensible architecture makes it well-positioned to take           
+full advantage of new exciting developments in the Web technology.           
+Even though <code><font size=+1>Java</font></code>           
+[<a href="#gos95">gos95</a>] and other emerging           
+mobile code systems provide new and exciting opportunities in presenting           
+information on the Web, we see them as complementary to the new developments           
+in the traditional <code><font size=+1>HTML</font></code> presentation           
+and the <code><font size=+1>HTTP</font></code> protocol.           
+           
+<p>           
+Advancing Web technology is likely to rapidly antiquate the existing Web           
+structures, including images, applets, and static and dynamic           
+<code><font size=+1>HTML</font></code> pages.           
+These structures represent a tremendous investment and can not be           
+recreated with every new step in the technological advance.           
+Consequently, modeling methods that support advanced presentation of           
+existing heterogeneous information have to progress as well.           
+Similar methods should be applicable to building virtual Webs,            
+with both navigation and presentation controlled by personalized           
+meta-information.           
+           
+           
+<a name="refs"><h2>References</h2>           
+           
+<DL>           
+<DT><A NAME="and95">[and95]           
+<DD>K. Andrews, F. Kappe, and H. Maurer.           
+    <a href="http://www.igd.fhg.de/www/www95/papers/105/hgw3.html">           
+    <em>Serving Information to the Web with Hyper-G</em></a>,           
+    WWW'95, Darmstadt, Germany.           
+    Computer Networks and ISDN Systems 27(6), Elsevier Science,           
+    1995, pp. 919-926.           
+           
+<DT><A NAME="bae95">[bae95]           
+<DD>M. Baentsch, G. Molter, and P. Sturm.           
+    <a href="http://www.igd.fhg.de/www/www95/papers/51/WebMake/WebMake.html">           
+    <em>WebMake: Integrating distributed software development in           
+        a structure-enhanced Web</em></a>,           
+    WWW'95, Darmstadt, Germany.           
+    Computer Networks and ISDN Systems 27(6), Elsevier Science,           
+    1995, pp. 789-800.           
+           
+<DT><A NAME="ber92">[ber92]           
+<DD>T. Berners-Lee et al, <em>World Wide Web: The Information Universe</em>,           
+    Electronic Networking: Research, Applications and Policy, 1(2), 1992.           
+           
+<DT><A NAME="bor93">[bor93]           
+<DD>N. Borenstein, N. Freed, and K. Moore.           
+    <a href="http://www.oac.uci.edu/indiv/ehood/MIME/MIME.html">           
+    <em>MIME (Multipurpose Internet Mail Extensions)</em></a>,           
+    Network Working Group. RFC 1521 and 1522.           
+           
+<DT><A NAME="bow94">[bow94]           
+<DD>C. Bowman, P. Danzig, D. Hardy, U. Manber, and M. Schwartz.           
+<a href=
+"http://www.ncsa.uiuc.edu/SDG/IT94/Proceedings/Searching/schwartz.harvest/schwartz.harvest.html">           
+    <em>The Harvest information discovery and access system</em></a>,           
+    Proceedings of WWW'94, Chicago, IL.           
+    NCSA/UIUC, October 1994, pp. 763-772.           
+           
+<DT><A NAME="cla95">[cla95]           
+<DD>A. Clausnitzer, P. Vogel, and S. Wiesener.           
+    <a href="http://www.igd.fhg.de/www/www95/papers/65/omnis-www95/omnis-www.html">           
+    <em>A WWW Interface to the OMNIS/Myriad Literature Retrieval Engine           
+    </em></a>,           
+    WWW'95, Darmstadt, Germany.           
+    Computer Networks and ISDN Systems 27(6), Elsevier Science, 1995,           
+    pp. 1017-1026.           
+           
+<DT><A NAME="dum88">[dum88]           
+<DD>S. Dumais et al, <em>Using latent semantic analysis to improve access           
+    to textual information</em>,  Proceedings of the CHI Conference'88, 1988.           
+           
+           
+<DT><A NAME="eic94">[eic94]           
+<DD>D. Eichmann. T. McGregor, and D. Danley.           
+    <a href="http://www.cern.ch/PapersWWW94/spider.ps">           
+    <em>Integrating Structured Databases Into the Web: The MORE System           
+    </em></a>, WWW'94, Zurich, Switzerland.           
+    Computer Networks and ISDN Systems 27(2), Elsevier Science, 1994.           
+           
+<DT><A NAME="gos95">[gos95]           
+<DD>J. Gosling and H. McGilton.           
+    <a href="http://java.sun.com/whitePaper/javawhitepaper_1.html">           
+    <em>The Java Language Environment: A White Paper</em></a>,           
+    Sun Microsystems, Mountain View, CA, May 1995.           
+           
+<DT><A NAME="shk94">[shk94]           
+<DD>L. Shklar, S. Thatte, H. Marcus, and A. Sheth.           
+    <a href="http://www.ncsa.uiuc.edu/SDG/IT94/Proceedings/Searching/shklar/shklar.html">           
+    <em>The &quot;InfoHarness&quot; Information Integration Platform</em></a>,           
+    Proceedings of WWW'94, Chicago, IL. NCSA/UIUC, October 1994, pp. 809-820.           
+           
+<DT><A NAME="shk95-1">[shk95-1]           
+<DD>L. Shklar, A. Sheth, V. Kahyap, and K. Shah.           
+    <a href="http://www.cs.rutgers.edu/~shklar/papers/caise95.ps">           
+    <em>Use of Automatically Generated Metadata for Search and Retrieval           
+    of Heterogeneous Information</em></a>, CAiSE'95, Jyvaskyla, Finland.           
+    Lecture Notes in Computer Science #932, Springer-Verlag, 1995,           
+    pp. 217-230.           
+           
+<DT><A NAME="shk95-2">[shk95-2]           
+<DD>L. Shklar, K. Shah, and C. Basu.           
+    <a href="http://www.igd.fhg.de/www/www95/papers/78/irdl.html">           
+    <em>Putting Legacy Data on the Web: A Repository Definition Language           
+    </em></a>,           
+    WWW'95, Darmstadt, Germany.           
+    Computer Networks and ISDN Systems 27(6), Elsevier Science, 1995,           
+    pp. 939-951.           
+</DL>           
+           
+<hr>           
+           
+<h2>Footnotes</h2>           
+           
+<DL>           
+<DT><a name="TM">(TM)           
+<DD><code><font size=+1>InfoHarness</font></code> is a Bellcore           
+    trademark.           
+<DT><a name="F1">(1)           
+<DD>The <code><font size=+1>GeoHarness</font></code> work is a part of           
+    the <code><font size=+1>GeoLens</font></code> project being funded           
+    by a NASA Information Infrastructure Technology and Applications           
+    Program Cooperative Agreement (#NCC5-102), "Usability and Interoperability:           
+    A Dual Strategy for Enabling Broader Public Use of NASA's Remote Sensing           
+    Data on the Internet", Clifford Behrens, Principal Investigator.           
+<DT><a name="F2">(2)           
+<DD>The Universal Spatial Data Access Consortium consists of Bellcore,           
+    Camber Corp., the Open GIS Consortium, Rutgers Center for Remote Sensing           
+    and Spatial Analysis, the California Resources Agency, and NASA's Space           
+    Science Data Operations Office.           
+</DL>           
+           
+<p>          
+<H5>Copyright &#169; 1996 Bellcore</H5>           
+<hr>           
+<P>           
+<A href = "../../../dlib.html"><IMG src="../hom_but.gif" border=0 ALT="D-Lib Home Page |"></A>           
+<A href="../04contents.html">           
+<IMG src="../mag_but2.gif" border=0 ALT=" D-Lib Magazine Contents Page | "></A>           
+<A href="http://www.dlib.org/Hypernews/get/dlib_responses.html">           
+<img src = "../comm_but.gif" border = 0 ALT = "Comments"><br>           
+<A href="../loc/04c-arms.html">           
+<IMG src="../next.gif" border=0 ALT="Next Story"></A>           
+<p>           
+<img src = "../d-line2.gif"           
+<P>           
+<I>hdl://cnri.dlib/april96-shklar</I>          
+<p>           
+</BODY>           
+           
+</HTML>           
+
+ contentType 9 text/html url 58 http://www.dlib.org:80/dlib/april96/bellcore/04shklar.html responseCode 3 200 

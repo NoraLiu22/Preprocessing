@@ -1,0 +1,681 @@
+pobamqvmrmtsdkzgjkropcnibaicmaviaqdehmqc length 5 42152 page 42152 <!doctype html>
+
+
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Serials Search - zbMATH Open</title>
+        <meta name="viewport" content="width=device-width, minimum-scale=0.1, maximum-scale=5.0">
+        <meta name="robots" content="noarchive">
+        <meta name="referrer" content="origin-when-cross-origin">
+        <link href="https://static.zbmath.org/contrib/bootstrap/v3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen,print">
+        <link href="https://static.zbmath.org/contrib/bootstrap/v3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" media="screen,print">
+        <link href="https://static.zbmath.org/contrib/bootstrap-lightbox/v0.7.0/bootstrap-lightbox.min.css" rel="stylesheet" media="screen,print">
+
+        
+
+        <link href="/static/css/smoothness/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" media="screen">
+        <link href="/static/styles.css?v=20240304" rel="stylesheet" media="screen,print">
+        <link href="https://static.zbmath.org/zbMathJax/v0.1.38/zbmathjax.css" rel="stylesheet" media="screen,print">
+        <link rel="shortcut icon" href="/static/zbmath.ico">
+        <script type="application/ld+json">
+            {
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "url": "https://zbmath.org/",
+              "logo": "https://zbmath.org/static/zbMATH.png"
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="line"></div>
+
+        <span id="clear" style="cursor: pointer;">&times;</span>
+
+        <div id="page">
+            <div id="head" class="start">
+                <nav id="menu" class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zbnav" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">
+                                <img class="logo" src="/static/zbmath.gif" alt="zbMATH Open logo">
+                            </a>
+                        </div>
+                        <div id="zbnav" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav pages">
+                                <li class="about">
+                                    <a href="/about/">About</a>
+                                </li>
+                                <li class="frequently-asked-questions">
+                                    <a href="/frequently-asked-questions/">FAQ</a>
+                                </li>
+                                
+                                <li class="reviewer-service">
+                                    <a href="https://zbmath.org/reviewer-service/" target="_self" >Reviewer Service</a>
+                                </li>
+                                
+                                <li class="contact">
+                                    <a href="/contact/">Contact</a>
+                                </li>
+                                
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right prefs">
+                                <li class="preferences dropdown">
+                                    <a data-toggle="dropdown" href="#">Preferences <i class="caret"></i></a>
+                                    <ul class="dropdown-menu preferences">
+                                        <li>
+                                            <form
+                                                id="preferences"
+                                                class="navbar-form"
+                                                method="post"
+                                                action="/preferences/"
+                                                
+                                                    onsubmit="return confirm('This website uses cookies for the purposes of storing preference information. Do you agree to this?\n\nPlease refer to our Privacy Policy to learn more about our use of cookies.')"
+                                                
+                                            >
+                                                <input type="hidden" name="path" value="/serials/?">
+                                                <span class="count">
+                                                    <label class="title">Hits per Page</label>
+                                                    <div class="form-group">
+                                                        <input id="count-10" type="radio" name="count" value="10">
+                                                        <label for="count-10" class="radio">10</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-20" type="radio" name="count" value="20">
+                                                        <label for="count-20" class="radio">20</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-50" type="radio" name="count" value="50">
+                                                        <label for="count-50" class="radio">50</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-100" type="radio" name="count" value="100" checked>
+                                                        <label for="count-100" class="radio">100 (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="count-200" type="radio" name="count" value="200">
+                                                        <label for="count-200" class="radio">200</label>
+                                                    </div>
+                                                </span>
+                                                <span class="format">
+                                                    <label class="title">Display Format</label>
+                                                    <div class="form-group">
+                                                        <input id="format-mathjax" type="radio" name="format" value="mathjax" checked>
+                                                        <label for="format-mathjax" class="radio">MathJax (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="format-amstex" type="radio" name="format" value="latex">
+                                                        <label for="format-amstex" class="radio">LaTeX</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Documents Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="documents-ranking-default" type="radio" name="documents_ranking" value="date" checked>
+                                                        <label for="documents-ranking-default" class="radio">Newest first (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="documents-ranking-references" type="radio" name="documents_ranking" value="references">
+                                                        <label for="documents-ranking-references" class="radio">Citations</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="documents-ranking-relevance" type="radio" name="documents_ranking" value="relevance">
+                                                        <label for="documents-ranking-relevance" class="radio">Relevance</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Authors Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="authors-ranking-default" type="radio" name="authors_ranking" value="alpha" checked>
+                                                        <label for="authors-ranking-default" class="radio">Alphabetically (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="authors-ranking-references" type="radio" name="authors_ranking" value="references">
+                                                        <label for="authors-ranking-references" class="radio">Citations</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Serials Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="serials-ranking-default" type="radio" name="serials_ranking" value="alpha" checked>
+                                                        <label for="serials-ranking-default" class="radio">Alphabetically (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="serials-ranking-references" type="radio" name="serials_ranking" value="references">
+                                                        <label for="serials-ranking-references" class="radio">Citations</label>
+                                                    </div>
+                                                </span>
+                                                <span class="ranking">
+                                                    <label class="title">Software Sorting</label>
+                                                    <div class="form-group">
+                                                        <input id="software-ranking-default" type="radio" name="software_ranking" value="references" checked>
+                                                        <label for="software-ranking-default" class="radio">Citations (default)</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="software-ranking-alpha" type="radio" name="software_ranking" value="alpha">
+                                                        <label for="software-ranking-alpha" class="radio">Alphabetically</label>
+                                                    </div>
+                                                </span>
+                                                <button type="submit" class="btn btn-default">OK</button>
+                                                <div class="clearfix">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div id="tabs" class="start">
+                    <h1 class="logo">
+                        <a class="logo" href="/">
+                            <img
+                            class="LOGO"
+                                
+                                    src="/static/zbMATH.gif"
+                                    alt="zbMATH Open &mdash; the first resource for mathematics"
+                                
+                            >
+                        </a>
+                    </h1>
+                    <nav>
+                        <ul class="nav nav-tabs">
+                            <li class="tab-documents">
+                                <a href="/">Documents</a>
+                            </li>
+                            <li class="tab-authors">
+                                <a href="/authors/">Authors</a>
+                            </li>
+                            <li class="tab-serials active">
+                                <a href="/serials/">Serials</a>
+                            </li>
+                            <li class="tab-software">
+                                <a href="/software/">Software</a>
+                            </li>
+                            <li class="tab-classification">
+                                <a href="/classification/">Classification</a>
+                            </li>
+                            <li class="tab-formulae">
+                                <a href="/formulae/">Formulæ</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="clearfix"></div>
+                </div>
+                
+    <div class="content-fixed">
+        <div class="content-formular">
+    <form class="form-inline" name="serials" method="get" action="/serials/">
+        <div class="serials one-line" style="display:block;">
+            
+                <div class="forms">
+                    <ul class="nav forms">
+                        <li class="structured"><a href="#">Structured Search <span class="glyphicon glyphicon-list"></span></a></li>
+                    </ul>
+                </div>
+            
+            <div id="search-row" class="input-group box">
+                <span>
+                    <div id="search-field">
+                        
+                            
+                                <input class="query form-control" type="text" name="q" value="" aria-label="Search for serials" placeholder="Search for serials" autocomplete="off">
+                            
+                        
+                    </div>
+                    <div class="search-buttons input-group-btn">
+                        <div class="btn-group">
+                            <button class="btn btn-default search" type="submit"><span class="virtual">Search</span>
+                            <span class="glyphicon glyphicon-search" style="top: 2px;"></span></button>
+                        </div>
+                    </div>
+                </span>
+                <span>
+                    <div class="search-buttons input-group-btn">
+                        <div class="btn-group">
+                            
+                                <div class="btn-group fields">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Fields <i class="caret"></i></button>
+                                    <ul id="fields" class="dropdown-menu pull-right">
+                                        <li><a href="#"><span class="token item">any:</span><span>&nbsp;</span>anywhere (default)</a></li>
+                                        <li><a href="#"><span class="token item">jt:</span><span>&nbsp;&nbsp;</span>title</a></li>
+                                        <li><a href="#"><span class="token item">pu:</span><span>&nbsp;&nbsp;</span>publisher / editor</a></li>
+                                        <li><a href="#"><span class="token item">sn:</span><span>&nbsp;&nbsp;</span>issn</a></li>
+                                        <li><a href="#"><span class="token item">cc:</span><span>&nbsp;&nbsp;</span>main fields</a></li>
+                                        <li><a href="#"><span class="token item">py:</span><span>&nbsp;&nbsp;</span>time period</a></li>
+                                        <li><a href="#"><span class="token item">cy:</span><span>&nbsp;&nbsp;</span>country</a></li>
+                                        <li><a href="#"><span class="token item">la:</span><span>&nbsp;&nbsp;</span>languages</a></li>
+                                        <li><a href="#"><span class="token item">tp:</span><span>&nbsp;&nbsp;</span>serial type</a></li>
+                                        <li><a href="#"><span class="token item">st:</span><span>&nbsp;&nbsp;</span>publishing / indexing status</a></li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="btn-group operators">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Operators <i class="caret"></i></button>
+                                    <ul id="operators" class="dropdown-menu pull-right">
+                                        <li><a href="#"><span class="token">a&nbsp;<span class="item">&</span>&nbsp;b&nbsp;</span><span>&nbsp;</span>logical and (default)</a></li>
+                                        <li><a href="#"><span class="token">a&nbsp;<span class="item">|</span>&nbsp;b&nbsp;</span><span>&nbsp;</span>logical or</a></li>
+                                        <li><a href="#"><span class="token"><span class="item">!</span>ab&nbsp;&nbsp;&nbsp;</span><span>&nbsp;</span>logical not</a></li>
+                                        <li><a href="#"><span class="token">abc<span class="item">*</span>&nbsp;&nbsp;</span><span>&nbsp;</span>right wildcard</a></li>
+                                        <li><a href="#"><span class="token"><span class="item">"</span>ab&nbsp;c<span class="item">"</span></span><span>&nbsp;</span>phrase</a></li>
+                                        <li><a href="#"><span class="token"><span class="item">(</span>ab&nbsp;c<span class="item">)</span></span><span>&nbsp;</span>parentheses</a></li>
+                                    </ul>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <div class="special">
+                        <ul class="nav help-button">
+                            <li class="dropdown pull-right">
+                                <a href="#">Help <i class="caret"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
+            </div>
+            <div class="help"><h2>Examples</h2>
+
+<div id="help-terms" role="table">
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=Ann%2A+Math%2A">Ann* Math*</a></span>
+        <span class="search-explanation" role="cell">Search for the expressions in <strong>all fields</strong>. Abbreviations are also possible.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=jt%3A%22Annals+of+Mathematics%22">jt:&quot;Annals of Mathematics&quot;</a></span>
+        <span class="search-explanation" role="cell">Search for journal <strong>title phrase</strong>.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=jt%3Aannals+pu%3Amathematics">jt:annals pu:mathematics</a></span>
+        <span class="search-explanation" role="cell">Search for <strong>title</strong> and <strong>publisher</strong>.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=sn%3A0003-486X">sn:0003-486X</a></span>
+        <span class="search-explanation" role="cell">Search for <strong>ISSN</strong>. Both electronic and print ISSN are accepted.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=se%3A00002531">se:00002531</a></span>
+        <span class="search-explanation" role="cell">Search for the exact <strong>serial identifier</strong>. This excludes homonyms. Compare to <a href="/serials/?q=jt%3AAnnals+of+Mathematics">jt:Annals of Mathematics</a>.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=jt%3AAnnals+cc%3A05">jt:Annals cc:05</a></span>
+        <span class="search-explanation" role="cell">Search for <strong>title</strong> and <strong>main field</strong>.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=jt%3AAnnals+%28cy%3Acn+%7C+ro%29">jt:Annals (cy:cn | ro)</a></span>
+        <span class="search-explanation" role="cell">Search for <strong>title</strong> and <strong>country</strong>.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=tp%3Aj+st%3Ao+v+t">tp:j st:o v t</a></span>
+        <span class="search-explanation" role="cell">Search for <strong>journals</strong> which are <strong>open access</strong> and <strong>current</strong>ly indexed <strong>cover-to-cover</strong>.</span>
+    </div>
+    <div class="help-item" role="row">
+        <span class="search-example" role="rowheader"><a href="/serials/?q=py%3A1800-1899+la%3Ano">py:1800-1899 la:no</a></span>
+        <span class="search-explanation" role="cell">Search for <strong>19th century</strong> serials which published in <strong>Norwegian</strong>.</span>
+    </div>
+</div>
+
+<div id="help-fields">
+    <h2>Fields</h2>
+    <table>
+        <tr>
+            <td class="nowrap padding" role="rowheader"><strong>any</strong></td>
+            <td class="padding">anywhere</td>
+        </tr>
+        <tr>
+            <td class="nowrap padding" role="rowheader"><strong>jt</strong></td>
+            <td class="padding">journal / series title</td>
+        </tr>
+        <tr>
+            <td class="nowrap padding" role="rowheader"><strong>sn</strong></td>
+            <td class="padding">issn</td>
+        </tr>
+        <tr>
+            <td class="nowrap padding" role="rowheader"><strong>pu</strong></td>
+            <td class="padding">publisher</td>
+        </tr>
+    </table>
+</div>
+
+<div id="help-operators">
+    <h2>Operators</h2>
+    <table>
+        <tr role="rowheader">
+            <td class="nowrap padding">a <strong>&amp;</strong> b</td>
+            <td class="padding">logic and</td>
+        </tr>
+        <tr role="rowheader">
+            <td class="nowrap padding">abc<strong>*</strong></td>
+            <td class="padding">right wildcard</td>
+        </tr>
+        <tr role="rowheader">
+            <td class="nowrap padding">a <strong>|</strong> b</td>
+            <td class="padding">logic or</td>
+        </tr>
+        <tr role="rowheader">
+            <td class="nowrap padding"><strong>"</strong>ab c<strong>"</strong></td>
+            <td class="padding">phrase</td>
+        </tr>
+        <tr role="rowheader">
+            <td class="nowrap padding"><strong>!</strong>ab</td>
+            <td class="padding">logic not</td>
+        </tr>
+        <tr role="rowheader">
+            <td class="nowrap padding"><strong>(</strong>ab c<strong>)</strong></td>
+            <td class="padding">parentheses</td>
+        </tr>
+    </table>
+</div></div>
+        </div>
+    </form>
+
+    <form class="form-inline" name="serials" method="get" action="/serials/">
+        <div class="serials structured" style="display: none;">
+            <div class="forms">
+                <ul class="nav forms">
+                    <li class="one-line"><span tabindex="0" class="glyphicon glyphicon-question-sign" title="One-Line Search allows for free logical combinations of search fields" aria-label="One-Line Search allows for free logical combinations of search fields" data-placement="bottom"></span>&nbsp;<a style="display: inline-block;" href="#">One-Line Search <span class="glyphicon glyphicon-search"></span></a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div class="container-fluid two-columns">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group field jt">
+                            <label for="jt">Title:</label>
+                            <input id="jt" name="jt" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" data-placement="bottom" title="Title, Short&nbsp;Title or Abbreviation" aria-label="Title, Short Title or Abbreviation"></span>
+                        </div>
+                        <div class="form-group field pu">
+                            <label for="pu">Publisher / Editor:</label>
+                            <input id="pu" name="pu" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field sn">
+                            <label for="sn">ISSN:</label>
+                            <input id="sn" name="sn" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                        <div class="form-group field cc">
+                            <label for="cc">Main Fields:</label>
+                            <input id="cc" name="cc" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" title="field given by first two MSC digits" aria-label="field given by first two MSC digits"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group field py">
+                            <label for="py">Time Period:</label>
+                            <input id="py" name="py" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" data-placement="bottom" title="enter year (e.g. 2018) or&nbsp;year&nbsp;range (e.g.&nbsp;1990-2000)" aria-label="enter year (e.g. 2018) or year range (e.g. 1990-2000)"></span>
+                        </div>
+                        <div class="form-group field cy">
+                            <label for="cy">Country:</label>
+                            <input id="cy" name="cy" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" title="Country of Publisher" aria-label="Country of Publisher"></span>
+                        </div>
+                        <div class="form-group field la">
+                            <label for="la">Languages:</label>
+                            <input id="la" name="la" class="form-control" type="text" value="" placeholder="">
+                            <span tabindex="0" class="glyphicon glyphicon-question-sign" title="Language of indexed Documents" aria-label="Language of indexed Documents"></span>
+                        </div>
+                        <div class="form-group field any">
+                            <label for="any">Anywhere:</label>
+                            <input id="any" name="any" class="form-control" type="text" value="" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group field tp checkboxes-wrapper">
+                            <label>Serial Type:</label>
+                            <div class="checkboxes">
+                                <input type="checkbox" id="tp-j" name="tp" class="form-control" value="j">
+                                <label for="tp-j" title="search for Journals"> Journals</label><br>
+                                <input type="checkbox" id="tp-b" name="tp" class="form-control" value="b">
+                                <label for="tp-b" title="search for Book Series"> Book Series</label><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group field st checkboxes-wrapper" style="width: auto; float: right; margin-right: 18px;">
+                            <label style="width: auto;">Access:</label>
+                            <div class="checkboxes">
+                                <input type="checkbox" id="st-o" name="st" class="form-control" value="o">
+                                <label for="st-o" title="restrict to Serials that have always been published Open Access"> Open Access</label><br>
+                                <input type="checkbox" id="st-e" name="st" class="form-control" value="e">
+                                <label for="st-e" title="restrict to Serials that have always been published Electronic Only"> Electronic Only</label><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group field st checkboxes-wrapper" style="width: auto; float: right; margin-right: 18px;">
+                            <label style="width: auto;">Indexing:</label>
+                            <div class="checkboxes">
+                                <input type="checkbox" id="st-v" name="st" class="form-control" value="v">
+                                <label for="st-v" title="restrict to currently indexed Serials"> Current</label><br>
+                                <input type="checkbox" id="st-t" name="st" class="form-control" value="t">
+                                <label for="st-t" title="restrict to current Serials that are indexed Cover to Cover"> Cover to Cover</label><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row buttons">
+                    <div class="col-xs-6">
+                        <a tabindex="0" class="btn btn-default clear-all">Clear all <span class="glyphicon glyphicon-remove"></span></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="submit">
+                            <button class="btn btn-default search" type="submit">Search <span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="clear"></div>
+
+    
+        <div id="start" class="start">
+            <p>
+                Here you find information about indexing and open access status,
+                issue lists, frequent authors and subjects, and citation profiles for
+                serials in zbMATH Open.
+                In total, there are <a href="/serials/?q=tp%3Aj">4,987&nbsp;journals</a> and <a href="/serials/?q=tp%3Ab">2,568&nbsp;book series</a> indexed for <a href="/serials/">serials search</a>, including
+            </p>
+            <ul>
+                <li>
+                    <a href="/serials/?q=st%3Av">3,029&nbsp;currently indexed serials</a>
+                </li>
+                <li>
+                    <a href="/serials/?q=st%3Ao">1,132&nbsp;open access serials</a>
+                </li>
+                <li>
+                    <a href="/serials/?q=st%3Ac">6,345&nbsp;serials with citation profile</a>
+                </li>
+            </ul>
+            <p>
+                Journals may be
+                <a href="/serials/?q=tp%3Aj+%7C+b+%5Est%3Av">discontinued</a>
+                in zbMATH Open for various reasons. Read more at
+                <a href="/frequently-asked-questions/#indexing_decisions">How are indexing decisions made?</a>.
+            </p>
+
+            <div class="container-fluid" role="table">
+                <div class="row" role="row">
+                    <div class="title col-xs-12 col-sm-4" role="rowheader">
+                        <strong>One-Line Search</strong>
+                    </div>
+                    <div class="text col-xs-12 col-sm-8" role="cell">
+                        <p>
+                            The one-line search allows for free logical combinations of the search fields. Without specification, search is performed in all fields, e.g.:
+                        </p>
+                        <div class="help" style="display: block;" role="table">
+                            <div class="help-item" role="row">
+                                <span class="search-example" role="rowheader">
+                                    <a href="/serials/?q=J%2A+Eur%2A+Math%2A+Soc%2A">J* Eur* Math* Soc*</a>
+                                </span>
+                                <span class="search-explanation" role="cell">
+                                    Search for the expressions in all fields.
+                                </span>
+                            </div>
+                            <div class="help-item" role="row">
+                                <span class="search-example" role="rowheader">
+                                    <a href="/serials/?q=jt%3AJ%2A+pu%3AEur%2A+Math%2A+Soc%2A">jt:J* pu:Eur* Math* Soc*</a>
+                                </span>
+                                <span class="search-explanation" role="cell">
+                                    Search for title and publisher.
+                                </span>
+                            </div>
+                            <div class="help-item" role="row">
+                                <span class="search-example" role="rowheader">
+                                    <a href="/serials/?q=sn%3A1435-9855">sn:1435-9855</a>
+                                </span>
+                                <span class="search-explanation" role="cell">
+                                    Search for ISSN.
+                                </span>
+                            </div>
+                            <div class="help-item" role="row">
+                                <span class="search-example" role="rowheader">
+                                    <a href="/serials/?q=st%3Av+o+tp%3Aj+cc%3A14">st:v o tp:j cc:14</a>
+                                </span>
+                                <span class="search-explanation" role="cell">
+                                    Search for currently indexed open access journals for a subject.
+                                </span>
+                            </div>
+                        </div>
+                        <p>
+                            For more examples click the Help Button.
+                        </p>
+                    </div>
+                </div>
+                <div class="row" role="row">
+                    <div class="title col-xs-12 col-sm-4" role="rowheader">
+                        <strong>Structured Search</strong>
+                    </div>
+                    <div class="text col-xs-12 col-sm-8" role="cell">
+                        Structured search allows for entering queries in separate search fields, which are automatically combined by &quot;&amp;&quot;.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="content-shadow"></div>
+    </div>
+
+            </div>
+
+            <div id="body">
+                <div id="main" class="start">
+                    <div class="messages">
+                        
+                    </div>
+                    
+    
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div id="foot"><div class="logos">
+                            <a class="logo no-new-tab-icon" href="https://www.fiz-karlsruhe.de/en" target="fiz">
+                                <img class="fiz" src="/static/fiz.gif" alt="logo of FIZ Karlsruhe GmbH" title="FIZ Karlsruhe (opens in new tab)">
+                            </a>
+                            <a class="logo no-new-tab-icon" href="https://euromathsoc.org/" target="ems">
+                                <img class="ems" src="/static/ems.gif" alt="logo of The European Mathematical Society" title="The European Mathematical Society (opens in new tab)">
+                            </a>
+                            <a class="logo no-new-tab-icon" href="https://www.hadw-bw.de/" target="haw">
+                                <img class="haw" src="/static/haw.gif" alt="logo of Heidelberg Academy of Sciences and Humanities" title="Heidelberg Academy of Sciences and Humanities (opens in new tab)">
+                            </a>
+                        </div>
+                        <div class="clearfix"></div><div class="copyright">
+                    &copy; 2024
+                    <a target="fiz" href="https://www.fiz-karlsruhe.de/en">FIZ Karlsruhe GmbH</a>
+                    <a href="/privacy-policy/">Privacy Policy</a>
+                    <a href="/legal-notices/">Legal Notices</a>
+                    <a href="/terms-conditions/">Terms &amp; Conditions</a>
+
+                    <div class="info">
+                        <ul class="nav">
+                            <li class="mastodon">
+                                <a href="https://mathstodon.xyz/@zbMATH" target="_blank" class="no-new-tab-icon">
+                                    <img src="/static/mastodon.png" title="zbMATH at Mathstodon (opens in new tab)" alt="Mastodon logo">
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix" style="height: 0px;"></div>
+            </div>
+        </div>
+
+        <script src="https://static.zbmath.org/contrib/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/jquery-caret/1.5.2/jquery.caret.min.js"></script>
+        <script src="/static/js/jquery-ui-1.10.1.custom.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/bootstrap/v3.3.7zb1/js/bootstrap.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/bootstrap-lightbox/v0.7.0/bootstrap-lightbox.min.js"></script>
+        <script src="https://static.zbmath.org/contrib/retina/unknown/retina.js"></script>
+        
+        
+        <script>
+            var SCRIPT_ROOT = "";
+        </script>
+        <script src="/static/scripts.js?v=20240313">
+        </script>
+
+        <script src="https://static.zbmath.org/contrib/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            <script type="text/x-mathjax-config">
+                MathJax.Hub.Config({
+                    "HTML-CSS": {
+                        preferredFont: "TeX",
+                        availableFonts: [ "STIX", "TeX" ],
+                        linebreaks: { automatic: true },
+                        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+                    },
+                    tex2jax: {
+                        processEscapes: true,
+                        ignoreClass: "tex2jax_ignore|dno"
+                    },
+                    TeX: {
+                        Macros: {
+                            Aut: "\\operatorname{Aut}",
+                            Hom: "\\operatorname{Hom}"
+                        },
+                        noUndefined: {
+                            attributes: {
+                                mathcolor: "#039", //"red",
+                                mathbackground: "white", //"#FFEEEE",
+                                mathsize: "90%"
+                            }
+                        }
+                    },
+                    messageStyle: "none"
+                });
+            </script>
+        <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#MathInput").stop(true, true).keyup(function() {
+                        $.ajax({
+                            url: "/mwsq/",
+                            type: "POST",
+                            data: { query : $("#MathInput").val() },
+                            dataType: "text"
+                        })
+                        .done(function(xml) {
+                            $("#MathPreview").html(xml);
+                            $(window).resize();
+                        });
+                    });
+                    var press = jQuery.Event("keyup");
+                    press.ctrlKey = false;
+                    press.which = 40;
+                    $("#MathInput").trigger(press);
+                });
+            </script>
+        <div id="new_tab_icon" style="display: none">&nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span><span class="sr-only">(opens in new tab)</span></div>
+    </body>
+</html> contentType 9 text/html url 31 https://zbmath.org:443/serials/ responseCode 3 200 

@@ -1,0 +1,868 @@
+bitawmfcteliugzqdcqolsgeymygssqelgroimnm length 5 47985 page 47985 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="no-js">
+    <head>
+        
+            <base href="https://consult.abs.gov.au/"/>
+        
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Find and participate in consultations run by the Australian Bureau of Statistics">
+        
+        
+        <title>
+            Australian Bureau of Statistics
+            
+            - Citizen Space
+        </title>
+        
+        <link rel="stylesheet" href="/static_frontend/vendor/lato-2.015/fonts.css">
+        <link type="text/css" href="/static_frontend/vendor/dlb-public-ui/css/bootstrap.css" rel="stylesheet">
+        
+        <link type="text/css" href="https://consult.abs.gov.au/static_frontend/vendor/dlb-public-ui/css/dlb-public-ui-compiled.css" rel="stylesheet">
+        <link type="text/css" href="https://consult.abs.gov.au/static_frontend/css/citizenspace.css" rel="stylesheet">
+
+        
+
+        <!--Font Awesome-->
+        <link type="text/css" href="/static_frontend/vendor/dlb-public-ui/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <!--/Font Awesome-->
+
+        
+        <script type="text/javascript">
+            var tr_auto_embed = true;
+        </script>
+
+        <!--jQuery -->
+        <script type="text/javascript" src="/static_frontend/vendor/dlb-public-ui/libraries/jquery/jquery.min.js"></script>
+        <!--/jQuery -->
+        <script type="text/javascript" src="/static_frontend/js/fluid-resize.js?version=7.43.0"></script>
+        
+        <script type="text/javascript" src="/static_frontend/js/tr-safe-embed.js?version=7.43.0"></script>
+        <script type="text/javascript" src="/static_frontend/js/text-truncate.js?version=7.43.0"></script>
+        <script type="text/javascript" src="/static_frontend/js/tr-pdf.js?version=7.43.0"></script>
+        
+        
+        
+
+        <!--
+            Part of the Bootstrap 5 migration involves prefixing Bootstrap JS attributes with bs-
+            This has been done in our codebase, but copy/pasted content such as fact banks may still have old attributes.
+            Additionally, the admin UI is on Bootstrap 3 but is exposed to Bootstrap 5 when previewing pages.
+            Shim these attributes to allow these to remain working.
+        -->
+        <script>
+            const bootstrapEventShim = function() {
+                document.querySelectorAll('[data-toggle]').forEach((el) => {
+                    let attrVal = el.dataset.toggle;
+                    el.dataset.bsToggle = attrVal;
+                });
+                document.querySelectorAll('[data-target]').forEach((el) => {
+                    let attrVal = el.dataset.target;
+                    el.dataset.bsTarget = attrVal;
+                });
+            }
+            document.addEventListener("DOMContentLoaded", bootstrapEventShim);
+        </script>
+
+         <!-- Bootstrap JS Components -->
+        <script src="/static_frontend/vendor/dlb-public-ui/libraries/bootstrap-5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+        
+
+        <!-- Page-specific CSS and JS can go here -->
+        
+
+
+        <!-- Remove no-js class if scripts are enabled -->
+        <script>
+            document.documentElement.classList.remove('no-js')
+        </script>
+
+        <!-- Ensure collapsible content is displayed and misleading links are hidden if JS is disabled -->
+        <noscript>
+            <style>
+                .collapse {
+                    display: block;
+                }
+
+                .show-when-no-js {
+                    display:block;
+                }
+
+                .hide-when-no-js {
+                    display:none;
+                }
+            </style>
+        </noscript>
+
+    </head>
+
+    <body
+          data-site-root="https://consult.abs.gov.au">
+        <div id="skip">
+            <a href="https://consult.abs.gov.au/#page-content">Skip to Main Content</a>
+        </div>
+        
+
+<script>
+
+    jQuery(document).ready(function() {
+        
+
+        var options = {};
+        // used to disable the go button when the selected page is the current page
+        var cur_page = jQuery("#preview-navigation-page-select").val()
+
+        jQuery("#preview-navigation-page-select").change(function() {
+            var page = jQuery(this).val();
+            var button = jQuery("#preview-navigation button");
+            if (page != "" && page != cur_page) {
+                button.prop('disabled',false);
+            } else {
+                button.prop('disabled','disabled');
+            }
+        });
+
+        jQuery("#preview-navigation button").click(function(event) {
+            var page = jQuery("#preview-navigation-page-select").val();
+            var consultation_root = jQuery("#preview-navigation").data("consultation-root");
+            var survey_root = jQuery("#preview-navigation").data("survey-root");
+            var cookie_path = jQuery("#preview-navigation").data("cookie-path");
+
+            function set_state(state) {
+                document.cookie="preview_state="+state+";path="+cookie_path+";";
+            }
+
+            set_state("open");
+            if (page === "_hub") {
+                window.location = survey_root;
+            } else if (page == "_overview_open") {
+                window.location = consultation_root;
+            } else if (page == "_overview_closed") {
+                set_state("closed");
+                window.location = consultation_root;
+            } else if (page == "_overview_forthcoming") {
+                set_state("forthcoming");
+                window.location = consultation_root;
+            } else if (page == "_published_responses") {
+                set_state("closed");
+                window.location = survey_root + "published_select_respondent";
+            } else if (page == "") {
+                // No-op, shouldn't get here (hah..).
+            } else {
+                window.location = survey_root + page;
+            }
+        });
+
+    });
+</script>
+
+        <div id="global-wrapper">
+
+            
+
+            <header id="global-nav" class="navbar navbar-default navbar-expand-md navbar-static-top dss-navbar">
+                <div class="container-fluid">
+                    <div class="row flex-grow-1 py-2 pb-md-0 pt-lg-1">
+                        <div class="mb-md-2 py-lg-1 col-md-8 ">
+                            <div class="navbar-header d-flex justify-content-between">
+                                <div id="global-nav-main-heading">
+                                    
+                                        <a id="global-nav-site-title" href="https://consult.abs.gov.au/">
+                                            <img src="https://consult.abs.gov.au/os-custom-logos/abs_logo_72dpi_113x100_mono.jpg-1"
+                                                alt="ABS Logo" class="global-nav-logo ms-3 ms-md-0" />
+                                        </a>
+                                    
+                                </div>
+                                <button class="navbar-toggler d-md-none align-self-center"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#global-navbar-collapse"
+                                    aria-expanded="false"
+                                    aria-controls="global-navbar-collapse">
+                                    <span class="visually-hidden">Toggle navigation</span>
+                                    <span class="fa fa-caret-down"></span>
+                                    <span>Menu</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="cs-global-search-container-md" class="global-search-container d-none d-md-block align-self-center text-right py-lg-2">
+                            <!-- Javascript puts the search form here for sm viewports -->
+                            <form id="cs-global-search" action="https://consult.abs.gov.au/consultation_finder/" method="GET">
+                                
+                                <div role="search">
+                                    
+                                    <label for="cs-global-search-input" class="visually-hidden">Search</label>
+                                    <div class="input-group">
+                                        <input class="form-control" size="27" id="cs-global-search-input" type="text" name="keyword" placeholder="Search"/>
+                                        <button class="btn btn-primary" aria-label="Search"><span class="fa fa-search"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        
+                        
+                        <div class="w-100"></div>
+                        <div>
+                            <nav class="collapse navbar-collapse navbar-left px-3 px-md-0"
+                                id="global-navbar-collapse">
+
+                                <div id="global-navbar-collapse-inner" class="py-2">
+
+                                    <div id="cs-global-search-container-xs" class="d-md-none">
+                                        <!-- Javascript puts the search form here for xs viewports -->
+                                    </div>
+                                    
+                                    <ul class="cs-navbar-nav-list">
+                                        <li class="cs-navbar-nav-list-item">
+    <a class="cs-navbar-nav-link" href="/">
+        <span class="cs-navbar-nav-link-text">Home</span>
+    </a>
+</li>
+<li class="cs-navbar-nav-list-item">
+    <a class="cs-navbar-nav-link" href="/consultation_finder/">
+        <span class="cs-navbar-nav-link-text">Find Activities</span>
+    </a>
+</li>
+<li class="cs-navbar-nav-list-item">
+    <a class="cs-navbar-nav-link" href="/we_asked_you_said/">
+        <span class="cs-navbar-nav-link-text">We Asked, You Said, We Did</span>
+    </a>
+</li>
+
+                                    </ul>
+                                    
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main id="page-content-wrapper">
+                <div id="page-content" tabindex="-1">
+                    <div id="cs-page-hub_config">
+        <div class="cs-page-component-group " style="">
+            
+                <section class="dss-rhino cs-page-component-container cs-banner-container" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-html-component">
+        <div class="row cs-html-component-one-column">
+            <div>
+                <div class="cs-banner-inner dss-easy-reading">
+                    <h1>ABS Consultation Hub</h1>
+                    <p>Welcome to the ABS Consultation Hub where you can find and participate in our public consultations.</p>
+<p>The hub provides information on new ABS projects and makes sharing your ideas and giving feedback easy. We will use the hub to keep you informed, listen to and acknowledge your concerns and aspirations, and provide feedback on how public input influenced our decisions.</p>
+<p>Recently&#160;added consultations are displayed below. Alternatively, <a href="/advanced_consultation_finder">search for consultations</a> by keyword, postcode, interest etc.</p>
+
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+        
+    </div>
+</section>
+
+
+            
+        </div>
+        <div class="cs-page-component-group " style="">
+            
+                
+
+            
+                <section class="dss-rhino cs-page-component-container dss-rhino-2021-warm-light-grey" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-search-results-component-card cs-search-results-component-listing2">
+    <div class="cs-page-component-preamble">
+        <h2 class="cs-page-component-title cs-page-component-contrast" style="margin-top:0">Open Consultations</h2>
+
+        
+    </div>
+
+    <ul class="list-unstyled" style="margin-bottom:0">
+        <li class="dss-card">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3><a class="unstyled" href="https://consult.abs.gov.au/industry-statistics/australian-industry-consultation/">Australian Industry publication consultation</a></h3>
+                    <p>
+                        The Australian Bureau of Statistics (ABS) is consulting with users of the  Australian Industry  publication to understand how the outputs are used. 
+
+ Australian Industry is released annually, within 11 months of the end of the financial year reference period. Australian Industry contains annual...
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="cs-date-delta">
+                        
+                          <span>Closes</span> 31 May 2024
+                        
+                        
+                        
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="row cs-page-component-contrast">
+        <div style="text-align:right">
+            <a href="https://consult.abs.gov.au/consultation_finder/?_collection=eyJzb3J0X29uIjogImljb25zdWx0YWJsZV9lbmRkYXRlIiwgInNvcnRfb3JkZXIiOiAiYXNjZW5kaW5nIiwgInN0IjogIm9wZW4iLCAiY29sbGVjdGlvbl90aXRsZSI6ICJPcGVuIENvbnN1bHRhdGlvbnMifQ%3D%3D%3Ae9f8d63e4a91f7ef67ac901f57444778a8e8e76123adb992c4beddf221280e07#cs-finder-results-container" aria-label="See All Open Consultations">
+                See All Open Consultations
+            </a>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</section>
+
+
+            
+                
+
+            
+                <section class="dss-rhino cs-page-component-container dss-rhino-2021-warm-light-grey" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-search-results-component-card cs-search-results-component-listing2">
+    <div class="cs-page-component-preamble">
+        <h2 class="cs-page-component-title cs-page-component-contrast" style="margin-top:0">Closed Consultations</h2>
+
+        
+    </div>
+
+    <ul class="list-unstyled" style="margin-bottom:0">
+        <li class="dss-card">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3><a class="unstyled" href="https://consult.abs.gov.au/census/administrative-data-snapshot-of-population-and-hou/">Administrative data snapshot of population and housing (ADS) feedback</a></h3>
+                    <p>
+                        The Australian Bureau of Statistics (ABS) is seeking feedback from users to understand the value and potential of the  Administrative data snapshot of population and housing release  (ADS) . This includes potential use of administrative data in future Censuses.       
+
+      The ADS is a new...
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="cs-date-delta">
+                        
+                        
+                        
+                          <span>Closed</span> 15 December 2023
+                        
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="dss-card">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3><a class="unstyled" href="https://consult.abs.gov.au/data-integration-operations/monthly-cpi-design-consultation/">Design of a complete monthly Consumer Price Index – Public Consultation </a></h3>
+                    <p>
+                        1. Overview       
+
+    The Australian Bureau of Statistics (ABS) is undertaking a public consultation process to design the complete monthly measure of the Consumer Price Index (CPI). This is an opportunity for you to inform us of your data, timing and publication needs and help shape the design...
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="cs-date-delta">
+                        
+                        
+                        
+                          <span>Closed</span> 15 December 2023
+                        
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="dss-card">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3><a class="unstyled" href="https://consult.abs.gov.au/census/census-data-feedback-survey/">Census data feedback survey</a></h3>
+                    <p>
+                        The Australian Bureau of Statistics (ABS) is seeking feedback from data users to understand how they use and access Census data. Census data can be viewed and accessed in a number of ways using a variety of tools. Each method has unique key features, formats and provide varying levels of detail.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="cs-date-delta">
+                        
+                        
+                        
+                          <span>Closed</span> 11 December 2023
+                        
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="dss-card">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3><a class="unstyled" href="https://consult.abs.gov.au/industry-statistics/review-of-australian-standard-classification-of-la/">2023 Review of Australian Standard Classification of Languages (ASCL)</a></h3>
+                    <p>
+                        In 2023, the ABS will undertake a major review of the Australian Standard Classification of Languages (ASCL). The review will update the ASCL to better reflect languages that are widely used in the Australian community. Updates to the ASCL will ensure collection and production of high quality data,...
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="cs-date-delta">
+                        
+                        
+                        
+                          <span>Closed</span> 8 December 2023
+                        
+                    </p>
+                </div>
+            </div>
+        </li>
+        <li class="dss-card">
+            <div class="row">
+                <div class="col-md-9">
+                    <h3><a class="unstyled" href="https://consult.abs.gov.au/standards-and-classifications/anzsco-comprehensive-review-round-3/">ANZSCO comprehensive review - consultation round 3</a></h3>
+                    <p>
+                        The Australian Bureau of Statistics (ABS) continues its comprehensive review of the Australian and New Zealand Standard Classification of Occupations (ANZSCO)  with a third round of public consultation .  This is an opportunity for you to make a significant impact by providing feedback on selected...
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <p class="cs-date-delta">
+                        
+                        
+                        
+                          <span>Closed</span> 5 December 2023
+                        
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="row cs-page-component-contrast">
+        <div style="text-align:right">
+            <a href="https://consult.abs.gov.au/consultation_finder/?_collection=eyJzb3J0X29uIjogImljb25zdWx0YWJsZV9lbmRkYXRlIiwgInNvcnRfb3JkZXIiOiAiZGVzY2VuZGluZyIsICJzdCI6ICJjbG9zZWQiLCAiY29sbGVjdGlvbl90aXRsZSI6ICJDbG9zZWQgQ29uc3VsdGF0aW9ucyJ9%3Ad84936f0f8e5f6adb0ab2637f9cb80c1c18408ce2768ad54baf05b229bb09abc#cs-finder-results-container" aria-label="See All Closed Consultations">
+                See All Closed Consultations
+            </a>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</section>
+
+
+            
+                <section class="dss-rhino cs-page-component-container dss-rhino-2021-warm-light-grey" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-wayswd-component">
+    
+    <div class="cs-page-component-preamble">
+        <h2 class="cs-page-component-title cs-page-component-contrast" style="margin-top:0">We Asked, You Said, We Did</h2>
+
+        <p class="cs-page-component-intro cs-page-component-contrast dss-easy-reading">
+            Here are some of the issues we have consulted on and their outcomes.
+            <a
+                aria-label="See all outcomes"
+                href="https://consult.abs.gov.au/we_asked_you_said/">See all outcomes</a>
+        </p>
+    </div>
+
+    <div>
+        <div class="dss-card" style="margin-top:0">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/data-integration-operations/monthly-cpi-design-consultation/">
+                        
+                        <h3>Design of a complete monthly Consumer Price Index – Public Consultation </h3>
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The Australian Bureau of Statistics (ABS) will release a complete monthly measure of the Consumer Price Index (CPI) by late 2025, as part of its transformative program called <i>Big Data, Timely Insights: Phase 2</i> (BDTI).</span></span></span></p>
+
+<p>Stakeholders were invited to provide input on key aspects of the CPI publication design during a public consultation held from 16 November to 15 December 2023. &#160;The public consultation sought formal submissions on this proposed design covering key areas such as release timing, data requirements, publication specifics, and methodologies.</p>
+
+<p><span><span><span>The public consultation was informed by a preliminary <i>Discovery Stage </i>in October 2023, where the ABS engaged directly with a selection of stakeholders to gain insights into their priorities and to lay the groundwork for the initial CPI design.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>Feedback on the design of the complete monthly CPI aligned closely with stakeholder insights gathered during the initial <i>Discovery Stage</i>. The primary requests voiced by stakeholders included:</span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><b>Prioritise accuracy and data coverage</b> of the complete monthly CPI over improved timeliness of the publication&#8217;s release after the end of the reference period, with backing for the ABS&#8217;s proposal that the CPI publication continue to be released around four-weeks after the reference period.</span></span></span></span></li>
+	<li><span><span><span><span>Support for maintaining the <b>same level of detailed commentary and analysis</b> as published in the quarterly CPI with requests for further expansion of the CPI analytical series where feasible.</span></span></span></span></li>
+	<li><span><span><span><span><b>Monthly data content consistent with the current quarterly CPI data series</b> incorporating capital city and expenditure class (EC) level data.</span></span></span></span></li>
+	<li><span><span><span><span><b>Continue a quarterly data series</b> for continuity of timeseries analysis and legislated indexation requirements. </span></span></span></span></li>
+</ul>
+
+<p><span><span><span><span>Further insights provided by stakeholders included: </span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span>Support for publishing data with more decimal places for increased precision.</span></span></span></span></li>
+	<li><span><span><span><span>Request for a monthly analytical series such as trimmed mean, weighted median, and goods and services categories.</span></span></span></span></li>
+	<li><span><span><span><span>Support for transparency regarding data collection frequency, coverage, and updates to the CPI Concepts, Sources, and Methods (CSM).</span></span></span></span></li>
+</ul>
+
+<p><span><span><span>Feedback was also received that is beyond the scope of the BDTI transformation program. This feedback will be evaluated for potential integration in future, <span>including considerations such as expanded product classifications for further international comparability<span>,</span></span> expanding the Selected Living Costs Index (SLCI) groups, and compiling Regional CPI data.</span></span></span></p>
+
+<p><span><span><span><span>A </span></span></span></span><span><span><span>complete summary of the public consultation feedback is provided in the <strong>Results</strong> section below.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>Stakeholder consultation has been pivotal in shaping the design of the complete monthly CPI. As a result, commencing late 2025, the complete monthly CPI will:</span></span></span></p>
+
+<ol>
+	<li><span><span><span><b>Be released around four weeks</b> after the reference period on a Wednesday.</span></span></span></li>
+	<li><span><span><span><b>Prioritise data accuracy </b>by implementing comprehensive data collection throughout the entirety of the reference month, rather than restricting it to only the first two or three weeks.</span></span></span></li>
+	<li><span><span><span><b>Contain the same amount of data, detailed commentary and analysis </b>that is in the current quarterly CPI.</span></span></span></li>
+	<li><span><span><span><b>Include a monthly seasonally adjusted series and analytical series</b> such as trimmed mean, weighted median, and tradables and non-tradables series.</span></span></span></li>
+</ol>
+
+<p class="paragraph"><span><span><span><span lang="EN-AU"><span>Initially, due to some of the monthly time series being shorter than the length required for standard seasonal adjustment, only a limited number of seasonally adjusted series will be published in the first two years. </span></span><span lang="EN-AU"><span>The ABS is exploring the quality of trimmed mean and weighted median measures when some expenditure classes cannot be seasonally adjusted with standard methods. We will publish further information on these methods prior to publication. </span></span></span></span></span><br>
+<br>
+<span><span><span><span lang="EN-AU"><span>The existing <b>quarterly series will be maintained</b>, including analytical measures, to ensure continuity for widely used indexation arrangements and time series analysis.&#160;</span></span>&#160;</span></span></span></p>
+
+<p><span><span><span>Additionally, the intended design will also include:</span></span></span></p>
+
+<ul>
+	<li><span><span><span><span lang="EN-AU">All groups (headline) CPI, Groups (11), Sub-groups (33), and Expenditure classes (87) for each capital city.</span></span></span></span></li>
+	<li><span><span><span><span lang="EN-AU">Contribution to annual and monthly percentage change to the All groups CPI.</span></span></span></span></li>
+	<li class="paragraph"><span><span><span><span lang="EN-AU"><span>Index numbers published to two decimal places instead of the existing one decimal place. Movements will be presented to one decimal place.</span></span>&#160;</span></span></span></li>
+	<li class="paragraph"><span><span><span><span lang="EN-AU"><span><span>No r</span></span></span><span lang="EN-AU"><span>evisions unless there is an exceptional circumstance, such as to correct a significant error, in line with the standard practice for CPI.</span></span>&#160;</span></span></span></li>
+</ul>
+
+<p>The design of the complete monthly CPI is provided in the <strong>Results</strong> section below.</p>
+
+<p><span><span><span><b>Next Steps</b></span></span></span><br>
+<span><span><span>Stakeholders will receive ongoing updates from the ABS on the progress of the complete monthly measure of the CPI, methodology, and refined design details. </span></span></span></p>
+
+<p><span><span><span>An implementation plan, along with a mock-up showcasing the complete monthly CPI comprising time series tables and metadata, will be unveiled closer to the publication date. Throughout this period, the ABS will maintain the quarterly release of the <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/dec-quarter-2023"><span lang="EN-AU">Consumer Price Index, Australia</span></a> &#160;and the <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/monthly-consumer-price-index-indicator/latest-release"><span lang="EN-AU">Monthly Consumer Price Index Indicator</span></a><span lang="EN-AU">.&#160; </span></span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/industry-statistics/review-of-australian-standard-classification-of-la/">
+                        
+                        <h3>2023 Review of Australian Standard Classification of Languages (ASCL)</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The public consultation ran for 12 weeks, from 18 September 2023 to 8<sup> </sup>December 2023. The ABS sought feedback on the preliminary scope of the review (below) and requested other issues also be identified.</span></span></span></p>
+
+<p><span><span><span>2023 Review of the Australian Standard Classification of Languages (ASCL) preliminary scope:</span></span></span></p>
+
+<ol>
+	<li><span><span><span><span><span lang="EN-AU">Investigation into the creation of new 4-digit groups (Languages) in the ASCL. </span></span></span></span></span></li>
+	<li><span><span><span><span><span lang="EN-AU">Appropriate representation of existing Languages (4-digit groups) in ASCL.</span></span></span></span></span></li>
+	<li><span><span><span><span>Investigation into how Aboriginal and Torres Strait Islander languages (Broad group 8) are represented in the ASCL.</span></span></span></span></li>
+	<li><span><span><span><span>Investigation into representation of sign languages and signed languages in the ASCL. </span></span></span></span></li>
+	<li><span><span><span><span><span lang="EN-AU">Investigation into the structure of Broad group 9, Other Languages.</span></span></span></span></span></li>
+</ol>
+
+<p><span><span><span>For more detailed information on the scope, please refer to <i>2023 ASCL Review Scope v1.0</i>, document attached.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>This public consultation generated 31 submissions from a range of individuals and organisations. </span></span></span></p>
+
+<p><span><span><span>Most of the items in the preliminary scope were broadly supported for inclusion in the review. The topics in the preliminary scope that attracted the most submissions were the identification of new 4-digit languages, the inaccurate representation of existing languages or identification of languages missing from the classification, and issues with how Aboriginal and Torres Strait Islander Languages are represented in the ASCL.</span></span></span></p>
+
+<p><span><span><span>In addition to the issues outlined in the scope, a number of other concerns were raised, including:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Feedback highlighted a lack of transparency and consistency across the framing of all language Broad groups. Many respondents asked for clarification on the labelling and naming conventions used in the ASCL, along with queries related to alternate titles, language variations or dialects.</span></span></span></li>
+	<li><span><span><span>Concerns were also raised regarding the current coding structure and lack of stated advice that clearly explains why some Aboriginal and Torres Strait Islander languages are included in the ASCL at the 4-digit level while others are not. </span></span></span></li>
+	<li><span><span><span>Feedback also suggested that the ABS should engage with experts on the topic of sign and signed languages, especially those that relate to Aboriginal and Torres Strait Islander languages. </span></span></span></li>
+</ul>
+
+<p><span><span><span>&#160;Other suggestions included:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>The need to provide further explanatory information to users regarding the classification principles applied at the 4-digit level of the classification. Some users would also benefit from further advice around the criteria that has been applied to the nec/nfd categories.</span></span></span></li>
+	<li><span><span><span>Feedback indicated that users would like more coverage of language groups and community recognized language titles.</span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The ABS is currently reviewing these submissions and is working closely with stakeholders to draft changes to the ASCL. The proposed changes to ASCL and supporting information will be presented via the ABS Consultation Hub in the second half of 2024. Stakeholders will then be able to provide further feedback before the final update is published in early 2025.</span></span></span></p>
+
+<p><span><span><span>Submissions that included relevant feedback for 2026 Census Content development and design will be provided to the 2026 Census Content team. Please note that stakeholders do not need to provide their submission again.</span></span></span></p>
+
+<p><span><span><span><b>Future consultation</b></span></span></span></p>
+
+<p><span><span><span>The next round of public consultation on the proposed changes to the ASCL is expected to be conducted in the second half of 2024. However, if you would like to provide feedback before then, please contact the ABS at <a href="/industry-statistics/review-of-australian-standard-classification-of-la/mailto:standards@abs.gov.au">standards@abs.gov.au</a><span class="MsoHyperlink"><span>.</span></span></span></span></span></p>
+
+<p><span><span><span>Further information is also available in the FAQ and Scope documents under the heading <b>Related.</b> </span></span></span></p>
+
+<p><span><span><span><b>Any questions?</b></span></span></span></p>
+
+<p><span><span><span>Please email <a href="/industry-statistics/review-of-australian-standard-classification-of-la/mailto:standars@abs.gov.au">standards@abs.gov.au</a> with any questions on this consultation or for further information.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/2022-23-review-of-the-australian-standard-classifi/">
+                        
+                        <h3>2022-23 Review of the Australian Standard Classification of Religious Groups (ASCRG)  - Consultation Round 2</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The Australian Bureau of Statistics (ABS) commenced a second round of public consultation on the Australian Standard Classification of Religious Groups (ASCRG) on 18 September 2023. The first round of public consultation, held in late 2022, sought feedback on the scope of the review. <span><span>This consultation provided an opportunity for the public to comment on the proposed changes to the </span></span>classification. </span></span></span></p>
+
+<p><span><span><span>The aim of the review is to update the ASCRG to reflect the current Australian community. These updates will ensure production of high-quality data, improving data analysis and informing decision making. <span><span>&#160;Submissions from this second round of public consultation will inform the changes made to the ASCRG in preparation for the 2026 Census.</span></span></span></span></span></p>
+
+<p><span><span><span>This round of public consultation ran for 11 weeks and submissions were sought <span><span>regarding any inaccuracies in the classification; any unintended impacts of the proposed changes, as well as any key implementation issues for users.</span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>A small number of submissions were received; these were from individuals and organisations.</span></span></span></p>
+
+<p><span><span><span>Submissions received suggested:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Consistency in the ordering of groups.</span></span></span></li>
+	<li><span><span><span>Changes to the ASCRG that had not been investigated in the current review.</span></span></span></li>
+</ul>
+
+<p><span><span><span>The ABS did not receive any submissions raising concerns about the proposed changes to the ASCRG.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The ABS is currently reviewing these submissions and finalising changes to the ASCRG. The updated version of the classification, which implements the findings from the 2022-23 review, will be published on the ABS website on 26 March, 2024.</span></span></span></p>
+
+<p><span><span><span><span lang="EN-AU"><span>The ABS thanks those who have taken the time to provide feedback during the two phases of consultation. </span></span>Any feedback that has been provided, but not investigated in the current review, will be considered in the next review of ASCRG. </span></span></span></p>
+
+<p><span><span><span>Changes to the Religious Affiliation Standard (RAS) continue to be considered through the 2026 Census topic review. The outcomes of Phase two are available <a href="https://www.abs.gov.au/statistics/research/2026-census-topic-review-phase-two-directions">here</a>. Once the review of RAS has been finalised, the outcome will be published on the ABS website.</span></span></span></p>
+
+<p><span><span><span><b>Future consultation</b></span></span></span></p>
+
+<p><span><span><span>This is the final round of public consultation on the proposed changes to the ASCRG. However, if you would like to provide feedback on the ASCRG at any time, please contact the ABS using the email address below. </span></span></span></p>
+
+<p><span><span><span><b>Any questions?</b></span></span></span></p>
+
+<p><span><span><span>Please email <a href="/standards-and-classifications/2022-23-review-of-the-australian-standard-classifi/mailto:standars@abs.gov.au">standards@abs.gov.au</a> with any questions on this consultation or for further information.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</section>
+
+
+            
+        </div>
+
+        
+    </div>
+                </div>
+            </main>
+        </div>
+        <footer id="configurable-footer-wrapper">
+            <div class="cs-page-component-group">
+                
+                    <section class="dss-rhino cs-page-component-container dss-rhino-footer" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-page-component-contrast">
+    <div class="row" id="global-footer">
+            <div id="citizen-space-footer-nav" class="col-12 col-md-8 order-1 order-md-2">
+                <ul class="list-inline">
+                    
+                        <li id="nav-item-accessibility_policy" class="list-inline-item"><a href="https://consult.abs.gov.au/accessibility_policy/">Accessibility</a></li>
+                    
+                        <li id="nav-item-terms_and_conditions" class="list-inline-item"><a href="https://consult.abs.gov.au/terms_and_conditions/">Terms of Use</a></li>
+                    
+                        <li id="nav-item-cookie_policy" class="list-inline-item"><a href="https://consult.abs.gov.au/cookie_policy/">Cookies</a></li>
+                    
+                        <li id="nav-item-privacy_policy" class="list-inline-item"><a href="https://consult.abs.gov.au/privacy_policy/">Privacy</a></li>
+                    
+                        <li id="nav-item-support" class="list-inline-item"><a href="https://consult.abs.gov.au/support/">Help / feedback</a></li>
+                    
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 order-2 order-md-1">
+                <span id="citizen-space-footer-logo">
+                <a href="https://www.delib.net/citizen_space">Citizen Space</a>
+                <span>from</span> 
+                <a href="https://www.delib.net">Delib</a>
+                </span>
+            </div>
+    </div>
+
+</div>
+
+        
+    </div>
+</section>
+
+
+                
+            </div>
+        </footer>
+
+        
+        
+        
+
+        <script type="text/javascript">
+            $(function() {
+                // Skip to content workaround for absolute skip links
+                jQuery('#skip a').bind("click", function(event) {
+                    var target = jQuery(this).attr('href').split('#')[1];
+                    jQuery("#"+target+"").focus();
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(function() {
+                // Global search
+                var search_form = $("#cs-global-search");
+                var search_form_input = $("#cs-global-search-input");
+
+                // Scroll to search results on submit of global search form
+                search_form.submit(function() {
+                    if (search_form_input.attr('placeholder') == search_form_input.val()) {
+                        search_form_input.val('');
+                    }
+                    sessionStorage.setItem('saved-scrollTop', '500');
+                });
+
+                // Move the global search form into the appropriate container depending on viewport size
+                function move_global_search_form() {
+                    // if global nav (and global search) are turned off, bail
+                    if(!search_form.length) {
+                        return;
+                    }
+
+                    var md_container = $("#cs-global-search-container-md");
+                    var xs_container = $("#cs-global-search-container-xs");
+
+                    // btw we can't test if xs_container is visible because it's hidden inside the burger menu
+
+                    if (md_container.is(":visible")) {
+                        if(!md_container.find("#cs-global-search").length) {
+                            md_container.append(search_form);
+                        }
+                    }
+                    else {
+                        if(!xs_container.find("#cs-global-search").length) {
+                            xs_container.append(search_form);
+                        }
+                    }
+                }
+                move_global_search_form();
+                $(window).resize(move_global_search_form);
+
+                // Function to update the query string
+                function updateQueryStringParameter(uri, key, value) {
+                    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+                    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+                    if (uri.match(re)) {
+                        return uri.replace(re, '$1' + key + "=" + value + '$2');
+                    } else {
+                        return uri + separator + key + "=" + value;
+                    }
+                }
+
+                // Event listener to detect changes in the large viewport language `select`
+                var languageSelect = document.getElementById('language-picker-select');
+                if (languageSelect) {
+                    languageSelect.addEventListener('change', function() {
+                        var form = document.getElementById('global-language-picker');
+                        form.submit();
+                    });
+                }
+
+            });
+
+            // a11y hax. There are some elements generated by the ol libraries that need some extra attributes for a11y.
+            // Putting them here was preferable to overriding masses of ol code.
+            $(window).on("load", function() {
+              var zoomins = document.getElementsByClassName('ol-zoom-in');
+              for (let i=0; i<zoomins.length; i++) {
+                zoomins[i].setAttribute('aria-label', 'Zoom in');
+              }
+              var zoomouts = document.getElementsByClassName('ol-zoom-out');
+              for (let j=0; j<zoomouts.length; j++) {
+                zoomouts[j].setAttribute('aria-label', 'Zoom out');
+              }
+              var attributions = document.getElementsByClassName('ol-attribution');
+              for (let k=0; k<attributions.length; k++) {
+                attributions[k].getElementsByTagName('button')[0].setAttribute('aria-label', 'Attribution');
+              }
+              var recentre = document.getElementsByClassName('cs-zoom-to-extent');
+              for (let m=0; m<recentre.length; m++) {
+                recentre[m].getElementsByTagName('button')[0].setAttribute('aria-label', 'Recentre map');
+              }
+              var search = document.getElementsByClassName('cs-map-postcode-popup');
+              for (let m=0; m<search.length; m++) {
+                search[m].getElementsByTagName('button')[0].setAttribute('aria-label', 'Go to a postcode');
+              }
+            }
+            );
+        </script>
+
+        
+          
+          
+        
+    </body>
+</html>
+
+ contentType 9 text/html url 31 https://consult.abs.gov.au:443/ responseCode 3 200 

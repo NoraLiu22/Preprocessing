@@ -1,0 +1,119 @@
+hspeycugkglkncqqccrgxessomnmucfmbormqata length 4 5110 page 5110 <!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta name='copyright' content='Copyright © 2023 by Alan Bunning. All rights reserved. Copying or distribution without the author’s prior written consent is expressly prohibited.'>
+<meta charset='UTF-8'>
+<script src='../@includes/head.js'></script>
+<meta name='google' content='notranslate'>
+</head>
+<body onkeypress='keypress(event)'>
+<script src='../@includes/navbar.js'></script>
+<header>
+<form name='form' method='post'>
+  <span class='label'>Collation</span>
+  &nbsp;&nbsp;
+  <select name='books' id='books' title='select book' onChange='refresh("chapter"); selectVerse()'>
+    <option hidden>Genesis</option>
+    <option hidden>Exodus</option>
+    <option hidden>Leviticus</option>
+    <option hidden>Numbers</option>
+    <option hidden>Deuteronomy</option>
+    <option hidden>Joshua</option>
+    <option hidden>Judges</option>
+    <option hidden>Ruth</option>
+    <option hidden>1st Samuel</option>
+    <option hidden>2nd Samuel</option>
+    <option hidden>1st Kings</option>
+    <option hidden>2nd Kings</option>
+    <option hidden>1st Chronicles</option>
+    <option hidden>2nd Chronicles</option>
+    <option hidden>Exra</option>
+    <option hidden>Nehemiah</option>
+    <option hidden>Ester</option>
+    <option hidden>Job</option>
+    <option hidden>Psalms</option>
+    <option hidden>Proverbs</option>
+    <option hidden>Ecclesiastes</option>
+    <option hidden>Song of Songs</option>
+    <option hidden>Isaiah</option>
+    <option hidden>Jeremiah</option>
+    <option hidden>Lamentations</option>
+    <option hidden>Ezekial</option>
+    <option hidden>Daniel</option>
+    <option hidden>Hosea</option>
+    <option hidden>Joel</option>
+    <option hidden>Amos</option>
+    <option hidden>Obadiah</option>
+    <option hidden>Jonah</option>
+    <option hidden>Micah</option>
+    <option hidden>Nahum</option>
+    <option hidden>Habakkuk</option>
+    <option hidden>Zephaniah</option>
+    <option hidden>Haggai</option>
+    <option hidden>Zechariah</option>
+    <option hidden>Malachi</option>
+    <option selected>Matthew</option>
+    <option>Mark</option>
+    <option>Luke</option>
+    <option>John</option>
+    <option>Acts</option>
+    <option>Romans</option>
+    <option>1st Corinthians</option>
+    <option>2nd Corinthians</option>
+    <option>Galatians</option>
+    <option>Ephesians</option>
+    <option>Philippians</option>
+    <option>Colossians</option>
+    <option>1st Thessalonians</option>
+    <option>2nd Thessalonians</option>
+    <option>1st Timothy</option>
+    <option>2nd Timothy</option>
+    <option>Titus</option>
+    <option>Philemon</option>
+    <option>Hebrews</option>
+    <option>James</option>
+    <option>1st Peter</option>
+    <option>2nd Peter</option>
+    <option>1st John</option>
+    <option>2nd John</option>
+    <option>3rd John</option>
+    <option>Jude</option>
+    <option>Revelation</option>
+  </select>
+  <select name='chapters' id='chapters' title='select chapter' onChange='refresh("verse"); selectVerse()'></select>
+  <b>:</b>
+  <select name='verses' id='verses' title='select verse' onChange='selectVerse()'></select>
+  <span style='white-space: nowrap'>
+  <button title='previous verse' type='button' onmousedown='decrease()' onmouseup='clearInterval(CLICKED)'>◀</button>
+  <button title='next verse' type='button' onmousedown='increase()' onmouseup='clearInterval(CLICKED)'>▶</button>
+  </span>
+  &nbsp;&nbsp;
+  <button type='button' class='toolbar' title='copy link' onclick='copyURL(this)'>🔗</button>
+  <button type='button' class='toolbar' title='switch to apparatus' onclick='swapView()'><a id='swap' href='../apparatus/index.htm'>⇄</a></button>
+  <button type='button' class='toolbar' title='filter options' onclick='popup("filter","Filter Options",170,240)'>🗹</button>
+  <div id='filter' class='popup'><object type='text/html' style='width:100%; padding:0' data='filter.htm'></object></div>
+  <button type='button' class='toolbar' title='legend' onclick='popup("legend","Legend",650,600)'>🔑</button>
+  <div id='legend' class='popup'><object type='text/html' style='width:100%; padding:0' data='legend.htm'></object></div>
+  <button type='button' class='toolbar' title='about' onclick='popup("about","About",620,600)'>⍰</button>
+  <div id='about' class='popup'><object type='text/html' style='width:100%; padding:0' data='about.htm'></object></div>
+</form>
+</header>
+<object id='display' type='text/html'></object>
+<script src='../@includes/copyURL.min.js'></script>
+<script src='../@includes/popup.min.js'></script>
+<script src='../@includes/select.js'></script> 
+<script src='../@includes/select-verse.min.js'></script>
+<script>
+"use strict";
+/**
+ * @func swapView
+ * @desc switch to collation view
+ */
+function swapView() {
+  var verse = ("0" + (document.form.books.selectedIndex + 1)).slice(-2) + ("00" + (document.form.chapters.selectedIndex + 1)).slice(-3) + ("00" + (document.form.verses.selectedIndex + 1)).slice(-3);
+  document.getElementById("swap").setAttribute("href",`../apparatus/index.htm?v=${verse}`);  // add link for switching to collation
+  }
+</script>
+</body>
+</html>
+ contentType 9 text/html url 45 https://greekcntr.org:443/collation/index.htm responseCode 3 200 

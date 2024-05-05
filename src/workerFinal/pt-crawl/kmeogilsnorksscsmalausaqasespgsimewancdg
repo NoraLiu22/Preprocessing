@@ -1,0 +1,406 @@
+kmeogilsnorksscsmalausaqasespgsimewancdg length 5 21214 page 21214 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+    })(window,document,'script','dataLayer','GTM-PPHPVC5');</script>
+
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <title>UADA Personnel Directory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/common/css/normalize.css">
+    <link rel="stylesheet" href="/static/common/css/main.css?2024-05-05%2002:41">
+    <link rel="stylesheet" href="/static/common/css/headfoot.css?2024-05-05%2002:41">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/common/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/common/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/common/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="/static/common/favicon/safari-pinned-tab.svg" color="#397019">
+    <meta name="msapplication-TileColor" content="#00a300">
+    <meta name="theme-color" content="#ffffff">
+
+
+    
+    <meta name="description"
+          content="Search for current employees of the Division of Agriculture by first or last name, County, Department, or District!">
+
+    <!-- Open Graph Protocol tags -->
+    <meta property="og:title" content="UADA Personnel Directory"/>
+    <meta property="og:description"
+          content="Search for current employees of the Division of Agriculture by first or last name, County, Department, or District!"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="./templates/index.html">
+    <meta property="og:image" content="./static/common/favicon/android-chrome-192x192.png"/>
+
+
+    
+    <link rel="stylesheet" href="/static/common/css/index.css?2024-05-05%2002:41">
+
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPHPVC5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header>
+<nav class="navigation">
+   <div class="nav-contain">
+       <div class="header-logo"><a href="https://uada.edu/" target="_blank" rel="noreferrer noopener"><img src="/static/common/img/ua-logo-color.svg" class="logo" alt="UADA Logo" /></a></div>
+        <div class="menu">
+            <input id="menu" class="chkbx" type="checkbox" />
+            <label for="menu" class="menu-label">Menu</label>
+            <div class="burger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+
+
+            <ul class="header-navlinks">
+                <li><a href="https://uada.edu/" target="_blank"
+                       rel="noreferrer noopener">Division of Agriculture</a></li>
+                <li><a href="https://aaes.uada.edu/" target="_blank"
+                       rel="noreferrer noopener">Arkansas Agricultural Experiment Station</a></li>
+                <li><a href="https://www.uaex.uada.edu/" target="_blank"
+                       rel="noreferrer noopener">Cooperative Extension Service</a></li>
+            </ul>
+        </div>
+   </div>
+</nav></header>
+<main>
+    <div id="content-container">
+        <h1>Division of Agriculture Personnel Directory</h1>
+        <p id="search-label">Search for a current employee by selecting a category then refining your search.</p>
+
+        <form method="GET">
+            <div class="cat-grid">
+                <label for="searchCategory">Choose Category</label>
+                <select name="chooseCategory" id="searchCategory">
+
+                    <option value="0">First or Last Name</option>
+                    <option value="1">Department</option>
+                    <option value="2">County Extension Office</option>
+                    <option value="3">County Extension District</option>
+                    <option value="4">Research Centers and Stations</option>
+                </select>
+            </div>
+            <div class="search-grid">
+                <div id="keywordContainer">
+                    <label id="keywordSearchLabel" for="keywordSearch">Keyword Search</label>
+                    <input name="keywordSearch" id="keywordSearch" type="text">
+                </div>
+            </div>
+
+            <div class="search-button-grid">
+                <button id="search_button">Search</button>
+            </div>
+        </form>
+
+        <div class="social-grid">
+            <!--<a href="https://www.uaex.uada.edu/social-media/social-media-index.aspx" rel="noreferrer noopener" target="_blank">Social Media Directory</a>-->
+        </div>
+
+        
+
+
+
+
+
+
+    </div>
+
+    <div id="print_results">
+
+        <h1>Division of Agriculture Personnel Directory</h1>
+
+        <table>
+            <thead>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Department Name</th>
+            <th>Telephone #</th>
+            <th>Email</th>
+            </thead>
+            <tbody>
+            
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        
+
+
+        //Get the current querystring
+        let qstring = window.location.search;
+        //remove any url encoding changes that may have happened
+        qstring = decodeURI(qstring);
+        qstring = qstring.replaceAll("+", " ");
+        qstring = qstring.replaceAll("%26", "&");
+        qstring = qstring.replaceAll("%2C", ",");
+
+        //Getting the parent container
+        let keywordContainer = document.getElementById("keywordContainer");
+
+        //Get the search button
+        let subBtn = document.getElementsByTagName("button")[0];
+
+        //Getting input fields
+        let category = document.getElementById("searchCategory");
+        let keywordBox = document.getElementById("keywordSearch");
+        let keywordLabel = document.getElementById("keywordSearchLabel")
+        let districtSelect = document.createElement("select");
+        districtSelect.setAttribute("name", "keywordSearch");
+        let countySelect = document.createElement("select");
+        countySelect.setAttribute("name", "keywordSearch");
+        let researchSelect = document.createElement("select");
+        researchSelect.setAttribute("name", "keywordSearch");
+        let deptSelect = document.createElement("select");
+        deptSelect.setAttribute("name", "keywordSearch");
+
+
+        //Generating lists for dropdown menus
+        let counties = ["Arkansas" , "Ashley" , "Baxter" , "Benton" , "Boone" , "Bradley" , "Calhoun" , "Carroll" , "Chicot" , "Clark" , "Clay" , "Cleburne" , "Cleveland" , "Columbia" , "Conway" , "Craighead" , "Crawford" , "Crittenden" , "Cross" , "Dallas" , "Desha" , "Drew" , "Faulkner" , "Franklin" , "Fulton" , "Garland" , "Grant" , "Greene" , "Hempstead" , "Hot Spring" , "Howard" , "Independence" , "Izard" , "Jackson" , "Jefferson" , "Johnson" , "Lafayette" , "Lawrence" , "Lee" , "Lincoln" , "Little River" , "Logan" , "Lonoke" , "Madison" , "Marion" , "Miller" , "Mississippi" , "Monroe" , "Montgomery" , "Nevada" , "Newton" , "Ouachita" , "Perry" , "Phillips" , "Pike" , "Poinsett" , "Polk" , "Pope" , "Prairie" , "Pulaski" , "Randolph" , "Saline" , "Scott" , "Searcy" , "Sebastian" , "Sevier" , "Sharp" , "St. Francis" , "Stone" , "Union" , "Van Buren" , "Washington" , "White" , "Woodruff" , "Yell" ];
+        let depts = ["AES | ACVIP | Arkansas Crop Variety Improvement Program" , "AES | AEAB | Agricultural Economics and Agribusiness" , "AES | AECT | Agricultural  Education, Communications and Technology" , "AES | AGCS | Agricultural Communication Services" , "AES | AGLW | Ag Law Center" , "AES | AGSL | Agricultural Statistics Lab" , "AES | ANSC | Animal Science" , "AES | AWRC | Arkansas Water Resources Center" , "AES | BAEG | Biological and Agricultural Engineering" , "AES | CSES | Crop, Soil and Environmental Sciences" , "AES | DREX | Director of Experiment Stations" , "AES | ENPL | Entomology & Plant Pathology" , "AES | FDSC | Food Science" , "AES | Grants" , "AES | HES | Human Environmental Sciences" , "AES | HORT | Horticulture" , "AES | IT | Information Technology" , "AES | POSC | Poultry Science" , "AES | SOIL | Soil Testing Lab" , "AES | TCO | Technology Commercialization Office" , "AES | UAMF | Arkansas Forest Resources Center" , "AES | VDL | Vet Diagnostic Lab" , "CES | 4-H & Youth Development" , "CES | 4-H & Youth Development State Leader" , "CES | Agricultural Economics & Agribusiness" , "CES | Animal Science" , "CES | Associate Director of Agriculture & Natural Resources" , "CES | Biological & Agricultural Engineering" , "CES | Center for Agricultural & Rural Sustainability" , "CES | Communications" , "CES | Community, Professional, & Economic Development" , "CES | Credit Union" , "CES | Crop, Soil & Environmental Science" , "CES | Delta District" , "CES | Entomology & Plant Pathology" , "CES | Facilities Management" , "CES | Family & Consumer Sciences" , "CES | Forest Resources" , "CES | Horticulture" , "CES | Information Technology" , "CES | Ouachita District" , "CES | Ozark District" , "CES | Poultry Science" , "CES | Print Shop" , "CES | Senior Associate Vice President for Agriculture - Extension" , "CES | Southern Regional Risk Management Education Center" , "CES | Sponsored Programs" , "CES | Vines 4-H Center" , "Division | DBUS | Business Office" , "Division | DCOM | Chief Communications Officer" , "Division | DFIN | Associate Vice President of Finance and Administration" , "Division | DHUM | Human Resources" , "Division | DIAC | Office of Inclusion, Access, and Compliance" , "Division | DITS | Information Technology" , "Division | DLGL | Chief Legal Counsel" , "Division | VPAG | Vice President for Agriculture" ];
+        let research = ["AES | AREC | Agricultural Research and Extension Center" , "AES | CTST | Cotton Research Station" , "AES | FRSS | Fruit Research Station" , "AES | LFST | Livestock and Forestry Research Station" , "AES | NERE | Northeast Research and Extension Center" , "AES | NERREC | Northeast Rice Research and Extension Center" , "AES | PTST | Pine Tree Research Station" , "AES | RIRE | Rice Research and Extension Center" , "AES | SEST | Southeast Research Station" , "AES | SWRE | Southwest Research and Extension Center" , "AES | VGSS | Vegetable Research Station" , "AES | XASU | Arkansas State University Research Unit" , "CES | NE Rice Research & Extension Center" , "CES | Northeast Research & Extension Center" , "CES | Rice Research & Extension Center" , "CES | Southwest Research & Extension Center" ];
+        let districts = ["Delta", "Ouachita", "Ozark"];
+        //console.log(counties);
+        //Adding dropdown options for districts
+        for (let i = 0; i < districts.length; i++) {
+            let currentOption = document.createElement("option");
+            currentOption.setAttribute("value", districts[i]);
+            currentOption.setAttribute("name", "keywordSearch")
+            currentOption.innerText = districts[i];
+            districtSelect.appendChild(currentOption);
+        }
+
+        //Adding dropdown options for counties
+        for (let i = 0; i < counties.length; i++) {
+            let currentOption = document.createElement("option");
+            currentOption.setAttribute("value", counties[i]);
+            currentOption.setAttribute("name", "keywordSearch")
+            currentOption.innerText = counties[i];
+            countySelect.appendChild(currentOption);
+        }
+        //Adding dropdown options for departments
+        for (let i = 0; i < depts.length; i++) {
+            let currentOption = document.createElement("option");
+            currentOption.setAttribute("value", depts[i]);
+            currentOption.setAttribute("name", "keywordSearch")
+            currentOption.innerText = depts[i];
+            deptSelect.appendChild(currentOption);
+        }
+        //Adding dropdown options for research centers
+        for (let i = 0; i < research.length; i++) {
+            let currentOption = document.createElement("option");
+            currentOption.setAttribute("value", research[i]);
+            currentOption.setAttribute("name", "keywordSearch")
+            currentOption.innerText = research[i];
+            researchSelect.appendChild(currentOption);
+        }
+
+        //Event loop for disabling the search button on an empty search
+        function search_disable(ev) {
+            if (ev.target.value === '') {
+                subBtn.disabled = true;
+            } else {
+                subBtn.disabled = false;
+            }
+        }
+
+        //Add event listeners for disabling search button
+        category.addEventListener('input', search_disable);
+        keywordBox.addEventListener('input', search_disable);
+        countySelect.addEventListener('input', search_disable);
+        researchSelect.addEventListener('input', search_disable);
+        districtSelect.addEventListener('input', search_disable);
+
+
+        //Event loop for displaying correct field based on category
+        category.addEventListener("change", (ev) => {
+            //For District
+            if (ev.target.value === "3") {
+                keywordContainer.replaceChild(districtSelect, keywordContainer.childNodes[3]);
+                keywordLabel.innerText = "District Select"
+                //For County
+            } else if (ev.target.value === "2") {
+                keywordContainer.replaceChild(countySelect, keywordContainer.childNodes[3]);
+                keywordLabel.innerText = "County Select"
+                // For Research Center
+            } else if (ev.target.value === "4") {
+                keywordContainer.replaceChild(researchSelect, keywordContainer.childNodes[3]);
+                keywordLabel.innerText = "Research Center Select"
+                //For Department
+            } else if (ev.target.value === "1") {
+                keywordContainer.replaceChild(deptSelect, keywordContainer.childNodes[3]);
+                keywordLabel.innerText = "Department Select"
+                //For Name
+            } else {
+                keywordContainer.replaceChild(keywordBox, keywordContainer.childNodes[3]);
+                keywordLabel.innerText = "Keyword Search"
+            }
+            // trigger the event for determining if the search should be disabled/enabled
+            keywordContainer.childNodes[3].dispatchEvent(new Event('input'));
+        })
+
+        //Set the input fields appropriately based on the presence of a query string.
+
+        //First select the proper category
+        category_var_str = "chooseCategory="
+        keyword_var_str = "keywordSearch="
+        if (qstring.length > 0) {
+            let cat_index = qstring.indexOf(category_var_str)
+            if (cat_index > 0) {
+                category.selectedIndex = parseInt(qstring[cat_index + category_var_str.length]);
+
+                //Manually trigger the 'change' event for the category drop down
+                category.dispatchEvent(new Event('change'));
+
+                // Determine the value of the search box
+
+                let key_index = qstring.indexOf(keyword_var_str);
+
+                if (key_index >= 0) {
+                    key_index += keyword_var_str.length
+                    let search_word = qstring.slice(key_index, qstring.length);
+                    //select the appropriate input field and pre-fill it based on the keywordSearch value in the query string
+                    switch (category.selectedIndex) {
+                        case 0:
+                            //First/last name
+                            keywordContainer.childNodes[3].value = search_word;
+                            break;
+                        case 2:
+                            //County
+                            keywordContainer.childNodes[3].selectedIndex = counties.indexOf(search_word);
+                            break;
+                        case 1:
+                            //Department
+                            keywordContainer.childNodes[3].selectedIndex = depts.indexOf(search_word);
+                            break;
+                        case 4:
+                            //Research Center
+                            keywordContainer.childNodes[3].selectedIndex = research.indexOf(search_word);
+                            break;
+                        case 3:
+                            //District
+                            keywordContainer.childNodes[3].selectedIndex = districts.indexOf(search_word);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+
+        }
+        // trigger the event for determining if the search should be disabled/enabled
+        keywordContainer.childNodes[3].dispatchEvent(new Event('input'));
+
+    </script>
+
+
+    <script>
+        //Hide results that don't match keyword search exactly when searching by department or research
+       let searchCategoryValue = document.querySelector('#searchCategory').value
+       let keywordSearchValue = document.querySelector('select[name="keywordSearch"]').value
+       if(searchCategoryValue === '1' || searchCategoryValue === '4'){
+           let personnelCards = document.querySelectorAll('.personnel-card')
+            personnelCards.forEach((el) => {
+                let departmentText = el.querySelector('.card-dept').innerText
+                if(departmentText !== keywordSearchValue){
+                    el.style='display:none';
+                }
+            })
+       }
+    </script>
+</main>
+<footer>
+<footer>
+    <div class="footer-grid-container">
+        <div class="logo-section-grid">
+            <div id="re-ex-logo"><a href="https://uada.edu/" target="_blank" rel="noreferrer noopener"><img
+                    src="/static/common/img/ua-logo-white.svg" alt="UADA logo"></a></div>
+        </div>
+        <span class="line-span1"></span>
+        <div class="about-section">
+            <div class="about-links">
+                <ul class="plain-list">
+                    <li class="footer-li">
+                        <a class="a-footer" href="https://uada.edu/equal-access.aspx" target="_blank"
+                           rel="noreferrer noopener">Equal Access</a>
+                    </li>
+                    <li class="footer-li">
+                        <a class="a-footer" href="https://uada.edu/disclaimer.aspx" target="_blank"
+                           rel="noreferrer noopener">Disclaimer</a>
+                    </li>
+                    <li class="footer-li">
+                        <a class="a-footer" href="https://www.uada.edu/about/privacy-statement.aspx" target="_blank"
+                           rel="noreferrer noopener">Privacy</a>
+                    </li>
+                    <li class="footer-li">
+                        <a class="footer-last-item" href="https://uada.edu/accessibility.aspx" target="_blank"
+                           rel="noreferrer noopener">Accessibility</a>
+                    </li>
+                    <li class="footer-li">
+                        <a class="a-footer" href="https://forms.monday.com/forms/b3071d55ba5f22e4eeead4048f2a52bd?r=use1" target="_blank"
+                           rel="noreferrer noopener">Report Website Issue</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <span class="line-span2"></span>
+        <div class="addr-section">
+            <div class="addr">
+                <ul class="plain-list">
+                    <li class="footer-li"><strong>U of A System Division of Agriculture</strong></li>
+                    <li class="footer-li">2404 N. University Avenue</li>
+                    <li class="footer-li">Little Rock, AR 72207</li>
+                    <li class="footer-li">Phone: 501-686-2540</li>
+                </ul>
+            </div>
+        </div>
+        <div id="copyinfo">
+            <p>
+                Copyright <span id="directedit">&copy;</span> <span id="copyright-date"></span>
+            </p>
+        </div>
+    </div>
+
+</footer>
+
+
+    <script>
+        document.getElementById("copyright-date").innerText = String(new Date().getFullYear());
+    </script>
+
+</footer>
+
+
+</body>
+    <script type="text/javascript">
+        var allyLoader = document.createElement('script');
+        // Can be flag_small, flag_large or bar_bottom
+        allyLoader.setAttribute('data-ally-af-style', 'flag_small');
+        allyLoader.setAttribute('data-ally-client-id', ' 10223');
+        allyLoader.setAttribute('data-ally-loader', '');
+        allyLoader.setAttribute('data-ally-platform-name', 'web');
+        allyLoader.setAttribute('src', 'https://prod.ally.ac/integration/api/ally.ui.js');
+        document.body.appendChild(allyLoader);
+    </script>
+</html> contentType 9 text/html url 31 https://personnel.uada.edu:443/ responseCode 3 200 

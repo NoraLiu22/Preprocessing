@@ -1,0 +1,747 @@
+beciaqgclilmrmdmmogciecoeiyqumssfctibeqi length 5 41663 page 41663 <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie6 no-js"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 no-js"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>    <html class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Movie Theaters Operating as a Live Performance Venue - Cinema Treasures</title>
+    <meta content="List of movie theaters currently operating as a live performances" name="description">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  
+    <script src="//use.typekit.com/voa4cfk.js" type="text/javascript"></script>
+    <script>
+      //<![CDATA[
+        try{Typekit.load();}catch(e){}
+      //]]>
+    </script>
+    <script async="" src="//www.googletagmanager.com/gtag/js?id=UA-2710707-1"></script>
+    <script>
+      //<![CDATA[
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-2710707-1');
+      //]]>
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdn.apple-mapkit.com/mk/5.x.x/mapkit.js" type="text/javascript"></script>
+    <script src="/assets/common.js?1714499759" type="text/javascript"></script>
+    <script>
+        //<![CDATA[
+          $(document).ready(function () {
+        
+            if ($('#child_region_select').length) {
+              $('#child_region_select').change(function () {
+                document.location = $(this).val();
+              });
+            }
+        
+            if ($('.list').length) {
+              // Load MapKit JS
+              mapkit.init({
+            authorizationCallback: function(done) {
+              done("eyJraWQiOiJVNDNTMjk3RExMIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiI5OVhYUDJXRjM4IiwiaWF0IjoxNzE0NDk5MzkzLCJleHAiOjE3NDYwMzUzOTN9.ye7O5dcS06vkNBBp7I_83JweieHxwesOUvpWJBuNE2J2gFUC7rEI8Y13HEnFZeZGfea51RgKgsU2h_WmCZvsdg");
+            }
+          });
+        
+              // Grab theater locations
+              var locations = []
+              $( ".list tbody tr.location" ).each(function(index) {
+                var location = {
+                  id: $(this).data("id"),
+                  name: $(this).data("name"),
+                  lat: $(this).data("lat"),
+                  lng: $(this).data("lng"),
+                  category: $(this).data("category"),
+                  address: $(this).data("address"),
+                  photo: $(this).data("photo")
+                };
+                locations.push(location);
+              });
+        
+              // Show map with multiple markers
+              if (locations.length > 1) {
+        
+                // Set region size to contain all map markers
+                var latitudes = []
+                var longitudes = []
+                for (var i = 0; i < locations.length; i++) {
+                  latitudes[i] = locations[i].lat;
+                  longitudes[i] = locations[i].lng;
+                }
+                maxLatitude = Math.max(...latitudes);
+                minLatitude = Math.min(...latitudes);
+                maxLongitude = Math.max(...longitudes);
+                minLongitude = Math.min(...longitudes);
+                var region = new mapkit.BoundingRegion (maxLatitude, maxLongitude, minLatitude, minLongitude).toCoordinateRegion();
+        
+                // Create map
+                var map = new mapkit.Map("map", {
+                  region: region,
+                });
+        
+                var list = [];
+                for (i = 0; i < locations.length; i++) {
+        
+                  // Generate popup window for each map marker
+                  var popup = {
+                    calloutContentForAnnotation: function(annotation) {
+                      var element = document.createElement("div");
+                      element.className = "popup";
+        
+                      var photo = element.appendChild(document.createElement("a"));
+                      photo.href = annotation.data.link;
+                      photo.innerHTML = "<img src='" + annotation.data.photo + "' width='48' height='48' alt='thumb' />"
+        
+                      var link = element.appendChild(document.createElement("a"));
+                      link.href = annotation.data.link;
+                      link.textContent = annotation.data.name;
+        
+                      var address = element.appendChild(document.createElement("p"));
+                      address.innerHTML = annotation.data.address.replace(/^\s*(<br\s*\/?\s*>)+|(<br\s*\/?\s*>)+\s*$/ig, '');
+        
+                      return element;
+                    }
+                  };
+        
+                  // Create map marker
+                  var coordinates = new mapkit.Coordinate(locations[i].lat, locations[i].lng)
+                  var annotation = new mapkit.MarkerAnnotation(coordinates, {
+                    color: (locations[i].category == 'open' ? "#38B257" : "#A3121B"),
+                    title: locations[i].name,
+                    callout: popup,
+                    data: {
+                      link: "/theaters/" + locations[i].id,
+                      name: locations[i].name,
+                      address: locations[i].address,
+                      photo: (locations[i].photo == 'photos/missing.png' ? '/images/photos/missing.png' : locations[i].photo)
+                    },
+                    glyphImage: {
+                      1: "/apple-touch-icon.png"
+                    }
+                  })
+        
+                  list.push(annotation);
+                }
+        
+                // Add map markers to map
+                map.addAnnotations(list);
+        
+                // Force map markers into map window
+                map.showItems(list);
+        
+              // Show map with single marker
+              } else {
+        
+                // Set region size
+                var region = new mapkit.CoordinateRegion(
+                  new mapkit.Coordinate(locations[0].lat, locations[0].lng),
+                  new mapkit.CoordinateSpan(0.004, 0.004)
+                );
+        
+                // Create map
+                var map = new mapkit.Map("map", {
+                  center: new mapkit.Coordinate(locations[0].lat, locations[0].lng),
+                  region: region
+                });
+        
+                // Create map marker
+                var coordinates = new mapkit.Coordinate(locations[0].lat, locations[0].lng)
+                var annotation = new mapkit.MarkerAnnotation(coordinates, {
+                  color: (locations[0].category == 'open' ? "#38B257" : "#A3121B"),
+                  title: locations[0].name,
+                  glyphImage: {
+                    1: "/apple-touch-icon.png"
+                  }
+                })
+        
+                // Add map marker to map
+                map.addAnnotation(annotation);
+              }
+        
+            }
+          });
+        //]]>
+      </script>
+    <link href="/stylesheets/app.css?1714499759" media="all" rel="stylesheet" type="text/css" />
+  
+  </head>
+  <body class="functions show" lang="en">
+    <div id="wrap">
+      <div id="header">
+        <div id="stars"></div>
+        <div id="primary">
+          <a href="/"><img alt="Cinema Treasures" height="88" id="logo" src="/images/app/logo.png?1714499759" width="218" /></a>
+          <div id="links">
+            <a href="/login?return_to=https%3A%2F%2Fcinematreasures.org%2Ffunctions%2F23">Login</a> or
+            <a href="/signup">Sign up</a>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/theaters">Theaters</a></li>
+              <li><a href="/photos">Photos</a></li>
+              <li><a href="/video">Video</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div id="secondary">
+          <span>
+            <div id="slogan">Your guide to movie theaters</div>
+            <div id="search_bar">
+              <form action="/theaters" method="get">
+                <input id="query" name="q" placeholder="Search by Theater, Location, or Zipcode" type="text" />
+                <input name="" type="submit" value="Search" />
+              </form>
+            </div>
+          </span>
+        </div>
+      </div>
+      <div id="page">
+        <div id="content">
+          <div id="leaderboard">
+            <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle" data-ad-client="ca-pub-4430601922741422" data-ad-slot="6230392620" style="display:inline-block;width:970px;height:90px"></ins>
+            <script>
+              //<![CDATA[
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              //]]>
+            </script>
+          </div>
+          <div id="breadcrumb">
+            <ul>
+              <li><a href="/theaters">Movie Theaters</a></li>
+              <li><a href="/functions">Functions</a></li>
+              <li><a href="/functions/23">Live Performances</a></li>
+            </ul>
+          </div>
+          <h1>Movie Theaters Operating as a Live Performance Venue</h1>
+          <form action="/functions/23" id="search" method="get">
+            <input id="q" name="q" type="text" />
+            <input name="" type="submit" value="Search" />
+          </form>
+          <div id="showing">
+            Showing <strong>1&nbsp;-&nbsp;30</strong> of <strong>1,182</strong> open movie theaters
+          </div>
+          <div id="map_holder">
+            <div id="map"></div>
+          </div>
+          <div id="facets">
+            <a href="/functions/23?status=all" class="all">All Theaters <span>(1,213)</span></a><a href="/functions/23?status=open" class="active open">Open <span>(1,182)</span></a><a href="/functions/23?status=showing_movies" class="showing_movies">Showing Movies <span>(550)</span></a><a href="/functions/23?status=closed" class="closed">Closed <span>(31)</span></a><a href="/functions/23?status=demolished" class="demolished">Demolished <span>(0)</span></a><a href="/functions/23?status=restoring" class="restoring">Restoring <span>(28)</span></a><a href="/functions/23?status=renovating" class="renovating">Renovating <span>(35)</span></a>
+          </div>
+          <table class="list">
+            <thead>
+              <tr>
+                <th id="theater_name"><a href="/functions/23?sort=name&amp;order=desc">&uarr; Name</a></th>
+                <th id="theater_location"><a href="/functions/23?sort=location&amp;order=asc">Location</a></th>
+                <th id="theater_status"><a href="/functions/23?sort=open&amp;order=desc">Status</a></th>
+                <th id="theater_screens"><a href="/functions/23?sort=screens&amp;order=asc">Screens</a></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tr class="even location theater" data-address="288 S. 2nd Street&lt;br&gt;San Jose, CA 95113&lt;br&gt;United States&lt;br&gt;408.831.3168&lt;br&gt;" data-category="open" data-id="7445" data-lat="37.3322132" data-lng="-121.8861531" data-name="3Below Theaters &amp; Lounge" data-photo="https://photos.cinematreasures.org/production/photos/207256/1492715144/thumb.JPG?1492715144">
+              <td class="name">
+                <a href="/theaters/7445" class="map-link"><img alt="3Below Theaters &amp; Lounge" height="48" src="https://photos.cinematreasures.org/production/photos/207256/1492715144/thumb.JPG?1492715144" width="48" /></a>
+                <a href="/theaters/7445">3Below Theaters & Lounge</a>
+              </td>
+              <td class="location">
+                San Jose, CA, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                3
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="137 Walnut Street&lt;br&gt;Colorado City, TX 79512&lt;br&gt;United States&lt;br&gt;325.829.7708&lt;br&gt;" data-category="open" data-id="17146" data-lat="32.3876923" data-lng="-100.8671518" data-name="3M Palace Theater" data-photo="https://photos.cinematreasures.org/production/photos/27283/1316841324/thumb.jpg?1316841324">
+              <td class="name">
+                <a href="/theaters/17146" class="map-link"><img alt="3M Palace Theater" height="48" src="https://photos.cinematreasures.org/production/photos/27283/1316841324/thumb.jpg?1316841324" width="48" /></a>
+                <a href="/theaters/17146">3M Palace Theater</a>
+              </td>
+              <td class="location">
+                Colorado City, TX, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="118 5th Avenue N&lt;br&gt;La Crosse, WI 54601&lt;br&gt;United States&lt;br&gt;" data-category="open" data-id="38199" data-lat="43.8124133" data-lng="-91.2494031" data-name="5th Avenue Theatre" data-photo="https://photos.cinematreasures.org/production/photos/41630/1333851016/thumb.jpg?1333851016">
+              <td class="name">
+                <a href="/theaters/38199" class="map-link"><img alt="5th Avenue Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/41630/1333851016/thumb.jpg?1333851016" width="48" /></a>
+                <a href="/theaters/38199">5th Avenue Theatre</a>
+              </td>
+              <td class="location">
+                La Crosse, WI, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="Tir Connell Street&lt;br&gt;Ballyshannon F94&lt;br&gt;Ireland&lt;br&gt;+353-71-985-1375&lt;br&gt;" data-category="open" data-id="57464" data-lat="54.4861126" data-lng="-8.2618811" data-name="Abbey Centre" data-photo="http://photos.cinematreasures.org/production/photos/309777/1593466816/thumb.jpeg?1593466816">
+              <td class="name">
+                <a href="/theaters/57464" class="map-link"><img alt="Abbey Centre" height="48" src="http://photos.cinematreasures.org/production/photos/309777/1593466816/thumb.jpeg?1593466816" width="48" /></a>
+                <a href="/theaters/57464">Abbey Centre</a>
+              </td>
+              <td class="location">
+                Ballyshannon, Ireland
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even theater">
+              <td class="name">
+                <a href="/theaters/59171" class="map-link"><img alt="Abbey Cinema" height="48" src="http://photos.cinematreasures.org/production/photos/268486/1554241834/thumb.JPG?1554241834" width="48" /></a>
+                <a href="/theaters/59171">Abbey Cinema</a>
+              </td>
+              <td class="location">
+                Abingdon, United Kingdom
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                2
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="387 Abbeydale Road&lt;br&gt;Sheffield,  S7 1FS&lt;br&gt;United Kingdom&lt;br&gt;+44 114 281 1155&lt;br&gt;" data-category="open" data-id="22681" data-lat="53.3597691" data-lng="-1.4798448" data-name="Abbeydale Picture House" data-photo="http://photos.cinematreasures.org/production/photos/499/1306683118/thumb.jpg?1306683118">
+              <td class="name">
+                <a href="/theaters/22681" class="map-link"><img alt="Abbeydale Picture House" height="48" src="http://photos.cinematreasures.org/production/photos/499/1306683118/thumb.jpg?1306683118" width="48" /></a>
+                <a href="/theaters/22681">Abbeydale Picture House</a>
+              </td>
+              <td class="location">
+                Sheffield, United Kingdom
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="600 W. Main Street&lt;br&gt;Lynchburg, VA 24504&lt;br&gt;United States&lt;br&gt;434.846.8499&lt;br&gt;" data-category="open" data-id="29574" data-lat="37.4172326" data-lng="-79.1443058" data-name="Academy Of Fine Arts" data-photo="http://photos.cinematreasures.org/production/photos/94598/1391964886/thumb.PNG?1391964886">
+              <td class="name">
+                <a href="/theaters/29574" class="map-link"><img alt="Academy Of Fine Arts" height="48" src="http://photos.cinematreasures.org/production/photos/94598/1391964886/thumb.PNG?1391964886" width="48" /></a>
+                <a href="/theaters/29574">Academy Of Fine Arts</a>
+              </td>
+              <td class="location">
+                Lynchburg, VA, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="275 Chestnut Street&lt;br&gt;Meadville, PA 16335&lt;br&gt;United States&lt;br&gt;814.337.8211&lt;br&gt;" data-category="open" data-id="7714" data-lat="41.6380761" data-lng="-80.1524652" data-name="Academy Theater" data-photo="https://photos.cinematreasures.org/production/photos/118180/1424129331/thumb.jpg?1424129331">
+              <td class="name">
+                <a href="/theaters/7714" class="map-link"><img alt="Academy Theater" height="48" src="https://photos.cinematreasures.org/production/photos/118180/1424129331/thumb.jpg?1424129331" width="48" /></a>
+                <a href="/theaters/7714">Academy Theater</a>
+              </td>
+              <td class="location">
+                Meadville, PA, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="2 Lindsay Street South&lt;br&gt;Lindsay, ON K9V 2L6&lt;br&gt;Canada&lt;br&gt;705.324.9111&lt;br&gt;" data-category="open" data-id="865" data-lat="44.3556598" data-lng="-78.7346532" data-name="Academy Theatre for Performing Arts" data-photo="https://photos.cinematreasures.org/production/photos/157023/1454288022/thumb.jpg?1454288022">
+              <td class="name">
+                <a href="/theaters/865" class="map-link"><img alt="Academy Theatre for Performing Arts" height="48" src="https://photos.cinematreasures.org/production/photos/157023/1454288022/thumb.jpg?1454288022" width="48" /></a>
+                <a href="/theaters/865">Academy Theatre for Performing Arts</a>
+              </td>
+              <td class="location">
+                Lindsay, Canada
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="111 S. Center Street&lt;br&gt;Goldsboro, NC 27530&lt;br&gt;United States&lt;br&gt;" data-category="open" data-id="31669" data-lat="35.382858" data-lng="-77.997793" data-name="Acme Theatre" data-photo="http://photos.cinematreasures.org/production/photos/40666/1333338489/thumb.jpg?1333338489">
+              <td class="name">
+                <a href="/theaters/31669" class="map-link"><img alt="Acme Theatre" height="48" src="http://photos.cinematreasures.org/production/photos/40666/1333338489/thumb.jpg?1333338489" width="48" /></a>
+                <a href="/theaters/31669">Acme Theatre</a>
+              </td>
+              <td class="location">
+                Goldsboro, NC, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="157 S. Main Street&lt;br&gt;Adams, WI 53910&lt;br&gt;United States&lt;br&gt;608.339.6212&lt;br&gt;" data-category="open" data-id="8606" data-lat="43.9566561" data-lng="-89.81779" data-name="Adams Community Theatre" data-photo="https://photos.cinematreasures.org/production/photos/36415/1329784965/thumb.jpg?1329784965">
+              <td class="name">
+                <a href="/theaters/8606" class="map-link"><img alt="Adams Community Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/36415/1329784965/thumb.jpg?1329784965" width="48" /></a>
+                <a href="/theaters/8606">Adams Community Theatre</a>
+              </td>
+              <td class="location">
+                Adams, WI, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="3940 W. Lawrence Avenue&lt;br&gt;Chicago, IL 60625&lt;br&gt;United States&lt;br&gt;773.478.8111&lt;br&gt;" data-category="open" data-id="974" data-lat="41.968524" data-lng="-87.72714" data-name="Admiral Theatre" data-photo="https://photos.cinematreasures.org/production/photos/51464/1344368116/thumb.JPG?1344368116">
+              <td class="name">
+                <a href="/theaters/974" class="map-link"><img alt="Admiral Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/51464/1344368116/thumb.JPG?1344368116" width="48" /></a>
+                <a href="/theaters/974">Admiral Theatre</a>
+              </td>
+              <td class="location">
+                Chicago, IL, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="515 Pacific Avenue&lt;br&gt;Bremerton, WA 98337&lt;br&gt;United States&lt;br&gt;360.373.6743&lt;br&gt;" data-category="open" data-id="4536" data-lat="47.5636242" data-lng="-122.6270257" data-name="Admiral Theatre" data-photo="https://photos.cinematreasures.org/production/photos/25543/1315834562/thumb.jpg?1315834562">
+              <td class="name">
+                <a href="/theaters/4536" class="map-link"><img alt="Admiral Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/25543/1315834562/thumb.jpg?1315834562" width="48" /></a>
+                <a href="/theaters/4536">Admiral Theatre</a>
+              </td>
+              <td class="location">
+                Bremerton, WA, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="Friedrichstrasse 101&lt;br&gt;Berlin 10117&lt;br&gt;Germany&lt;br&gt;+49-30-4799-7499&lt;br&gt;" data-category="open" data-id="46041" data-lat="52.5207249" data-lng="13.3884809" data-name="Admirals-Palast" data-photo="https://photos.cinematreasures.org/production/photos/104350/1405264366/thumb.jpeg?1405264366">
+              <td class="name">
+                <a href="/theaters/46041" class="map-link"><img alt="Admirals-Palast" height="48" src="https://photos.cinematreasures.org/production/photos/104350/1405264366/thumb.jpeg?1405264366" width="48" /></a>
+                <a href="/theaters/46041">Admirals-Palast</a>
+              </td>
+              <td class="location">
+                Berlin, Germany
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="Hospital Street&lt;br&gt;Ramallah &lt;br&gt;Palestine&lt;br&gt;&lt;br&gt;" data-category="open" data-id="61532" data-lat="31.9037641" data-lng="35.2034184" data-name="Al-Kasaba Theatre and Cinematheque" data-photo="photos/missing.png">
+              <td class="name">
+                <a href="/theaters/61532" class="map-link"><img alt="Al-Kasaba Theatre and Cinematheque" height="48" src="/images/photos/missing.png?1714499759" width="48" /></a>
+                <a href="/theaters/61532">Al-Kasaba Theatre and Cinematheque</a>
+              </td>
+              <td class="location">
+                Ramallah, Palestine
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="333 N. Farish Street&lt;br&gt;Jackson, MS 39207&lt;br&gt;United States&lt;br&gt;601.352.3365&lt;br&gt;" data-category="open" data-id="8718" data-lat="32.3041" data-lng="-90.18889" data-name="Alamo Theatre" data-photo="https://photos.cinematreasures.org/production/photos/101001/1401244953/thumb.jpg?1401244953">
+              <td class="name">
+                <a href="/theaters/8718" class="map-link"><img alt="Alamo Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/101001/1401244953/thumb.jpg?1401244953" width="48" /></a>
+                <a href="/theaters/8718">Alamo Theatre</a>
+              </td>
+              <td class="location">
+                Jackson, MS, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="19 Court Square&lt;br&gt;Newnan, GA 30263&lt;br&gt;United States&lt;br&gt;" data-category="open" data-id="4255" data-lat="33.3750899" data-lng="-84.8008279" data-name="Alamo Theatre" data-photo="https://photos.cinematreasures.org/production/photos/79653/1377409305/thumb.jpg?1377409305">
+              <td class="name">
+                <a href="/theaters/4255" class="map-link"><img alt="Alamo Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/79653/1377409305/thumb.jpg?1377409305" width="48" /></a>
+                <a href="/theaters/4255">Alamo Theatre</a>
+              </td>
+              <td class="location">
+                Newnan, GA, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="odd theater">
+              <td class="name">
+                <a href="/theaters/63122" class="map-link"><img alt="Alban Arena" height="48" src="http://photos.cinematreasures.org/production/photos/314260/1597298757/thumb.jpg?1597298757" width="48" /></a>
+                <a href="/theaters/63122">Alban Arena</a>
+              </td>
+              <td class="location">
+                St. Albans, United Kingdom
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="2 Toll Place&lt;br&gt;Albany, WA 6330&lt;br&gt;Australia&lt;br&gt;" data-category="open" data-id="54019" data-lat="-35.0292594" data-lng="117.8859423" data-name="Albany Entertainment Centre" data-photo="http://photos.cinematreasures.org/production/photos/187800/1476886156/thumb.jpg?1476886156">
+              <td class="name">
+                <a href="/theaters/54019" class="map-link"><img alt="Albany Entertainment Centre" height="48" src="http://photos.cinematreasures.org/production/photos/187800/1476886156/thumb.jpg?1476886156" width="48" /></a>
+                <a href="/theaters/54019">Albany Entertainment Centre</a>
+              </td>
+              <td class="location">
+                Albany, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="2801 3rd Avenue N&lt;br&gt;Billings, MT 59103&lt;br&gt;United States&lt;br&gt;406.256.6052&lt;br&gt;" data-category="open" data-id="7529" data-lat="45.7837953" data-lng="-108.5074803" data-name="Alberta Bair Theater for the Performing Arts" data-photo="https://photos.cinematreasures.org/production/photos/194518/1481305940/thumb.jpg?1481305940">
+              <td class="name">
+                <a href="/theaters/7529" class="map-link"><img alt="Alberta Bair Theater for the Performing Arts" height="48" src="https://photos.cinematreasures.org/production/photos/194518/1481305940/thumb.jpg?1481305940" width="48" /></a>
+                <a href="/theaters/7529">Alberta Bair Theater for the Per...</a>
+              </td>
+              <td class="location">
+                Billings, MT, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="3000 NE Alberta Street&lt;br&gt;Portland, OR 97211&lt;br&gt;United States&lt;br&gt;503.719.6055&lt;br&gt;" data-category="open" data-id="9576" data-lat="45.5589532" data-lng="-122.6346795" data-name="Alberta Rose Theatre" data-photo="https://photos.cinematreasures.org/production/photos/137624/1443389139/thumb.jpg?1443389139">
+              <td class="name">
+                <a href="/theaters/9576" class="map-link"><img alt="Alberta Rose Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/137624/1443389139/thumb.jpg?1443389139" width="48" /></a>
+                <a href="/theaters/9576">Alberta Rose Theatre</a>
+              </td>
+              <td class="location">
+                Portland, OR, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="odd theater">
+              <td class="name">
+                <a href="/theaters/60279" class="map-link"><img alt="Alcazar Live" height="48" src="http://photos.cinematreasures.org/production/photos/280290/1564230075/thumb.jpg?1564230075" width="48" /></a>
+                <a href="/theaters/60279">Alcazar Live</a>
+              </td>
+              <td class="location">
+                Rome, Italy
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="51 High Street&lt;br&gt;Aldeburgh,  IP15 5AU&lt;br&gt;United Kingdom&lt;br&gt;+44 1728 452996&lt;br&gt;" data-category="open" data-id="24100" data-lat="52.1542933" data-lng="1.6019014" data-name="Aldeburgh Cinema" data-photo="https://photos.cinematreasures.org/production/photos/100830/1401218591/thumb.jpg?1401218591">
+              <td class="name">
+                <a href="/theaters/24100" class="map-link"><img alt="Aldeburgh Cinema" height="48" src="https://photos.cinematreasures.org/production/photos/100830/1401218591/thumb.jpg?1401218591" width="48" /></a>
+                <a href="/theaters/24100">Aldeburgh Cinema</a>
+              </td>
+              <td class="location">
+                Aldeburgh, United Kingdom
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="2017 E. 9th Street&lt;br&gt;Cleveland, OH 44115&lt;br&gt;United States&lt;br&gt;216.331.6297&lt;br&gt;" data-category="open" data-id="48606" data-lat="41.499743" data-lng="-81.685788" data-name="Alex Theater " data-photo="http://photos.cinematreasures.org/production/photos/164954/1460850784/thumb.jpg?1460850784">
+              <td class="name">
+                <a href="/theaters/48606" class="map-link"><img alt="Alex Theater " height="48" src="http://photos.cinematreasures.org/production/photos/164954/1460850784/thumb.jpg?1460850784" width="48" /></a>
+                <a href="/theaters/48606">Alex Theater </a>
+              </td>
+              <td class="location">
+                Cleveland, OH, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="South Terrace&lt;br&gt;London,  N22 7AY&lt;br&gt;United Kingdom&lt;br&gt;+44 208 365 2121&lt;br&gt;" data-category="open" data-id="44961" data-lat="51.594818" data-lng="-0.1281867" data-name="Alexandra Palace Theatre" data-photo="http://photos.cinematreasures.org/production/photos/189131/1477750375/thumb.jpg?1477750375">
+              <td class="name">
+                <a href="/theaters/44961" class="map-link"><img alt="Alexandra Palace Theatre" height="48" src="http://photos.cinematreasures.org/production/photos/189131/1477750375/thumb.jpg?1477750375" width="48" /></a>
+                <a href="/theaters/44961">Alexandra Palace Theatre</a>
+              </td>
+              <td class="location">
+                London, United Kingdom
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="618 Broadway Street&lt;br&gt;Alexandria, MN 56308&lt;br&gt;United States&lt;br&gt;320.762.8300&lt;br&gt;" data-category="open" data-id="17901" data-lat="45.8853039" data-lng="-95.3778785" data-name="Alexandria Area Arts Association Theatre" data-photo="http://photos.cinematreasures.org/production/photos/65439/1359245992/thumb.jpg?1359245992">
+              <td class="name">
+                <a href="/theaters/17901" class="map-link"><img alt="Alexandria Area Arts Association Theatre" height="48" src="http://photos.cinematreasures.org/production/photos/65439/1359245992/thumb.jpg?1359245992" width="48" /></a>
+                <a href="/theaters/17901">Alexandria Area Arts Association...</a>
+              </td>
+              <td class="location">
+                Alexandria, MN, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                2
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="Rue de Rotisserie 12&lt;br&gt;Geneva 1204&lt;br&gt;Switzerland&lt;br&gt;" data-category="open" data-id="44230" data-lat="46.2028093" data-lng="6.1465744" data-name="Alhambra" data-photo="http://photos.cinematreasures.org/production/photos/90553/1387734905/thumb.jpg?1387734905">
+              <td class="name">
+                <a href="/theaters/44230" class="map-link"><img alt="Alhambra" height="48" src="http://photos.cinematreasures.org/production/photos/90553/1387734905/thumb.jpg?1387734905" width="48" /></a>
+                <a href="/theaters/44230">Alhambra</a>
+              </td>
+              <td class="location">
+                Geneva, Switzerland
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="507 S. Main Street&lt;br&gt;Hopkinsville, KY 42240&lt;br&gt;United States&lt;br&gt;270.887.4295&lt;br&gt;" data-category="open" data-id="9241" data-lat="36.8672166" data-lng="-87.4878651" data-name="Alhambra Theatre" data-photo="https://photos.cinematreasures.org/production/photos/34740/1327963181/thumb.jpg?1327963181">
+              <td class="name">
+                <a href="/theaters/9241" class="map-link"><img alt="Alhambra Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/34740/1327963181/thumb.jpg?1327963181" width="48" /></a>
+                <a href="/theaters/9241">Alhambra Theatre</a>
+              </td>
+              <td class="location">
+                Hopkinsville, KY, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="33 Canmore Street&lt;br&gt;Dunfermline,  KY12 7NX&lt;br&gt;United Kingdom&lt;br&gt;+44 01383 722554&lt;br&gt;" data-category="open" data-id="2135" data-lat="56.0701894" data-lng="-3.4583046" data-name="Alhambra Theatre" data-photo="https://photos.cinematreasures.org/production/photos/76851/1374258151/thumb.JPG?1374258151">
+              <td class="name">
+                <a href="/theaters/2135" class="map-link"><img alt="Alhambra Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/76851/1374258151/thumb.JPG?1374258151" width="48" /></a>
+                <a href="/theaters/2135">Alhambra Theatre</a>
+              </td>
+              <td class="location">
+                Dunfermline, United Kingdom
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="1407 Euclid Avenue&lt;br&gt;Cleveland, OH 44115&lt;br&gt;United States&lt;br&gt;" data-category="open" data-id="3728" data-lat="41.5010094" data-lng="-81.6814437" data-name="Allen Theatre" data-photo="https://photos.cinematreasures.org/production/photos/236153/1520286866/thumb.jpg?1520286866">
+              <td class="name">
+                <a href="/theaters/3728" class="map-link"><img alt="Allen Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/236153/1520286866/thumb.jpg?1520286866" width="48" /></a>
+                <a href="/theaters/3728">Allen Theatre</a>
+              </td>
+              <td class="location">
+                Cleveland, OH, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+          </table>
+          <div class="pagination">
+            <div class="pagination"><span class="disabled prev_page">&laquo; Previous</span> <span class="current">1</span> <a href="/functions/23?page=2" rel="next">2</a> <a href="/functions/23?page=3">3</a> <a href="/functions/23?page=4">4</a> <a href="/functions/23?page=5">5</a> <a href="/functions/23?page=6">6</a> <a href="/functions/23?page=7">7</a> <a href="/functions/23?page=8">8</a> <a href="/functions/23?page=9">9</a> <span class="gap">&hellip;</span> <a href="/functions/23?page=39">39</a> <a href="/functions/23?page=40">40</a> <a href="/functions/23?page=2" class="next_page" rel="next">Next &raquo;</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <span>
+        <div id="social">
+          <div class="service"><a href="http://www.facebook.com/pages/Cinema-Treasures/206217392742703"><img alt="Facebook" src="/images/icons/facebook.png?1714499759" /></a></div>
+          <div class="service"><a href="http://twitter.com/movie_theaters"><img alt="Twitter" src="/images/icons/twitter.png?1714499759" /></a></div>
+          <div class="service"><a href="http://feeds.feedburner.com/cinematreasures"><img alt="Feed" src="/images/icons/feed.png?1714499759" /></a></div>
+        </div>
+        <div id="sitemap">
+          <h3>Roger Ebert on Cinema Treasures:</h3>
+          <p>&ldquo;The ultimate web site about movie theaters&rdquo;</p>
+        </div>
+        <div id="credits">
+          <a href="/"><img alt="Cinema Treasures" height="68" src="/images/app/logo_footer.png?1714499759" width="200" /></a>
+        </div>
+        <div id="terms">
+          Cinema Treasures, LLC
+          &copy; 2000 -
+          2024.
+          Cinema Treasures is a registered trademark of Cinema Treasures, LLC.
+          <a href="/privacy">Privacy Policy</a>.
+          <a href="/terms">Terms of Use</a>.
+        </div>
+      </span>
+    </footer>
+    <script>
+      //<![CDATA[
+        try {
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-2710707-1']);
+          _gaq.push(['_trackPageview']);
+      
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        } catch(err) {
+        }
+      //]]>
+    </script>
+  </body>
+</html>
+ contentType 9 text/html url 44 https://cinematreasures.org:443/functions/23 responseCode 3 200 

@@ -1,0 +1,406 @@
+laniikqslaqgxkwqvalsditeqetmtgsseqaogcto length 5 25601 page 25601 ﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Team | CiteSeerX</title>
+    <link rel="shortcut icon" href="#">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link type="text/css" href="/resources/css/navigation.css" rel="stylesheet">
+    <link type="text/css" href="/resources/css/textstyles.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/resources/css/footer-distributed-with-address-and-phones.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link type="text/css" href="/resources/css/content.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- JQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const teams = [
+    { name: "Professor C. Lee Giles", role: "PI and Project Director", image: "/resources/img/teams/ProfessorCLeeGiles.jpg", link: "http://clgiles.ist.psu.edu/", text: "Lee Giles cocreated CiteSeer in 1997 with Steve Lawrence and Kurt Bollacker while they were at the NEC Research Institute (now NEC Labs) in Princeton, New Jersey, USA.  Now at the Pennsylvania State University, Dr. Giles continues the tradition of the CiteSeer project." },
+    { name: "Dr. Jian Wu", role: "Assistant Professor at Old Dominion University", image: "/resources/img/teams/DrJianWu.jpg", link: "http://fanchyna.wix.com/jianwu", text: "Jian Wu is improving the CiteSeerx crawler and investigating our crawling policies and also maintains the CiteSeerx database, index and repository."},
+    { name: "Abhishek Talesara", role: "Graduate Student at Penn State University", image: "/resources/img/teams/abhishektalesara.jpg", link: "https://www.linkedin.com/in/abhishek-talesara-2aa21114a/", text: "Abhishek is responsible for improving the quality of the metadata of the CiteSeerX data"},
+    { name: "Jaideep Kukkadapu", role: "Graduate Student at Penn State University", image: "/resources/img/teams/jaideepkukkadapu.jpg", link: "https://www.linkedin.com/in/jaideepkukkadapu/", text: "Jaideep is responsible for full-stack development and specializes in optimizing Elasticsearch nodes, as well as integrating the Learning to Rank (LTR) algorithm into the CiteSeerX search engine."},
+    { name: "Surya Shanmugaraja", role: "Graduate Student at Penn State University", image: "/resources/img/teams/suryashanmugaraja.jpg", link: "https://www.linkedin.com/in/suryasr/", text: "Surya is responsible for full-stack development, primarily the Ingestion of the academic documents as well as the building and maintenance of the static webpage for CiteSeerX."},
+    //{ name: "", role: "", image: "", link: "", text: ""},
+
+    // Add more team members as needed
+];
+
+
+const teamListDiv = document.getElementById("teamList");
+
+teams.forEach(team => {
+            const groupDiv = document.createElement("div");
+            groupDiv.classList.add("dropdown");
+            groupDiv.classList.add("profile-dropdown");
+    const profileLink = document.createElement("a");
+    profileLink.href = team.link;
+    profileLink.classList.add("profile-link");
+    profileLink.target = "_blank";
+
+    const profileDiv = document.createElement("div");
+    profileDiv.classList.add("profile");
+
+    const profileContentDiv = document.createElement("div");
+    profileContentDiv.classList.add("profile-content");
+
+    const imageCropperDiv = document.createElement("div");
+    imageCropperDiv.classList.add("image-cropper");
+
+    const image = document.createElement("img");
+    image.src = team.image;
+    image.alt = "img";
+    image.style.width = "80px";
+
+    const nameHeader = document.createElement("h3");
+    nameHeader.innerHTML = `<strong>${team.name}</strong>`;
+
+    const roleHeader = document.createElement("h4");
+    roleHeader.innerHTML = team.role;
+
+    const profileTextDiv = document.createElement("div");
+    profileTextDiv.classList.add("profile-text");
+    profileTextDiv.classList.add("dropdown-content");
+    profileTextDiv.classList.add("ptext");
+    profileTextDiv.innerHTML = team.text;
+
+profileDiv.addEventListener('mouseover', function() {
+        profileTextDiv.style.display = 'block';
+    });
+
+    profileDiv.addEventListener('mouseout', function() {
+        profileTextDiv.style.display = 'none';
+    });
+    imageCropperDiv.appendChild(image);
+    profileContentDiv.appendChild(imageCropperDiv);
+    profileContentDiv.appendChild(nameHeader);
+    profileContentDiv.appendChild(roleHeader);
+    profileDiv.appendChild(profileContentDiv);
+    profileLink.appendChild(profileDiv);
+    profileLink.appendChild(profileTextDiv);
+    groupDiv.appendChild(profileLink);
+
+    teamListDiv.appendChild(groupDiv);
+        });
+//	});
+
+
+const contr = [{ name: "Rabah Al-Zaidy", role: "Graduate student", image: "/resources/img/teams/RabahAlZaidy.jpg", link: "https://www.linkedin.com/in/rabah-al-zaidy-7b8826a7/", text: "Rabah Al-Zaidy extracts trends and semantics from barcharts appearing in scientific documents."},
+            { name: "Dr. Cornelia Caragea", role: "Associate Professor, University of Illinois at Chicago", image: "/resources/img/teams/DrCorneliaCaragea.jpg", link: "http://www.cse.unt.edu/~ccaragea/", text: "Dr. Caragea contributed on data cleaning and integrity. She also extracted keyphrases from scientific documents."},
+            { name: "Stephen Carman", role: "Systems Engineer", image: "/resources/img/teams/StephenCarman.jpg", link: "", text: "Stephen facilitated CiteSeerx data transfer and code improvement."},
+            { name: "Jason Chhay", role: "Undergraduate student", image: "/resources/img/teams/JasonChhay.png", link: "https://www.linkedin.com/in/jason-chhay/", text: "Jason Chhay developed the CiteSeerX informative website and assists with systems support."},
+            { name: "Po-Yu Chuang", role: "Graduate Student", image: "/resources/img/teams/PoYuChuang.jpg", link: "https://www.linkedin.com/in/po-yu-chuang-76963682/", text: "Po-Yu Chuang manages the CiteSeerx index data over Apache Solr."},
+            { name: "Dr. Isaac G. Councill", role: "Consultant, Former Technical Director, Software/Deployment Architect, Principle Engineer", image: "/resources/img/teams/DrIsaacGCouncill.jpg", link: "http://dblp.uni-trier.de/pers/hd/c/Councill:Isaac_G=", text: "Isaac led all technical aspects of the CiteSeerx development process, designed the system framework, and wrote most of the code. Isaac maintained the legacy CiteSeer system since it moved to Penn State in 2003 and incorporated many hard-won lessons from that endeavor into the new codebase."},
+            { name: "Dr. Susan Gauch", role: "", image: "/resources/img/teams/DrSusanGauch.jpg", link: "http://csce.uark.edu/556.php", text: "Dr. Susan Gauch is noted for her contribution on clustering CiteSeerx data."},
+            { name: "Professor Jim Jansen", role: "", image: "/resources/img/teams/ProfessorJimJansen.jpg", link: "http://faculty.ist.psu.edu/jjansen/", text: "Jim investigates CiteSeerx useage."},
+            { name: "Douglas Jordan", role: "Software Engineer at Microsoft", image: "/resources/img/teams/DouglasJordan.jpg", link: "http://www.personal.psu.edu/dwj131/", text: "Douglas Jordan used to be in charge of transferring CiteSeerx data."},
+            { name: "Professor Min-Yen Kan", role: "", image: "/resources/img/teams/ProfessorMinYenKan.jpg", link: "http://www.comp.nus.edu.sg/~kanmy/", text: "Min-Yen Kan contributed the excellent conditional random field model that underlies the CiteSeerx citation parser, ParsCit, and collaborated with Isaac Councill to build the ParsCit application."},
+            { name: "Bharat Kandimalla", role: "Graduate Student", image: "/resources/img/teams/bharath.png", link: "https://www.linkedin.com/in/bharath-kandimalla-ba3556a1/", text: "Bharath developed an ingestion pipeline to systematically import research papers into the Citeseer and index them. He is also responsible for maintaining the pdfmef and Citeseer ingestion system."},
+            { name: "Dr. Madian Khabsa", role: "Researcher at Microsoft Inc.", image: "/resources/img/teams/DrMadianKhabsa.jpg", link: "http://www.personal.psu.edu/mxk479/", text: "Madian contributes to the CiteSeerx architecture and indexing."},
+            { name: "Jason Killian", role: "Software Engineer at Palantir Technologies", image: "/resources/img/teams/JasonKillian.jpg", link: "https://www.linkedin.com/in/jasonkillian/", text: "Jason Killian developed the parallel extraction framework for CiteSeerX."},
+            { name: "Kunho Kim", role: "Graduate Student", image: "/resources/img/teams/KunhoKim.jpg", link: "https://www.linkedin.com/in/kunho-kim-211a69132/", text: "Kunho Kim is responsible for the author disambiguation tasks and maintains the author search index."},
+            { name: "Manoj Kumar", role: "Graduate Student", image: "/resources/img/teams/manoj_kumar.jpg", link: "https://www.linkedin.com/in/manojkumar-a/", text: "Manoj is responsible for the Extraction, Clustering and Ingestion of academic documents for CiteseerX."},
+            { name: "Wujun Li", role: "Undergraduate Student, Pennsylvania State University", image: "/resources/img/teams/wujun_li.jpg", link: "https://www.linkedin.com/in/wujun-li-98285416b", text: "Wujun updates CiteSeerX's static webpage. He is also developing a server monitoring system for CiteSeerX."},
+            { name: "Dr. Ying Liu", role: "", image: "/resources/img/teams/DrYingLiu.jpg", link: "", text: "Ying Liu researched and developed the table search system that underlies the table search features of CiteSeerx."},
+            { name: "Professor Prasenjit Mitra", role: "Former Co-director", image: "/resources/img/teams/ProfessorPrasenjitMitra.jpg", link: "http://www.personal.psu.edu/users/p/u/pum10/", text: "Prasenjit Mitra guided the team which developed the table search feature for CiteSeerx and is a collaborator in the CiteSeerx project."},
+            { name: "Sean Parsons", role: "Undergraduate student", image: "/resources/img/teams/Parsons_Sean_May_28.jpg", link: "https://www.google.com/", text: "Sean Parsons is responsible for indexing the CiteSeerX data in the new ElasticSearch system."},
+            { name: "Krutarth Patel", role: "Graduate Student at Kansas State University", image: "/resources/img/teams/krutarth.png", link: "https://patelkrutarth.github.io/", text: "Krutarth extracted keyphrases from the CORD-19 dataset for COVIDSeer."},
+            { name: "Kavya Puranik", role: "Graduate Student", image: "/resources/img/teams/kavya_puranik.jpeg", link: "https://www.linkedin.com/in/kavya-shrinivas-puranik/", text: "Kavya is responsible for the full stack and deployment of citeseerx."},
+            { name: "Juan Pablo Fernández Ramírez", role: "Software Engineer", image: "/resources/img/teams/JuanPabloFernndezRamrez.jpg", link: "", text: "Juan was responsible for the collections feature of MyCiteSeer and general CiteSeerx bug squashing. He participated in developing document conversion routines and contributed in part to the navigation menu design and page layout for CiteSeerx and MyCiteSeerx. He was responsible for OAI metadata interface, external links and legacy corrections."},
+            { name: "Shaurya Rohatgi", role: "Graduate student", image: "/resources/img/teams/ShauryaRohatgi.jpg", link: "https://www.linkedin.com/in/shaurya-rohatgi/", text: "Shaurya maintains CiteseerX’s webpage and respository. He is also responsible for assisting Dr. Jian Wu with crawling and server management."},
+            { name: "Athar Sefid", role: "Graduate student", image: "/resources/img/teams/AtharSefid.jpg", link: "https://www.linkedin.com/in/athar-sefid-0b512770/", text: "Athar Sefid works with with Kunho Kim to maintain author disambiguation of CiteSeerX database."},
+            { name: "Dr. Yang Song", role: "Software Engineer", image: "/resources/img/teams/DrYangSong.jpg", link: "https://www.linkedin.com/in/sonyisme", text: "Yang Song designed the prototype of MyCiteSeer."},
+            { name: "Dr. Pradeep B. Teregowda", role: "Advisory Software Engineer at IBM", image: "/resources/img/teams/DrPradeepBTeregowda.jpg", link: "http://dblp.uni-trier.de/pers/hd/t/Teregowda:Pradeep_B=", text: "Pradeep guided many of the technical aspects of the CiteSeerx development process."},
+            { name: "Eric Treece", role: "Systems Administrator", image: "/resources/img/teams/EricTreece.jpg", link: "", text: "Eric used to be the primary systems administrator for CiteSeerx''s underlying hardware, network and operating system layers. He managed and maintain the CiteSeerx cloud infrastructure."},
+            { name: "Dr. Puck Treeratpituk", role: "", image: "/resources/img/teams/DrPuckTreeratpituk.jpg", link: "http://dblp.uni-trier.de/pers/hd/t/Treeratpituk:Pucktada", text: "Puck led the author disambiguation project."},
+            { name: "Dr. Kyle Williams", role: "Applied Scientist at Microsoft Inc.", image: "/resources/img/teams/DrKyleWilliams.jpg", link: "http://www.personal.psu.edu/kiw5209", text: "Kyle Williams was involved in the maintenance and development of CiteSeerx and manages the code repositories."},
+            { name: "Huaiyu (David) Yang", role: "Undergraduate at Vanderbilt University", image: "/resources/img/teams/HuaiyuDavidYang.jpg", link: "https://www.linkedin.com/in/huaiyu-david-yang-ba0b99105/", text: "David worked with Jason Killian and co-developed the parallel extraction system for CiteSeerX."},
+            { name: "\"Bernie\" Nan Zang", role: "Usability Engineer", image: "/resources/img/teams/BernieNanZang.jpg", link: "", text: "Bernie was responsible for creating some of the interfaces you see in CiteSeerx, including the current UI."},
+            { name: "Dr. Shuyi Zheng", role: "Crawl Consultant", image: "/resources/img/teams/DrShuyiZheng.jpg", link: "http://dblp.uni-trier.de/pers/hd/z/Zheng:Shuyi", text: "Shuyi scoured the web for millions of new document files and is largely responsible for bringing the CiteSeerx collection up to date with the latest literature on the net. He has also lead efforts, for integrating table search with CiteSeerx."},
+];
+
+const ContrListDiv = document.getElementById("contrList");
+
+contr.forEach(contr => {
+            const groupDiv = document.createElement("div");
+             groupDiv.classList.add("dropdown");
+             groupDiv.classList.add("profile-dropdown");
+    const profileLink = document.createElement("a");
+    profileLink.href = contr.link;
+    profileLink.classList.add("profile-link");
+    profileLink.target = "_blank";
+
+    const profileDiv = document.createElement("div");
+    profileDiv.classList.add("profile");
+
+    const profileContentDiv = document.createElement("div");
+    profileContentDiv.classList.add("profile-content");
+
+    const imageCropperDiv = document.createElement("div");
+    imageCropperDiv.classList.add("image-cropper");
+
+    const image = document.createElement("img");
+    image.src = contr.image;
+    image.alt = "img";
+    image.style.width = "80px";
+
+    const nameHeader = document.createElement("h3");
+    nameHeader.innerHTML = `<strong>${contr.name}</strong>`;
+
+    const roleHeader = document.createElement("h4");
+    roleHeader.innerHTML = contr.role;
+
+    const profileTextDiv = document.createElement("div");
+    profileTextDiv.classList.add("profile-text");
+    profileTextDiv.classList.add("dropdown-content");
+    profileTextDiv.classList.add("ptext");
+    profileTextDiv.innerHTML = contr.text;
+
+profileDiv.addEventListener('mouseover', function() {
+        profileTextDiv.style.display = 'block';
+    });
+
+    profileDiv.addEventListener('mouseout', function() {
+        profileTextDiv.style.display = 'none';
+    });
+    imageCropperDiv.appendChild(image);
+    profileContentDiv.appendChild(imageCropperDiv);
+    profileContentDiv.appendChild(nameHeader);
+    profileContentDiv.appendChild(roleHeader);
+    profileDiv.appendChild(profileContentDiv);
+    profileLink.appendChild(profileDiv);
+    profileLink.appendChild(profileTextDiv);
+    groupDiv.appendChild(profileLink);
+
+    ContrListDiv.appendChild(groupDiv);
+        });
+
+
+const founder = [{ name: "Dr. Steve Lawrence", role: "", image: "/resources/img/teams/DrSteveLawrence.jpg", link: "http://en.wikipedia.org/wiki/Steve_Lawrence_(computer_scientist)", text: "Steve was the creator of the original CiteSeer architecture and system."},
+            { name: "Dr. Kurt Bollacker", role: "", image: "/resources/img/teams/DrKurtBollacker.jpg", link: "", text: "Kurt was responsible for many innovative features in CiteSeer."},
+];
+
+
+const FounderListDiv = document.getElementById("founderList");
+
+founder.forEach(founder => {
+            const groupDiv = document.createElement("div");
+             groupDiv.classList.add("dropdown");
+             groupDiv.classList.add("profile-dropdown");
+    const profileLink = document.createElement("a");
+    profileLink.href = founder.link;
+    profileLink.classList.add("profile-link");
+    profileLink.target = "_blank";
+
+    const profileDiv = document.createElement("div");
+    profileDiv.classList.add("profile");
+
+    const profileContentDiv = document.createElement("div");
+    profileContentDiv.classList.add("profile-content");
+
+    const imageCropperDiv = document.createElement("div");
+    imageCropperDiv.classList.add("image-cropper");
+
+    const image = document.createElement("img");
+    image.src = founder.image;
+    image.alt = "img";
+    image.style.width = "80px";
+
+    const nameHeader = document.createElement("h3");
+    nameHeader.innerHTML = `<strong>${founder.name}</strong>`;
+
+    const roleHeader = document.createElement("h4");
+    roleHeader.innerHTML = founder.role;
+
+    const profileTextDiv = document.createElement("div");
+    profileTextDiv.classList.add("profile-text");
+    profileTextDiv.classList.add("dropdown-content");
+    profileTextDiv.classList.add("ptext");
+    profileTextDiv.innerHTML = founder.text;
+
+profileDiv.addEventListener('mouseover', function() {
+        profileTextDiv.style.display = 'block';
+    });
+
+    profileDiv.addEventListener('mouseout', function() {
+        profileTextDiv.style.display = 'none';
+    });
+    imageCropperDiv.appendChild(image);
+    profileContentDiv.appendChild(imageCropperDiv);
+    profileContentDiv.appendChild(nameHeader);
+    profileContentDiv.appendChild(roleHeader);
+    profileDiv.appendChild(profileContentDiv);
+    profileLink.appendChild(profileDiv);
+    profileLink.appendChild(profileTextDiv);
+    groupDiv.appendChild(profileLink);
+
+    FounderListDiv.appendChild(groupDiv);
+        });
+    });
+    </script>
+</head>
+
+<body>
+<div class="DMCA psunav">
+    <!-- DMCA -->
+    <ul>
+        <li class="li-2"><a href="https://www.psu.edu/copyright-information" target="_blank">
+            <div class="colorchange">DMCA</div>
+        </a></li>
+    </ul>
+</div>
+<div class="container header">
+    <header>
+        <a name="top"></a>
+        <!-- navigation tabs -->
+        <a href="https://citeseerx.ist.psu.edu">
+            <img src="/resources/img/citeseerx.png" title="CiteSeerX" class="citeseerx_logo"/>
+        </a>
+        <div class="psunav">
+            <ul>
+                <!-- About -->
+                <li class="li-1"><a href="../index.html">
+                    <div class="colorchange">About</div>
+                </a></li>
+                <!-- People Dropdown -->
+                <li class="li-2">
+                    <div class="colorchange">
+                        <div class="dropbtn" id="dropbtn-people">
+                            People <i class="fa fa-caret-down"></i>
+                            <div class="dropmenu-content" id="dropmenu-content-people">
+                                <a href="../people/team.html">Team</a>
+                                <a href="../people/collaborators.html">Collaborators</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Publications -->
+                <li class="li-2"><a href="http://clgiles.ist.psu.edu/citeseer-related.pdf" target="_blank">
+                    <div class="colorchange">Publications</div>
+                </a></li>
+                <!-- Data Dropdown -->
+                <li class="li-2">
+                    <div class="colorchange">
+                        <div class="dropbtn" id="dropbtn-downloads">
+                            Downloads <i class="fa fa-caret-down"></i>
+                            <div class="dropmenu-content" id="dropmenu-content-downloads">
+                                <a href="../downloads/data.html">Data</a>
+                                <a href="../downloads/software.html">Software</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Contact Form -->
+                <li class="li-2">
+                    <div class="colorchange">
+                        <div class="dropbtn" id="dropbtn-contact">
+                            Contact <i class="fa fa-caret-down"></i>
+                            <div class="dropmenu-content" id="dropmenu-content-contact">
+                                <a href="../contact/contact.html">Contact Us</a>
+                                <a href="http://csxcrawlweb01.ist.psu.edu/submit_pub/" target="_blank">Crawler</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Donate -->
+                <li class="li-2"><a href="http://www.givenow.psu.edu/CiteseerxFund" target="_blank">
+                    <div class="colorchange">Donate</div>
+                </a></li>
+            </ul>
+        </div>
+    </header>
+</div>
+<div>
+    <div class="pagetitle">
+        <div class="container">
+            <h1 class="titletext">The Team</h1>
+        </div>
+    </div>
+</div>
+<div class="pagebody">
+    <div class="container bodytext">
+        <div class="row">
+            <section class="col-sm-12 col-md-12 col-lg-12 col-x1-12">
+                <div class="teams" align="center">
+                    <div class="group">
+                        <h2 class="section-header"><strong>Core Team</strong></h2>
+                        <div id="teamList"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col-sm-12 col-md-12 col-lg-12 col-x1-12">
+                <div class="teams" align="center">
+                    <div class="group">
+                        <h2 class="section-header"><strong>Noted Contributors</strong></h2>
+                        <div id="contrList"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="col-sm-12 col-md-12 col-lg-12 col-x1-12">
+                <div class="teams" align="center">
+                    <div class="group">
+                        <h2 class="section-header"><strong>Founders</strong></h2>
+                        <div id="founderList"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-distributed">
+    <div class="footer-left">
+        <img src="/resources/img/footer_logo.png" width="510" height="150">
+        <p class="footer-links">
+            <a href="../privacy-policy/privacy-policy.html">Privacy Policy</a>
+            ·
+            <a href="../help/help.html">Help</a>
+            ·
+            <a href="https://github.com/SeerLabs/CiteSeerX">Source</a>
+            ·
+            <a href="../contact/contact.html">Contact Us</a>
+        </p>
+        <p class="footer-company-name">Developed at and hosted by <a href="http://ist.psu.edu/">The College of
+            Information Sciences and Technology</a></p><br/>
+        <p class="footer-company-name"><a href="https://www.psu.edu/">Pennsylvania State University</a> &copy; 2007-2016
+        </p>
+    </div>
+    <div class="footer-center">
+        <div>
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Westgate Building</span>
+                    Pennsylvania State University
+                    <br/>University Park, PA 16802
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+(814) 865 7884</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+ contentType 9 text/html url 50 https://csxstatic.ist.psu.edu:443/people/team.html responseCode 3 200 

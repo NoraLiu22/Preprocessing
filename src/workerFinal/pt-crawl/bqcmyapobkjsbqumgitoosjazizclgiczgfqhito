@@ -1,0 +1,1064 @@
+bqcmyapobkjsbqumgitoosjazizclgiczgfqhito length 5 87370 page 87370 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abonnement - Infolettre Parcs Canada</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-75491325-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-75491325-13');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MV3MGRQ');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Link to the style sheet -->
+    <link href="/css/jquery-ui.css" rel="stylesheet"/>
+<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="/css/bootstrap-theme.min.css" rel="stylesheet"/>
+<link href="/css/common1_2.css" rel="stylesheet"/>
+<link href="/css/styles1_2.css" rel="stylesheet"/>
+<link href="/css/style.css" rel="stylesheet"/>
+<link href="/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <script src="/scripts/jquery-3.1.1.min.js"></script>
+<script src="/scripts/jquery-ui.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+
+</head>
+
+<script type="text/javascript">
+    $(function () {
+        var dialogResize = false;
+
+        $("#rulesDialog").dialog({
+            autoOpen: false,
+            modal: true,
+            width: '800',
+            height: '600',
+            fluid: true,
+            classes: {
+                "ui-dialog-titlebar": "ui-corner-all dialogHeaderExt",
+            },
+            open: function () {
+                $(".ui-dialog-content").scrollTop(0);
+            }
+        });
+
+        $("#rulesDialog").on("dialogresizestart", function (e, ui) {
+            dialogResize = true;
+        });
+
+        $("#rulesDialog").on("dialogresizestop", function (e, ui) {
+            dialogResize = false;
+        });
+
+        $(window).resize(function () {
+            //Only if not a user resizing
+            if (!dialogResize) {
+                fluidDialog();
+            }
+        });
+
+        // catch dialog if opened within a viewport smaller than the dialog width
+        $(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+            fluidDialog();
+        });
+
+        $("#rulesPop").click(function (e) {
+            $("#rulesDialog").load("ParksContestRulesv3.htm");
+            $("#rulesDialog").dialog("open");
+            e.preventDefault();
+        });
+
+        $("cnt_submit").click(function (e) {
+            $(".hdnTimestamp").val((new Date()).toLocaleDateString());
+        });
+
+        $("#emailBox").on('invalid', function (e) {
+            var textfield = $(this).get(0);
+            // 'setCustomValidity not only sets the message, but also marks
+            // the field as invalid. In order to see whether the field really is
+            // invalid, we have to remove the message first
+            textfield.setCustomValidity('');
+
+            if (!textfield.validity.valid) {
+                if ($(this).attr('type') == "email" && $(this).val() != '') {
+                    textfield.setCustomValidity("Entrez un courriel valid");
+                } else {
+                    textfield.setCustomValidity('Le champs est requis');
+                }
+                e.stopPropagation();
+                e.preventDefault();
+                $("#btnSave").prop("disabled", false);
+            }
+        });
+
+        $("#btnSave").click(function () {
+            $("#ValidatorSummary").removeClass("hidden");
+        });
+
+        $("#emailBox").blur(function () {
+            CheckEmail();
+        });
+
+    });
+
+    function validate_optinbox(source, args) {
+        var optinbox = $("#optinbox").get(0);
+        if (optinbox != undefined && optinbox.checked == true) {
+            args.IsValid = true;
+        }
+        else {
+            args.IsValid = false;
+        }
+        return;
+    }
+    function validate_privacybox(source, args) {
+        var privacybox = $("#privacybox").get(0);
+        if (privacybox != undefined && privacybox.checked == true) {
+            args.IsValid = true;
+        }
+        else {
+            args.IsValid = false;
+        }
+        return;
+    }
+
+    function validateEmailEntry(source, arguements) {
+        var textfield = $("#emailBox").get(0);
+        // 'setCustomValidity not only sets the message, but also marks
+        // the field as invalid. In order to see whether the field really is
+        // invalid, we have to remove the message first
+        textfield.setCustomValidity('');
+
+        if (!textfield.validity.valid) {
+            if ($("#emailBox").attr('type') == "email" && $("#emailBox").val() != '') {
+                textfield.setCustomValidity("Entrez un courriel valid");
+            } else {
+                textfield.setCustomValidity('Le champs est requis');
+            }
+            //e.stopPropagation();
+            //e.preventDefault();
+            arguements.IsValid = false;
+            $("#btnSave").prop("disabled", false);
+        } else {
+            arguements.IsValid = true;
+        }
+    }
+
+    function fluidDialog() {
+        var $visible = $(".ui-dialog:visible");
+        // each open dialog
+        $visible.each(function () {
+            var $this = $(this);
+            var dialog = $this.find(".ui-dialog-content").data("ui-dialog");
+            // if fluid option == true
+            if (dialog.options.fluid) {
+                var wWidth = $(window).width();
+                var wHeight = $(window).height();
+                // check window width against dialog width
+                if (wWidth < (parseInt(dialog.options.width) + 50)) {
+                    // keep dialog from filling entire screen
+                    dialog.option("width", 0.75 * wWidth);
+                    //$this.css("width", "75%");
+                }
+                //else {
+                //    // fix maxWidth bug
+                //    $this.css("width", dialog.options.width + "px");
+                //}
+
+                if (wHeight < (parseInt(dialog.options.height) + 50)) {
+                    // keep dialog from filling entire screen
+                    dialog.option("height", 0.75 * wHeight);
+                    //$this.css("height", "75%");
+                }
+                //else {
+                //    // fix maxWidth bug
+                //    $this.css("height", dialog.options.height + "px");
+                //}
+
+                //reposition dialog
+                //dialog.option("position", dialog.options.position);
+                //always center
+                dialog.option("position", { my: "center", at: "center", of: window });
+            }
+        });
+
+    }
+
+    function toggleFooterLinks(sectionDiv) {
+        $(sectionDiv + " ul").toggleClass("displaySection");
+        $(sectionDiv).toggleClass("active");
+        $(sectionDiv + "Btn").toggleClass("selected");
+    }
+    function optinBoxValid(sender, e) {
+        e.IsValid = $("#optinbox").is(':checked');
+    }
+    function privacyBoxValid(sender, e) {
+        e.IsValid = $("#privacybox").is(':checked');
+    }
+
+    function toggleAlreadySubscribed() {
+        //$("#ValidatorSummary").css("display", "block");
+        $("#userAlreadyExists").toggleClass("hidden");
+    }
+
+    function CheckEmail() {
+        var email = $("#emailBox").val();
+        var lang = $('input[name="langRadio"]:checked').val();
+        $.ajax({
+            type: "POST",
+            url: "/Views/SignUp/SignUp_FR.aspx/CheckEmail",
+            data: '{email: "' + email + '", lang: "' + lang + '" }',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var message = $("#message");
+                if (response.d) {
+                    //Email available.
+                    $("#userAlreadyExists").removeClass("hidden");
+                }
+                else {
+                    //Email not available.
+                    $("#userAlreadyExists").addClass("hidden");
+                }
+            }
+        });
+    };
+</script>
+<body style="background-color: white; margin: 0; padding: 0;">
+    <div id="page">
+
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MV3MGRQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="gc_header">
+	<div id="headerRow0">
+		<div id="gc_sig_mobile">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="50%" viewBox="0 0 143 34" preserveAspectRatio="xMinYMin meet">
+				<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+				wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html  -->
+				<defs>
+					<style type="text/css">
+						.fip_text {
+							fill: #000;
+						}
+
+						.fip_flag {
+							fill: #F00;
+						}
+
+						@media screen {
+							.fip_text, .fip_flag {
+								fill: #FFF;
+							}
+						}
+					</style>
+				</defs>
+				<g id="wmms" transform="translate(-1, -1)">
+					<path class="fip_flag" d="M137.9,1.2h5.2v10.4h-5.2V1.2z M128.9,6.4l-0.3,0.1c0,0,1.8,1.5,1.8,1.6c0.1,0.1,0.2,0.1,0.1,0.4 c-0.1,0.3-0.2,0.6-0.2,0.6s1.6-0.3,1.8-0.4c0.2,0,0.3,0,0.3,0.2c0,0.2-0.1,1.9-0.1,1.9h0.5c0,0-0.1-1.8-0.1-1.9 c0-0.2,0.1-0.2,0.3-0.2c0.2,0,1.8,0.4,1.8,0.4s-0.1-0.4-0.2-0.6c-0.1-0.3,0-0.3,0.1-0.4c0.1-0.1,1.8-1.6,1.8-1.6l-0.3-0.1 c-0.2-0.1-0.1-0.2-0.1-0.3s0.3-1.1,0.3-1.1s-0.8,0.2-0.9,0.2c-0.1,0-0.2,0-0.2-0.1s-0.2-0.5-0.2-0.5s-0.9,1-1,1.1 c-0.2,0.2-0.4,0-0.3-0.2c0-0.2,0.5-2.3,0.5-2.3s-0.5,0.3-0.7,0.4s-0.3,0.1-0.3-0.1c-0.1-0.2-0.7-1.3-0.7-1.4c0,0-0.6,1.2-0.7,1.4 s-0.2,0.2-0.3,0.1c-0.2-0.1-0.7-0.4-0.7-0.4s0.5,2.1,0.5,2.3s-0.1,0.3-0.3,0.2l-1-1.1c0,0-0.1,0.3-0.2,0.4c0,0.1-0.1,0.2-0.2,0.1 c-0.2,0-1-0.2-1-0.2s0.3,1,0.4,1.1C129.1,6.1,129.1,6.3,128.9,6.4z M122.2,1.2h5.2v10.4h-5.2V1.2z"></path>
+					<path class="fip_text" d="M144.2,32.4c-0.4,0.9-1.2,1.2-1.7,1.2c-0.6,0-2.4-0.1-2.4-4.8c0,0,0-9.5,0-10.1c0-3.1-2.4-5.6-8.6-5.6 c-6.7,0-6.8,3.3-6.8,4.1c-0.1,0.9,0.4,1.9,2.1,1.9c1.5,0,1.9-1.7,2.1-2.3c0.2-0.7,0.3-2.7,3-2.7c2.3,0,3.7,2,3.8,4.9 c0,0.5,0,0.8,0,1.1c0,0.2,0,0.3,0,0.5l0,0l0,0v0.1c-0.2,1-0.7,1.5-1.6,1.9c-1.2,0.6-4.7,1.1-5.1,1.2c-1.4,0.3-5.3,1.3-5.2,5.4 c0.1,4,4.1,5.4,6.9,5.3c2.7-0.1,4.3-1.2,5-1.8c0.4-0.3,0.4-0.3,0.7,0.1c0.4,0.4,1.7,1.7,4.8,1.7c3.2,0,3.6-1.5,3.8-2 C145.1,32.2,144.4,31.9,144.2,32.4z M131.7,33.5c-2.8,0-3.5-2.3-3.5-3.5c0-1.1,0.6-3.4,3.4-5c0,0,1.3-0.8,3.8-1.8 c0.1,0,0.2,0,0.2,0s0.1,0.1,0.1,0.2l0,0l0,0v0.1l0,0l0,0v0.1l0,0l0,0l0,0v4.2C135.7,31.1,134.1,33.5,131.7,33.5z M122.5,33.4 c-0.4-0.1-2.9,0.2-2.9-7.4s0-23.9,0-23.9c0-0.3,0-1.1-0.9-1.1c-0.9,0-6.9,0.3-7.3,0.4c-0.4,0-0.7,0.5,0,0.5 c0.7,0.1,3.9,0.3,3.9,5.6c0,2.6,0,5.2,0,7.1c0,0.1,0,0.2,0,0.2c0,0.2,0,0.3-0.1,0.4c0,0,0,0,0,0.1l0,0c-0.1,0.1-0.2,0-0.5-0.2 c-0.5-0.4-2.8-1.8-5.7-1.8c-4.7,0-10.5,3.4-10.5,10.4c0,7.5,5.3,11.1,10.8,11.1c2.7,0,4.6-1.2,5.3-1.6c0.8-0.5,0.7-0.4,0.8,0.3 c0.1,0.5,0,1.5,1.4,1.4c1.5-0.2,5.1-0.6,5.8-0.7C123.3,33.9,123.1,33.5,122.5,33.4z M110.1,33.7c-4.4,0-6.7-5.2-6.7-10.2 c0-5.5,3.1-9.2,6.4-9c4.3,0.3,5.4,3.7,5.5,9.8c0,0.4,0,0.8,0,1.3C115.2,31.6,112.7,33.7,110.1,33.7z M98.4,32.4 c-0.4,0.9-1.2,1.2-1.7,1.2c-0.6,0-2.4-0.1-2.4-4.8c0,0,0-9.5,0-10.1c0-3.1-2.4-5.6-8.6-5.6c-6.7,0-6.8,3.3-6.8,4.1 c-0.1,0.9,0.4,1.9,2.1,1.9c1.5,0,1.9-1.7,2.1-2.3c0.2-0.7,0.3-2.7,3-2.7c2.3,0,3.8,2,3.8,5v0.1c0,0.1,0,0.2,0,0.2v0.3 c0,0.1,0,0.3,0,0.4c-0.1,1.5-0.5,2-1.7,2.6c-1.2,0.6-4.7,1.1-5.1,1.2c-1.4,0.3-5.3,1.3-5.2,5.4c0.1,4,4.1,5.4,6.9,5.3 c2.7-0.1,4.3-1.2,5-1.8c0.4-0.3,0.4-0.3,0.7,0.1c0.4,0.4,1.7,1.7,4.8,1.7c3.2,0,3.6-1.5,3.8-2C99.3,32.2,98.7,31.9,98.4,32.4z  M86,33.5c-2.8,0-3.5-2.3-3.5-3.5c0-1.1,0.6-3.4,3.4-5c0,0,1.3-0.8,3.8-1.8c0.1,0,0.2,0,0.2,0v0.1l0,0l0,0c0,0.1,0,0.2,0,0.4v-0.1 c0,0,0,0,0,0.1v4.2C89.9,31.1,88.3,33.5,86,33.5z M76.4,33.4c-0.8-0.2-2.2-1.1-2.2-5.5v-8c0-1.9,0.2-6.8-7.3-6.8 c-3.9,0-6.1,2-6.3,2.1c-0.3,0.3-0.5,0.4-0.6-0.1c-0.1-0.4-0.3-1-0.4-1.4c-0.1-0.3-0.3-0.6-1-0.5c-0.7,0.1-5.1,0.8-5.9,1 c-0.7,0.2-0.5,0.5,0,0.6c0.5,0.1,2.9,0.3,2.9,4.4s0,8.6,0,8.6c0,5-1,5.4-1.9,5.7c-1.2,0.3-0.6,0.7-0.1,0.7c0,0,8.9,0,9.1,0 c0.6,0,0.9-0.6-0.3-0.8c-1.2-0.2-2.3-0.9-2.3-4.8c0-0.4,0-4.7,0-5.5c0-2.1-0.5-8.5,5.3-8.6c4.1-0.1,4.5,3.3,4.5,5.5v8.5 c0,3.5-1,4.6-2.2,4.8c-1.1,0.2-0.9,0.7-0.3,0.7c0.2,0,9.3,0,9.3,0C77.2,34.2,77.7,33.7,76.4,33.4z M52.1,32.4 c-0.4,0.9-1.2,1.2-1.7,1.2c-0.6,0-2.4-0.1-2.4-4.8c0,0,0-9.5,0-10.1c0-3.1-2.4-5.6-8.6-5.6c-6.7,0-6.8,3.3-6.8,4.1 c-0.1,0.9,0.4,1.9,2.1,1.9c1.5,0,1.9-1.7,2.1-2.3c0.2-0.7,0.3-2.7,3-2.7c2.3,0,3.7,2,3.8,4.9c0,0.5,0,0.8,0,1.1 c0,0.2,0,0.4-0.1,0.5v0.1l0,0c-0.2,1-0.7,1.5-1.6,1.9c-1.2,0.6-4.7,1.1-5.1,1.2c-1.4,0.3-5.3,1.3-5.2,5.4c0.1,4,4.1,5.4,6.9,5.3 c2.7-0.1,4.3-1.2,5-1.8c0.4-0.3,0.4-0.3,0.7,0.1c0.4,0.4,1.7,1.7,4.8,1.7c3.2,0,3.6-1.5,3.8-2C53,32.2,52.3,31.9,52.1,32.4z  M39.6,33.5c-2.8,0-3.5-2.3-3.5-3.5s0.6-3.4,3.4-5c0,0,1.3-0.8,3.8-1.8c0.1,0,0.2,0,0.2,0s0.1,0.1,0.1,0.2l0,0l0,0l0,0 c0,0,0,0.1,0,0.2l0,0l0,0v0.1l0,0l0,0l0,0v4.2C43.6,31.1,42,33.5,39.6,33.5z M30,24.8c-1,3.2-2.9,8.4-9.8,8.6 C13,33.5,8.7,28.6,8.5,19.5C8.2,9.8,12.4,2.4,18.9,2.2c7.3-0.1,9.9,8.6,10,9.9c0.1,1,1.4,0.9,1.4-0.1c0-0.5-0.6-9.1-0.8-10.1 c-0.2-1-1-0.6-1.2-0.2C28.2,2,28.4,1.4,28,2.3c-0.4,0.9-1.5,0.4-1.9,0.3c-1.2-0.5-3.5-1.7-7.2-1.6c-8.5,0.2-17.2,6.5-17,17.5 c0.2,10.7,8.8,16.7,16.8,16.6c7.3-0.1,11.4-4.7,12.6-10C31.7,23.8,30.4,23.5,30,24.8z"></path>
+				</g>
+			</svg>
+		</div>
+		<div id="gc_sig_rev"><img src="../images/sig-rev-1.gif" alt="Gouvernement du Canada" width="234" /></div>
+		<div id="gc_sig"><img src="../images/sig-1.gif" alt="Gouvernement du Canada" width="214" /></div>
+		<div id="gc_links">
+			<ul id="gc_top_links">
+				<li id="gc_canada"><a href="https://www.canada.ca/fr.html">Canada.ca</a></li>
+				<li id="gc_services"><a href="https://www.canada.ca/fr/services.html">Services</a></li>
+				<li id="gc_departments"><a href="https://www.canada.ca/fr/gouvernement/min.html">Ministères</a></li>
+				<li id="gc_lang"> <a href="/en/signup">English</a> </li>
+			</ul>
+		</div>
+	</div>
+</div>
+<header>
+
+	<div id="header" role="banner">
+		<div id="headerRow1">
+			<div id="logo">
+				<div id="contentRecommendationWidget_HeaderStoreLogo_Content" class="contentRecommendationWidget">
+					<div id="left_espot">
+						<div id="storename">
+							<h1>
+								<a class="storename_normal" href="https://www.pc.gc.ca/fr/index">Parcs Canada</a>
+							</h1>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="canadaLogo">
+				<img src="../images/Canada-rev.gif" alt="Canada Government" />
+			</div>
+		</div>
+		<div id="headerRow2">
+		</div>
+	</div>
+</header>
+
+        <div id="contentWrapper" class="headerMargin">
+            <div style="padding: 1px 30px; border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
+                <div class="row title_container">
+                    <h2 class="landing-title">Abonnez-vous à l’infolettre de <span style="white-space: nowrap;">Parcs Canada</span> </h2>
+                    <p>Soyez parmi les premiers à découvrir les nouveautés de Parcs Canada, les événements, les activités, les offres spéciales, les conseils pour la planification de voyage et plus encore. Le tout directement dans votre boîte de réception! Jetez un coup d’œil à un <a href="https://pcan-ebulletin.ca/2023-B_spring-printemps_fr.html" target="_blank">exemplaire d’une infolettre</a> et découvrez par vous-même ce qui vous attend. </p>
+                </div>
+
+
+                <div class="main_form_container">
+                    <form method="POST" action="./abonnement" id="ctl03" enctype="multipart/form-data" autocomplete="off">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Q8TscCQOTjTf1gFpha2ktSfPX8unwIC+7Xon7wdO/jvdyR10AjueUKpSE4fMZn6yB2np0vXwj/D+3z/dtzogWaQ0mM9CJnY1/yaUzVK4sddOAxLDT5H/gnNZX/bhX2BEiZ3iop+uq3lf/EgXEesWTplLI9hhyDh8GzOabM8TUKEouRflvrqbzskofc2CCT4BY8U6gP+3NAj8NBRj7CD4ZuoOtgbnXmru/+PWoPpBf2zlm+vf6ON56dHD0Ox096SLvNj3ZxJXeJXns2oPx2D9jpqCfZHAB3hJb53ScatwkF/2cFr51F58cDMqnpdgytQGtF4HXB9ui5i0x3UQgb5i2D+mfy18GZMhNTYjPOz6+9V9ZDhzThq5tf2fP/UAVQg7lzpu365/93OEdeGf1zKDMVLY6Y1gDXAAZ2c4V8D2umoVC/IJidUJfnGGNSeI5a91brMuL0R5SmkLhuOuYQZGQvEO1Y60AemmlZ3tiMKuwRWF/rJPtVt0Hf6sgnfxHsu8U4gdKtS0FXw8FIukQ6VNrVEky0/s+Qf0bPVEDuxlVU+vmpRIZEXmgz9KyEEW2CBn48KfQ6Xf+Zm0NIBU7/npWQklYMnEQTvCMbyM7RfAlftJKn9xmdV52ABMmOZYlTFUPqZpxNJZHgL37lLrCFbGEvNcWw7qOMbRV7MrSNvsCugDbnx9xRniw4aZ16Np7eet+xjSQOD5symdEojJdHV9o0ocwFqZHN86WuU0BqADVoxl9SkJr8+j12IJEs7NYIS6yumJytJSQgW99RERVSeiwoJD/9ATAgOMRhERPCEFQs58/oeyKxHhYJm69LV3jlitskSP30i2WxBnIMUOLaQw7DZPAgJlj2SsnQGMDk2nGkNb381qfNIQZoXlar7zj07o7x0KMdt06IYTIhhKyJWZDcCAipecr4EYBsY2KG2xm982fbxiOTuDhwTcBnzDjzn+Clg8pfh28ugy1GAg3wFRQll2wFpwQUFgmniXlRLMkRWk8HmQm+DWlJ/HrDrLeRWduQB0qcU1d6e1PVAC3aJTqt4dvnOODSPwjp22YYhMDBerZh0h7/JHZMWtS3EPBlTZATTbyzHbxhYeE9Dnp7Mp16v5T8gjZQBSY6hllTattO5XGNdkDX50urtZ0v8LYymV0IHes90xvE+QWfwBbCNrvjeUTT85L3cC+W0RBbJI0IFx98GeynmaRVoF+lPdO3B0tG95s2cvMcPfuqgYiNvksObfV3pcyFzBIojFh8pp5m/HlCDVpjfup8HgQd/vhPB6Ge2HOnbpawM22DuSmJAGUuV26Bw41pJcjSJoWK3aRqJZmb5GtdQym/+vo3b+epdZUu4dY8WohiKXGfIIxspuJfpcvfz+Y1wqdvspvj9QUOKYZrK/KPPd8Ky5qOjdIySSnytC+7yprVyGEIUpy0Jeqfu8PVIzz1QA+UapvV6OfIqmXqFvi+Urft9XMsgVyqHufWVkx0UCb+u40xYE98wR4IEoPYYMfEBWGEbriqXrX+Xw78HovUG/9R/e22FwQlRiMMhJzFBnq1TKSGte7zfP9ro4IiF5YdGJYyUb76YxpJ/2qj1BLPS0nK80isl2Sxh8gATiTLXnQxrSLmN5vrIK6wtF2whofVDI3e6fm2UIiy2YUac4YfyYD3px9jTIRvDh+xGdvwk4XV2iIGPzHlOPP2KY2UphaPChzU5y1MCLkK3wWBDYmWm/mVa9sCZO2FnPXGzenaD1elkhJQWYpQ9KLivbuZs7oRQj3kTUvmHqP3thrcrFCkZEDLDRJP+v6W9aiqGks93nzOf2CX1aH9WkNxG9lwUixtizwuuGhrpEsLFTlE4FHOkbCiISi/VNcrKBdF4qtcWn/Q3Daj3VVcXj1n8hEq+hCx328zylr8UA9VwB1aLR/Z32xVVoEersgR4dKx7IQxF/jBMGemJmh4Zim0b612cHJduqey4VRFlELo8UaUNJOVBqC0vBTGJddkCAuDXPzVtdwznl08rMHUQSDKSdui/v82mgnUFWnsaUvSYzruxAYu+geOzDyRgLAe/WQNgu7ylK5YmDKi11uXe/CFTUp792FSFJH4lcD67IrWRjHNxntb1p//XSyeEO2BeN9700ZJwCKmte0L+5b9R/JH6VVlY0ZZw3W92DnUTx/PthNJWJSQoU+sPmWjhYoBa/AXlg16BREaaxun8TrfFTxSRLWULmJcMRA7NAceuZwSoDaLaeKwoVorUKJcnbPKskAfofyG1Eow7/mxqX+HgGqXS/t7kWsBu8o//uDjJCq8DSBEgRQJASde5KLytgapfw7bnbjn+XGSTeb2xuwfjXq7zs9IJiRGzkf+H4a0J7KW1XtB42nxAJyg14PbdhBHHazJC/r/nKeTWLToVfKzT5vmWd+mUHslUP0HO9nCiEHztHx4qclpzRjStqunDpO+YCFig4eGRG2VCKQs4cO6bkQvyTcITwf8TZYSjBe3tASHfkYRddf3UwV2sVaEBYMFi8hmraPLBiGS2l54To1qWmyAMrgmZHLMKy8oVE0HO/Yj72RDQa2gHs+Fa7tT+Gt+SZ93dm6VUpgs/I+X5/Ql970Z1mNq7IiEXle7PNlYD7jyJluib210cPEEC6yK5Sb1Lsi7RjRPh2leKR8demA2wLGk0Z74957/hl9bpYptc3lRqGwhNGrgqgAT+udnhU2AtfcoveyP4hcsh4UyFtawwB7/90JJzF4WJt7rS3jKtT/dEFVI5vPsGSn2ZqkLrLdxEDwYBTsP9cJ005xqvNf6Y8x3idwaknYsE8FLcewfDxclRkiD7quXpNWAYOkbSshN8pmbXSL0TPFZTGIZ7F8Su1stgwnu7Ldi+KeAB69KKOuvKDWgqaS+djOKkIyBa9Cnol3qwvrFvrbYSX0BShwI0ffMsVSc3Zn8wPeuiPVgYrlFybJh0Hwnkw8DsuKA8i9LPbF+h/UK+26tQXlYPKe98I6l3EEvtwj6KJyAnUW6K3VkO7vIDmQHNVY72l2Fb3s5Bqxo31CUlNJLZljn+3kdOjfO8MiCW6gZPe6TG1/2pvU64I0Z2hkHJ/o+32x0RfrQubLTkHa2a18NfsPeEtZahjkJ+7Dj3I9PEh4rYbLjJorQ3bDq9X38X9c/vpjcadnq7i6AMijiWcT7SPp0FagzoAyL08YLiRc+2KqhlvLbVpP6u4yrKIZyPS1zEWKJK78dFlCVg6aPzZR67OXl9uyTvmcSbJBgp6drA/JpD+UDPy+Eh66Ya7aFTItWUPn3HHpP66lDS0N/GX52Kk/ImKT+KrRNGTnP47rkYhK5wX+Ujq4dPHYpPA234xZ18Gde5i4i48/+sXm7hUoMUSzCwAKXpqYfgjAZvs9Mz7jdqhMXjQqHhcdZgjLt4dcF2Q/vx4dAcBo4g9f3EfC6Niv5N2lQoxKcgJ8K3Ez+53hFJ0sChaDii/+enlesOGrtL6nI8N0uxtytBdff4muzmOmWH2Fe64VJ6S9j/p7Ma4KN2fB5myw1e9Wx/LeoBNodyUu0eIMYVeYb15WUonrx+/s2Xp9pbdWL6lmS7t7jAuabRS1eLvh/xErWEHiDQOpTESO4Ef0+oeG+6+Siu+ZWJNmxKqLP+1iliI2MN8GcJBMmhFtGhaWD3xDn76Hcwlcb3rF7Iyio98k99WlIhXMN+ssbs81+I8Y0HCALr7jOrFy+LbV6b9XZghP1zHLT3x/FQGKMj5dC/p4xE2eDuPWL/Pbbf4qw/kGbu3V2fHld90Z+VbBNm+RJSEwgmXa0cACiU6jiCbpYd4OTk6Wqk6BuT82JC/hKINsz9Rk2xUTqxnNxKkKfVekyhz3RzAMv9jpNSnuGNIYg7NTK3wXtBoVn3mFtd+rpRGOIeXvhuhALWqkIXqbGes8vZFhi8gt/reFpBbwFN6dNXrD4LXTjg5b1uDyRmPd5xE2Ok179bYltwAihGgVAGbfG/8TNATog3Rp6YlIMd5iCfut6Dm4g4790PoKHeKU2JanyjjCkyqUw9dG3L0zkV+Mi6mm+3LELyN+6YRbzex3GJkRPWryEhdunoQ+MSRNZuUGOqa9of3tQc8MJmAwrcX3xQBpiiS8j9JUa3XUyeD6d9CkoqU3qHbh+kGlTZ6LAdyuzTX3S0ckfhBLKs4fKLuqAT6A36tSQHYLoLjMqfWN3Sdi328FI/ipII8AaPb85OqH76jlhgylCQh4SnVAnxaueDlO1quJGGKluhVP7XE0WpAOvpZFQ64r0GoNCdrVZ0Tv08cwMCzuV1VbbnqBbgvYAxuKW+0MsENo7fTNhRhRJqrsMMBYUFZCviysPJe9jXBH31qClIw/C8mpg9liCio1eVBL5H2CrIH4G38HphjeSkbyrxj8zX1F2pIDLWu2kdBypBrOYriNAe8mPthuKHHBoPWvvxfFcpYQVOWEAoevuKLPBQdDpEWhDw9wZl51Z2snehyh6SCU6eF9+UveagbtZoabnQ8SOfW3BSodOcJRjfCz+V3wj2e7sxYf4VWY3YUWiGkkn8aA4y3NmmDhnQcifCBB+obFP7gss4hEtn4/iZgckJbCU7UOanOqj5NhSnwaJsmiisTt7u6OGc6opC/vh4FMi4H9rYQEOhrwcRbiR8+cnWcXYbaCboZi9ed+S/MrFI/lBokLdjf46y+nA0ctRvn7qtecR9I3kccQEnIojQdDgVxnVyetqIOObAylwjeYTUh+Nb16kYmsXh2As5psSX1FX5DLEMIQ438IjgDNtBvo/ZGcCB9R9p/ZkL3o+2oUPh2/w13g7Tp09ATKwWb5x0gTFGRIf+byvjpDV6By4ZjUVJUyZoaHzrdkFZShNsml5YyLLAmNh6IawER7RGynNNZqE2CMRt1/5DarDCGqz2EyYBXck0CLVKs0jh4GJoWNBB3/qwHMjL6oHvQWi28qE9MSU+qBVGL74lBhkQ0+diOI79j4o5/vvEoY/01Lr7g86Me8pWGJ2jiG+QbXDk1Awf9nA1ml8FMgYf32uN8j5dUrGuIDgawqXR+d8bTh7hKSOSH8F1Umm2Ie40VHpjkMyT+DAk7ukCkWFwLCdKc31HU2s5CaRCHH0KzJhq3q2HN9hoLx7AkQkR9ueMSrgIW87khK8tA8fLRFpVGYZLSZlhGnw/Cuu3psUHqGYDIQmu5oGjO46SZSSb4Pce2FVVjlj3EcONrArqexkO6EokYh4Cc3k7NinkwA8rf0anfztGrIDB1eMrLSTyCoF2LbnBG55Hjthhe1oNPJth2+WsoYdkELDPMM2FBGcT4UR5q+xHRltCTYpyz6og7cK4qprVXhvk3cBjBlZJPRCF2rDT2lWRsG/Dsy5oRbEt0/4JwvqN9bthC4s8hRbYmMQmMi1o9k6gpGF/QpWIRB54hE54wSczFiNqeO9m2BXA9t8fZGAQ21lEnhFydeuvA4mGPrZf984AGIRgp2zqBwLyJuKDq9MnGavVjuHtWYK96AdetNu456pFBWH/EIG1WwlROlLLTckBxlC+AEMrSywIMgaHzy5jjyhJaH4/snX9v0PpsmTKfY7JwVW2oY8qALOQLcwG3et6iyBxH4jHWrXjHssbT1P/R8vlri0SwPY0xEivPtFO2rtykxay14B0r6fRWZ4g4uqy13ZQOd0rtOP4ojmqGrHxO8VbshpTDEDz8j5aWCYcKhAOVzDN+p3EQhPK+tfYwYwdZi2qcexppJRkcxHcCiwJm3HJmVmqd/uD6IC+9HFuC4i1ehXdm3tjbL/PJgobfmn1hYWjHF0rAsEwWt/NfejrjlyWmSWQk2pV066AmBGp8rUlIGkNQAWtC0UsYnkQj7iJQd3q7mIWxIqmwjJgSrjDlSbpQFJa138D29eJBVrb/afYuodmBBI3RWEGiirrUqat5o6UyQn1Tp1wDDMcKY5YWgf5edXa+3kLmHa3Em8wSHRReD02mHlKECp5oriThTggCNzlP9Gv70RcFlnM84PpyK/eVv4KTQIX7YE6cPJTm1accWQw53pp51XnhwJ5uTl5CXAN9reqwgeWo0NeAzM6n09KRlY84DYU8GcKvQRHX6oYbqhCoe45h5fZVp7lyYo0pa918WHg2lMyIDFnU/lo0BOKgOy63iebO+Sr5+q+QzfjiQew6HlRD4whSdOlE90uIY6nebFc2ZMHb8GW2sjE8nVUFJUP5CVVT/f2lhB5XCk512CK8ZQgLFkFyc679F9IRA5kReY76bCwNHU6Y/CjAXQbNRYsStp5S9icoKBq+WBFnh0GLEjMq0Yp44B7NuRCFXi651H9jlXXvgdftk3CQu84xZmptcd5XeszY00Swml8RKdMoeyvktREhaCI98vrNmxzx6+VJ5Ky+4sR782nFtK/SemefRzgbJdZh7IvYbVgLZaaBxryEr4SraNUiiEv0lotFgcDfPyjPjwC4nn6RKAqzkxxQ4lEfGQigRTD/oxE3QriKNDt4eSXMHV/Y/to3aGI57Ygd3qPqkJyzqQe0uFC8HjVqgFNPJ3N5F/OOUqqz8vJzksLSEzvr9S4WId6RjkdPD9KXDPGD3IqjKF5Q9Gt0H/knVfIp2y/3OJ3pJQ4Lb2QHhUAYEQZ9yt4WrHasBkVqjPJ7L0QVPKr2J5DHCsUGW0FGdXKXTOCQFZe1gDgFaDXB5wE9wFgRe3szE08j5cLv4VvY0Fm8OhJjTYEqWcGK3i2P7IRBdn+pR9EMWpCjgcDyI9X6PRgSdkiYIVRapXC2REt6z4potTv3u52D56JCx3etkJuRI4WtlzIs0/HfUSjDwxg10RKbC7myMrhBB+pYJ27VM97JKqPiDpDK9I9m/mW7ddBXk2FRyVK/JtqiINkqQUEw7KlNrr7oPHyXgRzdkeX/BzI0VKDoEiNrVrWZ1xrAnHc1FPE6urkffLymoeg/spuHERPU3t4D0JDzPDEm0knUFsQJ0br4+y9Tf25I5aZ+SBB/YyD24yKcc3YDYuojcNuMkBdXjmTPGKaGwcGH8GT/0xTWIv1xHIQp69fW0/ehOzV9XP4UhL3bjmchjqjs3P/dI5dquN/YZOoiJ6ZSOYUoOJoXmV3xTB6FnZpmniIifjHr9QhM9wciUy6wm5qBSMlkWNQ5kEekUKSBP1DYlYMTkXK31e/zYtzRC98Yht6Fz6n6QmJ9fvAIrpa1yqYG2yqCVDEwcSeHD8QmHeIuQ0+Gq97X32GLhOlPRsw9BGgx1xdX1SVrPw+ckEBttyNWn+hWgRMqaM94PgZwquXMoruZdqFavPJrdXa/uG9AwUH/ALxC1By6/FNwExzsFrcVeoa/UQqSqsE9Zwg6zjkTtp6Wl5DPqR3mujG8SmF2ndSam0D0IfciZt5rqaLkCz4oYRAxWxQ0vLCCk49wVZ3zKpvP9Lf0E0+RVDwNHTYCH+OEWKemeUgXEibpbOMLGOHdOqY8zqcyBiW7l76pJIY86+czxS7ncyCQf0ZwQa7n1MslFvNWITvWDzLqCRwFbVHnJHiR34G9aUYzIDKatpDVecI55mAf26YYqPIkgM5sAE7LM3KVVyltBKJhxRBRB9xWmNqx/Jxfkhsch4OVM1F8i+aVWvowJClSVla3Nri5jQ+yf3meIwuP1cXOYRp3Phkx5QZTgS4THYjyJwHSNtP7Btr85pg5bQESywKy3MqnAkoZ2UkB7Zg2gs1PILDihCfugvyipXVE4lwT+0sowS5hupgaQz3EnrXNw1mDUW8sx+HMkcDhVulyNMsln5JvdbpMefB9hzwvM8ZlhB2yCc0Y+/mFGtJ5A0ddl4M4p+4ephAxyMZzayw5BXnr0T3PAOyngIwehiDuZKoPrqRT1FJVTTsEKzyIdVdFL8P/1Acd6CA8bHJA5Lyai9BTYyXWgUzHi1mwUZKSWLZCeaiNYSxya3qiuECG5zTzhYw8iBuX+CiKufSEz7oVXzsklCczZElVjEFeqfTsY/oLvLaDUzxZMJmuZe0YPq8BOcI0mXAGq+fkyI8dlal6EMdi568ieGczfJOj++w+/ZVT64v+Kbl4el09qLHv7gnr9LrAC4cahkQN8Y1y/pvCMvrEBA==" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="829B1B13" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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" />
+                        <div id="ValidatorSummary" class="ValidatorSummary hidden">
+                            
+
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                        <div id="userAlreadyExists" class="ValidatorSummary hidden">
+                            <div>
+                                <h2>Vous êtes déjà abonné à notre infolettre. </h2>
+                                <p>Vous recevrez un courriel dans les prochaines minutes. Utilisez le lien fourni dans ce courriel pour mettre à jour vos informations personnelles.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div style="padding-right: 30px;" class="formGroup">
+                                    <label for="emailBox">
+                                        <span><b>Adresse courriel</b> </span><span style="color: #D3080C;">(obligatoire)</span>
+                                    </label>
+                                    <br />
+
+                                    
+                                    
+                                    <input name="emailBox" id="emailBox" type="email" name="Email" class="inputWide" />
+                                    
+                                </div>
+                                <div style="padding-right: 30px;" class="formGroup">
+                                    <label for="emailBoxConfirm">
+                                        <span><b>Confirmez votre adresse courriel</b> </span><span style="color: #D3080C;">(obligatoire)</span>
+                                    </label>
+                                    <br />
+                                    
+                                    
+                                    <input name="emailBoxConfirm" id="emailBoxConfirm" type="email" name="EmailConfirm" class="inputWide" onpaste="return false" />
+
+                                </div>
+
+                                <div style="padding-right: 30px;" class="formGroup">
+
+                                    <label for="countryBox">
+                                        <span><b>Pays de résidence</b> </span>
+                                    </label>
+
+                                    <br />
+
+                                    
+                                    
+                                    
+                                    <select name="ddlCountry" id="ddlCountry" name="ddlCountry" class="inputWide">
+	<option value=""></option>
+	<option value="Canada">Canada</option>
+	<option value="Etats-Unis">Etats-Unis</option>
+	<option value="Afghanistan">Afghanistan</option>
+	<option value="Afrique du Sud">Afrique du Sud</option>
+	<option value="Albanie">Albanie</option>
+	<option value="Algérie">Alg&#233;rie</option>
+	<option value="Allemagne">Allemagne</option>
+	<option value="Andorre">Andorre</option>
+	<option value="Angola">Angola</option>
+	<option value="Anguilla">Anguilla</option>
+	<option value="Antigua et Barbuda">Antigua et Barbuda</option>
+	<option value="Antilles néerlandaises">Antilles n&#233;erlandaises</option>
+	<option value="Arabie saoudite">Arabie saoudite</option>
+	<option value="Argentine">Argentine</option>
+	<option value="Arménie">Arm&#233;nie</option>
+	<option value="Aruba">Aruba</option>
+	<option value="Australie">Australie</option>
+	<option value="Autriche">Autriche</option>
+	<option value="Azerbaïdjan">Azerba&#239;djan</option>
+	<option value="Bahamas">Bahamas</option>
+	<option value="Bahrein">Bahrein</option>
+	<option value="Bangladesh">Bangladesh</option>
+	<option value="Barbade">Barbade</option>
+	<option value="Belgique">Belgique</option>
+	<option value="Belize">Belize</option>
+	<option value="Bénin">B&#233;nin</option>
+	<option value="Bermudes">Bermudes</option>
+	<option value="Bhoutan">Bhoutan</option>
+	<option value="Biélorussie">Bi&#233;lorussie</option>
+	<option value="Bolivie">Bolivie</option>
+	<option value="Bosnie-Herzégovine">Bosnie-Herz&#233;govine</option>
+	<option value="Botswana">Botswana</option>
+	<option value="Brésil">Br&#233;sil</option>
+	<option value="Brunei">Brunei</option>
+	<option value="Bulgarie">Bulgarie</option>
+	<option value="Burkina Faso">Burkina Faso</option>
+	<option value="Burundi">Burundi</option>
+	<option value="Cambodge">Cambodge</option>
+	<option value="Cameroun">Cameroun</option>
+	<option value="Cap Vert">Cap Vert</option>
+	<option value="Chili">Chili</option>
+	<option value="Chine">Chine</option>
+	<option value="Chypre">Chypre</option>
+	<option value="Colombie">Colombie</option>
+	<option value="Comores">Comores</option>
+	<option value="Congo">Congo</option>
+	<option value="Corée du nord">Cor&#233;e du nord</option>
+	<option value="Corée du sud">Cor&#233;e du sud</option>
+	<option value="Costa Rica">Costa Rica</option>
+	<option value="Côte d&#39;Ivoire">C&#244;te d&#39;Ivoire</option>
+	<option value="Croatie">Croatie</option>
+	<option value="Cuba">Cuba</option>
+	<option value="Danemark">Danemark</option>
+	<option value="Djibouti">Djibouti</option>
+	<option value="Dominique">Dominique</option>
+	<option value="Egypte">Egypte</option>
+	<option value="Emirats arabes unis">Emirats arabes unis</option>
+	<option value="Equateur">Equateur</option>
+	<option value="Erythrée">Erythr&#233;e</option>
+	<option value="Espagne">Espagne</option>
+	<option value="Estonie">Estonie</option>
+	<option value="Ethiopie">Ethiopie</option>
+	<option value="Fédération de Russie">F&#233;d&#233;ration de Russie</option>
+	<option value="Fidji">Fidji</option>
+	<option value="Finlande">Finlande</option>
+	<option value="France">France</option>
+	<option value="Gabon">Gabon</option>
+	<option value="Gambie">Gambie</option>
+	<option value="Géorgie">G&#233;orgie</option>
+	<option value="Georgie du sud et Iles Sandwich du Sud">Georgie du sud et Iles Sandwich du Sud</option>
+	<option value="Ghana">Ghana</option>
+	<option value="Gibraltar">Gibraltar</option>
+	<option value="Grèce">Gr&#232;ce</option>
+	<option value="Grenade">Grenade</option>
+	<option value="Groenland">Groenland</option>
+	<option value="Guadeloupe">Guadeloupe</option>
+	<option value="Guam">Guam</option>
+	<option value="Guatemala">Guatemala</option>
+	<option value="Guinée">Guin&#233;e</option>
+	<option value="Guinée équatoriale">Guin&#233;e &#233;quatoriale</option>
+	<option value="Guinée-Bissau">Guin&#233;e-Bissau</option>
+	<option value="Guyana">Guyana</option>
+	<option value="Guyane française">Guyane fran&#231;aise</option>
+	<option value="Haïti">Ha&#239;ti</option>
+	<option value="Honduras">Honduras</option>
+	<option value="Hong Kong">Hong Kong</option>
+	<option value="Hongrie">Hongrie</option>
+	<option value="Ile Bouvet">Ile Bouvet</option>
+	<option value="Ile Christmas">Ile Christmas</option>
+	<option value="Ile Maurice">Ile Maurice</option>
+	<option value="Ile Norfolk">Ile Norfolk</option>
+	<option value="Iles Caïman">Iles Ca&#239;man</option>
+	<option value="Iles Cocos">Iles Cocos</option>
+	<option value="Iles Cook">Iles Cook</option>
+	<option value="Iles Falkland">Iles Falkland</option>
+	<option value="Iles Féroë">Iles F&#233;ro&#235;</option>
+	<option value="Iles Heard et McDonald">Iles Heard et McDonald</option>
+	<option value="Iles Mariannes du Nord">Iles Mariannes du Nord</option>
+	<option value="Iles Marshall">Iles Marshall</option>
+	<option value="Iles mineures éloignées des Etats-Unis">Iles mineures &#233;loign&#233;es des Etats-Unis</option>
+	<option value="Iles Salomon">Iles Salomon</option>
+	<option value="Iles Turks et Caicos">Iles Turks et Caicos</option>
+	<option value="Iles Vierges (Etats-Unis)">Iles Vierges (Etats-Unis)</option>
+	<option value="Iles Vierges (Grande-Bretagne)">Iles Vierges (Grande-Bretagne)</option>
+	<option value="Inde">Inde</option>
+	<option value="Indonésie">Indon&#233;sie</option>
+	<option value="Iran">Iran</option>
+	<option value="Iraq">Iraq</option>
+	<option value="Irlande">Irlande</option>
+	<option value="Islande">Islande</option>
+	<option value="Israël">Isra&#235;l</option>
+	<option value="Italie">Italie</option>
+	<option value="Jamaïque">Jama&#239;que</option>
+	<option value="Japon">Japon</option>
+	<option value="Jersey">Jersey</option>
+	<option value="Jordanie">Jordanie</option>
+	<option value="Kazakhstan">Kazakhstan</option>
+	<option value="Kenya">Kenya</option>
+	<option value="Kirghizistan">Kirghizistan</option>
+	<option value="Kiribati">Kiribati</option>
+	<option value="Koweït">Kowe&#239;t</option>
+	<option value="Laos">Laos</option>
+	<option value="Lesotho">Lesotho</option>
+	<option value="Lettonie">Lettonie</option>
+	<option value="Liban">Liban</option>
+	<option value="Liberia">Liberia</option>
+	<option value="Libye">Libye</option>
+	<option value="Liechtenstein">Liechtenstein</option>
+	<option value="Lituanie">Lituanie</option>
+	<option value="Luxembourg">Luxembourg</option>
+	<option value="Macao">Macao</option>
+	<option value="Macédoine">Mac&#233;doine</option>
+	<option value="Madagascar">Madagascar</option>
+	<option value="Malaisie">Malaisie</option>
+	<option value="Malawi">Malawi</option>
+	<option value="Maldives">Maldives</option>
+	<option value="Mali">Mali</option>
+	<option value="Malte">Malte</option>
+	<option value="Maroc">Maroc</option>
+	<option value="Martinique">Martinique</option>
+	<option value="Mauritanie">Mauritanie</option>
+	<option value="Mayotte">Mayotte</option>
+	<option value="Mexique">Mexique</option>
+	<option value="Micronésie">Micron&#233;sie</option>
+	<option value="Moldavie">Moldavie</option>
+	<option value="Monaco">Monaco</option>
+	<option value="Mongolie">Mongolie</option>
+	<option value="Montserrat">Montserrat</option>
+	<option value="Mozambique">Mozambique</option>
+	<option value="Myanmar">Myanmar</option>
+	<option value="Namibie">Namibie</option>
+	<option value="Nauru">Nauru</option>
+	<option value="Népal">N&#233;pal</option>
+	<option value="Nicaragua">Nicaragua</option>
+	<option value="Niger">Niger</option>
+	<option value="Nigéria">Nig&#233;ria</option>
+	<option value="Niue">Niue</option>
+	<option value="Norvège">Norv&#232;ge</option>
+	<option value="Nouvelle-Calédonie">Nouvelle-Cal&#233;donie</option>
+	<option value="Nouvelle-Zélande">Nouvelle-Z&#233;lande</option>
+	<option value="Oman">Oman</option>
+	<option value="Ouganda">Ouganda</option>
+	<option value="Ouzbékistan">Ouzb&#233;kistan</option>
+	<option value="Pakistan">Pakistan</option>
+	<option value="Palau">Palau</option>
+	<option value="Panama">Panama</option>
+	<option value="Papouasie-Nouvelle-Guinée">Papouasie-Nouvelle-Guin&#233;e</option>
+	<option value="Paraguay">Paraguay</option>
+	<option value="Pays-Bas">Pays-Bas</option>
+	<option value="Pérou">P&#233;rou</option>
+	<option value="Philippines">Philippines</option>
+	<option value="Pitcairn">Pitcairn</option>
+	<option value="Pologne">Pologne</option>
+	<option value="Polynésie française">Polyn&#233;sie fran&#231;aise</option>
+	<option value="Porto Rico">Porto Rico</option>
+	<option value="Portugal">Portugal</option>
+	<option value="Qatar">Qatar</option>
+	<option value="République d&#39;Afrique centrale">R&#233;publique d&#39;Afrique centrale</option>
+	<option value="République Démocratique du Congo">R&#233;publique D&#233;mocratique du Congo</option>
+	<option value="République dominicaine">R&#233;publique dominicaine</option>
+	<option value="République tchèque">R&#233;publique tch&#232;que</option>
+	<option value="Réunion">R&#233;union</option>
+	<option value="Roumanie">Roumanie</option>
+	<option value="Royaume-Uni">Royaume-Uni</option>
+	<option value="Ruanda">Ruanda</option>
+	<option value="Sahara occidental">Sahara occidental</option>
+	<option value="Saint Barthélemy">Saint Barth&#233;lemy</option>
+	<option value="Saint Kitts et Nevis">Saint Kitts et Nevis</option>
+	<option value="Saint Pierre et Miquelon">Saint Pierre et Miquelon</option>
+	<option value="Sainte Hélène">Sainte H&#233;l&#232;ne</option>
+	<option value="Sainte Lucie">Sainte Lucie</option>
+	<option value="Saint-Marin">Saint-Marin</option>
+	<option value="Saint-Siège">Saint-Si&#232;ge</option>
+	<option value="Saint-Vincent et les Grenadines">Saint-Vincent et les Grenadines</option>
+	<option value="Salvador">Salvador</option>
+	<option value="Samoa">Samoa</option>
+	<option value="Samoa américaines">Samoa am&#233;ricaines</option>
+	<option value="Sao Tome et Principe">Sao Tome et Principe</option>
+	<option value="Sénégal">S&#233;n&#233;gal</option>
+	<option value="Seychelles">Seychelles</option>
+	<option value="Sierra Leone">Sierra Leone</option>
+	<option value="Singapour">Singapour</option>
+	<option value="Slovaquie">Slovaquie</option>
+	<option value="Slovénie">Slov&#233;nie</option>
+	<option value="Somalie">Somalie</option>
+	<option value="Soudan">Soudan</option>
+	<option value="Sri Lanka">Sri Lanka</option>
+	<option value="Suède">Su&#232;de</option>
+	<option value="Suisse">Suisse</option>
+	<option value="Surinam">Surinam</option>
+	<option value="Svalbard et Jan Mayen">Svalbard et Jan Mayen</option>
+	<option value="Swaziland">Swaziland</option>
+	<option value="Syrie">Syrie</option>
+	<option value="Tadjikistan">Tadjikistan</option>
+	<option value="Taïwan">Ta&#239;wan</option>
+	<option value="Tanzanie">Tanzanie</option>
+	<option value="Tchad">Tchad</option>
+	<option value="Terres australes et antarctiques françaises">Terres australes et antarctiques fran&#231;aises</option>
+	<option value="Territoire palestinien">Territoire palestinien</option>
+	<option value="Territoires britanniques de l&#39;Océan indien">Territoires britanniques de l&#39;Oc&#233;an indien</option>
+	<option value="Thaïlande">Tha&#239;lande</option>
+	<option value="Timor-Oriental">Timor-Oriental</option>
+	<option value="Togo">Togo</option>
+	<option value="Tokelau">Tokelau</option>
+	<option value="Tonga">Tonga</option>
+	<option value="Trinité et Tobago">Trinit&#233; et Tobago</option>
+	<option value="Tunisie">Tunisie</option>
+	<option value="Turkménistan">Turkm&#233;nistan</option>
+	<option value="Turquie">Turquie</option>
+	<option value="Tuvalu">Tuvalu</option>
+	<option value="Ukraine">Ukraine</option>
+	<option value="Uruguay">Uruguay</option>
+	<option value="Vanuatu">Vanuatu</option>
+	<option value="Vénézuela">V&#233;n&#233;zuela</option>
+	<option value="Viêt-Nam">Vi&#234;t-Nam</option>
+	<option value="Wallis et Futuna">Wallis et Futuna</option>
+	<option value="Yémen">Y&#233;men</option>
+	<option value="Zambie">Zambie</option>
+	<option value="Zimbabwe">Zimbabwe</option>
+	<option value="Autre">Autre</option>
+
+</select>
+                                </div>
+
+                                <div style="padding-right: 30px;" class="formGroup">
+                                    <label for="postalCode">
+                                        <b>Code postal  </b>(résidents canadiens seulement)
+                                    </label>
+
+                                    <br />
+
+                                    
+                                    <div id="postalTextContainer">
+                                        <input name="postalCode" id="postalCode" type="text" name="postalCode" class="inputReg" />
+                                        <span id="postalExampleText" style="color: black"><span style="white-space: nowrap">Exemple :</span> A1A&nbsp;1A1</span>
+
+                                    </div>
+                                    <p class="postal-code-text">Votre code postal nous permet de vous envoyer de l’information sur les endroits de Parcs Canada près de chez vous.</p>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6 hidden-sm hidden-xs">
+                                <div class="image_container">
+                                    <img src="../images/Sunset_CBH_2023-PC-Newsletter-Sign-up-page-update-WEB.jpg" alt="Faites le plein d&#39;histoires" style="max-width: 100%;" />
+                                    <div class="image-overlay-text-block">
+                                        <p>Faites le plein d'histoires</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="formGroup interests">
+                                    <fieldset>
+                                        <legend>Intérêts
+                                        </legend>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input id="campingCheckBox" type="checkbox" name="campingCheckBox" /><label for="campingCheckBox">Camping et hébergement</label><br />
+                                                <input id="hikingCheckBox" type="checkbox" name="hikingCheckBox" /><label for="hikingCheckBox">Randonnée, cyclisme et sentiers</label><br />
+                                                <input id="boatingCheckBox" type="checkbox" name="boatingCheckBox" /><label for="boatingCheckBox">Sports de pagaies, navigation de plaisance et canaux historiques</label><br />
+                                                <input id="toursCheckBox" type="checkbox" name="toursCheckBox" /><label for="toursCheckBox">Visites guidées, événements et autres activités</label><br />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input id="historyCheckBox" type="checkbox" name="historyCheckBox" /><label for="historyCheckBox">Histoire et culture</label><br />
+                                                <input id="conservationCheckBox" type="checkbox" name="conservationCheckBox" /><label for="conservationCheckBox">Faune, science et conservation </label><br />
+                                                <input id="passesCheckBox" type="checkbox" name="passesCheckBox" /><label for="passesCheckBox">Laissez-passer et droits d’entrée</label><br />
+                                                <input id="otherCheckBox" type="checkbox" name="otherCheckBox" /><label for="otherCheckBox">Autres, veuillez préciser : </label>
+                                                <input name="otherTextBox" type="text" id="otherTextBox" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="formGroup">
+                                    <fieldset>
+                                        <legend>Langue officielle préférée 
+                                        </legend>
+                                        <br />
+                                        <span id="langRadio"><span class="langRadio"><input id="langRadio_0" type="radio" name="langRadio" value="EN" /><label for="langRadio_0">Anglais </label></span><br /><span class="langRadio"><input id="langRadio_1" type="radio" name="langRadio" value="FR" checked="checked" /><label for="langRadio_1">Français </label></span></span>
+                                    </fieldset>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div>
+                                </div>
+                                <div id="errorMessage" style="display: none;">
+                                    <ul>
+                                        <li style="color: red;">Une erreur réseau s'est produite, veuillez réessayer plus tard.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="padding-right: 30px;" class="row formGroup terms_box">
+                            <input name="optinbox" type="checkbox" id="optinbox" value="true" required="" />
+                            
+                            <label for="optinbox" class="normal-font-weight checkbox-label"><span>Oui, j’aimerais recevoir des courriels saisonniers de Parcs Canada concernant les événements spéciaux, les promotions et plus encore, et j’accepte les <a href="https://www.pc.gc.ca/fr/termes-terms#p08" target="_blank">conditions générales</a> de l’infolettre. </span><span style="color: #D3080C;">(obligatoire)</span></label>
+
+                            
+
+                            <br />
+                            <input type="submit" name="Button1" value="S’abonner" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;Button1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="Button1" class="btn btn-primary" style="margin-top: 18px" />
+                            
+                            <input type="hidden" name="hdn_clickValid" id="hdn_clickValid" value="1961590644" />
+                        </div>
+                    </form>
+
+                    <div style="clear: both;"></div>
+                    <div id="rulesDialog" title="Les règlements du concours">
+                        <br />
+                        <h5>PARCS CANADA<br />
+                            <i>Concours de l’infolettre de Parcs Canada</i>
+                        </h5>
+                        <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+                        <h5>RÈGLEMENTS OFFICIELS DU CONCOURS</h5>
+                        <br />
+
+                        <h5>(a)	APERÇU</h5>
+                        <br />
+
+                        Responsable : Le concours de l’infolettre de Parcs Canada 2022 est organisé par l’Agence Parcs Canada (ci-après appelé « Parcs Canada »). 
+                        <br />
+                        <br />
+                        Fournisseur(s) des prix : Les prix sont fournis par Parcs Canada. 
+                        <br />
+                        <br />
+                        Dates de début/de fin : Le concours débute à 12 h (midi), heure de l’Est, le 11 avril 2022 et se termine à 23 h 59, heure de l’Est, le 31 mai 2022 (la « période du concours »).  
+                        <br />
+                        <br />
+                        Prix : Cinquante (50) prix sont à gagner et seront décernés par tirage au sort une fois la période du concours terminée le 31 mai 2022.  
+                        <br />
+                        <br />
+                        Chaque prix comprend une (1) carte d’entrée Découverte famille/groupe de Parcs Canada. La carte d’entrée Découverte famille/groupe donne accès à plus de quatre-vingt (80) endroits administrés par Parcs Canada à un maximum de sept (7) personnes voyageant dans le même véhicule. Le laissez-passer est valide pour douze (12) mois consécutifs commençant à la date de confirmation du gagnant. Chaque prix est assujetti aux modalités et conditions de la carte d’entrée Découverte.
+                        <br />
+                        <br />
+                        La valeur totale au détail des prix (excluant les taxes) est de 6 917,67 $.
+                        <br />
+                        <br />
+                        <h5>(b)	ADMISSIBILITÉ</h5>
+                        <br />
+
+                        Le concours est ouvert à tous les résidents du Canada qui ont atteint l’âge de la majorité dans leur province ou territoire de résidence. Les personnes suivantes ne sont pas admissibles au concours et ne peuvent gagner un prix : les employés, dirigeants, administrateurs ou représentants de Parcs Canada ainsi que les parents, frères, sœurs et enfants de ces personnes et les personnes vivant sous leur toit; toute personne n’ayant pas atteint l’âge de la majorité dans la province ou le territoire où elle réside; et tout agent, société mère, sociétés affiliées ou liées, filiales, divisions, agences de promotion et de publicité et administrateurs de Parcs Canada.  
+                        <br />
+                        <br />
+                        <h5>(c)	COMMENT PARTICIPER AU CONCOURS; AUCUN ACHAT REQUIS</h5>
+                        <br />
+
+                        Les participants admissibles peuvent participer au concours en utilisant l’une des deux méthodes suivantes :
+                        <ul>
+                            <li>(I)	S’ils sont déjà abonnés à l’infolettre de Parcs Canada, les participants admissibles peuvent mettre à jour leurs préférences et leur information en cliquant sur le bouton « Mettre à jour mes préférences » dans l’infolettre du mois d’avril, ou en cliquant sur le lien « Préférences », situé au pied de page de chaque infolettre; ou
+                            </li>
+                            <li>(II)	Autrement, les participants admissibles peuvent visiter le site <a href="http://www.parcscanada.gc.ca/concours">www.parcscanada.gc.ca/concours</a> pour s’inscrire à l’infolettre de Parcs Canada tout en acceptant les conditions générales de l’infolettre.
+    <br />
+                                <br />
+                                Durant la période du concours, les participants admissibles devront remplir tous les champs obligatoires et cocher la case qui stipule qu’ils ont lu les Règlements officiels du concours et qu’ils acceptent de s’y conformer; puis s’inscrire au concours en cliquant sur les boutons « S’abonner » ou « Mettre à jour ».
+                            </li>
+                        </ul>
+                        <br />
+                        <br />
+
+                        Aucun achat n’est requis pour s’inscrire, participer et courir la chance de gagner. 
+                        <br />
+                        <br />
+                        Un participant admissible a le droit de soumettre un (1) seul bulletin de participation (pas plus d’un) au concours.   
+                        <br />
+                        <br />
+
+                        <h5>(d)	PRIX</h5>
+                        <br />
+
+                        Cinquante (50) prix peuvent être gagnés dans le cadre du présent concours. Voir ci-dessus la Règle 1(a) et, ci-dessous, la Règle 1(e) pour plus de détails sur les prix. 
+                        <br />
+                        <br />
+                        Tous les prix doivent être acceptés tels que décernés. Des substitutions ne peuvent être exigées ou autorisées.  
+                        <br />
+                        <br />
+
+                        <h5>(e)	GAGNANTS DES PRIX</h5>
+                        <br />
+
+                        Grand prix : Avant 10 h 30, heure de l’Est, le 3 juin 2022, cinquante (50) participants admissibles seront tirés au sort électroniquement et identifiés par Parcs Canada comme gagnants potentiels d’un des prix (« gagnants potentiels »). Parcs Canada enverra un courriel à chaque gagnant potentiel à l'adresse électronique du participant telle qu'elle a été fournie sur le formulaire de participation.
+                        <br />
+                        <br />
+                        Cinquante (50) gagnants potentiels seront ainsi tirés au sort. La chance pour un participant de voir son nom tiré lors du tirage au sort dépend du nombre total de bulletins de participation admissibles qui sont reçus pendant la période du concours.   
+                        <br />
+                        <br />
+                        Si un participant, qui a été identifié et contacté par Parcs Canada comme un gagnant potentiel d’un prix, omet de communiquer avec Parcs Canada par courrier électronique, tel que requis ci-dessus, dans les deux (2) jours ouvrables suivant la réception de l’avis à l’effet que son nom a été tiré au sort par Parcs Canada comme gagnant potentiel de ce prix, il sera disqualifié et un autre participant admissible/gagnant potentiel du prix sera sélectionné par tirage au sort. Toutes les sélections de gagnants potentiels de ce prix se feront conformément aux présents Règlements officiels du concours, jusqu'à ce que cinquante (50) gagnants aient été confirmés ou jusqu'à ce qu'il n'y ait plus de bulletins de participation admissibles, le premier des deux prévalant.    
+                        <br />
+                        <br />
+                        Parcs Canada ne sera pas responsable des tentatives infructueuses de communiquer  avec un gagnant potentiel.
+ 
+                        <br />
+                        <br />
+
+                        <h5>(f)	CONDITIONS RÉGISSANT LES PRIX ET LE TIRAGE  </h5>
+                        <br />
+
+                        Modalités d’utilisation de la carte d’entrée Découverte : 
+                        <ul>
+                            <li>La carte d’entrée Découverte offre à son détenteur l’admission illimitée à plus de 80 parcs nationaux, aires marines nationales de conservation et lieux historiques nationaux. Pour une liste complète de ces endroits, visitez <a href="http://www.pc.gc.ca/fr/voyage-travel/admission/particip#deco">www.pc.gc.ca/fr/voyage-travel/admission/particip#deco</a>. 
+                            </li>
+                            <li>La carte d’entrée Découverte est valide pour 12 mois complets à compter de la date à laquelle le gagnant est confirmé. Exemple : si un gagnant est confirmé le 5 juin 2022, la carte d’entrée Découverte restera valide jusqu’au 30 juin 2023.
+                            </li>
+                            <li>La carte d’entrée Découverte famille/groupe permet l’entrée à un maximum de sept (7) personnes voyageant dans le même véhicule.
+                            </li>
+                            <li>Le détenteur d’une carte d’entrée Découverte peut bénéficier des mêmes services et programmes qui accompagnent normalement un permis ou un droit d’entrée quotidien. Les services tels que l’entrée aux sources thermales des Rocheuses canadiennes, l’utilisation de l’arrière-pays pendant la nuit, les visites guidées ou le stationnement qui font normalement l’objet de frais distincts sont exclus. Les frais de camping sont en sus. Les cartes familiales ou de groupe ne sont pas valides pour les groupes commerciaux.
+                            </li>
+                            <li>La carte d'entrée Découverte doit être signée par le détenteur de la carte et est nulle si elle est vendue ou transférée à une autre personne.
+                            </li>
+                            <li>Le détenteur de la carte doit être présent lors de l’utilisation de celle-ci.
+                            </li>
+                            <li>La carte doit être suspendue au rétroviseur du véhicule, la date tournée vers le pare-brise. On peut aussi la poser sur le tableau de bord du côté conducteur en présentant la date vers le haut. En arrivant à pied, en vélo, en motocyclette, en bateau ou en transport en commun, il faut présenter la carte d’entrée à l’arrivée. On doit présenter la carte d’entrée Découverte à l’arrivée dans les lieux historiques nationaux.
+                            </li>
+                            <li>La carte d’entrée Découverte doit être gardée en lieu sûr. Parcs Canada n'est pas responsable de toute perte.
+                            </li>
+                        </ul>
+                        <br />
+                        <br />
+                        Modalités de l’infolettre de Parcs Canada :
+                        <br />
+                        <br />
+                        Toutes les communications par courrier électronique sont effectuées conformément à la Loi canadienne anti-pourriel (LCAP), à la Loi sur la protection des renseignements personnels du Canada et aux autres lois applicables. Votre consentement est nécessaire pour que votre adresse électronique soit utilisée pour vous acheminer des renseignements à des fins promotionnelles.
+                        <br />
+                        <br />
+                        Afin de respecter votre vie privée et de vous protéger, nous recueillons le minimum de renseignements personnels nécessaires à la gestion de l'infolettre de Parcs Canada. Vos renseignements personnels ne seront utilisés que pour vous envoyer des courriels promotionnels sur les événements et les activités de Parcs Canada, les offres spéciales, les conseils pour la planification de voyage, etc. Dans les situations importantes, vos renseignements pourraient également être utilisés pour vous envoyer des courriels d'information qui auraient une incidence importante sur votre future visite dans nos lieux (par exemple, des fermetures).
+                        <br />
+                        <br />
+                        L'infolettre de Parcs Canada est gérée par un fournisseur tiers. Ce fournisseur tiers communique temporairement les adresses électroniques des abonnés à un fournisseur de services pour l'envoi de l'infolettre. Une fois cette tâche accomplie, le prestataire de services supprime définitivement tous les renseignements dès l'envoi de l'infolettre. Vos renseignements ne seront pas divulgués à d'autres parties à d'autres fins que la gestion de l'infolettre. 
+                        <br />
+                        <br />
+                        Pour connaître les modalités complètes de l’infolettre de Parcs Canada, visitez <a href="http://www.pc.gc.ca/fr/termes-terms#p08">www.pc.gc.ca/fr/termes-terms#p08</a>. 
+                        <br />
+                        <br />
+                        Autres conditions :
+                        <br />
+                        <br />
+                        Parcs Canada n’assume aucune responsabilité (pour éviter toute ambiguïté, le prix peut être annulé et Parcs Canada n’est pas tenu d’offrir un prix de substitution) de l’incapacité d’utiliser la carte d’entrée Découverte d’un gagnant confirmé pour quelque raison que ce soit (ce qui comprend notamment en raison d’une maladie ou d’un risque pour la santé, d’un décret, de mesures, de directives ou de conseils du gouvernement ou d’une autorité sanitaire relativement à une telle maladie ou à un tel risque, notamment pour réduire la transmission de la COVID-19 ou pour toute autre cause ou raison de quelque nature que ce soit qui échappe au contrôle raisonnable de Parcs Canada).
+                        <br />
+                        <br />
+                        Parcs Canada n’est pas responsable des retards, reports, suspensions, services saisonniers ou interrompus, changements d’horaire ou annulations de tout service ou offre au visiteur, et ce, pour quelque raison que ce soit. Le gagnant d’un prix ne sera indemnisé advenant de tels retards, reports, annulations, suppressions, interruptions ou changement d’horaire.    
+	<br />
+                        <br />
+                        Parcs Canada se réserve le droit de substituer à tout prix un prix de substitution de valeur monétaire équivalente ou supérieure. 
+                        <br />
+                        <br />
+                        <h5>(g)	DISQUALIFICATION</h5>
+                        <br />
+
+                        Parcs Canada peut, à sa seule discrétion, disqualifier toute personne qui tente de nuire au déroulement légitime du concours en altérant tout mécanisme du site Web ou en agissant de façon perturbatrice ou en violant les Règlements officiels du concours. Advenant toute tentative, par un participant, de nuire au déroulement légitime du concours ou de le compromettre, Parcs Canada se réserve le droit de le disqualifier et de lui réclamer des dommages et intérêts (y compris des frais juridiques) dans toute la mesure permise par la loi. Le défaut, par Parcs Canada, de faire appliquer les présents Règlements officiels du concours ne constitue pas une renonciation à cette disposition.  
+                        <br />
+                        <br />
+                        <h5>(h)	LIMITATION DE RESPONSABILITÉ</h5>
+                        <br />
+
+                        Parcs Canada est exclu de toute responsabilité pour les préjudices personnels, pertes ou dommages de toutes sortes (y compris la perte de données) causés directement ou indirectement, en tout ou en partie, par le téléchargement de tout matériel à partir du site Web de Parcs Canada, qu’il s’agisse ou non du matériel préparé par Parcs Canada ou un tiers et que ce matériel soit en lien ou non avec le site Web de Parcs Canada au moyen d’un hyperlien. Parcs Canada n’assume aucune responsabilité quant au contenu des sites Web de tiers, qui peut être relié au site Web de son concours à l’aide d’un hyperlien. 
+                        <br />
+                        <br />
+                        Parcs Canada se réserve le droit d’annuler, de suspendre ou de modifier le concours si une fraude, une défaillance technique ou tout autre facteur hors de son contrôle raisonnable compromet l’administration ou l’intégrité du concours telle qu’établie par Parcs Canada, à sa seule discrétion. Advenant une telle situation, Parcs Canada peut choisir d’autres gagnants potentiels parmi tous les bulletins de participation admissibles reçus.
+                        <br />
+                        <br />
+
+                        <h5>(i)	GÉNÉRALITÉS</h5>
+                        <br />
+
+                        En s’inscrivant et en participant au concours, chaque participant accepte de respecter les présents Règlements officiels du concours et d’exonérer Parcs Canada et ses sociétés affiliées, administrateurs, dirigeants, employés et agents de toute responsabilité pour les dommages, blessures, décès, pertes, annulations ou toute autre responsabilité découlant de l’acceptation ou de l’utilisation, par le participant, d’un prix ou d’un prix de substitution, ou de sa participation au concours, y compris mais sans s’y limiter, les réclamations liées aux droits de publicité, à la diffamation ou relatives à l’atteinte à la vie privée, ou de l’utilisation abusive ou du mauvais fonctionnement d’un tel prix ou prix de substitution. Parcs Canada et ses sociétés affiliées, administrateurs, dirigeants, employés et agents n’assumeront aucune responsabilité pour les pertes encourues à la suite de l’annulation du concours ou pour quelque raison que ce soit, ou pour des événements qui surviennent une fois qu’un prix a été décerné. De telles pertes ou dépenses seront prises en charge par chaque gagnant individuel d’un prix. Le concours est assujetti à toutes les lois fédérales, provinciales et locales applicables et peut être annulé en cas d’interdiction par la loi en vigueur dans le lieu de résidence du participant. Les décisions de Parcs Canada concernant tous les aspects du concours sont finales.  
+                        <br />
+                        <br />
+
+                        <h5>(j)	QUESTION RÉGLEMENTAIRE : DÉCLARATION ET EXONÉRATION DU GAGNANT</h5>
+                        <br />
+
+                        Avant d’être confirmé et déclaré comme gagnant officiel d’un prix, chaque gagnant potentiel doit répondre correctement, sans aide, à la question réglementaire d’habileté mathématique figurant sur le formulaire de déclaration et exonération de Parcs Canada (le « formulaire d’exonération »). 
+                        <br />
+                        <br />
+                        Les gagnants potentiels des prix seront tenus de signer le formulaire d'exonération de Parcs Canada qui leur sera remis et qui confirme qu’ils se conforment aux présents Règlements officiels du concours, qu’ils acceptent le prix tel que décerné et qu’ils exonèrent Parcs Canada, ses sociétés affiliées et liées, agences de promotion et de publicité, actionnaires, administrateurs, dirigeants, employés, agents, représentants, successeurs et ayants droit respectifs (collectivement, les « parties libérées ») de toute responsabilité en lien avec le présent concours et les prix tels que décernés. Le formulaire de déclaration doit être retourné à Parcs Canada dans les délais précisés sur le formulaire, sans quoi le prix sera annulé. Les prix seront livrés (ou communiqués) aux gagnants dans les vingt-quatre (24) heures suivant la confirmation de Parcs Canada à l’effet que : (i) le gagnant potentiel est admissible au prix en question, (ii) le gagnant potentiel a répondu correctement à la question réglementaire [voir la présente Règle 1 (j)], et (iii) Parcs Canada a reçu le formulaire d’exonération dûment remplis par le gagnant potentiel. 
+                        <br />
+                        <br />
+                        <h5>(k)	CONSENTEMENT DU GAGNANT</h5>
+                        <br />
+
+                        Aucune communication ne sera échangée avec les participants au concours, sauf avec les gagnants potentiels. En s’inscrivant et en participant au concours, les gagnant des prix, consentent à l’utilisation de : leur nom et adresse (ville et province ou territoire); de leurs commentaires concernant le concours, le prix ou les prix et/ou Parcs Canada. Aucune rémunération pour toute publicité portant sur le concours, présentée par Parcs Canada ou en son nom, de quelque façon que ce soit, y compris mais sans s’y limiter, dans les médias imprimés, les médias électroniques, sur Internet et dans les médias sociaux, ne sera offerte aux participants ou aux gagnants des prix, ni ne sera exigée de leur part.   
+    <br />
+                        <br />
+
+                        <h5>(l)	BULLETINS DE PARTICIPATION</h5>
+                        <br />
+
+                        Parcs Canada n’assume aucune responsabilité et ne sera tenu responsable pour (i) toute inexactitude ou erreur de saisie des renseignements figurant dans un bulletin de participation ou pour les bulletins qui ne sont pas conformes aux présents Règlements officiels du concours, (ii) pour les pertes ou dommages causés par un prix décerné ou par le concours, ou (iii) pour toute panne du site Web de son concours pendant la période du concours, y compris les problèmes humains ou techniques, erreurs d’impression, données ou transmissions perdues, retardées ou inintelligibles, omissions, interruptions, suppressions, pannes ou défaillances des lignes téléphoniques ou des liaisons communautaires, ou défaillances techniques des systèmes informatiques en ligne, serveurs, fournisseurs d’accès, matériel informatique, logiciels, ou l’impossibilité de recevoir un bulletin de participation en raison de problèmes techniques ou d'un encombrement sur Internet ou sur tout site Web, ou pour toute combinaison de ces causes, y compris tout tort ou dommage à l’ordinateur d’un participant ou de toute autre personne relié au téléchargement de tout matériel en lien avec le concours ou qui en résulte. Les données ou bulletins de participation frauduleux ou altérés seront annulés. 
+                        <br />
+                        <br />
+
+                        <h5>(m)	INTERPRÉTATION DU PRÉSENT RÈGLEMENT </h5>
+                        <br />
+
+                        Toute préoccupation et question concernant l'élaboration, la validité, l'interprétation et l'applicabilité des présents Règlements officiels du concours ou les droits et obligations respectifs des gagnants des prix et de Parcs Canada relativement au présent concours, seront régies par les lois de la province de Québec et par les lois fédérales applicables quant aux résidents de la province de Québec, et (ii) par les lois de la province de l’Ontario et les lois fédérales applicables quant aux résidents des autres provinces et territoires canadiens, sans égard au conflit de principes de droit. Toute tentative délibérée, de la part d’un participant ou de toute autre personne, de porter atteinte à un site Web quelconque ou de compromettre le déroulement légitime du concours peut contrevenir aux lois criminelles et civiles et, advenant une telle tentative, Parcs Canada se réserve le droit de réclamer à cette personne des dommages dans toute la mesure permise par la loi. Le concours est assujetti à toutes les lois fédérales, provinciales et municipales applicables.  
+                        <br />
+                        <br />
+                        <h5>(n)	SUSPENSION/ANNULATION/MODIFICATION DU CONCOURS</h5>
+                        <br />
+
+                        Parcs Canada se réserve le droit, avec le consentement de la Régie des alcools, des courses et des jeux, de mettre fin ou de suspendre le concours ou de modifier les présents Règlements officiels du concours, en tout temps et de quelque façon que ce soit, sans préavis et pour quelque raison que ce soit. Sans restreindre le caractère général de ce qui précède, si, pour toute raison, le Concours ne peut se dérouler comme prévu initialement (par exemple, en raison d’une altération ou d’un virus informatique), Parcs Canada se réserve le droit d’annuler le concours, avec le consentement de la Régie des alcools, des courses et des jeux.  
+                        <br />
+                        <br />
+                        <h5>(o)	LITIGES RELATIFS AU CONCOURS</h5>
+                        <br />
+
+                        Tout litige, soulevé par des résidents de la province de Québec quant à la conduite ou à l'organisation d'un concours publicitaire doit être adressé à la Régie des alcools, des courses et des jeux afin qu’une décision soit prise. Un tel litige relatif à la remise d'un prix à tout résident de la province de Québec peut être soumis à la Régie des alcools, des courses et des jeux uniquement dans le but d'aider les parties à conclure un accord.
+                        <br />
+                        <br />
+
+                        <h5>(p)	DROIT À LA VIE PRIVÉE</h5>
+                        <br />
+
+                        Parcs Canada respecte le droit à la vie privée de tous les participants. En s’inscrivant au concours, chaque participant est réputé avoir donné automatiquement son consentement à ce que les renseignements personnels recueillis sur lui soient utilisés par Parcs Canada uniquement pour administrer le concours et pour fournir au participant de l’information concernant ses promotions et/ou événements à venir, ou autrement prévu dans les présents Règlements officiels du concours. Tout conflit ou tout écart entre les dispositions précédentes de la présente Règle 1(p) et les lois ou règlements applicables au Canada ou dans les provinces ou territoires canadiens à l’égard du droit à la vie privée, doit être réglé en faveur de tels lois et règlements applicables.   
+                        <br />
+                        <br />
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="privacyModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">DROIT À LA VIE PRIVÉE</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Le commanditaire respecte le droit à la vie privée de tous les participants. 
+						En s’inscrivant au concours, chaque participant est réputé avoir donné automatiquement son consentement à ce que les renseignements personnels recueillis sur lui soient utilisés uniquement 
+						par le commanditaire pour administrer le concours et pour lui fournir de l’information concernant ses promotions et/ou événements à venir, ou autrement prévu dans le présent Règlement officiel  du concours. 
+						Tout conflit ou tout écart entre les dispositions précédentes de la présente Règle 1(p) et les lois ou règlements applicables au Canada ou dans les provinces ou territoires canadiens à l’égard du droit à la vie privée, 
+						doit être réglé en faveur de tels lois et règlements applicables.  
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="basicButton" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<footer>
+    <div id="footerWrapper">
+	<!--  Gov links depend on language  -->
+	<div id="footer" role="navigation" aria-label="Content Information">
+		<h3 class="screenReaderText">Liens rapides</h3>
+		<div id="footerRow0">
+			<div id="dt_modified"><p>Date de modification: 2023-11-02</p></div>
+			<div id="gc_tctr">
+			</div>
+		</div>
+		<div id="footerRow1">
+			<div id="footerAboutUsSection" class="section">
+				<div class="header">
+					<a class="toggle" href="javascript:toggleFooterLinks('#footerAboutUsSection');" id="footerAboutUsSectionBtn" role="button"><span id="footerAboutUSection_div_ACCE_Label" class="spanacce"></span></a>
+					<h4>L'Agence Parcs Canada</h4>
+				</div>
+				<ul>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/mandat-mandate">Le mandat et la charte</a></li>
+					<li><a href="https://pm.gc.ca/fr/cabinet/lhonorable-steven-guilbeault" rel="&quot;external&quot;">Notre ministre</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/mandat-mandate/dg_ceo">Message du Président et directeur général</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/aa-ia">Les relations avec les peuples autochtones à Parcs Canada</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/partenaires-partners">Partenaires et collaborateurs</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/bib-lib/plans">Stratégies et plans</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/bib-lib/rapports-reports">Rapports</a></li>
+
+				</ul>
+			</div><div id="footerExploreSection" class="section">
+				<div class="header">
+					<a class="toggle" href="javascript:toggleFooterLinks('#footerExploreSection');" id="footerExploreSectionBtn" role="button"><span id="footerExploreSection_div_ACCE_Label" class="spanacce"></span></a>
+					<h4>Explorez</h4>
+				</div>
+				<ul>
+					<li class="regular-footer-link"><a id="footerPlanYourVisitLink" href="http://www.pc.gc.ca/fr/voyage-travel">Planifiez votre visite</a></li>
+					<li class="unsubscribe-footer-link hidden" ><a id="footerPlanYourVisitLink_unsubscribe" href="http://www.pc.gc.ca/fr/voyage-travel?utm_source=eBulletin_fr&utm_medium=unsubcribe_foot">Planifiez votre visite</a></li>
+					<li><a id="footerReservetionServicesLink" href="https://reservation.pc.gc.ca/">Réservations</a></li>
+					<li><a id="footerPassesandpermitsLink" href="https://www.pc.gc.ca/fr/voyage-travel/admission">Laissez-passer, permis et frais</a></li>
+					<li><a id="footerOfficialMerchandiseLink" href="https://boutiqueparcscanada.ca">Produits dérivés officiels</a></li>
+				</ul>
+			</div><div id="footerContactUsSection" class="section">
+				<div class="header">
+					<a class="toggle" href="javascript:toggleFooterLinks('#footerContactUsSection');" id="footerContactUsSectionBtn" role="button"><span id="footerContactUsSection_div_ACCE_Label" class="spanacce"></span></a>
+					<h4>Transparence</h4>
+				</div>
+				<ul>
+					<li><a href="https://parcs.canada.ca/agence-agency/dp-pd">Divulgation proactive</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/dp-pd/baiprp-atipo">Accès à l’information et protection des renseignements personnels</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/termes-terms">Avis</a></li>
+					<li><a href="https://www.canada.ca/fr/gouvernement/systeme/consultations/consultationdescanadiens.html">Consultations</a></li>
+
+				</ul>
+			</div><div id="footerConnectedSection" class="section">
+				<div class="header">
+					<a class="toggle" href="javascript:toggleFooterLinks('#footerConnectedSection');" id="footerConnectedSectionBtn" role="button"><span id="footerConnectedSection_div_ACCE_Label" class="spanacce"></span></a>
+					<h4>
+						Restez branchés
+					</h4>
+				</div>
+				<ul>
+					<li class="regular-footer-link"><a href="https://www.pc.gc.ca/fr/multimedia/apps">Application Parcs Canada</a></li>
+					<li class="regular-footer-link"><a href="http://www.facebook.com/ParcsCanada" rel="&quot;external&quot;">Facebook</a></li>
+					<li class="regular-footer-link"><a href="https://www.instagram.com/parcs.canada/" rel="&quot;external&quot;">Instagram</a></li>
+					<li class="regular-footer-link"><a href="http://twitter.com/ParcsCanada" rel="&quot;external&quot;">Twitter</a></li>
+					<li class="regular-footer-link"><a href="https://www.youtube.com/user/ParcsCanada?sub_confirmation=1&utm_source=eBulletin_en&utm_medium=unsubcribe_body" rel="&quot;external&quot;">YouTube</a></li>
+					<li class="unsubscribe-footer-link hidden"><a href="https://www.pc.gc.ca/fr/multimedia/apps?utm_source=eBulletin_fr&utm_medium=unsubcribe_foot">Applications mobiles</a></li>
+					<li class="unsubscribe-footer-link hidden"><a href="http://www.facebook.com/ParcsCanada?utm_source=eBulletin_fr&utm_medium=unsubcribe_foot" rel="&quot;external&quot;">Facebook</a></li>
+					<li class="unsubscribe-footer-link hidden"><a href="https://www.instagram.com/parcs.canada?utm_source=eBulletin_fr&utm_medium=unsubcribe_foot" rel="&quot;external&quot;">Instagram</a></li>
+					<li class="unsubscribe-footer-link hidden"><a href="http://twitter.com/ParcsCanada?utm_source=eBulletin_fr&utm_medium=unsubcribe_foot" rel="&quot;external&quot;">Twitter</a></li>
+					<li class="unsubscribe-footer-link hidden"><a href="https://www.youtube.com/user/ParcsCanada?sub_confirmation=1&utm_source=eBulletin_fr&utm_medium=unsubcribe_body" rel="&quot;external&quot;">YouTube</a></li>
+					<li><a href="http://pcan-ebulletin.ca/fr/abonnement" rel="&quot;external&quot;">Infolettre</a></li>
+					<li><a href="https://www.pc.gc.ca/fr/agence-agency/courriel-email">Contactez-nous</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="gc_footer">
+		<div id="footerRow2">
+			<div id="gc_gcft">
+				<h4 class="screenReaderText">Gouvernement du Canada</h4>
+				<ul>
+					<li><a href="https://www.canada.ca/fr/services/sante.html"><span>Santé</span></a></li>
+					<li><a href="https://voyage.gc.ca/"><span>Voyage</span></a></li>
+					<li><a href="https://www.canada.ca/fr/emploi-developpement-social/ministere/portefeuille/service-canada.html"><span>Service Canada</span></a></li>
+					<li><a href="https://www.guichetemplois.gc.ca/accueil-fra.do?lang=fra&source=jb"><span>Emplois</span></a></li>
+					<li><a href="https://www.canada.ca/fr.html"><span>Canada.ca</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</footer>
+</html>
+ contentType 9 text/html url 43 https://pcan-ebulletin.ca:443/fr/abonnement responseCode 3 200 

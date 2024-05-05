@@ -1,0 +1,139 @@
+ceygksdencrcksoqykwkvmkqdgegwemoecuodcco length 4 4867 page 4867 <!DOCTYPE html><html><head><title>R: Monte Carlo Standard Errors for MCMC</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css">
+<script type="text/javascript">
+const macros = { "\\R": "\\textsf{R}", "\\code": "\\texttt"};
+function processMathHTML() {
+    var l = document.getElementsByClassName('reqn');
+    for (let e of l) { katex.render(e.textContent, e, { throwOnError: false, macros }); }
+    return;
+}</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+    onload="processMathHTML();"></script>
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body><div class="container"><main>
+
+<table style="width: 100%;"><tr><td>mcmcse-package {mcmcse}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Monte Carlo Standard Errors for MCMC
+</h2>
+
+<h3>Description</h3>
+
+<p>Provides tools for computing Monte Carlo standard
+errors (MCSE) in Markov chain Monte Carlo (MCMC) settings. MCSE
+computation for expectation and quantile estimators is
+supported. The package also provides functions for computing
+effective sample size and for plotting Monte Carlo estimates
+versus sample size.
+</p>
+
+
+<h3>Details</h3>
+
+
+<table>
+<tr>
+ <td style="text-align: left;">
+Package: </td><td style="text-align: left;"> mcmcse</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+Type: </td><td style="text-align: left;"> Package</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+Version: </td><td style="text-align: left;"> 1.5-0</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+Date: </td><td style="text-align: left;"> 2021-08-29</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+License: </td><td style="text-align: left;"> GPL (&gt;= 2)</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+</td>
+</tr>
+
+</table>
+
+
+
+<h3>Author(s)</h3>
+
+<p>James M. Flegal &lt;jflegal@ucr.edu&gt;,<br />  
+John Hughes, <br />   
+Dootika Vats, &lt;dootika@iitk.ac.in&gt;,<br />   
+Ning Dai, <br />  
+Kushagra Gupta, and<br />  
+Uttiya Maji  
+</p>
+<p>Maintainer: Dootika Vats &lt;dootika@iitk.ac.in&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p>Dai, N and Jones, G.L. (2017)  Multivariate initial sequence estimators in Markov chain Monte Carlo, <em> Journal of Multivariate Analysis</em>, <b>159</b>, 184-199.
+</p>
+<p>Flegal, J. M. (2012) Applicability of subsampling
+bootstrap methods in Markov chain Monte Carlo. In
+Wozniakowski, H. and Plaskota, L., editors, <em>Monte
+Carlo and Quasi-Monte Carlo Methods 2010</em>, pages 363&ndash;372.
+Springer-Verlag.
+</p>
+<p>Flegal, J. M. and Jones, G. L. (2010) Batch means and
+spectral variance estimators in Markov chain Monte Carlo.
+<em>The Annals of Statistics</em>, <b>38</b>, 1034&ndash;1070.
+</p>
+<p>Flegal, J. M. and Jones, G. L. (2011) Implementing Markov
+chain Monte Carlo: Estimating with confidence. In Brooks,
+S., Gelman, A., Jones, G. L., and Meng, X., editors,
+<em>Handbook of Markov Chain Monte Carlo</em>, pages
+175&ndash;197. Chapman &amp; Hall/CRC Press.
+</p>
+<p>Doss, C. R., Flegal, J. M., Jones, G. L., and Neath, R. C. (2014). Markov chain Monte Carlo estimation of quantiles. <em>Electronic Journal of Statistics</em>, <b>8</b>, 2448-2478.
+</p>
+<p>Gong, L., and Flegal, J. M. A practical sequential stopping rule for high-dimensional Markov chain Monte Carlo. <em>Journal of Computational and Graphical Statistics</em>, <b>25</b>,  684–-700.
+</p>
+<p>Heberle, J., and Sattarhoff, C. (2017). A fast algorithm for the computation of HAC covariance matrix estimators. <em>Econometrics</em>, <b>5</b>, 9.
+</p>
+<p>Jones, G. L., Haran, M., Caffo, B. S. and Neath, R.
+(2006) Fixed-width output analysis for Markov chain Monte
+Carlo. <em>Journal of the American Statistical
+Association</em>, <b>101</b>, 1537&ndash;1547.
+</p>
+<p>Liu, Y., Vats, D., and Flegal, J. M. (2021) Batch size selection for variance estimators in MCMC, <em>Methodology and Computing in Applied Probability</em>, to appear.
+</p>
+<p>Vats, D., Flegal, J. M., and, Jones, G. L Multivariate output analysis for Markov chain Monte Carlo, <em>Biometrika</em>, <b>106</b>, 321–-337.
+</p>
+<p>Vats, D., Flegal, J. M., and, Jones, G. L. (2018) Strong Consistency of multivariate spectral variance estimators for Markov chain Monte Carlo, <em>Bernoulli</em>, <b>24</b>, 1860–-1909.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class='language-R'>n &lt;- 1e3
+mu = c(2, 50)
+sigma = matrix(c(1, 0.5, 0.5, 1), nrow = 2)
+out = BVN_Gibbs(n, mu, sigma)
+
+multiESS(out)
+ess(out)
+mcse.mat(out)
+
+mcse.bm &lt;- mcse.multi(x = out)
+mcse.tuk &lt;- mcse.multi(x = out, method = "tukey")
+
+</code></pre>
+
+<hr /><div style="text-align: center;">[Package <em>mcmcse</em> version 1.5-0 <a href="00Index.html">Index</a>]</div></main>
+
+</div>
+</body></html>
+ contentType 9 text/html url 77 https://search.r-project.org:443/CRAN/refmans/mcmcse/html/mcmcse-package.html responseCode 3 200 

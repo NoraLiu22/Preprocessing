@@ -1,0 +1,456 @@
+petoqmwkjgckeiyauggmwmagsscqooyoyoyeoqss length 5 16608 page 16608 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Data Preparation :: GBIF IPT User Manual</title>
+    <link rel="prev" href="dwca-guide">
+    <link rel="next" href="data-quality-checklist">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/manual/en">
+        <svg class="logo" viewBox="90 239.1 539.7 523.9" xmlns="http://www.w3.org/2000/svg">
+            <path class="gbif-logo-svg" d="M325.5,495.4c0-89.7,43.8-167.4,174.2-167.4C499.6,417.9,440.5,495.4,325.5,495.4"></path>
+            <path class="gbif-logo-svg" d="M534.3,731c24.4,0,43.2-3.5,62.4-10.5c0-71-42.4-121.8-117.2-158.4c-57.2-28.7-127.7-43.6-192.1-43.6c28.2-84.6,7.6-189.7-19.7-247.4c-30.3,60.4-49.2,164-20.1,248.3c-57.1,4.2-102.4,29.1-121.6,61.9c-1.4,2.5-4.4,7.8-2.6,8.8c1.4,0.7,3.6-1.5,4.9-2.7c20.6-19.1,47.9-28.4,74.2-28.4c60.7,0,103.4,50.3,133.7,80.5C401.3,704.3,464.8,731.2,534.3,731"></path>
+        </svg>
+        <div  class="nav-brand__name-area">
+          <span>GBIF IPT User Manual</span>
+        </div>
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+          <!--div class="navbar-end">
+  <div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link" href="">Documentation</a>
+    <div class="navbar-dropdown">
+      <a class="navbar-item" href="/manual/en/">Menu</a>
+    </div>
+  </div>
+</div-->
+      </div>
+
+      <div class="navbar-end">
+        
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search docs">
+          </div>
+        </div>
+        
+
+        <div class="navbar-item has-dropdown is-hoverable">
+  <!-- Current: en -->
+  <a class="navbar-link" href="en">
+    <svg class="navbar-languages" fill="#fcfcfc" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+    </svg>
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item" href="../../../en/ipt/latest/data-preparation">English</a>
+    <a class="navbar-item" href="../../../es/ipt/latest/data-preparation">español</a>
+    <a class="navbar-item" href="../../../ja/ipt/latest/data-preparation">日本語</a>
+    <a class="navbar-item" href="../../../zh/ipt/latest/data-preparation">繁體中文</a>
+  </div>
+</div>
+        <div class="navbar-item has-dropdown is-hoverable">
+  <a class="navbar-link">
+    <svg class="navbar-feedback" fill="#fcfcfc" height="24" viewBox="0 0 100 100" width="24" xmlns="http://www.w3.org/2000/svg" >
+      <path d="M15.5,15.498h69v51.754H67.253v17.25L50,67.252H15.5V15.498z"/>
+    </svg>
+  </a>
+  <div class="navbar-dropdown">
+    <a class="navbar-item" href="https://github.com/gbif/ipt/issues/new?labels=Feedback&body=Feedback+on+[Data Preparation](https://ipt.gbif.org/manual/en/ipt/latest/data-preparation) ([Github source for this page](../blob/master/docs/en/modules/ROOT/pages/data-preparation.adoc))%0A%0AWrite+your+feedback+here.">Leave feedback on GitHub</a>
+    <a class="navbar-item" href="mailto:helpdesk@gbif.org?subject=Feedback on IPT documentation 'Data Preparation'&body=Feedback on https://ipt.gbif.org/manual/en/ipt/latest/data-preparation">Send feedback by email</a>
+    <a class="navbar-item" href="https://github.com/gbif/ipt/edit/master/docs/en/modules/ROOT/pages/data-preparation.adoc">Edit this page on GitHub</a>
+      </div>
+</div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="ipt" data-version="3.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="./">Integrated Publishing Toolkit</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction">How to Use this Manual</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="getting-started">Getting Started – Installation and Initial Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements">Requirements</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="installation">Installation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tomcat-installation-linux">Install Tomcat on Linux</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="tomcat-installation-windows">Install Tomcat 8 on Windows</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="initial-setup">Initial Setup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="home">Home Menu</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="manage-resources">Manage Resources Menu</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="administration">Administration Menu</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="about">About Menu</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="releases">Releases</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release-notes">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="how-to-publish">How to publish biodiversity data through GBIF.org</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="resource-metadata">Resource Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="checklist-data">Checklist Data</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="occurrence-data">Occurrence Data</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="sampling-event-data">Sampling Event Data</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Best Practice Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gbif-metadata-profile">Resource metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="best-practices-checklists">Checklist Data</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Occurrence Data (pending)</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="best-practices-sampling-event-data">Sampling Event Data</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="faq">FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Contributing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="translations">Translations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="developer-guide">Development</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Customization</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="customization">How to Style Your IPT</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="database-connection">Supported Databases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="core">Adding a new core</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="license">Adding a new License</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="user-id">Adding a New User ID Directory</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="versioning">Dataset Versioning Policy</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="citation">Dataset Citation Format</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="datacite-mappings">DataCite to EML mappings</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="doi-workflow">DOI Workflows</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="applying-license">Applying a License to a Dataset</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="darwin-core">Darwin Core</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="dwca-guide">Darwin Core Archives – How-to Guide</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="data-preparation">Data Preparation</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="data-quality-checklist">Data Quality Checklist</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="colophon">Colophon</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="resources">Resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="glossary">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="./" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="./">Integrated Publishing Toolkit</a></li>
+    <li><a href="data-preparation">Data Preparation</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Data Preparation</h1>
+<div class="sect1">
+<h2 id="things-to-consider"><a class="anchor" href="#things-to-consider"></a>Things to consider</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>create a local identifier if not existing</p>
+</li>
+<li>
+<p>create full dwc:scientificName including authorship</p>
+</li>
+<li>
+<p>create decimal coordinates &amp; precision</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="database-source"><a class="anchor" href="#database-source"></a>Database Source</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>setup a SQL view to use functions (can also be done in IPT SQL source definition)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>concatenation, splitting of strings: e.g. build full scientific name (watchout autonyms)</p>
+</li>
+<li>
+<p>format dates as ISO</p>
+</li>
+<li>
+<p>create year/month/day by parsing native SQL date types</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>use a UNION to merge 2 or more tables, e.g. accepted taxa and synonyms or specimen and observations</p>
+</li>
+<li>
+<p>select fixed values (prefer to do this in IPT mapping)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="text-files-source"><a class="anchor" href="#text-files-source"></a>Text Files Source</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>convert to UTF8</p>
+</li>
+<li>
+<p>use standard CSV (i.e. delimiter=<code>,</code> quotation=<code>"</code>) or tab files</p>
+</li>
+<li>
+<p>make sure you have replaced line breaks, i.e. <code>\r</code> <code>\n</code> or <code>\r\n</code> with either simple spaces or use 2 characters <code>\r</code> to escape the line break if the intention is to preserve them</p>
+</li>
+<li>
+<p>encode nulls as empty fields, i.e. no characters between 2 delimiters, not <code>\N</code> or <code>\NULL</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="utility-character-encoding-converter-iconv"><a class="anchor" href="#utility-character-encoding-converter-iconv"></a>Utility: Character encoding converter - iconv</h3>
+<div class="paragraph">
+<p>Simple tool for Linux and Windows to convert character encodings of files.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Iconv" class="bare">http://en.wikipedia.org/wiki/Iconv</a></p>
+</li>
+<li>
+<p><a href="http://www.gnu.org/software/libiconv/" class="bare">http://www.gnu.org/software/libiconv/</a></p>
+</li>
+<li>
+<p><a href="http://gnuwin32.sourceforge.net/packages/libiconv.htm" class="bare">http://gnuwin32.sourceforge.net/packages/libiconv.htm</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>convert character encodings from Windows-1252 to UTF-8 using <a href="http://unixhelp.ed.ac.uk/CGI/man-cgi?iconv">iconv</a></p>
+</li>
+<li>
+<p></p>
+<div class="listingblock">
+<div class="content">
+<pre>iconv -f CP1252 -t utf-8 example.txt &gt; exampleUTF8.txt</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="utility-unix-stream-editor-sed"><a class="anchor" href="#utility-unix-stream-editor-sed"></a>Utility: Unix Stream Editor,  SED</h3>
+<div class="paragraph">
+<p>A Unix command line tool to manipulate files as streams, thereby allowing to modify very large files without the need to load them into memory first (this is what pretty much all editors apart from few, e.g. vi, do)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.unixguide.net/unix/sedoneliner.shtml" class="bare">http://www.unixguide.net/unix/sedoneliner.shtml</a></p>
+</li>
+<li>
+<p><a href="http://www.brunolinux.com/02-The_Terminal/Find_and%20Replace_with_Sed.html" class="bare">http://www.brunolinux.com/02-The_Terminal/Find_and%20Replace_with_Sed.html</a></p>
+</li>
+<li>
+<p>replace in place and create backup copy</p>
+<div class="listingblock">
+<div class="content">
+<pre>sed -i.old "s/\\\\N//g" allNames.txt</pre>
+</div>
+</div>
+</li>
+<li>
+<p>convert DOS newlines (CR/LF) to Unix format:</p>
+<div class="listingblock">
+<div class="content">
+<pre>sed 's/.$//'</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="dwca-guide">Darwin Core Archives – How-to Guide</a></span>
+  <span class="next"><a href="data-quality-checklist">Data Quality Checklist</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="horizontal-stripe light-background">
+    <div class="footer-container">
+      <nav class="site-footer__menu">
+        <div>
+<a href="https://www.gbif.org/">GBIF.org</a>
+<a href="https://www.gbif.org/terms">Terms and agreements</a>
+<a href="https://www.gbif.org/contact-us">Contact</a>
+        </div>
+        <div>
+          <strong>GBIF Secretariat</strong> • Universitetsparken 15 • DK-2100 Copenhagen Ø • Denmark
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="horizontal-stripe">
+    <div class="footer-container">
+      <a href="https://www.gbif.org/"><img src="https://www.gbif.org/img/full_logo_white.svg" alt="GBIF"></a>
+    </div>
+  </div>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.." data-snippet-length="100" data-stylesheet="../../_/css/search.css"></script>
+<script async src="../../search-index.js"></script>
+<script defer data-domain="ipt.gbif.org" src="https://plausible.io/js/script.file-downloads.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 62 https://ipt.gbif.org:443/manual/en/ipt/latest/data-preparation responseCode 3 200 

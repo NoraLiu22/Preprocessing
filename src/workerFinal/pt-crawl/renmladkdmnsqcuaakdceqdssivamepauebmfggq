@@ -1,0 +1,50 @@
+renmladkdmnsqcuaakdceqdssivamepauebmfggq length 4 3460 page 3460 <!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 600px;  /* The height is 400 pixels */
+        width: 800px;  /* The width is the width of the web page */
+       }
+       img[src^="https://cicada.msj.edu/"]{border-radius:10px;width:100px!important;height:100px!important;border:2px solid #fff!important;-moz-box-shadow:0 0 10px #000;-webkit-box-shadow:0 0 10px #000;box-shadow:0 0 10px #000}.custom-pin{height:50px;line-height:5;width:35px;text-align:center;cursor:pointer;color:#000;background-image:url(https://cicadamap.msj.edu/Map-point-cicada.png);background-repeat:no-repeat;background-size:35px 50px;position:absolute;font-size:1.1em;font-weight:700;transition:all .5s}.custom-pin:hover{transform:scale(1.15)}
+    </style>
+  </head>
+  <body>
+    <h2>
+      Records submitted to <a href="https://cicadas.uconn.edu/"> Cicada Safari </a>
+    </h2>
+    <p>
+      <b>Data not field checked. Not to be redistributed or published without prior written permission.</b>
+    </p>
+    </br></br>
+    <div id="map"></div>
+    <script src="https://gmaps-marker-clusterer.github.io/gmaps-marker-clusterer/assets/js/markerclusterer.js">
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDSUd4ekF7zS00oquDDdOjyz_BjfKKeTs&callback=initMap">
+    </script>
+    <script>
+        function initMap(){
+		var map=new google.maps.Map(document.getElementById('map'),{zoom:7,center:{lat:39.6,lng:-81},});
+		var allMarkers = null;
+		var photoMarkers = null;
+		fetch('https://cicada.msj.edu/photos/map').then(response=>response.json()).then(res=>res.photos).then(photos=>{return photos.map(photo=>{const photoMarkerData={lat:parseFloat(photo.location.latitude),lng:parseFloat(photo.location.longitude),};const marker=new google.maps.Marker({position:photoMarkerData,icon:photo.cloudinaryData.thumb150.url,url:photo.cloudinaryData.original.url,cicadaId:photo.id});google.maps.event.addListener(marker, 'click', function(){window.location.href=this.url});return marker})}).then(markers=>{ photoMarkers=markers; fetch('https://cicada.msj.edu/videos/map').then(response=>response.json()).then(res=>res.videos).then(videos=>{return videos.map(video=>{ const videoMarkerData={lat:parseFloat(video.location.latitude),lng:parseFloat(video.location.longitude),};const marker=new google.maps.Marker({position:videoMarkerData,icon:video.cloudinaryData.original.thumbnail,url:video.cloudinaryData.original.url,cicadaId:video.id});google.maps.event.addListener(marker, 'click', function(){window.location.href=this.url});return marker})}).then(markers=>{allMarkers=photoMarkers.concat(markers);
+			const markerCluster=new MarkerClusterer(map,allMarkers,{cssClass:"custom-pin", minimumClusterSize: 1});
+                        google.maps.event.addListener(map, 'zoom_changed', function() {zoomLevel = map.getZoom(); if((zoomLevel >= 11) && (!window.listenerDone)) {
+                                google.maps.event.addListener(markerCluster,'clusterclick',function(cluster){
+                                        const ids=cluster.getMarkers().map(m=>m.url);
+                                        window.open(`https://cicadamap.msj.edu/show_photos?ids=${ids}`,'_blank')
+                                }); window.listenerDone = true;
+                        }
+                });
+
+		});
+		});
+	
+	}
+    </script>
+  <h6>©2021</h6>
+  </body>
+</html>
+ contentType 9 text/html url 30 https://cicadamap.msj.edu:443/ responseCode 3 200 

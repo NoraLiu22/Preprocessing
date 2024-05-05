@@ -1,0 +1,215 @@
+uqficqoqxefokgcoeaxajchcomioyqdoxqdodkva length 4 7205 page 7205 <!DOCTYPE html>
+<html>
+<head>
+<style>
+html, body
+{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  overflow: hidden;
+}
+
+</style>
+<script src='/static/wb_frame.js'> </script>
+
+
+
+<!DOCTYPE html>
+<html lang="en-gb" class="no-js">
+
+<head>
+  <!-- General Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="initial-scale = 1.0" name="viewport">
+
+  <!-- Favicons -->
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/static/img/favicon.png">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="/static/img/favicon.png">
+
+  <script>
+    window.banner_info = {
+      is_gmt: true,
+
+      liveMsg: decodeURIComponent("Live on"),
+
+      calendarAlt: decodeURIComponent("Calendar icon"),
+      calendarLabel: decodeURIComponent("View All Captures"),
+      choiceLabel: decodeURIComponent("Language:"),
+      loadingLabel: decodeURIComponent("Loading..."),
+      logoAlt: decodeURIComponent("Logo"),
+
+      locale: "en",
+      curr_locale: "",
+      locales: "[]",
+      locale_prefixes: "{}",
+      prefix: "https://webarchive.archive.unhcr.org/",
+      staticPrefix: "https://webarchive.archive.unhcr.org/static"
+    };
+
+  </script>
+
+  <!-- MirrorWeb presents... -->
+  <title>UNHCR Web Archive</title>
+
+  <!-- Stylesheets -->
+  <!-- CSS only -->
+  <link rel="stylesheet" href="/static/css/pywb.min.css" type="text/css" media="all">
+
+  <!-- Inital Script Loads -->
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    // If the capture URL has an associated JS file for injection to enable search, add it
+    var $jq = jQuery.noConflict(true);
+    let path
+    const urlReplaceSlash = document.URL.replaceAll("//", "/").split("/");
+    const protocol = urlReplaceSlash[4];
+    let replayServerDomain = urlReplaceSlash[1]
+
+    path = protocol === "http:" || protocol === "https:" ? urlReplaceSlash[5] : urlReplaceSlash[4];
+
+    $jq.getScript("https://s3-eu-west-1.amazonaws.com/mw-client-pywb-contentscripts/sites/" + path + ".js");
+    $jq.getScript("https://s3-eu-west-1.amazonaws.com/mw-client-pywb-contentscripts/orgs/" + replayServerDomain + ".js");
+
+    // Listener for messages from framed archive page, used to update the banner
+    // timestamp and timeline link
+    window.addEventListener('message', function (event) {
+      const type = event.data.wb_type
+
+      // Only update for these message types
+      if (type === 'load' || type === 'replace-url') {
+        const data = event.data;
+        let time = document.getElementById("timestamp");
+
+        // Update banner date if required
+        if (data.ts) {
+          time.innerText = "Archived On " + ts_to_date(data.ts) + " ";
+        }
+
+        // Update timeline link with new path
+        getTimelineLink(document.location.href, data.url)
+      }
+    })
+
+    function ts_to_date(ts) {
+      if (!ts) {
+        return '';
+      }
+
+      if (ts.length < 14) {
+        ts += '00000000000000'.substr(ts.length);
+      }
+
+      const datestr =
+        ts.substring(0, 4) +
+        '-' +
+        ts.substring(4, 6) +
+        '-' +
+        ts.substring(6, 8) +
+        'T' +
+        ts.substring(8, 10) +
+        ':' +
+        ts.substring(10, 12) +
+        ':' +
+        ts.substring(12, 14) +
+        '-00:00';
+
+      const date = new Date(datestr);
+      const options = { month: 'short', day: 'numeric', year: 'numeric' };
+      if ("") {
+        return `${date.toLocaleTimeString('en-GB', { timeZone: 'UTC' })} ${date.toLocaleString('en-US', options)},`
+      } else {
+        return `${date.toLocaleString('en-GB', options)}`
+      }
+    }
+
+    function getTimelineLink(currentUrl, newUrl) {
+      var splitURL = currentUrl.split("/");
+      var timelineHref = splitURL.slice(0, 4).join("/") + "/*/" + newUrl;
+      $jq("#timeline-link").attr("href", timelineHref);
+    }        
+  </script>
+      <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NMLFDL7');
+  </script>
+  <!-- End Google Tag Manager -->
+  
+</head>
+
+
+
+<nav class="navbar navbar-expand-md navbar-banner ">
+  <div class="d-flex container">
+    <a class="navbar-brand flex-fill" href="/">
+      <img src="/static/img/logo.png"
+        width="150" class="d-inline-block align-text-top">
+    </a>
+    <div class="navbar-text flex-fill text-center">
+      <span class="text-center" id="timestamp">
+                Archived On  5 May 2024 
+              </span>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-fill" id="navbarCollapse">
+      <ul class="navbar-nav  mb-2 mb-md-0 ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/about">About</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link active" id="timeline-link" aria-current="page"
+            href="/*/https://www.refworld.org/docid/4fbdf9702.html">Timeline</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+</head>
+<body style="margin: 0px; padding: 0px;">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMLFDL7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wb_iframe_div" id="wb_iframe_div">
+    <iframe name="replay_iframe_name" id="replay_iframe" src="https://webarchive.archive.unhcr.org/20240505172147mp_/https://www.refworld.org/docid/4fbdf9702.html" onload="document.title='\[ARCHIVED CONTENT\] '+replay_iframe_name.document.title;" frameborder="0" seamless="seamless" scrolling="yes" class="wb_iframe"></iframe>
+</div>
+<script>
+  var cframe = new ContentFrame({"url": "https://www.refworld.org/docid/4fbdf9702.html" + window.location.hash,
+                                 "prefix": "https://webarchive.archive.unhcr.org/",
+                                 "request_ts": "20240505172147",
+                                 "iframe": "#replay_iframe"});
+
+</script>
+</body>
+</html> contentType 9 text/html url 101 https://webarchive.archive.unhcr.org:443/20240505172147/https://www.refworld.org/docid/4fbdf9702.html responseCode 3 200 

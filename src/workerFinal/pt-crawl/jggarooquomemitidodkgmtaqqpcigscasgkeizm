@@ -1,0 +1,61 @@
+jggarooquomemitidodkgmtaqqpcigscasgkeizm length 4 1747 page 1747 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>招聘官网</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body {
+            overflow: hidden;
+        }
+
+        #iframeCon {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript" src="/data.js"></script>
+</head>
+<body>
+<iframe id="iframeCon" src="">
+
+</iframe>
+</body>
+<script type="text/javascript">
+	const UA = window.navigator.userAgent.toLowerCase();
+	const isAndroid = UA && UA.indexOf('android') > 0;
+	const isIos = UA && /(iphone|ipad|ipod|ios)/i.test(UA);
+	
+	if(isAndroid || isIos){   //终端为移动端
+		const MobileData = linkDataMobile[location.host.toLowerCase()];
+		const PCData = linkData[location.host.toLowerCase()] || linkData['default.url'];
+		
+		if(MobileData != undefined && MobileData.link){
+			window.location.href = MobileData.link;
+		}else if(PCData.link){
+			window.location.href = PCData.link;
+		}
+	}else{   //终端为PC端
+		const {title, link, icon} = linkData[location.host.toLowerCase()] || linkData['default.url'];
+		
+		document.title = title;
+		document.getElementById('iframeCon').setAttribute('src', link);
+		
+		// 根据配置设置favicon.ico
+		if(icon){
+			let iconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
+                	iconLink.type = 'image/x-icon';
+                	iconLink.rel = 'shortcut icon';
+                	iconLink.href = icon;
+                	document.getElementsByTagName('head')[0].appendChild(iconLink);
+		}
+	}
+</script>
+</html>
+ contentType 9 text/html url 27 https://eyhk.hotjob.cn:443/ responseCode 3 200 

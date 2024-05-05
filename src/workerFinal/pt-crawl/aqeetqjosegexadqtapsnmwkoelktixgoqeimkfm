@@ -1,0 +1,1157 @@
+aqeetqjosegexadqtapsnmwkoelktixgoqeimkfm length 5 56598 page 56598 <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=
+"The GPlates Portal is a gateway to a series of web pages for
+            the interactive visualisation of cutting-edge geoscience datasets."
+>
+    <meta name="author" content="Michael Chin" />
+    <title>GPlates Portal</title>
+    <link type="image/png" rel="icon" href="/static/img/GPlates-icon.png" />
+    <link
+      href="/static/libs/bootstrap-3.3.6/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    
+    <link href="/static/css/frontpage.css" rel="stylesheet">
+
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", "UA-55273523-1", "auto");
+      ga("send", "pageview");
+    </script>
+    <style>
+      body {
+        margin-bottom: 60px;
+        background-image: url("/static/img/background.png");
+      }
+      .footer {
+        display: none;
+        background-color: ghostwhite;
+        /*padding-top:10px;*/
+        min-height: 10px;
+        background-image: url("/static/img/navbar-bg.png");
+        border-radius: 6px 6px 0 0;
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 128, 0.19);
+      }
+      .navbar-gplates {
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+        background-image: url("/static/img/navbar-bg.png");
+        border-radius: 0 0 6px 6px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 128, 0.19);
+      }
+      .main-container {
+        padding-top: 70px;
+      }
+
+      @media screen and (max-width: 750px) {
+        .copyright-long {
+          display: none;
+        }
+      }
+
+      #top-link-block {
+        position: fixed !important;
+      }
+
+      #top-link-block.affix-top {
+        /*display:none;*/
+        top: 99999px;
+      }
+
+      #top-link-block.affix {
+        position: fixed !important;
+        bottom: 1px;
+        right: 0px;
+        top: auto;
+        width: auto;
+        z-index: 9999;
+      }
+    </style>
+           
+    <style> 
+        <!--fix the confict between google search box and bootstrap-->
+        .gsc-control-cse .gsc-table-result {
+            font-family : inherit;
+        }
+
+        .gsc-control-cse .gsc-input-box {
+            height : inherit;
+        }
+
+        input.gsc-input,
+        .gsc-input-box,
+        .gsc-input-box-hover,
+        .gsc-input-box-focus,
+        .gsc-search-button, input.gsc-search-button-v2 {
+            box-sizing  : content-box;
+            line-height : normal;
+            margin-top  : 0px;
+        }
+
+        .search-box{
+            width: 300px;
+        }
+ 
+        .search-box .cse .gsc-control-cse, .search-box .gsc-control-cse{
+            background-color: transparent; 
+            border: none;
+            padding: 0.7em 0 0 0.7em;
+        }
+
+        .api-box{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top:10px;
+        }
+        @media screen and (min-width: 350px) {
+            .api-box .desc{
+                height: 100px;
+            }
+        }
+        
+    </style>
+
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-default navbar-gplates" data-spy="affix">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" target="_top"
+            ><img
+              src="/static/img/gplates-portal-banner.png"
+              style="margin-top: -7px; height: 35px"
+              alt="GPlates Portal"
+          /></a>
+        </div>
+        <!--navbar-header-->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!-- menu -->
+          <ul class="nav navbar-nav" id="frontpage-menu" style="display: none">
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Resources <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="https://www.earthbyte.org/category/resources/"
+                    >EarthByte Resources</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.earthbyte.org/category/gplates/"
+                    >GPlates Resources</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a
+                    href="https://www.earthbyte.org/gplates-2-2-software-and-data-sets/"
+                    >GPlates Sample Data</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Goto <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://www.gplates.org">www.GPlates.org</a></li>
+                <li>
+                  <a href="https://www.earthbyte.org">www.EarthByte.org</a>
+                </li>
+                <li>
+                  <a href="https://discourse.gplates.org">Community Forum</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a href="#apps-anchor" target="_top"
+                    ><span class="glyphicon glyphicon-th"></span>
+                    Applications</a
+                  >
+                </li>
+                <li>
+                  <a href="#people-anchor" target="_top"
+                    ><span class="glyphicon glyphicon-user"></span> People</a
+                  >
+                </li>
+                <li>
+                  <a href="#sponsors-anchor" target="_top"
+                    ><span class="glyphicon glyphicon-fire"></span> Sponsors</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >About Us <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="https://www.earthbyte.org/people/">Our Team</a>
+                </li>
+                <li>
+                  <a href="https://www.earthbyte.org/contact-us-3/">Contact</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/portal/faq">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- end of menu -->
+
+          <div
+            class="nav navbar-nav navbar-left search-box"
+            id="frontpage-search-box"
+            style="display: none"
+          >
+            <!--The google custom search console is here https://cse.google.com/cse/all. Login with Michael's account-->
+            <script>
+              (function () {
+                var cx = "000998446279291668651:wikqm4r-ois";
+                var gcse = document.createElement("script");
+                gcse.type = "text/javascript";
+                gcse.async = true;
+                gcse.src = "https://cse.google.com/cse.js?cx=" + cx;
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li>
+              <a id="login" href="/ac/login" target="_top"
+                ><span class="glyphicon glyphicon-log-in"></span> Log In</a
+              >
+            </li>
+            <li>
+              <a id="signup" href="/ac/signup" target="_top"
+                ><span class="glyphicon glyphicon-user"></span> Sign Up</a
+              >
+            </li>
+            
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!--container-fluid-->
+    </nav>
+
+    <span id="top-link-block" class="hidden">
+      <a
+        href="#top"
+        class="well well-sm"
+        style="
+          padding: 4px;
+          text-decoration: none;
+          box-shadow: none;
+          background-color: rgba(92, 184, 92, 0.7);
+          color: black;
+          border: none;
+        "
+        onclick="$('html,body').animate({scrollTop:0},'slow');return false;"
+      >
+        <i class="glyphicon glyphicon-arrow-up"></i> Back to Top
+      </a> </span
+    ><!-- /top-link-block -->
+
+     
+    <div class="jumbotron jumbotron-scheme-1">
+        <div class="container">
+           <div id="gplates-icon-div">
+                <span style="display: inline-block; height: 100%; vertical-align: middle;"></span>
+                <img src="/static/img/newlogo.svg"></img>
+                <a style="opacity:0; height:100%; width: 100%; position: absolute;top:0;left:0;" href="http://www.gplates.org"></a>
+           </div>
+           <div id="info-div">
+                <h2>Your Gateway to an Interactive Virtual Earth</h2>
+                    <br>
+                    <p>3D Visualisation of Geophysical and Geological Data</p>
+                    <p>Interactive Plate Tectonic Reconstructions</p>
+                    <p>Interactive Surface Dynamic Topography</p>
+                    <p>PyGPlates Reconstruction Services</p>
+                    <br>
+                <span style="display: inline-block; width:155px;">
+                  <a class="btn btn-info btn-md btn-block" href="#apps-anchor" role="button">Enter Portal &raquo;</a>
+                </span>
+                <span style="display: inline-block; width:155px;">
+                  <a class="btn btn-success btn-md btn-block" href="https://discourse.gplates.org" target="_blank" role="button">Community Forum &raquo;</a>
+                </span>
+                <span style="display: inline-block; width:155px;">
+                  <a class="btn btn-primary btn-md btn-block" href="/portal/welcome" target="_blank" role="button">Learn More &raquo;</a>
+                </span>
+            </div>
+
+            <div id="social-media-bar">
+                   
+                    <a href="https://twitter.com/earthbytegroup">
+                        <img src="/static/img/twitter-128x128.png" class="img-responsive img-circle" alt="Twitter Icon"> 
+                    </a>
+                    <a href="https://www.facebook.com/earthbyte">
+                        <img src="/static/img/facebook-128x128.png" class="img-responsive img-circle" alt="Facebook Icon"> 
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCa41IQEhmmuXmz9J6iMfsnA">
+                        <img src="/static/img/youtube-128x128.png" class="img-responsive img-circle" alt="Youtube Icon"> 
+                    </a>
+                    <a href="https://www.instagram.com/explore/tags/earthbyte/top/">
+                        <img src="/static/img/instagram-128x128.png" class="img-responsive img-circle" alt="Instagram Icon"> 
+                    </a>
+            </div>
+            
+            <div id="statistics">Total Page Views: <strong id="count">Loading...</strong> | Today Page Views: <strong id="today-count">Loading...</strong>  
+                <p><a class="btn btn-success btn-xs"  href="/stats/" role="button">Stats. Details</a></p>
+            </div>
+
+        </div>
+        <div class='bg-1'></div>
+        <div class="filter-1"></div>
+    </div> 
+
+
+    <div class="container main-container">
+         
+    <div id="apps-anchor" style="width:1px; height:1px; opaque:0.1; position:absolute; margin-top:-100px;"></div> 
+    <hr class="style-1" id="all-apps-hr">
+    <!--<div class="hr-style-1-content"><span>Applications</span></div>-->
+
+    <div id="apps" class="container">
+        <div class="row">
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="vgg">
+                <h4>Vertical Gravity Gradient Grid</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/vgg-icon.png" class="img-responsive img-rounded" alt="Vertical Gravity Gradient Grid's icon"> 
+                    <a class="thumb-overlay" href="/cesium/"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/vertical_gravity_gradient 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="gravity-r">
+                <h4>Gravity Anomaly Grid Reconstruction</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/vggr-icon.png" class="img-responsive img-rounded" alt="Gravity Anomaly Grid Reconstruction's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=VGG-R"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/vertical_gravity_gradient_reconstruction/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=VGG-R" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="seafloor">
+                <h4>Seafloor Lithology</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/seabed-icon.png" class="img-responsive img-rounded" alt="Seafloor Lithology's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=seabed"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/seafloor/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=seabed" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="rodinia">
+                <h4>Rodinia Reconstruction</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/rodinia-icon.png" class="img-responsive img-rounded" alt="Rodinia Reconstruction's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=Rodinia"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/rodinia/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=Rodinia" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="emag2">
+                <h4>EMAG2 Magnetic Anomaly Grid</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/emag2-icon.png" class="img-responsive img-rounded" alt="EMAG2 Magnetic Anomaly Grid's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=EMAG2_V2"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/emag2/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=EMAG2_V2" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="emag2-r">
+                <h4>EMAG2 Reconstruction</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/emag2-reconstruction-icon.png" class="img-responsive img-rounded" alt="EMAG2 Reconstruction's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=EMAG2"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/emag2_reconstruction/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=EMAG2" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="srtm15">
+                <h4>SRTM15 Topography</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/topo15-icon.png" class="img-responsive img-rounded" alt="SRTM15 Topography's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=topo15"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/srtm15/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=topo15" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="dt">
+                <h4>Dynamic Topography</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/topography-icon.png" class="img-responsive img-rounded" alt="Dynamic Topography's icon"> 
+                    <a class="thumb-overlay" href="/portal/dt/"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/dynamic_topography 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/portal/dt/" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="gplates-web-service">
+                <h4>GPlates Web Service</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/gplates-web-service-360x270.png" class="img-responsive img-rounded" alt="GPlates Web Service's icon"> 
+                    <a class="thumb-overlay" href="https://gwsdoc.gplates.org/"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            disabled 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="https://gwsdoc.gplates.org/" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="gsfml">
+                <h4>Magnetic Picks</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/gsfml-icon.png" class="img-responsive img-rounded" alt="Magnetic Picks's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=GSFML"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/gsfml/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=GSFML" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="geology">
+                <h4>Geology</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/geology-icon.png" class="img-responsive img-rounded" alt="Geology's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=Geology"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/geology/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=Geology" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="geology-r">
+                <h4>Geology Reconstruction</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/geology-r-icon.png" class="img-responsive img-rounded" alt="Geology Reconstruction's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=GeologyR"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/geology/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=GeologyR" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="pygplates-notebooks">
+                <h4>PyGPlates Notebooks</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/pygplates-teaching-360x270.png" class="img-responsive img-rounded" alt="PyGPlates Notebooks's icon"> 
+                    <a class="thumb-overlay" href="https://github.com/GPlates/pygplates-tutorials#readme"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            disabled 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="https://github.com/GPlates/pygplates-tutorials#readme" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="rift-velocity">
+                <h4>Rift Velocity</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/rift_v_icon-360x270.jpg" class="img-responsive img-rounded" alt="Rift Velocity's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=rift_v"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            disabled 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=rift_v" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="ex-ridges">
+                <h4>Extinct Ridges</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/ExRidges-360x270.png" class="img-responsive img-rounded" alt="Extinct Ridges's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=ExRidges"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/ExRidges 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=ExRidges" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="age-grid">
+                <h4>Age Grids</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/agegrid-icon.png" class="img-responsive img-rounded" alt="Age Grids's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=AgeGrid"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/agegrid_reconstruction 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=AgeGrid" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="age-grid-p">
+                <h4>Present-day Age Grid</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/agegrid-p-360x270.png" class="img-responsive img-rounded" alt="Present-day Age Grid's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=AgeGridP"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/present_day_agegrid 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=AgeGridP" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="contourites">
+                <h4>Contourites</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/contourites-360x270.png" class="img-responsive img-rounded" alt="Contourites's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=contourites"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://www.earthbyte.org/controls-on-the-global-distribution-of-contourite-drifts-insights-from-an-eddy-resolving-ocean-model/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=contourites" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="rift-obliquity">
+                <h4>Rift Obliquity</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/rift_ov_icon_360x270.jpg" class="img-responsive img-rounded" alt="Rift Obliquity's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=rift_ov"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            disabled 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=rift_ov" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="Biosphere">
+                <h4>Deep Biosphere</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/biosphere-icon-360x270.png" class="img-responsive img-rounded" alt="Deep Biosphere's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=Biosphere"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/biosphere/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=Biosphere" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="WGM2012">
+                <h4>Bouguer and Isostatic Gravity Anomalies</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/WGM2012-icon-360x270.png" class="img-responsive img-rounded" alt="Bouguer and Isostatic Gravity Anomalies's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=WGM2012"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://www.earthbyte.org/world-gravity-map/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=WGM2012" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="polymetallic-nodules">
+                <h4>Polymetallic Nodules</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/nodules-icon-360x270.png" class="img-responsive img-rounded" alt="Polymetallic Nodules's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=Polymetallic_Nodules"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="/portal/polymetallic_nodules/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=Polymetallic_Nodules" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="abyssal-hill">
+                <h4>Abyssal Hills</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/abyssal-hill-icon-360x270.png" class="img-responsive img-rounded" alt="Abyssal Hills's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=abyssal_hills"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://www.earthbyte.org/identifying-characteristic-and-anomalous-mantle-from-the-complex-relationship-between-abyssal-hill-roughness-and-spreading-rates/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=abyssal_hills" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="topo-recon">
+                <h4>Topography Reconstruction</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/topo-recon-360x270.png" class="img-responsive img-rounded" alt="Topography Reconstruction's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=topo_recon"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            disabled 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=topo_recon" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="global-lithological-map">
+                <h4>Global Lithological Map</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/global-lithological-map-360x270.png" class="img-responsive img-rounded" alt="Global Lithological Map's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=global_lithological_map"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2012GC004370 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=global_lithological_map" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="spreading-parameters">
+                <h4>Spreading Parameters</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/spread-parameters-icon-360x270.png" class="img-responsive img-rounded" alt="Spreading Parameters's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=spreading_parameters"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://www.earthbyte.org/a-global-dataset-of-present-day-oceanic-crustal-age-and-seafloor-spreading-parameters/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=spreading_parameters" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="paleo-dem">
+                <h4>PaleoDEM</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/paleo-DEM-360x270.png" class="img-responsive img-rounded" alt="PaleoDEM's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=PaleoDEM"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://www.earthbyte.org/paleodem-resource-scotese-and-wright-2018/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=PaleoDEM" role="button">Launch</a> 
+                </div>
+            </div>
+             
+            <div class="col-md-4 col-lg-3 col-sm-6 app-card" id="crustal-litho-thickness">
+                <h4>Crustal And Lithospheric Thickness</h4>
+            
+                <div class="thumbnail"> 
+                    <img src="/static/img/crustal-thickness-360x270.png" class="img-responsive img-rounded" alt="Crustal And Lithospheric Thickness's icon"> 
+                    <a class="thumb-overlay" href="/cesium/?view=crustal_litho_thickness"> Click to launch </a> 
+                </div>
+                <div class="app-info">
+                    <a class="btn btn-link details" 
+                         
+                            href="https://www.earthbyte.org/webdav/ftp/earthbyte/gplates_portal/Afonso_etal_lithospheric_thickness_GJI2019/ 
+                        " role="button">Details</a> 
+                    <a class="btn btn-primary btn-xs launch"  href="/cesium/?view=crustal_litho_thickness" role="button">Launch</a> 
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+    
+    <div id="people-anchor" style="width:1px; height:1px; opaque:0.1; position:absolute; margin-top:-100px;"></div>
+    <hr class="style-1">
+    <!--<div class="hr-style-1-content"><span>People</span></div>-->
+    <div>
+    <div id="people" class="container">
+        <div class="row">
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://sydney.edu.au/science/people/dietmar.muller.php">
+                    <img src="/static/img/dietmar-180x180.png" class="img-responsive img-circle" alt="Dietmar Müller's photo">
+                </a><p>
+                <strong class="title">Professor of Geophysics</strong><br>
+                <strong class="name">Dietmar Müller</strong><br>
+                <strong class="work">The University of Sydney</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.linkedin.com/in/michael-chin-38745913">
+                    <img src="/static/img/qin-180x180.png" class="img-responsive img-circle" alt="Xiaodong Qin's photo">
+                </a><p>
+                <strong class="title">Web Architect &amp; Developer</strong><br>
+                <strong class="name">Xiaodong Qin</strong><br>
+                <strong class="work">The University of Sydney</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.researchgate.net/profile/Simon_Williams9">
+                    <img src="/static/img/Simon_Williams-180x180.png" class="img-responsive img-circle" alt="Simon Williams's photo">
+                </a><p>
+                <strong class="title">Future Fellow</strong><br>
+                <strong class="name">Simon Williams</strong><br>
+                <strong class="work">University of Tasmania</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://sydney.edu.au/science/people/adriana.dutkiewicz.php">
+                    <img src="/static/img/Adriana-180x180.jpg" class="img-responsive img-circle" alt="Adriana Dutkiewicz's photo">
+                </a><p>
+                <strong class="title">Future Fellow</strong><br>
+                <strong class="name">Adriana Dutkiewicz</strong><br>
+                <strong class="work">The University of Sydney</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.linkedin.com/in/simon-o-callaghan-07587633/">
+                    <img src="/static/img/Simon-180x180.jpg" class="img-responsive img-circle" alt="Simon O&#39;Callaghan's photo">
+                </a><p>
+                <strong class="title">Senior Research Engineer</strong><br>
+                <strong class="name">Simon O&#39;Callaghan</strong><br>
+                <strong class="work">Data61</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://topex.ucsd.edu/sandwell/">
+                    <img src="/static/img/sandwell-180x180.jpg" class="img-responsive img-circle" alt="David Sandwell's photo">
+                </a><p>
+                <strong class="title">Professor of Geophysics</strong><br>
+                <strong class="name">David Sandwell</strong><br>
+                <strong class="work">Scripps Institution of Oceanography</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://geomag.org/info/smaus.html">
+                    <img src="/static/img/stefan-180x180.jpg" class="img-responsive img-circle" alt="Stefan Maus's photo">
+                </a><p>
+                <strong class="title">Senior Scientist, Geomagnetism</strong><br>
+                <strong class="name">Stefan Maus</strong><br>
+                <strong class="work">(CIRES) University of Colorado</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://research.curtin.edu.au/supervisor/prof-zheng-xiang-li/">
+                    <img src="/static/img/Z-Li-180x180.png" class="img-responsive img-circle" alt="Zheng-Xiang Li's photo">
+                </a><p>
+                <strong class="title">Professor and ARC Laureate Fellow</strong><br>
+                <strong class="name">Zheng-Xiang Li</strong><br>
+                <strong class="work">Curtin University</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://scholars.uow.edu.au/display/nicolas_flament">
+                    <img src="/static/img/Nicolas-180x180.jpg" class="img-responsive img-circle" alt="Nicolas Flament's photo">
+                </a><p>
+                <strong class="title">Associate Professor</strong><br>
+                <strong class="name">Nicolas Flament</strong><br>
+                <strong class="work">University of Wollongong</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://web.gps.caltech.edu/~gurnis/">
+                    <img src="/static/img/Gurnis-180x180.jpg" class="img-responsive img-circle" alt="Michael Gurnis's photo">
+                </a><p>
+                <strong class="title">John E. and Hazel S. Smits Professor of Geophysics</strong><br>
+                <strong class="name">Michael Gurnis</strong><br>
+                <strong class="work">California Institute of Technology</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://sydney.edu.au/science/people/maria.seton.php">
+                    <img src="/static/img/Maria-180x180.jpg" class="img-responsive img-circle" alt="Maria Seton's photo">
+                </a><p>
+                <strong class="title">Associate Professor</strong><br>
+                <strong class="name">Maria Seton</strong><br>
+                <strong class="work">The University of Sydney</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://www.utas.edu.au/profiles/staff/imas/joanne-whittaker">
+                    <img src="/static/img/Jo-Whittaker-180x180.jpg" class="img-responsive img-circle" alt="Joanne Whittaker's photo">
+                </a><p>
+                <strong class="title">Associate Professor</strong><br>
+                <strong class="name">Joanne Whittaker</strong><br>
+                <strong class="work">IMAS, Univ. of Tasmania</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://www.gfz-potsdam.de/en/section/geodynamic-modeling/staff/profil/sascha-brune/">
+                    <img src="/static/img/Sascha_Brune_180x180.jpg" class="img-responsive img-circle" alt="Sascha Brune's photo">
+                </a><p>
+                <strong class="title">Senior Scientist and Head of the Geodynamic Modelling Section</strong><br>
+                <strong class="name">Sascha Brune</strong><br>
+                <strong class="work">GFZ German Research Centre for Geosciences</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.linkedin.com/in/nathaniel-butterworth-72003877">
+                    <img src="/static/img/nathan-180x180.jpg" class="img-responsive img-circle" alt="Nathaniel Butterworth's photo">
+                </a><p>
+                <strong class="title">Senior Research Informatics Officer</strong><br>
+                <strong class="name">Nathaniel Butterworth</strong><br>
+                <strong class="work">Sydney Informatics Hub</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="http://www.earthbyte.org/tag/sarah-macleod/">
+                    <img src="/static/img/SJM-180x180.jpg" class="img-responsive img-circle" alt="Sarah MacLeod's photo">
+                </a><p>
+                <strong class="title"></strong><br>
+                <strong class="name">Sarah MacLeod</strong><br>
+                <strong class="work"></strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://research.unsw.edu.au/people/dr-mandi-thran">
+                    <img src="/static/img/mandi-180x180.jpg" class="img-responsive img-circle" alt="Mandi Thran's photo">
+                </a><p>
+                <strong class="title">Flood Forecaster</strong><br>
+                <strong class="name">Mandi Thran</strong><br>
+                <strong class="work">Bureau of Meteorology</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.earth.northwestern.edu/our-people/affiliated-faculty/scotese-christopher.html">
+                    <img src="/static/img/scotese-chris-180x180.jpg" class="img-responsive img-circle" alt="Christopher Scotese's photo">
+                </a><p>
+                <strong class="title">Adjunct Professor</strong><br>
+                <strong class="name">Christopher Scotese</strong><br>
+                <strong class="work">Emeritus, University of Texas</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.sydney.edu.au/science/about/our-people/academic-staff/sabin-zahirovic.html">
+                    <img src="/static/img/sabin-180x180.png" class="img-responsive img-circle" alt="Dr Sabin Zahirovic's photo">
+                </a><p>
+                <strong class="title">ARC DECRA Fellow</strong><br>
+                <strong class="name">Dr Sabin Zahirovic</strong><br>
+                <strong class="work">The University of Sydney</strong>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-6" style="height:300px;">
+                <p style="text-align: center;"><a style="display:inline-block;" href="https://www.juanafonso.com/">
+                    <img src="/static/img/Juan-Carlos-Afonso-180x180.png" class="img-responsive img-circle" alt="Juan Carlos Afonso's photo">
+                </a><p>
+                <strong class="title">A/Prof.</strong><br>
+                <strong class="name">Juan Carlos Afonso</strong><br>
+                <strong class="work"> ITC, University of Twente</strong>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+
+
+    <div id="sponsors-anchor" style="width:1px; height:1px; opaque:0.1; position:absolute; margin-top:-100px;"></div>
+    <hr id="sponsors-hr" class="style-1">
+    <!--<div class="hr-style-1-content"><span>Sponsors & Collaborators</span></div>-->
+    <div>
+    <div id="sponsors" class="container">
+        <div class="row featurette">
+            <div class="col-md-3" style="text-align:center;">
+                <a href="http://www.auscope.org.au/" target="_blank">
+                <img alt="AuScope Logo" src="/static/img/AuScope-logo.png" class="img-responsive"></a>
+            </div>
+            <div class="col-md-9">
+                <p><strong>AuScope</strong>
+                was designed to put Australia at the forefront of international geoscience and geospatial research and to create geoscience applications for the next generation. 
+                Its aim was to assist in building Australia's wealth through improved and sustainable discovery, development and management of our minerals, energy and groundwater assets. 
+                It provides a step-change in our ability to spatially map Australia's location and internal deformation, in particular enhancing our ability to contribute to 
+                natural hazard prediction and management, both here and for our immediate neighbours.
+                </p> 
+            </div>
+        </div>
+
+        <div class="row featurette">
+            <div class="col-md-3" style="text-align:center;">
+                <a href="http://sydney.edu.au/" target="_blank">
+                <img alt="USyd Logo" src="/static/img/usyd-logo-black.png" class="img-responsive"></a>
+            </div>
+            <div class="col-md-9">
+            <p><strong>The University of Sydney</strong>
+                is an Australian public research university in Sydney. Founded in 1850, it is Australia's first university and is regarded as one of its most prestigious. 
+                In 2015, it was ranked 45th in the QS World University Rankings. Additionally, Sydney graduates have been ranked the most employable in Australia and 
+                14th most employable in the world, in the top 0.1%. Five Nobel and two Crafoord laureates have been affiliated with the university as graduates and faculty. 
+                Its campus is ranked in the top 10 of the world's most beautiful universities by the British Daily Telegraph and The Huffington Post, 
+                spreading across the inner-city suburbs of Camperdown and Darlington.
+            </p>
+            </div>
+        </div>
+
+
+        <div class="row featurette">
+            <div class="col-md-3" style="text-align:center;">
+                <a href="http://www.earthbyte.org/" target="_blank">
+                <img alt="EarthByte Logo" src="/static/img/EarthByte-banner.png" class="img-responsive"></a>
+            </div>
+            <div class="col-md-9">
+            <p>
+                <strong>EarthByte</strong> 
+                is an internationally leading eGeoscience collaboration between several Australian Universities, international centres of excellence and industry partners. 
+                One of the fundamental aims of the EarthByte Group is geodata synthesis through space and time, assimilating the wealth of disparate geological and 
+                geophysical data into a four-dimensional Earth model including tectonics, geodynamics and surface processes. The EarthByte Group is pursuing open 
+                innovation via collaborative software development, high performance and distributed computing, "Big Data" analysis and by making open access digital 
+                data collections available to the community.
+            </p>
+            </div>
+        </div>
+       
+ 
+        <div class="row featurette">
+            <div class="col-md-3" style="text-align:center;">
+                <a href="http://www.seismolab.caltech.edu/" target="_blank">
+                <img alt="SeismoLab Calteche Logo" src="/static/img/seismo_lab_logo.png" class="img-responsive"></a>
+            </div>
+            <div class="col-md-9">
+            <p>
+                <strong>Caltech's Seismological Laboratory</strong>, 
+                an arm of the Division of Geological and Planetary Sciences (GPS), was established in 1921. It has a distinguished history of leadership in science and serving 
+                the public interest. Internationally recognized for excellence in geophysical research and academics and home to outstanding facilities in seismic networks, 
+                high performance computing, and mineral physics, the Seismo Lab is an ideal place for study and research. The Lab serves as a focal point for earthquake 
+                information in Southern California and the world.
+            </p>
+            </div>
+        </div>
+
+        <div class="row featurette">
+            <div class="col-md-3" style="text-align:center;">
+                <a href="https://www.curtin.edu.au/" target="_blank">
+                <img alt="Curtin University Logo" 
+                    src="/static/img/curtin-uni-logo.png" class="img-responsive"></a>
+            </div>
+            <div class="col-md-9">
+                <p>
+                <strong>Curtin University</strong> is Western Australia’s largest university, and is proud of its practical focus on finding 
+                creative solutions to problems through the innovative application of technology. Curtin is an innovative, global university known for its high-impact research, strong industry partnerships and commitment to preparing you for jobs of the future. And Curtin is ranked in the top one per cent of universities worldwide in the highly regarded Academic Ranking of World Universities (ARWU) 2020.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    </div>
+    <!--container-->
+
+    <nav class="footer navbar navbar-fixed-bottom navbar-light">
+      <span class="copyright-long" style="margin-right: 3em"
+        >Copyright &copy; 2015-2022 The University of Sydney. All rights
+        reserved.</span
+      >
+      <a
+        class="copyright"
+        style="margin-right: 5px"
+        href="http://sydney.edu.au/disclaimer.html"
+        >Disclaimer</a
+      >
+      <a class="copyright" href="http://sydney.edu.au/privacy-policy.html"
+        >Privacy</a
+      >
+      <!--<p class="pull-right" style="margin-bottom:0px;"><a href="#" target="_self">Back to top</a></p>-->
+    </nav>
+
+    <div id="social-media-share-div" style="display: none">
+      <ul>
+        <li>
+          <div
+            class="fb-share-button"
+            data-href="http://portal.gplates.org"
+            data-layout="button"
+          ></div>
+        </li>
+        <li>
+          <a
+            href="https://twitter.com/share"
+            class="twitter-share-button"
+            {count}
+            >Tweet</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    
+    <script data-main="/static/js/dist/core/frontpage_2024-01-28_23-12-45" src="/static/js/require.js"></script>   
+ 
+ 
+
+  </body>
+</html>
+ contentType 9 text/html url 29 http://portal.gplates.org:80/ responseCode 3 200 

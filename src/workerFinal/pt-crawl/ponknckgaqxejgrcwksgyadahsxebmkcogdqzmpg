@@ -1,0 +1,1040 @@
+ponknckgaqxejgrcwksgyadahsxebmkcogdqzmpg length 5 68073 page 68073 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>National Reports</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="National Reports" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl27_BSignUp" href="javascript:__doPostBack(&#39;ctl27$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl27_BSignIn" href="javascript:__doPostBack(&#39;ctl27$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl26_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl26$BLocale', 'ar');" id="ctl26_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'es');" id="ctl26_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'fr');" id="ctl26_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'ru');" id="ctl26_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">Русский</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'zh');" id="ctl26_CLink" class="dropdown-item" hreflang="zh">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">中文</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./reports/" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBSIvdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZyZXBvcnRzHglpbm5lcmh0bWwFFlNpZ24gdXAgZm9yIGFuIGFjY291bnRkAgMPFgQfAAUiL3VzZXIvc2lnbmluLz9yZXR1cm51cmw9JTJmcmVwb3J0cx8BBQdTaWduIEluZAIDDxYCHgdWaXNpYmxlaBYEAgEPFgQfAAUjL3VzZXIvcHJvZmlsZS8/cmV0dXJudXJsPSUyZnJlcG9ydHMeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIIDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCemhkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC0zOTIzLmpwZykWAgIBDxYCHwEFEE5hdGlvbmFsIFJlcG9ydHNkAgEPZBYEAgEPFgQfAAUWL3JlcG9ydHMvZGVmYXVsdC5zaHRtbB8BBRBOYXRpb25hbCBSZXBvcnRzZAIDD2QWAmYPZBYCZg8WAh4FY2xhc3MFGm5hdmJhci1uYXYgbXItYXV0byBsZXZlbC0wFgICBQ8WBh8GBQhuYXYtaXRlbR4HcGFnZS1pZAUENDYwNB8CaBYCZg8WAh8AZGQCAw9kFgICAQ9kFgJmD2QWAmYPZBYCAgEPFgQfBgUVbGlzdC11bnN0eWxlZCBsZXZlbC0wHwJoFgICAQ8WBh8GBQdsZXZlbC0wHwcFBDQ2MDQfAmgWAgIBDxYCHwBkZAIFDxYCHwYFOGNvbC0xMiBwbC1tZC00IHByLW1kLTQgcGwtbGctNSBwci1sZy01IGNvbC1sZy03IGNvbC14bC04FgICAw8WBB8BBQcgICAgLy8gHwJoZAIHDxYCHwYFNmNvbC0xMiAgcGwtbWQtNCBwbC1sZy0wIHB0LTAgcHQtbGctMyBjb2wtbGctNSBjb2wteGwtNBYCAgEPZBYCZg9kFgICAg9kFgICAw9kFgICAw9kFgJmD2QWAgIBDxYCHwEFCU5SIFN0YXR1c2RkQAUt9h6HKZzEgcfyQ84ITec8c7/KGRtk5YBY/wkfMGE=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl20_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-3923.jpg)">
+    <h1 id="ctl20_ctl00_CCarouselTitle">National Reports</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/reports/default.shtml" id="ctl21_CPortal" class="navbar-brand">National Reports</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl21_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl21_ctl00_CMenuRow" class="nav-item" page-id="10120">
+        <a href="https://chm.cbd.int" id="ctl21_ctl00_CMenuRowLink" class="nav-link">Online Reporting Tool</a>
+    </li><li id="ctl21_ctl00_CMenuRow" class="nav-item" page-id="4746"><a id="ctl21_ctl00_CMenuRowLink" class="nav-link">About National Reporting</a><ul id="ctl21_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl21_ctl00_ctl00_CMenuRow" class="nav-item" page-id="4747">
+        <a href="/reports/intro.shtml" id="ctl21_ctl00_ctl00_CMenuRowLink" class="nav-link">Introduction</a>
+    </li>
+</ul>
+</li><li id="ctl21_ctl00_CMenuRow" class="nav-item" page-id="4603"><a id="ctl21_ctl00_CMenuRowLink" class="nav-link">Reports</a><ul id="ctl21_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="4749">
+        <a href="/reports/national.shtml" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Background</a>
+    </li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="5864"><a href="/reports/search" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Search National Reports and NBSAPs</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="10039"><a href="https://www.cbd.int/nbsap/targets/default.shtml" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Find National Targets</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="8685"><a href="http://www.cbd.int/reports/reports-map" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Search National Reports by Maps</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9696"><a href="/nr6/" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Sixth National Report</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="7338"><a href="/nr5/" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Fifth National Report</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="10666"><a href="/nbsap/" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">NBSAPs</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="4311"><a href="/reports/syntheses.shtml" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Syntheses and Reporting Mechanism</a></li><li id="ctl21_ctl00_ctl01_CMenuRow" class="nav-item" page-id="4727"><a href="/reports/harmonization.shtml" id="ctl21_ctl00_ctl01_CMenuRowLink" class="nav-link">Harmonization of Biodiversity-related Reporting</a></li>
+</ul>
+</li><li id="ctl21_ctl00_CMenuRow" class="nav-item" page-id="4604"><a id="ctl21_ctl00_CMenuRowLink" class="nav-link">Guidance and Tools</a><ul id="ctl21_ctl00_ctl02_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl21_ctl00_ctl02_CMenuRow" class="nav-item" page-id="4575">
+        <a href="https://www.cbd.int/gbf/" id="ctl21_ctl00_ctl02_CMenuRowLink" class="nav-link">Kunming-Montreal Global Biodiversity Framework</a>
+    </li><li id="ctl21_ctl00_ctl02_CMenuRow" class="nav-item" page-id="4846"><a href="/reports/decisions.shtml" id="ctl21_ctl00_ctl02_CMenuRowLink" class="nav-link">Decisions</a></li><li id="ctl21_ctl00_ctl02_CMenuRow" class="nav-item" page-id="4318"><a href="/reports/analyzer.shtml" id="ctl21_ctl00_ctl02_CMenuRowLink" class="nav-link">Analyze national reports</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl30_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl30_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl30_TMenuItem" class="level-0 selected" page-id="3708">
+            <a href="/reports" id="ctl30_TMenuItemLink">National Reports</a>
+        </li><li id="ctl30_TMenuItem" class="level-0" page-id="10120">
+            <a href="https://chm.cbd.int" id="ctl30_TMenuItemLink">Online Reporting Tool</a>
+        </li><li id="ctl30_TMenuItem" class="level-0" page-id="4746">
+            <a id="ctl30_TMenuItemLink">About National Reporting</a>
+        <ul id="ctl30_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl30_TMenuItem" class="level-1" page-id="4747">
+            <a href="/reports/intro.shtml" id="ctl30_TMenuItemLink">Introduction</a>
+        </li></ul></li><li id="ctl30_TMenuItem" class="level-0" page-id="4603">
+            <a id="ctl30_TMenuItemLink">Reports</a>
+        <ul id="ctl30_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl30_TMenuItem" class="level-1" page-id="4749">
+            <a href="/reports/national.shtml" id="ctl30_TMenuItemLink">Background</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="5864">
+            <a href="/reports/search" id="ctl30_TMenuItemLink">Search National Reports and NBSAPs</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="10039">
+            <a href="https://www.cbd.int/nbsap/targets/default.shtml" id="ctl30_TMenuItemLink">Find National Targets</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="8685">
+            <a href="http://www.cbd.int/reports/reports-map" id="ctl30_TMenuItemLink">Search National Reports by Maps</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="9696">
+            <a href="/nr6" id="ctl30_TMenuItemLink">Sixth National Report</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="7338">
+            <a href="/nr5" id="ctl30_TMenuItemLink">Fifth National Report</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="10666">
+            <a href="/nbsap/" id="ctl30_TMenuItemLink">NBSAPs</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="4311">
+            <a href="/reports/syntheses.shtml" id="ctl30_TMenuItemLink">Syntheses and Reporting Mechanism</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="4727">
+            <a href="/reports/harmonization.shtml" id="ctl30_TMenuItemLink">Harmonization of Biodiversity-related Reporting</a>
+        </li></ul></li><li id="ctl30_TMenuItem" class="level-0" page-id="4604">
+            <a id="ctl30_TMenuItemLink">Guidance and Tools</a>
+        <ul id="ctl30_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl30_TMenuItem" class="level-1" page-id="4575">
+            <a href="https://www.cbd.int/gbf/" id="ctl30_TMenuItemLink">Kunming-Montreal Global Biodiversity Framework</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="4846">
+            <a href="/reports/decisions.shtml" id="ctl30_TMenuItemLink">Decisions</a>
+        </li><li id="ctl30_TMenuItem" class="level-1" page-id="4318">
+            <a href="/reports/analyzer.shtml" id="ctl30_TMenuItemLink">Analyze national reports</a>
+        </li></ul></li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 col-lg-7 col-xl-8" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl25_CItems"><span>National Reports</span></span>
+</div>
+                                            
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              <h1 class="cmsH1">National Reports</h1>
+<div id="ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl15_CSkin2">
+        <div class="hlite"><a name="WhatsNew"></a><h2>What&#39;s New?</h2>
+<p></p>
+<div class="alert alert-info">The <a href="https://ort.cbd.int/"><b>updated Online Reporting Tool</b></a> for the submission of <b>national targets</b>, due by COP-16, is ready for use. Details are provided in <a href="https://www.cbd.int/doc/notifications/2023/ntf-2023-117-ORT-en.pdf">notification 2023-117</a>.</div>
+<p></p>
+In <a href="https://www.cbd.int/doc/decisions/cop-15/cop-15-dec-06-en.pdf"><b>decision 15/6</b></a>, Parties are requested to submit their <b>seventh national report by 28 February 2026</b> and their <b>eighth national report by 30 June 2029</b> to enable the preparation of the global reviews, as per Article 26 of the Convention, using the template provided in <a href="/doc/nr/Annex II (decision15-6).pdf"><b>annex II</b></a>.
+<p></p>
+Parties are also requested to use the monitoring framework of the Kunming-Montreal Global Biodiversity Framework, adopted in <a href="https://www.cbd.int/doc/decisions/cop-15/cop-15-dec-05-en.pdf"><b>decision 15/5</b></a>, in their national reports, supplemented, as appropriate, by optional component and complementary indicators also included therein and other national indicators.
+<p></p>
+<ul><li><a href="https://www.cbd.int/doc/nr/COP15-MOP10-MOP4 (NR decisions).pdf">COP-15, CP-MOP-10, NP-MOP-4 decisions containing requests related to National Reports</a></li></ul>
+<p></p>
+<a name=""></a><h3><font color='YellowGreen'>Data Reporting Tool for MEAs (DaRT)</font></h3> DaRT is the <b>first tool supporting Parties to effectively use synergies</b> in the field of <b>knowledge and information management</b> for national reporting to biodiversity-related conventions. DaRT is being developed by UNEP, with the support of SCBD, and was endorsed by the InforMEA Initiative which brings together MEAs. It is financially supported by the European Union and Switzerland. Click <a href="https://dart.informea.org/"><b>here</b></a> for further details. See also <a href="https://www.cbd.int/doc/c/3f65/d8fe/7e3a76d05cb0fc279fd7f38c/sbi-03-inf-08-en.pdf"><b>SBI-3 information document</b></a> prepared on DaRT.
+<p></p>
+<a name=""></a><h3><font color='YellowGreen'>Bioland Tool</font></h3> The Bioland Tool is a turnkey solution that can be used by all countries, no matter what capacity constraints they are faced with, to establish a basic operational national CHM website which, <b>among other things, can effectively facilitate NBSAP implementation</b>. This turnkey solution uses the Drupal content management system (CMS) and is available at no cost to countries. Click <a href="https://demo.chm-cbd.net/"><b>here</b></a> to see a demonstration of the Bioland Tool. Countries interested in making use of the Bioland Tool should contact the CBD Secretariat at <b>secretariat@cbd.int</b>. <br />
+<p></p>
+<a name=""></a><h3><font color='YellowGreen'>Access 6NRs</font></h3>
+<p></p>
+The 6NRs that were submitted using the <b>online reporting tool</b> are accessible on the <a href="https://chm.cbd.int/database?schema_s=nationalReport6"><b>Clearing-House Mechanism</b></a>. Those submitted <b>offline</b> are accessible below: <table class="table table-borderless"><tr><td valign="top" style="width:500px;" ><br /><ul><li><a href="/doc/nr/nr-06/af-nr-06-en.pdf">Afghanistan</a> <br /></li><li><a href="/doc/nr/nr-06/al-nr-06-en.pdf">Albania</a> <br /></li><li><a href="/doc/nr/nr-06/dz-nr-06-fr.pdf">Algeria</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ao-nr-06-en.pdf">Angola</a> <br /></li><li><a href="/doc/nr/nr-06/ar-nr-06-es.pdf">Argentina</a> <br /></li><li><a href="/doc/nr/nr-06/am-nr-06-en.pdf">Armenia</a> <br /></li><li><a href="/doc/nr/nr-06/au-nr-06-en.pdf">Australia</a> <br /></li><li><a href="/doc/nr/nr-06/at-nr-06-en.pdf">Austria</a> <br /></li><li><a href="/doc/nr/nr-06/az-nr-06-en.pdf">Azerbaijan</a> <br /></li><li><a href="/doc/nr/nr-06/bh-nr-06-en.pdf">Bahrain</a> <br /></li><li><a href="/doc/nr/nr-06/bd-nr-06-en.pdf">Bangladesh</a> <br /></li><li><a href="/doc/nr/nr-06/bb-nr-06-en.pdf">Barbados</a> <br /></li><li><a href="/doc/nr/nr-06/be-nr-06-en.pdf">Belgium</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/bj-nr-06-fr.pdf">Benin</a> <br /></li><li><a href="/doc/nr/nr-06/bo-nr-06-es.pdf">Bolivia</a> <br /></li><li><a href="/doc/nr/nr-06/br-nr-06-en.pdf">Brazil</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/bn-nr-06-en.pdf">Brunei Darussalam</a> <br /></li><li><a href="/doc/nr/nr-06/bg-nr-06-en.pdf">Bulgaria</a> <br /></li><li><a href="/doc/nr/nr-06/bi-nr-06-fr.pdf">Burundi</a> <br /></li><li><a href="/doc/nr/nr-06/cv-nr-06-en.pdf">Cabo Verde</a> <br /></li><li><a href="/doc/nr/nr-06/kh-nr-06-en.pdf">Cambodia</a> <br /></li><li><a href="/doc/nr/nr-06/cf-nr-06-fr.pdf">Central African Republic</a> <br /></li><li><a href="/doc/nr/nr-06/td-nr-06-fr.pdf">Chad</a> <br /></li><li><a href="/doc/nr/nr-06/co-nr-06-es.pdf">Colombia</a> <br /></li><li><a href="/doc/nr/nr-06/km-nr-06-fr.pdf">Comoros</a> <br /></li><li><a href="/doc/nr/nr-06/cr-nr-06-p1-es.pdf">Costa Rica</a> (<a href="/doc/nr/nr-06/cr-nr-06-p2-es.pdf">Summary</a>) <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ci-nr-06-fr.pdf">C&#244;te d&#39;Ivoire</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/cu-nr-06-p1-es.pdf">Cuba</a> (<a href="/doc/nr/nr-06/cu-nr-06-p2-es.pdf">Estudios de caso</a>) <br /></li><li><a href="/doc/nr/nr-06/cy-nr-06-en.pdf">Cyprus</a> <br /></li><li><a href="/doc/nr/nr-06/kp-nr-06-en.pdf">Democratic People&#39;s Republic of Korea</a> <br /></li><li><a href="/doc/nr/nr-06/cd-nr-06-fr.pdf">Democratic Republic of the Congo</a> <br /></li><li><a href="/doc/nr/nr-06/dk-nr-06-p1-en.pdf">Denmark</a> (<a href="/doc/nr/nr-06/dk-nr-06-p2-en.pdf">Greenland</a>) <br /></li><li><a href="/doc/nr/nr-06/dj-nr-06-fr.pdf">Djibouti</a> <br /></li><li><a href="/doc/nr/nr-06/dm-nr-06-en.pdf">Dominica</a> <br /></li><li><a href="/doc/nr/nr-06/sv-nr-06-es.pdf">El Salvador</a> <br /></li><li><a href="/doc/nr/nr-06/gq-nr-06-es.pdf">Equatorial Guinea</a> <br /></li><li><a href="/doc/nr/nr-06/er-nr-06-en.pdf">Eritrea</a> <br /></li><li><a href="/doc/nr/nr-06/sz-nr-06-en.pdf">Eswatini</a> <br /></li><li><a href="/doc/nr/nr-06/fj-nr-06-en.pdf">Fiji</a> <br /></li><li><a href="/doc/nr/nr-06/fr-nr-06-fr.pdf">France</a> (<a href="/doc/nr/nr-06/fr-nr-06-p2-fr.pdf">New Caledonia</a>, including summary in <a href="/doc/nr/nr-06/fr-nr-06-p2-summary-en.pdf">English</a> and <a href="/doc/nr/nr-06/fr-nr-06-p2-summary-fr.pdf">French</a>) <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ga-nr-06-fr.pdf">Gabon</a> <br /></li><li><a href="/doc/nr/nr-06/ge-nr-06-en.pdf">Georgia</a> <br /></li><li><a href="/doc/nr/nr-06/de-nr-06-en.pdf">Germany</a><br /><i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/gh-nr-06-en.pdf">Ghana</a> <br /></li><li><a href="/doc/nr/nr-06/gr-nr-06-en.pdf">Greece</a> <br /><i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/gn-nr-06-fr.pdf">Guinea</a> <br /></li><li>Guinea-Bissau <i>(<a href="/doc/nr/nr-06/gw-nr-06-fr.pdf">French</a> and <a href="/doc/nr/nr-06/gw-nr-06-pt.pdf">Portuguese</a>)</i><br /></li><li><a href="/doc/nr/nr-06/gy-nr-06-en.pdf">Guyana</a> <br /><i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ht-nr-06-fr.pdf">Haiti</a> <br /></li><li><a href="/doc/nr/nr-06/hn-nr-06-es.pdf">Honduras</a> <br /></li><li><a href="/doc/nr/nr-06/iq-nr-06-en.pdf">Iraq</a> <br /></li><li><a href="/doc/nr/nr-06/ie-nr-06-en.pdf">Ireland</a> <br /></li><li><a href="/doc/nr/nr-06/jm-nr-06-en.pdf">Jamaica</a> <br /></li><li>Kazakhstan (<a href="/doc/nr/nr-06/kz-nr-06-en.pdf">English</a>, <a href="/doc/nr/nr-06/kz-nr-06-ru.pdf">Russian</a>) <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ke-nr-06-en.pdf">Kenya</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ki-nr-06-en.pdf">Kiribati</a><br /></li><li><a href="/doc/nr/nr-06/kw-nr-06-ar.pdf">Kuwait</a> <br /></li></ul>
+<p></p>
+</td>
+<td valign="top" style="width:800px;" ><br /><ul><li>Lao PDR (<a href="/doc/nr/nr-06/la-nr-06-en.pdf">English</a>, <a href="/doc/nr/nr-06/la-nr-06-lo.pdf">Laotian</a>)<br /></li><li><a href="/doc/nr/nr-06/lb-nr-06-en.pdf">Lebanon</a> <br /><i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ls-nr-06-en.pdf">Lesotho</a> <br /></li><li><a href="/doc/nr/nr-06/lr-nr-06-en.pdf">Liberia</a> <br /></li><li><a href="/doc/nr/nr-06/mg-nr-06-fr.pdf">Madagascar</a><br /></li><li><a href="/doc/nr/nr-06/mw-nr-06-en.pdf">Malawi</a> <br /></li><li><a href="/doc/nr/nr-06/my-nr-06-en.pdf">Malaysia</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/mh-nr-06-en.pdf">Marshall Islands</a> <br /></li><li><a href="/doc/nr/nr-06/mr-nr-06-fr.pdf">Mauritania</a> <br /></li><li><a href="/doc/nr/nr-06/mu-nr-06-en.pdf">Mauritius</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/fm-nr-06-en.pdf">Micronesia (Federated States of)</a><br /></li><li><a href="/doc/nr/nr-06/mc-nr-06-fr.pdf">Monaco</a> <br /></li><li>Mongolia (<a href="/doc/nr/nr-06/mn-nr-06-en.pdf">English</a>, <a href="/doc/nr/nr-06/mn-nr-06-mn.pdf">Mongolian</a>) <br /></li><li><a href="/doc/nr/nr-06/me-nr-06-en.pdf">Montenegro</a> <br /></li><li><a href="/doc/nr/nr-06/mz-nr-06-en.pdf">Mozambique</a> <br /></li><li><a href="/doc/nr/nr-06/na-nr-06-en.pdf">Namibia</a> <br /></li><li><a href="/doc/nr/nr-06/nr-nr-06-en.pdf">Nauru</a> <br /></li><li><a href="/doc/nr/nr-06/nz-nr-06-en.pdf">New Zealand</a> <br /></li><li><a href="/doc/nr/nr-06/ni-nr-06-es.pdf">Nicaragua</a> <br /></li><li><a href="/doc/nr/nr-06/nu-nr-06-en.pdf">Niue</a> <br /></li><li><a href="/doc/nr/nr-06/mk-nr-06-en.pdf">North Macedonia</a> <br /></li><li><a href="/doc/nr/nr-06/om-nr-06-ar.pdf">Oman</a> <br /></li><li><a href="/doc/nr/nr-06/pk-nr-06-en.pdf">Pakistan</a> <br /></li><li><a href="/doc/nr/nr-06/pg-nr-06-en.pdf">Papua New Guinea</a> <br /></li><li><a href="/doc/nr/nr-06/qa-nr-06-ar.pdf">Qatar</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/cg-nr-06-fr.pdf">Republic of Congo</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/rw-nr-06-en.pdf">Rwanda</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/vc-nr-06-en.pdf">Saint Vincent and the Grenadines</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/ws-nr-06-en.pdf">Samoa</a> <br /></li><li>San Marino (<a href="/doc/nr/nr-06/sm-nr-06-en.pdf">English</a>, <a href="/doc/nr/nr-06/sm-nr-06-it.pdf">Italian</a>) <br /></li><li><a href="/doc/nr/nr-06/st-nr-06-en.pdf">Sao Tome and Principe</a> <br /></li><li><a href="/doc/nr/nr-06/rs-nr-06-en.pdf">Serbia</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/sc-nr-06-en.pdf">Seychelles</a> <br /></li><li><a href="/doc/nr/nr-06/sl-nr-06-en.pdf">Sierra Leone</a> <br /></li><li><a href="/doc/nr/nr-06/sg-nr-06-en.pdf">Singapore</a> <br /></li><li><a href="/doc/nr/nr-06/si-nr-06-en.pdf">Slovenia</a> <br /></li><li><a href="/doc/nr/nr-06/sb-nr-06-en.pdf">Solomon Islands</a> <br /></li><li><a href="/doc/nr/nr-06/so-nr-06-en.pdf">Somalia</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/ss-nr-06-en.pdf">South Sudan</a> <br /></li><li><a href="/doc/nr/nr-06/ps-nr-06-en.pdf">State of Palestine</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/sr-nr-06-en.pdf">Suriname</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/th-nr-06-en.pdf">Thailand</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/tl-nr-06-en.pdf">Timor Leste</a> <br /></li><li><a href="/doc/nr/nr-06/to-nr-06-en.pdf">Tonga</a> <br /></li><li><a href="/doc/nr/nr-06/tn-nr-06-fr.pdf">Tunisia</a> <i><font color='green'>Also submitted online</font></i><br /></li><li><a href="/doc/nr/nr-06/tr-nr-06-en.pdf">Turkey</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li>Turkmenistan (<a href="/doc/nr/nr-06/tm-nr-06-ru.pdf">Russian</a>, <a href="/doc/nr/nr-06/tm-nr-06-tk.pdf">Turkmen</a>)<br /></li><li><a href="/doc/nr/nr-06/tv-nr-06-en.pdf">Tuvalu</a> <br /></li><li><a href="/doc/nr/nr-06/ug-nr-06-en.pdf">Uganda</a> <br /></li><li>Ukraine (<a href="/doc/nr/nr-06/ua-nr-06-en.pdf">English</a>, <a href="/doc/nr/nr-06/ua-nr-06-uk.pdf">Ukrainian</a>)<br /></li><li><a href="/doc/nr/nr-06/ae-nr-06-ar.pdf">United Arab Emirates</a> <i><font color='green'>Also submitted online</font></i> <br /></li><li><a href="/doc/nr/nr-06/gb-nr-06-p1-en.pdf">United Kingdom of Great Britain and Northern Ireland</a> (<a href="/doc/nr/nr-06/gb-nr-06-p2-en.pdf">Overview of the UK Assessments of Progress for the GSPC Targets</a>, <a href="/doc/nr/nr-06/gb-nr-06-p3-en.pdf">Overview of the UK Assessments of Progress for the Aichi Targets</a>) <i><font color='green'>Also submitted online</font></i></li><li>Uzbekistan (<a href="/doc/nr/nr-06/uz-nr-06-en.pdf">English</a>, <a href="/doc/nr/nr-06/uz-nr-06-ru.pdf">Russian</a>)</li><li><a href="/doc/nr/nr-06/vu-nr-06-en.pdf">Vanuatu</a> <br /></li><li><a href="/doc/nr/nr-06/vn-nr-06-en.pdf">Viet Nam</a> <br /></li><li><a href="/doc/nr/nr-06/ye-nr-06-en.pdf">Yemen</a> <br /></li><li><a href="/doc/nr/nr-06/zw-nr-06-en.pdf">Zimbabwe</a> </li></ul></td>
+</tr></table><table class="table table-borderless"><tr><td style="width:100px;" >&nbsp;</td>
+<td style="width:300px;" ><a href="/reports/search/"><img src="/images/ico-sch-nr-en.gif"/></a><br /> </td>
+<td style="width:300px;" ><a href="/reports/analyzer.shtml"><img src="/images/ico-anz-nr-en.gif"/></a></td>
+</tr></table>
+<p></p>
+
+<p></p>
+
+<p></p>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+                                           </article>
+                                           <aside id="CArticleAside" class="col-12  pl-md-4 pl-lg-0 pt-0 pt-lg-3 col-lg-5 col-xl-4" class-x="col-lg-5 col-xl-4">
+                                              
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        
+<table bgcolor='#EFEFEF' >
+<tr>
+<td colspan='6'><b><span id="ctl16_W6449_Title">NR Status</span></b></td>
+
+</tr>
+<script language='javascript' type="text/javascript" >
+function RM_Draw() 
+{
+var nCtry = 198;
+var nParties  = 196;
+var nRptNR1Cnt  = 151;
+var nRptNR2Cnt = 137;
+var nRptNR3Cnt  = 153;
+var nRptNR4Cnt = 179;
+var nRptNR5Cnt  = 192;
+var nRptNR6Cnt  = 103;
+
+var sType = "" ;
+var sType1 = "NR1" ;
+var sType2 = "NR2" ;
+var sType3 = "NR3" ;
+var sType4 = "NR4" ;
+var sType5 = "NR5" ;
+var sType6 = "NR6" ;
+
+var sPrty = "CBD" ;
+
+document.write(
+  "\n<tr>"
++ "\n<td valign='bottom' >"+ nRptNR1Cnt + "<div style='height: " + nRptNR1Cnt + "px; background: #003366; width: 22px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nRptNR2Cnt  + "<div style='height: " + nRptNR2Cnt  + "px;  background: #267aba; width: 18px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nRptNR3Cnt  + "<div style='height: " + nRptNR3Cnt  + "px;  background: #3366aa; width: 18px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nRptNR4Cnt  + "<div style='height: " + nRptNR4Cnt  + "px;  background: #2661ce; width: 18px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nRptNR5Cnt  + "<div style='height: " + nRptNR5Cnt  + "px;  background: #92a2eb; width: 18px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nRptNR6Cnt  + "<div style='height: " + nRptNR6Cnt  + "px;  background: #aaaaaa; width: 18px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nParties  + "<div style='height: " + nParties  + "px;  background: #6699aa; width: 22px;'></div></td>"
++ "\n<td valign='bottom' style='padding-left:3px;'>"+ nCtry + "<div style='height: " + nCtry + "px;  background: #aabbbb; width: 22px;'></div></td>"
++ "\n</tr>"
++ "\n<tr>"
++ "\n<td colspan='6' nowrap='nowrap'>"
++ "\n<img src='/nr4/images/rm-darkblue.gif'  alt='' /> " + nRptNR1Cnt + " " + sType1 + " Received <br />"
++ "\n<img src='/nr4/images/rm-rich_electric_blue.gif' alt='' /> " + nRptNR2Cnt  + " " + sType2 + " Received <br />"
++ "\n<img src='/nr4/images/rm-mediumblue.gif'  alt='' /> " + nRptNR3Cnt + " " + sType3 + " Received <br />"
++ "\n<img src='/nr4/images/rm-cerulean_blue.gif' alt='' /> " + nRptNR4Cnt  + " " + sType4 + " Received <br />"
++ "\n<img src='/nr4/images/nr5-color.gif'  alt='' /> " + nRptNR5Cnt + " " + sType5 + " Received <br />"
++ "\n<img src='/nr4/images/rm-gray.gif'  alt='' /> " + nRptNR6Cnt + " " + sType6 + " Received (online)<br />"
++ "\n<img src='/nr4/images/rm-lightblue.gif'     alt='' /> " + nParties  + " " + sPrty + " Parties<br />"
++ "\n<img src='/nr4/images/rm-lightgray.gif'      alt='' /> " + nCtry + " Countries <br />"
++ "\n</td>"
++ "\n</tr>"
+); 
+return;
+}
+RM_Draw();
+</script>
+</table>
+
+    </div>
+</div>
+<p></p>
+<div id="ctl17_CSkin">
+    
+
+    
+    
+    <div id="ctl17_CSkin2">
+        <div class="hlite"><div class="alert alert-secondary"><a name=""></a><h3><a href="/aichi-targets/"><b>Aichi Biodiversity Targets webpages</b></a></h3> </div></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl18_CSkin">
+    
+
+    
+    
+    <div id="ctl18_CSkin2">
+        <div class="hlite"><div class="card"><div class="card-body"><div class="card-text"><a name=""></a><h3><font color='green'>Search 6NRs by maps</font></h3>
+<p></p>
+Click <a href="https://chm.cbd.int/search/reporting-map?filter=AICHI-TARGET-01"><font color='blue'>here</font></a> to view national assessments by Aichi Target, and more. <br /></div></div></div></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl19_CSkin">
+    
+
+    
+    
+    <div id="ctl19_CSkin2">
+        <div class="hlite"><div class="card text-white bg-success"><div class="card-body"><div class="card-text"><a name=""></a><h3><font color='green'>Conduct global keyword searches and obtain results in seconds!</font></h3>
+<p></p>
+<ul><li><a href="/doc/nbsap/Google Keyword Search (6NRs).pdf">Search 6NRs submitted using the online reporting tool on the CHM</a> <br /></li><li><a href="/doc/nbsap/Google Keyword Search.pdf">Search NBSAPs and earlier national reports posted on the CBD website</a> </li></ul></div></div></div>
+<p></p>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+                                           </aside>
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 31 https://www.cbd.int:443/reports responseCode 3 200 

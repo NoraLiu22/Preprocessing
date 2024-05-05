@@ -1,0 +1,119 @@
+zajodsimieckxcoabojeoguaseesagnkoqmaggzk length 4 5265 page 5265 <!DOCTYPE html>
+<!--
+/*
+* COPYRIGHT
+* Warning and Disclaimer:
+*/
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="description" content="3D interactive visulization in Cesium" />
+    
+    <title>GPlates Cesium</title>
+    <link type="image/png" rel="icon" href="/static/img/GPlates-icon.png">
+    <link rel="stylesheet" href="/static/Cesium/Widgets/CesiumWidget/CesiumWidget.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/GPlates.css" type="text/css">
+    <link rel="stylesheet" href="/static/libs/jquery-ui-1.11.4.darkhive/jquery-ui.css" />
+    <base href="">
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-55273523-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body data-view-name=global_lithological_map>
+    <div id="loadingOverlay"><h1>Loading...</h1></div>
+    <div id="cesiumContainer" class="fullSize"> </div>
+
+    <div id="time-display" style="display:none;"> 
+        <span  id="time" style="font-size:500%; color:#E8E9EF; position: absolute; margin-left:5px; margin-top:30px;">0 Ma</span>
+    </div>
+    <div id="time-slider">
+        <div id="slider"></div>
+        <button id="start" style="margin-left: 5px">start</button>
+        <button id="prev" style="margin-left: 5px">prev</button>
+        <button id="play" style="margin-left: 5px">play</button>
+        <button id="next" style="margin-left: 5px">next</button>
+        <button id="end" style="margin-left: 5px">end</button>
+	<input id="time-spinner" style="width:30px; height:17px;" value=0>
+    </div>
+
+
+    <div id="raster-terrain-ctl-panel" style="position: absolute; display:none; margin-top: 50px; margin-left: 10px; font-size:120%; border-spacing:10px 2px;">
+        <div id="select-raster-box" style="display:table-row;">
+            <label for="select-raster" style="display:table-cell;">Imagery</label>
+            <select id="select-raster" style="display:table-cell; width:100%;">
+            </select>
+        </div>
+
+        <div id="select-terrain-box" style="display:table-row;">
+            <label for="select-terrain" style="display:table-cell;">Terrain</label>
+            <select id="select-terrain" style="display:table-cell; width:100%;">
+            </select>
+        </div>
+
+        <div id="height-scale-panel" style="display:table-row;">
+            <label for="select-height-scale" style="display:table-cell;">Height Scale</label>
+            <select id="select-height-scale" style="display:table-cell;">
+            </select>
+        </div>
+    </div>
+
+    <div id="overlay-panel" style="position:absolute; display:none; top:150px; left:20px; font-size:120%;">
+        <span>Overlays</span>
+        <ul style="list-style-type: none; padding-left:10px; margin-top:5px;">
+            <li><input type="checkbox" name="overlay" id="sample-points" value="Sample Points">Sample Points</li>
+            <li><input type="checkbox" name="overlay" id="river" value="River">River</li>
+        </ul>
+    </div>
+
+
+    <div id="color-bar" style="display:none; width:200px; right:0; position:absolute; bottom:25px;">
+        <a id="color-bar-link" href="/static/img/haxby-height-color-bar.png" target="_blank">
+            <img src="/static/img/haxby-height-color-bar.png" alt="Color Bar" style="max-width:100%; max-height:100%;"></a>
+    </div>
+
+
+    <div id="layers-panel" style="position: absolute; display:none; margin-top: 50px; margin-left: 10px; font-size:120%;">
+        <ul style="list-style-type: none;">
+            <!--<li><input type="checkbox" name="layer" value="layer-1">Layer 1</li>-->
+        </ul>
+    </div>
+
+
+    <span id="coordinates-box" style="position:fixed; bottom:5px; right:5px; background:black; color:#E8E9EF;"></span>
+
+    <div id="popup-info-panel" class="rift_obliquity_info_panel">
+        <div id="content" style="overflow: auto; max-width: 100%;  max-height: 100%;"></div> 
+    </div>
+
+    <div id="uploadForm" title="Upload Files" class="ui-dialog"></div>
+  
+	<iframe id="uploadResult" name="uploadResult" src="about:blank" style="width:0;height:0;border:0px solid #fff;"></iframe>
+    
+    <div id="projections">
+        <form>
+            <input type="radio" id="3D" name="radio" checked="checked" /><label for="3D">3D Globe</label>
+            <input type="radio" id="2D" name="radio" /><label for="2D">2D Map</label>
+            <input type="radio" id="Columbus" name="radio" /><label for="Columbus">Columbus</label>
+        </form>
+    </div>
+
+    <a id="home" href="/">Home</a>
+    <a id="about" href="/" style="display:none;" target="_blank">About</a>
+
+    <script type="text/javascript" src="/static/Cesium/Cesium.js"></script>
+    <script data-main="/static/js/dist/cesium/main_2024-01-28_23-12-45" src="/static/js/require.js"></script>
+</body>
+</html>
+
+ contentType 9 text/html url 65 http://portal.gplates.org:80/cesium/?view=global_lithological_map responseCode 3 200 

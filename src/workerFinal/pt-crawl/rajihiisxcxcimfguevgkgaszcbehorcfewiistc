@@ -1,0 +1,509 @@
+rajihiisxcxcimfguevgkgaszcbehorcfewiistc length 5 30258 page 30258 <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- These and similar links throughout the page needs to be hardcoded to https://apps.dtic.mil/sti/citation/css...etc etc before going to prod -->
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/header.css">
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/search.css"> <!-- there's a link in here that needs to be updated as well -->
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/expansion-panel.css">
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/style.css">
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/footer.css">
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/uswds.min.css">
+        <link rel="stylesheet" href="https://apps.dtic.mil/sti/citation/css/all.min.css">
+
+        <script type="text/javascript" src="https://apps.dtic.mil/sti/citation/js/expansion-panel.js"></script>
+        <script type="text/javascript" src="https://apps.dtic.mil/sti/citation/js/uswds.min.js"></script>
+        <script type="text/javascript" src="https://apps.dtic.mil/sti/citation/js/all.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="https://apps.dtic.mil/sti/citation/img/DTIC-seal.ico">
+        <title>Defense Technical Information Center</title>
+     
+        <script>
+            isDescriptiveNoteArray = false;
+            isDistributionArray = false;
+
+            window.onload=function(){
+                const inputBtn = document.getElementById("search");
+                const inputEl = document.getElementById("search-field");
+
+                if(inputBtn) {
+                    inputBtn.addEventListener("click", submitSearch);
+                }
+
+                function submitSearch() {
+                    console.log(inputEl.value);
+                    window.location.href = 'https://discover.dtic.mil/results/?q=' + inputEl.value;
+                }
+            }
+
+            // Function to extract document ID from the URL
+            function getDocumentId() {
+                var t = window.location.href.split(/\//);
+                console.log( "loc", t );
+                var id = t[t.length-1];
+                return id;
+            }
+
+            // Get the current URL
+            function getUrl() {
+                //const currentUrl = window.location.href;
+                const currentUrl = window.location.href;
+     
+                // Extract the pathname and search parts
+                const pathname = window.location.pathname;
+                const search = window.location.search;
+                console.log( "currentUrl", currentUrl );
+                console.log( "pathname", pathname );
+                console.log( "search", search );
+     
+                return pathname + ".json";
+            }
+     
+            // Function to fetch JSON file based on document ID
+            function fetchDocument(documentId) {
+                var jsonUrl = getUrl();
+                jsonUrl = jsonUrl.replace(/\/sti\/citations\//, '/sti/citation/');	
+                console.log("JSON URL", jsonUrl);
+
+                fetch(jsonUrl).then(response => response.json()).then(jsonData => {
+                    console.log( "json", jsonData );
+                    document.title = jsonData?.UnclassifiedTitle;
+                    isDescriptiveNoteArray = Array.isArray(jsonData?.DescriptiveNote) ? true : false;
+                    isDistributionArray = Array.isArray(jsonData?.Distribution1) ? true : false;
+                    // Convert JSON data to HTML (adjust this part based on your data structure)
+                    const htmlContent = jsonToHtml(jsonData);
+                }).catch(error => console.error('Error fetching document:', error));
+            }
+
+            function toggleAbstract() {
+                var readMore = document.querySelector(".read-more-abstract");
+                readMore?.setAttribute("aria-hidden", readMore.getAttribute("aria-hidden") === "true" ? "false" : "true");
+
+                var readLess = document.querySelector(".read-less-abstract");
+                readLess?.setAttribute("aria-hidden", readLess.getAttribute("aria-hidden") === "true" ? "false" : "true");
+
+                var summaryContainer = document.querySelector(".abstract-container");
+                summaryContainer.setAttribute("open", readMore.getAttribute("aria-hidden") === "true" ? "true" : "false");
+
+            }
+
+            function toggleFullText() {
+                var readMore = document.querySelector(".read-more-fulltext");
+                readMore?.setAttribute("aria-hidden", readMore.getAttribute("aria-hidden") === "true" ? "false" : "true");
+
+                var readLess = document.querySelector(".read-less-fulltext");
+                readLess?.setAttribute("aria-hidden", readLess.getAttribute("aria-hidden") === "true" ? "false" : "true");
+
+                var summaryContainer = document.querySelector(".fulltext-container");
+                summaryContainer.setAttribute("open", readMore.getAttribute("aria-hidden") === "true" ? "true" : "false");
+            }
+     
+            // Function to write the JSON object
+            function jsonToHtml( jsonData ) {
+                document.getElementById('title').innerHTML = jsonData?.UnclassifiedTitle;
+                document.getElementById('accessionNumber').innerHTML = jsonData?.AccessionNumber;
+
+                if(jsonData?.FullTextPath) {
+                    document.getElementById('fullTextPDF').innerHTML =
+                    `<span>` +
+                        '<span class="divider"> | </span>' +
+                        `<span>` + 
+                            `<a class="open-help-link" href="${jsonData?.FullTextPath}" target="_blank">` +
+                                '<img src="https://apps.dtic.mil/sti/citation/img/file-pdf-solid.svg" alt="report" width="15"> Open PDF' +
+                            '</a>' +
+                        '</span>' +
+                    '</span>';
+                } else {
+                    document.getElementById('fullTextPDF').innerHTML =
+                    `<span>` + 
+                        '<span class="divider"> | </span>' +
+                        '<span>' + 
+                            '<a class="open-help-link" href="mailto:dtic.belvoir.us.mbx.reference@mail.mil" target="_blank">' +
+                                '<img src="https://apps.dtic.mil/sti/citation/img/circle-question-solid.svg" alt="report" width="15"> Need Help?' +
+                            '</a>' +
+                        '</span>' +
+                    '</span>';
+                }
+
+                if(jsonData?.Abstract) {
+                    document.getElementById('abstract').style.display = 'block';
+                    document.getElementById('abstract').innerHTML = 
+                    '<h4 class="h4-text">Abstract:</h4>' +
+                    '<div class="abstract-container" open="false">' +
+                        `<p class="paragraph long-text">${jsonData?.Abstract}</p>` + 
+                    '</div>' +
+                    '<button class="btn read-less-abstract" onClick="toggleAbstract()" aria-hidden="true"> Read Less </button>' + 
+                    '<button class="btn read-more-abstract" onClick="toggleAbstract()"> Read More </button>'                  
+                } else {
+                    document.getElementById('abstract').style.display = 'none';
+                }
+
+                if(jsonData?.PersonalAuthors.length > 0) {
+                    document.getElementById('authors').style.display = 'block';
+                    document.getElementById('authors').innerHTML = 
+                    '<div class="metadata grid-container">' +
+                        '<div class="grid-item row-label">Author(s): </div>' +
+                        `<div class="grid-item row-content">${jsonData?.PersonalAuthors.join('; ')}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('authors').style.display = 'none';
+                }
+
+                if(jsonData?.CorporateAuthor) {
+                    document.getElementById('authorOrg').style.display = 'block';
+                    document.getElementById('authorOrg').innerHTML = 
+                    '<div class="metadata grid-container">' +
+                        '<div class="grid-item row-label">Author Organization(s): </div>' +
+                        `<div class="grid-item row-content">${jsonData?.CorporateAuthor}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('authorOrg').style.display = 'none';
+                }
+
+                if(isDescriptiveNoteArray == false && jsonData?.DescriptiveNote) {
+                    document.getElementById('descriptiveNote').style.display = 'block';
+                    document.getElementById('descriptiveNote').innerHTML = 
+                    '<div class="metadata grid-container">' +
+                        '<div class="grid-item row-label">Descriptive Note: </div>' +
+                        `<div class="grid-item row-content">${jsonData?.DescriptiveNote}</div>` +
+                    '</div>'
+                } else if(isDescriptiveNoteArray == true && jsonData?.DescriptiveNote.length > 0) {
+                    document.getElementById('descriptiveNote').style.display = 'block';
+                    document.getElementById('descriptiveNote').innerHTML = 
+                    '<div class="metadata grid-container">' +
+                        '<div class="grid-item row-label">Descriptive Note: </div>' +
+                        `<div class="grid-item row-content">${jsonData?.DescriptiveNote.join(', ')}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('descriptiveNote').style.display = 'none';
+                }
+
+                if(jsonData?.PaginationOrMediaCount) {
+                    document.getElementById('pagination').style.display = 'block';
+                    document.getElementById('pagination').innerHTML = 
+                    '<div class="metadata grid-container">' +
+                        '<div class="grid-item row-label">Pagination: </div>' +
+                        `<div class="grid-item row-content">${jsonData?.PaginationOrMediaCount}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('pagination').style.display = 'none';
+                }
+
+                if(isDistributionArray == false && jsonData?.Distribution1) {
+                    document.getElementById('distribution').style.display = 'block';
+                    document.getElementById('distribution').innerHTML = 
+                    '<div class="one-col">' +
+                        '<div class="marking-label">Distribution: </div>' +
+                        `<div class="marking-content">${jsonData?.Distribution1}</div>` +
+                    '</div>'
+                } else if(isDistributionArray == true && jsonData?.Distribution1.length > 0) {
+                    document.getElementById('distribution').style.display = 'block';
+                    document.getElementById('distribution').innerHTML = 
+                    '<div class="one-col">' +
+                        '<div class="marking-label">Distribution: </div>' +
+                        `<div class="marking-content">${jsonData?.Distribution1.join(' - ')}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('distribution').style.display = 'none';
+                }
+
+                //Identifying Numbers
+                if(jsonData?.TaskNumber?.length > 0) {
+                    document.getElementById('identifyingNumbers').style.display = 'block';
+                    document.getElementById('identifyingNumbers').innerHTML =
+                    '<div class="container">' +
+                        '<div class="trigger">' +
+                            '<span class="panel-text">Identifying Numbers</span>' +
+                            '<span class="align-right panel-text expand">' +
+                                'Expand&nbsp;&nbsp;' +
+                                '<svg class="icon" viewBox="0 -100 448 512" width="15px" height="15px">' +
+                                    '<path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>' +
+                                '</svg>' +
+                            '</span>' +
+                            '<span class="align-right panel-text collapse">' +
+                                'Collapse&nbsp;&nbsp;' +
+                                '<svg class="icon" viewBox="0 -50 448 512" width="15px" height="15px">' +
+                                    '<path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/>' +
+                                '</svg>' +
+                            '</span>' +
+                        '</div>' +
+                        '<div class="expansion-content">' +
+                            '' +
+                        '</div>' +
+                    '</div>'
+                } else {
+                    document.getElementById('identifyingNumbers').style.display = 'none';
+                }
+
+                //Subject Terms
+                if(jsonData?.Descriptors.length > 0 || jsonData?.FieldsAndGroups.length > 0) {
+                    document.getElementById('subjectTerms').style.display = 'block';
+                    document.getElementById('subjectTerms').innerHTML = 
+                    '<div class="container">' +
+                        '<div class="trigger">' +
+                            '<span class="panel-text">Subject Terms</span>' +
+                            '<span class="align-right panel-text expand">' +
+                                'Expand&nbsp;&nbsp;' +
+                                '<svg class="icon" viewBox="0 -100 448 512" width="15px" height="15px">' +
+                                    '<path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>' +
+                                '</svg>' +
+                            '</span>' +
+                            '<span class="align-right panel-text collapse">' +
+                                'Collapse&nbsp;&nbsp;' +
+                                '<svg class="icon" viewBox="0 -50 448 512" width="15px" height="15px">' +
+                                    '<path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/>' +
+                                '</svg>' +
+                            '</span>' + 
+                        '</div>' +
+                        '<div class="expansion-content">' +
+                            '<div id="descriptors"></div>' +
+                            '<div id="fields"></div>' +
+                        '</div>' +
+                    '<div>';
+                } else {
+                    document.getElementById('subjectTerms').style.display = 'none';
+                }
+
+                if(jsonData?.Descriptors.length > 0) {
+                    document.getElementById('descriptors').style.display = 'block';
+                    document.getElementById('descriptors').innerHTML +=
+                    '<div class="metadata expansion-grid-container">' +
+                        '<div class="grid-item row-label">Descriptor(s): </div>' +
+                        `<div class="grid-item row-content">${jsonData?.Descriptors.join(', ')}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('descriptors').style.display = 'none';
+                }
+
+                if(jsonData?.FieldsAndGroups.length > 0) {
+                    document.getElementById('fields').style.display = 'block';
+                    document.getElementById('fields').innerHTML +=
+                    '<div class="metadata expansion-grid-container">' +
+                        '<div class="grid-item row-label">Field(s)/Group(s): </div>' +
+                        `<div class="grid-item row-content">${jsonData?.FieldsAndGroups.join(', ')}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('fields').style.display = 'none';
+                }
+
+                if(jsonData?.ReportDate) {
+                    document.getElementById('reportDate').style.display = 'block';
+                    document.getElementById('reportDate').innerHTML = 
+                    '<div class="metadata grid-container">' +
+                        '<div class="grid-item row-label">Report Date: </div>' +
+                        `<div class="grid-item row-content">${formatDate(jsonData?.ReportDate)}</div>` +
+                    '</div>'
+                } else {
+                    document.getElementById('reportDate').style.display = 'none';
+                }
+            }
+
+            function formatDate(date) {
+                var date = new Date(date);
+
+                var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][date.getMonth()];
+ 
+                var day = date.getUTCDate() < 10 ? '0' + date.getUTCDate() : date.getUTCDate();
+
+                return date.getFullYear() + ' ' + month + ' ' + day;
+            }
+     
+            // Entry point
+            document.addEventListener('DOMContentLoaded', function () {
+                const documentId = getDocumentId();
+     
+                if (documentId) {
+                    fetchDocument(documentId);
+                } else {
+                    // Handle the case when no document ID is provided
+                    console.error('No document ID found in the URL.');
+                }
+            });
+        </script>
+     
+    </head>
+
+    <body>
+        <div class="page-container">
+            <div class="content-wrap">
+
+                <section class="usa-banner dtic-banner" aria-label="Official government website">
+                    <div class="usa-accordion">
+                        <header class="usa-banner__header">
+                            <div class="usa-banner__inner dtic-banner__inner">
+                                <div class="grid-col-auto">
+                                    <img class="usa-banner__header-flag" src="https://apps.dtic.mil/sti/citation/img/us_flag_small.png" alt="U.S. flag">
+                                </div>
+                                <div class="grid-col-fill tablet:grid-col-auto">
+                                    <p class="usa-banner__header-text banner-text-size">An official website of the United States government</p>
+                                    <p class="usa-banner__header-action banner-text-size" aria-hidden="true"><span class="">Here’s how you know</span></p>
+                                </div>
+                                <button id="usa-govt-banner" class="usa-accordion__button usa-banner__button banner-text-size" aria-expanded="false" aria-controls="gov-banner">
+                                    <span class="usa-banner__button-text">Here’s how you know</span>
+                                </button>
+                            </div>
+                        </header>
+                        <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+                            <div class="grid-row grid-gap-lg">
+                                <div class="usa-banner__guidance tablet:grid-col-6">
+                                    <img class="usa-banner__icon usa-media-block__img" src="https://apps.dtic.mil/sti/citation/img/icon-dot-gov.svg" alt="Dot gov">
+                                    <div class="usa-media-block__body">
+                                        <p>
+                                            <strong>The .mil means it’s official.</strong>
+                                            <br>
+                                            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="usa-banner__guidance tablet:grid-col-6">
+                                    <img class="usa-banner__icon usa-media-block__img" src="https://apps.dtic.mil/sti/citation/img/icon-https.svg" alt="Https">
+                                    <div class="usa-media-block__body">
+                                        <p>
+                                            <strong>The site is secure.</strong>
+                                            <br>
+                                            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="usa-overlay"></div>
+
+                <header class="usa-header dtic-header">
+                    <div class="usa-navbar">
+                        <a href="https://discover.dtic.mil" aria-label="Return to Home" title="Return to Home">
+                            <img src="https://apps.dtic.mil/sti/citation/img/DTIC-logo.svg" alt="" aria-hidden="true" class="dtic-app-logo mainDticLogo">
+                        </a>
+                    </div>
+
+                    <hr class="bottomDivider"></hr>
+                </header>
+
+                <div class="search-nav-panel-main-dtic">
+                    <!-- Search bar -->
+                    <div class="search-app-panel display-flex flex-column flex-justify-center">
+                
+                        <div class="tag-line">
+                            <span>Preserving Knowledge</span> <span>Connecting People</span> <span>Inspiring Innovation</span>
+                        </div>
+                
+                        <div class="search-bar">
+                            <label class="usa-sr-only" for="search-field">Search</label>
+                
+                            <input class="usa-input" id="search-field" type="search" name="search" placeholder="Search by text or ID" maxlength="3000" autocomplete="off" />
+                
+                            <button type="submit" id="search" class="usa-button dark-background search-btn">
+                                <span class="usa-search__submit-text">Search </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="top-margin">
+                        <div>
+                            <h1 class="h1-text" id="title"></h1>
+                            <div class="title-tag-line">
+                                <span class="collection-type">
+                                    <img src="https://apps.dtic.mil/sti/citation/img/report.svg" alt="report" width="22"> 
+                                    <span>Miscellaneous Citation</span>
+                                </span>
+                                <span class="divider"> | </span>
+                                <span class="label">Accession Number: </span> <span id="accessionNumber"></span>
+                                <span id="fullTextPDF"></span>
+                            </div>
+                        </div>
+
+                        <div class="cols">
+                            <div>
+                                <div id="abstract"></div>
+                                <div id="authors"></div>
+                                <div id="authorOrg"></div>
+                                <div id="descriptiveNote"></div>
+                                <div id="pagination"></div>
+                                <div id="fullText"></div>
+                            </div>
+
+                            <div>
+                                <div class="aside">
+                                    <h3>Security Markings</h3>
+                                    <div>
+                                        <div id="distribution"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Identifying Numbers -->
+                        <div id="identifyingNumbers"></div> 
+
+                        <!-- Subject Terms -->
+                        <div id="subjectTerms"></div> 
+
+                        <div id="reportDate"></div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <footer class="footer">
+                        <div class="footer footer-content">
+                            <div class="footer-header">
+                                <div class="header-text">
+                                    <span>Defense Technical Information Center</span>
+                                </div>
+                            </div>
+                            <div class="footer-link-area">
+                                <div class="footer-links">
+                                    <div class="column">
+                                        <a target="_blank" href="https://discover.dtic.mil/mission-statement/">Mission</a>
+                                        <a target="_blank" href="https://discover.dtic.mil/wp-content/uploads/pdfs/dtic_strategic_plan.pdf">Strategic Plan</a>
+                                        <a target="_blank" href="https://www.cto.mil/">USD(R&amp;E)</a>
+                                        <a target="_blank" href="https://discover.dtic.mil/legal/">Legal</a>
+                                    </div>
+                                    <div class="column">
+                                        <a target="_blank" href="https://discover.dtic.mil/privacy-security-copyright/">Privacy Policy</a>
+                                        <a target="_blank" href="https://dpcld.defense.gov/Privacy.aspx">Privacy Policy Program</a>
+                                        <a target="_blank" href="https://discover.dtic.mil/foia/">FOIA</a>
+                                        <a target="_blank" href="https://discover.dtic.mil/no-fear-act/">No FEAR Act</a>
+                                    </div>
+                                    <div class="column">
+                                        <a target="_blank" href="https://open.defense.gov/">Open Government</a>
+                                        <a target="_blank" href="https://www.defense.gov//Resources/DOD-Information-Quality-Guidelines/">Information Quality</a>
+                                        <a target="_blank" href="https://www.usa.gov/">USA.gov</a>
+                                        <a target="_blank" href="https://dodiac.dtic.mil/">Information Analysis Center</a>
+                                    </div>
+                                </div>
+                                <div class="footer-links" align="end">
+                                    <div class="footer-right">
+                                        <div class="footer-icons">
+                                            <a href="https://www.linkedin.com/company/defense-technical-information-center">
+                                                <img src="https://apps.dtic.mil/sti/citation/img/linkedin.svg" alt="Linkedin" width="40"/>
+                                            </a>
+                                            <a href="https://public.govdelivery.com/accounts/USDODDTIC/subscriber/new">
+                                                <img src="https://apps.dtic.mil/sti/citation/img/envelope-circle-check-solid.svg" alt="Sign Up for DTIC's GovDelivery Newsletter" width="33">
+                                            </a>
+                                        </div>
+                    
+                                        <div>
+                                            <a href="tel:1-800-225-3842" class="footer-link">(800) 225-3842</a> | 
+                                            <a href="mailto:dtic.belvoir.us.mbx.reference@mail.mil" class="footer-link">Email Us</a> |
+                                            <a href="https://ice.disa.mil/index.cfm?fa=card&amp;sp=150686" class="footer-link">Submit Feedback</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notice">
+                                <p>NOTICE: The appearance of hyperlinks does not constitute endorsement by the DTIC of non-U.S. Government sites or the information, products, or services contained therein. Although the DTIC may or may not use these sites as additional distribution channels for Department of Defense information, it does not exercise editorial control over all of the information that you may find at these locations. Such hyperlinks are provided consistent with the stated purpose of this website. The DTIC bears no responsibility for the accuracy, legality or content of the external website or for that of subsequent links. Contact the external website for answers to questions regarding its content. Please let us know about existing external links which you believe are inappropriate.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>                
+
+            </div>
+        </div>
+    </body>
+</html> contentType 9 text/html url 49 https://apps.dtic.mil:443/sti/citations/ADA142764 responseCode 3 200 

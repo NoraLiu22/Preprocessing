@@ -1,0 +1,1507 @@
+ymzonercgedgzgdkdieeqqririzoaqcmngmgcsvo length 5 92796 page 92796 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="author" content="GBIF Nodes">
+<title>GBIF Capacity Development Framework</title>
+<style>
+/* This way delays font loading */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,600,600italic|Droid+Sans+Mono:400,700&display=swap);
+
+@import "https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css";
+
+/**
+ * Overrides of the default stylesheet
+ */
+
+:root {
+  --primary-color: #4e565f;
+  --primary-font: "Roboto", "DejaVu Sans", sans-serif, "Twemoji Country Flags";
+  --header-color: #46a138;
+  --subheader-color: #4e565f;
+}
+
+html {
+  font-family: var(--primary-font);
+}
+
+body {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#toctitle, .sidebarblock > .content > .title {
+  font-family: var(--primary-font);
+  color: var(--header-color);
+  font-weight: 400;
+}
+
+h1 small,
+h2 small,
+h3 small,
+#toctitle small,
+.sidebarblock > .content > .title small,
+h4 small,
+h5 small,
+h6 small {
+  color: var(--header-color);
+}
+
+#toctitle {
+  color: var(--subheader-color);
+}
+
+#toc ul {
+  font-family: var(--primary-font);
+}
+
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
+  font-family: var(--primary-font);
+}
+
+.admonitionblock > table td.icon .title {
+  font-family: var(--primary-font);
+}
+
+.subheader,
+.admonitionblock td.content > .title,
+.audioblock > .title,
+.exampleblock > .title,
+.imageblock > .title,
+.listingblock > .title,
+.literalblock > .title,
+.stemblock > .title,
+.openblock > .title,
+.paragraph > .title,
+.quoteblock > .title,
+table.tableblock > .title,
+.verseblock > .title,
+.videoblock > .title,
+.dlist > .title,
+.olist > .title,
+.ulist > .title,
+.qlist > .title,
+.hdlist > .title {
+  color: var(--primary-color);
+}
+
+a {
+  color: #4ba2ce;
+}
+
+a:hover,
+a:focus {
+  color: #2c79a1;
+}
+
+code {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+blockquote,
+blockquote p {
+  color: var(--primary-color);
+}
+
+/*
+$subheader-font-color: $body-font-color;
+$title-font-weight: $header-font-weight;
+
+$hr-border-color: #ccc;
+$hr-border-style: dotted;
+$sect-divider-color: $hr-border-color;
+
+$panel-font-color: $body-font-color;
+
+$blockquote-cite-font-color: darken($blockquote-font-color, 10%);
+$blockquote-border: 1px solid #efefef;
+
+$code-color: darken($alert-color, 15%);
+
+$pre-bg: #efefef;
+$pre-padding: emCalc(12px) emCalc(12px) emCalc(10px) emCalc(12px);
+*/
+
+table thead tr th,
+table thead tr td,
+table tfoot tr th,
+table tfoot tr td {
+  color: var(--header-color);
+}
+
+table tr th,
+table tr td {
+  color: var(--primary-color);
+}
+
+#footer {
+  background: #222222;
+}
+
+#footer-text {
+  color: white;
+}
+
+/**
+ * GBIF custom styles (not simply colour/font changes).
+ */
+
+xtable.stripes-none tr {
+  background: none;
+}
+
+#toc h3 {
+  /* From h3 */
+  line-height: 1.2;
+  word-spacing: -0.05em;
+  /* End */
+  color: var(--subheader-color);
+  /* shrink font-size below breakpoint */
+  font-size: 1.375em;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 768px) {
+  #toc h3 {
+    /* restore font size above breakpoint */
+    font-size: 1.375em;
+  }
+}
+
+#content {
+  margin-top: 1.25em;
+  /* A bit of a hack: make the footer stick to the bottom.
+   * 2.5em+2.88em is the footer top+bottom padding and two line heights
+   * 2.5em is the top+bottom padding on content
+   * 2.25rem is the h1 top margin
+   * 2.75*1.2rem is the h1 font size * line height
+   * 0.5rem+1.45rem is the padding and line height of the author line
+   */
+  min-height: calc(100vh - 2.5em - 2.88em - 2.5em - 2.25rem - 2.75 * 1.2rem - 0.5rem - 1.45rem);
+}
+
+h1, #header > h1:first-child {
+  text-align: center;
+  color: var(--header-color);
+}
+
+#header h1 small {
+  display: block;
+  line-height: inherit;
+}
+
+.imageblock .title {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+:not(.translationLinks) > {
+  em:lang(zh), em:lang(ja) {
+    font-style: normal;
+    text-emphasis: dot;
+  }
+}
+
+.term {
+  color: inherit;
+  font: 0.9em "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  text-decoration: dotted underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  word-wrap: break-word;
+}
+
+a.glossary {
+  color: inherit;
+  text-decoration: dotted underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.hl {
+  text-shadow: yellow 0 0 8px, yellow 0 0 5px, yellow 0 0 3px;
+}
+
+.sidebarblock {
+  margin-left: 2em;
+  margin-right: 2em;
+  line-height: 1.6;
+}
+
+</style>
+<script type="text/javascript">
+      if (/windows/i.test(navigator.userAgent)) {
+        const style = document.createElement("style");
+        style.textContent = `@font-face {
+          font-family: "Twemoji Country Flags";
+          unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067, U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+          src: url('https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1/dist/TwemojiCountryFlags.woff2') format('woff2');
+          font-display: swap;
+        }`;
+        document.head.appendChild(style);
+      }
+    </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+<link rel="alternate" hreflang="x-default" href="../">
+<link rel="alternate" hreflang="en" href="./">
+
+<style>.toc-current{font-weight: bold;} .toc-root{font-family: "Open Sans","DejaVu Sans",sans-serif;
+                       font-size: 0.9em;} #content{display: flex; flex-direction: column; flex: 1 1 auto;}
+             .nav-footer{text-align: center; margin-top: auto;}
+             .nav-footer > p > a {white-space: nowrap;}</style>
+
+          <style id="question">
+            .hidden {
+    display: none;
+}
+
+question[data-type=gap] gap > input.incorrect {
+    font-weight: bold;
+    color: red;
+}
+
+
+question[data-type=gap] gap > answer, div[id*=question][data-type=gap] gap > input.correct {
+    font-weight: bold;
+    color: green;
+}
+
+question[data-type=mc] input[type="checkbox"].show ~ span::before {
+    display: inline;
+    width: 16px;
+    height: 16px;
+}
+
+question[data-type=mc] input[type="checkbox"][data-correct="true"].show ~ span::before {
+    content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGZpbGw9Im9saXZlZHJhYiIgc3Ryb2tlPSJvbGl2ZWRyYWIiIGQ9Ik0yMS42NTIsMy4yMTFjLTAuMjkzLTAuMjk1LTAuNzctMC4yOTUtMS4wNjEsMEw5LjQxLDE0LjM0ICBjLTAuMjkzLDAuMjk3LTAuNzcxLDAuMjk3LTEuMDYyLDBMMy40NDksOS4zNTFDMy4zMDQsOS4yMDMsMy4xMTQsOS4xMywyLjkyMyw5LjEyOUMyLjczLDkuMTI4LDIuNTM0LDkuMjAxLDIuMzg3LDkuMzUxICBsLTIuMTY1LDEuOTQ2QzAuMDc4LDExLjQ0NSwwLDExLjYzLDAsMTEuODIzYzAsMC4xOTQsMC4wNzgsMC4zOTcsMC4yMjMsMC41NDRsNC45NCw1LjE4NGMwLjI5MiwwLjI5NiwwLjc3MSwwLjc3NiwxLjA2MiwxLjA3ICBsMi4xMjQsMi4xNDFjMC4yOTIsMC4yOTMsMC43NjksMC4yOTMsMS4wNjIsMGwxNC4zNjYtMTQuMzRjMC4yOTMtMC4yOTQsMC4yOTMtMC43NzcsMC0xLjA3MUwyMS42NTIsMy4yMTF6Ii8+PC9zdmc+);
+}
+
+question[data-type=mc] input[type="checkbox"][data-correct="false"].show ~ span::before {
+    content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGZpbGw9Im1hcm9vbiIgc3Ryb2tlPSJtYXJvb24iIGQ9Ik0yMi4yNDUsNC4wMTVjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjEzOWwtNi4yNzYsNi4yN2MtMC4zMTMsMC4zMTItMC4zMTMsMC44MjYsMCwxLjE0bDYuMjczLDYuMjcyICBjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjE0bC0yLjI4NSwyLjI3N2MtMC4zMTQsMC4zMTItMC44MjgsMC4zMTItMS4xNDIsMGwtNi4yNzEtNi4yNzFjLTAuMzEzLTAuMzEzLTAuODI4LTAuMzEzLTEuMTQxLDAgIGwtNi4yNzYsNi4yNjdjLTAuMzEzLDAuMzEzLTAuODI4LDAuMzEzLTEuMTQxLDBsLTIuMjgyLTIuMjhjLTAuMzEzLTAuMzEzLTAuMzEzLTAuODI2LDAtMS4xNGw2LjI3OC02LjI2OSAgYzAuMzEzLTAuMzEyLDAuMzEzLTAuODI2LDAtMS4xNEwxLjcwOSw1LjE0N2MtMC4zMTQtMC4zMTMtMC4zMTQtMC44MjcsMC0xLjE0bDIuMjg0LTIuMjc4QzQuMzA4LDEuNDE3LDQuODIxLDEuNDE3LDUuMTM1LDEuNzMgIEwxMS40MDUsOGMwLjMxNCwwLjMxNCwwLjgyOCwwLjMxNCwxLjE0MSwwLjAwMWw2LjI3Ni02LjI2N2MwLjMxMi0wLjMxMiwwLjgyNi0wLjMxMiwxLjE0MSwwTDIyLjI0NSw0LjAxNXoiLz48L3N2Zz4=);
+}
+          </style>
+        <script type="text/javascript">
+                          function onLoad() {
+    var questions = document.getElementsByTagName("question")
+    for (var pos = 0; pos < questions.length; pos++) {
+        var question = questions[pos]
+        if (question.getAttribute('data-type') == 'mc') {
+            if (question.getAttribute('data-shuffle') != null) shuffleAnswers(question)
+        }
+    }
+}
+
+function shuffleAnswers(question) {
+    var answers = null
+    var content = question.children[0]
+    for (var i = content.children.length-1; i >= 0; i--) {
+        if(content.children[i].className.indexOf('checklist') > -1) {
+            answers = content.children[i].children[0]
+            break;
+        }
+    }
+    if(answers == null) return
+
+    for (var i = answers.children.length; i >= 0; i--) {
+        answers.appendChild(answers.children[Math.random() * i | 0]);
+    }
+}
+
+function resolve(questionId) {
+    var q = document.getElementById("question_" + questionId)
+    var type = q.getAttribute("data-type")
+    var elems
+    var pos
+    var answer
+
+    if(type == "mc") {
+        elems = q.getElementsByTagName("input")
+        for(pos = 0; pos < elems.length; pos++) {
+            answer = elems[pos]
+            answer.setAttribute("class", "show")
+        }
+    } else if(type == "gap") {
+        elems = q.getElementsByTagName("gap")
+        for(pos = 0; pos < elems.length; pos++) {
+            var gap = elems[pos]
+            var input = gap.getElementsByTagName("input")[0]
+            answer = gap.getElementsByTagName("answer")[0]
+            if(input.value == answer.textContent) {
+                input.setAttribute("class", "correct")
+            } else {
+                input.setAttribute("class", "incorrect")
+                answer.setAttribute("class", "")
+            }
+        }
+    }
+}
+
+function reset(questionId) {
+    var q = document.getElementById("question_" + questionId)
+    var type = q.getAttribute("data-type")
+    var elems
+    var pos
+    var answer
+
+    if(type == "mc") {
+        elems = q.getElementsByTagName("input")
+        for(pos = 0; pos < elems.length; pos++) {
+            answer = elems[pos]
+            answer.setAttribute("class", "")
+            answer.checked = false
+        }
+    } else if(type == "gap") {
+        elems = q.getElementsByTagName("gap")
+        for(pos = 0; pos < elems.length; pos++) {
+            var gap = elems[pos]
+            var input = gap.getElementsByTagName("input")[0]
+            answer = gap.getElementsByTagName("answer")[0]
+            input.setAttribute("class", "")
+            answer.setAttribute("class", "hidden")
+        }
+    }
+}
+                        </script>
+</head>
+<body class="article toc2 toc-left" onload="onLoad()">
+<div id="header">
+<h1>GBIF Capacity Development Framework</h1>
+<div class="details">
+<span id="author" class="author">GBIF Nodes</span><br>
+<span id="email" class="email"><a href="mailto:nodes@gbif.org">nodes@gbif.org</a></span><br>
+<span id="revnumber">version 1,</span>
+<span id="revdate">March 2024</span>
+</div>
+<div id="toc" class="toc2">
+<header id="logo">
+  <a href="https://www.gbif.org/">
+    <img src="https://docs.gbif.org/style/logo.svg" alt="GBIF – Global Biodiversity Information Facility">
+  </a>
+</header>
+  <br>
+<h3 id="otherformatstitle">Other Formats</h3>
+<ul class="sectlevel1">
+<li><a hreflang="en" type="application/pdf" href="gbif-capacity-development-framework.en.pdf">PDF file</a></li>
+</ul>
+  <br>
+<h3 id="contributetitle">Contribute</h3>
+<div id="improvetext"><a href="https://docs.gbif.org/contributing/"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgaWQ9ImltcHJvdmUtbWFyayIgdmVyc2lvbj0iMS4xIj48Y2lyY2xlIHN0eWxlPSJmaWxsOiMxNzVjYTE7IiBjeD0iNDgiIGN5PSI0OCIgcj0iNDgiLz48ZyBzdHlsZT0iZmlsbDojZmZmZmZmIj48cGF0aCBkPSJtIDQ1LjA5OTk5NSwyNC4wMDk5NDggYSAxLjM3NDUwNjMsMS4zNjMyMDE4IDAgMCAxIDEuMzUzNjc5LDEuMzgyMzUxIHYgNC4zNzA3NTUgaCA0LjQwNzYxOCBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwyLjcyNTk4OCBoIC00LjQwNzYxOCB2IDQuMzcwNzU0IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAtMi43NDg3OTksMCB2IC00LjM3MDc1NCBoIC00LjQxNzEwMyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjU5ODggaCA0LjQxNzEwMyB2IC00LjM3MDc1NSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zOTUxMiwtMS4zODIzNTEgeiIvPjxwYXRoIGQ9Im0gMzQuNjY3OTMxLDE4LjAwMDE1MSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zNTM2NzksMS4zODIzNTIgdiAxLjc3NTM2MSBoIDEuNzgxMjg3IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAwLDIuNzI1OTg4IEggMzYuMDIxNjEgdiAxLjc3NTM2MSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgLTIuNzQ4NTI1LDAgViAyMy44ODM4NTIgSCAzMS40ODI1MiBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjU5ODggaCAxLjc5MDU2NSB2IC0xLjc3NTM2MSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zOTQ4NDYsLTEuMzgyMzUyIHoiLz48cGF0aCBkPSJtIDMwLjQ1NDM5MiwzOC4wNzI4MzkgYSAxLjM3NDUwNjMsMS4zNjMyMDE4IDAgMCAxIDEuMzUzNjc5LDEuMzgyMzUxIHYgNC4zNzA3NTUgaCA0LjQwNzYxOSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwyLjcyNjAwMSBoIC00LjQwNzYxOSB2IDQuMzcwNzU1IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAtMi43NDg3MzEsMCB2IC00LjM3MDc1NSBoIC00LjQwNzY4NyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjYwMDEgSCAyOS4wNTkzNCBWIDM5LjQ1NTE5IGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDAgMSAxLjM5NTA1MiwtMS4zODIzNTEgeiIvPjxwYXRoIGQ9Im0gMjIuNTg0MDU3LDMwLjc0Njg3NCBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zNTM2OCwxLjM4MjQyIHYgMS43NzUyOTMgaCAxLjc5MDU2NSBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwyLjcyNTk4OCBoIC0xLjc5MDU2NSB2IDEuNzc1MzYxIGEgMS4zNzQ1MDYzLDEuMzYzMjAxOCAwIDEgMSAtMi43NDg3MzEsMCB2IC0xLjc3NTM2MSBoIC0xLjc5MDQ5NyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAxIDEgMCwtMi43MjU5ODggaCAxLjc5MDQ5NyB2IC0xLjc3NTI5MyBhIDEuMzc0NTA2MywxLjM2MzIwMTggMCAwIDEgMS4zOTUwNTEsLTEuMzgyNDIgeiIvPjxwYXRoIGQ9Im0gMjcuMDQ3OTYyLDIzLjgwODc0IGEgMS4zNzQ2MDIzLDEuMzYzMTA2NSAwIDAgMSAwLjk1MTU2OCwwLjM5ODg3MiBsIDQ5LjU5Nzk3NCw0OS4xODMyNTYgYSAxLjM3NDYwMjMsMS4zNjMxMDY1IDAgMCAxIDAsMS45Mjc0OTUgbCAtMi4zMDE2NzQsMi4yODI0NzEgYSAxLjM3NDYwMjMsMS4zNjMxMDY1IDAgMCAxIC0xLjk0MzgyMiwwIEwgMjMuNzU0MDM0LDI4LjQxNzY0NSBhIDEuMzc0NjAyMywxLjM2MzEwNjUgMCAwIDEgMCwtMS45Mjc1NjIgbCAyLjMwMTY3NCwtMi4yODI0NzEgYSAxLjM3NDYwMjMsMS4zNjMxMDY1IDAgMCAxIDAuOTkyMjU0LC0wLjM5ODg3MiB6Ii8+PC9nPjwvc3ZnPg==" alt="" style="height: 1.5rem; margin: 0.25em 0;"> Improve this document</a></div>
+<div id="issuestext"><a href="https://github.com/gbif/doc-capacity-development-framework/issues/new"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NjEiIGhlaWdodD0iNjYxIiB2ZXJzaW9uPSIxLjEiIGlkPSJpc3N1ZS1tYXJrIiBzdHlsZT0iZmlsbC1ydWxlOmV2ZW5vZGQiPjxwYXRoIHN0eWxlPSJmaWxsOiM0ZDlhMzQiIGlkPSJtYXJrIiBkPSJNIDY2MSwzMzAuNSBDIDY2MSwxNDcuOTcyIDUxMy4wMjgsMCAzMzAuNSwwIDE0Ny45NzIsMCAwLDE0Ny45NzIgMCwzMzAuNSAwLDUxMy4wMjggMTQ3Ljk3Miw2NjEgMzMwLjUsNjYxIDUxMy4wMjgsNjYwLjk1NCA2NjEsNTEyLjk4MSA2NjEsMzMwLjUgWiIvPjxwYXRoIHN0eWxlPSJmaWxsOiNmZmZmZmYiIGQ9Im0gMzk0LDE0NSB2IDYwLjk5NyBDIDM5NCwyMjkuMzIxIDQxNS4wNzgsMjM0IDQzNS40ODcsMjM0IEggNDkxIFoiLz48cGF0aCBzdHlsZT0iZmlsbDojZmZmZmZmIiBkPSJNIDQ0OC4xNzcsMzM0LjkzMiBIIDI2My4zMDMgYyAtNi42MDEsMCAtMTEuOTQ3LC01LjM1MyAtMTEuOTQ3LC0xMS45NTEgMCwtNi42MDcgNS4zNDYsLTExLjk0MyAxMS45NDcsLTExLjk0MyBoIDE4NC44NzQgYyA2LjYwMSwwIDExLjk1NSw1LjMzNiAxMS45NTUsMTEuOTQzIDAsNi41ODkgLTUuMzU0LDExLjk1MSAtMTEuOTU1LDExLjk1MSBtIDAsNjYuMTgxIEggMjk3LjgzNiBjIC02LjYsMCAtMTEuOTQ2LC01LjMzNiAtMTEuOTQ2LC0xMS45NDIgMCwtNi41OSA1LjM1NCwtMTEuOTM0IDExLjk0NiwtMTEuOTM0IGggMTUwLjM0MSBjIDYuNjAxLDAgMTEuOTU1LDUuMzQ0IDExLjk1NSwxMS45MzQgMCw2LjYwNiAtNS4zNTQsMTEuOTQyIC0xMS45NTUsMTEuOTQyIG0gMCw2Ni4yMTYgaCAtMTI4LjU1IGMgLTYuNiwwIC0xMS45NDYsLTUuMzUzIC0xMS45NDYsLTExLjk1MSAwLC02LjYwNyA1LjM1NSwtMTEuOTUxIDExLjk0NiwtMTEuOTUxIGggMTI4LjU1IGMgNi42MDEsMCAxMS45NTUsNS4zNDQgMTEuOTU1LDExLjk1MSAwLDYuNTk4IC01LjM1NCwxMS45NTEgLTExLjk1NSwxMS45NTEgTSAyNjAuOTUsMjQ0LjgxNCBoIDY3LjcyNiBjIDYuNTkyLDAgMTEuOTQ3LDUuMzcgMTEuOTQ3LDExLjk2IDAsNi42MDcgLTUuMzU1LDExLjk0MiAtMTEuOTQ3LDExLjk0MiBIIDI2MC45NSBjIC02LjYxLDAgLTExLjk0NywtNS4zMzUgLTExLjk0NywtMTEuOTQyIDAsLTYuNTkgNS4zNDYsLTExLjk2IDExLjk0NywtMTEuOTYgbSAwLC02Ni4xOSBoIDY3LjcyNiBjIDYuNTkyLDAgMTEuOTQ3LDUuMzM2IDExLjk0NywxMS45NDMgMCw2LjU4IC01LjM1NSwxMS45NDIgLTExLjk0NywxMS45NDIgSCAyNjAuOTUgYyAtNi42MSwwIC0xMS45NDcsLTUuMzUzIC0xMS45NDcsLTExLjk0MiAwLC02LjYwNyA1LjM0NiwtMTEuOTQzIDExLjk0NywtMTEuOTQzIG0gMTUwLjQyNyw3NC41MjYgYyAtMTkuMjY1LDAgLTM4LjQ3OCwtMTYuMzUzIC0zOC40NzgsLTQwLjIzOCBWIDEzOSBIIDIyNi42MzIgYyAtMTEuODk1LDAgLTIxLjUzMiw5LjY2IC0yMS41MzIsMjEuNTMzIHYgMTE5LjE4MyBsIDcwLjkwMiwxNDkuODA1IC0xLjY0NCw4NS4zNzkgSCA0NzIuNDYgYyAxMS44OTQsMCAyMS41NCwtOS42MzMgMjEuNTQsLTIxLjUyNCBWIDI1My4xNSBaIE0gMjU4Ljg3Myw1MjIgbCAxLjQ4OCwtODcuNzIzIC03MS4wODMsMzQuMjcxIHogbSAtNjQuNjU1LC0yMjQuNzk4IC03MS4wODMsMzQuMjggNjAuNDE2LDEyNS4yMTkgNzEuMTAxLC0zNC4yODggeiBtIC0yMC45MzUsLTQzLjQwMyBjIC0yLjg2MywtNS45NDEgLTEwLjAxNywtOC40MzIgLTE1Ljk2OSwtNS41NjEgbCAtNDkuNTUyLDIzLjkwMyBjIC01Ljk0MywyLjg3MSAtOC40NDMsMTAuMDIyIC01LjU3MSwxNS45NDYgbCAxMy41OTEsMjguMTc1IDcxLjA5MSwtMzQuMjk3IHoiIC8+PC9zdmc+" alt="" style="height: 1.5rem; margin: 0.25em 0;"> Create an issue</a></div>
+<div id="contributetext"><a href="https://github.com/gbif/doc-capacity-development-framework"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICBpZD0iZ2l0aHViLW1hcmsiCiAgIHZlcnNpb249IjEuMSIKICAgdmlld0JveD0iMCAwIDExLjQ5MjkgMTEuMjA5NDY2IgogICBoZWlnaHQ9IjExLjIwOTQ2Nm1tIgogICB3aWR0aD0iMTEuNDkyOW1tIj4KICA8cGF0aAogICAgIGlkPSJtYXJrIgogICAgIHN0eWxlPSJmaWxsOiMxYjE4MTc7c3Ryb2tlOm5vbmUiCiAgICAgZD0iTSA1Ljc0NjA0LDAgQyAyLjU3MjgxMDEsMCAwLDIuNTcyODA4IDAsNS43NDY3NSBjIDAsMi41Mzg5NDA4IDEuNjQ2NDEsNC42OTI2NSAzLjkyOTk0LDUuNDUyODg2IDAuMjg3NTIsMC4wNTI1NiAwLjM5MjI5LC0wLjEyNDg4NCAwLjM5MjI5LC0wLjI3NzI4NCAwLC0wLjEzNjE3MiAtMC4wMDUsLTAuNDk3NzY5IC0wLjAwOCwtMC45NzcxOTQyIC0xLjU5ODQzOTksMC4zNDcxMzMyIC0xLjkzNTY4OTksLTAuNzcwNDY3IC0xLjkzNTY4OTksLTAuNzcwNDY3IC0wLjI2MTQxLC0wLjY2MzU3NSAtMC42MzgxOCwtMC44NDAzMTYgLTAuNjM4MTgsLTAuODQwMzE2IC0wLjUyMTc2MDEsLTAuMzU2NjU5IDAuMDM5NSwtMC4zNDk2MDMgMC4wMzk1LC0wLjM0OTYwMyAwLjU3NjgsMC4wNDA5MiAwLjg4MDE5LDAuNTkyMzE0IDAuODgwMTksMC41OTIzMTQgMC41MTI1OCwwLjg3ODA2NCAxLjM0NTEzOTksMC42MjQ0MTYgMS42NzI1MDk5LDAuNDc3NjYxIDAuMDUyMiwtMC4zNzE0NzUgMC4yMDAzOCwtMC42MjQ3NjkgMC4zNjQ3OCwtMC43NjgzNSBDIDMuNDIxMzQwMSw4LjE0MTQwNDggMi4wNzk3MzAxLDcuNjQ4MjIyIDIuMDc5NzMwMSw1LjQ0NjE4MyBjIDAsLTAuNjI3MjM5IDAuMjI0MDEsLTEuMTQwMTc4IDAuNTkxNiwtMS41NDE5OTEgLTAuMDU5MywtMC4xNDUzNDUgLTAuMjU2NDcsLTAuNzI5NTQ1IDAuMDU2MSwtMS41MjA4MjYgMCwwIDAuNDgyNiwtMC4xNTQ1MTYgMS41ODA0Mzk5LDAuNTg5MTM5IEMgNC43NjYxMywyLjg0NTE1MyA1LjI1NzksMi43ODEzIDUuNzQ2NSwyLjc3OTE4MyA2LjIzNDM5LDIuNzgxMjgzIDYuNzI2MTYsMi44NDUxNTMgNy4xODUxMywyLjk3MjUwNSA4LjI4MjI2LDIuMjI4ODUgOC43NjM4MSwyLjM4MzM2NiA4Ljc2MzgxLDIuMzgzMzY2IGMgMC4zMTM2MSwwLjc5MTI4MSAwLjExNjQxLDEuMzc1NDgxIDAuMDU3MSwxLjUyMDgyNiAwLjM2ODMsMC40MDE4MTMgMC41OTA5LDAuOTE0NzUyIDAuNTkwOSwxLjU0MTk5MSAwLDIuMjA3NjgzIC0xLjM0MzczLDIuNjkzNDU3OCAtMi42MjM5NiwyLjgzNTYyNzggMC4yMDYzNywwLjE3NzQ0NyAwLjM5MDE3LDAuNTI4MTA4IDAuMzkwMTcsMS4wNjQzMyAwLDAuNzY3OTk4MiAtMC4wMDcsMS4zODc4MjgyIC0wLjAwNywxLjU3NjIxMTIgMCwwLjE1MzgxMiAwLjEwMzM2LDAuMzMyNjcgMC4zOTUxMSwwLjI3NjU3OCBDIDkuODQ3OSwxMC40MzcyODMgMTEuNDkyOSw4LjI4NDk4NTggMTEuNDkyOSw1Ljc0Njc1IDExLjQ5MjksMi41NzI4MDggOC45MTk3NCwwIDUuNzQ1OCwwIiAvPgo8L3N2Zz4K" alt="" style="height: 1.5rem; margin: 0.25em 0;"> Edit on GitHub</a></div>
+<br>
+<h3 id="search">Search</h3>
+          <div id="search_form">
+            <form onsubmit="return submitForm(event)" method="GET" style="display: flex;">
+              <input type="search" name="q" value="" size="12" id="search_input" style="flex-grow: 1;">
+              <input type="submit" value="🔍" style="width: 3em;">
+            </form>
+          </div>
+          <br>
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li>
+<a href="#colophon">Colophon</a>
+<ul class="sectlevel2">
+<li><a href="#suggested-citation">Suggested citation</a></li>
+<li><a href="#contributors">Contributors</a></li>
+<li><a href="#licence">Licence</a></li>
+<li><a href="#persistent-uri">Persistent URI</a></li>
+<li><a href="#document-control">Document control</a></li>
+<li><a href="#cover-image">Cover image</a></li>
+</ul>
+</li>
+<li><a href="#introduction">Introduction</a></li>
+<li>
+<a href="#capacity-development-objectives">1. Capacity development objectives</a>
+<ul class="sectlevel2">
+<li><a href="#box-1">1.1. GBIF’s vision, mission and priority areas</a></li>
+<li><a href="#box-2">1.2. GBIF values and how they apply to capacity development</a></li>
+<li><a href="#developing-the-capacity-to-mobilize-biodiversity-data-through-gbif">1.3. Developing the capacity to mobilize biodiversity data through GBIF</a></li>
+<li><a href="#developing-the-capacity-to-use-gbif-mediated-biodiversity-data">1.4. Developing the capacity to use GBIF-mediated biodiversity data</a></li>
+</ul>
+</li>
+<li>
+<a href="#implementation-levels">2. Implementation levels and progress monitoring</a>
+<ul class="sectlevel2">
+<li><a href="#individual-level">2.1. Individual-level capacity development</a></li>
+<li><a href="#institutional-level">2.2. Institutional-level capacity development</a></li>
+<li><a href="#national-level">2.3. National-level capacity development</a></li>
+<li><a href="#regional-level">2.4. Regional-level capacity development</a></li>
+</ul>
+</li>
+<li>
+<a href="#tools-and-approaches">3. Capacity development tools and approaches</a>
+<ul class="sectlevel2">
+<li><a href="#supporting-node-development-through-collaboration">3.1. Supporting node development through collaboration</a></li>
+<li><a href="#capacity-development-programmes">3.2. Capacity development programmes</a></li>
+<li><a href="#community-of-practice-support-and-development">3.3. Community of practice support and development</a></li>
+<li><a href="#training-strategy-and-learning-resources">3.4. Training strategy and learning resources</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<br>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+<p class="translationLinks"><em>This document is also available in <a hreflang="en" type="application/pdf" href="gbif-capacity-development-framework.en.pdf">PDF format</a>.</em></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../img/web/cover-1.png" alt="cover 1">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="colophon">
+<a class="anchor" href="#colophon"></a>Colophon</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="suggested-citation">
+<a class="anchor" href="#suggested-citation"></a>Suggested citation</h3>
+<div class="paragraph">
+<p>GBIF Capacity Development Framework (2024) Copenhagen: GBIF Secretariat. <a href="https://doi.org/10.35035/doc-wvg9-n274" class="bare">https://doi.org/10.35035/doc-wvg9-n274</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="contributors">
+<a class="anchor" href="#contributors"></a>Contributors</h3>
+<div class="paragraph">
+<p><a href="https://orcid.org/0000-0002-6158-8202" target="_blank" rel="noopener">Mélianie Raymond</a>, Maheva Bagard Laursen &amp; <a href="https://orcid.org/0000-0002-1920-5298" target="_blank" rel="noopener">Laura Anne Russell</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="licence">
+<a class="anchor" href="#licence"></a>Licence</h3>
+<div class="paragraph">
+<p>The document <em>GBIF Capacity Development Framework</em> is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0">Creative Commons Attribution-ShareAlike 4.0 Unported License</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="persistent-uri">
+<a class="anchor" href="#persistent-uri"></a>Persistent URI</h3>
+<div class="paragraph">
+<p><a href="https://doi.org/10.35035/doc-wvg9-n274" class="bare">https://doi.org/10.35035/doc-wvg9-n274</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="document-control">
+<a class="anchor" href="#document-control"></a>Document control</h3>
+<div class="paragraph">
+<p>Version 1.0, March 2024</p>
+</div>
+<div class="paragraph">
+<p>Based on the <a href="https://doi.org/10.35035/doc-qpxw-n868" target="_blank" rel="noopener"><em>GBIF Capacity Enhancement Framework</em></a> (2015).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cover-image">
+<a class="anchor" href="#cover-image"></a>Cover image</h3>
+<div class="paragraph">
+<p>Training participants at the 2023 Global Nodes Training, Canberra, Australia. <a href="https://flic.kr/p/2p9qySm" target="_blank" rel="noopener">Photo</a> 2023 Mélianie Raymond | GBIF Secretariat, licensed under <a href="http://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction">
+<a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The framework acts as a road map for the GBIF Secretariat, Participant nodes, and the wider GBIF community, directing capacity development efforts throughout the strategic period spanning from 2023 to 2027. GBIF aims for—and anticipates—a scaling up of capacity development work within this period. The tools and approaches presented here are adaptable to enable the implementation of this framework in line with the opportunities arising during this period.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://www.cbd.int/gbf" target="_blank" rel="noopener">Kunming-Montreal Global Biodiversity Framework</a> includes <a href="https://www.cbd.int/gbf/targets/" target="_blank" rel="noopener">targets for 2030</a> that directly address the need to make data, information and knowledge for decision-making available (<a href="https://www.cbd.int/gbf/targets/21" target="_blank" rel="noopener">Target 21</a>), as well as the need for strengthened capacity-building and development, technology transfer, and technical and scientific cooperation (<a href="https://www.cbd.int/gbf/targets/20" target="_blank" rel="noopener">Target 20</a>). In addition, the <a href="https://www.unesco.org/en/open-science/about" target="_blank" rel="noopener">UNESCO Recommendation on Open Science</a> provides an international framework for open science policy and practice, aiming to “reduce technological and knowledge divides between and within countries.” The recommendation asks UNESCO Member States to invest in infrastructure for open science, as well as training, education, digital literacy and capacity building to support open science. These two instruments provide an important global policy context for expanding capacity development actions through GBIF.</p>
+</div>
+<div class="paragraph">
+<p>GBIF’s capacity development work is framed under two core objectives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>developing the capacity to mobilize biodiversity data through GBIF</p>
+</li>
+<li>
+<p>developing the capacity to use GBIF-mediated biodiversity data</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>GBIF seeks to embed capacity on nested levels from individual, to institutional, national and  regional scales, helping to strengthen the network as a whole. Defined goals and indicators will help GBIF to monitor progress on each level, guiding further implementation. This monitoring, together with ongoing needs assessment processes, periodic evaluation of capacity development programmes and actions, forms the basis of reporting to the community on progress made.</p>
+</div>
+<div class="paragraph">
+<p>The wide array of capacity development tools and approaches in use across the GBIF community are broadly categorized as: support for node development through collaboration; capacity development programmes; further development of the community of practice; and training and learning resources. Together, these empower a broad community of experts to contribute to capacity development goals and enable the flow of expertise between the capacity development levels, supporting the necessary scaling up of capacity development work and community growth over the current strategic period.</p>
+</div>
+<div class="paragraph">
+<p>GBIF’s capacity development activities embody its agreed <a href="https://www.gbif.org/strategic-plan" target="_blank" rel="noopener">values</a>, contributing to trust and transparency, collaboration and collective benefit, diversity and inclusiveness, innovation, and integrity.  Embedding these values in capacity development activities ensures that growth in the community engaged through this work builds on the community’s existing strengths that have proven a solid foundation for capacity development to date.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="capacity-development-objectives">
+<a class="anchor" href="#capacity-development-objectives"></a>1. Capacity development objectives</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Capacity is broadly defined by the Organization for Economic Cooperation and Development (OECD) as “the ability of individuals, institutions, and societies to perform functions, solve problems and set and achieve objectives in a sustainable manner.” Capacity development refers to “the processes whereby people, organizations, and society as a whole unleash, strengthen, create, adapt and maintain capacity over time.” These definitions, widely used in the field of international cooperation, are applicable to GBIF.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://www.gbif.org/strategic-plan" target="_blank" rel="noopener">GBIF Strategic Framework 2023-2027</a> sets out the global vision and mission, together with four strategic priority areas to achieve these (see <a href="#box-1">§1.1</a>). Capacity development, while emphasized especially in Priority Area 3,  will contribute to GBIF’s success across all areas of the strategic framework.</p>
+</div>
+<div class="sect2">
+<h3 id="box-1">
+<a class="anchor" href="#box-1"></a>1.1. GBIF’s vision, mission and priority areas</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>GBIF’s vision</strong>: A world in which the best possible biodiversity data underpins research, policy, and decisions.</p>
+</div>
+<div class="paragraph">
+<p><strong>GBIF mission</strong>: To mobilize the data, skills, and technologies needed to make comprehensive biodiversity information freely available for science and decisions addressing biodiversity loss and sustainable development.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Priority Area 1: Science and Research</p>
+</li>
+<li>
+<p>Priority area 2: Policy and Partnerships</p>
+</li>
+<li>
+<p>Priority area 3: Community and Capacity</p>
+</li>
+<li>
+<p>Priority area 4: Infrastructure and Data Products</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>GBIF has defined values within the strategic framework that underpin all efforts to advance our work and that together embody the global GBIF community, applying to the Secretariat, to the global nodes network, to participants, to data publishing institutions, and to data users. These values guide how we develop capacity development actions and implement at all levels, as in the <a href="#box-2">examples below</a>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="box-2">
+<a class="anchor" href="#box-2"></a>1.2. GBIF values and how they apply to capacity development</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Trust and Transparency</strong>: Expectations that all decisions and processes are open; that data is properly attributed and of the highest-possible quality; and that infrastructures are robust, documented and persistent.</p>
+</div>
+<div class="paragraph">
+<p><em>Examples</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All opportunities will be shared through open calls with transparent selection processes based on predefined criteria and involving experts from the wider community.</p>
+</li>
+<li>
+<p>We provide guidance and support where necessary to grant holding institutions to develop project management capacity based on transparent processes.</p>
+</li>
+<li>
+<p>All contributions to capacity development actions will be attributed to the individuals, institutions, nodes and regions involved.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Collaboration and Collective Benefit</strong>: A recognition that only through a spirit of cooperation can we fulfil GBIF’s mission by sharing skills, data, tools and experiences, avoiding duplication, and growing a global community of practice GBIF’s capacity development approach will be based on facilitating the exchange of experience, data and technology between partners.</p>
+</div>
+<div class="paragraph">
+<p>Examples</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Training actions engage local trainers and mentors when possible, encourage replication and ongoing knowledge-sharing, and make use of training materials are designed with reuse and adaptation in mind.</p>
+</li>
+<li>
+<p>We work through partnerships to support the development of skills that are either fundamental to, or extensions of, the core skills in which GBIF develops capacity.
+The endorsement model through our existing network of nodes is used throughout calls for capacity development actions to encourage national and regional coordination.</p>
+</li>
+<li>
+<p>We give full visibility to partners and encourage them to give visibility to GBIF in return through roles, branding policy, and mutual credit.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Diversity and Inclusiveness</strong>: A commitment to engage and welcome people of all nationalities, cultures, genders and backgrounds while recognizing all contributions to our global community.</p>
+</div>
+<div class="paragraph">
+<p><em>Examples</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We recognize and focus on capacity development and community engagement in regions and countries where we have known participation and data gaps.</p>
+</li>
+<li>
+<p>A <a href="https://www.gbif.org/code-of-conduct" target="_blank" rel="noopener">code of conduct</a> is promoted through all capacity development activities.</p>
+</li>
+<li>
+<p>Selection criteria that encourage diversity are included in all processes.</p>
+</li>
+<li>
+<p>We facilitate and encourage translation and local adaptation of all training materials and documentation to support their uptake.</p>
+</li>
+<li>
+<p>Capacity development actions contribute to outreach, for example through the participation of observers and new institutions and countries in actions at all levels, and promote full participation in GBIF governance on the long term for the sustainability of GBIF as a global infrastructure and network.</p>
+</li>
+<li>
+<p>We support capacity development through regional groupings that build cohesion through shared priorities, languages, biodiversity.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Innovation</strong>: An ambition to lead by example in advancing open science and data services and in adopting novel techniques for collaboration and learning, recognizing that simplicity is often the best means of reaching our goals.</p>
+</div>
+<div class="paragraph">
+<p><em>Examples</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>As much as possible, we promote the use of open-source software and tools in all capacity development actions and avoid creating any dependencies on products without open licences.</p>
+</li>
+<li>
+<p>We investigate and adopt new tools and processes to support capacity development, including guided capacity self-assessments and recognition of skills through digital badges.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Integrity</strong>: An assurance that professional norms and scientific integrity are respected; and that data-sharing safeguards the rights of indigenous peoples and local communities as well as potential risks to sensitive species.</p>
+</div>
+<div class="paragraph">
+<p><em>Examples</em></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Capacity development actions align with data mobilization guidelines that are continually updated to promote appropriate data sharing, attribution, licensing and risk awareness.</p>
+</li>
+<li>
+<p>Capacity development actions are led by the institutions or countries that are to benefit from the actions, ensuring that they are aligned with self-assessed capacity needs, and make use of local expertise and systems.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The main objectives of capacity development in GBIF, covering both technical and functional capacities, are to develop the capacity to mobilize biodiversity data through GBIF and the capacity to use GBIF-mediated data in research and decision-making.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="developing-the-capacity-to-mobilize-biodiversity-data-through-gbif">
+<a class="anchor" href="#developing-the-capacity-to-mobilize-biodiversity-data-through-gbif"></a>1.3. Developing the capacity to mobilize biodiversity data through GBIF</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The ability to manage, standardize and publish biodiversity data</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This is essential to reducing knowledge gaps and ensuring a stable foundation for data mobilization through the network (Priority Areas 1 and 3). As GBIF evolves and adapts data standards and models (Priority Area 4), further capacity development will be needed to support the uptake of new data publishing methods by its current network, as well as to integrate new data publishing communities. Growing awareness at the policy level of the importance of enhanced access to primary biodiversity data, for example, to support implementation and monitoring of the Kunming-Montreal Global Biodiversity Framework (Priority Area 2), strengthens the justification for developing capacity to mobilize data.</p>
+</div>
+<div class="paragraph">
+<p>Progress towards this objective will be demonstrated in the growth and continued activity of the community of data publishing institutions. Enriching GBIF’s data model will increase the diversity among institutions in the data publishing community. Ultimately, progress will be reflected in the completeness and richness of the data being published.</p>
+</div>
+<div class="paragraph">
+<p>Institutional capacity for data management varies widely among the different institutions that produce and hold biodiversity data. Capacity varies between different regions of the world and also between different types and sizes of biodiversity-related institutions. Supportive international policy frameworks can strengthen the enabling environment for institutions within and beyond GBIF’s current network to provide open access to their biodiversity data. While data publishing in GBIF is on the institutional level, it depends on the skills and engagement of individuals within the institutions, as well as capacity at the level of the Participant nodes that assist with engagement, provide endorsement, and often offer technical support.</p>
+</div>
+<div class="paragraph">
+<p>As a network of networks, Participant-led efforts to promote data mobilization and support the development of institutional capacity within their countries and networks remain essential to allow capacity support to scale towards a truly global network. This necessitates continued support for capacity development within an expanding network of Participant nodes.</p>
+</div>
+<div class="paragraph">
+<p>Efforts to design and implement capacity development actions that target the levelling-up of institutional capacity in currently under-represented regions and among under-represented data publishing communities should continue to be a priority for the GBIF network. Such efforts should reinforce the capacity of existing Participant nodes—and encourage the development of new nodes—to ensure sustainable capacity support to the growing data publishing network. Regional support teams extend support beyond the nodes network to enable new institutions from non-Participant countries to engage in data mobilization and use, growing the community of practice that forms the foundation for formal Participation in the future.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="developing-the-capacity-to-use-gbif-mediated-biodiversity-data">
+<a class="anchor" href="#developing-the-capacity-to-use-gbif-mediated-biodiversity-data"></a>1.4. Developing the capacity to use GBIF-mediated biodiversity data</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The ability to analyse and use biodiversity data accessible through GBIF in scientific research and decision-making</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the current strategic period, GBIF focuses on increasing the relevance and diversifying the uptake of GBIF-mediated data for scientific research (Priority Area 1). This requires capacity development through partnerships with academia and higher education, including thematic research communities with limited previous knowledge of GBIF. In addition, GBIF seeks to develop the capacity to use data to support policy responses addressing societal challenges around planetary change. This includes contributing to local, national, regional and global biodiversity-related goals and indicators, and partnering to support the application of data in policy-relevant information tools and products (Priority Area 2).</p>
+</div>
+<div class="paragraph">
+<p>Progress towards this objective will be seen in the breadth and representativeness of the growing body of scientific literature that cites the use of GBIF-mediated data. GBIF maintains an ongoing literature tracking programme, which identifies research uses and citations, and groups these into thematic research areas. Literature tracking can highlight geographic gaps and targets for development in GBIF’s research user communities. These research uses ultimately depend on capacity at the level of individual scientists and students involved, but are greatly facilitated by the development of methodologies and norms for using open biodiversity data within a research field and the academic institutions involved.</p>
+</div>
+<div class="paragraph">
+<p>Progress in capacity to use GBIF-mediated data for policy objectives may be tracked through examples of uptake in national policy reports, regulations and indicators, including those provided for implementation of global biodiversity-related conventions, although this is likely to be less quantitative than metrics from research citations.</p>
+</div>
+<div class="paragraph">
+<p>Based on thematic priorities, as GBIF works more closely with research communities to develop areas of scientific relevance for open biodiversity data (such as in human health, freshwater ecology, and soil biodiversity, among others), capacity development actions should target the development of necessary skills at the level of students and researchers. Such actions should also address the known geographic gaps in the user community, and serve to promote more global engagement of users in line with GBIF’s global scope and vision. While guidance and training materials on accessing GBIF mediated data for a variety of use cases are available, it is beyond GBIF’s scope to provide training in all the underlying data literacy skills needed for research use of open biodiversity data.</p>
+</div>
+<div class="paragraph">
+<p>Participant nodes support user communities through a variety of capacity development actions, often in direct partnership with academic institutions that use GBIF within teaching at various levels. Nodes also play a role in supporting data flows into biodiversity-related reporting processes and other decisions. Capacity development actions to support the nodes in their role in coordinating national networks and engaging with user communities both at the research and policy levels will continue to help with the scalability of approaches.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="implementation-levels">
+<a class="anchor" href="#implementation-levels"></a>2. Implementation levels and progress monitoring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Capacity development actions are implemented on multiple levels in the GBIF network and involve a broad community of individuals. <a href="https://www.wenger-trayner.com/introduction-to-communities-of-practice/" target="_blank" rel="noopener">Communities of practice</a> have been defined by sociologists Wegner and Trayner as “groups of people who share a concern or passion for something they do and learn how to do it better as they interact regularly.” This document will refer to the GBIF community of practice as an inclusive term for the many practitioners engaged in activities contributing to GBIF’s mission who collaborate and learn from each other, often through activities such as mentoring, training, translation, and promoting open biodiversity data.</p>
+</div>
+<div class="paragraph">
+<p>Capacity development actions can be led by volunteers in the community of practice, participating institutions, the Participant nodes, and  GBIF Secretariat, and are often implemented through partnerships bridging these groups. Capacity development is frequently combined with outreach and engagement work, contributing to expanding the GBIF network. This framework is, therefore, an essential component of GBIF’s evolving participation and engagement strategy.</p>
+</div>
+<div class="paragraph">
+<p>Evaluation is integral to capacity development, and should involve and inform all stakeholders in a transparent way to enable them to guide future action and fully benefit from progress. In addition to ongoing monitoring, all the capacity development approaches that GBIF employs will include plans for periodic evaluation, as well as their own set of delivery indicators to track progress towards achieving specific outcomes, enabling the results to inform planning of future implementation. These evaluation processes will be necessarily specific to the programmes or actions they target, their goals, and the stakeholders involved, and are therefore not described in detail in this document.</p>
+</div>
+<div class="paragraph">
+<p>This framework describes overarching goals for capacity development on the main implementation levels that GBIF targets: the individual, institutional, national, and regional levels. It further outlines monitoring indicators associated with each capacity development level that can help track overall progress and guide further implementation.</p>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="../img/web/capacitydevelopmentlevels.png" alt="capacitydevelopmentlevels">
+</div>
+<div class="title">Figure 1. Nested implementation levels and goals for capacity development in GBIF</div>
+</div>
+<div class="paragraph">
+<p> </p>
+</div>
+<div class="sect2">
+<h3 id="individual-level">
+<a class="anchor" href="#individual-level"></a>2.1. Individual-level capacity development</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The goal is to strengthen and grow GBIF’s community of practice: individuals with the skills, knowledge, and motivation to share and reuse biodiversity data for research, conservation and sustainable development, and to support others participating in the community.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The GBIF community of practice has emerged from the global network of biodiversity practitioners driven by their willingness to collaborate, share knowledge, tools, and standards, and support each other in progressing towards the common goal of open biodiversity data contributing to research, nature conservation, and sustainable development.</p>
+</div>
+<div class="paragraph">
+<p>The GBIF Secretariat and Participant nodes have a role in supporting interactions within the community of practice and encouraging its development and growth. Key components of  this are ensuring that there are open opportunities and transparent processes for members of the community to contribute to GBIF’s capacity development actions on all scales; that collaboration is central in these approaches; and that contributions are made visible for appropriate recognition and attribution.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Monitoring progress</strong></p>
+</div>
+<div class="paragraph">
+<p>The community, comprising all individuals globally active in sharing and reusing data through GBIF and sharing their skills with others, is much larger than GBIF can feasibly track. The following metrics can help to demonstrate growth in the community in specific areas:</p>
+</div>
+<div class="paragraph">
+<p>Tracking <strong>participation in GBIF’s volunteer community</strong>, comprising mentors, trainers, translators, reviewers and biodiversity open data ambassadors, will help track strong involvement from individuals in helping to expand our community of practice.</p>
+</div>
+<div class="paragraph">
+<p>GBIF tracks <strong>participation in training courses</strong>. This can include skills certification in the form of digital badges for some courses. Tracking the growth in individuals having participated in courses as well as those having attained formal certification are useful metrics to show skills development across the community.</p>
+</div>
+<div class="paragraph">
+<p>As part of the literature tracking process, GBIF tracks the number and country affiliation of <strong>authors involved in articles citing the use of GBIF-mediated data</strong>. This metric is helpful in demonstrating the growth of individual and institutional capacity within the use of GBIF-mediated data in research, including the geographic distribution of the user community.</p>
+</div>
+<div class="paragraph">
+<p>These metrics will be regularly reviewed in terms of overall growth, as well as geographic spread, to help guide capacity development into under-represented communities and areas.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="institutional-level">
+<a class="anchor" href="#institutional-level"></a>2.2. Institutional-level capacity development</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The goal is to build partnerships that drive the institutionalization of biodiversity data mobilization and the appropriate use of GBIF-mediated data within a global network of institutions, including academia, natural history collections, research institutions, national government departments and agencies, non-governmental and inter-governmental organizations, among others.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Data is published to GBIF through registered institutions, not directly from individuals. Individual researchers may publish datasets through the institutions with which they are affiliated, or via journals to which they contribute. Observations from individuals are submitted through networks registered as GBIF data publishers. An important focus of capacity development must therefore be at the institutional level, ensuring that organizations have the means and motivation to mobilize data.</p>
+</div>
+<div class="paragraph">
+<p>Focusing on the institutional level is important, not only for scalability, but also in order to build persistent engagement and practices that span across multiple departments and individuals within the organization or agency.</p>
+</div>
+<div class="paragraph">
+<p>A growing number of formal academic higher education programmes now encourage the mobilization and use of GBIF-mediated data: see, for example, <a href="https://www.nhm.uio.no/english/research/projects/biodata/" target="_blank" rel="noopener">BioData</a>, <a href="https://www.gbif.org/article/6Oaud6tpLOAm8wQMGqkkSi/ecoed-cohesive-training-and-skill-development-for-ecosciences" target="_blank" rel="noopener">ecoEd</a> and <a href="https://www.gbif.org/article/aA0MjVddRiRFOX2SEs7mT/promoting-gbif-data-use-through-a-graduate-degree-programme-in-biodiversity-informatics" target="_blank" rel="noopener">Benin international Masters in Biodiversity Informatics</a>. These and other examples demonstrate how capacity at the institutional level can cascade to developing the capacity of students to use and publish biodiversity data in the future.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Monitoring progress</strong></p>
+</div>
+<div class="paragraph">
+<p>Tracking growth in the number of institutions that are registered and endorsed as data publishers is relatively easy and can give an indication of growth in institutional capacity to mobilize data through GBIF.  It is much harder to track the institutionalization of data use. GBIF documents guiding examples of the use of GBIF-mediated data in academic teaching but could consider developing new mechanisms to track and evaluate this type of capacity, such as tracking the development of curricula that include content on data mobilization and use through GBIF. Better engagement with capacity development within academic institutions would be greatly valuable for achieving the goals of this framework, but is beyond the scope of what can be tracked at present.</p>
+</div>
+<div class="paragraph">
+<p>The following metrics can help to demonstrate development of institutional capacity:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The number of <strong>data publishing institutions with at least one dataset</strong> is easily tracked in GBIF and helps show where there is capacity at the institutional level for data publishing, noting that in many cases, nodes are supporting this capacity, for example by hosting datasets on national platforms.</p>
+</li>
+<li>
+<p>Monitoring the number of <strong>institutions with affiliated authors of literature citing the use of GBIF-mediated data</strong> will give some indication of where there is institutional capacity to use GBIF-mediated data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These metrics will be regularly reviewed in terms of overall growth, as well as geographic spread, to help guide capacity development into under-represented communities and areas.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="national-level">
+<a class="anchor" href="#national-level"></a>2.3. National-level capacity development</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The goal is to develop national biodiversity information facilities that provide the coordination and enabling environment for data publishing and use at the national level, and are the core of GBIF’s governance and participation model.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>GBIF supports the development of national biodiversity information facilities as collaborative networks of people and institutions that collectively form infrastructure for delivering biodiversity information to relevant stakeholders. This work often begins with engagement and capacity development at the institutional level, with a view to working with institutional partners to encourage formal national Participation in GBIF and the <a href="https://doi.org/10.15468/doc-z79c-sa53" target="_blank" rel="noopener">establishment of a Participant node</a> through a participatory approach as a means to ensure government level awareness and support for biodiversity data mobilization and use through GBIF.</p>
+</div>
+<div class="paragraph">
+<p>When formally joining GBIF through signature of the <a href="https://doi.org/10.15468/doc.ajz7-qt28" target="_blank" rel="noopener">GBIF Memorandum of Understanding</a> (MOU), countries agree to establish a Participant node—that is, a team designated to coordinate a network of people and institutions that produces, manages and uses biodiversity data and collectively builds a national infrastructure for delivering biodiversity information. The allocation of resources to the node is the responsibility of the participating country and is independent of GBIF’s core budget. Nodes are supported by organizational arrangements and informatics solutions and work to improve the availability and usefulness of biodiversity data for research, policy and decision-making.</p>
+</div>
+<div class="paragraph">
+<p>Nodes vary greatly across the network, with a range of different hosting institutions and contacts, scales of operation and available budgets. Developing capacity at the node level, and continuing to lower the technical threshold for active participation in GBIF as global infrastructure, is critical for GBIF’s scalability. Nodes need to provide a stable foundation for data mobilization and use within the expanding network and for the benefit of GBIF as a whole. To achieve this, nodes themselves need to have the capacity to perform the functions expected of them.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Monitoring progress</strong></p>
+</div>
+<div class="paragraph">
+<p>Monitoring the fluctuation in the number of formal Participants in GBIF, as well as the establishment of new Participant nodes, helps inform the development of national capacity in the network. Maintaining active nodes and Participants is also a key focus for this framework. GBIF also provides a <a href="https://www.gbif.org/tool/6Y2SqK8XokHUqIFUn6TLxX/online-capacity-self-assessment-tool-for-national-biodiversity-information-facilities" target="_blank" rel="noopener">capacity self assessment tool</a> to support nodes in monitoring their own capacity development over time.</p>
+</div>
+<div class="paragraph">
+<p>GBIF monitors the <strong>density of active data publishing institutions</strong> across all countries/economies, regardless of their Participation status, which can help demonstrate where capacity development is contributing to greater engagement of institutions.</p>
+</div>
+<div class="paragraph">
+<p>Tracking <strong>demonstrated activity from national nodes</strong> (monitored on an annual basis) in the following areas also helps to identify countries that may be at risk of disengagement due to low capacity or engagement:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Participation of the node (or node staff) in key GBIF-related events and activities</p>
+</li>
+<li>
+<p>Timely endorsement of data publishers</p>
+</li>
+<li>
+<p>Growth in the data publisher network endorsed by the node</p>
+</li>
+<li>
+<p>Number of listed node staff</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These metrics will be regularly reviewed in terms of overall growth, as well as geographic spread, to help guide capacity development into under-represented communities and areas. The node-related indicators will be monitored together with the Nodes Steering Group to help target communications and actions aiming at developing node capacity.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="regional-level">
+<a class="anchor" href="#regional-level"></a>2.4. Regional-level capacity development</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>The goal is to develop the capacity to coordinate and raise the visibility of the GBIF community of practice and network on the regional level so that it can expand engagement on all other levels, and ultimately support GBIF in engaging in the regional-level biodiversity agenda.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>GBIF’s nodes committee established <a href="https://www.gbif.org/the-gbif-network" target="_blank" rel="noopener">six regional sub-committees</a> recognizing the importance of strengthening collaboration and exchange between nodes on the regional level. These regional groupings can reflect alignment in priorities and languages, and, in some cases, regional biodiversity policies or agendas and working culture and norms. On the practical level, regional meetings simplify engagement by reducing travel distances and time zone differences.</p>
+</div>
+<div class="paragraph">
+<p>It is important to recognize that the regions vary greatly in terms of the density of data available and published through GBIF, the level of use of GBIF-mediated data, and the number of GBIF Participants. GBIF implements capacity programmes targeting under-represented regions that contribute to developing the capacity at all levels and engaging new GBIF Participants via a regional approach. It is also important to note that capacity varies greatly within regions, such that capacity development actions on the regional level can enable stronger nodes to support less experienced ones.</p>
+</div>
+<div class="paragraph">
+<p>Distributed GBIF regional support teams provide capacity support on the regional level, working in close alignment with the Participant nodes and volunteers. These teams are made up of part-time contractors based in the regions they serve. They focus their efforts on providing support in countries where GBIF does not yet have Participant nodes. Their work covers engaging data holding institutions, supporting data publishing, developing skills and engagement within the community of practice and providing feedback to GBIF on regional capacity needs. They can also provide training and support to nodes within the region upon request. Their work is aligned with GBIF’s work programmes and recommendations provided by the GBIF regional representatives.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Monitoring progress</strong></p>
+</div>
+<div class="paragraph">
+<p>Maintaining a regional view on progress across this capacity development framework will help ensure that approaches can be tailored to address regional needs and priorities. GBIF will aggregate the metrics mentioned for the other capacity development levels to the regional level for this purpose. These regional views can then be discussed with the regional node representatives and regional support team to guide further capacity development.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tools-and-approaches">
+<a class="anchor" href="#tools-and-approaches"></a>3. Capacity development tools and approaches</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GBIF employs and documents a variety of methods that contribute to objectives of this framework, and are implemented in line with GBIF’s values.</p>
+</div>
+<div class="sect2">
+<h3 id="supporting-node-development-through-collaboration">
+<a class="anchor" href="#supporting-node-development-through-collaboration"></a>3.1. Supporting node development through collaboration</h3>
+<div class="paragraph">
+<p>The GBIF Participant Node Managers Committee serves as both an advisory committee to the Governing Board and as “a forum for sharing information about the status and best practices of Participants’ nodes” (see <a href="https://www.gbif.org/document/80571/terms-of-reference-for-the-participant-node-managers-committee-nodes" target="_blank" rel="noopener">Terms of Reference</a>). Nodes play an essential role in developing the capacity of institutions and individuals within their network and in connecting to the national and regional levels. The nodes must also evolve their scope to keep pace with changes within GBIF itself and in the broader biodiversity landscape. GBIF places strong emphasis on capacity development support for the nodes through exchange of experience and expertise, as described in <a href="#table-1">Table 1</a>.</p>
+</div>
+<div id="table-1" class="paragraph">
+<p><strong>Table 1: Tools and approaches supporting node development through collaboration</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Global and regional nodes meetings</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The nodes committee organizes meetings that alternate annually between global nodes meetings and regional meetings. These meetings are led by node representatives at global and regional levels, with  support from the Secretariat.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meetings involve sharing work updates, training on network developments, fostering the nodes community, enhancing regional collaboration, and engaging potential partners from non-participating countries when support is accessible.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong><a href="https://www.gbif.org/programme/82219/" target="_blank" rel="noopener">Capacity Enhancement Support Programme</a> (CESP)</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since 2014, this programme offers small grants to co-fund capacity development projects exclusively for GBIF Participants. Annual calls for proposals fund collaborative projects between nodes that combine mentoring, regional events, training, and documentation production for capacity enhancement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CESP targets GBIF Participants' capacity needs through global and regional collaboration. It aligns with the capacity self-assessment, fosters sharing of experience, and helps establish new nodes through partnerships and mentorship.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Onboarding programme</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GBIF provides a series of support activities to welcome newly appointed Node Managers to the community. This includes welcome letters, a buddy system to pair new Node Managers with more experienced colleagues, and orientation activities.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The onboarding programme helps integrate new Node Managers into the GBIF community, enhance their awareness of tools and benefits open to them, and promote active participation in the network for efficient node establishment.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong><a href="https://www.gbif.org/gbif-node-awards" target="_blank" rel="noopener">Node Awards</a></strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Starting in 2023, the GBIF Node Awards scheme provides visibility and recognition for node-led achievements through biennial, non-monetary awards.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The awards process contributes to capacity development by providing an incentive for nodes to demonstrate their progress and innovations, as well as generating guiding examples to inspire replication across the nodes community.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong><a href="https://www.gbif.org/technical-support-hour" target="_blank" rel="noopener">Technical support hour for GBIF nodes</a></strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recognizing their crucial role in supporting data mobilization and use, the Secretariat’s Data Products team offers regular open office hours for node staff. These drop-in sessions focus on practical topics, facilitating Q&amp;A sessions and creating reusable resources for addressing network questions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The technical support hour focuses on developing the capacity of node staff to serve as technical experts and help desk in support of data mobilization and use in their networks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="capacity-development-programmes">
+<a class="anchor" href="#capacity-development-programmes"></a>3.2. Capacity development programmes</h3>
+<div class="paragraph">
+<p>GBIF has run various capacity development programmes since its inception, with the scale and scope of these programmes expanding over time. These programmes are centred around open calls for proposals and combine other capacity development activities, such as training workshops and webinars. Implementation is supported by the GBIF community of practice and Participant nodes that assist in promoting the calls, reviewing applications, providing mentoring and training support, and often partnering in projects. The role and types of programmes currently in use are described in table 2.</p>
+</div>
+<div class="paragraph">
+<p><strong>Table 2: Capacity development through programmes</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong><a href="https://www.gbif.org/bid" target="_blank" rel="noopener">Biodiversity Information for Development</a> (BID)</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Launched in 2015, the BID programme aims to improve biodiversity data availability and accessibility in developing countries, to support national and global objectives on conservation and sustainable development. It supports projects selected following an open call process, with training and technical guidance provided by GBIF, regional support teams and partners. The programme is funded primarily by the European Union.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The BID programme aims to enhance all levels of capacity (individual, institutional, national and regional) for effective mobilization and use of biodiversity data in research and policy in developing countries, through the nurturing of communities of practice in open data mobilization and use.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong><a href="https://www.gbif.org/hosted-portals" target="_blank" rel="noopener">Hosted portals</a></strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The GBIF hosted portals programme delivers simple, customizable portals to support GBIF Participant nodes, data publishing networks and institutions. These simple websites are hosted and maintained on the GBIF infrastructure and complement other more complex tools available in the network. Participation in the programme is free of charge and applications are welcome at any time.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The programme lowers the technical threshold for maintaining a branded web presence displaying a targeted subset of GBIF-mediated data. Community calls organized by the Secretariat foster collaboration among portal groups, encouraging knowledge sharing and feature innovation.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Other Participant-led capacity development actions</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GBIF Participants lead many capacity development programmes and initiatives that range in scale from local workshops to international funding programmes. GBIF facilitates such actions by providing access to training resources and guidance materials, supporting the organization of training workshops and engaging volunteer mentors and trainers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Secretariat supports the implementation of Participant-led capacity development actions that are aligned with GBIF’s vision, mission and strategic priority areas.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="community-of-practice-support-and-development">
+<a class="anchor" href="#community-of-practice-support-and-development"></a>3.3. Community of practice support and development</h3>
+<div class="paragraph">
+<p>GBIF has defined roles within a broad community of GBIF volunteers to assist them in contributing effectively and to ensure recognition for their contributions.  According to the <a href="https://www.gbif.org/news/5WZThcL928vmPnSvrGhZfE/" target="_blank" rel="noopener">2023 Deloitte Access Economics valuation and assessment of the impact of the GBIF network</a>, the value of time contributed by volunteers through various activities such as translation or mentoring is worth nearly €1 million per year.</p>
+</div>
+<div class="paragraph">
+<p>GBIF’s regional support teams, comprised of contractors who work part-time from within their target regions, further assist the development of the community of practice, particularly in non-Participant countries. This work was started in response to recommendations in CODATA’s <a href="https://www.gbif.org/news/1QfpUlGByxjqBktiYAfyIK/" target="_blank" rel="noopener">Twenty-Year Review of GBIF</a>, including strengthening the nodes by stabilizing and extending the regional networks. These regional support teams complement the work done by community volunteers and work in close collaboration with the nodes and the elected regional representatives to strengthen the coordination of regional participation in GBIF.</p>
+</div>
+<div class="paragraph">
+<p><strong>Table 3: Supporting the development of the community of practice</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>GBIF volunteer community</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GBIF assigns roles to volunteers contributing as <a href="https://www.gbif.org/mentors" target="_blank" rel="noopener">mentors and trainers</a>, <a href="https://www.gbif.org/ambassadors" target="_blank" rel="noopener">biodiversity open data ambassadors</a>, reviewers and <a href="https://www.gbif.org/translators" target="_blank" rel="noopener">translators</a>. Volunteers assist in developing and delivering training, speaking on GBIF’s behalf at relevant conferences and meetings, providing impartial reviews and feedback on applications to programmes, and translating materials and content to make GBIF fully accessible to our global community.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mentors and trainers help others within the community of practice to build the skills needed to achieve the network’s common goals by volunteering their knowledge and expertise. Ambassadors advocate best practices in open sharing and transparent use of biodiversity data and promote GBIF in national and regional venues. Translators reduce linguistic barriers to support effective participation in capacity development actions. Reviewers provide impartial guidance in reviewing proposals and their feedback to applicants helps to develop capacity for project preparation and implementation. All volunteers develop their own capacity through their participation in these roles.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Regional support teams</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The regional support teams aid in the development of active communities of practice with the organization of online training workshops; provide technical assistance to data publishers by helping administrating regional cloud IPTs, reviewing the quality of datasets prepared by new GBIF publishers and organizing regular open office hours; and support the discovery and engagement of biodiversity data holding institutions by updating the Global Registry of Scientific Collections (GRSciColl) and establishing contact with data holders to communicate the benefits of open data sharing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This supports the development of individual and institutional capacity in non-GBIF Participant countries and helps pilot new GBIF-led initiatives to assess impact.
+Working in close collaboration with the GBIF Secretariat and the regional representatives to ensure the alignment of their work with GBIF-led initiatives, they maximize the reach of the GBIF Secretariat to support the development of dynamic communities of practice.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="training-strategy-and-learning-resources">
+<a class="anchor" href="#training-strategy-and-learning-resources"></a>3.4. Training strategy and learning resources</h3>
+<div class="paragraph">
+<p>GBIF offers a blended learning environment that provides reusable and easily accessible learning opportunities, both online and in-person, that can be implemented across all levels of this capacity development framework. The GBIF Secretariat guides the development and maintenance of curricula and a catalogue of resources that further the goals to mobilize data through GBIF and to use GBIF-mediated data in research and decision-making. The resources exist in the form of courses, tutorials, instructional videos, and digital documentation. The Secretariat and nodes collaborate with a range of volunteers, community experts, and higher education in the development, delivery, promotion and use of materials and courses. The Secretariat partners with established external groups to provide essential foundational skills that are needed in the community.</p>
+</div>
+<div class="paragraph">
+<p><strong>Table 4: Training and documentation</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Curriculum development</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since 2016, when the first version of the data mobilization workshop was developed for the BID programme, the Secretariat has focused on working with GBIF community experts to develop training materials that are based on defined learning objects and an educational rubric with measures of success to enable certification for selected courses.  The content is modular-based, designed to be reusable and is easily accessible online. Additional features include use cases and practical exercises; pre- and post-course activities; and pre- and post-course evaluations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The GBIF method of curriculum development is key in developing and expanding the  community of practice. An end result of completing GBIF courses is development of skills at an individual level that translate to the ability to reuse materials and exchange knowledge with colleagues/peers to further develop skills in their institutional and national communities.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Digital documentation</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content">
+<div class="paragraph">
+<p>Beyond training materials, the Secretariat offers a range of best practice guides intended to supplement GBIF’s data publishing and data use communities. This digital-first documentation is on a range of topics relating to biodiversity informatics and open biodiversity data. Text and other content are maintained in open GBIF GitHub repositories and published into HTML and PDF formats using an open-source publishing toolchain called AsciiDoctor. Support for translations is integrated via CrowdIn, which provides a free non-commercial licence that supports the efforts of GBIF’s volunteer translator community. GBIF’s digital-first documentation is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Authored by the community</p>
+</li>
+<li>
+<p>Reviewed by the community</p>
+</li>
+<li>
+<p>Consistent</p>
+</li>
+<li>
+<p>Versioned</p>
+</li>
+<li>
+<p>Maintained on GitHub</p>
+</li>
+<li>
+<p>Updated in a timely manner</p>
+</li>
+<li>
+<p>Licenced with Creative Commons</p>
+</li>
+<li>
+<p>Translated in multiple languages</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to the best practice guides, the Secretariat develops and maintains technical documentation on GBIF processes, tools, services, and system components. Like the best practice guides, the technical documentation is maintained in GitHub and uses AsciiDoctor.</p>
+</div>
+</div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Digital-first documentation promotes knowledge sharing from community experts and gives the community at-large an opportunity to peer-review. This promotes  inclusivity and transparency in the process and allows quick response to new or expanded needs from the community with regards to specific documentation. Additionally, it expands the community to new users and thematic communities.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong><a href="https://www.gbif.org/data-use-club" target="_blank" rel="noopener">Data Use Club</a></strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Contributions to capacity development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Through quarterly webinars, the Data Use Club promotes interaction between data users and provides them with tools for developing skills in data use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Participation in the Data Use Club strengthens data use and open data principles among research communities and improves data literacy at the individual level.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion">
+<a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This framework updates the 2015 <a href="https://doi.org/10.35035/doc-qpxw-n868" target="_blank" rel="noopener">GBIF Capacity Enhancement Framework</a> and serves as an inclusive guide for GBIF’s capacity development action over the five years of the Strategic Framework 2023-2027. Capacity development plays an essential role in GBIF, and this framework sets out adaptable tools, approaches and indicators to enable us to scale our activities to meet emerging opportunities and keep track of their impact.</p>
+</div>
+<div class="paragraph">
+<p>The GBIF Secretariat will apply this framework in its continuing efforts to support node development through collaboration, to design and implement capacity development programmes, to support the community of practice, and to roll out the training strategy and associated learning resources. Participant nodes and other partners are encouraged to use this framework when designing capacity enhancement activities, both within their own context and when defining collaborations with external partners. Potential partners are encouraged to evaluate how the approach described in this framework could align with their priorities and principles, when considering potential capacity enhancement collaboration with the GBIF network. The Community and Capacity team at the GBIF Secretariat is available to provide further information on this framework, how to put it into practice and potential avenues for collaboration.</p>
+</div>
+<div class="paragraph">
+<p>This framework is shared as a living digital document open for comment and suggested revisions from the GBIF community at any time. This framework will be reviewed for the next strategic planning period starting 2027.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1<br>
+Last updated 2024-03-12 12:58:11 UTC
+</div>
+</div>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script type="text/javascript">
+      var inputField = document.getElementById('search_input');
+
+      function searchResults(query) {
+        var documentContent = document.getElementById('content');
+
+        while (documentContent.firstChild) {
+          documentContent.removeChild(documentContent.firstChild)
+        }
+
+        var searchResultsHeader = document.createElement('h2');
+        documentContent.appendChild(searchResultsHeader);
+        searchResultsHeader.innerHTML = `Search results`
+        window.scrollTo(searchResultsHeader);
+
+        var searchResultsDescription = document.createElement('div');
+        documentContent.appendChild(searchResultsDescription);
+        searchResultsDescription.innerHTML = `Search results for “${query}”`
+
+        var searchResults = document.createElement('ul');
+        documentContent.appendChild(searchResults);
+
+        return searchResults;
+      }
+
+      function submitForm(event) {
+        event.preventDefault();
+
+        const query = inputField.value;
+
+        const resultsHTML = searchResults(query);
+
+        fetch('lunr-index.json')
+          .then((response) => response.json())
+          .then((data) => {
+            idx = lunr.Index.load(data.index);
+            store = data.store;
+            var results = idx.search(query);
+            console.log("Search for", query, "gave", results.length, "results.");
+            if (results.length === 0) {
+              resultsHTML.innerHTML = 'No results';
+              return true;
+            }
+            var pages = results.map((x) => {
+              var anchorPosition = -1; //x.ref.indexOf('#');
+              var storeKey = anchorPosition > 0 ? x.ref.substr(0, anchorPosition) : x.ref;
+              return { data: store[storeKey], match: x };
+            });
+            var list = pages.map((x) => template(x));
+            resultsHTML.innerHTML = list.join('');
+          })
+          .catch((err) => function(err){
+            console.error(err);
+            resultsHTML.innerHTML = 'Unable to complete search - please report the error';
+          });
+
+        return true;
+      }
+
+      var hlStart = '<span class="hl">';
+      var hlEnd = '</span>';
+      var template = ({ data, match }) => {
+        var metadata = match.matchData.metadata;
+
+        // use first 200 chars as fallback
+        var text = `${data.text.substr(0, 200)}${data.text.length > 199 ? '...' : ''}`;
+
+        // Lunr has no concept of highlighting it seems. The developer says it is the most frequent request.
+
+        // Instead we try to do a lazy highlighting - I suspect that it will be fine in most cases.
+        // If it isn't then we should look at something like mark.js which seem to solve this issue.
+
+        // if there only one search term, then try to highlight it
+        if (Object.keys(metadata).length === 1) {
+          // only attempt with the first occurrences of the word
+          // (though there may be many more)
+          var matchedTerm = metadata[Object.keys(metadata)[0]];
+
+          // sometimes it can be an a title that match. Lunr does not tell us which. WE cannot do much in that case
+          if (matchedTerm.text && matchedTerm.text.position) {
+            var matchText = matchedTerm.text.position[0];
+
+            text = data.text.slice(0, matchText[0]) + hlStart + data.text.slice(matchText[0]);
+            text = text.slice(0, matchText[0] + matchText[1] + hlStart.length) + hlEnd + text.slice(matchText[0] + matchText[1] + hlStart.length);
+            var start = matchText[0];
+            var length = matchText[1] + hlStart.length + hlEnd.length + 200;
+            var begin = Math.max(0, start - 100);
+            text = text.substr(begin, length)
+          }
+        }
+
+        return `
+        <li>
+          <article>
+            <h5>
+              <a href="${match.ref}">${data.title}</a>
+            </h5>
+            <div>
+              ... ${text} ...
+            </div>
+          </article>
+        </li>
+        `;
+      };
+    </script>
+    
+<script defer data-domain="docs.gbif.org,gbif.org" src="https://plausible.io/js/script.file-downloads.js"></script>
+</body>
+</html>
+ contentType 9 text/html url 60 https://docs.gbif.org:443/capacity-development-framework/en/ responseCode 3 200 

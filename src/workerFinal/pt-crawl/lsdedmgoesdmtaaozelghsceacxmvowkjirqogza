@@ -1,0 +1,1650 @@
+lsdedmgoesdmtaaozelghsceacxmvowkjirqogza length 6 100337 page 100337 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>National Targets</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="National Targets" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2020-09-13T00:00:00Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl27_BSignUp" href="javascript:__doPostBack(&#39;ctl27$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl27_BSignIn" href="javascript:__doPostBack(&#39;ctl27$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl26_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl26$BLocale', 'ar');" id="ctl26_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'es');" id="ctl26_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'fr');" id="ctl26_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl26$BLocale', 'ru');" id="ctl26_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl26_CLanguage" class="language-option">Русский</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./targets/?country=jp" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBT0vdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZjb3VudHJpZXMlMmZ0YXJnZXRzJTNmY291bnRyeSUzZGpwHglpbm5lcmh0bWwFFlNpZ24gdXAgZm9yIGFuIGFjY291bnRkAgMPFgQfAAU9L3VzZXIvc2lnbmluLz9yZXR1cm51cmw9JTJmY291bnRyaWVzJTJmdGFyZ2V0cyUzZmNvdW50cnklM2RqcB8BBQdTaWduIEluZAIDDxYCHgdWaXNpYmxlaBYEAgEPFgQfAAU+L3VzZXIvcHJvZmlsZS8/cmV0dXJudXJsPSUyZmNvdW50cmllcyUyZnRhcmdldHMlM2Zjb3VudHJ5JTNkanAeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIHDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCcnVkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC0zODU1LkpQRykWAgIBDxYCHwEFEENvdW50cnkgUHJvZmlsZXNkAgEPZBYCAgEPFgQfAAUYL2NvdW50cmllcy9kZWZhdWx0LnNodG1sHwEFEENvdW50cnkgUHJvZmlsZXNkAgMPZBYEAgEPZBYCZg9kFgJmD2QWAgIBDxYEHgVjbGFzcwUVbGlzdC11bnN0eWxlZCBsZXZlbC0wHwJoFgICAQ8WBh8GBQdsZXZlbC0wHgdwYWdlLWlkBQQzODU1HwJoZAICD2QWAmYPZBYCAgIPZBYCAgMPZBYCAgMPZBYCZg9kFgQCAQ8WAh8BBRsgY29kZT12MSAvY291bnRyaWVzL3RhcmdldHNkAgUPFgIfAmcWAgIBDxYCHwJnFg4CAQ8WBB4Dc3JjBR8vaW1hZ2VzL2ZsYWdzLzk2L2ZsYWctanAtOTYucG5nHgNhbHQFFUNvdW50cnkgZmxhZyBvZiBKYXBhbmQCAw8WAh8BBQVKYXBhbmQCBw8WAh8CZxYEZg9kFgICAg8WAh8BBQoxOTkzLTEyLTI5ZAIBD2QWAgICDxYCHwEFCkFjY2VwdGFuY2VkAg0PFgIfAmcWBGYPZBYCAgIPFgIfAQUKMjAwNC0wMi0xOWQCAQ9kFgICAg8WAh8BBQlBY2Nlc3Npb25kAhMPFgIfAmcWBGYPZBYCAgIPFgIfAQUKMjAxNy0wOC0yMGQCAQ9kFgICAg8WAh8BBQpBY2NlcHRhbmNlZAIZDxYCHwJnFgRmD2QWAgICDxYCHwEFCjIwMTgtMDMtMDVkAgEPZBYCAgIPFgIfAQUKQWNjZXB0YW5jZWQCHQ9kFgQCAw8WAh4EVGV4dAXACg0KPGxpPjxhICBocmVmPScvY291bnRyaWVzLz9jb3VudHJ5PWpwJz5PdmVydmlldzwvYT48L2xpPg0KPGxpPjxhICBocmVmPScvY291bnRyaWVzL3Byb2ZpbGUvP2NvdW50cnk9anAnPk1haW4gRGV0YWlsczwvYT48L2xpPg0KPGxpPjxhICBocmVmPScvY291bnRyaWVzL25mcC8/Y291bnRyeT1qcCc+TmF0aW9uYWwgRm9jYWwgUG9pbnRzPC9hPjwvbGk+DQo8bGk+PGEgIGhyZWY9Jy9uYnNhcC8nPk5hdGlvbmFsIEJpb2RpdmVyc2l0eSBTdHJhdGVnaWVzIGFuZCBBY3Rpb24gUGxhbnMgKE5CU0FQcyk8aW1nIHNyYz0nL3N0eWxlcy9pbWFnZXMvbWljb24tZ28uZ2lmJyBhbGlnbj0ncmlnaHQnLz48L2E+PC9saT4NCjxsaT48YSAgaHJlZj0nL25ic2FwL2Fib3V0L2xhdGVzdC9kZWZhdWx0LnNodG1sJz5MYXRlc3QgTkJTQVBzIHN1Ym1pdHRlZDxpbWcgc3JjPScvc3R5bGVzL2ltYWdlcy9taWNvbi1nby5naWYnIGFsaWduPSdyaWdodCcvPjwvYT48L2xpPg0KPGxpPjxhICBocmVmPScvcmVwb3J0cy8nPk5hdGlvbmFsIFJlcG9ydHM8aW1nIHNyYz0nL3N0eWxlcy9pbWFnZXMvbWljb24tZ28uZ2lmJyBhbGlnbj0ncmlnaHQnLz48L2E+PC9saT4NCjxsaT48YSAgaHJlZj0nL2NvdW50cmllcy90YXJnZXRzLz9jb3VudHJ5PWpwJz5OYXRpb25hbCBUYXJnZXRzPC9hPjwvbGk+DQo8bGk+PGEgIGhyZWY9J2h0dHBzOi8vYWJzY2guY2JkLmludC9jb3VudHJpZXMvanAnPkFCUyBJbmZvcm1hdGlvbjxpbWcgc3JjPScvc3R5bGVzL2ltYWdlcy9taWNvbi1nby5naWYnIGFsaWduPSdyaWdodCcvPjwvYT48L2xpPg0KPGxpPjxhICBocmVmPSdodHRwczovL2JjaC5jYmQuaW50L2NvdW50cmllcy9qcCc+QkNIIEluZm9ybWF0aW9uPGltZyBzcmM9Jy9zdHlsZXMvaW1hZ2VzL21pY29uLWdvLmdpZicgYWxpZ249J3JpZ2h0Jy8+PC9hPjwvbGk+DQo8bGk+PGEgIGhyZWY9Jy8yMDExLTIwMjAvYWN0aW9ucy9jb3VudHJpZXMvanAnPlVOREIgMjAxMS0yMDIwPGltZyBzcmM9Jy9zdHlsZXMvaW1hZ2VzL21pY29uLWdvLmdpZicgYWxpZ249J3JpZ2h0Jy8+PC9hPjwvbGk+DQo8bGk+PGEgIGhyZWY9J2h0dHA6Ly93d3cuY2JkLmludC9lbi9idXNpbmVzcy9jb3VudHJpZXMvP2NvZGU9anAnPkJ1c2luZXNzIGFuZCBCaW9kaXZlcnNpdHk8aW1nIHNyYz0nL3N0eWxlcy9pbWFnZXMvbWljb24tZ28uZ2lmJyBhbGlnbj0ncmlnaHQnLz48L2E+PC9saT4NCjxsaT48YSAgaHJlZj0naHR0cDovL3d3dy5jYmQuaW50L2tiL3Jlc3VsdHMvP2NvdW50cnk9anAnPktub3dsZWRnZSBCYXNlIFNlYXJjaDxpbWcgc3JjPScvc3R5bGVzL2ltYWdlcy9taWNvbi1nby5naWYnIGFsaWduPSdyaWdodCcvPjwvYT48L2xpPmQCBw8WAh8KBc8IDQo8bGk+PGEgdGFyZ2V0PSdfYmxhbmsnICBocmVmPSdodHRwOi8vaW5mb3JtZWEub3JnL2NvdW50cmllcy9KUCc+SW5mb3JNRUEgUHJvZmlsZTxpbWcgc3JjPScvc3R5bGVzL2ltYWdlcy9taWNvbi1saW5rLmdpZicgYWxpZ249J3JpZ2h0Jy8+PC9hPjwvbGk+DQo8bGk+PGEgdGFyZ2V0PSdfYmxhbmsnICBocmVmPSdodHRwOi8vd2hjLnVuZXNjby5vcmcvZW4vc3RhdGVzcGFydGllcy9qcCc+V29ybGQgSGVyaXRhZ2UgU2l0ZXM8aW1nIHNyYz0nL3N0eWxlcy9pbWFnZXMvbWljb24tbGluay5naWYnIGFsaWduPSdyaWdodCcvPjwvYT48L2xpPg0KPGxpPjxhIHRhcmdldD0nX2JsYW5rJyAgaHJlZj0naHR0cHM6Ly93d3cuZ2JpZi5vcmcvY291bnRyeS9KUC9zdW1tYXJ5Jz5HQklGIERhdGE8aW1nIHNyYz0nL3N0eWxlcy9pbWFnZXMvbWljb24tbGluay5naWYnIGFsaWduPSdyaWdodCcvPjwvYT48L2xpPg0KPGxpPjxhIHRhcmdldD0nX2JsYW5rJyAgaHJlZj0naHR0cHM6Ly93d3cud3RvLm9yZy9lbmdsaXNoL3Jlc19lL3N0YXRpc19lL2RhaWx5X3VwZGF0ZV9lL3RyYWRlX3Byb2ZpbGVzL0pQX2UucGRmJz5XVE8gU3RhdGlzdGljczxpbWcgc3JjPScvc3R5bGVzL2ltYWdlcy9taWNvbi1saW5rLmdpZicgYWxpZ249J3JpZ2h0Jy8+PC9hPjwvbGk+DQo8bGk+PGEgdGFyZ2V0PSdfYmxhbmsnICBocmVmPSdodHRwczovL3d3dy5pbmZvcm1lYS5vcmcvZW4vY291bnRyaWVzL2pwL3BhcnR5LWxlZ2lzbGF0aW9uJz5MYXcgYW5kIEVudmlyb25tZW50PGltZyBzcmM9Jy9zdHlsZXMvaW1hZ2VzL21pY29uLWxpbmsuZ2lmJyBhbGlnbj0ncmlnaHQnLz48L2E+PC9saT4NCjxsaT48YSB0YXJnZXQ9J19ibGFuaycgIGhyZWY9Jy9jb3VudHJpZXMvaWFzP2NvdW50cnk9SlAnPkludmFzaXZlIEFsaWVuIFNwZWNpZXM8aW1nIHNyYz0nL3N0eWxlcy9pbWFnZXMvbWljb24tbGluay5naWYnIGFsaWduPSdyaWdodCcvPjwvYT48L2xpPg0KPGxpPjxhIHRhcmdldD0nX2JsYW5rJyAgaHJlZj0nL2xpbmtzLz9jb3VudHJ5PWpwJz5SZWxhdGVkIFdlYnNpdGVzPGltZyBzcmM9Jy9zdHlsZXMvaW1hZ2VzL21pY29uLWxpbmsuZ2lmJyBhbGlnbj0ncmlnaHQnLz48L2E+PC9saT5kAgUPFgIfBgUvY29sLTEyIHBsLW1kLTQgcHItbWQtNCBwbC1sZy01IHByLWxnLTUgbm8tYXNpZGUWBAIDDxYCHwEFE1N1bmRheSAvLyA5LjEzLjIwMjBkAgcPZBYEAgIPZBYCAgIPZBYCAgMPZBYCAgMPZBYCZg9kFgQCAQ8WAh8BBRdKYXBhbiAtIENvdW50cnkgUHJvZmlsZWQCAg9kFgJmD2QWAgIBDxYCHwJoZAIFD2QWAgICD2QWAgIDD2QWAgIDD2QWAmYPZBYGAgQPFgIfAmgWBgIBDxYCHwEFD1NlYXJjaCBDcml0ZXJpYWQCCw8WAh8BBQ5UaXRsZSBjb250YWluc2QCDw8WAh4FdmFsdWUFBlNlYXJjaGQCCg8WAh8CaGQCTg8WAh8CaGQCBw8WAh8CaGRkRFDrBz7pCiLtyLhx7sneK3YWQWWQu0xqmlHXsS5uvbc=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl20_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-3855.JPG)">
+    <h1 id="ctl20_ctl00_CCarouselTitle">Country Profiles</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/countries/default.shtml" id="ctl21_CPortal" class="navbar-brand">Country Profiles</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl29_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl29_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl29_TMenuItem" class="level-0" page-id="3855">
+            <a href="/countries" id="ctl29_TMenuItemLink">Country Profiles</a>
+        </li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+
+
+<div id="ctl15_CSkin">
+    
+
+    <div id="ctl15_CSkin2">
+        
+        
+<!-- UI=v1 <span id="ctl15_W13717_spanTest"> code=v1 /countries/targets</span> -->
+
+<style>
+    body.phoenix ul.t-subMenu {
+        list-style-type: none;
+        color: white;
+    }
+    body.phoenix .t-subMenu li:not(.t-menuSection) a
+    {
+        padding-left: 5px;
+        color: white;
+    }
+    body.phoenix .t-subMenu li:not(.t-menuSection) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    body.phoenix .t-subMenu li:not(.t-menuSection) > a > img {
+        padding-top: 5px;
+        padding-right: 5px;
+    }
+    body.phoenix li.t-menuSection{
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    body.phoenix .t-subMenu li.t-menuSelected a{
+        padding-left: 5px;
+        color: #265a4f;
+        display: inline-block;
+        width: 100%;
+        background-color: white;
+    }
+    body.phoenix li.t-menuSection a { padding-right: 45px; }
+    #divSelect,  #divSelect select { width: 100%; }
+    body.phoenix #divSelect { text-align: center }
+    body.phoenix #divSelect select { width: 90% }
+    body.phoenix div[id$="_CCountryInformation"] > ul.t-subMenu > li:first-child  { background: none; font-size: 1.25em; }
+</style>
+
+<div id='divSelect' style="padding: 10px 0 10px 0;">
+    <select name="ctl15$W13717$CCountryList$ddlCountryList" id="ctl15_W13717_CCountryList_ddlCountryList" onchange="__doPostBack(&quot;ctl15$W13717$CCountryList$CCountryListChange&quot;, &quot;&quot;)"><option value="">&lt;Select a Country&gt;</option>
+<option value="af">Afghanistan</option>
+<option value="al">Albania</option>
+<option value="dz">Algeria</option>
+<option value="ad">Andorra</option>
+<option value="ao">Angola</option>
+<option value="ag">Antigua and Barbuda</option>
+<option value="ar">Argentina</option>
+<option value="am">Armenia</option>
+<option value="au">Australia</option>
+<option value="at">Austria</option>
+<option value="az">Azerbaijan</option>
+<option value="bs">Bahamas</option>
+<option value="bh">Bahrain</option>
+<option value="bd">Bangladesh</option>
+<option value="bb">Barbados</option>
+<option value="by">Belarus</option>
+<option value="be">Belgium</option>
+<option value="bz">Belize</option>
+<option value="bj">Benin</option>
+<option value="bt">Bhutan</option>
+<option value="bo">Bolivia (Plurinational State of)</option>
+<option value="ba">Bosnia and Herzegovina</option>
+<option value="bw">Botswana</option>
+<option value="br">Brazil</option>
+<option value="bn">Brunei Darussalam</option>
+<option value="bg">Bulgaria</option>
+<option value="bf">Burkina Faso</option>
+<option value="bi">Burundi</option>
+<option value="cv">Cabo Verde</option>
+<option value="kh">Cambodia</option>
+<option value="cm">Cameroon</option>
+<option value="ca">Canada</option>
+<option value="cf">Central African Republic</option>
+<option value="td">Chad</option>
+<option value="cl">Chile</option>
+<option value="cn">China</option>
+<option value="co">Colombia</option>
+<option value="km">Comoros</option>
+<option value="cg">Congo</option>
+<option value="ck">Cook Islands</option>
+<option value="cr">Costa Rica</option>
+<option value="ci">C&#244;te d&#39;Ivoire</option>
+<option value="hr">Croatia</option>
+<option value="cu">Cuba</option>
+<option value="cy">Cyprus</option>
+<option value="cz">Czechia</option>
+<option value="kp">Democratic People&#39;s Republic of Korea</option>
+<option value="cd">Democratic Republic of the Congo</option>
+<option value="dk">Denmark</option>
+<option value="dj">Djibouti</option>
+<option value="dm">Dominica</option>
+<option value="do">Dominican Republic</option>
+<option value="ec">Ecuador</option>
+<option value="eg">Egypt</option>
+<option value="sv">El Salvador</option>
+<option value="gq">Equatorial Guinea</option>
+<option value="er">Eritrea</option>
+<option value="ee">Estonia</option>
+<option value="sz">Eswatini</option>
+<option value="et">Ethiopia</option>
+<option value="eur">European Union</option>
+<option value="fj">Fiji</option>
+<option value="fi">Finland</option>
+<option value="fr">France</option>
+<option value="ga">Gabon</option>
+<option value="gm">Gambia</option>
+<option value="ge">Georgia</option>
+<option value="de">Germany</option>
+<option value="gh">Ghana</option>
+<option value="gr">Greece</option>
+<option value="gd">Grenada</option>
+<option value="gt">Guatemala</option>
+<option value="gn">Guinea</option>
+<option value="gw">Guinea-Bissau</option>
+<option value="gy">Guyana</option>
+<option value="ht">Haiti</option>
+<option value="va">Holy See</option>
+<option value="hn">Honduras</option>
+<option value="hu">Hungary</option>
+<option value="is">Iceland</option>
+<option value="in">India</option>
+<option value="id">Indonesia</option>
+<option value="ir">Iran (Islamic Republic of)</option>
+<option value="iq">Iraq</option>
+<option value="ie">Ireland</option>
+<option value="il">Israel</option>
+<option value="it">Italy</option>
+<option value="jm">Jamaica</option>
+<option selected="selected" value="jp">Japan</option>
+<option value="jo">Jordan</option>
+<option value="kz">Kazakhstan</option>
+<option value="ke">Kenya</option>
+<option value="ki">Kiribati</option>
+<option value="kw">Kuwait</option>
+<option value="kg">Kyrgyzstan</option>
+<option value="la">Lao People&#39;s Democratic Republic</option>
+<option value="lv">Latvia</option>
+<option value="lb">Lebanon</option>
+<option value="ls">Lesotho</option>
+<option value="lr">Liberia</option>
+<option value="ly">Libya</option>
+<option value="li">Liechtenstein</option>
+<option value="lt">Lithuania</option>
+<option value="lu">Luxembourg</option>
+<option value="mg">Madagascar</option>
+<option value="mw">Malawi</option>
+<option value="my">Malaysia</option>
+<option value="mv">Maldives</option>
+<option value="ml">Mali</option>
+<option value="mt">Malta</option>
+<option value="mh">Marshall Islands</option>
+<option value="mr">Mauritania</option>
+<option value="mu">Mauritius</option>
+<option value="mx">Mexico</option>
+<option value="fm">Micronesia (Federated States of)</option>
+<option value="mc">Monaco</option>
+<option value="mn">Mongolia</option>
+<option value="me">Montenegro</option>
+<option value="ma">Morocco</option>
+<option value="mz">Mozambique</option>
+<option value="mm">Myanmar</option>
+<option value="na">Namibia</option>
+<option value="nr">Nauru</option>
+<option value="np">Nepal</option>
+<option value="nl">Netherlands (Kingdom of the)</option>
+<option value="nz">New Zealand</option>
+<option value="ni">Nicaragua</option>
+<option value="ne">Niger</option>
+<option value="ng">Nigeria</option>
+<option value="nu">Niue</option>
+<option value="mk">North Macedonia</option>
+<option value="no">Norway</option>
+<option value="om">Oman</option>
+<option value="pk">Pakistan</option>
+<option value="pw">Palau</option>
+<option value="pa">Panama</option>
+<option value="pg">Papua New Guinea</option>
+<option value="py">Paraguay</option>
+<option value="pe">Peru</option>
+<option value="ph">Philippines</option>
+<option value="pl">Poland</option>
+<option value="pt">Portugal</option>
+<option value="qa">Qatar</option>
+<option value="kr">Republic of Korea</option>
+<option value="md">Republic of Moldova</option>
+<option value="ro">Romania</option>
+<option value="ru">Russian Federation</option>
+<option value="rw">Rwanda</option>
+<option value="kn">Saint Kitts and Nevis</option>
+<option value="lc">Saint Lucia</option>
+<option value="vc">Saint Vincent and the Grenadines</option>
+<option value="ws">Samoa</option>
+<option value="sm">San Marino</option>
+<option value="st">Sao Tome and Principe</option>
+<option value="sa">Saudi Arabia</option>
+<option value="sn">Senegal</option>
+<option value="rs">Serbia</option>
+<option value="sc">Seychelles</option>
+<option value="sl">Sierra Leone</option>
+<option value="sg">Singapore</option>
+<option value="sk">Slovakia</option>
+<option value="si">Slovenia</option>
+<option value="sb">Solomon Islands</option>
+<option value="so">Somalia</option>
+<option value="za">South Africa</option>
+<option value="ss">South Sudan</option>
+<option value="es">Spain</option>
+<option value="lk">Sri Lanka</option>
+<option value="ps">State of Palestine</option>
+<option value="sd">Sudan</option>
+<option value="sr">Suriname</option>
+<option value="se">Sweden</option>
+<option value="ch">Switzerland</option>
+<option value="sy">Syrian Arab Republic</option>
+<option value="tj">Tajikistan</option>
+<option value="th">Thailand</option>
+<option value="tl">Timor-Leste</option>
+<option value="tg">Togo</option>
+<option value="to">Tonga</option>
+<option value="tt">Trinidad and Tobago</option>
+<option value="tn">Tunisia</option>
+<option value="tr">Türkiye</option>
+<option value="tm">Turkmenistan</option>
+<option value="tv">Tuvalu</option>
+<option value="ug">Uganda</option>
+<option value="ua">Ukraine</option>
+<option value="ae">United Arab Emirates</option>
+<option value="gb">United Kingdom of Great Britain and Northern Ireland</option>
+<option value="tz">United Republic of Tanzania</option>
+<option value="us">United States of America</option>
+<option value="uy">Uruguay</option>
+<option value="uz">Uzbekistan</option>
+<option value="vu">Vanuatu</option>
+<option value="ve">Venezuela (Bolivarian Republic of)</option>
+<option value="vn">Viet Nam</option>
+<option value="ye">Yemen</option>
+<option value="zm">Zambia</option>
+<option value="zw">Zimbabwe</option>
+</select>
+
+
+
+
+
+    
+</div>
+
+<div id="ctl15_W13717_divCountryMenu">    
+<div id="ctl15_W13717_CCountryInformation" style="width:100%;">
+
+<div style="text-align:center">
+    <img src="/images/flags/96/flag-jp-96.png" id="ctl15_W13717_CCountryFlag" style="margin:5px 5px 5px 5px" alt="Country flag of Japan" />
+</div>
+
+<ul  class="t-subMenu">
+    <li class="t-menuSection" style="text-align:center;"><a id="ctl15_W13717_CCountryName">Japan</a></li>
+    <li>&#160;</li>
+
+    <li class="t-menuSection"><a style='font-weight:normal;'><span id="ctl15_W13717_ctl00_spanText">Convention</span>
+</a></li>
+    <li>
+        <table id="ctl15_W13717_CConventionInfo" border="0">
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl04_spanText">Party since:</span>
+</td>
+<td id="ctl15_W13717_CCBDPartyDate">1993-12-29</td>
+</tr>
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl08_spanText">By:</span>
+</td>
+<td id="ctl15_W13717_CCBDPartyType">Acceptance</td>
+</tr>
+</table>
+
+        
+        &#160;
+    </li>
+    <li class="t-menuSection"><a style='font-weight:normal;'><span id="ctl15_W13717_ctl13_spanText">Cartagena Protocol</span>
+</a></li>
+    <li>
+        <table id="ctl15_W13717_CProtocolInfo" border="0">
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl17_spanText">Party since:</span>
+</td>
+<td id="ctl15_W13717_CCPBPartyDate">2004-02-19</td>
+</tr>
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl21_spanText">By:</span>
+</td>
+<td id="ctl15_W13717_CCPBPartyType">Accession</td>
+</tr>
+</table>
+
+        
+        &#160;
+    </li>
+    <li class="t-menuSection"><a style='font-weight:normal;'><span id="ctl15_W13717_ctl26_spanText">Nagoya Protocol  on Access and Benefit-sharing</span>
+</a></li>
+    <li><!-- ABS Nagoya Protocol -->
+        <table id="ctl15_W13717_CAbsProtocolInfo" border="0">
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl30_spanText">Party since:</span>
+</td>
+<td id="ctl15_W13717_CAbsPartyDate">2017-08-20</td>
+</tr>
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl34_spanText">By:</span>
+</td>
+<td id="ctl15_W13717_CAbsPartyType">Acceptance</td>
+</tr>
+</table>
+
+        
+        &#160;
+    </li>
+    <li class="t-menuSection"><a style='font-weight:normal;'><span id="ctl15_W13717_ctl39_spanText">Nagoya – Kuala Lumpur Supplementary Protocol on Liability and Redress</span>
+</a></li>
+    <li><!-- Nagoya-Kuala Lumpur Protocol-->
+        <table id="ctl15_W13717_CKlnProtocolInfo" border="0">
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl43_spanText">Party since:</span>
+</td>
+<td id="ctl15_W13717_CKlnPartyDate">2018-03-05</td>
+</tr>
+<tr>
+<td>&#160;</td>
+<td style="text-align:right"><span id="ctl15_W13717_ctl47_spanText">By:</span>
+</td>
+<td id="ctl15_W13717_CKlnPartyType">Acceptance</td>
+</tr>
+</table>
+
+        
+        &#160;
+    </li>
+</ul>
+
+<div id="ctl15_W13717_divMenuInfo"> 
+<ul  class="t-subMenu">
+    <li class="t-menuSection"><a><span id="ctl15_W13717_ctl52_spanText">CBD Information</span>
+</a></li>
+    
+<li><a  href='/countries/?country=jp'>Overview</a></li>
+<li><a  href='/countries/profile/?country=jp'>Main Details</a></li>
+<li><a  href='/countries/nfp/?country=jp'>National Focal Points</a></li>
+<li><a  href='/nbsap/'>National Biodiversity Strategies and Action Plans (NBSAPs)<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='/nbsap/about/latest/default.shtml'>Latest NBSAPs submitted<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='/reports/'>National Reports<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='/countries/targets/?country=jp'>National Targets</a></li>
+<li><a  href='https://absch.cbd.int/countries/jp'>ABS Information<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='https://bch.cbd.int/countries/jp'>BCH Information<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='/2011-2020/actions/countries/jp'>UNDB 2011-2020<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='http://www.cbd.int/en/business/countries/?code=jp'>Business and Biodiversity<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+<li><a  href='http://www.cbd.int/kb/results/?country=jp'>Knowledge Base Search<img src='/styles/images/micon-go.gif' align='right'/></a></li>
+</ul>
+
+<ul  class="t-subMenu">
+    <li class="t-menuSection"><a><span id="ctl15_W13717_ctl53_spanText">Further Information</span>
+</a></li>
+    
+<li><a target='_blank'  href='http://informea.org/countries/JP'>InforMEA Profile<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+<li><a target='_blank'  href='http://whc.unesco.org/en/statesparties/jp'>World Heritage Sites<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+<li><a target='_blank'  href='https://www.gbif.org/country/JP/summary'>GBIF Data<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+<li><a target='_blank'  href='https://www.wto.org/english/res_e/statis_e/daily_update_e/trade_profiles/JP_e.pdf'>WTO Statistics<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+<li><a target='_blank'  href='https://www.informea.org/en/countries/jp/party-legislation'>Law and Environment<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+<li><a target='_blank'  href='/countries/ias?country=JP'>Invasive Alien Species<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+<li><a target='_blank'  href='/links/?country=jp'>Related Websites<img src='/styles/images/micon-link.gif' align='right'/></a></li>
+</ul>
+</div><!-- /#divMenuInfo -->
+</div><!-- /#CCountryInformation -->
+</div><!-- /#divCountryMenu-->
+
+    </div>
+</div>
+<p></p>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl25_CItems"><a href="/countries/default.shtml">Country Profiles</a><span> // National Targets</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Sunday // 9.13.2020</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              
+
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        
+
+<script language="JavaScript" src="/scbd/css_script/AC_RunActiveContent.js" type="text/javascript"></script>
+<script language="JavaScript" src="/scbd/css_script/flash_test.js" type="text/javascript"></script>
+<script language="javascript">
+function onCountryClick(country) {
+    __doPostBack("ctl16$W13718$BCountryChange", (country == 'cs' ? 'rs' : country));
+}
+</script>
+
+
+<table width="100%" cellspacing="0" cellpadding="0">
+    <tr><td><h1 id="ctl16_W13718_CTitle" class="cmsH1">Japan - Country Profile</h1></td>
+        <td class="alignFar" style="padding:0px 5px 0px 5px;vertical-align:middle"></td>
+    </tr>
+</table>
+
+
+
+<table id="ctl16_W13718_CCountryProfileMap" cellspacing="0" cellpadding="0" style="border:solid 1px #496610">
+<tr>
+<td style="background:#c3d3ed">
+<script language="javascript" type="text/javascript">
+    if  (AC_FL_RunContent == 0) { alert("This page requires AC_RunActiveContent.js"); }
+    else { 
+        var country = 'jp';
+        AC_FL_RunContent(
+            'codebase','https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab',
+            'width','575',
+            'height','325',
+            'src','/scbd/map/flash_map',
+            'quality','high',
+            'wmode','transparent',
+            'flashvars', 'xml=/xml/map/countryprofile_' + lang + '.xml&country=' + (country == 'rs' ? 'cs' : country),
+            'pluginspage','https://www.macromedia.com/go/getflashplayer',
+            'movie','/scbd/map/flash_map' ); 
+    }
+</script>
+<noscript>
+    <object 
+        classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+        codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+        width="575" height="325">
+        <param name="movie" value="/scbd/map/flash_map.swf" />
+        <param name="allowScriptAccess" value="sameDomain" />
+        <param name="quality" value="high" />
+        <param name="wmode"   value="transparent" />
+        <embed 
+            src="/scbd/map/flash_map.swf?xml=/xml/map/countryprofile_en.xml&country=jp" 
+            quality="high" 
+            pluginspage="https://www.macromedia.com/go/getflashplayer"
+            type="application/x-shockwave-flash" 
+            width="575" 
+            height="325" 
+            allowscriptaccess="sameDomain"
+        />
+    </object>
+</noscript></td>
+</tr>
+</table>
+
+
+
+
+    </div>
+</div>
+<p></p>
+<div id="ctl17_CSkin">
+    
+
+    
+    
+    <div id="ctl17_CSkin2">
+        <div class="hlite"></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl18_CSkin">
+    
+
+    
+    
+    <div id="ctl18_CSkin2">
+        <div class="hlite">The national targets (or equivalent) presented in this database are taken from the <a href="https://www.cbd.int/nbsap/about/latest/default.shtml">NBSAPs received since COP-10</a>, fifth national reports or from documents submitted separately. The mapping of national targets to the Aichi Biodiversity Targets <i>by the Party concerned</i> is indicated in the last column “Related Aichi Target(s)”. All Parties are encouraged to undertake this mapping exercise and to submit this information to SCBD for incorporation in this database.
+<p></p>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="ctl19_CSkin">
+    
+
+    <div id="ctl19_CSkin2">
+        
+        <style id="ctl19_W13723_styCss" type="text/css">
+table.search            { table-layout: fixed; border-collapse: collapse; }
+table.search td         { vertical-align: top; white-space: nowrap; padding: 2px; }
+table.search td.label   { width: 200px; text-align: right; }
+table.search td.value   { width: 450px; text-align: left; }
+
+table.target            { table-layout: fixed; border-collapse: collapse; margin-top: 10px; }
+table.target td         { vertical-align: top; padding: 3px 5px; border-bottom: 1px dotted grey; }
+table.target td.sep     { background-color: #E0E0E0; font-weight: bold; }
+table.target td.sep a   { font-weight: bold; }
+table.target td.td1     { width: 150px;  text-align: center; }
+table.target td.td2     { width: 500px; text-align: left; }
+table.target td.td3     { width: 100px;  text-align: center; }
+</style>
+
+
+
+
+<!-- UI=v1 <span id="ctl19_W13723_spanTest">Not OK</span> -->
+
+
+
+
+<table  id="tableTargets" class='target' >
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1" style="font-weight:bold; background-color: #FFFFFF; text-align: center; vertical-align: bottom;">Reference</td>
+	<td id="ctl19_W13723_td2" class="td2" style="font-weight:bold; background-color: #FFFFFF; text-align: center; vertical-align: bottom;">Target</td>
+	<td id="ctl19_W13723_td3" class="td3" style="font-weight:bold; background-color: #FFFFFF; text-align: center; vertical-align: bottom;">Related Strategic Goals/Aichi Targets</td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target A-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Have a diverse array of actors such as governments, local municipalities, businesses, private organizations and citizens recognize the importance of the conservation and sustainable use of biodiversity and autonomously reflect this in their respective actions, thereby achieving the “mainstreaming of biodiversity across society” and reducing the fundamental causes of biodiversity loss through actions taken by diverse actors, by 2020 at the latest.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=1'>1</a>, <a href='/nbsap/targets/?aichi=2'>2</a>, <a href='/nbsap/targets/?aichi=3'>3</a>, <a href='/nbsap/targets/?aichi=4'>4</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal A-1-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Flesh out and enhance publicity, education, and public awareness on biodiversity (MOE, MOFA, MEXT, MAFF, METI, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal A-1-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote initiatives to visualize economic values of biodiversity and ecosystem services  (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal A-1-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote the formulation of effective Regional Biodiversity Strategies and practical initiatives by local municipalities. In addition, revise guidelines on formulating Regional Biodiversity Strategies by 2013 (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal A-1-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote the formulation of strategies and plans by the national and local governments in consideration of biodiversity.  In addition, give consideration to the effects on biodiversity from incentive measures and implement incentive measures that take biodiversity into consideration (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal A-1-5</td>
+	<td id="ctl19_W13723_td2" class="td2">Establish and announce policies for biodiversity-conscious and sustainable business activities and encourage their implementation (the introduction of environmental management systems which give consideration to biodiversity, the procurement of raw materials which takes into consideration the supply chains, production activities, sale of goods and services, technological development, waste management, investment and financing activities, land use, employee education and information disclosure on these activities) (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target B-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Significantly reduce the rate of loss of natural habitats, as well as their degradation and fragmentation, by 2020.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=5'>5</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-1-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Establish methods and standard values to serve as baselines designed to understand the status of conservation and restoration of ecosystems, as well as sorting out their current status, by the midterm review of the Aichi Biodiversity Targets that are scheduled for 2014 or early in 2015 (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-1-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Reduce the rate of loss of natural habitats by at least half or bring this close to zero in cases where it is possible to do so by 2020. In addition, carry out the initiatives needed to noticeably reduce the degradation and fragmentation of natural habitats, such as the development of ecological networks and the restoration of wetlands and tidal flats (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-1-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Enhance conservation and management techniques and promote surveys related to survival state in order to soundly implement policies for the conservation and management of wildlife, including population control for wildlife.  In addition, overhaul the enforcement status of the Wildlife Protection and Hunting Management Law by 2015 and create arrangements for securing leaders to take charge of conservation and management and begin utilizing these arrangements by 2020 (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-1-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote initiatives to prevent damage to agricultural crops by wildlife pursuant to the Special Measures Act on Countering Nuisance Wildlife in an integrated manner by aiming for coordination with policies for wildlife conservation and management, including population control. Promote measures to combat damage to forests caused by wildlife widely and effectively, while also moving ahead with countermeasures that take coexistence with wildlife into consideration—such as working to manage and conserve diverse forests—in order to ensure habitat environments for wildlife (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target B-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Engage in agriculture, forestry, and fisheries that ensure the conservation of biodiversity in a sustainable manner by 2020.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=6'>6</a>, <a href='/nbsap/targets/?aichi=7'>7</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-2-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote initiatives that seek a balance between production-related activities and the conservation of biodiversity such as sustaining agricultural production and managing production bases that can be operated sustainably (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-2-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote the multiple functional roles of forests, including the conservation of biodiversity, by encouraging management and conservation of diverse and healthy forests, which includes the conservation of biodiversity, based upon forest plans.  In addition, move forward with the National Survey on Biodiversity of the Forest Ecosystems (monitoring surveys) that investigate trends in forest biodiversity in line with  standards and indicators that has been agreed upon internationally (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-2-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote initiatives that seek a balance between sustainable fisheries and the conservation of biodiversity. This is to be done by promoting the conservation and regeneration of seagrass beds and tidal flats, the maintenance of fishing ports and grounds with forethought given to biodiversity, international cooperation for the sustainable use and management of highly migratory fish species (including tuna), resource management under resource management guidelines and resource management plans and systems, the maintenance of viable populations with forethought given to biodiversity, and the conservation of sustainable aquaculture production and inland waters (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-2-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Implement initiatives to create Satoumi areas by means of making appropriate human interventions while living in harmony with nature (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target B-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Maintain the water quality and habitat environments desirable for the conservation of aquaticorganisms, increasing biological productivity, and sustainable use while continuing to improve the state of contamination from nitrogen and phosphorous by 2020. When it comes to water areas with a highly closed off nature—such as lakes, and deeply indented bays—(hereinafter referred to as “closed water areas”) in particular, promote policies in mountainous areas, agricultural villages and the outskirts of urban areas, and urban areas that focus on the river basin in their entirety based upon the unique characteristics of each of these regions in a comprehensive and prioritized manner.</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-3-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Reduce nutrients and organic pollutants from river basin while implementing the 7th Total Pollutant Load Control by March 2015 (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-3-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Carry out initiatives designed to improve the water quality and occurrences of anoxic water masses in closed water areas.  In addition, examine environmental standardization with respect to bottom-layer dissolved oxygen for the conservation of aquatic organisms and transparency for the conservation of aquatic plants by 2014 (MOE, MLIT).&#160;</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-3-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Carry out investigations and studies aimed at establishing management policies in order to balance the conservation of habitats for a diverse array of marine organisms and high biological productivity, as well as maintaining desirable habitat environments with respect to sustainable use (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target B-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Identify invasive alien species and organize information pertaining to the routes by which they establish themselves based upon the results of examinations of the enforcement status for the Invasive Alien Species Act by 2020. In addition, lay out the order of priority for eradicating these invasive alien species, and on the basis of this apportion out appropriate roles to each of the major actors regarding their eradication and proceed with eradicating them in a systematic manner. Promote a restoration of the habitation status of rare species and restore ecosystems to their original state by controlling or exterminating high priority species through such efforts. What is more, call the attention of related actors to the management of the routes by which invasive alien species become established in order to prevent their introduction or establishment, and promote countermeasures by examining more effective border control measures.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=9'>9</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-4-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Create a list of invasive alien species threatening biodiversity, human health and or economy development in Japan (tentative name) and organize information pertaining to the routes by which species on the list establish themselves by 2014 (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-4-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Arrange the thinking behind the order of priority for controlling alien species and promote efforts such as their systematic eradication by 2014.  In addition, formulate “an action plan to prevent damages and risks caused by alien species in Japan (tentative name)” in order to encourage action on countermeasures against alien species and voluntary initiatives at the regional level by the various actors (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-4-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Control or eradicate high priority invasive alien species, while also restoring the habitation status of rare species and restoring ecosystems to their original state through such efforts (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target B-5</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote initiatives for minimizing human-induced pressures that cause ecosystems to deteriorate in order to maintain the soundness and functionality of ecosystems that are vulnerable to climate change, such as coral reefs, seagrass beds, tidal flats, islands, alpine and subalpine areas by 2015.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=10'>10</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal B-5-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Identify human-induced pressures on Japanese ecosystems that are vulnerable to climate change, such as coral reefs, seagrass beds, tidal flats, islands, alpine and subalpine areas by 2013, define the ecologically acceptable values for these human-induced pressures by 2015, and institute initiatives for achieving these ecologically acceptable values (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target C-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Appropriately conserve and manage at least 17% of inland areas and inland water areas, and at least 10% of coastal areas and ocean areas, by 2020.</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-1-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Set in place methods and baselines for determining the status of conservation and management, as well as their present status, by the midterm review for the Aichi Biodiversity Targets which are scheduled to be held in 2014 or early in 2015 (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-1-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Move ahead with examinations on identifying regions that contribute to the conservation of biodiversity by giving consideration to their continuity with surrounding areas, while also promoting their appropriate conservation and management (MOE, MEXT, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-1-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Deepen examinations of the planning and implementation methods for ecological networks and move forward with setting in place conditions for formulating plans and implementing projects at various different spatial levels. In addition, examine policies for ecological networks at the wide-area level and move ahead with forming these (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-1-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Select regions that are important from the perspective of biodiversity by focusing on regions that are important when it comes to wildlife habitats and breeding and examine the need and methods for their conservation by 2014. This is to be done in order to contribute to promoting the enhancement of marine protected areas and their formation into a network (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target C-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Maintain a situation in the 2012 version of the Ministry of the Environment’s Red List in which no new extinct species (EX) appear (excluding species that are not found over an extended period of time for which a determination will be made over a span of 50 years or more) among the threatened species that are already known about, as well as preventing the population decrease for the known threatened species.  For threatened IA species (CR) or threatened I species (CR + EN), which are the species in the greatest danger of going extinct, increase the number of species that will see their rank fall through a variety of initiatives compared to the Ministry of the Environment’s 2012 Red List by 2020. Such initiatives include setting in place habitat bases by means of promoting sustainable agriculture, forestry, and fisheries that take the proactive conservation of species and biodiversity into consideration. In addition, maintain the genetic diversity of crops, livestock animals, and wild species that are closely related to them, including those species that are valuable in a socioeconomic or cultural sense, by 2020.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=12'>12</a>, <a href='/nbsap/targets/?aichi=13'>13</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-2-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Move forward with creating structures for collecting knowledge that is crucial for promoting the conservation of threatened species (current state of threatened species’ habitats, reasons for their decline, conservation status, conservation methods and techniques, etc.), sharing information among the various actors, and using this by 2020. In addition, organize Red Lists that accurately reflect the status of threatened species and revise these periodically (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-2-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Assign priority starting with species for which there is a particularly high risk of extinction and for which good results from countermeasures can be expected through regulations, and then steadily promote the designation of National Endangered Species of Wild Fauna and Flora based upon the Law for the Conservation of Endangered Species of Wild Fauna and Flora by 2020.  Promote initiatives for The Conservation Programmes defined by the law through the formulation of plans for such programs pursuant to this act, while also striving to improve the conservation methods and techniques in accordance with the unique characteristics of each respective species and taxa (MOE, MEXT, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-2-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote the development of habitats by aiming to build consensus among local regions for preventing the extinction or decline of thereatened species (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-2-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Work to address ex-situ conservation for those species such as the crested ibis and the Tsushima leopard cat that are believed to be at an extremely high risk of extinction and for which their survival will remain in jeopardy if only initiatives for in-situ conservation are carried out, by 2020. The aim will be to restore ecosystems and revitalize regional communities by promoting the return to wildlife of individual animals that were propagated through artificial breeding through such initiatives (MOE, MEXT, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal C-2-5</td>
+	<td id="ctl19_W13723_td2" class="td2">For the genetic resources of crops, create coordinated and complementary networks for the conservation of plant genetic resources in order to prevent valuable genetic resources from disappearing from within Japan, while also giving consideration to the establishment of a systematic safety back-up system to guard against disasters. For the genetic resources of livestock animals, move forward with securing and using a diverse array of breeding resources that possess genetic advantages by focusing primarily on varieties that are unique to Japan, such as Wagyu beef, locally raised chicken, and Japanese horse breeds (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target D-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Strengthen the benefits received from biodiversity and ecosystem services in Japan and elsewhere by giving consideration to the needs of women and local communities through the conservation and restoration of ecosystems by 2020. Carry out initiatives for each species with an awareness of the importance of the sustainable use of natural resources found in Satochi-Satoyama areas in particular.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=14'>14</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-1-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Establish sustainable forest management and promote the development and conservation of diverse and healthy forests in the aim of thereby allowing them to exhibit multifunctionality, such as water conservation (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-1-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Strive to conserve and use the environment in rural areas and utilize regional resources through the sustainable agriculture (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-1-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote the Satoyama Initiative, which is an initiative that aims to improve biodiversity, ecosystem services, and human welfare, both domestic and overseas (MOE, MEXT, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-1-4</td>
+	<td id="ctl19_W13723_td2" class="td2">With a view towards reconstruction from the Great East Japan Earthquake, promote the Green Reconstruction Project that is centered around the creation of the Sanriku Fukko (Reconstruction) National Park. This is to be done by passing down the natural environment and local life that has been fostered through the connections between forests, satoyama, rivers, and sea to future generations; learning about both the blessings and threats from nature; and making use of these. Establish the Sanriku Fukko (Reconstruction) National Park and promote the reorganization of national parks by 2013. What is more, promote the restoration of coastal forests through the Green Bonds Regeneration Project, which gives forethought to conserving biodiversity (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-1-5</td>
+	<td id="ctl19_W13723_td2" class="td2">Implement initiatives to create Satoumi areas by means of making appropriate human interventions while living in harmony with nature (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-1-6</td>
+	<td id="ctl19_W13723_td2" class="td2">Move ahead with considerations for efforts like developing new policies to utilize the arrangements for Biosphere Reserves (better known as “UNESCO Eco Park” in Japan) (MEXT, MAFF, MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target D-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Strengthen the contributions of biodiversity to resilience of ecosystem and their storage of carbon dioxide by conserving and restoring ecosystems, including restoration of at least 15% or greater for degraded ecosystems, thereby contributing to climate change mitigation and adaptation by 2020.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=15'>15</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-2-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Establish methods and standard values to serve as baselines designed to determine the rate of loss of natural habitats and their state of degradation and fragmentation, as well as sorting out their current status, so that effective action can be launched by the midterm review of the Aichi Biodiversity Targets that is scheduled for 2014 or early in 2015 (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-2-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote measures for the conservation and restoration of ecosystems, thereby advancing measures that will contribute to climate change mitigation and adaptation (MOE, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-2-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Contribute to climate change mitigation and adaptation by means of promoting forest sink measures such as properly carrying out forest operations like thinning in forests, as well as establishing green corridors to serve as migration routes for wildlife (MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target D-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Aim to ratify the Nagoya Protocol on ABS as early as possible and implement the domestic measures for this Protocol by 2015 at the latest.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=16'>16</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-3-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Ratify the Nagoya Protocol as early as possible, and implement steadily the obligations under this Protocol such as designation of one or more checkpoints to monitor the use of genetic resources and awareness raising by 2015 at the latest (MOE, MOFA, MOF, MEXT, MHLW, MAFF, METI, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal D-3-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Promote support for developing countries which aim to ratify the Protocol through the Global Environment Facility (GEF), the Nagoya Protocol Implementation Fund (NPIF), etc., in order to contribute to the global achievement of Target 16 (MOFA, MOF, MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target E-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Strive to promote policies related to the conservation of biodiversity and sustainable use based on the National Biodiversity Strategy of Japan in a comprehensive and systematic manner.  Furthermore, provide support and cooperation to ensure that global initiatives geared towards achieving Target 17 are developed.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=17'>17</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-1-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Revise the National Biodiversity Strategy of Japan over 2015 and 2016 as needed based upon the midterm review results related to the achievement status of the Aichi Biodiversity Targets at COP 12, which is scheduled for 2014 or early in 2015 (MOE, Cabinet Secretariat, Cabinet Office, National Police Agency, MIC, MOFA, MOF, MEXT, MHLW, MAFF, METI, MLIT, MOD).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-1-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Contribute to the global achievement of Target 17 through the Global Environment Facility (GEF), the Japan Biodiversity Fund, and others (MOFA, MOF, MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Target E-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Have respect for local communities’ traditional knowledge related to the conservation and sustainable use of biodiversity mainstreamed by 2020. Moreover, strengthen scientific grounds pertaining to biodiversity as well as the connections between science and policy.  Effectively and efficiently mobilize the resources (funds, human resources, technologies, etc.) needed to achieve the Aichi Biodiversity Targets by 2020 at the latest.</td>
+	<td id="ctl19_W13723_td3" class="td3"><a href='/nbsap/targets/?aichi=18'>18</a>, <a href='/nbsap/targets/?aichi=19'>19</a>, <a href='/nbsap/targets/?aichi=20'>20</a></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-2-1</td>
+	<td id="ctl19_W13723_td2" class="td2">Re-evaluate the wisdom on traditional knowledge and techniques for resource usage that have been cultivated in response to the natural characteristics of local regions, and strive to pass them down and promote their use (MOE, MEXT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-2-2</td>
+	<td id="ctl19_W13723_td2" class="td2">Enhance data collection on the natural environment, such as the National Survey on the Natural Environment, continuously and quickly update it, and improve how quickly information from it is disseminated, while also setting in place structures to collect, provide, and share data through collaborations between various actors by 2020 (MOE, MEXT, MAFF, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-2-3</td>
+	<td id="ctl19_W13723_td2" class="td2">Work to round out the scientific knowledge related to marine organisms and ecosystems by 2020 (MEXT, MOE, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-2-4</td>
+	<td id="ctl19_W13723_td2" class="td2">Carry out comprehensive assessment of biodiversity in Japan and perform midterm assessment related to Japan’s national targets for the achievement of the Aichi Biodiversity Targets (MOE, MOFA, MEXT, MAFF, METI, MLIT).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-2-5</td>
+	<td id="ctl19_W13723_td2" class="td2">Japan will actively participate in and contribute to the IPBES in order to make it an effective and efficient framework that is grounded in scientific evidence, and will set in place a domestic structure for this purpose (MOE, MAFF).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+<tr id="ctl19_W13723_trTarget">
+	<td id="ctl19_W13723_td1" class="td1">Key action goal E-2-6</td>
+	<td id="ctl19_W13723_td2" class="td2">Set in place a structure to determine the extent to which resources have been mobilized in Japan for the sake of achieving the Aichi Biodiversity Targets and to report this to the Secretariat of the Convention on Biological Diversity based upon the decisions at COP 10 (MOE).</td>
+	<td id="ctl19_W13723_td3" class="td3"></td>
+</tr>
+
+</table>
+
+
+
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 53 https://www.cbd.int:443/countries/targets/?country=jp responseCode 3 200 

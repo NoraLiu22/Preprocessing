@@ -1,0 +1,660 @@
+sssenammgktmraggpajghmbacguqzcronsvqeshm length 5 38223 page 38223 <HTML>
+
+
+
+<HEAD>
+
+
+
+<TITLE> Across Languages, Across Cultures:  Issues in Multilinguality and Digital Libraries 
+
+</TITLE>
+
+
+
+
+</HEAD>
+
+
+
+<body background = "../lgray_bg.gif" width = 700 height = 16> 
+
+ 
+
+<center> 
+
+<img src = "../mag_bar1.gif">
+
+</CENTER> 
+
+<p> 
+
+<H1><CENTER>Across
+Languages, Across Cultures</CENTER></H1>
+
+
+
+<H3><CENTER>Issues in Multilinguality and Digital Libraries 
+
+</CENTER></H3>
+
+
+
+<P>
+
+<CENTER>Carol Peters<BR>
+
+Istituto di Elaborazione della Informazione<BR>
+
+Consiglio Nazionale delle Ricerche, Pisa, Italy<BR>
+
+<I><A HREF = "mailto:carol@iei.pi.cnr.it">carol@iei.pi.cnr.it</a></I> 
+
+<p>Eugenio Picchi<BR>
+
+Istituto di Linguistica Computazionale<BR>
+
+Consiglio Nazionale delle Ricerche, Pisa, Italy<BR>
+
+
+<I><A HREF = "mailto:picchi@ilc.pi.cnr.it">picchi@ilc.pi.cnr.it</a></I> 
+
+
+</CENTER>
+
+<P>
+
+<center>
+
+<b>D-Lib Magazine</b>, May 1997
+
+<p>
+
+<h6>ISSN 1082-9873</h6>
+
+<p>
+
+<img src = "../d-line1.gif"> 
+
+</center> 
+
+<p>
+
+<h3>Table of Contents</h3> 
+
+<ul>
+
+<br><A HREF = "#abstract">0. Abstract</a> 
+
+<br><A HREF = "#intro">1. Introduction</a> 
+
+<br><A HREF = "#rep">2. Multilingual Recognition and Representation</a> 
+
+<br><A HREF = "#ret">3. Cross-Language Retrieval</a> 
+
+<br><A HREF = "05peters4.html">4. Our Approach</a>
+
+<ul>
+
+<br><a href = "05peters4.html">4.1 A Corpus-based Strategy</a>
+
+<br><a href = "05peters4.html">4.2 Implementing a Cross-Language DL Query System</a>
+
+</ul>
+
+
+<br><A HREF = "05peters5.html">5. References</a> 
+
+
+<p>
+</ul>
+
+<HR>
+
+<A NAME="abstract"><h3>Abstract</h3></A>
+
+<P>
+
+With the recent rapid diffusion over the international computer networks of world-wide distributed 
+document bases, the question of multilingual access and multilingual information retrieval is becoming 
+increasingly relevant. We briefly discuss just some of the issues that must be addressed in order to 
+implement a multilingual interface for a Digital Library system and describe our own approach to this 
+problem. 
+
+
+<P>
+
+<A NAME="intro"><h3>1. Introduction</h3></A>
+<P>
+So far, in the Digital Library (DL) sector, most research and development activities have concentrated on 
+monolingual environments and, in the large majority of cases, the language employed has been English.
+<p>
+This is understandable for two reasons: The first DL efforts were concentrated in the United States where 
+English is generally accepted as the default language, and development thus focused on other strategic 
+areas.  Second, until very recently the international information infrastructures and advanced 
+communication and 
+information access services had not attempted to address the technical difficulties of creating Internet or 
+Web applications that successfully span multiple languages. However, the scene is rapidly changing.
+<p>
+Over the last few years, we have seen an enormous growth of interest in the construction of digital library 
+systems throughout the world, and not just in mainly English speaking areas.  Both Asia and Europe are 
+now actively involved in building up their own large distributed organised repositories of knowledge. This 
+was witnessed by a recent number of Ercim News, the newsletter of the 
+<A HREF="http://www-ercim.inria.fr">European Research Consortium for Informatics and 
+Mathematics</A>, which was dedicated 
+to <i>Digital Libraries</i> and described on-going initiatives throughout Europe and also in China and 
+Japan<a href = "05peters5.html#ref1">[1]</a>. It is also shown by the number of international conferences 
+now being organized outside of the United States. Important DL Conferences have already been held in 
+Japan; this autumn, the very first 
+<A HREF="http://www.area.pi.cnr.it/ErcimDL">European Conference on 
+Research and Advanced Technology for Digital Libraries</A>, sponsored by the European Union, will be 
+held in Pisa, Italy, 1-3 September.
+<p>
+Thus an increasing amount of the world's knowledge is being organized in domain-specific compartments 
+and stored in digital form, accessible over the Internet. Not only are monolingual digital libraries being 
+created in many different languages, but multilingual digital libraries are becoming more common, for 
+example, in 
+countries with more than one national language, in countries where both the national language and English 
+are commonly used for scientific and technical documentation, in pan-European institutions such as 
+research consortia, in multinational companies, and so on. We must now begin to take measures to enable 
+global 
+access to all kinds of digital libraries, whether mono- or multilingual, and whatever the language of their 
+content.
+<p>
+This is not a trivial question. We are talking about increasing the world-wide potential for access to 
+knowledge and implicitly to progress and development. Not only should it be possible for users throughout 
+the world to have access to the massive amounts of information of all types -- scientific, economic, literary, 
+news, etc. -- now available over the networks, but also for information providers to make their work and 
+ideas available in their preferred language, confident that this does not in itself preclude or limit access. 
+This is particularly relevant for the "non-dominant" languages of the world, i.e. not English, Japanese and a 
+few of the major European languages, but most of the other languages. The diversity of the world's 
+languages and cultures gives rise to an enormous wealth of knowledge and ideas. It is thus essential that we 
+study and develop computational methodologies and tools that help us to preserve and exploit this heritage. 
+The survival of languages which are not available for electronic communication will become increasingly 
+problematic in the future. 
+<p>
+That this is a strategically important issue has recently been recognised by a programme for European and 
+US cooperation on digital library research and development sponsored by the European Union and the 
+National Science Foundation. The original programme defined the setting up of just four working groups to 
+discuss and explore jointly technical, social and economic  issues, to co-ordinate research (where it makes 
+sense), and to share research results in the areas of: interoperability; metadata; search and retrieval; 
+intellectual property rights and economic charging mechanisms. However, it has now been decided to add a 
+fifth working group to this list in order to investigate issues regarding multilinguality. For more information 
+on this programme, see the Web site of the 
+<a href="http://www.area.pi.cnr.it/ErcimDL/">ERCIM Digital 
+Library Initiative</a>. 
+<p>
+Unfortunately, the question of multilingual access is an extremely complex one. Two basic issues are 
+involved:
+<ol>
+<li>Multiple language recognition, manipulation and display.
+<p>
+<li>Multilingual or cross-language search and retrieval.
+</ol>
+<p>
+The first point addresses the problem of allowing DL users to access the system, no matter where they are 
+located, and no matter in what language the information is stored; it is a question of providing the enabling 
+technology.
+<p>
+The second point implies permitting the users of a Digital Library containing documents in different 
+languages to specify their information needs in their preferred language while retrieving documents 
+matching their query in whatever language the document is stored; this is an area in which much research is 
+now under way. 
+<p>
+Before we go on to discuss these topics in more detail in the next two sections, let us define some relevant 
+terms:
+<ul>
+<li>
+Internationalization: enabling world-wide communication, no matter what the language
+<li>
+Localization: adapting to local needs
+<li>
+Multilingual Digital Library: containing documents in more than one language
+<li>
+Multilingual Document: containing text in more than one language
+<li>
+Cross-language Retrieval: retrieving any type of text composed or indexed in one language via a query 
+formulated in another language.
+</ul>
+
+<p>
+<A NAME="rep"><h3>2. Multilingual Recognition and Representation</h3></A>
+<p>
+
+Despite its name, until recently the World Wide Web had not addressed one of the basic challenges to 
+global communication: the multiplicity of languages. Standards for protocols and document formats 
+originally paid little attention to issues such as character encoding, multilingual documents, or the specific 
+requirements of particular languages and scripts. Consequently, the vast majority of WWW browsers still 
+do not support multilingual data representation and recognition. Ad-hoc local solutions currently abound 
+which, if left unchecked, could lead to groups of users working in incompatible isolation. 
+<p>
+The main requirements of a multilingual application are to:
+<ol>
+<li>Support the character sets and encodings used to represent the information being manipulated;
+<li>Present the data meaningfully;
+<li>Manipulate multilingual data internally.
+</ol>
+<p>
+In the following we briefly mention some of the measures now being taken to provide features for 
+internationalization, i.e. multilingual support, on the Web in the core standards: HTTP (HyperText Transfer 
+Protocol) and HTML (HyperText Markup Language). Support of this type is essential to enable world-wide 
+access both to digital libraries containing documents in languages other than English, and to multilingual 
+digital libraries.
+<p>For fuller information, the reader is encouraged to refer to the list of useful URLs at the end of this 
+section, and to <a href = "05peters5.html#ref2">[2]</a>, <a href = "05peters5.html#ref3">[3]</a>.
+<p>
+<h4>2.1 Provisions for multilinguality in HTTP</h4>
+<p>
+HTTP is the main protocol for the transfer of Web documents and resources. It thus provides 
+meta-information about resources and content-negotiation. Features for tagging and client-server 
+negotiation of 
+character encoding and language were first included in HTTP 1.1 (RFC 2068).
+<p>The character encoding of the document is indicated with a parameter in the Content-Type header field. 
+For example, to indicate that the transmitted document is encoded in the "JUNET" encoding of Japanese, 
+the header will contain the following line: 
+<br>
+Content-type: text/html; charset=iso-2022-JP. 
+<p>Content-Language is used to indicate the language of the document. The client can indicate both 
+preferred character encodings (Accept-Charset) and preferred language (Accept-Language). Additional 
+parameters can be used to indicate relative preference for different character encodings and, in particular, 
+for different languages, in a content negotiation. So, for example, a user can specify a preference for 
+documents in English but indicate that French, Spanish and German are also acceptable. 
+<p>
+<h4>2.2 Provisions for multilinguality in HTML</h4>
+<p>
+RFC 2070 adds the necessary features to HTML for describing multilingual documents and for handling 
+some script or language specific features that require additional structure. These additions are designed so 
+that they extend to new versions of HTML easily. RFC 2070 is now the proposed standard to extend HTML 
+2.0 (RFC 1886), primarily by removing the restriction to the ISO-8859-1 coded character set.
+<p>
+Initially the application of HTML was seriously restricted by its reliance on the ISO-8859-1 coded character 
+set (known as <i>Latin-1</i>), which is appropriate only for Western European languages. <i>Latin-1</i>  
+has 8-bit encoding which permits a maximum of just 256 characters. Despite this restriction, HTML has 
+been widely used with other languages, using other character sets or character encodings, at the expense of 
+interoperability. For example,  several 8-bit ISO standard character sets can be adopted to cover the set of 
+languages being treated; the document metadata will include information on the character code used in that 
+document. This is perhaps feasible as long as coverage is limited to the most common European languages. 
+The problem becomes much more complex, however, if we want to start moving between, for example, 
+French and Arabic, English and Japanese. If we start to use a large number of character sets and encodings, 
+and if the browser is to handle translation from one set to another, the system response times will be heavily 
+affected. 
+<p>
+For this reason, the internationalization of HTML by extending its specification is essential. It is important 
+that HTML remains a valid application of SGML, while enabling its use with all the languages of the world. 
+The document character set in the SGML sense is the Universal Character Set (UCS) of ISO 10646:1993. 
+Currently, this is code-by-code identical with the Unicode standard version 1.1.
+ISO 10646/Unicode has thus been chosen as the document character set with the main consequence that 
+numeric character references are interpreted in ISO 10646 irrespective of the character encoding of the 
+document, and the transcoding does not have to know anything about SGML syntax. 
+<p>
+The Unicode Character Standard is a single 16-bit character encoding designed to be able to represent all 
+languages. Unicode encodes scripts (collections of symbols) rather than languages. 16-bits permit over 
+65,000 characters. It currently contains coded characters covering the principal written languages of the 
+Americas, Europe, Middle East, Africa, India, Asia. Unicode characters are language neutral. A higher level 
+protocol must be used to specify the language. Although a 16-bit code ensures that a document can be 
+displayed without relying on its metadata, it places higher demands on storage, and could significantly 
+affect long distance transmittal times. This is the reason why there has been considerable resistance to the 
+idea of the universal adoption of Unicode.
+<p>
+However, this reluctance to employ Unicode is destined to gradually fall away as the advantages of global 
+language interoperability are found to far outweigh the trade-off in heavier storage requirements and the 
+potential effect on response times.
+The fact that Netscape has decided to design future products to support the Unicode standard and also to 
+add functionalities to assist users in multilingual applications will certainly play a considerable role. For 
+example, content creators will be able to store multiple versions of a document in different languages 
+behind one URL; documents will be allowed to contain text in multiple languages on the same page; the 
+development tools will be made language independent.
+<p>
+Another important feature for multilinguality introduced by RFC 2070 is the language attribute (LANG) 
+which can be included in most HTML elements.  It takes as its value a language tag that identifies a written 
+or spoken natural language and serves to indicate the language of all or of a certain part of a document. The 
+values for the language tags are specified in RFC 1766. They are composed of a primary tag and one or 
+more optional subtags, e.g. en, en-US, en-cockney, and so on.
+<p>
+The rendering of elements may be affected by the LANG attribute. For any element, the value of LANG 
+overrides the value specified by the LANG attribute of any enclosing element and the value (if any) of the 
+HTTP Content-Language header. This information can be used for classification, searching and sorting, and 
+to control language dependent features such as hyphenation, quotation marks, spacing, ligatures. It is highly 
+recommended that document providers should include this attribute  in the header information, otherwise 
+some automatic language control may be needed for a digital library cross-language query system.
+<p>
+<h5>Localization and Presentation Issues</h5>
+<p>
+With the document character set being the full ISO 10646, the possibility that a character cannot be 
+displayed locally due to lack of appropriate fonts cannot be avoided. Provisions to handle this situation 
+must be supplied by the local application.
+<p>
+There are many factors that affect language-dependent presentation. For example, there is a wide variation 
+in the format and units used for the display of things like dates, times, weights, etc. This problem will have 
+to be addressed eventually rather than leaving it for local solutions. A proposal is made in <a href = 
+"05peters5.html#ref3">[3]</a>. 
+<p>
+RFC 2070 introduces HTML elements to support mark-up for the following features:
+<ul>
+<li>Bidirectional text, i.e. texts where left-to-right and right-to-left scripts are mixed.
+<li>Control of cursive joining behaviour in contexts where default behaviour is not appropriate.
+<li>Language dependent rendering of short quotations.
+<li>Superscripts and subscripts for languages where they appear as part of general text.
+</ul>
+<p>
+Other protocols and resources, such as FTP, URLs, and domain names are being worked on with respect to 
+multiscript support. The chosen solution is UTF-8, a fully ASCII-compatible variable-length encoding of 
+ISO 10646/Unicode.
+<p>
+To sum up, it is probably true to say that the base facilities for multilingual applications running on the 
+WWW are now in place. Such applications should take advantages of these facilities and contribute to their 
+spread and better use. Even monolingual Digital Libraries should include the relevant features if they want 
+to guarantee their global accessibility.
+<p>
+<b>Acknowledgement:</B> This section owes much to a presentation by Martin Duerst at a recent 
+workshop held in Zurich, Switzerland: 
+<A HREF="http://www.area.pi.cnr.it/ErcimDL/delos.html">Third 
+DELOS Workshop on Multilingual Information Retrieval</A>. 
+<p>
+Useful URLs:
+<br>
+<p>
+For information on the activities of WInter: Web Internationalization & Multilinguism -- <A 
+HREF="http://www.w3.org/pub/WWW/International/">http://www.w3.org/pub/WWW/International/</A>
+<p>
+For references and direct links to the protocols, standards and Internet drafts mentioned in this section and 
+many others -- 
+<A HREF = 
+"http://home.netscape.com/people/erik/internet-intl.html">http://home.netscape.com/people/erik/internet-
+intl.html</A> 
+<p>
+For further information on Unicode -- <A HREF="http://www.unicode.org/">http://www.unicode.org/</A>
+<p>
+To keep in touch with developments in this area, the reader is advised to subscribe to the <A 
+HREF="http://www.w3.org/pub/WWW/International/O-misc-mlists.html"> mailing list</A> (www-
+international@w3.org) created for discussing internationalization on the Web.
+
+<A NAME="ret"><h3>3. Cross-Language Retrieval</h3></A>
+<p>
+As explained in the previous section, the interface of a multilingual Digital Library must include features to 
+support all the languages that will be maintained by the system and to permit easy access to all the 
+documents contained. However, it must also include functionalities for multilingual or cross-language 
+search and retrieval. This implies the development of tools that allow users to interact with the system, 
+formulating the queries in one language and retrieving documents in others. The problem is to find methods 
+which successfully match queries against documents over languages. This involves a relatively new 
+discipline, generally known as Cross-Language Information Retrieval (CLIR), in which methodologies and 
+tools developed for Natural Language Processing (NLP) are being integrated with techniques and results 
+coming from the Information Retrieval (IR) field.
+<p>
+There has been much interest in this emerging area over the last year and a number of important 
+international workshops have been held. We will cite just two of them: the <a 
+href="http://www.ubilab.ubs.ch/sigir96/Workshops.html">Workshop on Cross-Linguistic Information 
+Retrieval</a> held at SIGIR '96 in Zurich, and the <a 
+href="http://www.ee.umd.edu/medlab/filter/sss/">Workshop on Cross-Language Text and Speech 
+Retrieval</a> held at the AAAI-97 Spring Symposium Series, in Stanford, this spring. An important 
+overview of recent work is given in <a href = "05peters5.html#ref4">[4]</a>
+<p>
+Three main approaches to CLIR have been identified:
+<ol>
+<li>Text-translation via machine translation techniques
+<li>Knowledge-based techniques
+<li>Corpus-based techniques
+</ol>
+<p>
+Each of these methods has shown promise but also has disadvantages associated with it. We will briefly 
+outline here below some of the main approaches that have been or are now being tried. Unfortunately, lack 
+of space means that it is impossible to go into much detail or attempt to give an exhaustive list of the current 
+activities in this area.
+<p>
+<h4>3.1 Machine-Translation Techniques</h4>
+Full machine translation (MT) is not currently viewed as a realistic answer to the problem of matching 
+documents and queries over languages. Apart from the fact that most MT systems are still far from 
+achieving high quality results, the translating of entire collections of documents into another language 
+would not only be very expensive, but would also involve a number of tasks that are redundant from the 
+purely CLIR viewpoint, e.g. treatment of word order. 
+<p>Research has thus concentrated on finding ways to translate the query into the language(s) of the 
+documents. Performing retrieval before translation is far more economic than vice versa: generally only a 
+small percentage of documents in a collection are of wide interest; it is only necessary to translate those 
+documents retrieved that are actually found to be of interest; users frequently have sufficient reading ability 
+in a language for adequate comprehension although they would not have been capable of formulating a 
+correct query.
+<p>An exception to this rule is the <a href="http://www.tno.nl/twentyone/21-home.html">TwentyOne 
+project</a> which combines a (partial) document translation (DT) with query translation. The main 
+approach is the document translation -- using both full MT translations and term-translation as a fall-back 
+option -- as DT can fully exploit context for disambiguation whereas, it is well-known that the average 
+query 
+is too short to permit resolution of ambiguous terms. The database consists of documents in a number of 
+languages, initially Dutch, French and German but extensions to other European languages are envisaged. 
+Presumably it is the fact that the project covers a fairly restricted area that makes the idea of document 
+translation feasible. This approach would appear to have severe scalability problems as more languages are 
+included.
+<p> 
+<h4>3.2 Knowledge-based Techniques</h4>
+Knowledge-based approaches apply multilingual dictionaries, thesauri or general-purpose ontologies to 
+cross-language text retrieval.
+<p>
+<b>Using Dictionaries</b>: Some of the first methods attempting to match the query to the document have 
+used dictionaries. It has been shown that dictionary-based query translation, where each term or phrase in 
+the query is replaced by a list of all its possible translations, represents an acceptable first pass at cross-
+language information retrieval although such -- relatively simple -- methods clearly show performance 
+below 
+that of monolingual retrieval. Automatic machine readable dictionary (MRD) query translation has been 
+found to lead to a drop in effectiveness of 40-60% of monolingual retrieval <a href = 
+"05peters5.html#ref5">[5]</a>, <a href = "05peters5.html#ref6">[6]</a>. There are three main reasons for 
+this: 
+general purpose dictionaries do not normally contain specialised vocabulary; the presence of spurious 
+translations; failure to translate multiword terms. 
+<p>
+Fluhr <i>et al</i> <a href = "05peters5.html#ref7">[7]</a> have reported considerably better results with 
+<a href = "http://www.newcastle.research.ec.org/esp-syn/text/5312.html">EMIR</a> (European 
+Multilingual 
+Information retrieval). EMIR has demonstrated the feasibility of a cross-language querying of full-text 
+multilingual databases, including interrogation of multilingual documents. It uses a ranked boolean retrieval 
+system in conjunction with bilingual term, compound, and idiom dictionaries for query translation and 
+document retrieval. It should be noted that a domain dependent terminology dictionary and extensive 
+manual editing are needed to achieve this performance. However, it is claimed that little work is needed to 
+adapt the dictionaries when processing a new domain, and tools have been developed to assist this process. 
+The technology was tested on three languages: English, French and German. Part of the EMIR results have 
+already been introduced into the commercial cross-language text retrieval system known as SPIRIT.  
+Another working system -- if still primitive according to the developers -- that uses a bilingual dictionary to 
+translate queries from Japanese to English and English to Japanese is 
+<a href="http://isserv.tas.ntt.co.jp/chisho/titan-e.html">TITAN</a>  <a href = 
+"05peters5.html#ref8">[8]</a>. 
+TITAN has been developed to assist Japanese users to explore the WWW in their own language. The main 
+problems found are those common to many other systems: the shortness of the average query and thus the 
+lack of contextual information for disambiguation, the difficulty of recognizing and translating compound 
+nouns.
+<p>
+Recent work is attempting to improve this basic performance. David Hull <a href = 
+"05peters5.html#ref9">[9]</a>, for example, describes a weighted boolean model based on a probabilistic 
+formulation in order to help to solve the problem of target language ambiguity. However, this model relies 
+on relatively long queries and considerable user interaction, while real world tests show that users tend to 
+use over short queries and shy away from any form of user-system dialogue.
+<p>
+Ballesteros and Croft <a href = "05peters5.html#ref10">[10]</a> show how query expansion techniques 
+using 
+pre- and post-translation local context analysis can significantly reduce the error associated with dictionary 
+translation and help to translate multi-word terms accurately. However, as dictionaries do not provide 
+enough context for accurate translations of most types of phrases, they are now investigating whether the 
+generation of a corpus-based cross-language association thesaurus would provide enough context to resolve 
+this problem.
+<p>
+<b>Using Thesauri</b>: The best known and tested approaches to CLIR are thesaurus-based. A thesaurus 
+is an ontology specialised in organising terminology; a multilingual thesaurus organizes terminology for 
+more than one language. ISO 5964 gives specifications for the incorporation of domain knowledge in 
+multilingual thesauri and identifies alternative techniques. There are now a number of thesaurus-based 
+systems available commercially. However, although the use of multilingual thesauri has been shown to give 
+good results for CLIR -- early work by Salton <a href = "05peters5.html#ref11">[11]</a> demonstrated 
+that 
+cross-language systems can perform as well as monolingual systems given a carefully constructed bilingual 
+thesaurus -- thesaurus construction and maintenance is expensive, and training is required for optimum 
+usage. 
+<p>
+Dagobert Soergel <a href = "05peters5.html#ref12">[12]</a> discusses how in information retrieval a 
+thesaurus can be used in two ways:
+<ul>
+<li>controlled vocabulary indexing and searching
+<li>knowledge-based support of free-text searching
+</ul>
+<p>A multilingual thesaurus for indexing and searching with a controlled vocabulary can be seen as a set of 
+monolingual thesauri that all map to a common system of concepts. With a controlled vocabulary, there is a 
+defined set of concepts used in indexing and searching. Cross-language retrieval means that the user should 
+be able to use a term in his/her language to find the corresponding concept identifier in order to retrieve 
+documents. In the simplest system, this can be achieved through manual look-up in a thesaurus that includes 
+for each concept corresponding terms from several languages and has an index for each language. In more 
+sophisticated systems, the mapping from term to descriptor would be done internally.
+<p>
+The problem with the controlled vocabulary approach is that terms from the vocabulary must be assigned to 
+each document in the collection. Traditionally this was done manually. Methods are now being developed 
+for the (semi-)automatic assignation of these indicators. Another problem with this method is that it has 
+been found to be quite difficult to train users to effectively exploit the thesaurus relationships.
+<p>
+Cross-language free-text searching is a more complex task. It requires that each term in the query be 
+mapped to a set of search terms in the language of the texts, possibly attaching weights to each search term 
+expressing the degree to which occurrence of a search term in a text would contribute to the relevance of the 
+text to the query term. Soergel explains that the greater difficulty of free-text cross-language retrieval stems 
+from the fact that one is working with actual usage while in controlled-vocabulary retrieval one can, to some 
+extent, dictate usage. However, the query potential should be greater than with a controlled vocabulary.
+<p>
+<b>Using Ontologies</b>:  The only general-purpose multilingual ontology that we know anything about is 
+that being developed in the <a href="http://www.let.uva.nl/~ewn/">EuroWordNet</a> project. 
+EuroWordNet is a multilingual database which represents basic semantic relations between words for 
+several European languages (Dutch, Italian, Spanish and English) taking as its starting point Princeton 
+WordNet 1.5. For each of the languages involved, monolingual wordnets are being constructed maintaining 
+language-specific cultural and linguistic differences. All the word-nets will share a common top-ontology 
+and multilingual relations will be mapped from each individual wordnet to a structure based on Wordnet 1.5 
+meanings. Such relations will form an Interlingual Index. The EWN database is now being tested as a 
+resource to perform cross-language conceptual text retrieval. Unfortunately, no results are available yet. 
+<a href = "05peters5.html#ref13">[13]</a>.
+<p>
+The main problems with thesauri and ontologies are that they are expensive to build, costly to maintain and 
+difficult to update. Languages differences and cultural factors mean that it is difficult to achieve an effective 
+mapping between lexical or conceptual equivalences in two languages; this problem is greatly exacerbated 
+when several languages are involved. It is necessary to build some kind of interlingua to permit transfer 
+over all languages; it is to be expected that the trade-off for multilinguality will be the loss of some 
+monolingual specificity. <p> 
+
+
+<h4>3.3 Corpus-based Techniques</h4>
+<p>
+These considerations have encouraged an interest in corpus-based techniques in which information about 
+the relationship between terms is obtained from observed statistics of term usage. Corpus-based approaches 
+analyse large collections of texts and automatically extract the information needed to construct application-
+specific translation techniques. The collections analysed may consist of parallel (translation equivalent) or 
+comparable (domain-specific) sets of documents. The main approaches that have been experimented using 
+corpora are vector space and probabilistic techniques. 
+<p>
+The first tests with parallel corpora were on statistical methods for the extraction of multilingual term 
+equivalence data which could be used as input for the lexical component of MT systems. Some of the most 
+interesting recent experiments, however, are those using a matrix reduction technique known as Latent 
+Semantic Indexing (LSI) to extract language independent terms and document representations from parallel 
+corpora <a href = "05peters5.html#ref14">[14]</a>, <a href = "05peters5.html#ref15">[15]</a>. LSI 
+applies a 
+singular value decomposition to a large, sparse term document co-occurrence matrix (including terms from 
+all parallel versions of the documents) and extracts a subset of the singular vectors to form a new vector 
+space. Thus queries in one language can retrieve documents in the other (as well as in the original 
+language). This method has been tested with positive results on parallel text collections in English with 
+French, Spanish, Greek and Japanese.
+<p>
+The problem with using parallel texts as training corpora is that test corpora are very much domain specific 
+and costly to acquire -- it is difficult to find already existing translations of the right kind of documents and 
+translated versions are expensive to create. For this reason, there has been a lot of interest recently in the 
+potential of comparable corpora. A comparable document collection is one in which documents are aligned 
+on the basis of the similarity between the topics they address rather than because they are translation 
+equivalent. Sheridan and Ballerini <a href="05peters5.html#ref16">[16]</a> report results using a 
+reference 
+corpus created by aligning news stories from the Swiss news agency (SDA) in German and Italian by topic 
+label and date and then merging them to build a "similarity thesaurus". German queries were then tested 
+over a large collection of Italian documents. They found that the Italian documents were retrieved with a 
+better effectiveness than with a baseline system evaluating Italian queries against Italian documents. They 
+claim that this is a result of the query expansion method used as the query is padded with related terms from 
+the document collection. However, although this means that their recall performance is high, their precision 
+level is not so good. Although this method is interesting and the results reported positive, its general 
+applicability remains to be demonstrated. The collection used to build the multilingual similarity thesaurus 
+was the same as that on which the system was tested. 
+<p>
+Again, as with the parallel corpus method reported above, it appears that this method is very application 
+dependent. A new reference corpus and similarity thesaurus would have to be built to perform retrieval on a 
+new topic; it is also unclear how well this method can adapt to searching a large heterogeneous collection.
+<p>
+<h4>3.4 Summing up</h4>
+As can be seen from this brief overview of current work, any single method for cross-language retrieval 
+presents limitations. Existing resources -- such as electronic bilingual dictionaries -- are normally 
+inadequate 
+for the purpose; the building of specific resources such as thesauri and training corpus is expensive and such 
+resources are generally not fully reusable; a new multilingual application will require the construction of 
+new resources or considerable work on the adaptation of previously built ones. It should also be noted than 
+many of the systems and methods we have described concentrate on pairs rather than multiples of 
+languages. This is hardly surprising. The situation is far more complex when we attempt to achieve effective 
+retrieval over a number of languages than over a single pair; it is necessary to study some kind of 
+interlingual mechanism -- at a more or less conceptual level -- in order to permit multiple cross-language 
+transfer. This is not an easy task and much work remains to be done before we can talk about truly 
+multilingual systems. 
+<p>
+The current trend seems to be to experiment with a combination of more than one method, i.e. to use a 
+combination of dictionaries or thesauri, corpora and/or user interaction. A very good example of this is the 
+work at NEC where Yamabana <i>et al</i>  <a href="05peters5.html#ref17">[17]</a> have built an 
+English/Japanese retrieval system which uses bilingual dictionary, comparable corpora, and then user 
+interaction in order to enhance performance. The retrieved documents are passed through a machine 
+translation system before being sent to the user.
+<p>
+At the present moment, we feel that the most promising and cost-effective solution for CLIR within the DL 
+paradigm will probably be an integration of a multilingual thesaurus with corpus-based techniques. In the 
+next section, we will discuss the strategy we are now studying. We believe that it should be possible to 
+overcome the problem of the ad hoc construction of a suitable training corpus in a multilingual digital 
+library by using the digital library itself as the source of training data. 
+<p>
+Useful URLs:
+
+For details of current work in Multilingual Text Retrieval, an excellent Web site is: 
+<a 
+href="http://www.ee.umd.edu/medlab/mlir/mlir.html">http://www.ee.umd.edu/medlab/mlir/mlir.html</a>, 
+maintained by Doug Oard, University of Maryland.
+<p>
+<H5>Copyright &#169; 1997 Carol Peters, Eugenio Picchi</H5>
+<p>
+<hr>
+
+<center>
+
+<p>
+
+
+<A HREF = "05peters4.html">Go to Section 4. Our Approach</a><br>
+<P>
+<A HREF = "05peters5.html">Go to Section 5. References</a><br>
+
+
+<P>
+
+
+<center>
+
+<img src = "../d-line1.gif">
+
+<P>
+
+<A href = "../../../dlib.html"><IMG src="../hom_but.gif" border=0 ALT="D-Lib Magazine |"></A>
+
+<A href="../05contents.html">
+
+<IMG src="../mag_but2.gif" border=0 ALT=" Current Issue | "></A>
+
+<A href="http://www.dlib.org/Hypernews/get/dlib_responses.html">
+
+<img src = "../comm_but.gif" border = 0 ALT = "Comments"><br>
+
+<a href = "../meldex/05witten.html">
+<IMG src = "../prev.gif" border = 0 ALT = "Previous Story | "></a>
+
+<A HREF = "../michigan/05pricewilkin.html">
+<IMG src="../next.gif" border=0 ALT="Next Story"></A>
+
+<p>
+
+<img src = "../d-line2.gif">
+<P>
+<I>hdl:cnri.dlib/may97-peters</I>
+<p>
+</center>
+
+</BODY>
+
+</HTML>
+
+ contentType 9 text/html url 54 http://www.dlib.org:80/dlib/may97/peters/05peters.html responseCode 3 200 

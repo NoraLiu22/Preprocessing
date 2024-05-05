@@ -1,0 +1,184 @@
+hksczqxgsqcsbqcmmileqqsszgsmxcmakkfmkahs length 5 10501 page 10501 <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/327b6b12ac.js" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="Assets/main.css">
+     
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1H1WGSFV7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P1H1WGSFV7');
+</script>
+
+
+	 
+      
+    <title>Yokai: Ghosts and Demons from Japan | Online Exhibition from the Museum of International Folk Art</title>
+  </head>
+  <body>
+	<!-- nav/header-->
+	<div id="app" class="p-0 m-0">
+         <nav class="navbar navbar-expand-xl sticky-top navbar-light bg-red p-2 m-0">
+              <router-link class="navbar-brand p-0 m-0" to="/">
+                    <img class="img-fluid logo" src="Assets/Logos/yokai_logo_color.svg"/>
+               </router-link>    
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+                <ul class="navbar-nav text-center text-md-left">
+                    
+					<li class="nav-item dropdown"> 
+                        <router-link to="/culture" class="nav-link dropdown-toggle" data-toggle="dropdown">Yokai History to Pop Culture</router-link>
+                        <div class="dropdown-menu bg-red text-center text-md-left">
+                            <template v-for='subpage in pages[1].subpages'>
+                                <router-link class="dropdown-item color-tan  " :to='"/culture/"+subpage.slug'> {{subpage.title}}</router-link>
+                            </template>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown"> 
+                        <router-link to="/lore" class="nav-link dropdown-toggle" data-toggle="dropdown" >
+                            Yokai Lore and Ghost Stories
+                        </router-link>
+                        <div class="dropdown-menu bg-red text-center text-md-left ">
+                            <template v-for='subpage in pages[2].subpages'>
+                                <router-link class="dropdown-item color-tan" :to='"/lore/"+subpage.slug'> {{subpage.title}}</router-link>
+                            </template>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown"> 
+                        <router-link to="/exhibition" class="nav-link dropdown-toggle" data-toggle="dropdown " >Exhibition and Catalog</router-link>
+                        <div class="dropdown-menu bg-red text-center text-md-left">
+                            <template v-for='subpage in pages[3].subpages'>
+                                <a v-if='subpage.externalURL' class="dropdown-item color-tan" :href="subpage.externalURL"  target="_blank"> {{subpage.title}}</a>
+                                <router-link v-else class="dropdown-item color-tan" :to='"/exhibition/"+subpage.slug'> {{subpage.title}}</router-link>
+                            </template>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown"> 
+                        <router-link to="/resources" class="nav-link dropdown-toggle" data-toggle="dropdown " >Create And Learn More</router-link>
+                        <div class="dropdown-menu bg-red text-center text-md-left">
+                            <template v-for='subpage in pages[4].subpages'>
+                                <a v-if='subpage.externalURL' class="dropdown-item color-tan" :href="subpage.externalURL"  target="_blank"> learn more about the artist and collaboration</a>
+                                <router-link v-else class="dropdown-item color-tan" :to='"/resources/"+subpage.slug'> {{subpage.title}}</router-link>
+                            </template>
+                        </div>
+                    </li>
+			    </ul>
+            </div>
+        </nav>
+      
+        <!-- main page content-->
+		<main class="container-fluid m-0 p-0">
+			<router-view :key="$route.fullPath" v-bind:pages="pages"></router-view>
+		</main>
+      
+        <button class='btn fixed-button' id='fixed-button' onclick="toTop()"><i class="fas fa-chevron-up"></i></button>
+      
+      <!--  footer piece -->
+      <footer class="container-fluid p-0 m-0 bg-tan footer border-top border-secondary">
+            <div class="row p-0 m-0">
+                <div class="col-12 col-md-3 col-md-offset-1 p-2 ">
+                    <div class='container-fluid'>
+                        <ul class="nav text-center text-md-left">
+                            <li class="nav-item header"> 
+                                <a class="nav-link disabled font-size-1" href="#" ><u>Site Map</u></a>
+                            </li>
+                            
+					       <li class="nav-item"> 
+                                <router-link class="nav-link font-size-1" to="/culture">Yokai History to Pop Culture</router-link> 
+                            </li>
+                            <li class="nav-item"> 
+                                <router-link class="nav-link font-size-1" to="/lore">Yokai Lore and Ghost Stories</router-link> 
+                            </li>
+                            <li class="nav-item"> 
+                                <router-link class='nav-link font-size-1' to="/exhibition">Exhibition and Catalog</router-link> 
+                            </li>
+                            <li class="nav-item"> 
+                                <router-link class="nav-link font-size-1" to="/resources"> Create And Learn More </router-link>
+                            </li>
+                             <li class="nav-item"> 
+                                <router-link class="nav-link font-size-1" to="/acknowledgements"> Acknowledgments </router-link> 
+                            </li>
+			             </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 pb-4 pt-4 pr-4 p-2 align-self-center text-center">
+                    <a href="http://moifa.org"><img src="Assets/Logos/MOIFA_logo.png" class="img-fluid"/></a>
+                </div>
+                <div class="col-12 col-md-4 p-4 align-self-center text-center">
+                    <a href="http://nmculture.org"><img src="Assets/Logos/DCA_logo.png" class="img-fluid"/></a>
+                </div>
+            </div>
+      </footer>
+      </div>
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
+	<!-- Vue development version, includes helpful console warnings -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+	<!-- Vue production version, optimized for size and speed -->
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+	<script src="Libraries/vue/vue.min.js"></script>
+	
+	<!-- Vue Router -->
+	<!-- <script src="https://unpkg.com/vue-router"></script> -->
+	<script src="Libraries/vue-router/vue-router.js"></script>
+	
+	<!-- App Content -->
+    <script src="Content/data.js"></script>
+      
+    <!-- vue plugins -->
+    <!--lazy loading -->
+    <script src="https://unpkg.com/vue-lazyload/vue-lazyload.js"></script>
+	
+    <!-- vue gallery -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/blueimp-gallery@2.27.0/css/blueimp-gallery.min.css">
+    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-helper.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/blueimp-gallery@2.27.0/js/blueimp-gallery-fullscreen.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue-gallery@2.0.1/dist/js/vue-gallery.min.js"></script>
+      
+    <!-- Vue Preview/Photoswipe-->
+    <link rel="stylesheet" type="text/css" href="Libraries/photoswipe/photoswipe.css">
+    <link rel="stylesheet" type="text/css" href="Libraries/photoswipe/default-skin/default-skin.css">
+    <script src="Libraries/photoswipe/photoswipe.min.js"></script>
+    <script src="Libraries/photoswipe/photoswipe-ui-default.min.js"></script>
+	<script src="Libraries/vue-preview.min.js"></script>
+    
+    <!-- Vue components -->
+    <script src="Components/Cards.vue.js"></script>
+	<script src="Components/Carousel.vue.js"></script>
+	<script src="Components/SingleImage.vue.js"></script>
+    <script src="Components/Credits.vue.js"></script>
+    <script src="Components/VideoGallery.vue.js"></script>
+
+	<!-- Vue Pages -->
+	<script src="Pages/Home.vue.js"></script>
+    <script src="Pages/Standard.vue.js"></script>
+    <script src="Pages/Subpage.vue.js"></script>
+    <!--<script src="Pages/Section.vue.js"></script>-->
+	
+	<!-- Vue App / Router -->
+	<script src="app.js"></script>
+    <script src='Assets/site.js'></script>
+	
+  </body>
+</html> contentType 9 text/html url 28 https://yokai.moifa.org:443/ responseCode 3 200 

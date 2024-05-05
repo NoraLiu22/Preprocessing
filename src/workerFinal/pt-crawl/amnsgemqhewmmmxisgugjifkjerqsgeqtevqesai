@@ -1,0 +1,109 @@
+amnsgemqhewmmmxisgugjifkjerqsgeqtevqesai length 4 7496 page 7496 <!doctype html public "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<title>Diffraction in Photography</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<body background="back.jpg" text="#000044" link="#0000FF" vlink="#000044">
+<h2>Diffraction in Photography</h2>
+<table border=0><tr valign=top><td>
+<b>Summary</b>
+<p>
+The f/# above which diffraction begins to cause visible softening of digital camera images equals the pixel spacing in
+micrometers times 1.4
+<p>
+<b>Details</b>
+<p>
+Diffraction occurs when light encounters any change in optical properties. This note considers it in photography,
+specifically what occurs when light passes through a circular aperture, the iris that determines the lens f/#.
+<p>
+The effect on light of such an aperture is given by equation (1) at right. A plot of this equation is shown below it.
+<p>
+Astronomers, who deal with perfect point objects, are concerned with the detailed black curve and define resolution by
+the first minimum in that curve at x=3.83.
+<p>
+Photographers looking at normal scenes with extended objects are concerned only with the red envelope curve. Our most
+useful definition of diffraction-limited resolution is the point at which contrast in an image is greater than 8 stops,
+the maximum handled by most photographic media. That occurs at x=8.8; values greater than that will not affect the bite
+of our images. Note that bite as defined here is different from resolution, which simply determines whether or not a
+detail is visible. Resolution loss can be replaced by post-processing sharpening; bite isn't.
+<p>
+Resolution of a digital camera is limited by the spacing of its sensor pixels, 8.45&nbsp;&micro;m for the Nikon D700. And
+here a complication arises: sensors can only output one intensity value. So, they have to have filters on them to resolve
+differing colours. Most colour cameras today use the Bayer layout shown at right. The effective pixel spacing of the green
+sensors is 1.4&nbsp; times the Cartesian pixel spacing, of the red and blue sensors, twice the Cartesian spacing. The
+effective D700 pixel spacing is thus at best 12&nbsp;&micro;m. In practise, interpolation algorithms fall a bit short of
+this, as will be shown below.
+<p>
+Defining the angle from the axis in (1) as one pixel  results in an important result shown in equation (2): diffraction
+at the image does not depend on the focal length of the lens, it depends solely on the f/#, effective pixel spacing and
+the wavelength of light. That may seem counter-intuitive except to another physicist, so here are four images of a sharp
+white edge, each at f/22, taken with four lenses ranging from 14&nbsp;mm focal length to 180&nbsp;mm:
+<p align=center>
+<img src="images/diff2.jpg" width=400 height=92>
+<p>
+At a light wavelength of 550&nbsp;nm (the middle wavelength of green light), equation (2) shows that diffraction is one
+pixel, with an ideal lens and Bayer interpolator, when the f/# equals the Cartesian pixel spacing in micrometers, - f/8
+for the D700. The softness will be proportional to f/#, that is f/16 will give 2&nbsp;pixels softness, f/32, 4&nbsp;pixels.
+It also means that a DX (23.7x15.7&nbsp;mm) camera such as the D300 has 1.6 times the diffraction of an FX
+(36x23.9&nbsp;mm) camera when it takes the same picture at the same f/# and resolution, because the pixels have to be
+1.6x smaller to fit in the smaller DX frame.
+<p>
+Real lenses have resolution limits in addition to diffraction, and irises that are not perfect edges or circles. And,
+it's necessary to find out how effective the Nikon interpolation algorithm is. So, I ran tests on one of my sharpest
+lenses, a Nikon 70-180&nbsp;mm
+macro, at 180&nbsp;mm focal length and an object distance of 2&nbsp;m. A target was prepared with a  clean white edge,
+mounted on a doorway and lit so that the contrast between white and background at the edge was about 15 stops. Focussing
+was by magnified liveview, TIFF and NEF photos taken at ISO 400 with no noise reduction, then enlarged so individual
+camera pixels are visible.
+<p>
+The results are at right. As you can see, the 8 stop resolution with the lens wide open is about 3&nbsp;pixels. This is
+not due to lens imperfections, its source is the Bayer interpolation in the camera. Here is an unprocessed raw sensor
+image at f/5.6 with the pixel colours marked. It shows that the lens itself is as sharp as the pixel array can record.
+It also puts to rest concerns that the anti-aliasing filter of the D700 impairs camera resolution, it obviously
+doesn't.
+<p align=center>
+<img src="images/diff3.jpg" width=372 height=224>
+<p>
+The image at right for f/32, processed the way the camera processes our images, shows about 5&nbsp;pixels width at
+8&nbsp;stops. 3&nbsp;pixels (the Bayer softness) convolved with 4&nbsp;pixels (expected diffraction softness) is
+5&nbsp;pixels, exactly what is observed. So, the theory above is well matched by experiment.
+<p>
+So, based on these experiments, my guideline for the f/# above which diffraction begins to cause visible softening of
+Nikon digital camera images is:
+<p align=center>
+<b>f/# equals the pixel spacing in &micro;m times 1.4</b>
+<p>
+That is, above f/11 for the D3/700, above f/8 for the D3x/300/800.
+<p>
+Of course, this doesn't mean that this is the only aperture to use! Close macro work may require increasing it to
+increase depth of field, subject isolation, portraits in particular, often benefit from decreasing it. But, for
+maximum bite, set your camera there and change it only when there's a photographic reason.
+<p>
+Depth of field is the same for identical images taken from the same location no matter what the image size
+is. The diffraction and depth of field of an FX camera at 50&nbsp;mm f/11 are the same as the diffraction and depth of
+field of the equivalent image taken with a DX camera at 35&nbsp;mm f/8. Further, since the FX pixels are twice the area
+of DX pixels, the photons/pixel (noise) will be the same as well.
+<p>
+If you reduce the pixel size of your photo by 2x, commonly done when posting on the web, the effective pixel
+size is doubled, so diffraction won't be visible until above f/22 for a D700.
+<p>
+<b>Effective f/# in Macro Photography</b>
+<p>
+A good approximation to the actual f# in macrophotography is the indicated f# multiplied by (1+M/p) where M is the
+magnification and p is the pupil magnification. p=1 for prime lenses in the 50-150&nbsp;mm range, but must be measured for
+others. For retrofocus wide-angle lenses, p&gt;1; for true telephoto lenses, p&lt;1. The pupil magnification can be
+estimated by looking into the front and rear of the lens and measuring the diameters of the apparent apertures: p equals
+the entrance pupil diameter divided by the exit pupil diameter. When a lens is reversed, so are the pupils, p=0.45 for my
+20&nbsp;mm lens when reversed. If you use two afocally coupled lenses, the rear long focal length lens should be wide open
+to avoid vignetting and the aperture controlled with the front short one; the formula given applies to the front lens f#.
+<p>
+<a href="contact.html">John Sankey</a>
+<br>
+<a href="physics.html">other notes on physics</a>
+<td width=10><td width=300 align=center>
+<img src="images/diff1.gif" width=200 height=249>
+<br><img src="images/diff0.gif" width=300 height=231>
+<p><img src="images/diff5.gif" width=300 height=300>
+<p><img src="images/diff180.jpg" width=298 height=1243>
+</table>
+</body></html>
+ contentType 9 text/html url 44 http://www.johnsankey.ca:80/diffraction.html responseCode 3 200 

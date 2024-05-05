@@ -1,0 +1,3240 @@
+tclgeieebccqmqogzcmcfefkxqwgsckexozakiza length 6 160260 page 160260 ﻿<!doctype html>
+<html itemscope="itemscope" itemtype="https://schema.org/WebPage">
+
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" URL="https://maps.umd.edu/map">
+	<meta property="og:title" content="UMD Campus Web Map">
+	<meta property="og:description" content="Check out the University of Maryland Campus Map for locations, shuttle routes, and navigation."/>
+	<meta property="og:image" content="https://maps.umd.edu/map/img/preview_image.png">
+	<meta property="og:url" content="https://maps.umd.edu/map/">
+	  
+	<!--JQuery-->
+	<link href="jquery/jquery-ui.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+
+	<script src="jquery/jquery-110min.js" type="text/javascript"></script>
+	<!--<script src="jquery/jquery.min.js" type="text/javascript"></script>-->
+
+
+	<script src="jquery/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/imagefit.js"></script>
+
+	<!--Calls File for Website Info-->
+	<script type="text/javascript" src="js/serverConfig.js"></script>
+
+	<!--Testing loading the google API, However, this should probably not stay here, mainly doing this to test the validity of streetview locations -->
+	<script src="https://maps.google.com/maps/api/js" type="text/javascript"></script>
+
+	<script>
+
+		//Get URL Variables
+		
+		if(window.location.protocol.indexOf('https')<0){
+			window.location.href = window.location.href.replace('http','https');
+		}
+		
+		function getUrlVars() {
+			var vars = {};
+			var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+				vars[key] = value;
+			});
+			return vars;
+		}
+
+		//alert(navigator.userAgent);
+
+		if(getUrlVars()['ForceDesktop'] == 'True'){
+			console.log("forcing Desktop to load");
+		}else{
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Tablet PC|Opera Mini/i.test(navigator.userAgent)) {
+				str = window.location.href;
+				if (str.indexOf("?") == -1 && str.indexOf("/m/") == -1){
+					window.location = "./m/index.html";
+				}else if(str.indexOf("/m/") == -1){
+					window.location = "./m/index.html"+str.substring(str.indexOf("?"), str.length);
+				}
+			}
+		}
+
+	</script>
+
+	<script>
+		//For IE8-9. This defines the console, which is undefined on inital load. Opening up the dev console defines the console and allow the map to load as a result
+		var _f_ = function () { };
+		window.console = window.console || { log: _f_, error: _f_, info: _f_, debug: _f_, warn: _f_, trace: _f_, dir: _f_, dirxml: _f_, group: _f_, groupEnd: _f_, time: _f_, timeEnd: _f_, assert: _f_, profile: _f_ };
+
+		//Print Popup disclaimer - will show while true
+		var printPopup = true;
+		/*  #printbutton{
+			display:none;
+		}
+		#printbutton2{
+			display:none;
+		}      */
+	</script>
+
+	<style>
+		
+	
+	
+	
+	
+		#HomeButton {
+			position: absolute;
+			top: 144px;
+			right: 8px;
+			z-index: 3;
+		}
+		#LocateButton  {
+			position: absolute;
+			top: 190px;
+			right: 8px;
+			z-index: 3;
+		}
+	</style>
+
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+    <!-- On iOS, as part of optimizing your web application, have it use the
+    standalone mode to look more like a native application. When you use this
+    standalone mode, Safari is not used to display the web content—specifically,
+    there is no browser URL text field at the top of the screen or button bar
+    at the bottom of the screen. -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Controls the dimensions and scaling of the browser window in iOS,
+    Android, webOS, Opera Mini, Opera Mobile and Blackberry. width: controls
+    the width of the viewport initial-scale: controls the zoom level when the
+    page is first loaded maximum-scale: control how users are allowed to zoom
+    the page in or out user-scalable: control how users are allowed to zoom
+    the page in or out -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Sets the style of the status bar for a web application when in standalone
+    mode -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>UMD Web Map</title>
+    <!-- Favorite Bookmark Icon -->
+	<link rel="shortcut icon" type="image/ico" href="./favicon.ico" />
+	<link rel="icon" type="image/ico" href="./favicon.ico" />
+	<link href="./apple-touch-icon.png" rel="apple-touch-icon" />
+
+
+	<link rel="stylesheet" href="./../../../api/arcgis_js_api/library/3.33/3.33/dijit/themes/tundra/tundra.css">
+	<link rel="stylesheet" href="./../../../api/arcgis_js_api/library/3.33/3.33/esri/css/esri.css">
+	<link rel="stylesheet" type="text/css" href="css/esri-override.css"/>
+
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/campus.css"/>
+	<link rel="stylesheet" type="text/css" href="css/popup.css"/>
+	<link rel="stylesheet" type="text/css" href="css/layout.css" />
+	<link rel="stylesheet" href="./../../../api/css/overwrite.css"/>
+	<!--<link rel="stylesheet" href="./../../api/css/alert.css"/>-->
+
+
+	<!--Magnific Popups, lightbox spinoff-->
+	<link rel="stylesheet" type="text/css" href="jquery/magnific-popup.css"/>
+	<script src="jquery/magnificPopup.js"></script>
+	<!--Magnific Popups, lightbox spinoff-->
+
+	<style>
+		a:focus {
+			outline: 0px;
+		}
+
+		.fa:focus {
+			outline: 0px;
+		}
+
+		/*****This is for changing the background and text color of the highlight*******/
+		/*::-moz-selection { *//* Code for Firefox */
+			/*color: white;*/
+			/*background: #bdbdbd;*/
+		/*}*/
+
+		::selection {
+		   color: white;
+			background: black;
+		}
+
+		/*textarea:focus,*/ /*input[type="text"]:focus*/ /*select:focus, a:focus*/
+		#autotxtAddress, #startBuilding, #endBuilding {
+			border-color:transparent;
+			outline: 0 none;
+		}
+		/*input[type="button"]:focus{*/
+			/*box-shadow: 0 0 8px rgba(74, 74, 74, 1);*/
+			/*outline: 0 none;*/
+		/*}*/
+
+	</style>
+
+	<script>
+		var screenheight = $(window).height();
+		var screenwidth = $(window).width();
+	</script>
+
+    <script>
+		if(location.pathname == "/map/index.html"){ //keep note of this for share map view as the relative position of the api files changes when using share map view
+			var dojoConfig = {
+				parseOnLoad: true,
+				packages: [{
+						"name": "agsjs",
+						"location": location.pathname.replace(/[^\/]+$/, "") + 'js/gis/agsjs/layers'
+					},{
+						"name": "my_modules",
+						"location": location.pathname.replace(/[^\/]+$/, "")+'./../../../api/my_modules'
+					},{
+						name: "gis",
+						location: location.pathname.replace(/[^\/]+$/, '') + "js/gis"
+					}
+				]
+			};
+		}else{
+			var dojoConfig = {
+				parseOnLoad: true,
+				packages: [{
+					parseOnLoad:true,
+						"name": "agsjs",
+						"location": location.pathname.replace(/[^\/]+$/, "") + 'js/gis/agsjs/layers'
+					},{
+					   "name": "my_modules",
+					   "location": location.pathname.replace(/[^\/]+$/, "")+'./../../../api/my_modules'
+					},{
+						name: "gis",
+						location: location.pathname.replace(/[^\/]+$/, '') + "js/gis"
+					}
+				]
+			};
+		}
+	</script>
+		<script src="./../../../api/arcgis_js_api/library/3.33/3.33/init.js"></script>
+		<!--<script src="https://js.arcgis.com/3.16/"></script>-->
+    <script>
+
+		function checkbrowser() {
+		var check = false;
+		(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+		return check; }
+
+		dojo.require("esri.map");  //Map, geometry, graphics, and symbols
+		dojo.require("esri.arcgis.utils");  //work with content from ArcGIS server
+		dojo.require("esri.dijit.BasemapGallery");  //basemap interface for selection
+		dojo.require("esri.layers.FeatureLayer"); //The feature layer inherits from the graphics layer and can be used to display features from a single layer 
+		dojo.require("dijit.Dialog");	//esri popup box for messages non map data driven
+		dojo.require("esri.dijit.Scalebar"); //scalebar on map
+		dojo.require("dojo.cookie");  //map bookmarks for nonHTML5
+		dojo.require("esri.dijit.Bookmarks"); //map bookmarks with HTML5
+		dojo.require("esri.dijit.Measurement"); //Geometry task functionality
+		dojo.require("esri.SnappingManager");  //direction line / geometry line point snapping
+		dojo.require("esri.dijit.Popup");  //popup window for details from esri map
+		dojo.require("agsjs.GoogleMapsLayer");  //Google Map intergration
+		dojo.require("esri.dijit.Legend"); //Dynamic create map legend. - I want to say we are nolonger doing this on map only for print
+		dojo.require("esri.tasks.geometry");  //Geometry task functionality	  
+
+		//ESRI Home and Locate button
+		dojo.require("esri.dijit.HomeButton");
+		dojo.require("esri.dijit.LocateButton");
+		dojo.require("esri.tasks.query");
+		dojo.require("esri.toolbars.draw"); //Geometry task functionality	
+		dojo.require("my_modules.customoperation"); //adds undo/redo functionality
+		dojo.require("esri.dijit.OverviewMap"); //link overview map with main map	
+
+	</script>
+    
+	<script type="text/javascript" src="js/layout.js"></script>
+	<script type="text/javascript" src="js/supportfuctions.js"></script>
+	<script type="text/javascript" src="js/mapsupportfunctions.js"></script>
+	<script type="text/javascript" src="js/map.js"></script>
+	<script type="text/javascript" src="js/tokens.js"></script>
+	<script type="text/javascript" src="js/dynamicRouting.js"></script>
+
+	<script type="text/javascript" src="js/locator.js"></script>
+	<script type="text/javascript" src="js/sortable_us.js"></script>
+	<script type="text/javascript" src="js/layers.js"></script>
+	<script type="text/javascript" src="js/esri.symbol.MultiLineTextSymbol.js"></script>
+	<script type="text/javascript" src="js/RSGWGM.js"></script>
+	<script type="text/javascript">
+	
+		// Popup window code for Facebook and twitter
+		function newPopup(url) {
+			popupWindow = window.open(
+				url,'popUpWindow','height=500,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+		}
+	</script>
+
+	<script>
+		var appVersion = '1.1.0';
+		//23 - recycling and makerspaces layers
+		//24 - Building Category added to popup, warning screen for invalid URL features, updated routing tokens
+		//25 - Welcome Message
+		//26 - DOTS Spring updates
+
+		//1.1.0 - Google Analytics have been fully revamped
+		
+		checkCookie();
+		
+		function setCookie(cname, cvalue, exdays) {
+		  var d = new Date();
+		  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+		  var expires = "expires="+d.toUTCString();
+		  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+		function getCookie(cname) {
+		  var name = cname + "=";
+		  var ca = document.cookie.split(';');
+		  for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+			  c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+			  return c.substring(name.length, c.length);
+			}
+		  }
+		  return "";
+		}
+		
+		function checkCookie() {
+		  var version = getCookie("umd_campuswebmap_v");
+		  if (version != "") {
+			//alert(version+" "+appVersion);
+			if(version != appVersion){
+			  setCookie('umd_campuswebmap_v',appVersion, 365);
+			  location.reload(true);
+			}
+		  } else {
+			  setCookie("umd_campuswebmap_v", appVersion, 365);
+		  }
+		}
+	
+	
+	
+	</script>
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RJ22ZEGTP"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-6RJ22ZEGTP');
+	</script>
+
+	<script>
+		//dojo.ready(init);
+		console.log("Setting up map");
+			dojo.ready(init);
+		
+		//Accounting for the updated Building website, this is done for convenience
+		function showbuildingdetails(buildingNum){
+			buildingNum = ""+buildingNum+"";
+			if(buildingNum.length == 1){
+				buildingNum = "00"+buildingNum;
+			}else if(buildingNum.length == 2){
+				buildingNum = "0"+buildingNum;
+			}
+			iframelink = "https://facilities.umd.edu/info-resources/building-inventory?search="+buildingNum;
+			
+			window.open(iframelink);
+			//showiframelink(iframelink);
+			
+		}
+		
+		function showdetails (iframelink,id){	
+			gtag('event','ui', {'type': 'building links','value':'floorplans','site':'desktop','version':appVersion});
+			if (iframelink == 1){
+				iframelink = buildinginfolink;
+			}
+			if (iframelink == 0){
+				iframelink ="https://www.facilities.umd.edu/facilities-info/building-inventory"
+			}
+			if (iframelink == 3){
+				iframelink = "https://facilities.umd.edu/info-resources/building-inventory?search="+id;
+			}
+			window.open(iframelink);
+			//showiframelink(iframelink);
+			
+		}
+		
+		var streetViewClickEvent = "";
+		
+		function showStreetView(streetLon, streetLat){
+			//should feed in width and height to account for different screen sizes for the streetView
+			var multiplier = Math.pow(10,6);
+			var winHeight = ($(window).height());
+			var winWidth = ($(window).width());
+			var streetWidth = 0;
+			var streetHeight = 0;
+			
+			streetHeight =  (winHeight*.5);
+			streetWidth = (winWidth*.5);
+			
+			var tempH = (winHeight*.5)+20+"px";
+			var tempW = (winWidth*.5)+20+"px";
+			
+			var streetViewLink = "./streetView.html?&streetLat="+ streetLat + "&streetLon=" + streetLon + "&streetHeight="+ streetHeight+"&streetWidth=" + streetWidth;
+			
+			//Checking if location valid in streetview or not
+			var streetViewService = new google.maps.StreetViewService();
+			var STREETVIEW_MAX_DISTANCE = 50;
+			streetViewService.getPanoramaByLocation(
+				new google.maps.LatLng(streetLat, streetLon), 50,
+				function (streetViewPanoramaData, status) {
+					document.getElementById('blackscreen').style.display = '';
+					
+					try{
+						map.infoWindow.close();
+					}catch(e){}
+					if (status === google.maps.StreetViewStatus.OK) {
+						document.getElementById('streetDiv').style.display = '';
+						var panorama = new google.maps.StreetViewPanorama(
+							document.getElementById('streetmapHere')
+						);
+						panorama.setPano(streetViewPanoramaData.location.pano);
+						panorama.setPov({
+							heading: 270,
+							pitch:0
+						});
+						panorama.setVisible(true);
+						
+					} else {
+						// no street view available in this range, or some error occurred
+						dojo.byId('divLoadDisclaimer').innerHTML = "<b><h2 style='text-align:center; color:#990000;'>No Street View for this Location</h2></b>"+"<p style=' padding:5px;text-align:center'>The location you have selected does not have Street View Data available. Please try again with another location.</p>";
+
+						document.getElementById('disclaimerLoadMessage').style.display = '';
+						document.getElementById('streetDiv').style.display = 'none';
+					}
+			});
+		}
+		function closeStreet(){
+			document.getElementById('blackscreen').style.display = 'none';
+			document.getElementById('streetDiv').style.display = 'none';
+		}
+		
+	</script>
+
+	<script>
+	  
+		var mapMove, mapStopX, mapStopY, mapPointRaw;
+		var isClicked = { value : false };
+	  
+		//get value of isClicked
+		function checkClick(obj) {
+			return obj.value;
+		}
+	  
+		//set value of isClicked
+		function changeClick(obj) {
+			obj.value = !obj.value;
+		}
+		
+		function changeCursor(){
+			$("#map_container").css('cursor','url(./img/gif/streetviewCur.png),auto');
+		}
+	  
+		function showCoordinates(evt) {
+			//the map is in web mercator but display coordinates in geographic (lat, long)
+			var mp = esri.geometry.webMercatorToGeographic(evt.mapPoint);
+			mapPointRaw = evt.mapPoint;
+			mapStopX = mp.x;
+			mapStopY = mp.y;
+			   
+			mapMove.remove();
+			
+			map.graphics.clear();
+			
+			var convertedPoint = esri.geometry.xyToLngLat(mapPointRaw.x, mapPointRaw.y);
+				  
+			//Okay, some silly behavior here where here it wants the mapPoint units and not lat/lng.
+			//The streetpt below gets fed geographic units in order to create a proper point
+			var pt = new esri.geometry.Point(mapPointRaw.x, mapPointRaw.y, new esri.SpatialReference({ wkid: 102113}));
+				  
+			//resets the cursor
+			$("#map_container").css('cursor','default');
+			document.getElementById("streetviewDraggable").src = "./img/gif/street_view_b.png";
+			document.getElementById("streetviewDraggable2").src = "./img/gif/street_view_b.png";
+			
+			if (checkClick(isClicked) === true) {
+				changeClick(isClicked);
+				var streetpt = new esri.geometry.Point(mapStopX, mapStopY, new esri.SpatialReference({ wkid: 102113}));
+				showStreetView(streetpt.x, streetpt.y);
+			}
+			
+			map.setInfoWindowOnClick(true);
+		}
+	  
+	   function streetViewToggle(){
+			if (checkClick(isClicked) === false) {
+				//toggle 1 - Turn on StreetView for one click
+				if(mapMove){
+					mapMove.remove();
+				}
+				changeCursor();
+				document.getElementById("streetviewDraggable").src = "./img/gif/street_view_g.png";	
+				document.getElementById("streetviewDraggable2").src = "./img/gif/street_view_g.png";	
+				
+				changeClick(isClicked);
+				map.setInfoWindowOnClick(false);
+				
+				mapMove = map.on("mouse-down", function(evt){
+					//just putting a slight delay so that the map isn't being dragged along after the streetview is up
+					setTimeout(function(){
+						showCoordinates(evt);
+					}, 500);
+				});	
+				
+			} else {
+				$("#map_container").css('cursor','default');
+				document.getElementById("streetviewDraggable").src = "./img/gif/street_view_b.png";	
+				document.getElementById("streetviewDraggable2").src = "./img/gif/street_view_b.png";	
+				changeClick(isClicked);
+				map.setInfoWindowOnClick(true);
+			}	
+		}
+	  
+		/*This function is called from the body tag and disables the scrolling affect of mouse 3. This was added to prevent
+		the unwanted behaviour that when mouse 3 is clicked in, the user can move the Maryland banner off the top of the screen*/
+		function DisableMouse3(event) {
+			if(event.button == 1){					
+				event.preventDefault();
+			}
+		}
+
+	</script>  
+
+
+	<meta name="google-translate-customization" content="54ff32fde048e8dc-4c26d93ecd82cfdf-gb464fc360e1cd703-13"></meta>
+        
+</head>
+
+<body style='cursor:url("./img/ghosticon.png") !important;' onmousedown="DisableMouse3(event);" >
+	
+	<div style='position:fixed;left:50%; transform: translate(-50%,-50%); width:50%;height:50%; top:50%; background-color:black; z-index:10001;display:none;' id='streetDiv'>
+		<button title="Close (Esc)" type="button" class="mfp-close" style="text-align: right; top:-40px; position:absolute; line-height:44px;" onclick='closeStreet();'>×</button>
+		<div id='streetmapHere' style='margin:10px;height:calc(100% - 20px);width:calc(100% - 20px);'></div>
+	</div>
+	<div id="loader-wrapper">
+		<header class="entry-header">
+			<h1 id="loadUMD" class="entry-title" style="padding-left:10%; padding-right:10%; position:relative; color:#900">UNIVERSITY OF MARYLAND</h1>
+			<h1 id="loadCWM" class="entry-title"style="position:relative; color: #fff;">CAMPUS WEB MAP</h1>
+		</header>
+		<img id="preloadlogo" style=""  src="./img/logo2.png"></img>
+		<div id="loader"></div>
+		
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+		
+	</div>
+	<div id = "content">
+
+		<style>
+			#umh-toggle-cont {
+				border-bottom: 1px solid gold;
+			}
+
+			#umh-toggle-logo {
+				border-bottom: 0px solid gold;
+			}
+
+			#umh-toggle-arrow {
+				top: 32px;
+				display: none;
+			}
+
+			#umh-cont{
+				z-index:900 !important;
+			}
+
+			#umh-main {
+				display: none;
+			}
+
+		</style>
+
+		<!--Using rules below for the print widget-->
+		<style>
+			.dijitTooltipContainer {
+				padding:0px !important;
+				background:#EDEDED !important;
+			}
+
+			.dijitButtonNode{
+				border: none !important;
+			}
+		</style>
+
+		<style>
+			#shareoptions{
+				display: none;
+				text-align:center;
+			}		
+			.wrap { 
+				white-space: pre-wrap; 
+				white-space: -moz-pre-wrap;  
+				white-space: -pre-wrap; 
+				white-space: -o-pre-wrap;   
+				word-wrap: break-word;
+			}
+				
+			.sharechoices {
+				text-transform: uppercase;
+				font-family: "Open Sans",sans-serif;
+				float: left;
+				position:relative;
+				text-decoration:none;
+				text-align:center;
+				opacity:.6;
+			}
+			.sharechoices:hover {
+				opacity:1;
+			}
+			#ui-menu-item{
+				border:1px solid black;
+
+			}
+
+			.ui-autocomplete-category{
+				border:1px solid black;
+				color:white;
+			}
+
+			.ui-autocomplete{
+				max-height: 60%;
+				overflow-y: auto;
+				width:265px;
+			}
+			
+
+		</style>
+		<!---Main Map View-->
+		<div id="mapView" data-dojo-props="selected: true">
+
+			<!---Main Body-->
+			
+			<div id="headerbar" style="background:black; width:100%; height:20px; float:left; position:fixed; z-index:2; padding-top:10px; text-align:right;" class="shadow" >
+	
+				<span id="share1" style="font-size:13px;">
+					<a id="sharelink" onClick="sharebookmark(); generateUrlNew();" href='javascript:void(0)'>Share a Map View</a>
+				</span>
+				&nbsp; &nbsp;<span style="color:white;">|</span>&nbsp; &nbsp;
+				<span id="feedback1" style="font-size:13px;">
+					<a id="feedbacklink" onClick="showContactForm();" href='javascript:void(0)'>Feedback / Comments</a>
+				</span>				
+				<span id="accessibility1">
+					&nbsp;&nbsp;<span style="color:white;">|</span>&nbsp; &nbsp;
+					<a id="accessibilitylink" onClick="accessibilityLink();" href='javascript:void(0)'>Web Accessibility</a>
+				</span>
+				<span id="disclaimer1">
+					&nbsp;&nbsp;<span style="color:white; ">|</span>&nbsp; &nbsp;
+					<a id="disclaimerlink" onClick="disclaimershow();" href='javascript:void(0)'>Disclaimer</a>
+				</span>
+				&nbsp;&nbsp;
+			</div>
+
+			<div id='blackscreen' style="height:100%; width:100%; position:absolute;background:rgba(0,0,0,0.66);z-index: 19;display:none; z-index: 900; background:black; opacity:0.50; top:0"></div>
+
+			
+			<div id="markerbox">
+				<span class="Title">Share a location</span>
+				<i class="fa fa-circle mmClose" aria-hidden="true" style="color:white; font-size:30px; position:absolute; right:-10px; top:-11px; z-index:900; cursor:pointer;"></i>
+				<i id="mmCloseButton" class="fa fa-times-circle mmClose" aria-hidden="true" onclick="closeMMWindow();"></i>
+				<label>
+					<input id="title1" class="textField border-bottom noFocus" type="text" placeholder="Enter a Title" onkeyup="invalidsDes(this)">
+				</label>
+				<p>
+					<button id="addDes" class="noFocus margin" onclick="addDescription();">
+						<i class="fa fa-plus" aria-hidden="true" style="padding-right:2px"><text>&nbsp; Link Description</text></i>
+					</button>
+				</p>
+				<label>
+					<textarea onkeyup="invalidsDes(this)" rows="4" id="destext" class="textField border-bottom noFocus" placeholder="Enter a Description"></textarea onkeyup="invalidsDes(this)">
+				</label>
+				<label class="heading">Choose a Marker</label>
+				<nav class="menu">
+					<input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" onchange="hideShowmmClose(this)"/> 
+					<label class="menu-open-button" for="menu-open">
+						<img src='img/markerMaker/marker.png' alt="mapmarker">
+					</label>
+					<a class="menu-item" onclick="menuChange(this)"><img src='img/markerMaker/shell.png' alt="shell"> </a>
+					<a class="menu-item" onclick="menuChange(this)"> <img src='img/markerMaker/local_activity.png' alt="local_activity"> </a>
+					<a class="menu-item" onclick="menuChange(this)"><img src='img/markerMaker/parking.png' alt='parking'> </a>
+					<a class="menu-item" onclick="menuChange(this)"> <img src='img/markerMaker/food-yellow2.png' alt="food"> </a>
+					<!--<a class="menu-item" onclick="menuChange(this)"><img src='img/markerMaker/cake.png' alt="cake"> </a>
+					<a class="menu-item" onclick="menuChange(this)"> <img src='img/markerMaker/group.png' alt="group"> </a>
+					<a class="menu-item" onclick="menuChange(this)"><img src='img/markerMaker/parking.png' alt='parking'> </a>
+					<a class="menu-item" onclick="menuChange(this)"> <img src='img/markerMaker/local_activity.png' alt="local_activity"> </a>
+					<a class="menu-item" onclick="menuChange(this)"> <img src='img/markerMaker/local_library.png' alt="local_library"> </a>
+					<a class="menu-item" onclick="menuChange(this)"> <img src='img/markerMaker/person_pin.png' alt="person_pin"> </a>
+					<a class="menu-item" onclick="menuChange(this)"><img src='img/markerMaker/pizza.png' alt="pizza"> </a>-->
+				</nav>
+				<label id="mmSubmit" class="noFocus margin padding" onclick="return submitbotton();">
+					<text id="submittxt">Create a link</text>
+					<input id="submitlink" style="display:none" type="checkbox" onchange="buttonclicked();">
+				</label>
+				<input id='mmLink' type="text" class="border-bottom margin" placeholder="The Link">
+				<i class="fa fa-link" id="linkSymbol" style="display:none;"></i>
+				<span id="copy_buttonSpan"><input id="copy_button" type="submit" class="noFocus margin" value="Copy" onclick="copyMMLink();"></span>
+				<input id="newTab" class="noFocus margin padding" type="submit" value="Open in a new tab" onclick="window.open(mmLink.value,'_blank');">
+				<text id="x" style="display:none" value="">x</text>
+				<text id="y" style="display:none" value="">y</text>
+			</div>
+			
+
+				
+			<div id='leftcolumn' class='shadow' onclick='basemapCheckOnclick();'> <!-- oncontextmenu="return false;" -->
+				<div id="site-nav">
+					<ul id="search-menu" class="clearfix">
+						<li class="selected-tab hover-tab" id="Search"> 
+							<a href="javascript:void(0);" onclick="newtab('Search')"> Search </a> 
+						</li>
+						<li class="" id="Layers">
+							<a href="javascript:void(0);" onclick="newtab('Layers')">Layers</a>
+						</li>
+						<li class="" id="Directions">
+							<a href="javascript:void(0);" onclick="newtab('Directions')"> Directions </a>
+						</li>
+					</ul>
+				</div>
+				<div style="float:right; text-align:center; margin:20px 5px 0px 0px;">
+					<div id="HideShowText" class="outlineshadow" style="font-weight:20px; font-weight:bold; cursor:pointer;" onclick="hideshowmenu()">
+					  H<br>
+					  I<br>
+					  D<br>
+					  E<br><br>
+					  M<br>
+					  E<br>
+					  N<br>
+					  U<br>
+					</div>
+					<br>
+
+					<span id="layerlistbutton">
+						<img src="img/layerlist.png" style="padding-bottom:10px; cursor:pointer;" onclick="layerlistManager();" title="Map Layers" id="maplayers">
+						<br>
+					</span>
+					<span id="toolsbutton" style="display: inline;">
+						<img src="img/tools.png" style="padding-bottom:10px; cursor:pointer;" onclick="ToolManager();" title="Tools" id="Tools">
+						<br>
+					</span>
+					<span id="bookmarksbutton">
+						<img src="img/bookmarks.png" style="padding-bottom:10px; cursor:pointer;" onclick="BookmarksManager();" title="Bookmarks" id="bookmarksIcon">
+						<br>
+					</span>
+					<!--<span id='addedFavorite' style='background-color:rgba(0,0,0,.7);border-radius:5px;color:white;text-align:center;width:100px;position:fixed;transform:translate(40%,-130%);padding:10px;font-size:11px;'>
+						Added to favorites
+					</span>-->
+					<span id="printbutton">
+						<img src="img/print.png" style="padding-bottom:10px; cursor:pointer;" onclick="PrintManager();" title="Print"><!-- PrintWarning(); -->
+						<br>
+					</span>
+					<span id="helpbutton" style="display: inline;">
+						<img src="img/help.png" style="padding-bottom:10px;height:28px;width:28px; cursor:pointer;" onclick="ShowHelp();" title="Help/About Map">
+					</span>
+				</div>
+				<br>
+				
+				<div id='searchColumn' class='MenuColumn'>
+					<h2> Search </h2>
+					<hr>
+					<!--<p id="instruct" style='max-width:280px;'><strong>Instructions: </strong><b>Search for Buildings and Parking Lots</b> Enter a building number or portion of a building name (at least 3 letters). When searching for a parking lot, enter the parking lot letter or number only, omitting the word 'lot'.</p>-->
+					
+						
+					<div id="divAddress" class="divAddress">
+						<input type="text" id="autotxtAddress" onkeydown="if(event.keyCode==13){doesItExist();} toggleWhiteX('main');" class="textBox" style="" autocomplete="off" placeholder="What do you want to find?"/> 
+						
+						<div id='imgCloseAddress' style = 'position:absolute; right:34px; width:18px; top:1px; height:28px; background-color:#242422;  display:none; '>
+							<img  class='textX' onclick='document.getElementById("autotxtAddress").value = ""; document.getElementById("imgCloseAddress").style.display = "none"; map.graphics.clear();removeHighlight();' src='img/whiteX.png' title='Clear' style='width:10px; height:10px; right:4px; top:10px; position:absolute; cursor:pointer;'/>
+						</div>
+					
+						<img id="imgLocateAddress" class="imgLocateAddress" onclick="cp=1;doesItExist();" src="img/Locate.png" alt="" style="background-color:black;padding:3px; width:26px; height:26px; position:absolute; cursor:pointer; float:right;"/>
+					</div>
+					<div id="divAddressContainer" class="divAddressContainer" style="display: none;"></div>
+					<div id="divSearchResultsList" class="divSearchResultsList" style="display:none;"><b style="color:rgb(224,58,62);">No Search Results Found </b></div>
+					
+					<style>
+						th a {color:red; text-decoration:none; font-weight:bold;}
+						th a:link {color:red; text-decoration:none; font-weight:bold;}
+						th a:hover {color:red; text-decoration:none; font-weight:bold;}
+						th a:visited {color:red; text-decoration:none; font-weight:bold;}
+					</style>
+					<br><br><br>
+					<div id="lefttextarea" style="width:268px;">
+						
+						
+  
+						<h4 onClick="swaplisticon('Destinations');" style="cursor:pointer;">
+							<i class="fa fa-chevron-up togglearrow" align="left" id="DestinationsTitle"></i>&nbsp;Campus Destinations
+						</h4>
+						
+						<div style="cursor:pointer; display:none;" id="Destinations">
+							<style>
+								#PointsOfInterest tr:active { background:#FFFFFF; }
+								#PointsOfInterest tr {cursor:pointer;}
+								#PointsOfInterest tr:hover { font-weight:bolder;color:black; }
+								
+								#LibraryBuildings td:active { background:#FFFFFF; }
+								#LibraryBuildings td {cursor:pointer;}
+								#LibraryBuildings td:hover { font-weight:bolder;color:black; }
+										
+								#WhereToPark td:active { background:#FFFFFF; }
+								#WhereToPark td {cursor:pointer;}
+								#WhereToPark td:hover { font-weight:bolder;color:black; }
+										
+								#AllCampusBuildings td:active { background:#FFFFFF; }
+								#AllCampusBuildings td {cursor:pointer;}
+								#AllCampusBuildings td:hover { font-weight:bolder;color:black; }
+								
+								#TableCampusBuildings tr:active { background:#FFFFFF; }
+								#TableCampusBuildings tr {cursor:pointer;}
+								#TableCampusBuildings tr:hover { font-weight:bolder;color:black; }
+							
+							</style>
+							
+							<table style="text-align:left; padding-left:20px; color:red;" class="sortable hoverTable" width="100%">
+								<thead>
+									<tr><th nowrap id="sortone" onclick='updateTableDest();'>
+										Name
+										<img id='DestUp' style='display:none;' src='./img/br_up_icon.png' />
+										<img id='DestDown' style='display:none;' src='./img/br_down_icon.png' />
+									</th></tr>
+								</thead>
+							</table>
+							<table id='PointsOfInterest' style="text-align:left; height:calc(100% - 648px); padding-left:20px; width:248px; overflow:auto; display:block;" class="hoverTable">
+								<tbody style='display:block;width:230px;'>
+									<tr style='display:block;' onClick="visitbookmark('386','Buildings','Campus Destinations');"><td>Clarice Smith Performing Arts Center</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('Discovery District','Places of Interest','Campus Destinations');"><td>Discovery District</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('Do Good Plaza','Places of Interest','Campus Destinations');"><td>Do Good Plaza</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('Driskell Center','Places of Interest','Campus Destinations');"><td>Driskell Center</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('068','Buildings','Campus Destinations');"><td>Eppley Recreation Center</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('140','Buildings','Campus Destinations');"><td>Health Center</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('009','Buildings','Campus Destinations');"><td>Memorial Chapel</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('071','Buildings','Campus Destinations');"><td>Office of the Bursar</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('052','Buildings','Campus Destinations');"><td>Office of the Registrar</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('407','Buildings','Campus Destinations');"><td>Samuel Riggs IV Alumni Center</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('SECU Stadium','Places of Interest','Campus Destinations');"><td>SECU Stadium</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('163','Buildings','Campus Destinations');"><td>Stamp Student Union</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('163','Buildings','Campus Destinations');"><td>TerpZone</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('The Hotel at the University of Maryland','Places of Interest','Campus Destinations');"><td>The Hotel at the University of Maryland</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('University of Maryland Golf Course','Places of Interest');"><td>UMD Golf Course</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('900','Buildings','Campus Destinations');"><td>Visitor Center</td></tr>
+									<tr style='display:block;' onClick="visitbookmark('360','Buildings','Campus Destinations');"><td>Xfinity Center</td></tr>
+								</tbody>
+							</table>
+						</div>
+						
+						<hr style="margin-top:5px; margin-bottom:5px;"/>
+						<h4 onClick="swaplisticon('Library');" style="cursor:pointer;"><i class="fa fa-chevron-up togglearrow" align="left" id="LibraryTitle"></i>&nbsp;Libraries</h4>
+						<div style="cursor:pointer; display:none;" id="Library">
+							<table style="text-align:left; padding-left:20px;" class="sortable hoverTable" id="LibraryBuildings" width="100%">
+								<thead>
+									<tr><th nowrap>Name</th></tr>
+								</thead>
+								<tbody>
+									<tr onClick="visitbookmark('Architecture Library','Places of Interest','Libraries'); addLibraryLayer();"><td>Architecture Library</td></tr>
+									<tr onClick="visitbookmark('Art Library','Places of Interest','Libraries'); addLibraryLayer();"><td>Art Library</td></tr>
+									<tr onClick="visitbookmark('STEM Library','Places of Interest','Libraries'); addLibraryLayer();"><td>STEM Library</td></tr>
+									<tr onClick="visitbookmark('Hornbake Library','Places of Interest','Libraries'); addLibraryLayer();"><td>Hornbake Library</td></tr>
+									<tr onClick="visitbookmark('McKeldin Library','Places of Interest','Libraries'); addLibraryLayer();"><td>McKeldin Library</td></tr> 
+									<tr onClick="visitbookmark('Michelle Smith Performing Arts Library','Places of Interest','Libraries'); addLibraryLayer();"><td>Michelle Smith Performing Arts Library</td></tr>
+									<tr onClick="visitbookmark('Priddy Library at Shady Grove','Places of Interest','Libraries'); addLibraryLayer();"><td>Priddy Library at Shady Grove</td></tr>
+									<tr onClick="visitbookmark('Severn Library','Places of Interest','Libraries'); addLibraryLayer();"><td>Severn Library</td></tr>
+								</tbody>
+							</table>            
+						</div>
+							
+						<hr style="margin-top:5px; margin-bottom:5px;"/>
+						<h4 onClick="swaplisticon('VisitorParking');" style="cursor:pointer;">
+							<i class="fa fa-chevron-up togglearrow" align="left" id="VisitorParkingTitle"></i>&nbsp;Visitor Parking
+						</h4>
+						<div style="cursor:pointer; display:none;" id="VisitorParking">
+							<table style="text-align:left; padding-left:20px;" class="sortable hoverTable" id="WhereToPark" width="100%">
+								<thead>
+									<tr><th nowrap>Name</th></tr>
+								</thead>
+								<tbody>
+									<tr onClick="visitbookmark('901', 'Buildings','Visitor Parking');"><td>Diamondback Garage</td></tr>
+									<tr onClick="visitbookmark('404', 'Buildings','Visitor Parking');"><td>Mowatt Lane Garage</td></tr>
+									<tr onClick="visitbookmark('202', 'Buildings','Visitor Parking');"><td>Regents Drive Garage</td></tr>
+									<tr onClick="visitbookmark('218', 'Buildings','Visitor Parking');"><td>Stadium Drive Garage</td></tr>
+									<tr onClick="visitbookmark('179', 'Buildings','Visitor Parking');"><td>Union Lane Garage</td></tr>
+									<!--<tr onClick="visitbookmark('VISITOR CENTER LOT', 'Parking','Visitor Parking');"><td>Visitor Center Lot</td></tr>-->
+									<tr onClick="visitbookmark('XFINITY Center VISITOR LOT', 'Parking','Visitor Parking');"><td>Xfinity Center Visitor Lot</td></tr>
+								</tbody>
+							</table>
+						</div>
+							
+						<script>
+							var lines = [];
+
+							function updateTableDest(){
+								if(document.getElementById('DestUp').style.display == document.getElementById('DestDown')){
+									document.getElementById('DestUp').style.display = '';
+								}else{
+									if(document.getElementById('DestUp').style.display == ''){
+										document.getElementById('DestUp').style.display = 'none';
+										document.getElementById('DestDown').style.display = '';
+									}else{
+										document.getElementById('DestUp').style.display = '';
+										document.getElementById('DestDown').style.display = 'none';
+									}
+								}
+								var str = $('#PointsOfInterest>tbody')[0].innerHTML.split('</tr>');
+								var newstr = "";
+								for(var x=str.length-1; x>=0; x--){
+									newstr += str[x]+"</tr>";
+								}
+								$('#PointsOfInterest>tbody')[0].innerHTML = newstr;
+							}
+
+							
+							function listbuildings (){
+								var newtable = "";
+								for (var i=0; i<buildingListArray.length; i++) {
+									var currentrow = buildingListArray[i].attributes;
+									if(currentrow.NAME != null){
+										newtable += "<tr style='padding-top:5px;' onClick='visitbookmark(\""+currentrow.BUILDINGID+"\",\"Buildings\");'><td style='width:52px;'>"+currentrow.BUILDINGID+"</td><td>"+currentrow.NAME+"</td></tr>";
+									}
+								}
+								document.getElementById('TableCampusBuildings').innerHTML = newtable;
+							}
+
+
+							function limitlistbuildings(){
+								var newtable = "";
+								for (var i=0; i<buildingListArray.length; i++) {
+									var currentrow = buildingListArray[i].attributes;
+									if (currentrow.BLDG_CLASS == document.getElementById('buildingchoices').value || document.getElementById('buildingchoices').value == "All"){
+										if(currentrow.NAME != null){
+											newtable += "<tr class='hoverTable2' onClick='visitbookmark(\""+currentrow.BUILDINGID+"\",\"Buildings\");'><td style='width:52px;'>"+currentrow.BUILDINGID+"</td><td>"+currentrow.NAME+"</td></tr>";
+										}
+									}
+								}
+								document.getElementById('TableCampusBuildings').innerHTML = newtable;
+							}
+
+							
+							function sortTables(type,direction){
+								var arr = [];
+								for(var x=0;x<buildingListArray.length;x++){
+									var feat = buildingListArray[x].attributes;
+									if(feat['BLDG_CLASS'] == document.getElementById('buildingchoices').value || document.getElementById('buildingchoices').value == 'All'){
+										if(arr == []){
+											arr.push(buildingListArray[x]);
+										}else{
+											if(direction == 'up'){
+												for(var w=arr.length-1;w>=0 && arr[w][type]>feat[type];w--){
+													arr[w+1] = arr[w];
+												}
+												arr[w+1] = feat;
+											}else{
+												for(var w=arr.length-1;w>=0 && arr[w][type]<=feat[type];w--){
+													arr[w+1] = arr[w];
+												}
+												arr[w+1] = feat;
+											}
+										}
+									}
+								}
+								var newtable = "";
+								for (var i=0; i<arr.length; i++) {
+									var currentrow = arr[i];
+									newtable += "<tr class='hoverTable2' onClick='visitbookmark(\""+currentrow.BUILDINGID+"\",\"Buildings\");'><td style='width:52px;'>"+currentrow.BUILDINGID+"</td><td>"+currentrow.NAME+"</td></tr>";
+								}
+								document.getElementById('TableCampusBuildings').innerHTML = newtable;
+							}
+							
+							
+							function updateTable(group,type){
+								if(group == 'Buildings'){
+									if(type == 'Bldg'){
+										if(document.getElementById(type+"Up"+group).style.display == 'none'){
+											document.getElementById('NameUp'+group).style.display = 'none';
+											document.getElementById('NameDown'+group).style.display = 'none';
+											document.getElementById('BldgUp'+group).style.display = '';
+											document.getElementById('BldgDown'+group).style.display = 'none';
+											sortTables('BUILDINGID','up');
+										}else{
+											document.getElementById('NameUp'+group).style.display = 'none';
+											document.getElementById('NameDown'+group).style.display = 'none';
+											document.getElementById('BldgUp'+group).style.display = 'none';
+											document.getElementById('BldgDown'+group).style.display = '';
+											sortTables('BUILDINGID','down');
+										}
+									}else if(type == 'Name'){
+										if(document.getElementById(type+"Up"+group).style.display == 'none'){
+											document.getElementById('NameUp'+group).style.display = '';
+											document.getElementById('NameDown'+group).style.display = 'none';
+											document.getElementById('BldgUp'+group).style.display = 'none';
+											document.getElementById('BldgDown'+group).style.display = 'none';
+											sortTables('NAME','up');
+										}else{
+											document.getElementById('NameUp'+group).style.display = 'none';
+											document.getElementById('NameDown'+group).style.display = '';
+											document.getElementById('BldgUp'+group).style.display = 'none';
+											document.getElementById('BldgDown'+group).style.display = 'none';
+											sortTables('NAME','down');
+										}									
+									}
+								
+								}
+							
+							}
+
+						</script>	
+							
+						<hr style="margin-top:5px; margin-bottom:5px;"/>
+						<h4 onClick="swaplisticon('Buildings'); limitlistbuildings();" style="cursor:pointer;">
+							<i class="fa fa-chevron-up togglearrow" align="left" id="BuildingsTitle"></i>&nbsp;Buildings
+						</h4>
+
+
+						<div style="cursor:pointer; display:none;" id="Buildings"> 
+							<select id="buildingchoices" name="buildingchoices" style='margin-left:20px;' onChange="limitlistbuildings();">
+								<option value="All" selected>All Buildings</option>
+								<option value="Residence Halls and Apartments">Residence Halls And Apartments</option>
+								<option value="Fraternities/Sororities">Fraternities/Sororities</option>
+								<option value="Athletic and Recreational Facilities">Athletic and Recreational Facilities</option>
+								<option value="Parking Garage">Parking Garage</option>
+								<option value="UMGC Inn & Conference Center">UMGC INN & Conference Center</option>
+							</select>
+							<div id="BuildingsList" style='overflow:auto;'></div>
+							<table style='color:red;text-align:left; padding-top:6px; padding-bottom:6px; padding-left:20px; border-spacing:0;' class='' id='AllCampusBuildings' width='100%'>
+								<thead>
+									<tr>
+										<th nowrap style='width:52px;' onclick='updateTable("Buildings","Bldg");'>
+											Bldg #
+											<img id='BldgUpBuildings' style='display:none;' src='./img/br_up_icon.png' />
+											<img id='BldgDownBuildings' style='display:none;' src='./img/br_down_icon.png' />
+										</th>
+										<th nowrap onclick='updateTable("Buildings","Name");'>
+											Name
+											<img id='NameUpBuildings' style='display:none;' src='./img/br_up_icon.png' />
+											<img id='NameDownBuildings' style='display:none;' src='./img/br_down_icon.png' />
+										</th>
+									</tr>
+								</thead>
+							</table>
+							<table class='' id='TableCampusBuildings' style='display:block; overflow:auto; text-align:left; padding-left:20px; '></table>
+						</div>
+							   
+						<hr style="margin-top:5px; margin-bottom:5px;"/>        
+					</div>
+				</div>
+				
+				
+				<div id='layerColumn' class='MenuColumn' style='display:none;'>
+					
+					<h2>Layers</h2>
+					<hr>
+					<div id="ToggleAllLayersOff" class='StandardButton' style="font-weight:20px; font-weight:bold; cursor:pointer; width:160px; text-align:center;" onclick="hideAllLayers(); turnOffRoutes();">Turn Off All Toggled Layers</div>
+					<br>
+						
+					<div id="lefttextarea3" style="overflow:auto; width:268px;">
+						<div id="layerList">
+						
+							<!-- Campus Transportation -->
+							<h4 onclick="swaplisticon('transportContain');" class = "layerList toggle">
+								<i src="img/up.png" align="left" id="transportContainTitle" class="fa fa-chevron-up"></i>
+								<span>&nbsp;Campus Transportation</span>
+							</h4>
+							<div class="layerList container" id="transportContain"> 
+								
+								<div class='padding'><label><img src="img/payparking.png" style="width:25 !important; height:inherit !important;" align="left">
+									<input type="checkbox" value="paystation" name="paystation" id="paystation" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Pay/Public Parking</label>
+								</div>
+								<div class='padding'><label><img src="img/permit_locker.png" align="left">
+									<input type="checkbox" value="lockers" name="lockers" id="lockers" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Permit Smart Lockers</label>
+								</div>
+								<div class='padding'><label><img src="img/bike1_c.png" align="left">
+									<input type="checkbox" value="bike" name="bike" id="bike" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Bike Amenities</label>
+								</div>
+								<div class='padding subToggle' id='bikeRackLegend' style='display:none;'>
+									<table>
+										<tr>
+											<td><img src='img/bike1_c.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="bikerack" name="bikerack" id="bikerack" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Bike Racks</td>
+										</tr>
+										<tr>
+											<td><img src='img/bicycleCovered_2.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="bikecover" name="bikecover" id="bikecover" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Covered Bike Racks</td>
+										</tr>
+										<tr>
+											<td><img src='img/bicycleRC.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="bikeroom" name="bikeroom" id="bikeroom" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Bike Rooms</td>
+										</tr>
+										<tr>
+											<td><img src='img/bikewrench.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="bikerepair" name="bikerepair" id="bikerepair" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Bike Repair Station</td>
+										</tr>
+					
+									</table>
+								</div>
+								<div class='padding' style="clear:both;"><label><img src="img/Motorcycle.png" align="left">
+									<input type="checkbox" value="motorcycle" name="motorcycle" id="motorcycle" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Motorcycle Scooter Parking</label>
+								</div>
+								<div class='padding' style="clear:both;">
+									<label><img src="img/veoride2.png" align="left">
+										<input type="checkbox" value="veoride" name="veoride" id="veoride" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Veo/E-Scooter Parking Hubs
+									</label>
+									<!--<div id='VeofeedTable' style='display:none;'>
+										<h4 class='padding subToggle' onclick="swaplisticon('VeorideContain');"><i src="img/up.png" class="fa fa-chevron-up" align="left" id="VeorideContainTitle"></i><span>&nbsp;Veo Vehicles</span></h4>
+										<div id="VeorideContain" class="subContainer">
+											<table>
+												<tr>
+													<td><img src='img/Veoride_Bicycle_White.png' align='left' style='width:20px;'/></td>
+													<td><input type="checkbox" checked value="vrbike" name="vrbike" id="vrbike" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+													<td>&nbsp;Veoride Bicycles</td>
+												</tr>
+												<tr>
+													<td><img src='img/Veoride_EBicycle_White.png' align='left' style='width:20px;'/></td>
+													<td><input type="checkbox" checked value="vrebike" name="vrebike" id="vrebike" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+													<td>&nbsp;Veo Electric Bicycles</td>
+												</tr>
+												<tr>
+													<td><img src='img/Veoride_Scooter_White.png' align='left' style='width:20px;'/></td>
+													<td><input type="checkbox" checked value="vrscooter" name="vrscooter" id="vrscooter" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+													<td>&nbsp;Veo Scooters</td>
+												</tr>
+							
+											</table>
+
+										</div>
+									</div>-->
+								</div>
+								<div class='padding' style="clear:both;"><label><img src="img/charging.png" align="left">
+									<input type="checkbox" value="electricCharging" name="electricCharging" id="electricCharging" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Electric Vehicle Charging</label>
+								</div>
+								<div class='padding'><label><img src="img/nite_c.png" align="left">
+									<input type="checkbox" value="nite" name="nite" id="nite" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Nite Ride</label>
+								</div>
+								<div class='padding'><label><img src="img/bus_c.png" align="left">
+										<input type="checkbox" value="bus" name="bus" id="bus" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Shuttle-UM Stops
+									</label>
+									<h4 class='padding subToggle' onclick="swaplisticon('RouteContain');busRouteListUMShuttle();">
+										<i src="img/up.png" align="left" id="RouteContainTitle" class="fa fa-chevron-up"></i>
+										<span>&nbsp;UMD Shuttle Routes</span>
+									</h4>
+									<div  class="layerList subContainer" id="RouteContain"></div>
+								</div>
+								<div class='padding'><label><img src="img/wmata_bus2.png" align="left">
+										<input type="checkbox" value="wmata" name="wmata" id="wmata" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;WMATA Bus Stops
+									</label>
+									<h4 class='padding subToggle' onclick="swaplisticon('WM_RouteContain');"><i src="img/up.png" class="fa fa-chevron-up" align="left" id="WM_RouteContainTitle"></i><span>&nbsp;WMATA Routes</span></h4>
+									<div id="WM_RouteContain" class="subContainer">
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_83');" id="BusWM_83" name="WM_83">&nbsp;WMATA - 83</label></div>
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_86');" id="BusWM_86" name="WM_86">&nbsp;WMATA - 86</label></div>
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_C2');" id="BusWM_C2" name="WM_C2">&nbsp;WMATA - C2</label></div> 
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_C8');" id="BusWM_C8" name="WM_C8">&nbsp;WMATA - C8</label></div>
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_F6');" id="BusWM_F6" name="WM_F6">&nbsp;WMATA - F6</label></div>
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_F8');" id="BusWM_F8" name="WM_F8">&nbsp;WMATA - F8</label></div>
+										<!--
+										<div class="padding"><label><input type="checkbox" onclick="toggleWMATARoutes(this, 'WM_J4');" id="BusWM_J4" name="WM_J4">&nbsp;WMATA - J4</label></div>
+										-->
+									</div>
+								</div>
+								<div class='padding'><label><img src="img/train.png" align="left">
+									<input type="checkbox" value="train" name="train" id="train" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;WMATA Rail Stations</label>
+								</div>
+								
+								
+								<!--
+								<div class='padding'><label><img src="img/Zagst_c.png" align="left">
+									<input type="checkbox" value="zgstStation" name="zgstStation" id="zgstStation" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;mBike Bike Share Stations</label>
+								</div>		
+								-->
+								
+								<div class='padding' style="clear:both;"><label><img src="img/zipcar.png" align="left">
+									<input type="checkbox" value="zipcar" name="zipcar" id="zipcar" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Zipcar</label>
+								</div>
+								
+
+								
+							
+							</div>
+
+							<!-- Arboretum Drop Down -->
+							<h4 onclick="swaplisticon('arborContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" src="img/up.png" align="left" id="arborContainTitle"></i>
+								<span>&nbsp;Arboretum  and Botanical Garden</span>
+							</h4>
+							<div class = "layerList container" id="arborContain">
+								<div class="padding"><label><img src="img/tree_c.png" align="left">
+									<input type="checkbox" value="tree" name="tree" id="tree" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Campus Plant Inventory</label>
+								</div>
+								<div class="padding"><label><img src="./img/garden3.png" align="left">
+									<input type="checkbox" value="garden" name="garden" id="garden" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Gardens</label>
+								</div>
+								<!--<div class="padding"><label><img src="./img/pollinators.png" align="left">
+									<input type="checkbox" value="pollinators" name="pollinators" id="pollinators" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Pollinator Gardens</label>
+								</div>-->
+							</div>
+
+
+							<!-- Reference Layer Drop Down -->
+							<h4 onclick="swaplisticon('referenceContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" src="img/up.png" align="left" id="referenceContainTitle"></i>
+								<span>&nbsp;Reference Layers</span>
+							</h4>
+							<div id="referenceContain" class = "layerList container">
+								<div class='padding'><label><img src="img/boundary_c.png" align="left">
+									<input type="checkbox" value="boundary" name="boundary" id="boundary" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Campus Boundary</label>
+								</div>
+								<div class='padding'><label><img src="img/fivecontour_c.png" align="left">
+									<input type="checkbox" value="fivecontour" name="fivecontour" id="fivecontour" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;5-foot Elevation Contours</label>
+								</div>
+								<div class='padding'><label><img src="img/testudo.png" align="left">
+									<input type="checkbox" value="testudo" name="testudo" id="testudo" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Testudo Statues</label>
+								</div>
+								<div class='padding'><label><img src="img/smoke_c.png" align="left">
+									<input type="checkbox" value="smoke" name="smoke" id="smoke" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Designated Smoking Areas</label>
+								</div>
+								<div class='padding'><label><img src="./img/Wifi2.png" align="left">
+									<input type="checkbox" value="wifi" name="wifi" id="wifi" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Outdoor Wifi Coverage</label>
+								</div>
+								
+							</div>
+
+							<!-- UMD Safety Layer Drop Down -->
+							<h4 onclick="swaplisticon('safetyContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" src="img/up.png" align="left" id="safetyContainTitle"></i>
+								<span>&nbsp;Public Safety</span>
+							</h4>
+							<div  class = "layerList container" id="safetyContain">
+								<div class='padding'><label><img src="img/phone_c.png" align="left">
+									<input type="checkbox"  value="phone" name="phone" id="phone" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Emergency Phones</label>
+								</div>
+							</div>
+
+							<!-- UMD Dining Services Layer Drop Down -->
+							<h4 onclick="swaplisticon('diningContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" src="img/up.png" align="left" id="diningContainTitle"></i>
+								<span>&nbsp;Dining Services</span>
+							</h4>
+							<div id="diningContain" class = "layerList container">
+								<div class='padding'><label><img src="img/diningHall_c.png"  align="left">
+										<input type="checkbox" value="diningHall" name="diningHall" id="diningHall" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Dining Halls</label>
+								</div>
+								<div class='padding'><label><img src="img/cafe_c.png" align="left">
+									<input type="checkbox" value="cafe" name="cafe" id="cafe" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Cafes</label>
+								</div>
+								<div class='padding'><label><img src="img/farmersmarket.png" align="left">
+									<input type="checkbox"  value="farmersMarket" name="farmersMarket" id="farmersMarket" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Farmers Market</label>
+								</div>
+								<div class='padding'><label><img src="img/foodCourt_c.png" align="left">
+									<input type="checkbox"  value="foodCourt" name="foodCourt" id="foodCourt" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Food Courts</label>
+								</div>
+								<div class='padding'><label><img src="img/foodPantry_c.png"  align="left">
+									<input type="checkbox"  value="foodPantry" name="foodPantry" id="foodPantry" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;UMD Campus Pantry</label>
+								</div>
+								<div class='padding'><label><img src="img/restaurant_c.png"  align="left">
+									<input type="checkbox"  value="restaurant" name="restaurant" id="restaurant" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Restaurants</label>
+								</div>
+								<div class='padding'><label><img src="img/shop_c.png"  align="left">
+									<input type="checkbox"  value="shop" name="shop" id="shop" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Shops</label>
+								</div>
+							</div>
+
+							<!-- UMD Building Amenities Layer Drop Down -->
+							<h4 onclick="swaplisticon('amenitiesContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" align="left" id="amenitiesContainTitle"></i>
+								<span>&nbsp;Building Amenities</span>
+							</h4>
+							<div class = "layerList container" id="amenitiesContain">
+								<div class='padding'><label><img src="img/restroomG_c.png" align="left">
+									<input type="checkbox"  value="restroomG" name="restroomG" id="restroomG" onclick="hideshowlayer(this.value, 'layerlist');">&nbsp;All Gender Restrooms</label>
+								</div>
+								<div class='padding'><label><img src="img/elevator2.png" align="left">
+									<input type="checkbox"  value="elevators" name="elevators" id="elevators" onclick="hideshowlayer(this.value, 'layerlist');">&nbsp;Elevators</label>
+								</div>
+								<div class='padding'><label><img src="img/restroomF_c.png"  align="left">
+									<input type="checkbox"  value="restroomF" name="restroomF" id="restroomF" onclick="hideshowlayer(this.value, 'layerlist');">&nbsp;Family Restrooms</label>
+								</div>
+								<div class='padding'><label><img src="img/lactation_c.png" align="left">
+									<input type="checkbox"  value="lactation" name="lactation" id="lactation" onclick="hideshowlayer(this.value, 'layerlist');">&nbsp;Lactation/Feeding Rooms</label>
+								</div>
+								<div class='padding'><label><img src="img/showers.png" align="left">
+									<input type="checkbox"  value="showers" name="showers" id="showers" onclick="hideshowlayer(this.value, 'layerlist');">&nbsp;Showers</label>
+								</div>
+								<!--<div class='padding'><label><img src="img/stairs2.png" align="left">
+									<input type="checkbox"  value="stairs" name="stairs" id="stairs" onclick="hideshowlayer(this.value, 'layerlist');">&nbsp;Stairs</label>
+								</div>-->
+							</div>
+
+							<!-- UMD General Services Layer Drop Down -->
+							<h4 onclick="swaplisticon('servicesContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" align="left" id="servicesContainTitle"></i>
+								<span>&nbsp;Campus Services</span>
+							</h4>
+							<div id="servicesContain" class = "layerList container">
+								<div class='padding'><label><img src="img/Library_Icon_FINAL2.png"  align="left">
+									<input type="checkbox"  value="library" name="library" id="library" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Campus Libraries</label>
+								</div>
+								<div class='padding'><label><img src="img/TerrapinTech.png"  align="left" style='width: 25px; height: 23px;'>
+									<input type="checkbox" value="TerrapinTech" name="TerrapinTech" id="TerrapinTech" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Terrapin Tech</label>
+								</div>
+								<div class='padding'><label><img src="img/adminoffices.png"  align="left">
+									<input type="checkbox"  value="department" name="department" id="department" onchange="hideshowlayer(this.value, 'layerlist');" style="float:left;">&nbsp;Campus Departments and<br/>&nbsp;Services</label>
+								</div>
+								<!--
+								<div class='padding'><label><img src="img/mpi.png" align="left">
+									<input type="checkbox"  value="MPI" name="MPI" id="MPI" onchange="hideshowlayer(this.value, 'layerlist');" style="float:left">&nbsp;Free Menstrual Products<br/>&nbsp;Initiative</label>
+								</div>
+								-->
+								<div class='padding'><label><img src="img/LGBTResource_c.png"  align="left">
+									<input type="checkbox"  value="LGBT" name="LGBT" id="LGBT" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;LGBT Organizations</label>
+								</div>	
+								<div class='padding'><label><img src="img/m_gb.png"  align="left">
+									<input type="checkbox"  value="makerspaces" name="makerspaces" id="makerspaces" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Makerspaces</label>
+								</div>
+								<div class='padding'><label><img src="img/PCWIHealth_c.png" align="left">
+									<input type="checkbox"  value="PCWIHealth" name="PCWIHealth" id="PCWIHealth" onchange="hideshowlayer(this.value, 'layerlist');" style="float:left">&nbsp;Maggi Bridwell Center for<br/>&nbsp;Women&#x27;s Health</label>
+								</div>
+								<div class='padding'><label><img src="img/OCRSM_c.png" align="left">
+									<input type="checkbox"  value="OCRSM" name="OCRSM" id="OCRSM" onchange="hideshowlayer(this.value, 'layerlist');"  style="float:left">&nbsp;Office of Civil Rights and<br/>&nbsp;Sexual Misconduct</label>
+								</div>
+								<div class='padding'><label><img src="img/PCWIhq_c.png" align="left">
+									<input type="checkbox"  value="PCWIHQ" name="PCWIHQ" id="PCWIHQ" onchange="hideshowlayer(this.value, 'layerlist');" style="float:left">&nbsp;President&#x27;s Commission on<br/>&nbsp;Women&#x27;s Issues</label>
+								</div>
+								<div class='padding'><label><img src="img/PCWIOrg_c.png"  align="left">
+									<input type="checkbox"  value="PCWIOrg" name="PCWIOrg" id="PCWIOrg" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Women&#x27;s Organizations</label>
+								</div>
+							</div>
+
+							<!-- Campus Construction Drop Down -->
+							<h4 onclick="swaplisticon('constructContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" align="left" id="constructContainTitle"></i>
+								<span>&nbsp;Campus Construction</span>
+							</h4>
+							<div id="constructContain" class = "layerList container">
+								<div class="padding"><label><img src="img/construct_c.png"  align="left">
+									<input type="checkbox" value="construct" name="construct" id="construct" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Current Major Construction</label>
+								</div>
+								<div class="padding"><label><img src="img/webcam_gold2.png" align="left">
+									<input type="checkbox" value="webcamConstruction" name="webcamConstruction" id="webcamConstruction" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Construction Webcams</label>
+								</div>
+								<div class="padding"><label><img src="img/barrier.png" align="left">
+									<input type="checkbox" value="tempClose" name="tempClose" id="tempClose" onchange="hideshowlayer(this.value, 'layerlist');" style="float:left">&nbsp;Temporary Lot/Garage/<br>&nbsp;Road Closures</label>
+								</div>
+								<div class="padding"><label><img src="img/purpleLine.png" align="left">
+									<input type="checkbox" value="purpleLine" name="purpleLine" id="purpleLine" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Purple Line (Proposed)</label>
+								</div>
+							</div>
+
+							<!-- UMD Web Cam Layer Drop Down -->
+							<!--
+							<h4 onclick="swaplisticon('webcamContain');" class="layerList toggle">
+								<i src="img/up.png" align="left" id="webcamContainTitle" class="fa fa-chevron-up"></i>
+								<span>&nbsp;Campus Webcams</span>
+							</h4>
+							<div class="layerList container" id="webcamContain"> 
+								<div class='padding' style='padding-bottom: 10px;'><label><img src="img/webcam2.png" align="left">
+									<input type="checkbox" value="webcam" name="webcam" id="webcam" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;UMD Web Cams</label>
+								</div>
+								<div class='padding subToggle' id='webcamLegend' style='display:none; padding-bottom: 10px;'>
+									<table>
+										<tr><td><img src='img/webcam2.png' align='left' style='width:25px;'></td><td><input type="checkbox" value="webcamLive" name="webcamLive" id="webcamLive" onchange="hideshowlayer(this.value, 'layerlist');"></td><td>&nbsp;Live</td></tr>
+										<tr><td><img src='img/webcam_gold2.png' align='left' style='width:25px;'></td><td><input type="checkbox" value="webcamCurr" name="webcamCurr" id="webcamCurr" onchange="hideshowlayer(this.value, 'layerlist');"></td><td>&nbsp;Current Construction<br>&nbsp;Time Lapse</td></tr>
+										<tr><td><img src='img/webcam_black.png' align='left' style='width:25px;'></td><td><input type="checkbox" value="webcamLapse" name="webcamLapse" id="webcamLapse" onchange="hideshowlayer(this.value, 'layerlist');"></td><td>&nbsp;Completed Construction<br>&nbsp;Time Lapse</td></tr>
+									</table>
+								</div>
+							</div>
+							-->
+
+							<!-- Campus Tour Drop Down -->
+							<h4 onclick="swaplisticon('tourContain');" class = "layerList toggle">
+								<i class="fa fa-chevron-up" align="left" id="tourContainTitle"></i>
+								<span>&nbsp;Campus Tours</span>
+							</h4>
+							<div id="tourContain" class = "layerList container">
+								<div class='padding'><label><img src="img/ghost_c.png" align="left">
+									<input type="checkbox" value="ghost" name="ghost" id="ghost" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Ghost Tour</label>
+								</div>
+								<div class='padding'><label><img src="img/ArtsatMaryland_c.png" align="left">
+									<input type="checkbox" value="art" name="art" id="art" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Arts At Maryland</label>
+								</div>
+								<div class='padding'><label><img src="img/GreenMaryland_c.png" align="left">
+									<input type="checkbox" value="green" name="green" id="green" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Green Maryland</label>
+								</div> 
+								<div class='padding'><label><img src="img/IconicLandmarks_c.png" align="left">
+									<input type="checkbox" value="iconic" name="iconic" id="iconic" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Iconic Landmarks</label>
+								</div> 
+								<div class='padding'><label><img src="img/StudentLife_c.png" align="left">
+									<input type="checkbox" value="student" name="student" id="student" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Student Life Tour</label>
+								</div> 
+								<div class='padding'><label><img src="img/ResearchAndDiscovery_c.png" align="left">
+									<input type="checkbox" value="research" name="research" id="research" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Research And Discovery</label>
+								</div> 
+								<div class='padding'><label><img src="img/TerrapinAthletics_c.png" align="left">
+									<input type="checkbox" value="athletics" name="athletics" id="athletics" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Terrapin Athletics</label>
+								</div> 
+								<div class='padding'><label><img src="img/sustainWalk_c.png" align="left">
+									<input type="checkbox" value="sustainWalk" name="sustainWalk" id="sustainWalk" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Sustainability Tour</label>
+								</div> 
+							</div>
+
+							<!-- Sustainability Layer Drop Down -->
+							<h4 onclick="swaplisticon('sustainContain');" class = "layerList toggle closed">
+								<i class="fa fa-chevron-up" align="left" id="sustainContainTitle"></i>
+								<span>&nbsp;Sustainability</span>
+							</h4>
+							<div id="sustainContain" class = "layerList container">
+								<!--
+								<div class='padding'><label><img src="img/bottle_c.png"  align="left">
+									<input type="checkbox"  value="bottle" name="bottle" id="bottle" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Bottle Filling Stations</label>
+								</div>
+								-->
+								<div class='padding'><label><img src="img/energy_c.png" align="left">
+									<input type="checkbox"  value="energy" name="energy" id="energy" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Renewable Energy Generation</label>
+								</div>
+								<!--
+								<div class='padding'><label><img src="img/fund_c.png" align="left">
+									<input type="checkbox"  value="fund" name="fund" id="fund" onchange="hideshowlayer(this.value, 'layerlist');" style="float:left">&nbsp;University Sustainability Fund Projects</label>
+								</div>
+								-->
+								<div class='padding'><label><img src="img/roof_c.png" align="left">
+									<input type="checkbox"  value="roof" name="roof" id="roof" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Green Roofs</label>
+								</div>
+								<div class='padding'><label><img src="img/leed_icon2.png" align="left">
+									<input type="checkbox"  value="leed" name="leed" id="leed" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;LEED Buildings</label>
+								</div>
+								
+							</div>
+
+							<!-- Recycling & Wasste Disposal Drop Down -->
+							<h4 onclick="swaplisticon('recyclingContain');" class = "layerList toggle closed">
+								<i class="fa fa-chevron-up" align="left" id="recylingContainTitle"></i>
+								<span>&nbsp;Recycling & Waste Disposal</span>
+							</h4>
+							<div id="recyclingContain" class="layerList container">
+								<div class='padding'><label><img src="img/BatteryIcon_FINAL copy3.png" align="left">
+									<input type="checkbox"  value="batteryRecycling" name="batteryRecycling" id="batteryRecycling" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Battery Recycling Locations</label>
+								</div>
+								<div class='padding'><label><img src="img/compost_c.png"  align="left">
+									<input type="checkbox"  value="compost" name="compost" id="compost" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Compost Collection Locations</label>
+								</div>
+								
+								<div class='padding'><label><img src="img/dumpster_landfill.png" align="left">
+									<input type="checkbox" value="dumpster" name="dumpster" id="dumpster" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Outdoor Waste Disposal Locations</label>
+								</div>
+								<div class='padding subToggle' id='dumpsterLegend' style='display:none;'>
+									<table>
+										<tr>
+											<td><img src='img/dumpster_landfill.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="landfillrecycle" name="landfillrecycle" id="landfillrecycle" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Landfill</td>
+										</tr>
+										<tr>
+											<td><img src='img/dumpster_mixed.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="mixedrecycle" name="mixedrecycle" id="mixedrecycle" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Mixed Recycling</td>
+										</tr>
+										<tr>
+											<td><img src='img/dumpster_glass.png' align='left' style='width:25px;'/></td>
+											<td><input type="checkbox" value="glassrecycle" name="glassrecycle" id="glassrecycle" onchange="hideshowlayer(this.value, 'layerlist');"/></td>
+											<td>&nbsp;Glass Recycling</td>
+										</tr>
+					
+									</table>
+								</div>
+							</div>
+
+							<!-- Voting Resources Drop Down -->
+							<h4 onclick="swaplisticon('votingContain');" class = "layerList toggle closed" style='display:none'>
+								<i class="fa fa-chevron-up" align="left" id="votingContainTitle"></i>
+								<span>&nbsp;Voting Resources</span>
+							</h4>
+							<div id="votingContain" class="layerList container" style='display:none'>
+								<div class='padding'><label><img src="img/vote.png" align="left">
+									<input type="checkbox"  value="vote" name="vote" id="vote" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Campus Voting Center</label>
+								</div>
+								<div class='padding'><label><img src="img/ballot.png"  align="left">
+									<input type="checkbox"  value="ballot" name="ballot" id="ballot" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;Ballot Drop Off Boxes</label>
+								</div>
+								<div class='padding'><label><img src="img/mailbox.png"  align="left">
+									<input type="checkbox"  value="mailbox" name="mailbox" id="mailbox" onchange="hideshowlayer(this.value, 'layerlist');">&nbsp;USPS Mailbox Locations</label>
+								</div>
+								
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+				
+				
+				<div id='directionColumn' class='MenuColumn' style='display:none;'>
+					<div><h2>Pedestrian Navigation</h2><hr></div>
+					
+					<!--<p id="navigationDirections" style="margin-right:5px;"><strong>Instructions: </strong> Enter the campus building or parking lot name in the Start/End Locations to Find Route. For accessible routes, click Accessible Pathway to find route.</p>
+					<br>-->
+					
+					<div id="locationPane" style="position:relative;width:270px;">
+						
+						<div id="LocationBoxes">
+							<span class="LocationDescription">Start Location:</span>
+							<br>
+							
+							<div id="directionentryfield" class="directionentryfield" style="display: inline-block;">
+								<input type="text" id="stop-0" onkeydown="toggleWhiteX('start');" class="directioninput " placeholder="Enter Building Name or ID Number" autocomplete="off">
+								<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+								
+								<div id="imgCloseAddressStart" class="directionInputX">
+									<div class="whiteXContainer"></div>
+									<img class="textX" onclick="functionX(event, this);" src="img/whiteX.png" title="Clear">
+								</div>
+								
+								<div class="inputIconBox" data-tooltip="Place Point on Map" onclick="placePoint(this)">
+									<input type="checkbox" id="locationMenuOpen" class="directionCheckBox"><i class="fa fa-map-marker inputIconBoxSymbol"></i>
+								</div>
+							</div>
+							
+
+							<span class="LocationDescription">Destination Location:</span>
+							<br>
+							
+							<div id="directionentryfield" class="directionentryfield">
+								<input type="text" id="stop-1" onkeydown="toggleWhiteX('end'); showAddRtBtn(this);" class="directioninput ui-autocomplete-input" placeholder="Enter Building Name or ID Number" autocomplete="off">
+								<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+								
+								<div id="imgCloseAddressEnd" class="directionInputX">
+									<div class="whiteXContainer"></div>
+									<img class="textX" onclick="functionX(event, this); document.getElementById('imgCloseAddressEnd').style.display = 'none'; showAddRtBtn(document.getElementById('stop-1'));" src="img/whiteX.png" title="Clear">
+								</div>
+								
+								<div class="inputIconBox" data-tooltip="Place Point on Map" onclick="placePoint(this)">
+									<input type="checkbox" id="locationMenuOpen" class="directionCheckBox"><i class="fa fa-map-marker inputIconBoxSymbol"></i>
+								</div>
+							</div>
+							
+
+							
+						</div>
+						
+						<div id="addbuttonContainer" onclick="addAnotherLocation()">
+							<div id="addStopButton">
+								<i class="fa fa-plus"></i>
+							</div>
+							<div id="addAnotherBlock">
+								<span>Add Another Stop</span>
+							</div>
+						</div>
+						<br>
+						<br>
+					   
+
+					   <div id="rcontrol">
+							<div class="accBox" title="Routing Options" style="border-top:1px solid black; border-bottom:1px solid black;margin-bottom:10px; padding-bottom:5px; padding-top:5px; width: 256px;">
+								<h4 style="padding:0px; margin:0px; padding-bottom:5px;">Options:</h4>
+								<form id="filterForm" name="filterForm" action="#" style="margin: 0px; font-size:10pt;">
+									<table border="0" cellpadding="0" cellspacing="0">
+										<tbody>
+											<tr>
+												<td nowrap=""><b>Accessible Pathways </b><img align="top" src="img/ADA.png"></td>
+												<td>
+													<input type="checkbox" name="ADASearch" id="ADASearch" onclick="toggleAccessRoutes(); keepADAChecked('ADASearch');" value="ADASearch">
+												</td>
+											</tr>
+											<tr>
+												<td nowrap=""><b>Total Distance:</b> <span id="distValue"></span></td>
+												<td>
+													<select name="routeUnits" id="routeUnits" onchange="unitChange()">
+														<option value="yards">yards</option>
+														<option value="feet" selected="selected">feet</option>
+														<option value="miles">miles</option>
+														<option value="meters">meters</option>
+														<option value="kilometers">kilometers</option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</form>
+							</div>
+							
+							<div style="width: 256px;">
+								<div id="findroutebutton" class="StandardButton" style="font-weight:20px; font-weight:bold; cursor:pointer; width:90px; text-align:center; float:left;" onclick="solve();clearRoute();">Find Route</div>
+								<div id="clearroutebutton" class="StandardButton" style="font-weight:20px; font-weight:bold; cursor:pointer; width:120px; text-align:center; float:right;" onclick="cleanup();clearRoute();minimizeElevProfile();">Clear Map</div>
+							</div>
+					               
+					        <br>
+					        <div id='routeExplorerDiv' style="margin-top:23px; width:260px; overflow:auto;padding-left:10px;height:270px;"><!-- 230 -->
+					            <div id="routeExplorer"></div>
+								<br><br>
+					        </div>
+					    </div>
+						
+					</div>
+					<div id="buffer"></div>
+					<span id="status"></span>
+					<span id="distance"></span>
+					<br><br>  
+				</div>
+			
+			
+				<div id="elevationProfileChartPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom',splitter:true,minSize:230">
+					<div id="elevationProfileChartNode" class="elevationsProfile"></div>
+				</div>
+				<div id="elevationProfileToggle" style="z-index:999;"></div>
+				
+				
+				<div id="overviewmapgoeshere" class="overviewmapgoeshere">
+					<div id='overviewmap_canvas' style='width:320px; height:200px; display:block;z-index:5000;'></div>
+				</div>
+				
+				<div id="overviewToggle" style="z-index:999;">
+					<div onclick="toggleOverview()" class="toggleoverviewmap" id="ToggleCornerMap">
+						<p>Toggle Overview Map</p>
+					</div>
+				</div>
+			</div>
+			<div id='hiddencolumn' class='shadow' style='display:none;'>
+				<div style="float:right; top:0px; right:0px; text-align:center; padding-top:25px;">
+					<div id="HideShowText" class="outlineshadow" style="font-weight:20px; font-weight:bold; cursor:pointer;" onclick="hideshowmenu()">
+						S<br>
+						H<br>
+						O<br>
+						W<br><br>
+						M<br>
+						E<br>
+						N<br>
+						U<br>
+					</div>
+					<br>
+					
+					<span id="layerlistbutton2">
+						<img src="img/layerlist.png" style="padding-bottom:10px; cursor:pointer;" onclick="layerlistManager();" title="Map Layers" id="maplayers2">
+						<br>
+						</span>     
+					
+					<span id="toolsbutton2" style="display: inline;">
+						<img src="img/tools.png" style="padding-bottom:10px; cursor:pointer;" onclick="ToolManager();" title="Tools" id="Tools2">
+						<br>
+					</span>
+					<span id="bookmarksbutton2">
+						<img src="img/bookmarks.png" style="padding-bottom:10px; cursor:pointer;" onclick="BookmarksManager();" title="Bookmarks" id="bookmarksIcon2">
+						<br>
+					</span>
+					<!--<span id='addedFavorite' style='background-color:rgba(0,0,0,.7);border-radius:5px;color:white;text-align:center;width:100px;position:fixed;transform:translate(40%,-130%);padding:10px;font-size:11px;'>
+						Added to favorites
+					</span>-->
+					<span id="printbutton2">
+						<img src="img/print.png" style="padding-bottom:10px; cursor:pointer;" onclick="PrintManager();" title="Print"> <!-- PrintWarning(); -->
+						<br>
+					</span>
+					<span id="helpbutton2" style="display: inline;">
+						<img src="img/help.png" style="padding-bottom:10px;height:28px;width:28px; cursor:pointer;" onclick="ShowHelp();" title="Help">
+					</span>
+				</div>
+			</div>
+			
+			<script>
+				
+				function newtab(e){
+					measureToolOff(); resetToolIcon(); turnOffLabels();
+					if(!map.getLayer('stopLayer')){
+						routingInit();
+					}
+					if($('.selected-tab')[0].id != e){
+						$('.selected-tab')[0].setAttribute('class','');
+						$("#"+e)[0].setAttribute('class','selected-tab hover-tab');
+						if(e == 'Search'){
+							document.getElementById('searchColumn').style.display = '';
+							document.getElementById('layerColumn').style.display = 'none';
+							document.getElementById('directionColumn').style.display = 'none';
+							//if(){
+								minimizeElevProfile();
+							//}	
+						}else if(e == 'Layers'){
+							document.getElementById('searchColumn').style.display = 'none';
+							document.getElementById('layerColumn').style.display = '';
+							document.getElementById('directionColumn').style.display = 'none';
+							//if(){
+								minimizeElevProfile();
+							//}
+						}else if(e == 'Directions'){
+							document.getElementById('searchColumn').style.display = 'none';
+							document.getElementById('layerColumn').style.display = 'none';
+							document.getElementById('directionColumn').style.display = '';
+						}
+					}
+				}
+				function hideshowmenu(){
+					if(document.getElementById('leftcolumn').style.display != 'none'){
+						document.getElementById('leftcolumn').style.display = 'none';
+						document.getElementById('hiddencolumn').style.display = '';
+						document.getElementById('toollist').style.marginLeft = '40px';
+						document.getElementById('layerlist').style.marginLeft = '40px';
+						document.getElementById('printlist').style.marginLeft = '40px';
+						if(document.getElementById('maximizedProfilePane')){
+							document.getElementById('maximizedProfilePane').style.width = 'calc(100% - 80px)';
+							document.getElementById('maximizedProfilePane').style.left = '60px';
+							maxepWidget.resize();
+						}
+					}else{
+						document.getElementById('leftcolumn').style.display = '';
+						document.getElementById('hiddencolumn').style.display = 'none';
+						document.getElementById('toollist').style.marginLeft = '320px';
+						document.getElementById('layerlist').style.marginLeft = '320px';
+						document.getElementById('printlist').style.marginLeft = '320px';
+						if(document.getElementById('maximizedProfilePane')){
+							document.getElementById('maximizedProfilePane').style.width = 'calc(100% - 340px)';
+							document.getElementById('maximizedProfilePane').style.left = '330px';
+							maxepWidget.resize();
+						}
+					}
+				}
+				
+				$(window).resize(function() {
+					if(maxepWidget){
+						maxepWidget.resize();
+					}
+					if(window.innerHeight <= 750){
+						document.getElementById('overviewmapgoeshere').style.display = 'none';
+						document.getElementById('overviewToggle').style.display = 'none';
+						document.getElementById('lefttextarea3').style.height = 'calc(100% + 130px)';
+					}else{
+						if(document.getElementById('overviewmapgoeshere').style.display == 'none'){
+							document.getElementById('overviewToggle').style.display = '';
+							document.getElementById('lefttextarea3').style.height = 'calc(100% + 100px)';
+						}						
+					}
+					tableHeights();
+					document.getElementById('toollist').style.height = (window.innerHeight-240) + 'px';
+					document.getElementById('maptools').style.height = (window.innerHeight-300) + "px";
+				});
+				function tableHeights(){//routeExplorerDiv
+					
+					if(window.innerHeight <= 750){
+						document.getElementById('TableCampusBuildings').style.height = (window.innerHeight - 449)+'px';
+						document.getElementById('routeExplorerDiv').style.height = (window.innerHeight - 519)+'px';//559
+					}else{
+						if(document.getElementById('overviewmapgoeshere').style.display == 'none'){
+							document.getElementById('TableCampusBuildings').style.height = (window.innerHeight - 477)+'px';
+							document.getElementById('routeExplorerDiv').style.height = (window.innerHeight - 560)+'px';//600
+						}else{
+							document.getElementById('TableCampusBuildings').style.height = (window.innerHeight - 671)+'px';
+							document.getElementById('routeExplorerDiv').style.height = (window.innerHeight - 756)+'px';//776
+						}						
+					}
+					if(window.innerHeight <= 750){
+						document.getElementById('PointsOfInterest').style.height = (window.innerHeight - 478)+'px';
+					}else{
+						if(document.getElementById('overviewmapgoeshere').style.display == 'none'){
+							document.getElementById('PointsOfInterest').style.height = 'auto';
+						}else{
+							document.getElementById('PointsOfInterest').style.height = (window.innerHeight - 674)+'px';
+						}
+					}
+					
+
+				}
+			</script>
+			
+			
+			
+			
+			
+			<div id="printlist" class="shadow" style="display: none;">
+				<h3>Print Options<img src="img/x_icon.png" style="position: relative; left:50%; top:4%; cursor:pointer;" height="20" width="20" onClick="PrintManager()"/></h3>
+				<hr />
+				<table width="100%" style="text-align:center; padding-top:10px;">
+					<tr>
+						<td width="50%"><img src="img/printlayout.png"/></td>
+						
+					</tr>
+				</table>
+				<div class="printNode">
+					<div id="printWidget"></div>
+				</div>
+			</div>
+			
+			<div id="layerlist" class="shadow" style="display:none;">
+				<h3>Bookmarks<img src="img/x_icon.png" style="position: absolute; right:5%; top:4%; cursor:pointer;" height="22" width="22" onClick="BookmarksManager()"/></h3>
+				<div id="bookmarks"></div>
+				<div id="sharebookmarks" style="cursor:pointer" onClick="sharebookmark(); generateUrlNew();">Share a Bookmark View</div>
+				<br />
+				<br />
+				Bookmarks are stored on your system using your browser's local storage system.  If you switch computers or browsers you will not see your bookmarks.
+				<br /><br />
+				They will remain here in the list until such time as you clear your temporary internet files or delete them manually.
+				<br /><br />
+				Use them to mark places that you need to remember or access quickly.
+						
+			</div>
+			
+			<div id="returnhome" class="shadow block-views-events-block" style="display:none;">
+				<h3>Center Map On Campus<img src="img/x_icon.png" style="position: absolute; right:3%; top:3%; cursor:pointer;" height="20" width="20" onClick="HomeVerify()"/></h3>
+				<hr />
+				<table width="100%" style="text-align:center; padding-top:10px;">
+					<tr>
+						<td width="50%"><span style="cursor:pointer" onClick="campusrecenter();"><strong>YES</strong></span></td>
+						<td width="50%"><span style="cursor:pointer" onClick="document.getElementById('returnhome').style.display='none';"><strong>NO</strong></span></td>
+					</tr>
+				</table>
+				<div id="markyou" style="display:none;">
+					<br />
+					<h3>Center Map On My Location</h3>
+					<hr />
+					<table width="100%" style="text-align:center; padding-top:10px;">
+						<tr>
+							<td width="50%"><span style="cursor:pointer" onClick="FocusOnMe();"><strong>YES</strong></span></td>
+							<td width="50%"><span style="cursor:pointer" onClick="document.getElementById('returnhome').style.display='none';"><strong>NO</strong></span></td>
+						</tr>
+					</table>  
+					<div style="text-align:left;">
+						<input type="checkbox" value="locationGL" name="locationGL" id="locationGL" onchange="hideshowlayer(this.value, 'layerlist');" checked /> <b>Toggle Location Tracking</b>
+					</div>	
+				</div>    
+			</div>
+			
+			<div id="toollist" class="shadow" style="display:none; height: 230px;font-weight:normal;">
+
+				<h3>Tools <img src="img/x_icon.png" style="position: absolute; right:4%; top:2%; cursor:pointer;" height="22" width="22" onClick="ToolManager();toolbar.deactivate(); measureToolOff(); resetToolIcon(); turnOffLabels();"/></h3>
+				<hr />
+				
+				<div style="width:275px; overflow:auto; font-size:13px;" id="maptools">
+					
+
+					<h4 onClick=" swaplisticon('Measurement'); giveIdsToMeasure();" style="cursor:pointer;"><i class="fa fa-chevron-up togglearrow" align="left" id="MeasurementTitle"></i>Measurement Tools:</h4>
+						<div style="cursor:pointer; display:none;" id="Measurement">
+							<div id="measurementDiv"> </div>
+						</div>
+					<hr>
+					
+					<script>
+						function giveIdsToMeasure(){
+							document.getElementById('measurementDiv').onClick = 'map.setInfoWindowOnClick(false);';
+						}
+						
+						function updateOpa(){
+							document.getElementById("tsOpacity").innerHTML="Polygon Opacity: 0";
+							document.getElementById("tsOpacity").value = 0;
+							document.getElementById("opslider").value = 0;
+						}
+						
+					</script>
+					
+					<h4 onClick="if(document.getElementById('divColorContainer').style.display == 'block'){hideshow(divColorContainer);}swaplisticon('DrawingTools'); updateOpa();" style="cursor:pointer;">
+						<i class="fa fa-chevron-up togglearrow" align="left" id="DrawingToolsTitle"></i>Drawing & Labeling Tools:
+					</h4>
+					
+					<div style="display:none;" id="DrawingTools">  
+					
+						<h5>Drawing and Label Color Selection:</h5>
+													 
+						<div id="divColorContainer" dojoType="dijit.layout.ContentPane" style="display:none !important; z-index:1000 !important; width:210px; position:fixed;">
+							<div id="tsColor" value="#ff0000" style="display:visible;z-index:999;" data-dojo-type="dijit/ColorPalette" data-dojo-props="palette:'7x10'" onChange="hideshow(divColorContainer);changeColor();" ></div>
+						</div>
+						<div id ="colorbox" onClick="hideshow(divColorContainer); moveColorContainer();" style="width:30px; height:30px; background:red; border:2px solid;" title="Click on Color Swatch to Change Color">
+							<div>
+								<img src="img/downarrow.png" style="position:relative; left:18px; top:18px;"/>
+							</div>
+						</div>
+						
+						<br/>
+						
+						<div>
+							<span onClick="drawStart();measureToolOff();turnOffLabels();toolbar.activate(esri.toolbars.Draw.POINT); toggleTool('point');showhideOptions('point');" value="point"  alt="Point" style="cursor:pointer;">
+								<img src="img/point_i.png" id="point" height="30" width="30" title="Point"/>
+							</span>
+							
+							<span type="button" onClick="drawStart();measureToolOff();turnOffLabels();toolbar.activate(esri.toolbars.Draw.POLYLINE);toggleTool('polyline');showhideOptions('polyline');" alt="Polyline" style="cursor:pointer;">
+								<img src="img/polyline_i.png" id="polyline" height="30" width="30" title="Polyline" />
+							</span>
+						
+							<span type="button" onClick="drawStart();measureToolOff();turnOffLabels();toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYLINE); toggleTool('freeline');showhideOptions('freeline');" value="freeline" alt="Freehand Polyline" style="cursor:pointer;" >
+								<img src="img/freeline_i.png" id="freeline" height="30" width="30" title="Freehand Polyline" /> 
+							</span>	
+						
+							<span type="button" onClick="drawStart();measureToolOff();turnOffLabels();toolbar.activate(esri.toolbars.Draw.POLYGON); toggleTool('polygon');showhideOptions('polygon');" value="polygon" alt="Polygon" style="cursor:pointer;"> 
+								<img src="img/polygon_i.png" id="polygon" height="30" width="30" title="Polygon" /> 
+							</span>
+						
+							<span type="button" onClick="drawStart();measureToolOff();turnOffLabels();toolbar.activate(esri.toolbars.Draw.FREEHAND_POLYGON); toggleTool('freepolygon');showhideOptions('freepolygon');" value="freepolygon" alt="Freehand Polygon" style="cursor:pointer;" >
+								<img src="img/freepolygon_i.png" id="freepolygon" height="30" width="30" title="Freehand Polygon" /> 
+							</span>
+						
+							<span type="button" value="label" alt="Label" style="cursor:initial !important">
+								<img style="cursor:pointer;" onClick="drawStart(); measureToolOff();resetToolIcon();turnOnLabels();toolbar.deactivate();showhideOptions('text');" src="img/label_i.png" id="label" height="30" width="30" title="Label" /> 
+							</span>
+						
+						</div>
+						
+						<div id="pointBox" style="display:none">
+							<br>
+							<span>Pixel Size:</span>
+							<select id="pointVal"  style="width: 3em;" width ="20px" value="10">
+								<option>6</option>
+								<option>8</option>
+								<option selected>10</option>
+								<option>12</option>
+								<option>14</option>
+								<option>16</option>
+								<option>18</option>
+								<option>20</option>
+								<option>22</option>
+								<option>24</option>
+							</select>
+						</div>
+						<div id="widthBox" style="display:none">
+							<br>
+							<span>Line Width:</span>
+							<select id="widthVal"  style="width: 3em;" width ="10px" value="10">
+								<option>4</option>
+								<option selected>6</option>
+								<option>8</option>
+								<option>10</option>
+								<option>12</option>
+								<option>14</option>
+								<option>16</option>
+								<option>18</option>
+								<option>20</option>
+								<option>22</option>
+								<option>24</option>
+							</select>
+						</div>
+						<div id="styleBox" style="display:none">
+							<span>Line Style</span>
+							<select id="lineStyleVal"  style="width: 13em;" width="10px" value="solid">
+								<option value="solid" selected>SOLID</option>
+								<option value="dash">DASH</option>
+								<option value="dashdot">DASH-DOT</option>			
+								<option value="dot">DOT</option>
+
+							</select>
+						</div>
+						
+
+						<div id="opacityBox" style="display:none">
+							<span id="tsOpacity" value="20">Polygon Opacity: 20</span>
+							<br>
+							<input id="opslider" data-slider-id="OPslider" style="max-width:250px" type="range" value="20" step="1" onchange="showValue(this.value)" />
+						</div>
+						<style>	 
+							input[type="range"]::-ms-fill-lower {
+								background-color: red;
+							
+							}
+							input[type="range"]::-ms-fill-upper {
+								background: transparent;
+							}
+							input[type="range"]::-ms-track {
+
+								border: 1px solid #bdc3c7;
+								
+							}
+							input[type="range"]::-ms-thumb {
+								background-color: #000;
+								border: 1px solid #bdc3c7;
+
+							}
+						
+						</style>
+					
+						<script>
+							function moveColorContainer(){
+								document.getElementById("divColorContainer").style.top = ($('#colorbox').offset().top-152)+'px';
+							}
+							
+							function showValue(newValue){
+								document.getElementById("tsOpacity").innerHTML="Polygon Opacity: "+newValue;
+								document.getElementById("tsOpacity").value = newValue;
+							}	
+							
+							function toggleTool(id){
+								turnOffOtherTools(id);
+								if(document.getElementById(id).src.indexOf(id+'.png')>0){
+									document.getElementById(id).src = 'img/'+id+'_i.png';
+									toolbar.deactivate();
+									map.setInfoWindowOnClick(true);
+								}else{
+									document.getElementById(id).src = 'img/'+id+'.png';
+								}				
+							}
+							
+							function turnOffOtherTools(id){
+								var features = ['point','polyline','polygon','freepolygon','freeline'];
+								for(x=0;x<5;x++){
+									if(id != features[x]){
+										document.getElementById(features[x]).src = 'img/'+features[x]+'_i.png';
+									}
+								}
+								document.getElementById('text_choice').style.display = "none";
+							}
+						
+						
+						</script>
+					
+
+						</br>
+						<div  selected="true" title="Symbol Properties" style="display:none" id="text_choice">
+							<!-- div>Text Label:</div -->
+							<table>				  
+								<tr><td>Enter Text: </td><td><input  style="width: 150px;" value="Text" id="tsText" /> </td></tr>	
+								
+								<tr><td>Font Size: </td><td><select id="tsSize" style="width: 3em;" width ="20px">
+									<option>12</option>
+									<option selected>14</option>
+									<option>16</option>
+									<option>18</option>
+									<option>20</option>
+									<option>24</option>
+									<option>28</option>
+									<option>32</option>
+									<option>48</option>
+									<option>64</option>
+								</select>
+								</td></tr>                                
+							</table>
+												  
+						</div>
+										 
+						<h5>Undo/Redo Drawing and Label Creation:</h5>
+						<div class="undoButtons">
+							<span id="undo" type="button" disabled="true" style="cursor:pointer;"  onclick="undoManager.undo();">
+								<img id="undoImage" src="img/undo_gray.png" title="Undo" onMouseOver="this.src = 'img/undo_gray2.png'" onMouseOut="this.src = 'img/undo_gray.png'"/>
+							</span>
+							<span id="redo" type="button" disabled="true" style="cursor:pointer;" onclick="undoManager.redo();">
+								<img id="redoImage" src="img/redo_gray.png" title="Redo" onMouseOver="this.src = 'img/redo_gray2.png'" onMouseOut="this.src = 'img/redo_gray.png'"/>
+							</span>
+						</div>
+					
+					</div>
+					
+					<hr>
+					
+					<h4 onClick="swaplisticon('Embed');" style="cursor:pointer;"><i class="fa fa-chevron-up togglearrow" align="left" id="EmbedTitle"></i>Embed Map In Your Website:</h4>
+					<div style="display:none;  width:265px;" id="Embed">
+						The <b>UMD Campus Map</b> can be seamlessly integrated into your website with user defined variables.  Use any combination below to create your customized view.
+						<br><br>
+
+						<strong>Base URL:</strong> <br> <span id="toolsURL"></span>/map/index.html?
+						
+						<script>
+							//Updating Urls in HTML
+							document.getElementById("toolsURL").innerHTML = loadBalancerURL;			   
+						</script>
+						
+						<br><br>
+						<strong>Map only (Hide Menu and Site Wrapper):</strong> &maponly=true<br><br>
+						<strong>Hide Scalebar:</strong> &scalebar=false<br><br>
+						<strong>Start the menu sidebar in minimized mode:</strong><br> &hidemenu=hide<br><br>
+						<strong>Set map to a particular view:</strong> &x=#&amp;y=# <br><br>
+						<strong>Open links in new tabs:</strong> <br> &hideiframe=false <br><br>
+						<strong>Prevent popups when Buildings or Parking are selected:</strong><br> &defaultpopups=false <br><br>
+						<strong>Zoom to a feature upon load:</strong> <br> &feature= building, parking or placesofinterest <br> &name= Name or ID Number<br><br>
+						<strong>Zoom to Building Route:</strong> &feature=direction <br> &start= Building ID Number <br> &end= Building ID Number <br><br> ex: https://maps.umd.edu/map/index.html?&feature=direction&start=163&end=003<br> <br>
+						<strong>Load Detailed Basemap:</strong> <br> &basemap=detailed<br><br>
+						<strong>Load Simplified Basemap:</strong> <br> &basemap=simple<br><br>
+						<strong>Load Aerial Basemap:</strong> <br> &basemap=aerial<br><br>
+						<strong>Load Aerial Basemap with Labels:</strong> <br> &basemap=aeriallabel<br><br>
+									  Use any combination above to create your customized view.<br>
+					</div>         
+					
+					<br><hr>
+					<div style="text-align:center">
+						<input type="button" onClick="toolbar.deactivate(); measureToolOff(); resetToolIcon(); turnOffLabels();map.setInfoWindowOnClick(true);" value="Turn All Tools Off" alt="Turn Tools Off" title="Turn Drawing and Measurement Tools Off" style="width:90%; background-color:black; color:white; cursor:pointer;" id="tooloff"/>  
+						<input type="button" onClick="map.graphics.clear(); cleanup();" value="Clear Map Graphics" alt="Clear Map Graphics" title="Clear Map of User Added Graphics" style="width:90%; background-color:black; color:white; cursor:pointer;" id="mapclear"/>
+					</div>
+				</div>  
+			</div>
+			
+			
+			
+	
+			<!-- Content -->
+			<div id="map" style="position:fixed; top:0; left:0;" onClick="hideToolboxes();">
+			  
+				<div id="HomeButton" ></div>
+				<div id="LocateButton" ></div>
+			</div>
+
+			<div id="mapbutton" style="float: right; position: absolute; right:50px; color:white; top:72px; cursor: pointer;" title="Switch Basemap">
+				<img src="img/baseswitch-toaerial.png" id="basemap" onClick="ShowHideBaseMapComponent();" style="height:70px; width:70px;"/>
+			</div>  
+			
+			<!--Basemap Gallery Container-->
+			<div id="divBaseMapTitleContainer"  style="position:absolute; right:52px !important; top:145px; display:none;">
+				<div style="width:244px; background-color:black; color:white; border:1px solid white; overflow:auto;">
+					<table>
+						<tr>
+							<td style="padding:4px; text-align:center">
+								<span style="cursor: pointer;"><img id='DetailedLayer' class='basemapImg selectedmap' onclick="maptoggle('DetailedLayer', 'nolabel'); addBasemapToUrl('DetailedLayer');" src="img/CampusTopoSM.png" style=""/></span>
+								<br>
+								Detailed Campus Basemap
+							</td>
+							<td style="padding:4px; text-align:center">
+								<span style="cursor: pointer;"><img id='GrayscaleLayer' class='basemapImg' onclick="maptoggle('GrayscaleLayer', 'nolabel'); addBasemapToUrl('GrayscaleLayer');" src="img/Grayscale.png" style=""/></span>
+								<br>
+								Grayscale Campus Basemap
+								<br>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:4px; text-align:center">
+								<span style="cursor: pointer;"><img id='SimplifiedLayer' class='basemapImg' onclick="maptoggle('SimplifiedLayer', 'nolabel'); addBasemapToUrl('SimplifiedLayer');" src="img/CampusSimpleSM.png" /></span>
+								<br>
+								Simplified Campus Basemap
+							</td>
+							<td style="padding:4x; text-align:center">
+								<span style="cursor: pointer;"><img id='AerialLayer' class='basemapImg' onclick="maptoggle('AerialLayer', 'nolabel');" src="img/CampusAeriaSM.png"></span> 
+								<!-- 
+								maptoggle('google', 'nolabel'); addBasemapToUrl('google');
+
+								-->
+								<br>
+								Aerial Imagery
+								<br>
+								<input id='AerialLayerCheck' style="height:8px; cursor: pointer;" type="checkbox" onclick="maptoggle('AerialLayer', 'label'); addBasemapToUrl('AerialLabelClick');" checked="true"/>
+								<span onclick="maptoggle('AerialLayer', 'label', 'aerial'); addBasemapToUrl('AerialLabelClick');" style="cursor: pointer;">&nbsp;Labels</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<style>
+				.basemapImg.selectedmap{
+					border:2px solid rgb(238, 206, 95);
+				}
+				.basemapImg{
+					border:1px solid #fff;
+					margin:1px;
+					width:100px;
+					height:67px;
+				}
+				#divLoadDisclaimer>p>a{
+					color:black !important;
+					font-weight:bolder !important;
+				}
+			</style>
+
+			<!--<div>
+				<div class="alertMessage" style='font-size:16px;display:none;'>
+					<span class="alertMessageClose">&times;</span>
+					<strong><text id='amTitle'></text></strong><br><text id='amBody'></text>
+				</div>
+				<div id="jimu-layout-manager"></div>
+			</div>-->
+			<!--End Basemap Gallery Container--> 
+					
+			
+			<!---End Main Body--->
+			<!--======================================================================================================================================--->
+			<!---ALERT DIALOG BOX--->
+			<div id="dialogAlertMessage" class="dialogAlertMessage" dojotype="dijit.Dialog" style="width: 300px;display:none;">
+				<table style="width: 100%; height: 100%;">
+					<tr>
+						<td align="center">
+							<div id="divMessage"></div>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id='divOKButton' class='StandardButton divOKButton' onClick="CloseDialog();">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			
+			<!--======================================================================================================================================--->
+			<!---Down DIALOG BOX--->
+			<div id="disclaimerDownMessage" style="width:370px; position:absolute; top:30%; left:40%; background:white; border-radius:4px; z-index:960; display:none;">
+				
+				<table style='width:100%; border-radius:4px; background-color:white;'>
+					<tr>
+						<td style='text-align:center; font-size:16px; padding-top:30px; padding-bottom:30px;'>
+							Feature Currently Under Development
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id='divOKButtonG' style='cursor:pointer;' class='StandardButton divOKButton' onKeyPress="HideDownMessage();" onclick="document.getElementById('disclaimerDownMessage').style.display='none';$('#blackscreen').hide();">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			
+			
+			<div id="disclaimerBusMessage" style="width:370px; position:absolute; top:30%; left:40%; background:white; border-radius:4px; z-index:960; display:none;">
+				
+				<table style='width:100%; border-radius:4px; background-color:white;'>
+					<tr>
+						<td style='text-align:center; font-size:16px; padding-top:30px; padding-bottom:10px;' id='busNumHtml'></td>
+					</tr>
+					<tr>
+						<td style='text-align:center; font-size:16px; padding-top:30px; padding-bottom:30px;' id='busMessage'></td>
+					</tr>
+					<tr>
+						<td style='text-align:center; padding-bottom:10px;'>
+							<label for='showAgainBus' style='font-size: 13px;'><input type='checkbox' id='showAgainBus' style='vertical-align: middle;'/> Do not show this popup again</label>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id='divOKButtonBus' style='cursor:pointer;' class='StandardButton divOKButton' onKeyPress="HideDownMessage();" onclick="document.getElementById('disclaimerBusMessage').style.display='none';$('#blackscreen').hide(); busCookie(); showBus();">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			
+			
+			<!--<div id="dialogGMessage" class="dijitDialogPaneContent" dojotype="dijit.Dialog" style="width: 300px;display:none;">
+				<table style="width: 100%; height: 100%;">
+					<tr>
+						<td align="center">
+							This feature is currently under development.
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id='divOKButtonG' class='StandardButton divOKButton' onClick="CloseGDialog();">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>-->
+			
+			
+			<!--======================================================================================================================================--->
+			<!---DISCLAIMER MESSAGE BOX--->	
+			<div id="disclaimerLoadMessage" style="width:370px; position:absolute; top:30%; left:40%; background:white; border-radius:4px; z-index:960; display:none;">
+				<i class="fa fa-circle" style="color:white; font-size:30px; position:absolute; transform:translate(351px,-15px); cursor:pointer;"></i>		
+				<i class="fa fa-times-circle" onclick="document.getElementById('disclaimerLoadMessage').style.display='none';$('#blackscreen').hide();" style="font-size:36px; position:absolute; transform:translate(349px,-16px); color:black; cursor:pointer;"></i>
+				<table style='width:100%; border-radius:4px; background-color:white;'>
+					<tr>
+						<td>
+							<div id="divLoadDisclaimer"></div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<!--<div id='divOKButton' class='StandardButton divOKButton' onKeyPress="HideLoadingMessage();" onClick="dijit.byId('disclaimerLoadMessage').hide();HideLoadingMessage();">Return to Map</div>-->
+							<div id='divOKButton' class='StandardButton divOKButton' onKeyPress="HideLoadingMessage();" onclick="document.getElementById('disclaimerLoadMessage').style.display='none';$('#blackscreen').hide();">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			<!--======================================================================================================================================--->
+			<!---Bad URL MESSAGE BOX--->	
+			<div id="BadURLMessage" style="width:370px; position:absolute; top:30%; left:40%; background:white; border-radius:4px; z-index:960; display:none;">
+				
+				<table style='width:100%; border-radius:4px; background-color:white;text-align:center;'>
+					<tr>
+						<td style='text-align:center; font-size:16px; padding-top:30px; padding-bottom:30px;'>
+							<div>The feature cannot be located.</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id='divOKButton' class='StandardButton divOKButton' onKeyPress="HideLoadingMessage();" onclick="document.getElementById('BadURLMessage').style.display='none';$('#blackscreen').hide();">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			<!--======================================================================================================================================--->
+			<!--Specific Disclaimer Code-->
+			<script>
+				
+				function disclaimershow() {
+					document.getElementById("divLoadDisclaimer").innerHTML = "<b><h2 style='text-align:center;color:#cc0000;font-weight:bold;'>UMD Campus Map Disclaimer</h2></b>"+"<p style=' padding:8px;'>The UMD Campus Web Map is provided to make campus information easily accessible to the general public.  The information has been prepared for general reference purpose only and is not intended for any official, legal, or surveying use.  UMD assumes no responsibility for any use or misuse of this information.</p>"+
+					"<p style='color:#cc0000; padding:8px;'>NOTE: The UMD Campus GIS team continues to enhance the map’s capabilities on a regular basis and is eager to have your feedback. Please use the <text title='Contact Form' style='color:black;cursor:pointer;font-weight:bold;' onclick='goToFeedBack();'><u>contact form</u></text> to let us know what you think.</p>";
+					document.getElementById("disclaimerLoadMessage").style.display='';
+					$('#blackscreen').show();
+				}
+				function goToFeedBack(){
+					document.getElementById('disclaimerLoadMessage').style.display='none';
+					$('#blackscreen').hide();
+					HideLoadingMessage();
+					showContactForm();
+				}			
+				function adaDisclaimer(){
+					var check = document.getElementById('ADASearch').checked;
+					
+					if(check == true ){//So disclaimer always triggers
+						dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weigth:bold;'>Accessible Routing Disclaimer</h3><p style='padding:8px; font-size:12px;'>Accessible routing"+ 
+						" options are currently calculated for shortest travel distances avoiding stairs and undepressed curbs with no consideration of elevation change or sidewalk grade.</p>";
+						document.getElementById('disclaimerLoadMessage').style.display='';
+						$('#blackscreen').show();
+						adaCheck = 1;
+					}
+					
+				}
+				function printDisclaimer(){
+					
+					if(printPopup == true){
+					
+						dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Print Disclaimer</h3><p>Remember to"+ 
+						" enable popups on your web browser for printing results to display properly. Additionally, printing using Google Basemaps is not currently supported.</p>";
+						document.getElementById('disclaimerLoadMessage').style.display='';
+						$('#blackscreen').show();
+						
+						printPopup = false;
+					}
+				}
+				
+				
+				/*function PrintWarning(){
+					
+
+					dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;font-size:16px;'>Print Disclaimer</h3>"+
+					"<p style='padding:10px; text-align:center; font-size:14px;'>Custom print functionality is currently unavailable. <br> For a printable version of the campus map, <br> please refer to the: <br><br>"+
+					"<a href='http://cvs.umd.edu/visitors/current_map.pdf' target='_blank'>Visitor Center Print Map</a></p><a href='http://cvs.umd.edu/visitors/current_map.pdf' target='_blank' ><img src='./img/PDF_Campus_Map.png' style='height:100px; cursor:pointer; display:block; margin:auto;'/></a><br><br>";
+						
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+
+				}*/
+				function printDisclaimer2(){
+					
+					document.getElementById('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Print Disclaimer</h3>"+
+					"<p style='padding:10px 15px 10px 15px; font-size:12px;'>Please disable your popup blocker, then click on the document again.</p>";
+					
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+				}
+				function routeDisclaimer(){
+					removeDirectionFromUrl();
+					dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Route Not Found</h3><p>" + 
+					"We are still in the process of updating the pedestrian network and we apologize for the inconvenience.</p>";
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+				}				
+				function inputDisclaimer(){
+					//dojo.byId('disclaimerLoadMessage_title').innerHTML = "Warning"
+					dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Warning</h3>" + 
+					"<p style='text-align:center; padding:10px; font-size:12px;'>Please ensure all inputs have a valid location</p>"
+					//dijit.byId('disclaimerLoadMessage').show();
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+				}
+				function buildingCardWarning(e){
+					dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Warning</h3>" +
+					"<p style='text-align:center;'>"+e+" will require card access upon entering</p>"
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+				}
+				function accessibleEntranceWarning(e){
+					dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Warning</h3>" +
+					"<p style='text-align:center;'>Our database does not have an accessible building entrance for "+e+"</p>"
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+				}
+				function routeError(){
+					removeDirectionFromUrl();
+					dojo.byId('divLoadDisclaimer').innerHTML = "<h3 style='text-align:center;color:#cc0000;font-weight:bold;'>Warning</h3>" + 
+					"<p style='text-align:center; padding:10px; font-size:12px;'>Oops. Something went wrong while solving your route, please try again.</p>"
+					document.getElementById('disclaimerLoadMessage').style.display='';
+					$('#blackscreen').show();
+				}
+			</script>
+			
+			<!--End Specific Disclaimer Code-->
+			<!---MESSAGE DIALOG BOX--->
+			<div id="dialogLoadMessage" class="dialogLoadMessage" dojotype="dijit.Dialog" style=" display:none; overflow:hidden;" onKeyPress="HideLoadingMessage();" onClick="HideLoadingMessage();">
+				<table style='width:100%;'>
+					<tr>
+						<td>
+							<div id="divLoadMessage"></div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+							<div id='divOKButton' class='StandardButton divOKButton' onKeyPress="HideLoadingMessage();" onClick="dijit.byId('dialogLoadMessage').hide();dojo.byId('divLoadMessage').innerHTML ='';HideLoadingMessage();map.setInfoWindowOnClick(true);">Return to Map</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--======================================================================================================================================--->
+		
+			<script>
+				function accessibilityLink() {
+					window.open('https://umd.edu/web-accessibility');
+				}
+			</script>
+			<!--======================================================================================================================================--->    
+			<!---LOADING DIALOG BOX--->
+			<div id="divLoadingIndicator" class="divLoadingIndicator" style="display:none;">
+				<table style="width: 100%; height: 100%;">
+					<tr>
+						<td align="center" colspan="2"></td>
+					</tr>
+					<tr>
+						<td align="center"><img src="img/loading.gif" /></td>
+						<td id="loadingMessage" style="font-weight: bold; font-size: 13px;"></td>
+					</tr>
+				</table>
+			</div>
+			<!--======================================================================================================================================-->
+			<script>
+				// Require the Dialog class
+				dojo.require("dijit.Dialog");
+				// Show the dialog
+				function showdefinitions() {
+					dijit.byId("definitions").show();
+					gtag('event','ui', {'type': 'building links','value':'definition','site':'desktop','version':appVersion});
+				}
+				// Hide the dialog
+				function hidedefinitions() {
+					dijit.byId("definitions").hide();
+				}
+			</script> 
+			
+			<div class="dijitHidden">
+				<div data-dojo-type="dijit.Dialog" style="width:600px; background:white; color:black; " data-dojo-props="title:'Building Information Definitions'" id="definitions"><!-- background-image: url('./img/layout/content-bg.png'); -->
+					<div style=" padding:10px;">
+						<strong>Building Category</strong> 
+						<ul>
+						<li><strong>Academic</strong> - Buildings are utilized for instruction, research or physical education activities. </li>
+						<li><strong>Administrative</strong> - Buildings are primarily administrative (office/support). </li>
+						<li><strong>Library</strong> - Buildings are primarily for "study" and all related Libraries programs.  This code is used to identify major library facilities.   Branch libraries housed in multiple use facilities are not included in this category.</li>
+						<li><strong>Auxiliary</strong> - Buildings that are primarily student residence halls, student union, or dining halls. Also includes those buildings which rely on student fees or institutional funds and do not currently receive State General Funds for operating expenses.  </li>
+						<li>Non-<strong>Academic</strong> - Buildings are used primarily for plant and maintenance operations, storage, shop, public safety, and other non-academic support related space. </li>
+						</ul>
+						<br>
+						<strong>Gross Square Feet (GSF)</strong>
+						<p style="margin-left:20px;">GSF is the sum of all areas on all floors of a building included within the outside faces of its exterior walls, including all vertical penetration areas, for circulation and shaft areas that connect to one floor.  Gross area is computed by physically measuring or scaling measurements from the outside faces of exterior walls, disregarding cornices, pilaster, buttresses, etc., which extend beyond the wall faces.  Exclude areas having less than a 3-foot clear ceiling height unless the criteria of a separate structure are met.  GSF excludes open areas such as parking lots, playing fields, courts, and light wells, or portions of upper floors eliminated by rooms or lobbies that rise above single-floor height.  Exception: Include top, unroofed floor of parking structures where parking is available.<br><br>
+						Reference Postsecondary Education Facilities Inventory and Classification Manual (FICM) for more details.   <a href="https://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2006160" style="color:#cc0000;" target="_blank">https://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2006160</a></p>
+						<strong>Net Assignable Square Feet (NASF)</strong>
+						<p style="margin-left:20px;">NASF is the sum of all areas on all floors of a building assigned to, or available for assignment to, an occupant or specific use.   Assignable area is computed by physically measuring or scaling measurements from the inside faces of surfaces that form the boundaries of the designated areas.  Exclude areas having less than a 3-foot clear ceiling height unless the criteria of a separate structure are met.   
+						Totals include the major room use categories, classrooms, labs, offices, study facilities, special use, general use, support, health care, residential and unclassified spaces.<br><br>
+						Reference Postsecondary Education Facilities Inventory and Classification Manual (FICM) for more details.   <a href="https://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2006160" style="color:#cc0000;" target="_blank">https://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2006160</a></p>
+						<strong>Year of Construction</strong>
+						<p style="margin-left:20px;">Year in which the original building was completed.</p>
+						<strong>Year of Renovation</strong>
+						<p style="margin-left:20px;">Most recent major renovation.</p>
+						<strong>Year of Acquisition</strong>
+						<p style="margin-left:20px;">Year facility was acquired.</p>
+					</div>       
+						
+					<div id='divOKButton2' class='StandardButton divOKButton' style='font-weight:20px; font-weight:bold; cursor:pointer; width:200px; margin:10px; margin-left:190px; text-align:center;'   onclick="hidedefinitions();">Return to Map</div>
+				</div>
+			</div>
+
+
+			<script>
+				// Require the Dialog class
+				dojo.require("dijit.Dialog");
+				// Show the dialog
+				function showDialog() {
+					dijit.byId("terms").show();
+				}
+				// Hide the dialog
+				function hideDialog() {
+					dijit.byId("terms").hide();
+				}
+			</script> 
+	
+			<div class="dijitHidden">
+				<div data-dojo-type="dijit.Dialog" style="width:600px; font-family:roboto,arial,tahoma; padding-top:18px; left:50% !important; top:50% !important; transform: translate(-50%,-50%); position:absolute;" data-dojo-props="title:'Create Campus Map URL', draggable: false" id="terms">
+					<i class="fa fa-circle" style="color:white; font-size:30px; position:absolute; top:5px; right:5px; cursor:pointer;"></i>
+					<i class="fa fa-times-circle" onclick="hideDialog();" style="font-size:36px; position:absolute; top:3px; right:4px; color:black; cursor:pointer; z-index:5;"></i>					 
+					<div id="test" style="max-height: 550px; overflow-y: auto; width:98%; height:100%; position:relative; left:0px; padding-top:15px; background-color:white; border-radius:4px;">
+						<div id="shareform">
+							<div>
+								<object type="text/html" data="https://maps.umd.edu/map/share.html" style="height: 500px; width: 100%;">
+									<embed src="https://maps.umd.edu/map/share.html">
+								</object>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+				// Require the Dialog class
+				dojo.require("dijit.Dialog");
+				// Show the dialog
+				function showContactForm() {
+					gtag('event','ui', {'type': 'other','value':'contact form','site':'desktop','version':appVersion});
+					dijit.byId("contactform").show();
+				}
+				
+				// Hide the dialog
+				function hideContactForm() {
+					dijit.byId("contactform").hide();
+				}
+			</script> 
+			
+			<div style="width:500px; position:absolute; top:30%; left:30%; width:40%; background:white; border-radius:4px; z-index:960; border:1px solid black; box-shadow:3px 3x 4px #333;"  id="Welcome">
+				<h2 style="text-align:center; color:#cc0000; font-size:20px;">Welcome to the UMD Campus Map!</h2>
+				<p style=" padding-left:20px; padding-right:20px; font-size:14px;">Welcome to all new and returning visitors. We hope you find the official UMD Campus Web Map useful to locate and find information about campus buildings, transportation including Shuttle-UM and WMATA schedules, current campus construction, and other campus features.</p>
+				
+				<ul class='turtle'>
+					<li onclick='welcomeBullet("Routing");' class='ListT'>&nbsp;&nbsp;Campus Navigation</li>
+					<li onclick='welcomeBullet("Construction");' class='ListT'>&nbsp;&nbsp;Current Construction</li>
+					<li onclick='welcomeBullet("Purple Line")' class='ListT'>&nbsp;&nbsp;Purple Line Construction</li>
+					<li onclick='welcomeBullet("Dining");' class='ListT'>&nbsp;&nbsp;Dining Services</li>
+					<li onclick='welcomeBullet("CampusTransportation");' class='ListT'>&nbsp;&nbsp;Campus Transportation</li>
+					<!--<li onclick='welcomeBullet("Shuttle-UM");' class='ListT'>&nbsp;&nbsp;Shuttle-UM Bus Routes</li>
+					<li onclick='welcomeBullet("WMATA");' class='ListT'>&nbsp;&nbsp;WMATA Bus Routes</li>-->
+					<li onclick='welcomeBullet("Testudo");' class='ListT'>&nbsp;&nbsp;Testudo Statues</li>
+					<!--<li onclick='welcomeBullet("Bike");' class='ListT'>&nbsp;&nbsp;Bike Racks</li>-->
+				</ul>
+				
+				<!--
+				<p style=" padding-left:20px; padding-right:20px;">Recent updates include improved pedestrian navigation featuring multi-stop routing and our new right-click menu, through which various map options are available including a new shareable custom map point creator.  You will also find several enhancements to the map and map functions, including new map layers, new icons, and expanded “Share a Map View” options.</p>
+				-->
+				
+				<!--<p style=" padding-left:20px; padding-right:20px; font-size:14px;">The Campus GIS Team welcomes your <span style="color:#cc0000;outline: 0;text-decoration:underline; cursor:pointer;" onclick="showContactForm();hideWelcomeDialog();">feedback and suggestions</span>.</p>-->
+				<hr><br>
+				<div>
+					<text style="display:block;text-align:center;">For transportation resources visit <a href="http://transportation.umd.edu/" target="_blank" style='color: #e03a3d;'>http://transportation.umd.edu/</a></text>
+				</div>
+				
+				<br><br>
+				<!--<ul style='padding-right: 5%;'>
+					<li>
+						Please visit <a href="https://umd.edu/4Maryland" target="_blank" style='color: #e03a3d;'>umd.edu/4Maryland</a> for the latest information on UMD policies related to COVID-19.
+					</li>
+					<li>
+						For transportation resources visit <a href="http://transportation.umd.edu/" target="_blank" style='color: #e03a3d;'>http://transportation.umd.edu/</a>
+					</li>
+				</ul>-->
+				<div style='margin-left:20px; font-size:12px;padding-bottom:12px;'>
+					<input type='checkbox' id='showAgain' style='margin-right:5px;height:12px;width:12px;' /><label for='showAgain'>Do not show this again</label>
+				</div>
+				<div id='divOKButton' class='StandardButton divOKButton' onclick="welcomeBullet('normal');" style='left: 25%; width:50%;'>Proceed to the Map</div>
+				
+			</div>
+			
+			<!--<div style="max-width:600px; position:absolute; top:30%; left:50%; transform:translate(-50%,0%); width:40%; background:white; border-radius:4px; z-index:960;  display:none; border:1px solid black; box-shadow:3px 3x 4px #333;" id="covid">
+				<h2 style="text-align:center; color:#cc0000; font-size:20px;">Fall Semester 2022 Updates</h2>
+				<p style=" padding-left:20px; padding-right:20px; font-size:14px;">Welcome to all new and returning visitors. We hope you find the official UMD Campus Web Map useful to locate and find information about campus buildings, transportation including Shuttle-UM and WMATA schedules, current campus construction, and other campus features.</p>
+				<hr>
+				<ul style='padding-right: 5%;'>
+					<li>
+						Please visit <a href="https://umd.edu/4Maryland" target="_blank" style='color: #e03a3d;'>umd.edu/4Maryland</a> for the latest information on UMD policies related to COVID-19.
+					</li>
+					<li>
+						For transportation resources visit <a href="http://transportation.umd.edu/" target="_blank" style='color: #e03a3d;'>http://transportation.umd.edu/</a>
+					</li>
+				</ul>
+				
+				<div style='margin-left:20px; font-size:12px;padding-bottom:12px;'>
+					<input type='checkbox' id='showAgainCovid' style='margin-right:5px;height:12px;width:12px;' /><label for='showAgainCovid'>Do not show this again</label>
+				</div>
+				
+				<div id='divOKButton2' class='StandardButton divOKButton' onclick="covidMessage();" style='left: 25%; width:50%;'>Proceed to the Map</div>
+				
+			</div>-->
+			
+			<style>
+				ul.turtle{
+					columns:2;
+					-webkit-columns:2;
+					-moz-columns:2;
+					list-style: none;
+				}
+				
+				.ListT{
+					color:#cc0000;
+					cursor:pointer;
+					font-size:16px;
+				}
+				
+				/*.ListT:nth-child(odd):before{
+					content: url('./img/turtlePoint.png');
+				}*/
+				
+				.ListT:before{
+					content: url('./img/turtlePoint2.png');
+				}
+				@-webkit-keyframes pulse2{
+					0% {color:red;}
+					50% {color:black;}
+					100% { color:red;}
+				}
+				@-moz-keyframes pulse2{
+					0% {color:red;}
+					50% {color:black;}
+					100% { color:red;}
+				}
+				.sparkle{
+					animation: pulse2 2s infinite;
+					-webkit-animation: pulse2 2s infinite;
+				}
+				
+				@-webkit-keyframes p2{
+					0% {opacity:1.0;}
+					50% {opacity:0;}
+					100% { opacity:1.0;}
+				}
+				@-moz-keyframes p2{
+					0% {opacity:1;}
+					50% {opacity:0;}
+					100% { opacity:1;}
+				}
+				#featureGL_layer>path{
+					animation: p2 2s infinite;
+					-webkit-animation: p2 2s infinite;
+				}
+				
+			</style>
+			
+			<script>
+				/*function toggleShow(x){
+					console.log(x);
+					document.cookie
+				}*/
+				
+				function welcomeBullet(x){
+					gtag('event','message', {'type': 'welcome','value':x,'site':'desktop','version':appVersion});
+
+					hideWelcomeDialog();
+					if(x == 'CampusTransportation'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('transportContain');
+						//document.getElementById('bus').checked = true;
+						//hideshowlayer('bus', 'layerlist');
+						//swaplisticon('RouteContain');
+						//busRouteListUMShuttle();
+					}
+					/*else if(x == 'WMATA'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('transportContain');
+						document.getElementById('wmata').checked = true;
+						hideshowlayer('wmata', 'layerlist');
+						swaplisticon('WM_RouteContain');
+					}*/
+					else if(x == 'Routing'){
+						newtab('Directions');
+					}
+					else if(x == 'Dining'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('diningContain');
+						//document.getElementById('diningHall').checked = true;
+						//hideshowlayer('diningHall', 'layerlist');
+						//document.getElementById('cafe').checked = true;
+						//hideshowlayer('cafe', 'layerlist');
+						//document.getElementById('foodCourt').checked = true;
+						//hideshowlayer('foodCourt', 'layerlist');
+						//document.getElementById('restaurant').checked = true;
+						//hideshowlayer('restaurant', 'layerlist');
+						//document.getElementById('shop').checked = true;
+						//hideshowlayer('shop', 'layerlist');
+					}
+					else if(x == 'Construction'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('constructContain');
+						document.getElementById('construct').checked = true;
+						hideshowlayer('construct', 'layerlist');
+					}
+					/*else if(x == 'Bike'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('transportContain');
+						document.getElementById('bike').checked = true;
+						hideshowlayer('bike', 'layerlist');
+					}*/
+					else if(x == 'Purple Line'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('constructContain');
+						document.getElementById('purpleLine').checked = true;
+						hideshowlayer('purpleLine', 'layerlist');
+					}else if(x == 'Testudo'){
+						newtab('Layers');
+						toggleOverview();
+						swaplisticon('referenceContain');
+						document.getElementById('testudo').checked = true;
+						hideshowlayer('testudo', 'layerlist');
+					}
+					if(document.getElementById('showAgain').checked){
+						require(["dojo/cookie"],function(cookie) {
+							dojo.cookie('welcome',true);
+							gtag('event','message', {'type': 'welcome','value':'Do not show this again','site':'desktop','version':appVersion});
+						});
+					}
+				}
+				
+				function covidMessage() {
+					document.getElementById('covid').style.display = 'none'; 
+					document.getElementById('blackscreen').style.display = 'none';
+				
+					if(document.getElementById('showAgainCovid').checked){
+						require(["dojo/cookie"],function(cookie) {
+							dojo.cookie('covidMessage',true);
+							gtag('event','message', {'type': 'Covid','value':'Do not show this again','site':'desktop','version':appVersion});
+						});
+					}
+				}
+			
+			</script>
+			
+			<div class="dijitHidden">
+
+				<div data-dojo-type="dijit.Dialog" style=" background:white;  color:white; background-image: url('./img/layout/content-bg.png');" data-dojo-props="title:'Happy Halloween!'" id="HalloWelcome">
+					<p style=" padding-left:20px; padding-right:20px; color:orange; font-weight:bolder; font-size:20px; text-align:center;">Happy Halloween!</p>
+					
+					<div id='divOKButtonHallow' class='StandardButton' style='font-weight:20px; font-weight:bold; cursor:pointer; width:200px; margin:10px;  text-align:center;'  onclick="dijit.byId('HalloWelcome').hide();">Proceed to the Map</div>
+					<div id='divOKButtonHallow' class='StandardButton' style='font-weight:20px; font-weight:bold; cursor:pointer; width:200px; margin:10px; text-align:center;'  onclick="window.open('https://arcg.is/1KaGWX0')">Proceed to the Campus Ghost Tour</div>
+					
+				</div>
+				
+				<div class='' data-dojo-type="dijit.Dialog" style="width:30%; border-radius:14px; background:white;" data-dojo-props="title:''" id="BirthdayWelcome"><!-- Welcome to the UMD Campus Webmap -->
+					<h2 style='text-align:center;font-size:20px;'>Welcome to the UMD Campus Webmap</h2>
+					<div style='width:100%; '><img id='cakeImg' style='width:100px;margin:auto; display:block;' src='./img/birthday/map-cake-4.png' /></div>
+					<!--<div style='width:100%;'><img style='width:100px; margin:auto; display:block;' src='./img/birthday/cake4.png' />-->
+					<h2 class='rainbow' style='text-align:center'>HAPPY 10<sup>th</sup> BIRTHDAY!</h2>
+					<div style='padding-left:30px; padding-right:30px; padding-bottom:5px; padding-top:5px; position:relative; font-size:14px; text-align:center;'>
+						<text >On November 1<sup>st</sup>, 2013 the official UMD Campus Webmap was released to the public.</div>
+					<div style='padding-left:30px; padding-right:30px; padding-bottom:5px; padding-top:5px; position:relative; font-size:14px; text-align:center;'> Since then it has grown to include over 50 layers and has been accessed more than 5 million times!</text>
+					</div><br>
+					<div id='divOKButtonBirthday' class='StandardButton' style='font-weight:20px; font-weight:bold; cursor:pointer; width:200px;  text-align:center; margin-right:auto; margin-left:auto;'  onclick="dijit.byId('BirthdayWelcome').hide();">Proceed to the Map</div>
+				</div>
+				
+				<style>
+					@-webkit-keyframes pulse{					
+						0% {color:red;}
+						50% {color:black;}
+						100%{ color:red;}
+					}
+					@-moz-keyframes pulse{
+						0% {color:red;}
+						50% {color:black;}
+						100% {color:red;}
+					}
+					.rainbow{
+						animation: pulse 1s infinite;
+						-webkit-animation: pulse 1s infinite;
+					}
+				</style>
+				
+				<script>
+					// Require the Dialog class
+					dojo.require("dijit.Dialog");
+					// Show the dialog
+				   function showWelcomeDialog() {
+						dijit.byId("Welcome").show();
+					}
+					// Hide the dialog
+					function hideWelcomeDialog() {
+						setTimeout(function() {
+							document.getElementById('Welcome').style.display = 'none';
+							$('#blackscreen').hide();
+						}, 500);
+					}
+					$('#shareform>div>object')[0].data = window.location.origin+window.location.pathname.split('index.html')[0]+"share.html";
+				</script>
+
+				<div class="dijitHidden">
+					<div data-dojo-type="dijit.Dialog" style="width:720px; font-family:roboto,arial,tahoma; padding-top:18px;" data-dojo-props="title:'', draggable: false" id="contactform">
+						<i class="fa fa-circle" style="color:white; font-size:30px; position:absolute; top:5px; right:5px; cursor:pointer;"></i>
+						<i class="fa fa-times-circle" onclick="hideContactForm();" style="font-size:36px; position:absolute; top:3px; right:4px; color:black; cursor:pointer; z-index:5;"></i>
+						
+						<div style="width:98%; height:100%; position:relative; left:0px; padding-top:15px; padding-bottom: 10px; background-color:white; border-radius:4px;">
+							<h2 style="text-align:center; color: #CC0000;">Contact Us</h2>
+							<h3 style="margin-left:auto;margin-right:auto; text-align:center;">Please send us your comments and questions</h3>
+							<hr>
+							<input type="hidden" id="website" name="website" value="">
+							<script>
+								var url = location.href;  // entire url including querystring - also: window.location.href;
+								var baseURL = url.substring(0, url.indexOf('/', 14));
+								document.getElementById('website').value = baseURL;
+							</script>
+							<table style="line-height: 25px; padding: 10px">
+								<tr>
+									<td></td>
+									<td><span style="color:red; font-size:18px;">*</span>Name</td>
+									<td><input type="text" name="formname" id="formename" placeholder="Name" size="38"></td>
+								</tr>
+								<tr>
+									<td><span style='color:#990000; font-weight:bold;'>Contact Information:</span></td>
+									<td><span style="color:red; font-size:18px;">*</span>Email</td>
+									<td><input type="email" name="formemail" id="formemail" placeholder="Email Address" size="38"></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>&nbsp;Phone</td>
+									<td><input type="tel" name="formphone" id="formphone" placeholder="Phone Number" size="18"></td>
+								</tr>
+								<tr>
+									<td><span style='color:#990000; font-weight:bold;'>Message Category:</span></td>
+									<td><span style="color:red; font-size:18px;">*</span></td>
+									<td>
+										<select id="formsubject" name="formsubject" placeholder="Reason for contacting us">
+											<option value="" selected></option>
+											<option value="Report a Problem">Report a Problem</option>            
+											<option value="Request New Features">Request New Features</option>          
+											<option value="General Comment">General Comment</option>
+											<option value="Ask a Question">Ask a Question</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>&nbsp;Browser</td>
+									<td>
+										<input type="text" id="formbrowser" name="formbrowser" value="" size="40">
+										<script>
+											var BrowserDetect = {
+												init: function () {
+													this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+													this.version = this.searchVersion(navigator.userAgent)
+														|| this.searchVersion(navigator.appVersion)
+														|| "an unknown version";
+													this.OS = this.searchString(this.dataOS) || "an unknown OS";
+												},
+												searchString: function (data) {
+													for (var i=0;i<data.length;i++)	{
+														var dataString = data[i].string;
+														var dataProp = data[i].prop;
+														this.versionSearchString = data[i].versionSearch || data[i].identity;
+														if (dataString) {
+															if (dataString.indexOf(data[i].subString) != -1)
+																return data[i].identity;
+														}
+														else if (dataProp)
+															return data[i].identity;
+													}
+												},
+												searchVersion: function (dataString) {
+													var index = dataString.indexOf(this.versionSearchString);
+													if (index == -1) return;
+													return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+												},
+												dataBrowser: [
+													{
+														string: navigator.userAgent,
+														subString: "Chrome",
+														identity: "Chrome"
+													},
+													{ 	string: navigator.userAgent,
+														subString: "OmniWeb",
+														versionSearch: "OmniWeb/",
+														identity: "OmniWeb"
+													},
+													{
+														string: navigator.vendor,
+														subString: "Apple",
+														identity: "Safari",
+														versionSearch: "Version"
+													},
+													{
+														prop: window.opera,
+														identity: "Opera",
+														versionSearch: "Version"
+													},
+													{
+														string: navigator.vendor,
+														subString: "iCab",
+														identity: "iCab"
+													},
+													{
+														string: navigator.vendor,
+														subString: "KDE",
+														identity: "Konqueror"
+													},
+													{
+														string: navigator.userAgent,
+														subString: "Firefox",
+														identity: "Firefox"
+													},
+													{
+														string: navigator.vendor,
+														subString: "Camino",
+														identity: "Camino"
+													},
+													{		// for newer Netscapes (6+)
+														string: navigator.userAgent,
+														subString: "Netscape",
+														identity: "Netscape"
+													},
+													{
+														string: navigator.userAgent,
+														subString: "MSIE",
+														identity: "Internet Explorer",
+														versionSearch: "MSIE"
+													},
+													{
+														string: navigator.userAgent,
+														subString: "Gecko",
+														identity: "Mozilla",
+														versionSearch: "rv"
+													},
+													{ 		// for older Netscapes (4-)
+														string: navigator.userAgent,
+														subString: "Mozilla",
+														identity: "Netscape",
+														versionSearch: "Mozilla"
+													}
+												],
+												dataOS : [
+													{
+														string: navigator.platform,
+														subString: "Win",
+														identity: "Windows"
+													},
+													{
+														string: navigator.platform,
+														subString: "Mac",
+														identity: "Mac"
+													},
+													{
+														   string: navigator.userAgent,
+														   subString: "iPhone",
+														   identity: "iPhone/iPod"
+													},
+													{
+														string: navigator.platform,
+														subString: "Linux",
+														identity: "Linux"
+													}
+												]
+
+											};
+											BrowserDetect.init();
+											document.getElementById('formbrowser').value = BrowserDetect.browser + " v." + BrowserDetect.version + " on " + BrowserDetect.OS;
+										</script>
+									</td>
+								</tr>
+
+								<tr>
+									<td><span style='color:#990000; font-weight:bold;'>Your Message:</span></td>
+									<td><span style="color:red; font-size:18px;">*</span></td>
+									<td> <textarea id="formmessage" name="formmessage" rows="5" cols="70" placeholder="What would you like to tell us or ask?"></textarea></td>
+								</tr>
+							</table>
+							<div style="padding-left: 130px; color:red;">* indicates a required field</div>
+							<div style="width:100%;">
+								<div style='text-align:center; margin:10px;'>
+									<div id="SendMessage" class="StandardButton" style="font-weight:20px; font-weight:bold; cursor:pointer; width:200px;position:relative;left:50%;transform:translate(-50%,0%);" onclick="sendform();">Send Message</div>
+									<script>
+									function sendform() {
+
+										
+										var name = document.getElementById("formename").value;
+										var emailaddress = document.getElementById("formemail").value;
+										var phonenumber = document.getElementById("formphone").value;;
+										var title = document.getElementById("formsubject").value;
+										var message = name + ' says: ' + document.getElementById("formmessage").value;
+										var systeminfo = getusersystemdetails();
+
+										if(emailaddress.length < 1 || title < 1 || message < 1){
+											dojo.byId('disclaimerLoadMessage_title').innerHTML = "Error";
+											dojo.byId('divLoadDisclaimer').innerHTML = "<p style='text-align:center'>Please complete all required fields.</p>"
+
+											dijit.byId('disclaimerLoadMessage').show();
+										}else{
+
+											var requestBody = "{" +
+
+											"\"caller_id\":\"e7ccb55c372dcf00ef4cde7543990e2d\","  +
+											"\"cmdb_ci\":\"0e09d9ef378b3e00a90963d2b3990ee3\", " +
+											"\"watch_list\":\"" + emailaddress + "\", " +
+											"\"u_alternate_details\":\"" + phonenumber + "\", " +
+											"\"short_description\":\"" + title + "\", " +
+											"\"comments\":\"" + message + "\", " +
+											"\"category\":\"inquiry\", " +
+											"\"contact_type\":\"chat\", " +
+											"\"work_notes\":\"" + systeminfo + "\" " +
+
+											"}";
+
+
+											var client = new XMLHttpRequest();
+											client.open("post", "https://umd.service-now.com/api/now/table/incident?sysparm_fields=number%2Csys_id");
+
+											client.setRequestHeader('Accept', 'application/json');
+											client.setRequestHeader('Content-Type', 'application/json');
+
+											client.setRequestHeader('Authorization', 'Basic ' + btoa('maps.umd.edu' + ':' 	+ '@CgzJ>4s{Xc<W@.e'));
+
+											client.onreadystatechange = function() {
+												if (this.readyState = this.DONE) {
+													//console.log(this.status);
+													//console.log(this.response);
+													var res = this.response;
+													if(emailaddress.substring(emailaddress.length - 7) == "umd.edu"){
+														contactResult(res, true);
+													} else {
+														contactResult(res, false);
+													}
+													//document.getElementById("response").innerHTML = this.status + 	this.response;	
+												}
+											};
+											client.send(requestBody);
+										}
+
+										//******************************************************************************
+										function contactResult(res, showURL){
+											hideContactForm();
+											var theurl = 'https://umd.service-now.com/itsc?id=ticket&table=incident&sys_id=' + JSON.parse(res).result.sys_id;
+											dojo.byId('disclaimerLoadMessage_title').innerHTML = "Thank you";
+											if(showURL){
+											dojo.byId('divLoadDisclaimer').innerHTML = '<div id="thankYouBox"><span>'+
+											'<i class="fa fa-check material-button"'+
+											'aria-hidden="true"></i></span>'+
+											'<br><br><span style="font-size:16px">Your Incident Has Been Created</span>'+
+											'<br><div class="material-button-rect" onclick="window.open('+"'"+theurl+"'"+', '+"'_blank'"+')">Track Your Incident</div>'+
+											'</div>'
+										}else{
+											dojo.byId('divLoadDisclaimer').innerHTML = '<div id="thankYouBox"><span>'+
+											'<i class="fa fa-check material-button"'+
+											'aria-hidden="true"></i></span>'+
+											'<br><br><span style="font-size:16px">Your Incident Has Been Created</span>'+
+											'</div>'
+										}
+											dijit.byId('disclaimerLoadMessage').show();
+										}
+										
+
+										//******************************************************************************
+										function getusersystemdetails() {
+											var systeminfo = '';
+
+											var nVer = navigator.appVersion;
+											var nAgt = navigator.userAgent;
+											var browserName = navigator.appName;
+											var fullVersion = '' + parseFloat(navigator.appVersion);
+											var majorVersion = parseInt(navigator.appVersion, 10);
+											var nameOffset, verOffset, ix;
+
+											// In Opera, the true version is after "Opera" or after "Version"
+											if ((verOffset = nAgt.indexOf("Opera")) != -1) {
+												browserName = "Opera";
+												fullVersion = nAgt.substring(verOffset + 6);
+												if ((verOffset = nAgt.indexOf("Version")) != -1)
+													fullVersion = nAgt.substring(verOffset + 8);
+											}
+											// In MSIE, the true version is after "MSIE" in userAgent
+											else if ((verOffset = nAgt.indexOf("MSIE")) != -1) {
+												browserName = "Microsoft Internet Explorer";
+												fullVersion = nAgt.substring(verOffset + 5);
+											}
+											// In Chrome, the true version is after "Chrome"
+											else if ((verOffset = nAgt.indexOf("Chrome")) != -1) {
+												browserName = "Chrome";
+												fullVersion = nAgt.substring(verOffset + 7);
+											}
+											// In Safari, the true version is after "Safari" or after "Version"
+											else if ((verOffset = nAgt.indexOf("Safari")) != -1) {
+												browserName = "Safari";
+												fullVersion = nAgt.substring(verOffset + 7);
+												if ((verOffset = nAgt.indexOf("Version")) != -1)
+													fullVersion = nAgt.substring(verOffset + 8);
+											}
+											// In Firefox, the true version is after "Firefox"
+											else if ((verOffset = nAgt.indexOf("Firefox")) != -1) {
+												browserName = "Firefox";
+												fullVersion = nAgt.substring(verOffset + 8);
+											}
+											// In most other browsers, "name/version" is at the end of userAgent
+											else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) <
+												(verOffset = nAgt.lastIndexOf('/'))) {
+												browserName = nAgt.substring(nameOffset, verOffset);
+												fullVersion = nAgt.substring(verOffset + 1);
+												if (browserName.toLowerCase() == browserName.toUpperCase()) {
+													browserName = navigator.appName;
+												}
+											}
+											// trim the fullVersion string at semicolon/space if present
+											if ((ix = fullVersion.indexOf(";")) != -1)
+												fullVersion = fullVersion.substring(0, ix);
+											if ((ix = fullVersion.indexOf(" ")) != -1)
+												fullVersion = fullVersion.substring(0, ix);
+
+											majorVersion = parseInt('' + fullVersion, 10);
+											if (isNaN(majorVersion)) {
+												fullVersion = '' + parseFloat(navigator.appVersion);
+												majorVersion = parseInt(navigator.appVersion, 10);
+											}
+
+											systeminfo = systeminfo + 'Browser name  = ' + browserName + '  ' +
+												'Full version  = ' + fullVersion + '  ' +
+												'Major version = ' + majorVersion + '  ' +
+												'navigator.appName = ' + navigator.appName + '  ' +
+												'navigator.userAgent = ' + navigator.userAgent + '  ';
+
+
+											var OSName = "Unknown OS";
+											if (navigator.appVersion.indexOf("Win") != -1) OSName = "Windows";
+											if (navigator.appVersion.indexOf("Mac") != -1) OSName = "MacOS";
+											if (navigator.appVersion.indexOf("X11") != -1) OSName = "UNIX";
+											if (navigator.appVersion.indexOf("Linux") != -1) OSName = "Linux";
+
+											systeminfo = systeminfo + '  OS: ' + OSName;
+
+											systeminfo = systeminfo + '  Platform: ' + platform();
+
+											try {
+												var dimensions = "Height: " + window.screen.availHeight + "  Width: " + window.screen.availWidth;
+												systeminfo = systeminfo + '  Screen Dimensions: ' + dimensions;
+											} catch (e) {
+												systeminfo = systeminfo + '  Screen Dimensions: ' + "unable to determine";
+											}
+
+											try {
+												systeminfo = systeminfo + '  Screen Orientation: ' + getOrientation();
+											} catch (e) {
+												systeminfo = systeminfo + '  Screen Orientation: ' + "Landscape";
+											}
+
+											return systeminfo;
+										}
+
+										function platform() {
+											var check = 'desktop';
+											try {
+												(function(a) { if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = 'mobile'; })(navigator.userAgent || navigator.vendor || window.opera);
+											} catch (e) {
+												check = 'unknown';
+											}
+											return check;
+										}
+
+										function getOrientation() {
+											var mobilecheck = platform();
+											if (mobilecheck == 'mobile') {
+												return Math.abs(window.orientation) - 90 == 0 ? "Landscape" : "Portrait";
+											} else {
+												return "Landscape";
+											}
+										}
+										// 
+										}
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--======================================================================================================================================-->
+			</div>
+		</div>
+	</div>	
+
+	
+	
+	</body>
+</html>
+<!--<script type="text/javascript" src="./../../api/css/alert.js"></script>-->
+<script>
+(function() {
+		document.getElementById('toollist').style.height = (screenheight-240) + 'px';
+		document.getElementById('maptools').style.height = (screenheight-300) + "px";
+		document.getElementById('toollist').style.marginLeft = '320px';
+		document.getElementById('layerlist').style.marginLeft = '320px';
+		document.getElementById('printlist').style.marginLeft = '320px';
+		if (window.location.href.indexOf("&accessiblenav=true") > -1) {
+			document.getElementById("ADASearch").checked = true;
+		}
+		
+		if (window.location.href.indexOf("index.html?") > -1) {
+			hideWelcomeDialog();
+		} 
+
+	})();
+
+	//controls the amount of time the preloading screen will run before it switches over.
+	function timeOut(){
+		setTimeout(function(){
+			$('body').addClass('loaded');
+			$('h1').css('color','#222222');
+		},650);
+	}
+
+	var showoverview;
+
+
+	$(document).ready(function () {
+		
+		TabTeethJs.initSearchBox();
+		
+					
+		/*Loading UMD Header & URL Variables*/
+		//If the screen width is too small this will decrease the font-size of the text on the pre-loading screen
+		if($(window).height()<800){
+
+			if($(window).height()<500){
+				document.getElementById("loadUMD").style.fontSize = "20px";
+				document.getElementById("loadCWM").style.fontSize = "12px";
+			}else if($(window).height()>700){
+				document.getElementById("loadUMD").style.fontSize = "45px";
+				document.getElementById("loadCWM").style.fontSize = "30px";	
+			}else{
+				document.getElementById("loadUMD").style.fontSize = "30px";
+				document.getElementById("loadCWM").style.fontSize = "20px";
+			}
+		}else if($(window).width()<571){
+			document.getElementById("loadUMD").style.fontSize = "45px";
+			document.getElementById("loadCWM").style.fontSize = "30px";
+		}
+		//Determine whether the UMD Banner should load or not based on url variable "Mode"
+		//This will eventually be phased out but we need to keep it for now in order to make sure other groups change to the other url variables.
+		if(getUrlVars()["Mode"] != undefined){
+			if (getUrlVars()["Mode"].indexOf("Map") > -1){
+				console.log("UMD Banner Code Not Loaded");
+			}
+		}else if(getUrlVars()["maponly"] != undefined){
+			if (getUrlVars()["maponly"] == 'true'){
+				console.log("UMD Banner Code Not Loaded");	
+			}
+		}else{
+			$.getScript("./umdHeader/umdHeader.js", function(){
+				console.log("The UMD Banner Loads Regularly");
+				umdHeader.init({ news: true });
+				$("#umh-toggle-arrow").click();						
+				$('#umh-search-cont').remove();
+			});
+		}
+		
+		
+		//This will eventually be phased out but we need to keep it for now in order to make sure other groups change to the other url variables.
+		if(getUrlVars()["Mode"] != undefined){
+			if (getUrlVars()["Mode"].indexOf("Map") > -1){
+				console.log("UMD Banner Code Not Triggered");
+			}
+		}else if(getUrlVars()['maponly'] != undefined){
+			if(getUrlVars()['maponly'] == 'true'){
+				console.log("UMD Banner Code Not Triggered");
+			}
+		}
+				
+		console.log("Setting up building list");
+		buildingListSetUp();
+		console.log("Setting up share");
+		autoCompleteSetUp();
+
+
+		if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Tablet PC|Opera Mini/i.test(navigator.userAgent)) ) {
+			try{
+				document.getElementById("map_zoom_slider").addEventListener("load",timeOut());
+			}catch(e){
+				timeOut();
+			}
+		}else{
+			timeOut();
+		}
+
+		
+	//This will eventually be phased out but we need to keep it for now in order to make sure other groups change to the other url variables.	
+		if (getUrlVars()["LocationType"] == "Direction"){
+			document.getElementById("Search").setAttribute("class", "");
+			document.getElementById("Directions").setAttribute("class", "selected-tab hover-tab");	
+		}else if(getUrlVars()['feature'] == 'direction'){
+			document.getElementById("Search").setAttribute("class", "");
+			document.getElementById("Directions").setAttribute("class", "selected-tab hover-tab");	
+		}
+	});
+			
+</script> contentType 9 text/html url 29 https://maps.umd.edu:443/map/ responseCode 3 200 

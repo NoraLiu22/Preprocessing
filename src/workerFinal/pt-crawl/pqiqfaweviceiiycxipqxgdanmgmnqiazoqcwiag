@@ -1,0 +1,1057 @@
+pqiqfaweviceiiycxipqxgdanmgmnqiazoqcwiag length 5 58093 page 58093 <!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">            
+<HEAD>            
+<TITLE>Research in Support of Digital Libraries at Xerox PARC             
+Part II: Technology</TITLE>            
+</HEAD>            
+<BODY background = "../lgray_bg.gif width = 700 height = 16">             
+<meta name="resource-type" value="document">            
+<meta name="distribution" value="global">            
+<P>            
+<center>           
+<img src = "../mag_bar1.gif">             
+<p>             
+  <H1> Research in Support of Digital Libraries <br>            
+       at Xerox PARC </H1>            
+<H3> Part II:  Paper and Digital Documents            
+</H3>            
+<address>            
+<a href="http://www.parc.xerox.com/hearst">Marti Hearst</a>,             
+           <a href="http://http.cs.berkeley.edu/~kopec/">Gary            
+           Kopec</a>, and Dan Brotsky<br>            
+           <a href=http://www.parc.xerox.com> Xerox PARC </a><br>             
+                 <i> {hearst,kopec,brotsky}@parc.xerox.com</i><P>            
+</address>           
+<p>           
+<b>D-Lib Magazine</b>, June 1996            
+<p>            
+<h6>ISSN 1082-9873</h6>             
+<p>           
+<img src = "../d-line1.gif">           
+</center>            
+<p>            
+<h3> Introduction </h3>            
+            
+<a href="http://www.dlib.org/dlib/may96/05hearst.html">Part I</a> of            
+this article outlined what some PARC researchers have to say about the            
+wide range of issues in digital libraries that link the social with            
+the technical.  In this second part, we focus on technical matters,            
+discussing some of the recent research at PARC related to             
+digital libraries.  This includes            
+technology for the capture, analysis, and presentation of document            
+images, derived from their original paper form, as well as information            
+search, access, summarization, and visualization, and middleware to            
+support document services and collection management.            
+            
+<P>            
+            
+A full-fledged, end-to-end digital library project must include a            
+target collection whose contents are to be preserved and maintained            
+over time, a user test bed, intermediaries that help determine the            
+layout and organization of the materials, and finally technologies            
+to support these activities.  PARC is participating as an industrial            
+partner in several of the NSF/DARPA/NASA-sponsored digital library projects,            
+working most closely with those of <A            
+HREF="http://www-diglib.stanford.edu/diglib/"> Stanford</a> and <A            
+HREF="http://elib.cs.berkeley.edu/"> UC Berkeley</a>.  These projects            
+provide an opportunity for the exploration and demonstration of how            
+support technologies can be used in the digital library context.            
+            
+<p>            
+            
+This article presents a sample of PARC digital library technologies and            
+introduces a new PARC project, <a href="#section:up1"> <it>            
+UPrint1<it></a>, that contains many, although not all, elements of a            
+full-fledged digital library project.  These technologies are organized as            
+follows:            
+            
+<P>            
+            
+<ul>            
+<li>            
+<a href="#section:cap">            
+<b> Capture, analysis, and presentation of document            
+images</b></a>, including  document image decoding, image search            
+and summarization, and creation of new paper presentations that combine            
+information from multiple sources.             
+            
+<li>            
+<a href="#section:iav">            
+<b> Information access and visualization</b></a>, including            
+search, browsing, and visualization of large text collections,            
+summarization,  and automatic detection of            
+thematic structure.             
+            
+<li>            
+<a href="#section:mid">            
+<b> Middleware for the support of document services</b></a>, including            
+a system architecture to support connectivity of distributed document            
+services and a uniform programming interface to document management            
+systems.            
+            
+<li>             
+<a href="#section:up1">            
+<b> UPrint1</b></a>, a new project exploring the practicality            
+of on-demand printing of single copies of books in response to            
+customer orders.            
+</ul>            
+            
+<a name="section:cap">            
+<h3>Document Capture, Analysis And Presentation</h3></a>            
+<p>            
+            
+            
+Much of the technical research at PARC centers around the interface            
+between paper and electronic documents.  Since its invention thousands            
+of years ago, paper has served as one of our primary communications            
+media. Its inherent physical properties make it easy to use,            
+transport, and store, and cheap to manufacture.  However, much            
+research is still needed for building bridges between paper and the            
+digital world.  The final report for a recent digital library workshop            
+<a href="#Lynch">[Lynch and Garcia-Molina]</a> begins by noting that            
+``Digital libraries will, for the foreseeable future need to span both            
+print and digital materials.''            
+            
+<p>            
+            
+The problem of capturing and converting scanned paper materials has            
+received considerable attention at PARC, from a number of            
+perspectives.  We will illustrate the range of activities with three            
+examples:            
+            
+<ul>            
+            
+<li> <a href="#subsection:did"> Document Image Decoding (DID)</a>            
+<li> <a href="#subsection:dis"> Document Image Summarization</a>            
+<li> <a href="#subsection:pro"> Interfaces for Accessing Both Paper             
+     and Electronic Documents</a>            
+</ul>            
+            
+<a name="subsection:did">            
+<h4>Document Image Decoding</h4></a>            
+            
+The Document Image Decoding (DID) Project            
+is developing a theoretical and            
+algorithmic framework for the rapid development of document recognition            
+systems that are tailored to the fonts and structuring of specific document            
+collections <a href="#KC">[Kopec and Chou]</a>.            
+The use of document-specific recognizers is appropriate when            
+very high character recognition accuracy or specialized tagging (e.g. SQL            
+or SGML markup) is required.  Automatically recovering tagged information            
+is particularly challenging because such structures are inherently            
+document-specific and the range of possibilities is open-ended.  An example            
+of the type of document and markup the DID project aims to support is the            
+following fragment of a scanned report from the <a            
+href="http://elib.cs.berkeley.edu/"> UC Berkeley Environmental Digital            
+Library Project</a> that describes the characteristics of California dams,            
+<p>            
+<IMG SRC="117-folsom.gif">            
+<p>            
+and the corresponding SQL code for a relational database entry:            
+            
+<ul>            
+<pre>            
+INSERT INTO dams (            
+  dam_name,dwr_num,owner,county,            
+  stream,loc_section,loc_township,loc_range,loc_base_mer,            
+  national_id,dam_type,stor_capacity,drainage_area,reserv_area,            
+  parapet_code,parapet_ht,crest_elev,crest_len,height,            
+  total_frbd,oper_frbd,crest_width,volume,year_comp,            
+  lat,long            
+)            
+VALUES            
+('FOLSOM','9000-148','U S BUREAU OF RECLAMATION',            
+'SACRAMENTO','AMERICAN RIVER',24,'10N','7E','MD',            
+'CA10148','GRAV',(1010000,1245834),(1885.0,4882.15),            
+(11450,4634),NULL,(NULL,NULL),(480.5,146.5),(26670,8129),            
+(275,84),(62.5,19.1),(5.1,1.6),(36,11),(13970000,10680763),            
+'1956-01-01',(38.0,42.5),(121.0,9.4));            
+            
+</pre>             
+</ul>            
+            
+It is clear that the names of the database record fields and the            
+representations of the fields in the image are highly specific to this            
+particular document. A body of information about fish species, for example            
+would have a completely different logical and typographic structure.            
+<p>            
+The motivation for creating the type of semantic markup illustrated above,            
+which goes beyond simple document structure tags such            
+as <it>chapter, section, footnotes</it>, etc.,            
+is that the fundamental task of many digital library users is to retrieve             
+<it>information</it> to answer a query, rather than to retrieve <it>documents</it> per            
+se.  The answer to a query may not be in a single document, or even in            
+textual form. Supporting semantic information retrieval requires            
+that the collection be indexed and accessed on the basis of content,            
+rather than simply document structure.            
+<p>            
+The DID approach to creating document-specific tags            
+is to support the automatic generation of custom recognizers from            
+declarative specifications, in a manner analogous to the way LEX and YACC            
+generate character string parsers from language            
+grammars. The overall vision is summarized            
+in this figure:            
+<p>            
+<IMG SRC="decoder-generator.gif">            
+<p>            
+The input to a decoder generator is a document model that describes aspects            
+of the document content and appearance relevant to extracting the desired            
+information. Typical elements of this model include specifications of the            
+language, information structure, layout, character shape and degradation            
+processes.  The decoder generator converts the model into a specialized            
+document recognition procedure that implements maximum a posteriori (MAP)            
+image decoding with respect to the model. In the current implementation,            
+the specialized decoders are in-line C programs that are            
+compiled and linked with a support library.            
+<p>            
+The DID project is actively involved            
+with the <a href="http://elib.cs.berkeley.edu/"> UC Berkeley Environmental            
+Digital Library Project</a> and has been developing specialized decoders            
+for documents in the project testbed. These <a            
+href="http://elib.cs.berkeley.edu/kopec/">advanced structured document </a>            
+examples include a table of <a href="http://elib.cs.berkeley.edu/dams/">            
+California Dams </a> and descriptions of <a            
+href="http://elib.cs.berkeley.edu/kopec/tr9/html/home.html"> Delta Fish            
+Species </a>. Additional information about the application of DID to the            
+digital library can be found in <a href="#Kopec">[Kopec]</a>.            
+            
+<a name="subsection:dis">            
+<h4>Document Image Summarization</h4></a>            
+            
+The Document Image Summarization (DIMSUM) activity is developing methods            
+for creating summaries of scanned documents without performing optical            
+character recognition (OCR). DIMSUM is motivated  by the observation            
+that performing OCR is often much more computationally demanding that            
+preparing a summary using the recognized text,             
+The DIMSUM strategy is to directly extract images of sentences and phrases            
+that together communicate a sense of the document. To identify a set of            
+summarizing excerpts, word boxes are extracted from the images and then            
+word-box equivalence classes are formed.  Based on word proximity and            
+statistics on word frequency within the document, a set of summarizing            
+excerpts is constructed. The following is an example of a five sentence summary of a three page article on            
+rocket engine development created using DIMSUM:            
+<p>            
+<IMG SRC="train80_ksents.8.gif">            
+<p>            
+One application of DIMSUM is in generation of            
+single-page summary sheets that can be used later for retrieval of the            
+full document. Additional information can be found in <a href=#CB> [Chen and            
+Bloomberg]</a>.            
+            
+            
+<a name="subsection:pro">            
+<h4>Paper User Interface and Protofoil</h4></a>            
+            
+The Paper User Interface and Protofoil            
+are two approaches to providing interfaces that            
+bridge the paper and digital worlds.  <b> Paper User            
+Interface</b> (<a href="#Johnson">[Johnson et al.]</a>), moves the            
+user interface beyond the workstation and onto paper itself.  This            
+technology uses paper forms, often placed as cover sheets in            
+front of paper documents, to invoke electronic behavior or to control            
+how documents are processed during and after scanning. Because paper            
+forms eliminate the necessity of using a workstation interface for            
+many tasks, users can perform a wide range of operations remotely,            
+often in a manner that decouples their time from the system's            
+activity. For example, a user can fill out forms for processing            
+documents on a plane trip, fax the stack of documents (separated by            
+forms) to his paper server at home for storage and/or distribution to            
+others.            
+            
+<p>            
+            
+To support the exploration of the use of paper user interface,             
+a paper infrastructure was developed that provides mechanisms            
+for defining and managing forms, and for processing incoming streams            
+of digital images from scanners and faxes, and for invoking document            
+services provided in the electronic world.             
+            
+<p>            
+            
+The second interface for linking paper and digital documents is            
+<b>Protofoil</b> <a href="#RAO">[Rao et al. 94]</a>, a system for            
+storing, retrieving, and manipulating scanned paper documents using an            
+electronic filing cabinet metaphor. Protofoil is intended to support            
+the filing needs of the individual information worker and has been            
+deployed and evaluated at a lawyer's office as part of an extensive            
+ethnographically-motivated design study.  [See <a            
+href="http://www.dlib.org/dlib/may96/05hearst.html">D-Lib Magazine,            
+May, 1996 </a> for more information about PARC work practices research            
+related to digital libraries.]  Protofoil allows users to store and            
+retrieve document images and to invoke various document services on            
+the stored documents.  The system consists of three major components:            
+(i) software for scanning documents and interpreting paper user            
+interface forms as instructions (see below), (ii) a database for            
+storing and archiving the document images and associated descriptions            
+or auxiliary renderings, and (iii) a graphical user interface for            
+retrieving and manipulating stored documents.  Protofoil integrates            
+components from a number of other PARC projects including the Text            
+Database (TDB) <a href="#Cutting91">[Cutting et al. 91]</a>            
+statistical content analysis engine.            
+            
+            
+<a name="section:iav">            
+<h3> Information Access and Visualization</h3></a>            
+            
+The emergence of digital libraries promises to provide massive amounts            
+of diverse types of digital information.  This brings to the forefront            
+the necessity of building new, more powerful, user workspaces for            
+finding and using information in this increasingly rich and varied            
+world.             
+            
+<p> Researchers at PARC have developed a variety of theoretical and            
+computational tools for search over and retrieval from large            
+collections of online documents (usually natural language texts, but            
+increasing multimedia), as well as for helping the user understand and            
+navigate the contents of the collections.            
+            
+<p>            
+            
+Some of the work in this area has recently been discussed in a digital            
+library context in another publication <a href="#RAO95"> [Rao et            
+al. 95]</a>.  The discussion below focuses on  a somewhat different            
+subset of this work, and at different levels of detail.  The main areas            
+are:            
+<ul>             
+            
+<li> <a href="#subsection:ir"> Three novel            
+     Text Search and Browsing techniques</a>: <b> Scatter/Gather </b>,            
+     <b> TileBars </b>, and <b> Murax Question Answering </b>,            
+            
+<li> <a href="#subsection:iv"> An architecture for 3D  Information            
+     Visualization </a> and a digital-library-oriented example of this            
+     technology, called <b> Butterfly </b>, and            
+            
+<li> <a href="#subsection:ae"> Frameworks  for the analytical and            
+     empirical characterization </a> of information-intensive work.            
+            
+</ul>            
+            
+This discussion omits important related work also underway at PARC            
+including automatic text summarization <a href="#Kupiec95">[Kupiec et            
+al.]</a> (as opposed to image summarization discussed above), document            
+filtering and classification from a pre-defined set of categories <a            
+href="#Schuetze">[Sch&#252;tze et al.]</a>, automatic category            
+assignment when no pre-existing categories are present <a            
+href="#Sahami">[Sahami et al.]</a>, and automatic generation of            
+thesaurus terms <a href="#Schuetze92">[Sch&#252;tze]</a>.            
+            
+            
+<a name="subsection:ir">            
+<H4>Text Search and Browsing Paradigms</H4></a>            
+            
+Information Access research at Xerox PARC focuses on amplifying the            
+users' cognitive abilities, rather than trying to completely automate            
+them.  This framework emphasizes the participation of the user in a            
+cycle of query formulation, presentation of results, followed by query            
+reformulation, and so on.  This framework is intended to help the user            
+iteratively refine a vaguely understood information need.            
+Since this work focuses on query repair, the information presented            
+is typically not document descriptions, but rather intermediate information            
+that indicates relationships between the query and the retrieved            
+documents.              
+<p>            
+            
+If a user of an information access system issues a query that            
+retrieves a very large number of documents, that user cannot be            
+expected to have the time and patience to read through a large set of            
+titles.  Instead, the information access system should provide the            
+user with tools to facilitate the assimilation of the results.  One            
+possibility is to help the user reformulate the query by suggesting            
+alternative terms.  Another possibility, explored in the examples            
+below, is to provide tools to aid the user in the navigation of the            
+retrieval results.            
+            
+            
+<H4>Scatter/Gather Document Clustering</H4>            
+            
+<p>            
+            
+Scatter/Gather uses the metaphor of a dynamic table-of-contents to help            
+the user navigate a large collection of documents.  Initially the            
+system uses <b> document clustering</b> to automatically <b> scatter </b>            
+the collection into a small number of coherent document groups, and            
+presents short summaries of the groups to the user.  Based on these            
+summaries, the user selects one or more of the groups for further            
+study.  The selected groups are <b> gathered</b>, or unioned, together            
+to form a subcollection.  The system then reapplies clustering to            
+scatter the new subcollection into a new set of document groups, and            
+these in turn are presented to the user.  With each successive            
+iteration the groups become smaller, and therefore more detailed.            
+<p>            
+            
+The document clustering algorithm is optimized for speed, to encourage            
+interaction, rather than to guarantee accuracy.  The current system            
+uses a linear-time clustering algorithm for <i> ad hoc </i> document            
+collections and a constant-time algorithm for stable, preprocessed            
+collections.  The linear-time algorithm can organize 5000 short            
+documents in under one minute on a SPARC20 workstation.              
+            
+<p>            
+            
+The cluster summaries are designed to impart general topical            
+information.  Clusters are summarized by presenting their size, a set            
+of <b> topical terms </b>, and a set of <b> typical titles</b>.  The            
+topical terms are extracted from the <b> document profiles </b>, or            
+weighted bag-of-words representations, of the documents included in            
+the cluster and are intended to reflect the terms of greatest            
+importance in that cluster.  The typical titles are the titles of            
+documents closest to the cluster centroid.            
+            
+<p> Here we demonstrate the use of Scatter/Gather on the TIPSTER            
+collection of over 1 million newswire, newspaper, magazine and            
+government articles, dating mainly from the late 1980's.  We also make            
+use of one of the TREC queries and its associated relevance judgments.            
+For this query, the task is to find all documents that discuss the            
+following abbreviated version of Topic 87: <strong> Criminal Actions            
+Against Officers of Failed Financial Institutions. </strong>             
+            
+<P>            
+            
+We formulated a query containing the terms <i> bank financial            
+institution failed criminal officer indictment </i> and instructed the            
+system to retrieve the 500 top-ranked documents according to a            
+standard weighting algorithm, which are then gathered into five            
+clusters; below the resulting sizes and topical terms are shown.            
+            
+<P>            
+<IMG SRC="sg-ex-01.gif">            
+<P>            
+            
+Cluster 4 stands out for the purposes of the query in that it contains            
+terms pertaining to fraud, investigation, lawyers, and courts.  Since            
+we know the system has retrieved documents that pertain to financial            
+institutions, we can assume that the legal terms occur in the context            
+of financial documents.  It turns out that out of these 500 retrieved            
+documents, only 21 had been judged relevant to the query by the TREC            
+judges and 15 of these relevant documents appear in Cluster 4.  The            
+user can now select this cluster (or several clusters) and re-scatter            
+it to see its contents in more detail, or access the documents            
+directly by clicking on their titles.  See <a href="#HP">[Hearst and            
+Pedersen]</a>, <a href="#Cutting92b">[Cutting et al. 92b]</a>             
+and <a href="#Cutting93">[Cutting et al. 93]</a> for more            
+for more            
+information.            
+            
+            
+<h4> TileBars </h4>            
+            
+The <b> TileBars </b> interface <a href="#Hearst">[Hearst]</a> allows            
+the user to make informed decisions about which documents and which            
+passages of those documents to view, based on the distributional            
+behavior of the query terms in the documents.  The goal is to            
+simultaneously and compactly indicate (i) the relative length of the            
+document, (ii) the frequency of the term sets in the document, and            
+(iii) the distribution of the term sets with respect to the document            
+and to each other.  Each document is partitioned in advance into a set            
+of subtopical segments.            
+            
+Below we show an example run on a query about efforts at technology            
+transfer of research at Xerox and PARC, run the TREC/TIPSTER            
+collection of over 1 million newswire, newspaper, magazine and            
+government articles, dating mainly from the late 1980's.             
+The query consists of three <b> Term Sets</b>, where each set of terms            
+is meant to correspond to a topic of the query:            
+            
+<p>            
+<img src="tb-ex-00.gif">            
+<p>            
+            
+The TileBars for the most relevant looking cluster (from the results            
+of a Scatter/Gather) are shown.  The ranking reflects criteria            
+specific to this interface: the documents are ranked first by overlap:            
+how many segments have hits for all termsets, second by total number of            
+hits, and third by the ranking from a similarity search. The number            
+shown is the original similarity search ranking.            
+            
+<p>            
+Each large rectangle indicates a document, and each square within the            
+document represents a coherent text segment.  The darker the segment,            
+the more frequent the term (white indicates 0, black indicates 8 or            
+more hits, the frequencies of all the terms within a term set are            
+added together).  The top row of each rectangle correspond to the hits            
+for Term Set 1, the middle row to hits of Term Set 2, and the bottom            
+row to hits of Term Set 3.  The first column of each rectangle            
+corresponds to the first segment of the document, the second column to            
+the second segment, and so on.            
+<p>            
+<img src="tb-ex-01.gif">            
+<p>            
+            
+In this example we can see at a glance that all three topics are            
+discussed in at least one segment in the first 16 documents, but that            
+the last four documents discussion only Xerox and research, with no            
+discussion of business or technical transfer.  We can also see the            
+relative lengths of the documents and how strongly the three topics            
+overlap within the documents.  The score next to the title            
+shows what a standard ranking algorithm would produce.              
+            
+<p>            
+            
+A version of TileBars has been implemented in Java as part of the            
+UC Berkeley Digital Library project and can be experimented with at             
+<a href="http://elib.cs.berkeley.edu/tilebars.html">            
+http://elib.cs.berkeley.edu/tilebars.html</a>.             
+            
+<H4>Question Answering</H4>            
+            
+<b>Murax</b></a> <a href="#Kupiec">[Kupiec]</a>            
+examines the domain of closed-classed questions, that is, those            
+questions with specific answers.  In contrast to conventional            
+information retrieval systems, the desired response to a            
+closed-classed question is a fact, not a document. Murax approaches            
+this problem by combining robust shallow natural language analyses            
+with heuristic scoring of ``answer hypotheses'' to yield candidate            
+answers with text fragments as supporting evidence.  This work has            
+makes use of an on-line encyclopedia.            
+            
+<p> For example, in answer to the question <i>What New York City            
+borough was the setting for Saturday Night Fever?  </i> the system            
+responds as follows:            
+            
+<p>            
+<ul>            
+Suggesting <strong>Brooklyn</strong> as the answer            
+<p>            
+            
+<strong>            
+Article: Travolta, John            
+</strong>            
+            
+<ul> <li>            
+The actor John Travolta, b. Englewood, N.J., Feb. 18, 1954, was            
+launched to stardom by his portrayal of Tony Manero, a <strong>Brooklyn</strong>            
+disco king, in the <em>film Saturday Night Fever </em>(1977)...</ul>            
+<p>            
+<strong>            
+Article: Brooklyn            
+</strong>            
+            
+<ul><li>            
+<strong>Brooklyn</strong>, a <em>borough</em> of <em>New York City</em> with a population of            
+2,230,936 (1980), is            
+located on southwestern Long Island...            
+</ul>            
+</ul>            
+<p>            
+            
+Evidence is knitted together from noun phrases taken from two            
+different articles.  <i> Brooklyn </i> was suggested as the answer because            
+it appears in conjunction with the phrase <i> Saturday Night Fever </i> in            
+the Travolta article, and with <i> borough </i> and <i> New York City </i> in            
+the Brooklyn article.             
+<p>            
+            
+Question answering of this type should play an increasingly important            
+role as more and more information becomes available electronically.            
+            
+            
+            
+<a name="subsection:iv">            
+<H4>Information Visualization</H4>            
+            
+            
+            
+            
+<P>            
+The Information Visualization project has for many years            
+been exploring the application of interactive graphics and            
+animation technology to the problem of visualizing and making sense of            
+larger information sets.  This work is based on the premise that many            
+complex information tasks can be simplified by offloading complex            
+cognitive tasks onto the human perceptual system.            
+            
+<P>            
+            
+The <b> Information Visualizer (IV)</b> <a href="#Robertson">[Robertson            
+et al.]</a> is based on a <b> 3D Rooms </b> metaphor to establish a            
+large workspace containing multiple task areas.  In addition, other            
+novel building blocks were developed to support a new user interface            
+paradigm.              
+            
+The IV architecture has enabled the development of a set of animated            
+information visualizations for hierarchical information, including the            
+<b> Cone-Tree </b>, the <b> Perspective Wall </b> and the <b> Table            
+Lens</b>.  The figure below shows examples of a cone-tree            
+and a perspective wall.            
+Many of these techniques use the display uniformly,            
+assigning a large number of pixels to a focus area, and retaining            
+contextual cues in less detail.  These techniques allow the display of            
+larger number of items than could previously be put on the screen.            
+For example, the top 600 nodes of the Xerox organization chart could            
+be seen all at the same time even though it otherwise requires an             
+80-page paper document.            
+            
+<p>            
+            
+<IMG SRC="iv.gif" WIDTH=234 HEIGHT=175 ALIGN=center>            
+<p>            
+            
+<h4> The Butterfly Citation Browser </h4>            
+            
+<p>            
+            
+An application of IV that is of particularly relevance to digital            
+libraries is <b> Butterfly </b>, an Information Visualizer application            
+for collections of scholarly papers, which have rich patterns for            
+visualization including people, time, place, and citation            
+relationships <a href="#Mackinlay">[Mackinlay et al]</a>.  Butterfly            
+allows the user to quickly navigate citation relationships among            
+scholarly papers (available from DIALOG's Science Citation databases)            
+by interacting with virtual 3D objects representing papers and their            
+citation relationships.  Network information often involves slow            
+access that conflicts with the use of highly-interactive information            
+visualization. Butterfly addresses this problem, integrating search,            
+browsing, and access management via four techniques:            
+            
+<ol>             
+            
+<li> visualization supports the assimilation of retrieved            
+information and integrates search and browsing activity,            
+            
+<li> automatically-created ``link-generating'' queries assemble            
+bibliographic records that contain reference information into citation            
+graphs,            
+            
+<li> asynchronous query processes explore the resulting graphs for the            
+user, and            
+            
+<li> process controllers allow the user to manage these processes.              
+</ol>            
+            
+Experience with the Butterfly implementation has allowed the proposal            
+of a general information access approach, called <b> Organic User            
+Interfaces </b> for Information Access, in which a virtual landscape grows            
+under user control as information is accessed automatically.             
+            
+<P>            
+                
+<A HREF="bfly.gif"><IMG SRC="bfly.gif" width=468 height=350> Full Size Image</A>                
+<P>                    
+            
+            
+<a name="subsection:ae">            
+<h4>Analytical and Empirical Characterization of            
+Information-Intensive Work</h4>            
+            
+Information retrieval has often been studied as if it were a            
+self-contained problem (e.g., library automation).  Yet from the            
+user's point of view, information retrieval is almost always part of            
+some larger process of information use. Researchers at PARC are            
+engaged in a set of empirical and theoretical studies to characterize            
+information-access-intensive work in a way that leads to the design            
+and evaluation of digital library and related systems.            
+            
+<p>             
+There are currently three thrusts.  First is the characterization            
+of accessible information in terms of its cost structure <a            
+href="#Card"> [Card and Pirolli]</a>.  Information retrieval can be            
+thought of as just the rearrangement of this cost structure.  Second,            
+is the application of concepts from the literature of optimal foraging            
+theory from biology to information access.  Based on cost and benefit            
+parameters, this allows us to understand the ecology of various            
+information strategies, such as direct retrieval vs automatic            
+dissemination <a href="#Pirolli"> [Pirolli et al.]</a>.  Third is the            
+development of a theory of <b> sensemaking </b> <a href="#Russell">            
+[Russell et al.]</a>, which articulates the methods by which raw            
+information is combined to produce new information products and            
+insights.  All three of these components are being explored in the            
+context of the World Wide Web and information access.            
+            
+<p>            
+            
+<a name="section:mid">            
+<h3> Middleware </h3></a>            
+            
+<p>            
+            
+Middleware refers to software and systems architecture that helps knit            
+together the various pieces of a distributed information delivery            
+system, including information repositories, search and retrieval            
+tools, and client-side workspace tools such as visualizations.            
+Important emerging issues are the need to develop a network-oriented            
+object-oriented mechanism for system interoperability, and interfaces            
+that make use of this mechanism to expose the capabilities of the            
+underlying sub-systems.            
+            
+<p>            
+            
+PARC work in interface and middleware development for digital library            
+integration has focused on three components:            
+            
+<ul>            
+            
+<li> <a href="#subsection:ilu"> Language and system interoperability            
+       (ILU)</a>             
+            
+<li> <a href="#subsection:dma"> Standardization of interfaces to            
+repositories (DMA)</a>            
+            
+<li> <a href="#subsection:met"> Integration of multiple search services over collections (Metro)</a>.            
+</ul>            
+            
+<p>            
+            
+<a name="subsection:ilu">            
+<h4> The Inter-Language Unification System (ILU) </h4></a>            
+            
+<p>            
+            
+There are currently two primary distributed object-oriented            
+programming paradigms available as open standards in the commercial            
+market, Microsoft's Distributed Component Object Model (<a            
+ref=http://www.microsoft.com/intdev/inttech/dcom.htm>DCOM</a>) and <a            
+ref=http://www.omg.org>OMG</a>'s Common Object Request Broker            
+Architecture (<a ref=http://www.omg.org/corba.htm>CORBA</a>).  While            
+there are many differences between the two, and debates about their            
+relative merits are intense, there is no question that both are            
+powerful enough to serve as the infrastructure on which to build            
+digital library systems.  The <b> Inter-Language Unification System            
+(ILU) </b> is an implementation of the CORBA standard that was            
+developed at PARC and is distributed freely over the Internet.  (See            
+<a href="ftp://ftp.parc.xerox.com/pub/ilu/ilu.html">            
+ftp://ftp.parc.xerox.com/pub/ilu/ilu.html</a>.)            
+            
+<p>            
+            
+ILU is a multi-language object interface system designed to provide            
+interconnection between components of a distributed system. The object            
+interfaces provided by ILU hide implementation distinctions between            
+different languages, between different address spaces, and between            
+operating systems.  For example, ILU allows modules            
+written in Common Lisp, C++, and Python to be combined.            
+It also automatically provides networking to interconnect parts of the            
+system running on different machines, thereby relieving application            
+programmers of the need to write networking code.  Finally, it can be            
+used to define and document interfaces between the modules of            
+non-distributed and distributed programs using ILU's Interface            
+Specification Language.  Currently several of the NSF-sponsored            
+Digital Library Initiative projects are making use of ILU.              
+            
+<p>            
+<a name="subsection:dma">            
+<h4> The Document Management Alliance (DMA)</h4></a>            
+            
+<p>            
+Xerox joined with Novell in May 1994 to propose a standard framework            
+for distributed document repositories called <b> Document Enabled            
+Networking </b> (<a            
+ref=http://www.xerox.com/XSoft/PR/xeroxnov.html>DEN</a>).  This            
+standard was both competitive and complementary with the standard            
+proposed by the Shamrock Document Management Coalition, so in April            
+1995 they were merged to produce the <b> Document Management Alliance            
+</b> (<a ref=http://www.aiim.org/dma/>DMA</a>), a standards group            
+under the auspices of the Association for Information and Image            
+Management <a href="http://www.aiim.org/">(AIIM)</a>.  The proposed DMA            
+standard specifies an object system and interfaces for            
+repository-based document management, including storage and retrieval            
+of documents of various types, version management services, catalog            
+information and search services, and integration of services over            
+multiple repositories.  All objects in DMA are self-describing using            
+mechanisms built into the standard.            
+            
+<p>            
+            
+The DMA standard is currently in draft form, with a version 1 release            
+expected by third quarter of 1996.   PARC and other Xerox            
+researchers are actively involved with DMA standards and development            
+activities.  In particular, the 1996 AIIM trade show in Chicago            
+featured a demonstration of DMA-based interoperability between a            
+number of client and repository systems, one of which was developed by            
+Xerox researchers in Webster, New York.  In addition, Xerox research            
+in El Segundo, California, has been involved in porting the XSoft DMA            
+middleware (available free to DMA members) from Win32 to Unix, and is            
+currently working on extending the middleware to support distributed            
+repositories.            
+            
+<p>            
+<a name="subsection:met">            
+<h4> The Metro Project</h4></a>            
+            
+<p>            
+            
+A DMA-related effort at PARC is the <b> Metro </b> research project,            
+which provides ILU-based interfaces and middleware that allow the            
+integration of multiple search services over DMA-style repositories.            
+The integrated services may provide quite different analyses of the            
+underlying repository documents (e.g., image vs. text retrieval);            
+Metro allows each of the services to be developed independently and            
+then integrates their operation and search interfaces.            
+The Metro implementation            
+allows for arbitrary distribution of the service and repository system            
+elements, as well as for optimizations in cases where they are            
+co-resident.  In future, Metro functionality is intended to include            
+query persistence (result set updates as repository contents change).            
+            
+            
+<a name="section:up1">            
+<h3> UPrint1  </h3></a>            
+            
+<p>            
+            
+Currently when books are published, a large number of them are printed            
+all at once and distributed to bookstores and other merchants, with            
+the remainder stored in warehouses.  If publishers greatly            
+overestimate the number of books desired they must absorb the expense            
+of unsold books.  On the other hand, print runs using standard            
+printing equipment are expensive unless done in bulk.            
+            
+<p>             
+            
+The <b> UPrint1 </b> project is exploring whether it is practical to            
+print books one at a time, at the time the customer wishes to purchase            
+them <a href="#Bruce"> [Bruce et al.]</a>.  (This assumes that the            
+trend toward digitizing printed material will not make books obsolete,            
+but rather will make <i> bookstores </i> obsolete.  Printed books will            
+stay around because paper has high contrast and resolution and books            
+don't require batteries or power cords.)  This may be more practical            
+today than in the past due to the recent availability of high-end,            
+high-volume publishing systems such as the Xerox DocuTech Network            
+Publisher.  If this effort does prove to be practical, it may            
+dramatically change the book publishing industry.  For instance, books            
+would not need to go out-of-print, and could be customized when            
+printed to have large type, use a special kind of paper, and so on.            
+As another example, small-run, specialized books, such as academic            
+monographs, should become less expensive to produce.            
+            
+<p>            
+            
+The UPrint1 project makes use of an online, or virtual, bookstore.            
+After making a selection at the virtual bookstore, one copy is printed            
+for the customer, either at home if an appropriate printing device is            
+available, or at a print shop.            
+Some advantages of a virtual over a physical bookstore are: it's            
+contents are searchable, browsing can be done in multiple ways instead            
+of the static shelf arrangement of a physical bookstore, a larger            
+selection of books can be available, the bookstore is accessible            
+anytime from anywhere, and it can provide auto-recommendation from an            
+appropriate community of experts.  On the other hand, a physical            
+bookstore provides a place for people to meet and talk, allows for the            
+reading and browsing of physical copies of the books, and often has a            
+coffee shop next door.            
+            
+<p> A virtual bookstore without a UPrint1 service is no different from            
+existing web bookstores in which users find what they want and             
+publishers fill their orders from a warehouse and ship the physical            
+books.  Thus books that are out of print, or that are temporarily sold            
+out are unavailable without a mechanism like UPrint1.  Futhermore,            
+UPrint1 avoid the lag time between ordering and receipt of the book.            
+            
+             
+<p> There are many aspects to making UPrint1 a reality.  Currently the            
+project is focusing on the question of how to entice people to visit            
+an online or virtual bookstore that has no physical books.  One idea            
+is to give the visitor to a virtual bookstore a recommendation service            
+they can't get at a physical bookstore. As a sample scenario, imagine            
+you visit the bookstore and search for books on the Java programming            
+language.  You will get many hits: how do you know which book you            
+should buy?  If you have previously indicated some of your favorite            
+computer books, the system can match you with readers of similar            
+taste, and suggest a Java book that these readers found helpful.             
+Work on this aspect of the project is currently ongoing.            
+            
+<p>            
+            
+<h3> Summary </h3>            
+            
+This article has surveyed some of the recent activities at PARC related to            
+digital libraries, focussing on document capture, information access and            
+visualization, and middleware. The set of specific projects described here            
+is representative of the range of ongoing activities, but is by no means an            
+exhaustive list of all relevant PARC projects. Missing, for example, are            
+significant activities in web-based authoring, high-resolution displays,            
+AAA (authentication, authorization, accounting), multilingual technology,            
+and electronic commerce-based document services. Information about some of            
+these can be found via the <a href=http://www.parc.xerox.com> PARC home            
+page</a>.            
+            
+<h3> Acknowledgements</h3>            
+            
+Bill Janssen, Ramana Rao, and Hinrich Sch&uuml;tze contributed            
+material to this article. Kris Halvorsen and Larry Masinter read and            
+commented on early drafts.            
+            
+<h3> References </h2>            
+            
+<p> <a name="Bruce"> [Bruce et al.]</a> R. Bruce, J. Foote,            
+D. Goldberg, J. Pedersen, K. Petersen, ``UPrint1,'' Xerox PARC            
+Internal Report 1996.            
+            
+<P> <a name="Card"> [Card and Pirolli]</a> S. K. Card and P. Pirolli.            
+``The Cost-of-Knowledge Characteristic Function: Display Evaluation for            
+Direct-Walk Dynamic Information Visualizations,'' <i> Proceedings of the            
+ACM SIGCHI Conference on Human Factors in Computing Systems</i>, April            
+1994.            
+            
+            
+<P> <a name="CB">  [Chen and Bloomberg] </a>            
+F. Chen and D. Bloomberg,            
+``Extraction of Thematically Relevant Text from Images,''            
+<i> Fifth Annual Symposium on Document Analysis and Information Retrieval</i>,            
+April 15 - 17, 1996, Las Vegas, Nevada.            
+            
+            
+<p> <a name="Cutting91"> [Cutting et al. 91]</a> D. Cutting, J. Pedersen,            
+and P.-K. Halvorsen.            
+``An Object-Oriented Architecture for Text Retrieval,'' <i>Proceedings            
+of RIAO'91</i>.            
+            
+<P> <a name="Cutting92">[Cutting et al. 92]</a> D. Cutting, J. Kupiec,            
+J. Pedersen, and P. Sibun.               
+``A Practical Part-of-Speech Tagger,'' <i> Proceedings of Applied            
+Natural Language Processing</i>, Trento, Italy, 1992.            
+            
+            
+<P> <a name="Cutting92b">[Cutting et al. 92b]</a> D. Cutting, D. Karger,            
+J. Pedersen, and J.W. Tukey.  ``Scatter/Gather: A Cluster-based Approach            
+to Browsing Large Document Collections,'' <i> Proceedings of the 15th            
+Annual International ACM/SIGIR Conference</i>, 1992.            
+            
+<p> <a name="Cutting93">[Cutting et al. 93]</a> D. Cutting, D. Karger, and            
+J. Pedersen.  ``Constant Interaction-Time Scatter/Gather Browsing of            
+Large Document Collections,''  <i> Proceedings of 16th Annual            
+International ACM/SIGIR Conference</i>, Pittsburgh, PA, 1993.            
+            
+            
+<P> <a name="Kaplan">[Kaplan and Kay]</a>  R. Kaplan and M. Kay.            
+``Regular Models of Phonological Rule Systems,''            
+<i> Computational Linguistics</i>, 20 (3), pp.331-378, September 1994.            
+            
+<p> <a name="Hearst"> [Hearst]</a> M. A. Hearst, TileBars:            
+``Visualization of Term Distribution Information in Full Text            
+Information Access,'' <i> Proceedings of the ACM SIGCHI Conference            
+on Human Factors in Computing Systems</i>, Denver, CO, ACM, May 1995.            
+<a            
+href="http://www.acm.org/sigchi/chi95/Electronic/documnts/papers/mah_bdy.htm">            
+http://www.acm.org/sigchi/chi95/Electronic/documnts/papers/mah_bdy.htm</a>            
+            
+            
+            
+<p> <a name="HP"> [Hearst and Pedersen]</a> M. A. Hearst and J.O. Pedersen            
+``Re-examining the Cluster Hypothesis:            
+Scatter/Gather on Retrieval Results,'' <i> Proceedings of the            
+19th Annual International ACM/SIGIR Conference</i>, Zurich, 1996.             
+            
+            
+<P> <a name="Johnson"> [Johnson et al] </a>            
+W. Johnson, S. K. Card, H.D. Jellinek, L. Klotz, R. Rao,            
+``Bridging the Paper and Electronic Worlds: The Paper User Interface,''            
+<i> Proceedings of INTERCHI</i>, ACM, April 1993. pp. 507-512.            
+            
+<P> <a name="Kopec"> [Kopec] </a>             
+G. Kopec, ``Document image decoding in the Berkeley digital            
+library project,'' in <i>Document Recognition III</i>, L. Vincent and J. Hull,            
+editors, Proc. SPIE vol. 2660, pp. 2--13, 1996.            
+            
+<P> <a name="KC"> [Kopec and Chou] </a> G. Kopec and P. Chou, ``Document            
+image decoding using Markov source models,'' <i> IEEE. Trans. Pattern Analysis            
+and Machine Intelligence</i>, vol. 16, no. 6, June, 1994.            
+            
+<p> <a name="Kupiec"> [Kupiec]</a> J. Kupiec. ``MURAX: A Robust            
+Linguistic Approach For Question-Answering Using An On-Line            
+Encyclopedia,'' <I> Proceedings of 16th Annual International ACM/SIGIR Conference</i>,            
+Pittsburgh, PA, 1993.            
+            
+<p> <a name="Kupiec95"> [Kupiec]</a> J. Kupiec, J. Pedersen, F. Chen,            
+``A Trainable Document Summarizer,'' <I> Proceedings of 18th Annual            
+International ACM/SIGIR Conference</i>, Pittsburgh, PA, 1995.            
+            
+<p> <a name="Lynch">[Lynch and Garcia-Molina]</a>             
+C. Lynch and H. Garcia-Molina, <i>            
+Interoperability, Scaling, and the Digital Libraries A Report on the            
+May 18-19, 1995 IITA Digital Libraries Workshop </i> Reston, VA,            
+August 22, 1995.              
+<a href="http://www-diglib.stanford.edu/diglib/pub/reports/iita-dlw/main.html">            
+http://www-diglib.stanford.edu/diglib/pub/reports/iita-dlw/main.html</a>            
+            
+            
+            
+<p> <a name="Mackinlay"> [Mackinlay et al.]</a> J. D. Mackinlay,            
+R. Rao and S. K. Card.  ``An Organic User Interface For            
+Searching Citation Links,'' <i> Proceedings of the ACM SIGCHI Conference            
+on Human Factors in Computing Systems</i>, Denver, CO, May 1995.            
+<a href="http://www.acm.org/sigchi/chi95/Electronic/documnts/papers/jdm_bdy.htm">            
+http://www.acm.org/sigchi/chi95/Electronic/documnts/papers/jdm_bdy.htm</a>            
+            
+            
+<p> <a name="Pirolli"> [Pirolli]</a> P. Pirolli and S. K. Card,            
+``Information Foraging in Information Access Environments,''            
+<i> Proceedings of the ACM SIGCHI Conference            
+on Human Factors in Computing Systems</i>, Denver, CO, ACM, May 1995.            
+<a            
+href="http://www.acm.org/sigchi/chi95/Electronic/documnts/papers/ppp_bdy.htm">            
+http://www.acm.org/sigchi/chi95/Electronic/documnts/papers/ppp_bdy.htm</a>            
+            
+            
+<P> <a name="RAO"> [Rao et al. 94] </a> R. Rao, S. K. Card,            
+W. Johnson, L. Klotz, and R. Trigg, ``Protofoil: Storing and Finding            
+the Information Worker's Paper Documents in an Electronic File            
+Cabinet,'' <i> Proceedings of the ACM SIGCHI Conference on Human            
+Factors in Computing Systems</i>, April 1994.            
+            
+<P> <a name="RAO95"> [Rao et al. 95] </a>            
+R. Rao, J. O. Pedersen, M. A. Hearst, et al., ``Rich Interaction in            
+the Digital Library,'' <i> Communications of the ACM</i>, 38            
+(4), 29-39, April 1995.            
+            
+            
+<P> <a name="Robertson"> [Robertson et al.] </a>            
+G. G. Robertson, S. K. Card, J. D. Mackinlay.             
+``Information Visualization Using 3D Interactive Animation,''            
+<i> Communications of the ACM</i>, v.36, n.4, 1993.            
+            
+<P> <a name="Russell"> [Russell et al.] </a>            
+Dan M. Russell, Mark J. Stefik, Peter Pirolli, Stuart K. Card. `` The            
+Cost Structure of Sensemaking,''  <i> Proceedings of ACM InterCHI '93</i>.            
+April 1993.            
+            
+<p>            
+<a name="Sahami"> [Sahami et al.] </a> M. Sahami, M. Hearst, and            
+E. Saund, ``Applying the Multiple Cause Mixture Model to Unsupervised            
+Text Category Assignment,'' <i> Proceedings of the 13th International            
+Conference on Machine Learning</i>, Bari (Italy), July 3-6th, 1996.            
+            
+<p>            
+<a name="Schuetze92"> [Sch&#252;tze] </a> H. Sch&uuml;tze,            
+``Dimensions of Meaning'', <i> Proceedings of Supercomputing</i>,            
+pages 787-796, Minneapolis MN, 1992.            
+            
+<p>             
+<a name="Schuetze"> [Sch&#252;tze  et al.] </a>            
+H. Sch&#252;tze, D. Hull and J. O. Pedersen, ``A Comparison            
+of Classifiers and Document Representations for the Routing Problem,''            
+<i> Proceedings of the 18th Annual International ACM/SIGIR            
+Conference</i>, pages 229-237, 1995. <a            
+href="ftp://parcftp.xerox.com/pub/qca/sigir95.abs.html">            
+ftp://parcftp.xerox.com/pub/qca/sigir95.abs.html</a>            
+            
+            
+<P><ADDRESS>            
+June 5, 1996</I>            
+<p>      
+<H5>Copyright &#169; 1996 Xerox Corporation.  Permission to copy without fee         
+of this material is granted provided that the copies are not made or         
+distributed for direct commercial advantage, this copyright notice and         
+the title of this publication and its date appear.  To copy otherwise,         
+or republish, requires a fee and/or specific permission.</H5>          
+<p>          
+<img src = "../d-line1.gif">          
+<P>          
+<A href = "../../../dlib.html"><IMG src="../hom_but.gif" border=0 ALT="D-Lib Magazine |"</A>          
+<A href="../06contents.html">          
+<IMG src="../mag_but2.gif" border=0 ALT=" Current Issue | "></A>          
+<A href="http://www.dlib.org/Hypernews/get/dlib_responses.html">          
+<img src = "../comm_but.gif" border = 0 ALT = "Comments"><br>          
+<A href="../06clips.html">          
+<IMG src="../next.gif" border=0 ALT="Next Story"></A>          
+<p>          
+<img src = "../d-line2.gif">         
+<P>          
+<I>hdl://cnri.dlib/june96-hearst</I>          
+<p>         
+</BODY>          
+          
+</HTML>          
+         
+           
+
+ contentType 9 text/html url 55 http://www.dlib.org:80/dlib/june96/hearst/06hearst.html responseCode 3 200 

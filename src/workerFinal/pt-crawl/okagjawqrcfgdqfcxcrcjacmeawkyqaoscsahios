@@ -1,0 +1,715 @@
+okagjawqrcfgdqfcxcrcjacmeawkyqaoscsahios length 5 41263 page 41263 <!DOCTYPE html>
+<html>
+<!-- InstanceBegin template="/Templates/div-air.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Air Quality Current Data</title>
+    <!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="head" -->
+    <meta name="keywords" content="air, resources, division, air, quality, des, nhdes, nh, new hampshire, environmental services" />
+    <meta name="description" content="The Air Resources Division (ARD) is responsible for achieving and maintaining air quality in New Hampshire that is protective of public health and our natural environment." />
+    <!-- InstanceEndEditable -->
+    <!-- InstanceParam name="OptionalRegion1" type="boolean" value="false" -->
+    <!-- InstanceParam name="thread" type="boolean" value="true" -->
+    <link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+    <link href="css/nhdes.css?v03112021" rel="Stylesheet" media="screen" type="text/css" />
+    <link href="css/formatting.css?v10262022" rel="Stylesheet" media="screen" type="text/css" />
+    <link rel="stylesheet" href="css/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css" />
+    <link rel="stylesheet" href="css/leaflet.label.css" />
+    <link rel="stylesheet" href="css/AirQuality.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <style type="text/css">
+        #map {
+            width: 325px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid rgb(189, 189, 189);
+        }
+
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        // JS classes in ./js/jscl
+        var dojoConfig = {
+            baseUrl: "./js/",
+            tlmSiblingOfDojo: false
+        };
+    </script>
+    <script src="js/leaflet/v0.7.7/leaflet.js" type="text/javascript"></script>
+    <script src="js/leaflet.label.js" type="text/javascript"></script>
+    <script src="//code.highcharts.com/adapters/standalone-framework.js" type="text/javascript"></script>
+    <script src="//code.highcharts.com/highcharts.js" type="text/javascript"></script>
+    <script src="//code.highcharts.com/highcharts-3d.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js" data-dojo-config="async: true" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        app = new Object();
+        require(['dojo/domReady!'], function () {
+            app.fetchJSON();
+        });
+
+        app.fetchJSON = function () {
+            require(['dojo/dom', 'dojo/on', 'dojo/dom-attr', 'dojo/dom-style', 'dojo/dom-construct', 'dijit/Dialog', 'dojo/request', 'dojo/DeferredList'], function (dom, on, domAttr, domStyle, domConstruct, Dialog, request, DeferredList) {
+                var ok1 = false,
+                    ok2 = false;//,
+                //data1,
+                //data2;
+
+                // Request 1
+                var promise1 = request('GeoJSON/MapJSON.jgz', {
+                    handleAs: 'json'
+                }).then(function (response) {
+                    ok1 = true;
+                    data1 = response;
+                }, function (err) {
+                    if (console.error) {
+                        console.error(err);
+                    }
+                    
+                });
+
+                // Request 1
+                var promise2 = request('json/current_data.json', {
+                    handleAs: 'json'
+                }).then(function (response) {
+                    ok2 = true;
+                    data2 = response;
+                }, function (err) {
+                    if (console.error) {
+                        console.error(err);
+                    }
+                });
+
+                // Create a DeferredList to manage both of them
+                var list = new DeferredList([promise1, promise2]);
+                // When they're both resolved...
+                list.then(function (result) {
+                    // Do something!
+                    if (ok1 && ok2) {
+                        countyBoundaryJSON = data1['countyboundaries'];
+                        monareasJSON = data1['monareas'];
+                        countyCentroidJSON = data1['countycentroids'];
+                        app.buildContent(data2);
+                    } else {
+                        app.buildContent(data2);
+                        alert('There was a problem retrieving data that is required for the map.');
+                    }
+
+                });
+            });
+        };
+
+        app.buildContent = function (tableData) {
+            require(['dojo/dom', 'dojo/dom-style', 'AirTable_V0', 'AirMap', 'dojo/domReady!'], function (dom, domStyle, AirTable, AirMap) {
+                var spanEdingAt = dom.byId('spanEndingAt'),
+                    tableRelativeLevels = dom.byId('tableRelativeLevels'),
+                    aq_table = dom.byId('aq_table');
+                app.airTable = new AirTable({ 'tableData': tableData });
+                if (spanEndingAt) {
+                    spanEndingAt.innerHTML = app.airTable.getDisplayDate(app.airTable.tableData['effectiveDate']);
+                }
+                if (tableRelativeLevels) {
+                    domStyle.set(tableRelativeLevels, { 'visibility': 'visible' });
+                }
+                if (aq_table) {
+                    domStyle.set(aq_table, { 'visibility': 'visible' });
+                }
+                app.airMap = new AirMap({ 'name': 'george' });
+                app.checkForUpdates();
+            });
+
+        };
+
+        /**
+        *  This function, called from app.buildContent, looks to handlers/DataCheck.ashx to see
+        *  if a more recent source JSON file is available.  If it is, the user is asked if the page should be reloaded.
+        */
+        app.checkForUpdates = function () {
+            var timerMS = 1*60*1000,
+                url = 'Handlers/DataCheck.ashx';
+            require(["dojo/request/xhr"], function (xhr) {
+                xhr(url, {
+                    handleAs: "json"
+                }).then(function (response) {
+                    // Have a response
+                    if (response.success) {
+                        // Response in successful
+                        var hvJsonDate = document.getElementById('hvJsonDate');
+                        if (hvJsonDate) {
+                            var curValue = parseInt(hvJsonDate.value),
+                                newValue = Date.parse(response.filedate);
+                            if (!isNaN(curValue)) {
+                                // Value of #hvJsonDate has been established:  compare to current UTC date.
+                                if (newValue > curValue) {
+                                    // Newer file
+                                    app.confirmYesNo({
+                                        'title': 'Updated Air Quality Data',
+                                        'text': '<p>The air quality data was updated at ' + response.filetime + '.</p><p>Would you like to reload the page?</p>'
+                                    }).then(function (answer) {
+                                        if (answer) {
+                                            document.location = document.location;
+                                        }
+                                        setTimeout(app.checkForUpdates, timerMS);
+                                    });
+                                } else {
+                                    // File is not newer:  simply setTimeout
+                                    setTimeout(app.checkForUpdates, timerMS);
+                                }
+                            } else {
+                                // Value of #hvJsonDate is empty:  fill it and setTimeout
+                                hvJsonDate.value = newValue;
+                                setTimeout(app.checkForUpdates, timerMS);
+                            }
+                        }
+                    } else {
+                        if (console.error) {
+                            console.error('checkForUpdates success is false:  ' + response.message + '\n\nFurther processing is suspended.')
+                        }
+                    }
+                }, function (err) {
+                    if (console.error) {
+                        console.error('checkForUpdates request error:  ' + err.message + '\n\nFurther processing is suspended.')
+                    }
+                }, function (evt) {
+                    // Handle a progress event from the request if the
+                    // browser supports XHR2
+                });
+            });
+        };
+
+        /**
+        *  Opens a Yes/No confirmation dialog and returns true or false.
+        *  The argument is an object:  {'title':'Dialog Title', 'text':'Dialog text'}.
+        */
+        app.confirmYesNo = function (options) {
+            function removeIt() {
+                $('#myDialog').dialog('destroy');
+                $('#myDialog').remove();
+            }
+            var defer = $.Deferred();
+            var div = $('<div>').attr({ 'id': 'myDialog', 'title': options.title }).css({}).html(options.text).appendTo($('body'));
+            var diag = div.dialog({
+                autoOpen: false,
+                modal: true,
+                minWidth: 500,
+                //close: removeIt,
+                open: function () {
+                    $('div.ui-dialog-buttonset button').removeClass('ui-corner-all');
+                    $('.ui-widget-overlay').css({ opacity: '.8' });
+                    $('.ui-dialog').css('z-index', 1003);
+                    $('.ui-widget-overlay').css('z-index', 1002);
+                },
+                buttons: {
+                    'Yes': function () {
+                        defer.resolve(true);
+                        $(this).dialog('close');
+                    },
+                    'No': function () {
+                        defer.resolve(false);
+                        $(this).dialog('close');
+                    }
+                }
+            });
+
+            div.dialog('open');
+            return defer.promise();
+        }
+    </script>
+</head>
+<body style="position: relative; min-height: 100%; top: 0px;" class="nhgov">
+    <!-- START OF NEW HEADER -->
+    <div id="pageHeader">
+        <div id="headerGraybar" class="pgheader-table">
+            <!-- Links in the Gray Bar (center-justified): totally optional -->
+            <!--
+              <div class="pgheader-cell">
+                  <div class="graybar-links">
+                      <a href="https://www.des.nh.gov/" title="NHDES Home">DES Home</a>
+                  </div>
+                  <div class="graybar-links">
+                      <a href="https://www4.des.state.nh.us/OnestopDataProviders">Data Provider Login</a>
+                  </div>
+              </div>
+              -->
+        </div>
+
+        <div id="headerCenterbar" class="pgheader-table">
+            <div id="headerLeft" class="pgheader-cell">
+                <a href="https://www.des.nh.gov/" title="Home" rel="home" class="site-logo">
+                    <img src="Images/logo-environmental-services.png" alt="Home">
+                </a>
+            </div>
+
+            <div id="headerCenter" class="pgheader-cell">
+                <div class="agency-info">
+                    <ul class="agency-links">
+                        <li>
+                            <a href="https://www.des.nh.gov/advisories">Advisories</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/events">Events</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/onestop-navigation">OneStop</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/about">About</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/contact" data-drupal-link-system-path="node/286">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <ul>
+                        <li class="facebook"><a href="https://www.facebook.com/NHEnvironmentalServices/" title="Visit our Facebook page"><i class="fab fa-facebook-square"></i></a></li>
+                        <li class="twitter"><a href="https://twitter.com/NHDES" title="Visit our Twitter page"><i class="fab fa-twitter"></i></a></li>
+                        <li class="instagram"><a href="https://www.instagram.com/nhenvironmentalservices" title="Visit our Instagram page"><i class="fab fa-instagram"></i></a></li>
+                        <li class="youtube"><a href="https://www.youtube.com/user/NHDES" title="Visit our Youtube page"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="headerRight" class="pgheader-cell">
+                <img src="Images/livefree.png" alt="New Hampshire state seal">
+            </div>
+        </div>
+
+        <div id="headerBluebar" class="pgheader-table">
+            <!-- Links in the Blue Bar (right-justified): totally optional -->
+            <div class="pgheader-cell">
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/home-and-recreation" title="Home and Recreation">Home and Recreation</a>
+                </div>
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/business-and-community/municipal-resources" title="Municipal Resources">Municipal Resources</a>
+                </div>
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/business-and-community/business-resources" title="Business Resources">Business Resources</a>
+                </div>
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/search" title="Site Search">Site Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF NEW HEADER -->
+  <div id="container">
+      <div id="innerContainer" style="margin-top: -3px;">
+          <!-- Begin Left Sidebar -->
+          <div id="leftsidebar">
+              <!-- Default Nested Blue Menu Code Starts Here -->
+              <div id="menuBLUE" style="display: none;">
+                  <ul id="navlist">
+                      <li id="active"><a href="https://www.des.nh.gov/">DES Home</a></li>
+                      <li><a href="https://www.des.nh.gov/search">Site Search</a></li>
+                      <li><a href="https://www.des.nh.gov/about">About DES</a> </li>
+                      <li><a href="https://www.des.nh.gov/resource-center/media-center">Media Center</a></li>
+                      <li><a href="https://www.des.nh.gov/home-and-recreation">Home and Recreation</a></li>
+                      <li><a href="https://www.des.nh.gov/business-and-community/municipal-resources">Muncicipal Resources</a></li>
+                      <li><a href="https://www.des.nh.gov/business-and-community/business-resources">Business Resources</a></li>
+                      <li><a href="https://www.des.nh.gov/rules-and-regulatory">Rules and Regulatory</a></li>
+                      <li><a href="https://www.des.nh.gov/contact">Contact Us</a></li>
+                      <li><a href="https://www.des.nh.gov/sitemap">Site Map</a></li>
+                  </ul>
+              </div>
+              <!-- Default Nested Blue Menu Code Ends Here -->
+              <div id="onestop" style="margin-top: 44px;">
+                  <p>
+                      <a href="https://www4.des.state.nh.us/DESOnestop/BasicSearch.aspx">
+                          <img src="./images/onestop.gif" alt="One Stop data and Information" height="45" width="125" />
+                      </a>
+                  </p>
+              </div>
+              <!--
+            <object data="./images/Alert_app.swf" id="Alert_app" type="application/x-shockwave-flash"  height="136" width="155"></object>
+            -->
+              <p>
+                  <a href="https://visitor.r20.constantcontact.com/manage/optin?v=001dZZfSJUF90B7pVuGHqxRT5eDWE0hccVzuy7LwAfgp-b0DUNCwkjSuOyncV8jPSXknGQnWnoetr3C6VKjIZH-T3mS60FpN70op_3mR5PTRhw%3D">
+                      <img src="./images/enews.gif" alt="eNews" height="50" width="125" />
+                  </a>
+              </p>
+              <p style="display: none;">
+                  <a href="https://twitter.com/NHDES">
+                      <img src="./images/twitter_logo.gif" alt="twitter icon" height="58" width="158" />
+                  </a>
+              </p>
+              <p>
+                  <a href="https://www.nhec.nh.gov/">
+                      <img src="./images/nhec-logo.gif" alt="NH Environmental Councils logo" height="86" width="160" />
+                  </a>
+              </p>
+          </div>
+          <!-- End Left Sidebar -->
+          <!-- Begin Right Sidebar -->
+          <div id="rightsidebar">
+              <!-- InstanceBeginEditable name="rightsidebarcontent" -->
+              <!-- InstanceEndEditable -->
+              <br />
+              <table class="featuretableBLUE">
+                  <tbody>
+                      <tr>
+                          <th>
+                              Air Quality
+                          </th>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p>
+                                  <a href="AirQualityForecast.html">Air Quality Forecast</a>
+                              </p>
+							  <p>
+                                  <a href="CitizenAirMonitoringProgram/">Citizen Air Monitoring Program</a>
+                              </p>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+              <table class="featuretableBLUE">
+                  <tbody>
+                      <tr>
+                          <th>
+                              Air Resources Division
+                          </th>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p>
+                                  <a href="https://www.des.nh.gov/air">Air Resources</a>
+                              </p>
+                              <!--
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/overview.htm">Division Overview</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/programs.htm">Programs/Bureaus/Units</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/regulations.htm">Rules/Regulatory</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/publications.htm">Publications</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/contactus.htm">Contact Us</a></p>
+                            -->
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+              <table class="featuretableBLUE" style="display: none;">
+                  <tbody>
+                      <tr>
+                          <th>
+                              The Department
+                          </th>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p>
+                                  <a href="https://www.des.nh.gov/about/leadership">Leadership</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/air">Air Resources Division</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/waste">Waste Mgmt. Division</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/water">Water Division</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/about/boards-and-committees">Boards and Committees</a>
+                              </p>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+              <!--
+            <div id="calendar">
+              <a href="http://www4.egov.nh.gov/sign-up/public/cal.asp?w=list&amp;y=5">
+                <img src="./images/calendar-graphic.gif" alt="DES Event Calendar" height="152" width="180" /></a>
+            </div>
+            -->
+              <p>
+                  &nbsp;
+              </p>
+          </div>
+          <!-- End Right Sidebar -->
+          <div id="mainContent3col">
+              <a name="skip"></a>
+              <br />
+              <div id="breadcrumb" style="display: none;">
+                  <!-- InstanceBeginEditable name="breadcrumb" -->
+                  <a href="https://www.des.nh.gov/air">
+                      Air Resources Division
+                  </a> &gt; <a href="./index.html">Air Quality Current Data</a> &gt;
+                  <!-- InstanceEndEditable -->
+                  <br />
+              </div>
+              <div id="pagetitlecontainer">
+                  <!-- InstanceBeginEditable name="Page Title" -->
+                  Air Quality Current Data
+                  <!-- InstanceEndEditable -->
+              </div>
+              <div id="introcontainer">
+                  <!-- InstanceBeginEditable name="Introduction" -->
+                  <!-- InstanceEndEditable -->
+              </div>
+              <div id="content">
+                  <!-- InstanceBeginEditable name="Content" -->
+                  <table class="aq_table">
+                      <tbody>
+                          <tr valign="top">
+                              <td>
+                                  The table below shows current air quality concentrations at New Hampshire's air monitoring sites for two air pollutants:
+                                  <strong>ground-level ozone</strong> and <strong>particle pollution</strong> (fine particles). &nbsp;Full monitoring, reporting,
+                                  and forecasting for ozone occurs from March through September; monitoring and reporting of fine particles occurs year-round.
+                                  The information in the table is updated every hour and includes wind speed, wind direction, and outside temperatures (if
+                                  data are available). A map of monitoring site locations is shown at the right.<br />
+                                  <br />
+                                  DES operates the majority of these sites and regularly monitors data quality. The <a href="https://www.outdoors.org/" class="link" target="_blank" rel="noopener noreferrer">
+                                      Appalachian Mountain Club
+                                  </a> (AMC) maintains three monitors in northern New Hampshire, and the <a href="https://hubbardbrook.org/"
+                                                                                                            class="link" target="_blank" rel="noopener noreferrer">Hubbard Brook Research Foundation</a> (HBRF) maintains one station in cooperation with the EPA. The data
+                                  from HBRF may be downloaded from <a href="https://www.epa.gov/castnet" class="link" target="_blank" rel="noopener noreferrer">CASTNET</a>.
+                                  <br />
+                                  <br />
+                                  The table and map are color coded according to EPA's <a href="https://www.airnow.gov/aqi/aqi-basics/" class="link" target="_blank" rel="noopener noreferrer">
+                                      Air Quality Index
+                                  </a>, which relates air pollutant concentrations to health effects and recommended actions.
+                                  <br />
+                                  <p align="center">
+                                      <a href="./AirQualityForecast.html#airguide" class="link" style="word-wrap: break-word" target="_blank" rel="noopener noreferrer">
+                                          Health Guide and Recommended Actions
+                                      </a>
+                                  </p>
+                              </td>
+                              <td align="center" valign="top" width="50%">
+                                  <strong>
+                                      Map of Current Air Quality<br />
+                                      (Ozone and Fine Particles)
+                                  </strong>
+                                  <!-- THIS NODE, WITH THIS ID, IS ABSOLUTELY REQUIRED -->
+                                  <div id="map">
+                                      <div id="mapLoading" style="font-weight: bold; width: 300px; margin: 200px auto 0px auto; text-align: center;">
+                                          <img src="images/loading.gif" width="95" height="56" alt="Loading" />
+                                      </div>
+                                  </div>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <map id="FPMap0" name="FPMap0">
+                      <area shape="polygon" coords="-1, 16, -1, 3, 86, 3, 86, 16" alt="Range for Ozone: 0 to less than 60 parts per billion. Range for Fine Particles: 0 to less than 15.5 micrograms per cubic meter.">
+                      <area shape="polygon" coords="86, 16, 86, 3, 185, 3, 185, 16" alt="Range for Ozone: 60 to less than 76 parts per billion. Range for Fine Particles: 15.5 to less than 35.5 micrograms per cubic meter.">
+                      <area shape="polygon" coords="185, 16, 185, 3, 293, 3, 293, 16" alt="Range for Ozone: 76 to less than 96 parts per billion. Range for Fine Particles: 35.5 to less than 55.5 micrograms per cubic meter.">
+                      <area shape="polygon" coords="292, 15, 292, 2, 391, 2, 391, 15" alt="Range for Ozone: 96 to  less than 116 parts per billion. Range for Particles: 55.5 to less than 140.5 micrograms per cubic meter.">
+                  </map>
+                  <center>
+                      <br />
+                      <br />
+                      <center>
+                      </center>
+                      <table id="tableRelativeLevels" bgcolor="#FFFFFF" width="600" style="visibility:hidden;">
+                          <tbody>
+                              <tr>
+                                  <td align="center" valign="top">
+                                      <strong>Relative Pollutant Levels Chart Comparison</strong>
+                                      <img src="./images/relative_levels.gif" usemap="#FPMap0" style="text-align: Center" alt="map" height="41" width="588" border="0" />
+                                      <br />
+                                      <br />
+                                      <br />
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <table class="aq_table" width="588">
+                          <tbody>
+                              <tr>
+                                  <td>
+                                      <!-- STUFF FOR GRAPH GOES HERE -->
+                                      <div style="text-align: center;">
+                                          <!-- THIS NODE, WITH THIS ID, IS ABSOLUTELY REQUIRED -->
+                                          <div id="divTable">
+                                          </div>
+                                      </div>
+                                      <center>
+                                          <table id="aq_table" class="aq_table" style="visibility:hidden; background-color: #ffffff;" border="0" cellpadding="2" cellspacing="0">
+                                              <tbody>
+                                                  <tr>
+                                                      <td rowspan="7" valign="top">
+                                                          <strong>NOTES:&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td valign="top">
+                                                          <strong>1.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          Ozone values are based on eight-hour running averages;&nbsp; Fine Particle values are based on twenty four-hour running
+                                                          averages.&nbsp;&nbsp; If a complete-period average cannot be calculated, due to absence of data, the average is displayed
+                                                          within square brackets (e.g., [ 31 ])
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td valign="top">
+                                                          <strong>2.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          Data in the table are based on real-time hourly averages for the time period ending at <span id="spanEndingAt"></span>.
+                                                          &nbsp;&nbsp;All real-time values are unofficial pending full quality assurance/quality control evaluation.
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td valign="top">
+                                                          <strong>3.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          Sulfur Dioxide (SO<sub>2</sub>), Barometric Pressure, Wind Speed, Wind Direction, and Temperature values are based on the
+                                                          latest one-hour average.
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td valign="top">
+                                                          <strong>4.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          N/D indicates that the Site is enabled but the latest-period data are temporarily unavailable.
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td valign="top">
+                                                          <strong>5.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          N/R indicates that the Site is currently disabled.
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td valign="top">
+                                                          <strong>6.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          Grayed-out cells indicate that the parameter is not collected at the Site.
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td valign="top">
+                                                          <strong>7.&nbsp;&nbsp;</strong>
+                                                      </td>
+                                                      <td align="left">
+                                                          Seasonal indicates that Ozone monitoring occurs from March through September at the site.
+                                                      </td>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                      </center>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </center>
+                  <div class="aq_table">
+                      <p>
+                          <span class="SubTitle">Ground-level Ozone</span><br>
+                          Ground-level ozone, more commonly called smog, is measured in parts per billion (ppb). The federal health based standard
+                          for an 8-hour concentration is set at 70 ppb. Since ozone is a summertime pollutant, wintertime monitoring is limited and
+                          no wintertime forecast is provided. Full monitoring, reporting, and forecasting for ozone occurs from March through September.
+                      </p>
+                      <p>
+                          The EPA established a tighter 8-hour ozone standard in October of 2015 to better protect public health. The 8-hour standard
+                          was lowered from 0.075 ppm to 0.070 ppm. For more information, please visit <a href="https://www.epa.gov/ozone-pollution"
+                                                                                                         target="_blank" rel="noopener noreferrer">https://www.epa.gov/ozone-pollution</a>.
+                      </p>
+                      <p>
+                          <span class="SubTitle">Fine Particles</span><br>
+                          Fine particle pollution consists of both solid and liquid particles that are less than 2.5 microns in diameter (a micron
+                          is a millionth of a meter). Particle concentrations are measured in micrograms per cubic meter (ug/m<sup>3</sup>). The federal
+                          health based standard for a 24-hour concentration is set at 35 ug/m<sup>3</sup>. Monitoring and reporting of fine particles
+                          occurs year-round.
+                      </p>
+                      <p>
+                          The EPA has established tighter fine particle standards to better protect public health. In 2006 the standard was lowered
+                          from 65 ug/m<sup>3</sup> to 35 ug/m<sup>3</sup>. In 2012 the annual standard was lowered from 15.0 ug/m<sup>3</sup> to 12
+                          ug/m<sup>3</sup>. <span id="may2024_revision" style="display:none;">In 2024 the annual standard was lowered from 12.0 ug/m<sup>3</sup> to 9.0 ug/m<sup>3</sup>.</span> For more information, please visit <a href="https://www.epa.gov/pm-pollution"
+                                                                                  target="_blank" rel="noopener noreferrer">https://www.epa.gov/pm-pollution</a>.
+                      </p>
+                      <p>
+                          <span class="SubTitle">Sulfur Dioxide</span><br />
+                          Sulfur dioxide (SO<sub>2</sub>) is a highly reactive gas which primarily comes from fossil fuel combustion at power plants
+                          and other industrial facilities. Sulfur dioxide concentrations are measured in parts per billion (ppb). The federal health
+                          based standard for 1-hour concentrations is set at 75 ppb. Monitoring and reporting of sulfur dioxide occurs year round.
+                      </p>
+                      <p>
+                          EPA first set standards for sulfur dioxide in 1971. In June 2010 EPA established a 1-hour SO<sub>2</sub> standard at 75
+                          ppb to better protect public health. For more information, please visit <a href="https://www.epa.gov/so2-pollution/"
+                                                                                                     target="_blank" rel="noopener noreferrer">https://www.epa.gov/so2-pollution</a>.
+                      </p>
+                      <p>
+                          <span class="SubTitle">Related Topics</span>
+                      </p>
+                      <ul style="margin-top: -14px">
+                          <li><a href="./AirQualityForecast.html">Daily Air Quality Forecast</a> </li>
+                          <li><a href="https://pollen.aaaai.org/#/">Pollen Counts</a> </li>
+                          <li><a href="https://www.epa.gov/sunsafety">UV Index</a> </li>
+                      </ul>
+                  </div>
+                  <!-- end #mainContent3col -->
+              </div>
+          </div>
+          
+          <!-- end #container -->
+      </div>
+  </div>
+    <div id="pageFooter">
+        <div id="addresscontainer">
+            <div id="address">
+                <br />
+                NH Department of Environmental Services | 29 Hazen Drive | PO Box 95 | Concord, NH 03302-0095<br />
+                (603) 271-3503 | TDD Access: Relay NH 1-800-735-2964 | Hours: M-F, 8am-4pm<br />
+            </div>
+        </div>
+
+
+        <!-- This clearing element should immediately follow the #mainContent3col div in order to force the #container div to contain all child floats -->
+        <br class="clearfloat" />
+        <div class="footercontainer">
+            <div class="left-element">
+                <a href="https://www.nh.gov/index.htm">NH.gov</a> | <a href="https://www.nh.gov/policy/index.htm">privacy policy</a> | <a href="https://www.nh.gov/policy/accessibility.htm">
+                    accessibility policy
+                </a>
+            </div>
+            <div class="right-element">
+                <span id="copyrightNote"></span>
+            </div>
+        </div>
+    </div>
+  <div id="divGraph">
+    <div id="gContainer">
+    </div>
+  </div>
+
+    <input type="hidden" id="hvJsonDate" value="" />
+    <script type="text/javascript">
+	    if (console.log) {
+		  console.log('113');
+		}
+        var crNote = document.getElementById('copyrightNote');
+        if (crNote) {
+            crNote.innerHTML = 'copyright ' + new Date().getFullYear() + '. State of New Hampshire';
+        }
+    </script>
+</body>
+<!-- InstanceEnd -->
+</html>
+ contentType 9 text/html url 41 https://www4.des.state.nh.us:443/airdata/ responseCode 3 200 

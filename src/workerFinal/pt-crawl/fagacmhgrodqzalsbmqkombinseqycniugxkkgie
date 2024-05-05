@@ -1,0 +1,1390 @@
+fagacmhgrodqzalsbmqkombinseqycniugxkkgie length 6 126282 page 126282 <!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lifecycle Hooks &#8212; Cordra  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/minimal-fixes.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Type Methods" href="type-methods.html" />
+    <link rel="prev" title="Authentication and Access Controls" href="authentication-and-access-controls.html" />
+    <link rel="shortcut icon" href="../_static/img/favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300,400,700,800' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Rasa:400,700%7COpen+Sans:300,400,700,800' rel='stylesheet' />
+    <link rel="stylesheet" href="../_static/libs/font-awesome/css/font-awesome.min.css"></link>
+    <link rel="stylesheet" href="../_static/libs/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../_static/icons/nucleo.css"></link>
+    <link rel="stylesheet" href="../_static/libs/animate.css/animate.min.css"></link>
+    <link rel="stylesheet" href="../_static/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../_static/css/blog.css"></link>
+    <link rel="stylesheet" href="../_static/css/buttons.css"></link>
+    <link rel="stylesheet" href="../_static/css/colors.css"></link>
+    <link rel="stylesheet" href="../_static/css/footers.css"></link>
+    <link rel="stylesheet" href="../_static/css/widgets.css"></link>
+    <link rel="stylesheet" href="../_static/css/nav.css"></link>
+    <link rel="stylesheet" href="../_static/css/preloader.css"></link>
+    <link rel="stylesheet" href="../_static/css/custom.css"></link>
+    <link rel="stylesheet" href="../_static/css/ui.css"></link>
+
+  </head><body>
+<!-- BEGIN LATERAL NAVIGATION -->
+<aside id="aside-nav">
+    <div id="main-aside-navigation">
+        <div class="main-nav-wrapper">
+            <div class="close-aside-nav">
+                <i class="nc-icon-outline ui-1_simple-remove"></i>
+            </div>
+            <div id="aside-logo">
+                    <a href="/index.html" data-logo-light="../_static/img/cordra-light.png" data-logo-dark="../_static/img/cordra-primary-blue.png">
+                    <img width="170" height="166" src="../_static/img/cordra-primary-blue.png" alt="logo">
+                </a>
+            </div>
+            <nav id="main-aside-menu">
+                <ul>
+                    <li class="submenu">
+                        <a href="/cordra.html">What's Cordra?</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/getstarted.html">Get Started</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/download.html">Download</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/documentation/introduction/introduction.html">Developer Resources</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/standards.html">Standards</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="../search.html">Search</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</aside>
+<!-- END LATERAL NAVIGATION -->
+
+<!-- BEGIN MAIN NAVIGATION -->
+<header id="header">
+    <div id="main-navigation">
+        <div class="main-nav-wrapper">
+            <div class="container-fluid">
+                <div class="nav-left">
+                    <div id="logo">
+                        <a href="/index.html" data-logo-light="../_static/img/cordra-light.png" data-logo-dark="../_static/img/cordra-primary-blue.png">
+                        <img width="145" height="36" src="../_static/img/cordra-primary-blue.png" alt="logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <nav id="main-menu">
+                        <ul>
+                            <li class="mega-menu menu-layouts">
+                                <a href="/cordra.html">What's Cordra?</a>
+                            </li>
+                            <li class="mega-menu menu-layouts">
+                                <a href="/getstarted.html">Get Started</a>
+                            </li>
+                            <li>
+                                <a href="/download.html">Download</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="/documentation/introduction/introduction.html">Developer Resources</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="/standards.html">Standards</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="../search.html">Search</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="nav-tools">
+                        <li class="mobile-menu-btn">
+                            <button class="toggle-menu" data-toggle="mobile-menu" data-effect="hover">
+                                <span class="menu-label label-left">Menu</span>
+                                <i class="nc-icon-outline ui-2_menu-35"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- END MAIN NAVIGATION -->
+
+
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://hdl.handle.net/20.1000/129">Developer Resources (in PDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Cordra Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">Introduction to Cordra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/release-notes.html">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/system-requirements.html">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Application Design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifiers.html">Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schemas.html">Schemas/Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design-object.html">Design Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payloads.html">Payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication-and-access-controls.html">Authentication and Access Controls</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lifecycle Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type-methods.html">Type Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java-hooks-and-methods.html">Java Hooks and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="handle-integration.html">Handle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object-versioning.html">Digital Object Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object-hashing.html">Digital Object Hashing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/doip.html">DOIP and Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/doip-api-for-http-clients.html">DOIP API for HTTP Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/rest-api.html">HTTP REST API and Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/search.html">Query Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Clients</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../client/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/rest-java.html">REST - Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/javascript.html">REST - JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/doip-java.html">DOIP - Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/third-party.html">Third Party Clients</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/single-instance-deployment.html">Deploying Single-Instance Cordra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/single-instance-production.html">Production Single Instance Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/distributed-deployment.html">Deploying Cordra as a Distributed System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/reindexing.html">Reindexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/logs-management.html">Managing Cordra Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/storage-backends.html">Configuring Storage Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/indexing-backends.html">Configuring Indexing Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/sessions-manager.html">Distributed Sessions Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/user-management.html">Managing Users and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/admin-user-interface.html">Administrative UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/enabling-tls.html">Enabling TLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/https.html">Configuring HTTPS Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/migration.html">Migration across Cordra Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/index.html">Extensions and Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/calling-java-from-javascript.html">Calling Java from JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/document-repository.html">Document Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/medical-records-application.html">Medical Records Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/person-registry.html">Person Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/user-registration.html">User Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/object-linking.html">Digital Object Linking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/oai-pmh.html">OAI-PMH in Cordra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/sending-emails.html">Sending Emails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/external-authentication-provider.html">External Authentication Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/collab-prototype.html">Collab Prototype Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/neo4j-as-an-additional-index.html">Neo4j as an Additional Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/partial-replication-aggregation.html">Partial Replication/Aggregation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tools/import-export.html">Import and Export Tools</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="lifecycle-hooks">
+<span id="javascript-lifecycle-hooks"></span><h1>Lifecycle Hooks<a class="headerlink" href="#lifecycle-hooks" title="Permalink to this heading">¶</a></h1>
+<p>Cordra validates incoming information against schemas as defined in the Type objects. Additional rules that validate
+and/or enrich the information in the object can be configured to be applied by Cordra at various stages of the object
+lifecycle. Such rules are expected to be specified in JavaScript and to be bound to the following lifecycle points:</p>
+<ul class="simple">
+<li><p>before an object is schema validated (with an opportunity, during create, to set the id or properties which help determine the id);</p></li>
+<li><p>during id generation;</p></li>
+<li><p>before schema validation but after id generation;</p></li>
+<li><p>before an object is stored, allowing for additional validation or side-effects after all other validation is done;</p></li>
+<li><p>before an object is indexed, allowing the object that is indexed to differ from the one that is stored;</p></li>
+<li><p>during handle record creation;</p></li>
+<li><p>after an object (or payload) has been retrieved from storage, but before it is returned;</p></li>
+<li><p>before an object is deleted, to forbid deletion under some circumstances;</p></li>
+<li><p>after an object is deleted;</p></li>
+<li><p>after an object is created or updated; and</p></li>
+<li><p>before executing a user-supplied query.</p></li>
+</ul>
+<p>Lifecycle hooks, in our parlance, are the points of entry for your own JavaScript-based rules that Cordra processes.
+In addition to the lifecycle hooks that are discussed in detail below, Cordra enables clients to invoke other rules
+in an ad hoc fashion using <a class="reference internal" href="type-methods.html#type-methods"><span class="std std-ref">Type Methods</span></a>.</p>
+<p>Currently, various lifecycle hooks are enabled in Cordra for different actions: create, update, retrieve, and delete.</p>
+<p>The following diagrams illustrate hooks that are enabled during various stages of the object lifecycle.</p>
+<figure class="align-center">
+<img alt="Create Lifecycle" src="../_images/cordra-create-lifecycle.png" />
+</figure>
+<figure class="align-center">
+<img alt="Update Lifecycle" src="../_images/cordra-update-lifecycle.png" />
+</figure>
+<figure class="align-center">
+<img alt="Retrieve Lifecycle" src="../_images/cordra-retrieve-lifecycle.png" />
+</figure>
+<figure class="align-center">
+<img alt="Delete Lifecycle" src="../_images/cordra-delete-lifecycle.png" />
+</figure>
+<p>An update which changes the type of an object will run the beforeDelete and afterDelete hooks
+of the original type, only with a context where “isUpdate” is set to true, as well as the
+beforeSchemaValidation, beforeStorage, and afterCreateOrUpdate hooks of the new type,
+with “isNew” set to true (like a creation) but also with “isUpdate” set to true.</p>
+<section id="using-hooks-in-javascript">
+<h2>Using Hooks in JavaScript<a class="headerlink" href="#using-hooks-in-javascript" title="Permalink to this heading">¶</a></h2>
+<p>Hooks can either be implemented in the “javascript” property of the design object, which
+makes a “service-level hook”, or hooks can be implemented
+on a per type basis as part of the JavaScript associated with each Type object. When a lifecycle hook is implemented
+as a service-level hook that hook will apply to all objects in the system. A hook implemented in JavaScript associated with
+a Type object will only apply to objects of that type. Hooks implemented for a specific type override the same hook
+implemented as a service-level hook. For example if you have <code class="docutils literal notranslate"><span class="pre">onObjectResolution</span></code> in design JavaScript and you have
+<code class="docutils literal notranslate"><span class="pre">onObjectResolution</span></code> implemented in JavaScript for type “Foo”, the service-level hook will be used for all objects
+except those of type “Foo” which will use the type specific implementation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In versions of Cordra before 2.5.0, implementing service-level lifecycle hooks in design JavaScript did not mean that
+hook would be applied to all object types. In 2.5.0 hooks implemented in design JavaScript apply to all
+objects and can be overridden at the type level.</p>
+</div>
+<section id="hooks-in-a-type-object">
+<h3>Hooks in a Type Object<a class="headerlink" href="#hooks-in-a-type-object" title="Permalink to this heading">¶</a></h3>
+<p>Most lifecycle hooks are available for use as part of the JavaScript associated with each Type object,
+in the “javascript” property of the schema object content. To have have the same code that runs for multiple
+type you can either implement the hook as a service-level hook or you will need to have JavaScript for each of the
+types.  See <a class="reference internal" href="#using-external-modules"><span class="std std-ref">Using External Modules</span></a> for methods to share code among multiple types.</p>
+<p>The examples in this documentation are written as CommonJS modules, but Cordra also supports ECMAScript modules; see
+<a class="reference internal" href="#esm-modules"><span class="std std-ref">ECMAScript Modules</span></a>.</p>
+<p>Here is the shell of the hooks that are available in each Type, which will be explained below.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">cordra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cordra&#39;</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">cordraUtil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cordra-util&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// older name &#39;cordraUtil&#39; also works</span>
+<span class="linenos"> 3</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">CordraClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Blob</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cordra-client&#39;</span><span class="p">);</span>
+<span class="linenos"> 4</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;/cordra/schemas/Type.schema.json&#39;</span><span class="p">);</span>
+<span class="linenos"> 5</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">js</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;/cordra/schemas/Type&#39;</span><span class="p">);</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">beforeSchemaValidation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeSchemaValidation</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">beforeSchemaValidationWithId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeSchemaValidationWithId</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">beforeStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeStorage</span><span class="p">;</span>
+<span class="linenos">10</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">objectForIndexing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">objectForIndexing</span><span class="p">;</span>
+<span class="linenos">11</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">onObjectResolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">onObjectResolution</span><span class="p">;</span>
+<span class="linenos">12</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">onPayloadResolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">onPayloadResolution</span><span class="p">;</span>
+<span class="linenos">13</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">beforeDelete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeDelete</span><span class="p">;</span>
+<span class="linenos">14</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">afterDelete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">afterDelete</span><span class="p">;</span>
+<span class="linenos">15</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">afterCreateOrUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">afterCreateOrUpdate</span><span class="p">;</span>
+<span class="linenos">16</span><span class="w"> </span><span class="nx">exports</span><span class="p">.</span><span class="nx">getAuthConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getAuthConfig</span><span class="p">;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">beforeSchemaValidation</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">19</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">20</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="linenos">21</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">beforeSchemaValidationWithId</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">24</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">25</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="linenos">26</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">beforeStorage</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">29</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">30</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">objectForIndexing</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">33</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">34</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="linenos">35</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">onObjectResolution</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">38</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">39</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="linenos">40</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">onPayloadResolution</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">43</span><span class="w">     </span><span class="cm">/* Insert code here; use context.directIo to write payload bytes */</span>
+<span class="linenos">44</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">beforeDelete</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">47</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">48</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">afterDelete</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">51</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">52</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">afterCreateOrUpdate</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">55</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">56</span><span class="w"> </span><span class="p">}</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAuthConfig</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">59</span><span class="w">     </span><span class="cm">/* Insert code here */</span>
+<span class="linenos">60</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Cordra provides three convenience JavaScript modules that can be imported for use within your JavaScript rules. These
+modules allow you to search and retrieve objects, verify hashes and secrets, and perform arbitrary operations against the
+host Cordra as arbitrary authenticated users.  Additional modules allow you
+to retrieve schemas and associated
+JavaScript hooks, as discussed <a class="reference internal" href="#using-cordra-modules"><span class="std std-ref">here</span></a>. You can optionally include these modules in
+your JavaScript, as shown on Lines 1-5.</p>
+<p>You can also save external JavaScript libraries in Cordra for applying complex logic as discussed
+<a class="reference internal" href="#using-external-modules"><span class="std std-ref">here</span></a>.</p>
+<p>Lines 7-15 export references to the hooks that Cordra enables on a Type object: <code class="docutils literal notranslate"><span class="pre">beforeSchemaValidation</span></code>, <code class="docutils literal notranslate"><span class="pre">beforeSchemaValidationWithId</span></code>,
+<code class="docutils literal notranslate"><span class="pre">beforeStorage</span></code>, <code class="docutils literal notranslate"><span class="pre">objectForIndexing</span></code>, <code class="docutils literal notranslate"><span class="pre">onObjectResolution</span></code>, <code class="docutils literal notranslate"><span class="pre">onPayloadResolution</span></code>, <code class="docutils literal notranslate"><span class="pre">beforeDelete</span></code>,
+<code class="docutils literal notranslate"><span class="pre">afterDelete</span></code> and <code class="docutils literal notranslate"><span class="pre">afterUpdateOrCreate</span></code>,. When handling objects, Cordra will look for methods with these names and
+run them if found. The methods must be exported in order for Cordra to see them. None of the methods is mandatory. You
+only need to implement the ones you want.</p>
+<p>Resolution of payloads will activate both <code class="docutils literal notranslate"><span class="pre">onObjectResolution</span></code> and <code class="docutils literal notranslate"><span class="pre">onPayloadResolution</span></code>.  If <code class="docutils literal notranslate"><span class="pre">onPayloadResolution</span></code> accesses
+the output via <code class="docutils literal notranslate"><span class="pre">context.directIo</span></code> (see <a class="reference internal" href="type-methods.html#directio"><span class="std std-ref">Direct I/O</span></a>) the hook will fully control the output bytes, and the stored payload will
+not be directly returned to the client.</p>
+<p>The rest of the example shell shows the boilerplate for the methods. All, except for <code class="docutils literal notranslate"><span class="pre">getAuthConfig</span></code>, take both an
+<code class="docutils literal notranslate"><span class="pre">object</span></code> and a <code class="docutils literal notranslate"><span class="pre">context</span></code>. <code class="docutils literal notranslate"><span class="pre">object</span></code> is the JSON representation of the Cordra object. It may be modified and returned by
+<code class="docutils literal notranslate"><span class="pre">beforeSchemaValidation</span></code>, <code class="docutils literal notranslate"><span class="pre">beforeSchemaValidationWithId</span></code>, <code class="docutils literal notranslate"><span class="pre">objectForIndexing</span></code>, and <code class="docutils literal notranslate"><span class="pre">onObjectResolution</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">object</span></code> contains <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">content</span></code>, <code class="docutils literal notranslate"><span class="pre">acl</span></code>, <code class="docutils literal notranslate"><span class="pre">metadata</span></code>, and <code class="docutils literal notranslate"><span class="pre">payloads</span></code> (which has payload metadata,
+not the full payload data). <code class="docutils literal notranslate"><span class="pre">content</span></code> is the user defined JSON of the object.</p>
+<p><code class="docutils literal notranslate"><span class="pre">object</span></code> has the following format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;id&quot;: &quot;test/abc&quot;,
+    &quot;type&quot;: &quot;Document&quot;,
+    &quot;content&quot;: { },
+    &quot;acl&quot;: {
+        &quot;readers&quot;: [
+            &quot;test/user1&quot;,
+            &quot;test/user2&quot;
+        ],
+        &quot;writers&quot;: [
+            &quot;test/user1&quot;
+        ]
+    },
+    &quot;metadata&quot;: {
+        &quot;createdOn&quot;: 1532638382843,
+        &quot;createdBy&quot;: &quot;admin&quot;,
+        &quot;modifiedOn&quot;: 1532638383096,
+        &quot;modifiedBy&quot;: &quot;admin&quot;,
+        &quot;txnId&quot;: 967
+    }
+}
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">context</span></code> is an object with several useful properties.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property Name</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>isNew</p></td>
+<td><p>Flag which is true for creations and false for modifications.
+Applies to beforeSchemaValidation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>objectId</p></td>
+<td><p>The id of the object.</p></td>
+</tr>
+<tr class="row-even"><td><p>userId</p></td>
+<td><p>The id of the user performing the operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>groups</p></td>
+<td><p>A list of the ids of groups to which the user belongs.</p></td>
+</tr>
+<tr class="row-even"><td><p>grantAuthenticatedAccess</p></td>
+<td><p>Flag which is true when the user performing the operation is considered “authenticated”
+for the purpose of the “authenticated” ACL keyword (generally true when the user has a user object).</p></td>
+</tr>
+<tr class="row-odd"><td><p>authContext</p></td>
+<td><p>Arbitrary information added by the “authenticate” hook (see <a class="reference internal" href="#authenticate"><span class="std std-ref">Authenticate Hook</span></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>effectiveAcl</p></td>
+<td><p>The computed ACLs for the object, either from the object itself or inherited from configuration.
+This is an object with “readers” and “writers” properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p>aclCreate</p></td>
+<td><p>The creation ACL for the type being created, in beforeSchemaValidation for a creation.</p></td>
+</tr>
+<tr class="row-even"><td><p>newPayloads</p></td>
+<td><p>A list of payload metadata for payloads being updated, in beforeSchemaValidation for an update operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>payloadsToDelete</p></td>
+<td><p>A list of payload names of payloads being deleted, in beforeSchemaValidation for an update operation.</p></td>
+</tr>
+<tr class="row-even"><td><p>requestContext</p></td>
+<td><p>A user-supplied requestContext query parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p>payload</p></td>
+<td><p>The payload name for onPayloadResolution.</p></td>
+</tr>
+<tr class="row-even"><td><p>start, end</p></td>
+<td><p>User-supplied start and end points for a partial payload resolution for onPayloadResolution.</p></td>
+</tr>
+<tr class="row-odd"><td><p>params</p></td>
+<td><p>The input supplied to a <a class="reference internal" href="type-methods.html#type-methods"><span class="std std-ref">Type Methods</span></a> call.</p></td>
+</tr>
+<tr class="row-even"><td><p>directIo</p></td>
+<td><p>Can be used for more control over input/output with <a class="reference internal" href="type-methods.html#type-methods"><span class="std std-ref">Type Methods</span></a> or onPayloadResolution; see <a class="reference internal" href="type-methods.html#directio"><span class="std std-ref">Direct I/O</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>attributes</p></td>
+<td><p>Request attributes supplied with a DOIP request or a method call (see <a class="reference internal" href="type-methods.html#type-methods-attributes"><span class="std std-ref">Request Attributes</span></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>isSearch</p></td>
+<td><p>Flag set to true in onObjectResolution if the call is being made to produce search results.</p></td>
+</tr>
+<tr class="row-odd"><td><p>isCreate</p></td>
+<td><p>Flag set to true in onObjectResolution if the call is being made with the result of creating a Cordra object;
+set to true in beforeSchemaValidation, beforeStorage, afterCreateOrUpdate for creations.</p></td>
+</tr>
+<tr class="row-even"><td><p>isUpdate</p></td>
+<td><p>Flag set to true in onObjectResolution if the call is being made with the result of updating a Cordra object;
+set to true in beforeSchemaValidation, beforeStorage, afterCreateOrUpdate for updates;
+set to true when beforeDelete and afterDelete are called when an update changes an object’s type
+(this is treated like a deletion followed by a creation).</p></td>
+</tr>
+<tr class="row-odd"><td><p>isDryRun</p></td>
+<td><p>Set on a create or update according to the “dryRun” parameter.  Could be used
+to prevent external side effects.</p></td>
+</tr>
+<tr class="row-even"><td><p>method</p></td>
+<td><p>Set to the method name in beforeStorage or afterCreateOrUpdate when activated after an updating type method call
+rather than an ordinary create or update.</p></td>
+</tr>
+<tr class="row-odd"><td><p>originalObject</p></td>
+<td><p>The object before it was updated, in beforeSchemaValidation, beforeStorage, afterCreateOrUpdate, beforeDelete, afterDelete, and method calls.</p></td>
+</tr>
+<tr class="row-even"><td><p>beforeSchemaValidationResult</p></td>
+<td><p>The object after beforeSchemaValidation and beforeSchemaValidationWithId but before other processing,
+notably before the removal of properties with secureProperty,
+in beforeStorage or afterCreateOrUpdate.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="before-storage-hook">
+<span id="beforestorage"></span><h3>Before Storage Hook<a class="headerlink" href="#before-storage-hook" title="Permalink to this heading">¶</a></h3>
+<p>This <code class="docutils literal notranslate"><span class="pre">beforeStorage</span></code> hook is run immediately before the object is inserted into storage. It has gone through all other
+processing and contains the generated id if an id was not included in the request. There is no return value for this
+function. As such you cannot edit the object here; however, you can perform additional validation and throw an exception
+if you want to reject the object.</p>
+</section>
+<section id="generate-object-id-hook">
+<span id="generateid"></span><h3>Generate Object Id Hook<a class="headerlink" href="#generate-object-id-hook" title="Permalink to this heading">¶</a></h3>
+<p>This hook is for generating object ids when objects are created.</p>
+<p>The shell for this hook is as follows:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">generateId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateId</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">isGenerateIdLoopable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">generateId</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
+<span class="w">   </span><span class="cm">/* Insert code here */</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The flag <code class="docutils literal notranslate"><span class="pre">isGenerateIdLoopable</span></code> when set to true tells Cordra that if an object with the same id already exists this
+method can be called repeatedly until a unique id is found. If the implementation of generateId was deterministic,
+which is to say it would always return the same id for a given input object, the <code class="docutils literal notranslate"><span class="pre">isGenerateIdLoopable</span></code> should NOT
+be set to true.</p>
+<p>If null or undefined or the empty string is returned, Cordra will use its default identifier-minting logic.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In versions of Cordra before 2.4.0, <code class="docutils literal notranslate"><span class="pre">generateId</span></code> was guaranteed to run after schema validation.
+Cordra 2.4.0 introduced <code class="docutils literal notranslate"><span class="pre">beforeSchemaValidationWithId</span></code>, which requires <code class="docutils literal notranslate"><span class="pre">generateId</span></code> to run
+before schema validation.  In order to preserve backward compatibility, <code class="docutils literal notranslate"><span class="pre">generateId</span></code> will
+currently still run after schema validation when <code class="docutils literal notranslate"><span class="pre">beforeSchemaValidationWithId</span></code> is unused; however,
+this flow should be considered deprecated and should not be relied on when writing new hook code.
+New <code class="docutils literal notranslate"><span class="pre">generateId</span></code> code should be robust to input which is not schema-valid, although throwing or
+returning null or undefined would suffice.</p>
+</div>
+</section>
+<section id="hooks-for-the-design-object-and-type-objects">
+<span id="hooksforcordradesignandschema"></span><h3>Hooks for the Design Object and Type Objects<a class="headerlink" href="#hooks-for-the-design-object-and-type-objects" title="Permalink to this heading">¶</a></h3>
+<p>The design object (of type CordraDesign) and Type objects (of type Schema) do not have separate Type objects.
+These built-in types can still have lifecycle hooks, however.  Their JavaScript modules can be defined under a property
+“builtInTypes” of the design object, specifically “builtInTypes.CordraDesign.javascript” and “builtInTypes.Schema.javascript”.
+See <a class="reference internal" href="design-object.html#design-object"><span class="std std-ref">Design Object</span></a>.</p>
+</section>
+<section id="get-auth-config-hook">
+<span id="getauthconfig"></span><h3>Get Auth Config Hook<a class="headerlink" href="#get-auth-config-hook" title="Permalink to this heading">¶</a></h3>
+<p>This <code class="docutils literal notranslate"><span class="pre">getAuthConfig</span></code> hook is unlike other hooks defined on a Type object in that it is not called with an instance of
+an object of that type.</p>
+<p>The shell for this hook is as follows:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">getAuthConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getAuthConfig</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">getAuthConfig</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;defaultAclRead&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;test/group1&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="s2">&quot;defaultAclWrite&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;test/group1&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="s2">&quot;aclCreate&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;test/group1&quot;</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="authenticate-hook">
+<span id="authenticate"></span><h3>Authenticate Hook<a class="headerlink" href="#authenticate-hook" title="Permalink to this heading">¶</a></h3>
+<p>This hook is also looked for in the “javascript” property of the design object.  It will be executed for every
+user request that requires authentication.</p>
+<p>See <a class="reference internal" href="../extensions/external-authentication-provider.html#external-authentication-provider"><span class="std std-ref">External Authentication Provider</span></a> for a substantial example of how this hook could be used.</p>
+<p>The shell for this hook is as follows:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">authenticate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">authenticate</span><span class="p">(</span><span class="nx">authInfo</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="cm">/* Insert code here */</span>
+
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The authInfo passed into this function has the following structure:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;username&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;token&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;authHeader&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;authTokenInput&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="s2">&quot;doipAuthentication&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="s2">&quot;doipClientId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;asUserId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The hook can inspect “username” and “password”, or “token”, for typical authentication scenarios; but the hook
+also has access to the raw authentication data in various forms should it be needed.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>username</p></td>
+<td><p>String.  The username from a Basic HTTP Authorization header, or from username/password input to /auth/token or DOIP authentication.</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>String.  The password from a Basic HTTP Authorization header, or from username/password input to /auth/token or DOIP authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p>token</p></td>
+<td><p>String.  The Bearer token from a Bearer HTTP Authorization header, or a JWT assertion made as /auth/token input, or a token from DOIP authentication.</p></td>
+</tr>
+<tr class="row-odd"><td><p>authHeader</p></td>
+<td><p>String.  The value of the request’s HTTP Authorization header.</p></td>
+</tr>
+<tr class="row-even"><td><p>authTokenInput</p></td>
+<td><p>Object. The input to the /auth/token endpoint or the
+20.DOIP/Op.Auth.Token operation. See <a class="reference internal" href="../api/rest-api.html#auth-token-api"><span class="std std-ref">Create a new access token</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>doipAuthentication</p></td>
+<td><p>Object. If the request came in over the DOIP interface this
+property will contain the value of the passed-in DOIP
+authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p>doipClientId</p></td>
+<td><p>String. If the request came in over the DOIP interface this
+property will contain the clientId, if available.</p></td>
+</tr>
+<tr class="row-odd"><td><p>asUserId</p></td>
+<td><p>String. The <code class="docutils literal notranslate"><span class="pre">asUserId</span></code> property may be optionally set to
+indicate that the call should should be performed with the
+permissions that user has been granted; see <a class="reference internal" href="../api/rest-api.html#as-user"><span class="std std-ref">As-User</span></a>.</p>
+<p>Many authenticate hook use cases can ignore this.</p>
+<p>Default Cordra authentication logic only allows admin to use As-User; the authenticate hook
+can handle the As-User request by returning a userId which has the value of the provided
+asUserId, and can allow users other than admin as desired.
+Only set the output userId to the input asUserId when you really want to allow
+the authenticating user the full privileges of the asUserId.
+If the hook return userId does not match the
+input asUserId, the default As-User logic will occur; to prevent even admin use of As-User,
+throw an exception.</p>
+<p>Note that if this property is set, and you are returning
+custom groupIds which you wish to be available using As-User, you should set userId to the asUserId,
+and return the groupIds for the asUserId.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returning null or undefined causes the default cordra authentication code to be executed in that case.</p>
+<p>To reject an authentication attempt throw an exception.</p>
+<p>To accept an authentication return a result object. The result object should contain at least <code class="docutils literal notranslate"><span class="pre">&quot;active&quot;:</span> <span class="pre">true</span></code> and the userId. It can
+optionally contain username and groupIds, where groupIds are the groups the user is a member of.</p>
+<p>The active property on the result object should be set to true. If it is set to false it will cause an exception to be
+thrown.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that the userId “admin” will be given the full privileges of the Cordra admin
+user.  Thus take care that the behavior of any external authentication provider
+used by the authenticate hook does not give users full control over their own userIds.</p>
+</div>
+<p>An example successful authentication result object is shown below:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;active&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="s2">&quot;userId&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;test/123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;username&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;fred&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;groupIds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;test/group1&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="s2">&quot;grantAuthenticatedAccess&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;bypassCordraGroupObjects&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>active</p></td>
+<td><p>Boolean. Set to true if the
+authentication is successful.</p></td>
+</tr>
+<tr class="row-odd"><td><p>userId</p></td>
+<td><p>String. The userId of the authenticated user.</p></td>
+</tr>
+<tr class="row-even"><td><p>username</p></td>
+<td><p>String (Optional). The username of the
+authenticated user.</p></td>
+</tr>
+<tr class="row-odd"><td><p>groupIds</p></td>
+<td><p>List of String (Optional). Custom groupIds the
+authenticated user is a member of.</p></td>
+</tr>
+<tr class="row-even"><td><p>bypassCordraGroupObjects</p></td>
+<td><p>Boolean (Optional) Used in combination with <code class="docutils literal notranslate"><span class="pre">groupIds</span></code>.
+If set to true only the returned <code class="docutils literal notranslate"><span class="pre">groupIds</span></code> will be used.
+If missing or set to false any Cordra group objects that
+contain this users id will be combined with the custom
+groupIds.</p></td>
+</tr>
+<tr class="row-odd"><td><p>grantAuthenticatedAccess</p></td>
+<td><p>Boolean (Optional). If set to true this user is considered
+“authenticated” by ACLs that use that keyword.
+If missing Cordra ACLs will only consider this user
+“authenticated” if their exists a Cordra object that
+corresponds with their userId. If a hook allows authentication
+by a wide open set of users, such as any users with an account
+with some existing global service, then it would be
+appropriate to set this false.  If your ACLs do not use the
+“authenticated” keyword, this has no effect.</p></td>
+</tr>
+<tr class="row-even"><td><p>exp</p></td>
+<td><p>Number (Optional). Expiration in Epoch Unix Timestamp, the number
+of seconds since JAN 01 1970. (UTC) that the session should last
+for before expiration. If not supplied by default the session
+will not expire.</p></td>
+</tr>
+<tr class="row-odd"><td><p>authContext</p></td>
+<td><p>Arbitrary JSON (Optional). The value of authContext is provided
+to all lifecycle hooks (as part of the <code class="docutils literal notranslate"><span class="pre">context</span></code>)
+for operations making use of this authentication.</p></td>
+</tr>
+</tbody>
+</table>
+<p>There is one additional special response which the authenticate hook can return:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;anonymous&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This response causes Cordra to behave as if there was no authentication attempt.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is possible to lock out all users, including admin, by throwing an exception from the authenticate hook.
+Doing so would then prevent admin from signing in to edit the problem JavaScript. To recover from such a
+situation place the following example repoInit.json file in the data directory. Upon restart, this will delete all the
+JavaScript on the design object allowing admin to sign in to fix it.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;design&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;javascript&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="customize-query-and-params-hook">
+<span id="customizequeryandparams"></span><h3>Customize Query and Params Hook<a class="headerlink" href="#customize-query-and-params-hook" title="Permalink to this heading">¶</a></h3>
+<p>This hook is also looked for in the “javascript” property of the design object.  It will be executed for every
+user-supplied query to the Search API.  It can be used for example to restrict the query to exclude certain objects
+based on the calling user. It can also be used to modify the query params supplied by the user for example to restrict
+the number of results per page, or to throw an exception when a user uses search parameters which are to be
+disallowed to that user.  Query restriction can be accomplished either by altering the query or adding filterQueries
+(see <a class="reference internal" href="../api/rest-api.html#searchapi"><span class="std std-ref">Search for objects</span></a>).</p>
+<p>The shell for this hook is as follows:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">customizeQueryAndParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">customizeQueryAndParams</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">customizeQueryAndParams</span><span class="p">(</span><span class="nx">queryAndParams</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="cm">/* Insert code here */</span>
+<span class="w">   </span><span class="nx">queryAndParams</span><span class="p">.</span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newQuery</span><span class="p">;</span>
+<span class="w">   </span><span class="nx">queryAndParams</span><span class="p">.</span><span class="nx">pageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nx">queryAndParams</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="customize-query-hook">
+<span id="customizequery"></span><h3>Customize Query Hook<a class="headerlink" href="#customize-query-hook" title="Permalink to this heading">¶</a></h3>
+<p>This hook is similar to the above-mentioned customizeQueryAndParams but only allows customization of the query string. If
+hooks customizeQueryAndParams and customizeQuery are both implemented, both will be executed with customizeQuery being run after.</p>
+<p>The shell for this hook is as follows:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">customizeQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">customizeQuery</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">customizeQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="cm">/* Insert code here */</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nx">newQuery</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="create-handle-values-hook">
+<span id="createhandlevalues"></span><h3>Create Handle Values Hook<a class="headerlink" href="#create-handle-values-hook" title="Permalink to this heading">¶</a></h3>
+<p>This hook is for specifying the handle record that is to be returned when handles are resolved
+using handle client tools.  This hook can be defined with other service-level hooks in Design JavaScript;
+it can alternatively be defined on the separate design object property <code class="docutils literal notranslate"><span class="pre">design.handleMintingConfig.javascript</span></code>,
+which can be edited by selecting <code class="docutils literal notranslate"><span class="pre">Handle</span> <span class="pre">Records</span></code> from the <code class="docutils literal notranslate"><span class="pre">Admin</span></code> menu on the UI.</p>
+<p>The shell for this hook is as follows:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">createHandleValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createHandleValues</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">createHandleValues</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">   </span><span class="cm">/* Insert code here */</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nx">handleValues</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If creating handle values with JavaScript it is important to consider that all Cordra objects, even if not publicly
+visible, will have a handle record created. If you are storing data directly in the handle record you may wish to check
+if the Cordra object is publicly accessible. You can do this by inspecting the ‘context’ argument. For example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">isPublic</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">effectiveAcl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">effectiveAcl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">effectiveAcl</span><span class="p">.</span><span class="nx">writers</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">effectiveAcl</span><span class="p">.</span><span class="nx">writers</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">effectiveAcl</span><span class="p">.</span><span class="nx">readers</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">effectiveAcl</span><span class="p">.</span><span class="nx">readers</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="asynchronous-lifecycle-hooks">
+<span id="id1"></span><h2>Asynchronous Lifecycle Hooks<a class="headerlink" href="#asynchronous-lifecycle-hooks" title="Permalink to this heading">¶</a></h2>
+<p>The return value of any hook (or type method) can be a JavaScript promise.
+When a hook returns a promise, Cordra will wait until the promise is fulfilled or rejected.
+If the promise is fulfilled, Cordra will use the value to which the promise resolved.
+If the promise is rejected, Cordra will treat the rejection reason like it would a thrown exception.
+This facility makes it possible to use asynchronous libraries to write Cordra hooks and type methods.</p>
+</section>
+<section id="throwing-errors-in-schema-javascript">
+<span id="id2"></span><h2>Throwing Errors in Schema JavaScript<a class="headerlink" href="#throwing-errors-in-schema-javascript" title="Permalink to this heading">¶</a></h2>
+<p>Errors thrown as strings will end up in the server response, with the thrown string
+as the error message.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">throw</span><span class="w"> </span><span class="s2">&quot;An error has occurred&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If the user requests are issued via the REST API, for beforeSchemaValidation and Type methods calls, this will be
+returned to the user as a 400 Bad Request. For onObjectResolution and beforeDelete, this will be returned as 403
+Forbidden. For search results where onObjectResolution throws an exception, the corresponding object will be omitted
+from the search results (this can affect search results count).</p>
+<p>If the user requests are issued via the DOIP interface, a “bad request” or “forbidden” error will be returned.</p>
+<p>For more control over the server response, you can also throw a custom <code class="docutils literal notranslate"><span class="pre">CordraError</span></code>, available via
+the <a class="reference internal" href="#cordra-module"><span class="std std-ref">Cordra.js Module</span></a>. For example:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">cordra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;cordra&quot;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">responseCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">418</span><span class="p">;</span><span class="w"> </span><span class="c1">// defaults to 400 or (for resolution) 403 if undefined</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Beverage Not Supported&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">requestedBeverage</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;coffee&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">supportedBeverages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;water&quot;</span><span class="p">]</span>
+<span class="p">};</span>
+<span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">cordra</span><span class="p">.</span><span class="nx">CordraError</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">responseCode</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This will be translated into a server response with the given error message and response status code. If present,
+the <code class="docutils literal notranslate"><span class="pre">response</span></code> object will be added to the body of the server response. This can be used to send extra
+information about the error back to the caller.</p>
+<p>As a convenience, if the first argument to <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">cordra.CordraError</span></code> is a string, the response will be
+<code class="docutils literal notranslate"><span class="pre">{&quot;message&quot;:&quot;that</span> <span class="pre">string&quot;}</span></code>.  The first object can also be an instance of JavaScript <code class="docutils literal notranslate"><span class="pre">Error</span></code>
+or a Java <code class="docutils literal notranslate"><span class="pre">Throwable</span></code>.  If there is no responseCode given, a <code class="docutils literal notranslate"><span class="pre">CordraError</span></code> or <code class="docutils literal notranslate"><span class="pre">CordraException</span></code> will be propagated
+using the given object’s response code, and any other <code class="docutils literal notranslate"><span class="pre">Error</span></code> or <code class="docutils literal notranslate"><span class="pre">Throwable</span></code> will
+be propagated with 500 Internal Server Error.</p>
+<p>The constructor for <code class="docutils literal notranslate"><span class="pre">cordra.CordraError</span></code> can take an options argument as its last parameter,
+which will be given to the JavaScript <code class="docutils literal notranslate"><span class="pre">Error</span></code> constructor.  This can be used to
+set up a <code class="docutils literal notranslate"><span class="pre">cause</span></code> property in the ordinary way.  If the first argument to the constructor
+is an <code class="docutils literal notranslate"><span class="pre">Error</span></code> or <code class="docutils literal notranslate"><span class="pre">Throwable</span></code>, that will be the cause if no options argument is present.</p>
+<p>Thrown errors other than strings and CordraError will be seen by the user as 500 Internal Server Error.</p>
+</section>
+<section id="cordra-modules">
+<span id="using-cordra-modules"></span><h2>Cordra Modules<a class="headerlink" href="#cordra-modules" title="Permalink to this heading">¶</a></h2>
+<section id="cordra-js-module">
+<span id="cordra-module"></span><h3>Cordra.js Module<a class="headerlink" href="#cordra-js-module" title="Permalink to this heading">¶</a></h3>
+<p>The builtin Cordra.js module has helpful functions, listed below, that may be useful when writing JavaScript code in Type methods.</p>
+<p>See also the <a class="reference internal" href="#cordra-client-module"><span class="std std-ref">Cordra Client Module</span></a> which has a more general API for performing operations against the host Cordra.</p>
+<p><strong>Note:</strong> Lifecycle hooks are triggered when calls are made using the external APIs. Calls made to Cordra using the
+helpful functions in the cordra.js module do not trigger any lifecycle hooks.</p>
+<section id="search">
+<h4>Search<a class="headerlink" href="#search" title="Permalink to this heading">¶</a></h4>
+<p>Use the search function to find objects in the Cordra index:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cordra.search(query, params)
+</pre></div>
+</div>
+<p>This will return an array (in JSON sense) of Cordra objects matching the query.
+<code class="docutils literal notranslate"><span class="pre">params</span></code> is an optional object with optional fields <code class="docutils literal notranslate"><span class="pre">pageNum</span></code>, <code class="docutils literal notranslate"><span class="pre">pageSize</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sortFields</span></code>, <code class="docutils literal notranslate"><span class="pre">facets</span></code>, <code class="docutils literal notranslate"><span class="pre">filterQueries</span></code>, <code class="docutils literal notranslate"><span class="pre">includeScore</span></code>, and <code class="docutils literal notranslate"><span class="pre">includeVersions</span></code>.</p>
+<p>The default behavior is to get all results for a query, which corresponds to a <code class="docutils literal notranslate"><span class="pre">pageNum</span></code> of <code class="docutils literal notranslate"><span class="pre">0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">pageSize</span></code> of <code class="docutils literal notranslate"><span class="pre">-1</span></code>.
+Caution should be used when requesting all results when the query might match a very large
+number of objects.</p>
+<p>The legacy form <code class="docutils literal notranslate"><span class="pre">cordra.search(query,</span> <span class="pre">pageNum,</span> <span class="pre">pageSize,</span> <span class="pre">sortFields)</span></code> still functions as well.</p>
+<p>Note: Former versions of Cordra would return all results with pageSize=0.  To restore this former behavior, you can add
+<code class="docutils literal notranslate"><span class="pre">&quot;useLegacySearchPageSizeZeroReturnsAll&quot;:true</span></code> to the Cordra Design object.  By default a search with pageSize=0
+returns the number of matched objects but no object content.</p>
+</section>
+<section id="get">
+<h4>Get<a class="headerlink" href="#get" title="Permalink to this heading">¶</a></h4>
+<p>Use get to get an object from Cordra by the object ID:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cordra.get(objectId);
+</pre></div>
+</div>
+<p>If an object with the given ID is found, it will be returned. Otherwise, <code class="docutils literal notranslate"><span class="pre">null</span></code> will be returned.</p>
+</section>
+<section id="payload-retrieval">
+<h4>Payload Retrieval<a class="headerlink" href="#payload-retrieval" title="Permalink to this heading">¶</a></h4>
+<p>Use any of the following to retrieve a payload from Cordra using the object ID and the payload name:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cordra.getPayloadAsJavaInputStream(objectId, payloadName);
+cordra.getPayloadAsJavaReader(objectId, payloadName);
+cordra.getPayloadAsUint8Array(objectId, payloadName);
+cordra.getPayloadAsString(objectId, payloadName);
+cordra.getPayloadAsJson(objectId, payloadName);
+cordra.getPartialPayloadAsJavaInputStream(objectId, payloadName, start, end);
+cordra.getPartialPayloadAsJavaReader(objectId, payloadName, start, end);
+cordra.getPartialPayloadAsUint8Array(objectId, payloadName, start, end);
+cordra.getPartialPayloadAsString(objectId, payloadName, start, end);
+</pre></div>
+</div>
+</section>
+<section id="cordraerror">
+<h4>CordraError<a class="headerlink" href="#cordraerror" title="Permalink to this heading">¶</a></h4>
+<p>See <a class="reference internal" href="#throwing-errors-in-schema-javascript"><span class="std std-ref">Throwing Errors in Schema JavaScript</span></a>.</p>
+</section>
+</section>
+<section id="cordrautil-module">
+<span id="cordra-util-module"></span><h3>CordraUtil Module<a class="headerlink" href="#cordrautil-module" title="Permalink to this heading">¶</a></h3>
+<section id="escape-for-query">
+<h4>Escape for Query<a class="headerlink" href="#escape-for-query" title="Permalink to this heading">¶</a></h4>
+<p>Will modify a string for literal inclusion in a phrase query for calling <code class="docutils literal notranslate"><span class="pre">cordra.search</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const query = &#39;/property:&quot;&#39; + cordraUtil.escapeForQuery(s) + &#39;&quot;&#39;;
+</pre></div>
+</div>
+</section>
+<section id="verify-secret">
+<h4>Verify Secret<a class="headerlink" href="#verify-secret" title="Permalink to this heading">¶</a></h4>
+<p>Used to verify a given string against the hash stored for that property:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cordraUtil.verifySecret(obj, jsonPointer, secretToVerify);
+</pre></div>
+</div>
+<p>Return true or false, depending on the results of the verification.</p>
+</section>
+<section id="verify-hashes">
+<h4>Verify Hashes<a class="headerlink" href="#verify-hashes" title="Permalink to this heading">¶</a></h4>
+<p>Verifies the hashes on a cordra object property:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cordraUtil.verifyHashes(obj);
+</pre></div>
+</div>
+<p>Returns a verification report object indicating which of the object hashes verify.</p>
+</section>
+<section id="hash-json">
+<h4>Hash Json<a class="headerlink" href="#hash-json" title="Permalink to this heading">¶</a></h4>
+<p>Hashes a JSON object, JSON array or primitive:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cordraUtil.hashJson(jsonElement);
+cordraUtil.hashJson(jsonElement, algorithm);
+</pre></div>
+</div>
+<p>Returns a base16 encoded string of the SHA-256 hash (or other specified algorithm) of the input.
+The input JSON is first canonicalized before being hashed.</p>
+</section>
+<section id="sign-with-key">
+<h4>Sign With Key<a class="headerlink" href="#sign-with-key" title="Permalink to this heading">¶</a></h4>
+<p>Signs a payload (a string) with a given private key in JWK format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const jws = cordraUtil.signWithKey(payload, jwk);
+</pre></div>
+</div>
+<p>Returns a Json Web Signature in compact serialization.</p>
+</section>
+<section id="sign-with-cordra-key">
+<h4>Sign With Cordra Key<a class="headerlink" href="#sign-with-cordra-key" title="Permalink to this heading">¶</a></h4>
+<p>Signs a payload (a string) with the private key of the Cordra instance:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const jws = cordraUtil.signWithCordraKey(payload);
+</pre></div>
+</div>
+<p>Returns a Json Web Signature in compact serialization.</p>
+<p>The private key used is the same key used for administering an external handle server, and can be set by
+including a file “privatekey” in the Cordra data directory.  See <a class="reference internal" href="handle-integration.html#external-handle-server"><span class="std std-ref">Handle Server</span></a> and also
+<a class="reference internal" href="../configuration/distributed-deployment.html#distributed-cordra-configuration"><span class="std std-ref">Cordra Configuration</span></a> for the distributed version.</p>
+</section>
+<section id="retrieve-cordra-public-key">
+<h4>Retrieve Cordra Public Key<a class="headerlink" href="#retrieve-cordra-public-key" title="Permalink to this heading">¶</a></h4>
+<p>Returns the Cordra public key in JWK format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const jwk = cordraUtil.getCordraPublicKey();
+</pre></div>
+</div>
+</section>
+<section id="verify-with-cordra-key">
+<h4>Verify With Cordra Key<a class="headerlink" href="#verify-with-cordra-key" title="Permalink to this heading">¶</a></h4>
+<p>Verifies a JWS with the private key of the Cordra instance:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const isValid = cordraUtil.verifyWithCordraKey(jws);
+</pre></div>
+</div>
+</section>
+<section id="verify-with-key">
+<h4>Verify With Key<a class="headerlink" href="#verify-with-key" title="Permalink to this heading">¶</a></h4>
+<p>Verifies a JWS with the supplied private key in JWK format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const isValid = cordraUtil.verifyWithKey(jws, jwk);
+</pre></div>
+</div>
+</section>
+<section id="extract-jwt-payload">
+<h4>Extract JWT Payload<a class="headerlink" href="#extract-jwt-payload" title="Permalink to this heading">¶</a></h4>
+<p>Extracts the payload of a JWT, returning the parsed JSON as a JavaScript object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const claimsObject = cordraUtil.extractJwtPayload(jws);
+</pre></div>
+</div>
+</section>
+<section id="get-groups-for-user">
+<h4>Get Groups for User<a class="headerlink" href="#get-groups-for-user" title="Permalink to this heading">¶</a></h4>
+<p>Given a user id, returns a list of group ids, which are the Cordra group objects that reference the user id.
+Does not interact with custom groups provided by the response of the “authenticate” hook.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const groupIds = cordraUtil.getGroupsForUser(user);
+</pre></div>
+</div>
+</section>
+<section id="validate-with-schema">
+<h4>Validate With Schema<a class="headerlink" href="#validate-with-schema" title="Permalink to this heading">¶</a></h4>
+<p>Given some variable <code class="docutils literal notranslate"><span class="pre">input</span></code> and a JSON schema, this function will validate the input against the JSON schema and
+return a report:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const input = {
+    name: &quot;foo&quot;,
+    description: &quot;bar&quot;
+};
+
+const jsonSchema = {
+    type: &quot;object&quot;,
+    required: [
+        &quot;name&quot;,
+        &quot;description&quot;
+    ],
+    properties: {
+       name: {
+           type: &quot;string&quot;
+       },
+       description: {
+           type: &quot;string&quot;
+       }
+   }
+};
+
+const report = cordraUtil.validateWithSchema(input, jsonSchema);
+</pre></div>
+</div>
+<p>The resulting report will contain a boolean <code class="docutils literal notranslate"><span class="pre">success</span></code> and possibly a list of errors, where each error will have
+a <code class="docutils literal notranslate"><span class="pre">message</span></code> and possibly a <code class="docutils literal notranslate"><span class="pre">pointer</span></code> indicating where in the JSON the error occurs.</p>
+<p>The JsonSchema may use <code class="docutils literal notranslate"><span class="pre">$ref</span></code> to reference other schemas in Cordra. For example if you have a Cordra type named
+<code class="docutils literal notranslate"><span class="pre">Foo</span></code> you could do the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const input = {
+    name: &quot;foo&quot;,
+    description: &quot;bar&quot;
+};
+
+const jsonSchema = {
+    &quot;$ref&quot;: &quot;Foo&quot;
+};
+
+const report = cordraUtil.validateWithSchema(input, jsonSchema);
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cordra-client-module">
+<span id="id3"></span><h3>Cordra Client Module<a class="headerlink" href="#cordra-client-module" title="Permalink to this heading">¶</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">require('cordra-client')</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">...</span> <span class="pre">from</span> <span class="pre">'cordra-client'</span></code> allows access to APIs
+for interacting with the host Cordra, as arbitrary authenticated users.
+The module APIs are largely compatible with the
+<a class="reference internal" href="../client/javascript.html"><span class="doc">&#64;cnri/cordra-client JavaScript library</span></a>.</p>
+<section id="import">
+<h4>Import<a class="headerlink" href="#import" title="Permalink to this heading">¶</a></h4>
+<p>To import, use either:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const { CordraClient, Blob } = require(&#39;cordra-client&#39;);
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import CordraClient, { Blob } from &#39;cordra-client&#39;;
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">Blob</span></code> import is used to interact with payloads and binary schema methods, and is otherwise not necessary.</p>
+</section>
+<section id="construction-options-authentication">
+<h4>Construction, Options, Authentication<a class="headerlink" href="#construction-options-authentication" title="Permalink to this heading">¶</a></h4>
+<p>To create a new CordraClient which will interact as the admin user:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const client = new CordraClient();
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">CordraClient</span></code> constructor takes a single argument which is the default Options for calls made using the client.
+Individual calls can specify the Options instead of using the default.  The Options can specify an
+attempt to authenticate (such as <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;username&quot;:</span> <span class="pre">&quot;...&quot;,</span> <span class="pre">&quot;password&quot;:</span> <span class="pre">&quot;...&quot;</span> <span class="pre">}</span></code>), but a helper static method allows
+creating an Options which is automatically authenticated as a specified userId:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>const client = new CordraClient(CordraClient.optionsForUserId(&#39;123/abc&#39;));
+</pre></div>
+</div>
+</section>
+<section id="api-calls">
+<h4>API Calls<a class="headerlink" href="#api-calls" title="Permalink to this heading">¶</a></h4>
+<p>Once you have an instance of <code class="docutils literal notranslate"><span class="pre">CordraClient</span></code>, call it exactly as described in <a class="reference external" href="../cordra-client-js-typedoc/classes/cordraclient.html">the API for the cordra-client JavaScript
+library</a>.
+In particular, calls are generally asynchronous and use of async/await is recommended.</p>
+</section>
+<section id="binary-blobs">
+<h4>Binary Blobs<a class="headerlink" href="#binary-blobs" title="Permalink to this heading">¶</a></h4>
+<p>For interacting with payloads and binary schema methods, the <code class="docutils literal notranslate"><span class="pre">CordraClient</span></code> APIs use the <code class="docutils literal notranslate"><span class="pre">Blob</span></code> type.
+This <code class="docutils literal notranslate"><span class="pre">Blob</span></code> supports methods <code class="docutils literal notranslate"><span class="pre">blob.arrayBuffer()</span></code> and <code class="docutils literal notranslate"><span class="pre">blob.text()</span></code> which return a Promise to an ArrayBuffer
+and a Promise to a string, respectively; it additionally supports <code class="docutils literal notranslate"><span class="pre">blob.javaInputStream()</span></code> which returns
+(synchronously) a Java InputStream instance.  Additionally, a Blob can be constructed from a Java InputStream
+using:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>new Blob([javaInputStream]);
+</pre></div>
+</div>
+</section>
+<section id="restrictions-on-locking-write-interactions">
+<h4>Restrictions on Locking (Write) Interactions<a class="headerlink" href="#restrictions-on-locking-write-interactions" title="Permalink to this heading">¶</a></h4>
+<p>Note that some JavaScript is run in a context where the Cordra object is <em>locked</em> against changes from multiple
+simultaneous calls.  In the locked context it is not allowed to create, update, delete, or call instance methods
+on other Cordra objects – those interactions require another lock, which could lead to deadlock.  To prevent
+this, CordraClient will throw an error when such a call is made inside the lock.  Get, search, and static
+schema methods are always safe to call.  From inside of static methods it is safe to perform locking (write) interactions;
+from the hooks <code class="docutils literal notranslate"><span class="pre">afterCreateOrUpdate</span></code> and <code class="docutils literal notranslate"><span class="pre">afterDelete</span></code> it is safe to perform locking (write) interactions.
+It is generally either not possible or not desirable to perform locking (write) interactions from inside instance methods
+or other hooks; see the figures at <a class="reference internal" href="#javascript-lifecycle-hooks"><span class="std std-ref">Lifecycle Hooks</span></a> for details on which hooks are inside the lock.</p>
+</section>
+</section>
+<section id="cordra-schemas-and-javascript">
+<span id="cordra-schemas"></span><h3>Cordra Schemas and JavaScript<a class="headerlink" href="#cordra-schemas-and-javascript" title="Permalink to this heading">¶</a></h3>
+<p>Schemas associated with type objects are available to the JavaScript via <code class="docutils literal notranslate"><span class="pre">require('/cordra/schemas/Type.schema.json')</span></code>,
+and JavaScript added to those type objects via <code class="docutils literal notranslate"><span class="pre">require('/cordra/schemas/Type')</span></code>.  Here <cite>Type</cite> should be replaced
+by the name of the particular type to be accessed.</p>
+</section>
+</section>
+<section id="using-external-modules">
+<span id="id4"></span><h2>Using External Modules<a class="headerlink" href="#using-external-modules" title="Permalink to this heading">¶</a></h2>
+<p>Note: one simple way to share JavaScript code is to have one schema’s JavaScript access another schema’s
+JavaScript, as outlined in <a class="reference internal" href="#cordra-schemas"><span class="std std-ref">Cordra Schemas and JavaScript</span></a>.  Since the JavaScript can export properties besides
+the hooks and methods, any code can be shared this way.</p>
+<p>Additionally,
+external JavaScript modules can be managed with a Cordra object as a payload configured to be a “referrable” source
+of JavaScript modules. Typically, this can be done on a single object of a type called JavaScriptDirectory. Here are the
+steps needed to create and populate the JavaScriptDirectory object.</p>
+<ol class="arabic simple">
+<li><p>Create a new schema in Cordra called “JavaScriptDirectory” and using the “javascript-directory” template.</p></li>
+<li><p>Create a new JavaScriptDirectory object. Set the directory to <code class="docutils literal notranslate"><span class="pre">/node_modules</span></code>. This will allow you to import modules
+by filename, instead of directory path and filename.</p></li>
+<li><p>Add your JavaScript module files as payloads to the JavaScriptDirectory object. The payload name should match the
+filename and will be used when importing a module. For example, a payload named <code class="docutils literal notranslate"><span class="pre">util.js</span></code> could be importing using
+<code class="docutils literal notranslate"><span class="pre">require('util');</span></code></p></li>
+</ol>
+<p>The use of external JavaScript modules affects reindexing.  It is currently necessary to ensure that objects of type
+“Schema” and any sources of JavaScript (like type “JavaScriptDirectory”) are indexed first.  See <a class="reference internal" href="../configuration/reindexing.html#reindexing"><span class="std std-ref">Reindexing</span></a>
+for information.</p>
+</section>
+<section id="javascript-version">
+<span id="id5"></span><h2>JavaScript Version<a class="headerlink" href="#javascript-version" title="Permalink to this heading">¶</a></h2>
+<p>By default Cordra uses the GraalVM JavaScript engine.  This allows JavaScript features up to ECMAScript 2022.</p>
+<p>In case your JavaScript requires Nashorn, you can configure Cordra to continue using Nashorn
+by adding to config.json:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;javascript&quot;: {
+    &quot;engine&quot;: &quot;nashorn&quot;
+}
+</pre></div>
+</div>
+<p>Nashorn supports ECMAScript 5.1 but
+Cordra JavaScript using Nashorn does come prepopulated with a wide range of polyfills allowing features up to ECMAScript 2017.
+It is thus in many cases straightforward to write ECMAScript 2017 code and transpile it (using for example Babel) to ES5 for use in Cordra.</p>
+</section>
+<section id="ecmascript-modules">
+<span id="esm-modules"></span><h2>ECMAScript Modules<a class="headerlink" href="#ecmascript-modules" title="Permalink to this heading">¶</a></h2>
+<p>The examples in this documentation are written as CommonJS (CJS) modules, using <code class="docutils literal notranslate"><span class="pre">require</span></code> to import functionality
+and setting properties of <code class="docutils literal notranslate"><span class="pre">exports</span></code> to export functionality.  Cordra also supports using ECMAScript (ESM) modules, which
+use <code class="docutils literal notranslate"><span class="pre">import</span></code> to import functionality and <code class="docutils literal notranslate"><span class="pre">export</span></code> to export functionality.</p>
+<p>By default, Cordra will access JavaScript using CJS.  If you have written an ESM module, you must set the
+<code class="docutils literal notranslate"><span class="pre">&quot;javascriptIsModule&quot;</span></code> property (a sibling of the <code class="docutils literal notranslate"><span class="pre">&quot;javascript&quot;</span></code> property) to true.  This property exists
+on Type objects, and on the design object everywhere JavaScript can be included.</p>
+<p>For shared code (<a class="reference internal" href="#using-external-modules"><span class="std std-ref">Using External Modules</span></a>) the type of a module must be correctly set on the
+caller side, that is, the caller must either <code class="docutils literal notranslate"><span class="pre">require</span></code> or <code class="docutils literal notranslate"><span class="pre">import</span></code> the module, as appropriate.</p>
+<p>The built-in modules “cordra”, “cordra-client”, and “cordra-util” (also available for backward compatibility as “cordraUtil”)
+can be either required or imported.</p>
+</section>
+<section id="legacy-javascript-hooks">
+<span id="legacy-js"></span><h2>Legacy JavaScript Hooks<a class="headerlink" href="#legacy-javascript-hooks" title="Permalink to this heading">¶</a></h2>
+<p>In early versions of the Cordra 2.0 Beta software, the JavaScript hooks <code class="docutils literal notranslate"><span class="pre">beforeSchemaValidation</span></code>,
+<code class="docutils literal notranslate"><span class="pre">onObjectResolution</span></code>, and <code class="docutils literal notranslate"><span class="pre">beforeDelete</span></code> took the JSON content of the Cordra object, instead of the full Cordra
+object (including id, type, content, acl, metadata, and payloads properties). Additionally the JavaScript <code class="docutils literal notranslate"><span class="pre">cordra.get</span></code>
+function returned only the content instead of the full Cordra object.</p>
+<p>If a Cordra instance with JavaScript written for those earlier versions needs to be upgraded, and it is not yet possible
+to adapt the JavaScript to the current API, then the following flag must be added to the Design object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&quot;useLegacyContentOnlyJavaScriptHooks&quot;: true
+</pre></div>
+</div>
+<p>For more information on editing the Design object, see <a class="reference internal" href="design-object.html#design-object"><span class="std std-ref">Design Object</span></a>.</p>
+<p>Cordra users upgrading from early versions of the Cordra 2.0 beta, who did not use schema JavaScript (apart from the
+default User schema JavaScript, which will be automatically upgraded if it has not been edited), do not in general need
+to take any action.</p>
+</section>
+<section id="examples-of-hooks">
+<h2>Examples of Hooks<a class="headerlink" href="#examples-of-hooks" title="Permalink to this heading">¶</a></h2>
+<section id="example-user-schema-javascript">
+<span id="userschemajsexample"></span><h3>Example: User Schema JavaScript<a class="headerlink" href="#example-user-schema-javascript" title="Permalink to this heading">¶</a></h3>
+<p>The default Cordra User schema comes with JavaScript that performs basic password validation.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">cordra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;cordra&quot;</span><span class="p">);</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">beforeSchemaValidation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeSchemaValidation</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">beforeSchemaValidation</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">isNew</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">password</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="s2">&quot;Password is too short. Min length 8 characters&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This code will run before the given object is validated and stored. If this request is a create
+(<code class="docutils literal notranslate"><span class="pre">context.isNew</span></code> is true) or contains a <code class="docutils literal notranslate"><span class="pre">password</span></code>, the password is checked to make sure it is long enough. If not,
+an error is thrown. This error will be returned to the callee and can be displayed as desired.</p>
+</section>
+<section id="example-document-modification">
+<h3>Example: Document Modification<a class="headerlink" href="#example-document-modification" title="Permalink to this heading">¶</a></h3>
+<p>In this slightly more complicated example, we will bind lifecycle hooks to the Document type pre-defined in Cordra with
+the following features:</p>
+<ul class="simple">
+<li><p>Add a timestamp to the description of the document in a way it is stored.</p></li>
+<li><p>Add a timestamp to the description when the object is resolved, but not actually store.</p></li>
+<li><p>Require that the description be changed to “DELETEME” before the document can be deleted.</p></li>
+</ul>
+<p>To demonstrate loading JavaScript from an external file, the function to create the timestamp is in a file called
+<code class="docutils literal notranslate"><span class="pre">util.js</span></code>. Create a JavaScript Directory (as described above) and upload this file as a payload named <code class="docutils literal notranslate"><span class="pre">util.js</span></code>.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">getTimestampString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getTimestampString</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">getTimestampString</span><span class="p">(</span><span class="nx">isResolution</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isResolution</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;\nResolved at: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentDate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;\nLast saved: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentDate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, edit the Document type in Cordra and put the following in the JavaScript field.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">beforeSchemaValidation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeSchemaValidation</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">onObjectResolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">onObjectResolution</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">beforeDelete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">beforeDelete</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">beforeSchemaValidation</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">description</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;DELETEME&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">description</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">getTimestampString</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onObjectResolution</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">description</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">getTimestampString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">beforeDelete</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">description</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;DELETEME&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="s1">&#39;Description must be DELETEME before object can be deleted.&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally, create a new document in Cordra. You should see that whenever the document is updated, a new timestamp is
+appended to the description. If you view the document’s JSON, you should see a single resolution timestamp, which
+changes on every resolution. Finally, if you try to delete the document without changing the description to “DELETEME”
+you should see an error message.</p>
+</section>
+<section id="example-modification-of-the-indexed-object">
+<span id="objectforindexingexample"></span><h3>Example: Modification of the Indexed Object<a class="headerlink" href="#example-modification-of-the-indexed-object" title="Permalink to this heading">¶</a></h3>
+<p>It is possible make changes to the object that is indexed such that it differs from the object that is stored. This is
+achieved by writing a function called <code class="docutils literal notranslate"><span class="pre">objectForIndexing</span></code>.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">objectForIndexing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">objectForIndexing</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">objectForIndexing</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">otherName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">object</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this example if the incoming object has a property called <code class="docutils literal notranslate"><span class="pre">name</span></code> with the value <code class="docutils literal notranslate"><span class="pre">foo</span></code>, a new property will be
+added to the indexed object called <code class="docutils literal notranslate"><span class="pre">otherName</span></code> with the value <code class="docutils literal notranslate"><span class="pre">bar</span></code>. The object that is stored will not contain
+the new property but you will be able to search for this object via this property with the query <code class="docutils literal notranslate"><span class="pre">/otherName:bar</span></code>.</p>
+</section>
+<section id="example-generating-id">
+<span id="generateidexample"></span><h3>Example: Generating ID<a class="headerlink" href="#example-generating-id" title="Permalink to this heading">¶</a></h3>
+<p>Example JavaScript for generating object ids is shown below. Here we generate a random suffix for the handle in base16
+and append it to a prefix. By setting <code class="docutils literal notranslate"><span class="pre">isGenerateIdLoopable</span></code> to true, we ask Cordra to repeatedly call this method
+until a unique id is generated.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">cordra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cordra&#39;</span><span class="p">);</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">generateId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateId</span><span class="p">;</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">isGenerateIdLoopable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">generateId</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;test/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">randomSuffix</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">randomSuffix</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="example-creating-handle-values">
+<span id="createhandlevaluesexample"></span><h3>Example: Creating Handle Values<a class="headerlink" href="#example-creating-handle-values" title="Permalink to this heading">¶</a></h3>
+<p>Example JavaScript for creating handle values is shown below. The JavaScript puts a copy of the information from the
+Cordra object in the Handle record.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">exports</span><span class="p">.</span><span class="nx">createHandleValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createHandleValues</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">createHandleValues</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dataValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">index</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CORDRA_OBJECT&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">modifiedOn</span><span class="p">).</span><span class="nx">toISOString</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;string&#39;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">object</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="nx">handleValues</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">dataValue</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">handleValues</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+
+<!-- BEGIN FOOTER -->
+<footer id="footer">
+    <div id="footer-main" class="container-large">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="widget widget-text">
+                    <h3 class="widget-title">Who are we?</h3>
+                    <!-- <img width="200" height="50" class="footer-logo" src="_static/img/logo/cordra-light.png" alt="logo"> -->
+                    <p>CNRI is a not-for-profit organization formed in 1986 to undertake, foster, and promote research on information infrastructure in the public interest.</p>
+                    <p><i class="nc-icon-outline ui-1_home-minimal"></i> Corporation for National Research Initiatives</p>
+                    <p><i class="nc-icon-outline location_position-marker"></i> 1895 Preston White Drive, Suite 100, Reston, Virginia 20191, USA</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs-down">
+                <div class="widget widget-links">
+                    <div class="widget-title">
+                        <h3 class="widget-title">Quick Links</h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="/cordra.html">What's Cordra</a>
+                        </li>
+                        <li>
+                            <a href="/download.html">Download</a>
+                        </li>
+                        <li>
+                            <a href="/documentation/introduction/introduction.html">Developer Resources</a>
+                        </li>
+                        <li>
+                            <a href="/download.html#section-licenses">Licenses</a>
+                        </li>
+                        <li>
+                            <a href="/privacypolicy.html">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 hidden-md-down">
+                <div class="widget">
+                    <h3 class="widget-title">Contact Us</h3>
+                    <p>Drop us an
+                        <span class="f-18 c-white w-700 font-handwriting">
+                            <a href="#" onclick="document.getElementById('emailAddress').style.display = 'block'; return false;" class="c-white">email.</a>
+                            <span id="emailAddress" style="display: none;" class="c-white text-sm w-100">support@cordra.org</span>
+                        </span>
+                    </p>
+                    <p>Join us on <a href="https://hdl.handle.net/20.5000/cordra-slack" target="_blank"><img width="100px" height="100px" src="../_static/img/slack_white.png" alt="Slack" class="m-l--10" /></a><span
+                            class="f-18 c-white w-700 font-handwriting m-l--10">.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer-bottom">
+        <div class="container-large">
+            <div class="row">
+                <div class="col-sm-12 t-center">
+                    <p class="copyright">Copyright&copy; 2020. Corporation for National Resesarch Initiatives. Cordra&reg; is a trademark of Corporation for National Research Initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER -->
+
+  </body>
+</html> contentType 9 text/html url 79 https://www.cordra.org:443/documentation/design/javascript-lifecycle-hooks.html responseCode 3 200 

@@ -1,0 +1,560 @@
+qaaoasceqmxahcsavonguawkyecmuszaxmugjgho length 5 28668 page 28668 <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Guitar Distortion 101</title>
+<link rel="canonical" href="https://blackstoneappliances.com/dist101.html" />
+<META name="description" content="Instead of arguing about tubes and transistors, let's talk about what guitar amps and pedals actually DO to your sound. For technophiles and technophobes alike. Specify harmonics and see and hear the waveform right in your browser. Explains clipping, harmonic content of waveforms, even vs. odd harmonics, soft clipping, waveform symmetry, intermodulation and the importance of multiple stages.">
+<META name="keywords" content="distortion, guitar, overdrive, guitar amp, guitar tone, clipping, soft clipping, harmonics, tube amp, fourier, technical, electronics, electronics for musicians, physics of music">
+    
+    <meta property="og:url"                content="https://blackstoneappliances.com/dist101.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Guitar Distortion 101" />
+<meta property="og:description" content="Set aside what you know about equipment for a minute, and focus on the actual physics." />
+<meta property="og:image" content="https://blackstoneappliances.com/D101img/dist101.jpg" />
+
+<!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=https://blackstoneappliances.com/oldsite/dist101.html" /><![endif]-->
+
+<!-- This article was written and coded by Jon Blackstone. It has interactive oscilloscope screens composed of animated gifs activated by javascript. The old version of the article had a java applet that allowed real-time mixing of harmonics. Unfortunately, java applets have become largely unusable since Oracle bought Java and implemented a prohibitively expensive registration process. The old version can be found at blackstoneappliances.com/oldsite/dist101.html, and if you have a really old browser you might get the applet to work. -->    
+
+<meta name="viewport" content="initial-scale=1">
+  
+  <style type='text/css'>
+html, body { height:100%; width:100%; margin:0; }
+body {
+    font-size: 100%;
+    background-color:#ffe;
+    background: -webkit-linear-gradient(left, #fff 75%, #fefee8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #fff 75%, #fefee8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #fff 75%, #fefee8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #ffe 75%, #fefee8); /* Standard syntax (must be last) */ 
+}
+      
+/* Sets baseline text size for large phones. */
+@media (orientation:portrait) and (max-width: 512px) {  html {font-size: 9.8px;}
+}
+
+/* Sets baseline text size for small phones. */
+@media (orientation:portrait) and (max-width: 350px) {  html {font-size: 8.75px;}
+}
+
+/* Sets baseline text size for large screens (MacBkPro, iPadPro). */
+@media only screen and (min-width: 1400px),(min-height: 1025px){ 
+html {font-size: 125%;}
+}
+
+
+
+
+#rule { color:#A28F4A; }
+.ClrBkgd {background-color:#A28F4A;}
+
+.navItem {
+    width:85%;
+    margin-left:15%;
+    height:12.2%;
+}
+
+
+#bcopy { 
+	font: 1.12em/1.5em 'Segoe UI Semibold', Futura, Avenir-Heavy, georgia, 'Century Schoolbook L', serif;
+	letter-spacing:.01em;
+}        /* With 1.12em Segoe looks retro, and Futura wraps OK in portrait LO. Firefox now gets semibold without a workaround. If Futura, Segoe Semi or Avenir not avail, better to go serif (to get look of retro print document). */
+
+#bcopy h1 {
+    font: bold .9375em/97% 'Arial Black', 'Avenir Next', 'Nimbus Sans Black', sans-serif;
+}
+
+a{text-decoration:none; color:#ffe}
+
+
+#NavCol {
+    width: 18%;
+    height: 100%;
+    height: 100vh;
+    position: fixed;
+    padding-left:0;
+    background-color:#000;
+
+    margin:0;
+    color:#ffffe6;
+	font: bold .94em/.87em 'Segoe UI', AvenirNext-Bold, Avenir-Black, 'roboto black', roboto-black, arial, sans-serif;; 
+}
+
+#Mlogo {position:relative; top:0px; left:0; width:78%; margin-left:15%; margin-bottom:3.4em}
+
+#main {
+    width: 680px;
+    height: auto;
+    position: absolute;
+	top:30px;
+    left: 18%;
+    margin-top: 25px;
+    padding-left: 3.4%;
+}
+#main a:link,
+#main a:visited,
+#main a:hover {
+   color:#88a0a0;
+}
+.RtCol {
+    position: absolute;
+	top:30px;
+    left:24%;
+    margin-left: 680px;
+    max-width:17.8em;
+    margin-right: 8px;
+}
+
+#rule {
+    position: absolute;
+	top:30px;
+    left:21.5%;
+	width:75.5%;
+    margin-right: 3%; 
+	height: 12px; 
+	font: 1.875em/12px times new roman, serif;
+    overflow:hidden;
+    text-align: justify;
+}
+
+@media (max-width: 1130px) {
+  .RtCol { display: none; }
+  #rule { width:680px; margin-right: 0; }
+}
+
+/* for phones in landscape. */
+@media (orientation:landscape) and (max-width: 815px) {	  
+html { font-size: 13px; }
+#main, #rule {width: 71%; left: 19%; padding: 0}
+#NavCol {width: 16%}
+}
+
+
+.inset { display:none; }
+
+.scope {
+width: 91%;
+border:4px solid #666; 
+background-color:#eed;
+padding:3%; 
+position:relative;
+}
+
+.OpqBtn {
+	-moz-box-shadow:inset 0px 2px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 2px 0px 0px #ffffff;
+	box-shadow:inset 0px 2px 0px 0px #ffffff;
+	background-color:#ebebeb;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+	text-indent:0;
+	border:1px solid #555;
+	display:inline-block;
+	color:#777777;
+	background-color:#ddc;
+	font-family:Arial;
+	font-size:90%;
+	font-weight:bold;
+	font-style:normal;
+	height:17%;
+	line-height:40px;
+	width:12%;
+	text-decoration:none;
+	text-align:center;
+	cursor: pointer;
+ overflow: hidden;
+}.OpqBtn:active {
+	-moz-box-shadow:inset 0px 3px 0px 0px #bbb;
+	-webkit-box-shadow:inset 0px 3px 0px 0px #bbb;
+	box-shadow:inset 0px 3px 0px 0px #bbb;
+}
+
+.LEDoff {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffeded), color-stop(.3, #1f7500) );
+	background:-moz-linear-gradient( center top, #ffeded 5%, #1f7500 40% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeded', endColorstr='#1f7500');
+	background-color:#1f7500;
+	border:1px solid #797;
+	height:12px;
+	line-height:12px;
+	width:12px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.LEDon {
+    width: 12px;
+    height: 12px;
+    background-color: #0f0;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+	border:1px solid #3e3;
+}
+
+.screen { width:75% }
+#SAsrcn { width:60% }
+
+#SpAnPnl {height:62%}
+#bothbtn {bottom:8%}
+#CLt {position:absolute; 30%; left:71.3%; top:70px; width:8%; z-index: 1}
+#ELt {position:absolute; 30%; right:4.8%; top:70px; width:8%; z-index: 1}
+
+img.ClrBkgd {width:94%}
+
+#MNavBar {position:fixed; top:0; left:0; width: 10.2%; height: 130%; height: 130vh; background-color: hsl(45,35%,50%);}
+
+#MNavCol {position:fixed; top:7.4em; left:0; width: 10.2%; height: 86%; height: 86vh;}
+
+.phoneonly, .phonebtn, .mobile, #BlkHeader, #product_m, .print, #StackedPnl { display:none; }
+
+                                /* STYLES FOR PORTRAIT ORIENTATION */
+      
+#product_m { float:left; width:19em; margin:8px 10px 2px -16.7%; }
+      
+#prodpic_m { background-image: url(2SV3.3gsNoPk.png); background-size: contain; background-repeat: no-repeat; height: 0; padding-top: 58%; }
+      
+@media all and (orientation:portrait) {
+    
+.comptr, .DTonly, #rule {display: none;}
+    
+.mobile, #product_m, #inset { display:inline }
+    
+#BlkHeader { display:block; position:fixed; width:100%; height:7.3em; top:0; background-color:#222;  color:#A28F4A; padding-right: 5.3%; overflow:hidden; z-index: 1}
+
+#hdrTriangle {position:absolute; top:0; left:0; width: 9.8%; height:101%; background-color: #ffffe8;}
+
+#LH-bkgd {width: 7.7%}
+    
+#NavCol { display:none; }
+    
+.navItem { width:85%; margin-left:12%; height:9.5%; }
+
+.phonebtn { display:inline-block; position:absolute; width:0; height:26px; left:50%; -webkit-transform: rotate(270deg); transform: rotate(270deg); font: bold 18px/80% 'Droid Sans', 'Avenir Black', 'Segoe UI Semibold', Arial, sans-serif; text-align: center; color:#ffffe8; padding-top:12px}
+    
+#main {width: 70%; top: 9em; left:inherit; right:0; padding-right: 12%; padding-bottom: 1.5em; margin: 0}
+    
+#spectrum { position: static; float:left; right: 53%; width: 230px; margin:1em 1em 0 -19%; padding: 10px; background-color:#000; }
+    
+.blklink { color:#000 !important; border-bottom: 2px dotted #776; }
+
+.up { vertical-align:1px;}
+
+}
+
+                                /* STYLES FOR PHONES (in portrait) */
+@media (orientation:portrait) and (max-width: 512px) {
+#NavCol, .NotOnPh { display:none; }
+#product_m { width:14em; margin:7px 8px 0px -16.7%; }
+p { font: 1.5em/130% Georgia, serif; text-align: justify; }
+#main {width: 76%; padding-right: 9%}
+.phonebtn { font: bold 14px/80% 'Droid Sans', 'Avenir Black', 'Segoe UI Semibold', Arial, sans-serif;}
+.phoneonly {display:inline}
+#bcopy h1 {font-size: 1.5em; color:#333}
+#bcopy i { font-family: inherit; }
+.OpqBtn {width: 27%; height: 25%}
+.screen {height: 11em; width: 65%; margin-right: 1%;}
+#SAsrcn { width:91%; height:auto }
+#SpAnPnl {display: none}
+#StackedPnl {display: block}
+#CLt {top:23.8em; left:8%; width:20%}
+#ELt {top:23.8em; right:14%; width:20%}
+img.ClrBkgd {width:99%}
+.asterisk { visibility: hidden }
+.comment {font-size: 150%}
+}
+
+div#preload { display: none; }
+
+  </style>
+
+<script language="JavaScript" type="text/javascript">
+
+if (navigator.appVersion.indexOf("Windows NT 6.1")!=-1) {
+document.styleSheets[0].insertRule("#bcopy i { font-family: 'franklin gothic', Futura, georgia, serif; }", document.styleSheets[0].length); }
+// substitutes franklin for segoe ital on windows 7
+
+function toggle1(el){
+    if(document.getElementById('PLt1').className!="off")
+    {
+        document.getElementById('PLt1').src='D101img/PilotLtOff.png';
+        document.getElementById('PLt1').className="off";
+        document.getElementById('scope1').src='D101img/Fund+2ndDn.gif'
+    }
+    else if(document.getElementById('PLt1').className=="off")
+    {
+        document.getElementById('PLt1').src='D101img/PilotLtMag.png';
+        document.getElementById('PLt1').className="turnedon";
+        document.getElementById('scope1').src='D101img/Fund+2ndUp.gif'
+    }
+    
+    return false;
+} 
+function toggle2(el){
+    if(document.getElementById('PLt2').className!="off")
+    {
+        document.getElementById('PLt2').src='D101img/PilotLtOff.png';
+        document.getElementById('PLt2').className="off";
+        document.getElementById('scope2').src='D101img/Fund+3rd-Dn.gif'
+    }
+    else if(document.getElementById('PLt2').className=="off")
+    {
+        document.getElementById('PLt2').src='D101img/PilotLtMag.png';
+        document.getElementById('PLt2').className="turnedon";
+        document.getElementById('scope2').src='D101img/Fund+3rd-Up.gif'
+    }
+    
+    return false;
+} 
+function toggle3(el){
+    if(el.className!="LEDoff")
+    {
+        el.className="LEDoff";
+        document.getElementById('PLt3').className="LEDon";
+        document.getElementById('scope3').src='D101img/Phase-DemoBack.gif'
+    }
+    else if(el.className=="LEDoff")
+    {
+        el.className="LEDon";
+        document.getElementById('PLt3').className="LEDoff";
+        document.getElementById('scope3').src='D101img/Phase-DemoShft.gif'
+    }
+    
+    return false;
+}
+function btnPush1(el){
+        document.getElementById('CLt').src='D101img/PilotLtRed.png';
+        document.getElementById('CLt').className="turnedon";
+        document.getElementById('ELt').className="off";
+        document.getElementById('ELt').src='D101img/PilotLtOff.png';
+        document.getElementById('SpAnyl').src='D101img/IMdemoC.gif';
+    }
+function btnPush2(el){
+        document.getElementById('ELt').src='D101img/PilotLtRed.png';
+        document.getElementById('ELt').className="turnedon";
+        document.getElementById('CLt').className="off";
+        document.getElementById('CLt').src='D101img/PilotLtOff.png';
+        document.getElementById('SpAnyl').src='D101img/IMdemoE.gif';
+    }
+function btnPush3(){
+        document.getElementById('CLt').src='D101img/PilotLtRed.png';
+        document.getElementById('ELt').src='D101img/PilotLtRed.png';
+        document.getElementById('SpAnyl').src='D101img/IMdemoBoth.gif';
+    }
+
+</script>
+
+</head>
+    <!-- ----------------------------------------------- // -->
+<body itemscope itemtype ="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://blackstoneappliances.com/dist101.html" />
+
+<div class="RtCol" style="margin-top: 65px;"> <span style="font: 1.875em/120% georgia, 'Century Schoolbook L', serif; letter-spacing: 0.02em;" itemprop="alternativeHeadline">Set aside <BR>what you know about equipment for a minute, <BR>and focus on the actual physics.</span></div>
+
+<div id="paperfade"></div>
+
+
+
+<div id="MNavBar" class="ClrBkgd mobile"></div>
+
+<div id="NavBar" class="comptr"></div>
+
+<div id="rule">&bull;&nbsp; &bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull; &nbsp;&bull;</div>
+
+<div id="main">
+
+<SPAN id="bcopy" itemprop="articleBody">
+<h1 itemprop="headline">Distortion 101</h1>
+<p>
+When guitarists refer to 'distortion', they mean what's technically called <I>harmonic distortion</I>. This is what happens when a gain stage is asked to create a bigger version of a signal than it has the capacity for. As the signal gets too big for the device's boundaries, its head and feet get clipped off. This changes the shape of the waveform, which of course makes it sound different.
+</p><p>
+<img class="ClrBkgd" SRC="D101img/Clean-Clipped-w.png">
+</p><p>
+To understand how the sound is effected, we need to understand a bit about the correlation between the shape of a wave and harmonics.
+</p><p>
+And what are harmonics? Actually, harmonics and wave&shy;forms are two ways of describing the same sound. Sound is vibration, and we can describe complex vibration either by plotting change in position over time (drawing it as a curve), or by thinking of the complex vibration as a combination of simple vibrations. The simplest periodic vibration is a sine wave.
+</p><p style="text-align:center;">
+<IMG SRC="D101img/fund.gif" style="height:7em"> </p>
+<p>If we take a sine wave that comes and goes 200 times a second, and <i>mix</i> it with other sine waves that cycle twice as often, three times as often, four times as often... the result is a more complex wave.</p>
+<IMG SRC="D101img/Wave_Adding.gif"  style="width:100%"><p>
+These additional waves are called <i>harmonics</i>.</p><p>
+In the case of sound waves, the coming and going is the squishing and stretching of air. When two waves are pushing at the same time, the air gets extra squished. If one wave is squishing while the other is stretching, they tend to cancel each other out.</p><p>
+It's a little easier to grasp this if you watch it in action. Click the ADD button below and observe how the harmonic pushes and pulls at the fundamental sine wave.</p><p>
+<DIV class="scope">
+<IMG ID="scope1" class="screen" SRC="D101img/Fund+3rd-1.gif">
+
+<IMG SRC="D101img/PilotLtLav.png" STYLE="position:absolute; top:12%; width:8%">
+<IMG SRC="D101img/CompTape.png" STYLE="position:absolute; top:8%; right:.5%; height:23%">
+<IMG ID="PLt1" class="off" SRC="D101img/PilotLtOff.png" STYLE="position:absolute; top:42%; width:8%">
+<IMG SRC="D101img/2ndTape.png" STYLE="position:absolute; top:39%; right:4%; height:22%">
+<div style="position:absolute; bottom:20%; right:17%; height:18%; width:4%; border-left: 2px solid #999; border-bottom: 2px solid #999;"></div>
+<div class="OpqBtn" STYLE="bottom:11%; position:absolute; right:4%;" onclick="toggle1(PLt1);"/>ADD</div>
+</DIV>
+</p><p>
+All pitched sounds can be thought of as being made up of sine waves like this. So when we re-shape a complex waveform, it's the same thing as changing the mixture of sine waves that make it up. It's useful to think of it as a mixture of harmonics, because that view correlates with how humans hear, and with harmony.
+</p><p>
+If we took our fundamental sine wave, and added one that comes and goes <I>three</I> times as often - which would be called the <I>third harmonic</I> - we'd get get something like this:</p>
+<DIV class="scope">
+<IMG ID="scope2" class="screen" SRC="D101img/Fund+3rd-1.gif">
+
+<IMG SRC="D101img/PilotLtLav.png" STYLE="position:absolute; top:12%; width:8%">
+<IMG SRC="D101img/CompTape.png" STYLE="position:absolute; top:8%; right:.5%; height:23%">
+<IMG ID="PLt2" class="off" SRC="D101img/PilotLtOff.png" STYLE="position:absolute; top:42%; width:8%">
+<IMG SRC="D101img/3rdTape.png" STYLE="position:absolute; top:39%; right:4%; height:22%">
+<div style="position:absolute; bottom:20%; right:17%; height:18%; width:4%; border-left: 2px solid #999; border-bottom: 2px solid #999;"></div>
+<div class="OpqBtn" STYLE="bottom:11%; position:absolute; right:4%;" onclick="toggle2(PLt2);">ADD</div>
+</DIV><p>
+Hm... looks kind of like what would happen to the sine wave if it was subjected to the kind of clipping displayed at the top of the page.
+</p><p>
+Odd-numbered harmonics (the 3rd, 5th, 7th, etc.) push the composite waveform towards a square wave. 
+<A NAME=SoftClip></A>So when we neatly square off the tops and bottoms of a signal, we add odd-numbered harmonics. There'll be <IMG SRC="D101img/Hard-Soft-Spectrum2.gif" ALIGN=left STYLE="margin:0.6em .8em 0 0; height:9.2em; max-width:47%">plenty of high-order har&shy;monics, because it takes har&shy;monics that are a lot higher in frequency than the fundamen&shy;tal to put tight corners in a waveform. Or looking at it the other way around, if you put tight corners in the waveform, you're going to hear high-order harmonics. A bipolar transistor biased for maximum headroom does just that, because it chops off the heads and feet of the wave very abruptly. Some other devices don't chop things off quite so neat. They exhibit <i>soft clipping</i> &ndash; they start to round off the heads and feet as they approach the device's limits. So the harmonics are closer in frequency to the fundamental, and sound more like part of the same tone.
+</p><p>
+Now what about even-numbered harmonics? In that first inter&shy;active picture we added second harmonic, but that didn't result in something that looked like a wave you could get with clipping. But if we shift the <I>phase</I> of that second harmonic (the point at which it starts)...</p><p>
+<DIV class="scope">
+<IMG ID="scope3" class="screen" SRC="D101img/Phase-Demo1.gif" style="width:75%">
+
+<IMG SRC="D101img/PilotLtLav.png" STYLE="position:absolute; top:9%; right:18%; width:7%">
+<IMG SRC="D101img/CompTape.png" STYLE="position:absolute; top:6%; right:.5%; width:15.4%">
+<IMG class="off" SRC="D101img/PilotLtMag.png" STYLE="position:absolute; top:31%; right:18%; width:7%">
+<IMG SRC="D101img/2ndTape.png" STYLE="position:absolute; top:29%; right:4%; width:13%">
+<div class="OpqBtn" STYLE="bottom:11%; width:18%; position:absolute; right:4%;" onclick="toggle3(PLt4);">SHIFT PHASE</div>
+<DIV class="NotOnPh" style="position:absolute; bottom:32%; right:13.6%; width:9.8%; text-align:center; font: bold 12px/16px Arial; color:#666">aligned<div ID="PLt3" class="LEDon" style="margin: auto;"></div></DIV>
+<DIV class="NotOnPh" style="position:absolute; bottom:32%; right:4%; width:9.8%; text-align:center; font: bold 12px/16px Arial; color:#666">+30`<div ID="PLt4" class="LEDoff" style="margin: auto;"></div></DIV>
+</DIV>
+</p><p>Look at that - looks like a wave that's had its head loped off, but not its feet. That's definitely doable. So asymmetrical clipping creates even harmonics.
+</p><p>
+Do we <I>want</I> to add even har&shy;monics? Let's take on that contro&shy;versial issue. Even sounds better, right? Tubes produce even, transistors produce odd, right? Wrong! Wrong!
+</p><p>
+Okay, there is some truth to those statements, in some contexts. In the world of high fidelity, audiophiles point out that triode tubes (that's preamp tubes to us) tend to produce more 2nd harmonic than 3rd, and bipolar transistors the opposite. But these guys are talking about tiny amounts of distortion - well less than 1% THD. And they're using their amps to play back recordings of... what do those guys listen to on those things, anyway? This is totally irrelevant to the world of guitar distortion.
+</p><p>
+The holy grail of guitar overdrive is thought by many to be the distortion that goes on in a tube power amp. All the classic guitar amps have push-pull output stages which, due to their symmetry, only generate odd harmonics. Transformers also tend to create odd harmonics when overdriven. Crank those amps all the way up, and they produce even and <I>plenty</I> of odd harmonics, and we love them for it. Just don't play your Esquival records through one.
+</p><p>
+Furthermore, the gadgets that produce the most even harmonics are probably those vintage <I>transistor</I> fuzz boxes that rectified (chopped off the entire bottom half of) the signal.
+</p><p>
+The fact is that both even and odd harmonics are important to getting a good guitar sound, and both can be generated with either tubes or transistors.
+</p><p>
+Whoops. We were going to keep this about phenomena, not technologies. Sorry...
+</p><p>
+Most of what makes an overdriven component sound the way it does, then, is how it shapes the corners that it adds to the wave, and whether it treats the bottom and top half the same way.
+</p><p>
+Intermodulation is another distortion that's pretty important to guitarists. We get intermodulation because the signal we're distorting is <i>not</i> a sine wave - it's full of all sorts of different frequencies to begin with. Especially when we play chords with ninths, thirds, sixths and sevenths. The lower frequencies intermittently smash the higher ones against 
+the walls, which causes new patterns, at frequencies that aren't multiples of the original signal. 
+</p><p>
+
+
+<Div style="position:relative;">
+
+<div style="position:absolute; bottom:7%; right:15%; height:16%; width:25%; border-right: 4px solid #999; border-bottom: 4px solid #999;"></div>
+
+<div style="position:absolute; bottom:0; right:0; height:17%; width:29.5%; border: 4px solid #999; background-color:#777; font: bold 13px/13px arial, sans-serif; color:#bbb; text-align:center; overflow:hidden;"><br>SYMMETRICAL<br>SOFT CLIPPING<br></div>
+
+<DIV id="SAsrcn" class="scope">
+<IMG ID="SpAnyl" SRC="D101img/IMdemoNone.gif" WIDTH="100%" HEIGHT="auto"><div style="height:8px; line-height:90%; color: #999; text-align:center">Spectrum after clipping</div></DIV>
+
+<IMG ID="CLt" class="off" SRC="D101img/PilotLtOff.png">
+<IMG ID="ELt" class="off" SRC="D101img/PilotLtOff.png">
+
+<DIV id="SpAnPnl" class="scope" style="width:23.5%; height:62%; position:absolute; bottom:23%; right:0">
+<IMG SRC="D101img/C-tape.png" STYLE="position:absolute; top:6%; left:2%; height:20%">
+<IMG SRC="D101img/E-tape.png" STYLE="position:absolute; top:6%; right:0; height:20%">
+<div class="OpqBtn" STYLE="top:50%; position:absolute; left:8%; width:30%" onclick="btnPush1(CLt);">1</div>
+<div class="OpqBtn" STYLE="top:50%; position:absolute; right:8%; width:30%" onclick="btnPush2(ELt);">2</div>
+<div class="OpqBtn" id="bothbtn" STYLE="position:absolute; left:20%; width:60%; height:15%;" onclick="btnPush3();">BOTH</div>
+</DIV>
+</Div>
+
+<DIV id="StackedPnl" class="scope" style="width:91%; height:11em; top:0; right:0;">
+
+<IMG SRC="D101img/C-tape.png" STYLE="position:absolute; top:70%; left:7%; height:27%">
+<IMG SRC="D101img/E-tape.png" STYLE="position:absolute; top:70%; right:2%; height:27%">
+
+<div class="OpqBtn" STYLE="top:7%; position:absolute; left:6%; width:28%; height:26%" onclick="btnPush1(CLt);">1</div>
+<div class="OpqBtn" STYLE="top:7%; position:absolute; right:6%; width:28%; height:26%" onclick="btnPush2(ELt);">2</div>
+<div class="OpqBtn" id="bothbtn" STYLE="position:absolute; left:36%; width:25%; height:28%;" onclick="btnPush3();">BOTH</div>
+</DIV>
+
+
+
+
+</p><p>
+IM distortion is ugly, because it adds frequencies that are out of tune. So audiophiles hate it, and engineers devote their lives to eliminating it. Guitarists generally want to minimize it too, though ugliness is a color that <i>can</i> be nice to have in your palette. Guys who like to bend a distorted double-stop are using IM for effect. And if we ever got rid of it completely, a lot of players would complain that the sound didn't have enough "hair". 
+</p><p>
+But most of the time we <i>do</i> want to minimize IM distortion, and one thing that helps is to reduce bass before the distortion. (Tubescreamers probably became popular as boosters more because of the way they cut bass than because of the way they distort.)
+</p><BR><p>
+The phenomena we've described above have to do with a single act of clipping. I bring this up because, when we get into bickering about tubes and transistors, I'm going to make the point that in the classic tube guitar amps that we all know and love, the distortion does not take place all at one point.
+</p><p>
+Imagine what lovely mutilations we could commit if we did things like hard clip just the top peaks, flip the poor bastard over, and then soft clip it. Or mix in an upside-down bit of signal that's gone off to some other part of the circuit and had some other godawful thing done to it. Or reduce the amplitude of the big, slow undulations in the wave, so we can get in there and smoosh up the little wiggly parts.</p><p>For us here at Blackstone Appli&shy;ances, this is the fun part. &#8718
+</p><p class="NotOnPh">&nbsp;</p>
+ </SPAN> <!--end of bcopy-->
+
+</div> <!--end of main-->
+
+<div class="RtCol" style="margin-top: 171em; margin-right:0;"><span style="font: 1.625em/123% georgia, 'Century Schoolbook L', serif; letter-spacing: 0.01em;">Is this cheating&nbsp;<b>&ndash;</b> <BR>to shift the phase of the harmonic?
+<BR>The interesting thing is: Our ears don't care about the phase of harmonics. So there are many different wave shapes that have the same harmonic content, and that <i>sound</i> exactly the same.</span></div>
+
+   <div id="NavCol">
+
+<img id="Mlogo" class="ClrBkgd comptr" src="baLogo15.png" align="bottom" alt="Blackstone Appliances">
+
+<div class="navItem">
+<A HREF="/">Home</A>
+</div>
+<div class="navItem">
+<A HREF="other.htm">Topics</A>
+</div>
+<div class="navItem comptr">
+<A HREF="T-shirts.html" title="...and all I got was this lousy T-shirt. >>">T-shirts!</A>
+</div>
+<div class="navItem">
+<a href="nailto:Jon%20Blackstone%20<jb~blackstoneappliances-com?Subject=Distortion%20101"
+onclick = "this.href=this.href
+.replace(/na/,'ma')
+.replace(/~/,'&#64;')
+.replace(/-/,'&#46;')" title="Post comment by e-mailing Jon.">Comment</A> 
+</div>
+<div class="navItem">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://blackstoneappliances.com/dist101.html">Share</A> 
+</div>
+
+   </div> <!--end of NavCol-->
+
+
+
+<div id="MNavCol" class="mobile">
+   
+<A class="phonebtn" HREF="/" style="top:11%">home</A>
+
+<A class="phonebtn" HREF="other.htm" style="top:36%">topics</A>
+
+<A class="phonebtn" href="T-shirts.html" style="top:63%">T&#8209shirts</A>
+
+<A class="phonebtn" href="nailto:Jon%20Blackstone%20<jb~blackstoneappliances-com?Subject=Distortion%20101"
+onclick = "this.href=this.href
+.replace(/na/,'ma')
+.replace(/~/,'&#64;')
+.replace(/-/,'&#46;')" title="Post comment by e-mailing Jon." style="top:93%">comment</A>
+
+</div>
+
+
+<div id="BlkHeader"><div id="hdrTriangle"></div><A HREF="index.htm"><img src="mosfetgld.png" style="height:105%; position: absolute; left: 5.5%; bottom: 15px;"><img src="blackstonegld.png" align="right" style="width:42%; position: absolute; right: 12.5%; bottom: 12px;"></A></div>
+
+ <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+<meta itemprop="name" content="Jon Blackstone"></span>
+<meta itemprop="datePublished" content="1999-07-18">
+<meta itemprop="dateModified" content="2015-03-26">
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+<div itemprop="logo" itemscope itemtype="https://www.schema.org/ImageObject">
+  <link itemprop="url" href="/Bstone-Logo-60-600.png">
+  <meta itemprop="width" content="600">
+  <meta itemprop="height" content="60">
+</div>
+    <meta itemprop="name" content="Blackstone Appliances">
+  </div>
+  <meta itemprop="image" content="https://blackstoneappliances.com/D101img/dist101.jpg">
+  
+  </body> 
+</html> contentType 9 text/html url 49 https://blackstoneappliances.com:443/dist101.html responseCode 3 200 

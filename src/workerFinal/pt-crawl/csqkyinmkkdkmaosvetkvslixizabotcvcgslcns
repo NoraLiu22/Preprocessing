@@ -1,0 +1,4509 @@
+csqkyinmkkdkmaosvetkvslixizabotcvcgslcns length 6 151773 page 151773 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+                    
+
+
+
+<html>
+<head>
+<meta name="generator" content="ShopSite Pro 14.0 sp2 (data - Sidebar_bfc)">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<title>
+  TOOLS, SUNDRIES, Miscellaneous | Page 1 of 1</title>
+
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="robots" content="index,follow"> 
+<meta name="keywords" content="Tools, Sundries, Miscellaneous">
+
+<script type="text/javascript">
+function DisplayMiniCart(name,style) {
+  var cookies=document.cookie;  //read in all cookies
+  var start = cookies.indexOf(name + "=");  //set start to beginning of ss_cart cookie
+  var cartvalues = "";
+  var linecount = 0;
+  var start1;
+  var end1;
+  var tmp;
+
+  // Start Output
+  document.write("<div class=\"MiniCart\">");
+
+  if (style == "Detail")
+  {
+    document.write("<table class=\"MiniCart\" border=\"0\">");
+    document.write("<tr>");
+    document.write("<th class=\"MiniCart\" colspan=\"3\">");
+    document.write("<a class=\"MiniCart\" href=\"https://www.shellac.net/cgi-shellac/sb/order.cgi?storeid=*1249fea48a520871965071&amp;function=show\">");
+    document.write("See Shopping Cart");
+    document.write("<\/a><\/th><\/tr>");
+  }
+  else if (style == "Summary")
+  {
+    document.write("<a class=\"MiniCart\" href=\"https://www.shellac.net/cgi-shellac/sb/order.cgi?storeid=*1249fea48a520871965071&amp;function=show\">");
+    document.write("See Shopping Cart");
+    document.write("<\/a>");
+  }
+  else
+  {
+    document.write("<a class=\"MiniCart\" href=\"https://www.shellac.net/cgi-shellac/sb/order.cgi?storeid=*1249fea48a520871965071&amp;function=show\">");
+    document.write("<img src=\"https://www.shellac.net/media/themesmedia/cart-black.gif\" border=\"0\" name=\"cart\" align=\"top\">");
+    document.write("<\/a>&nbsp;");
+  }
+
+  if (start == -1)  //No cart cookie
+  {
+    if (style == "Detail")
+    {
+      document.write("<\/table>");
+      document.write("<\/div>");
+    }
+    else if ((style == "ItemCount") || (style == "Subtotal"))
+    {
+      document.write("<a class=\"MiniCart\" href=\"https://www.shellac.net/cgi-shellac/sb/order.cgi?storeid=*1249fea48a520871965071&amp;function=show\">");
+      document.write("0 Items");
+      document.write("<\/a>&nbsp;");
+      document.write("<\/div>");
+    }
+    else
+    {
+      document.write("<\/div>");
+    }      
+  }
+  else   //cart cookie is present
+  {
+    start = cookies.indexOf("=", start) +1;  
+    var end = cookies.indexOf(";", start);  
+    if (end == -1)
+    {
+      end = cookies.length;
+    }
+    cartvalues = unescape(cookies.substring(start,end)); //read in just the cookie data
+
+    start = 0;
+    while ((start = cartvalues.indexOf("|", start)) != -1)
+    {
+      start++;
+      end = cartvalues.indexOf("|", start);
+      if (end != -1)
+      {
+        linecount++;
+
+/* none of the styles use the number of line items
+        if ((linecount == 1) && (style != "Detail"))  // Number of Line Items
+        {
+          tmp = cartvalues.substring(start,end);
+          colon = tmp.indexOf(":", 0);
+          if ((style == "ItemCount") || (style == "Subtotal"))
+          {
+            document.write("<a class=\"MiniCart\" href=\"https://www.shellac.net/cgi-shellac/sb/order.cgi?storeid=*1249fea48a520871965071&amp;function=show\">");
+          }
+
+          if (style == "Summary")
+          {
+            document.write("<br>Contains <b>");
+          } 
+          document.write(tmp.substring(colon+1,end - start));
+          if (style == "Summary")
+          {
+            document.write("<\/b>");
+          }
+          if ((tmp.substring(colon+1,end - start)) == 1 )
+          {
+            document.write(" Item");
+          }
+          else
+          {
+            document.write(" Items");
+          }
+          if (style == "ItemCount")
+          {
+            document.write("<\/a>");
+          } 
+          else if (style == "Subtotal")
+          {
+            document.write(": ");
+          } 
+          else if (style == "Summary")
+          {
+            document.write("<br>Subtotal: <b>");
+          }
+        }
+*/
+
+        if ((linecount == 2) && (style != "Detail"))  // Total Quantity of Items
+        {
+          tmp = cartvalues.substring(start,end);
+          colon = tmp.indexOf(":", 0);
+          if ((style == "ItemCount") || (style == "Subtotal"))
+          {
+            document.write("<a class=\"MiniCart\" href=\"https://www.shellac.net/cgi-shellac/sb/order.cgi?storeid=*1249fea48a520871965071&amp;function=show\">");
+          }
+
+          if (style == "Summary")
+          {
+            document.write("<br>Contains <b>");
+          } 
+          document.write(tmp.substring(colon+1,end - start));
+          if (style == "Summary")
+          {
+            document.write("<\/b>");
+          }
+          if ((tmp.substring(colon+1,end - start)) == 1 )
+          {
+            document.write(" Item");
+          }
+          else
+          {
+            document.write(" Items");
+          }
+          if (style == "ItemCount")
+          {
+            document.write("<\/a>");
+          } 
+          else if (style == "Subtotal")
+          {
+            document.write(": ");
+          } 
+          else if (style == "Summary")
+          {
+            document.write("<br>Subtotal: <b>");
+          }
+        }
+
+
+
+
+        if (linecount == 3)  // Product Subtotal
+        {
+          if ((style == "Subtotal") || (style == "Summary"))
+          {
+            tmp = cartvalues.substring(start,end);
+            colon = tmp.indexOf(":", 0);
+            document.write(tmp.substring(colon+1,end - start));
+            if (style == "Summary") 
+            {
+              document.write("<\/b>");
+            }
+            else
+            {
+            document.write("<\/a>");
+            }
+          }
+          else if (style == "Detail")
+          {
+            start1 = start;
+            end1 = end;
+            document.write("<tr><td class=\"MiniCartHead\">Qty<\/td>");
+            document.write("<td class=\"MiniCartHead\">Product<\/td>");
+            document.write("<td class=\"MiniCartHead\">Price<\/td><\/tr>");
+          }
+        }
+
+        if ((linecount > 3) && (style == "Detail"))  // individual products
+        {
+          tmp = cartvalues.substring(start,end);
+          colon = tmp.indexOf(":", 0);
+          document.write("<tr>");
+          document.write("<td class=\"MiniCartQty\">");
+          document.write(tmp.substring(0,colon));
+          document.write("<\/td><td class=\"MiniCartProduct\">");
+          colon2 = tmp.indexOf(":", colon+1);
+          document.write(tmp.substring(colon2+1,end - start));
+          document.write("<\/td><td class=\"MiniCartPrice\">");
+          document.write(tmp.substring(colon+1,colon2));
+          document.write("<\/td><\/tr>");
+        }
+        start = end;
+      }
+      else
+        break;
+    } // end while loop
+
+    //close minicart HTML
+    if (style == "Detail")
+    {
+      document.write("<tr>");
+      document.write("<td class=\"MiniCartSubtotalText\" colspan=\"2\">Subtotal<\/td>");
+      document.write("<td class=\"MiniCartSubtotal\">");
+      tmp = cartvalues.substring(start1,end1);
+      colon = tmp.indexOf(":", 0);
+      document.write(tmp.substring(colon+1,end1 - start1));
+      document.write("<\/td>");
+      document.write("<\/tr>");
+      document.write("<\/table>");
+      document.write("<\/div>");
+    }
+    else
+    {
+      document.write("<\/div>");
+    }
+  }
+}
+</script>
+
+<style type="text/css">
+<!--
+/***  Page Defaults  ***/
+body, p, h1, h2, h3, td, div, ol, ul, dl, input {
+  font-family: 'Times New Roman',Times,serif;
+}
+body {
+  color: #000000;
+  background-color: #FFFFDD;
+  font-size: 12.00pt;
+  margin: 0px;
+}
+td {
+  font-size: 12.00pt;
+}
+  /******************/
+/***  Mini Cart ***/
+/******************/
+div.MiniCart {
+  text-align: left;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  color: #000000;
+}
+
+img.MiniCart {
+  vertical-align: middle;
+}
+
+table.MiniCart {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  color: #000000;
+}
+
+th.MiniCart {
+  font-weight: normal;
+  text-align: left;
+  font-size: 9pt;
+}
+
+td.MiniCart {
+  font-size: 8pt;
+}
+
+td.MiniCartHead {
+  text-align: center;
+  font-size: 8pt;
+}
+
+td.MiniCartQty {
+  text-align: left;
+  vertical-align: top;
+  font-size: 8pt;
+}
+
+td.MiniCartProduct {
+  vertical-align: top;
+  font-size: 8pt;
+}
+
+td.MiniCartPrice {
+  vertical-align: top;
+  text-align: right;
+  font-size: 8pt;
+}
+
+td.MiniCartSubtotalText {
+  text-align: right;
+  font-size: 8pt;
+}
+
+td.MiniCartSubtotal {
+  text-align: right;
+  font-size: 8pt;
+}
+
+a.MiniCart:link { 
+  text-decoration: underline;
+  color: #000000;
+}
+a.MiniCart:visited { 
+  text-decoration: underline;
+  color: #000000;
+}
+a.MiniCart:hover { 
+  text-decoration: underline;
+  color: #BD0015;
+}
+a.MiniCart:active { 
+  text-decoration: underline;
+  color: #000000}
+
+
+/***  Page Links  ***/
+table.pagelink {
+  border-width: 0px;
+  text-align: left;
+}
+td.pagelink, td.pagelink a {
+  color: #FFCC66;
+  text-align: left;
+  margin: 0px;
+}
+a.pagelink:link, td.pagelink a:link, a.giftcertlink:link, a.viewcart:link {
+  text-decoration: underline;
+  color: #000000;
+}
+a.pagelink:visited, td.pagelink a:visited, a.giftcertlink:visited, a.viewcart:visited, div.left_pagelinks a, div.left_pagelinks span {
+  text-decoration: underline;
+  color: #000000;
+}
+a.pagelink:hover, td.pagelink a:hover, a.giftcertlink:hover, a.viewcart:hover, div.left_pagelinks a:hover {
+  text-decoration: underline;
+  color: #BD0015;
+}
+a.pagelink:active, td.pagelink a:active, a.giftcertlink:active, a.viewcart:active {
+  text-decoration: underline;
+  color: #FFCC66;
+}
+/***  Products   ***/
+
+/*************************************/
+/*** Product and Subproduct Layout ***/
+/*************************************/
+table.Products {
+  border: 0pt;
+  text-align: center;
+  margin: 3pt;
+}
+
+table.Product {
+  border: 0pt;
+  text-align: left;
+}
+
+td.ProductGraphicLeft {
+  border: 0pt;
+  text-align: left;
+}
+
+td.ProductText {
+  border: 0pt;
+  text-align: left;
+}
+
+td.ProductGraphicRight {
+  text-align: right;
+}
+
+span.ProductName {
+  margin-bottom: 4px;
+  display: inline;
+}
+
+span.ProductDescription {
+  margin-bottom: 4px;
+  display: block;
+}
+
+span.ProductPriceContainer {
+  display: block;
+}
+
+span.VariableProductPrice, span.VariableProductSKU, span.VariableProductName {
+  display: block;
+  margin-top: 4px;
+}
+
+div.Subproduct {
+  margin-bottom: 4px;
+}
+
+span.SubproductName {
+  margin-right: 4px;
+  font-weight: bold;
+/*  display: inline; */
+}
+
+span.SubproductPriceContainer {
+  display: inline;
+}
+
+span.ProductPrice, span.SubproductPrice {
+  display: inline;
+}
+
+span.ProductAltPrice, span.ProductAltPrice {
+  display: inline;
+}
+
+span.ProductSalePriceContainer, span.SubproductSalePriceContainer {
+  display: inline;
+}
+
+span.ProductSaleRegularPrice, span.SubproductSaleRegularPrice {
+  display: inline;
+  text-decoration: line-through;
+}
+
+span.ProductSaleAmount, span.SubproductSaleAmount {
+  display: inline;
+}
+
+span.ProductAltSalePriceContainer {
+  display: block;
+}
+
+span.SubproductAltSalePriceContainer {
+  display: inline;
+  margin-left: 10px;
+}
+
+span.ProductAltSaleRegularPrice, span.SubproductAltSaleRegularPrice {
+  display: inline;
+  text-decoration: line-through;
+}
+
+span.ProductAltSaleAmount, span.SubproductAltSaleAmount {
+  display: inline;
+}
+
+span.OnSaleText {
+  color: red;
+  font-weight: bold;
+}
+
+span.ProductSKU {
+  margin-left: 0px;
+  display: block;
+}
+
+table.qp_header {
+}
+
+/**************************/
+/*** Add to Cart Button ***/
+/**************************/
+div.AddToCartButton {
+  margin-top: 6px;
+}
+
+input.add { 
+  font-size: 9pt;
+  color: #BD0015;
+  background-color: #FFFFDD;
+  border-width: 0px;
+  border-style: none;
+  vertical-align: middle;
+  text-decoration: underline;
+  padding-left: 0px;
+  padding-right: 0px;
+  cursor: pointer;
+}
+
+
+ table.gcs_table {
+	width: 100%;
+	margin: 10px auto;
+}
+ table.gcs_table td {
+	width: 33%;
+	text-align: center;
+}
+ td#gcs_page, td#gcs_mi {
+	padding: 8px;
+	font-size: 1.5em;
+	background-color: #FFCC66;
+}
+/***  Product Links  ***/
+a:link {
+  color: #BD0015;
+}
+a:visited {
+  color: #000000;
+}
+a:hover {
+  color: #FFCC66;
+}
+a:active {
+  color: #FFCC66;
+}
+/***  Headings       ***/
+h1 {
+  font-size: 16pt;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h2 {
+  font-size: 14pt;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h3 {
+  font-size: 12pt;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/***  Search  ***/
+td.search {
+  text-align: left;
+  margin-top: 50px;
+}
+input.search {
+  font-size: 9pt;
+  width: 120px;
+}
+/*** Header ***/
+td.header {
+  text-align: center;
+}
+/*** Footer ***/
+td.footer {
+  text-align: center;
+  margin-top: 10px;
+}
+/*** Multi Page Navigation ***/
+span.currentpage, span.prevnext {
+  padding-left: 1pt;
+  padding-right: 1pt;
+}
+/***  Font Formatting  ***/
+Big {
+  font-size: larger;
+}
+tt {
+  font-family: monospace;
+}
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+.suckertreemenu {
+  background-color: #000000;
+  width: 100%;
+  height: 36px;
+  clear: both;
+  padding: 0px;
+  margin: 0px;
+}
+.suckertreemenu ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.suckertreemenu ul li{
+  position: relative;
+  display: inline;
+  float: left;
+}
+.suckertreemenu ul li a{
+  display: block;
+  min-width: 100px;
+  padding: 0px 8px;
+  border-right: 1px solid #BD0015;
+  text-decoration: none;
+  color: #FFCC66;
+  text-align: center;
+  line-height: 36px;
+  font-weight: normal;
+  white-space: nowrap;
+}
+.suckertreemenu ul li a:visited {
+  color: #FFCC66;
+}
+.suckertreemenu ul li ul{
+  left: 0;
+  position: absolute;
+  top: 1em;
+  display: block;
+  visibility: hidden;
+}
+.suckertreemenu ul li ul li{
+  display: list-item;
+  float: none;
+}
+.suckertreemenu ul li ul li ul{ 
+  left: 159px;
+  top: 0;
+}
+.suckertreemenu ul li ul li a{
+  display: block;
+  width: 160px;
+  color: black;
+  text-decoration: none;
+  padding: 1px 5px;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  background-color: #BD0015;
+}
+.suckertreemenu ul li ul li a:visited {
+  color: black;
+}
+.suckertreemenu ul li a:hover{
+  color: #FFFFDD;
+}
+* html p#iepara{
+padding-top: 1em;
+}
+* html .suckertreemenu ul li { float: left; height: 1%; }
+* html .suckertreemenu ul li a { height: 1%; }
+-->
+</style>
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED --><!--[if!IE]> 
+<style type="text/css">
+/* underline for non-IE browsers */
+input.add {
+  border-bottom:1px solid #BD0015;
+}
+input.add:hover {
+  color: #FFCC66;
+  border-bottom:1px solid #FFCC66;
+}
+</style>
+<![endif]--> 
+<link rel="stylesheet" type="text/css" href="https://www.shellac.net/publish/sidebar_bfc2.css">
+<style type="text/css">
+html {background: #000000}
+body {border-left: 3px solid #000000; border-left: 3px solid #000000; background: #000000}
+div#main {border-left: 3px solid #000000}
+div#leftnav {background: #FFCC66}
+div#leftnav > div {border-right: 3px solid #BD0015}
+div#content {background: #FFFFDD}
+div#content > div {border-left: 8px solid #000000}
+</style>
+<script type="text/javascript" src="https://www.shellac.net/media/en-US/javascript/mdetect.js"></script>
+<script type="text/javascript" src="https://www.shellac.net/media/en-US/javascript/cookies.js"></script>
+<script type="text/javascript">
+ function set_mobile_cookie(name, value, expirationDays) {
+  var cookie = name + "=" + value;
+  cookie = cookie + ("; path=/; domain=shellac.net");
+  document.cookie = cookie;
+ }
+</script>
+
+
+<!--[if lte IE 8]>
+<style type="text/css">
+ html .suckertreemenu ul li { float: left; height: 100%;}
+ html .suckertreemenu ul li a { height: 100%;}
+ html .suckertreemenu ul li ul li { float: left;} 
+</style> 
+<![endif]-->
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    var ss_jQuery = jQuery.noConflict(true);
+  </script>
+
+  <script type="text/javascript" src="https://www.shellac.net/media/en-US/javascript/jquery/json2.min.js"> </script>
+  <script type="text/javascript">
+
+function ss_handleResponse_inv(data) {var cnt = 0,recid,msg,elem,recids=data.getElementsByTagName('recid'),messages=data.getElementsByTagName('message');for(cnt=0;cnt < recids.length;cnt++) {recid = ss_jQuery(recids[cnt]).text();msg = ss_jQuery(messages[cnt]).text();id = document.getElementById('ss_inv' + recid);id.innerHTML = msg.replace(/\"/g, '&quot;').replace(/\|q\|/g, '"');}}
+var ss_rec_str = '';
+function ss_inv_getinfo() {
+  var dataObj = {
+     storeid: "*1249fea48a520871965071",
+     itemnum: ss_rec_str
+  }
+  var data = ss_jQuery.param(dataObj, false);
+
+  if (ss_rec_str != '') {
+   ss_jQuery.ajax({ type: 'GET',
+    url: 'https://www.shellac.net/cgi-shellac/sb/inv.cgi',
+    data: data,
+    dataType: 'jsonp',
+    crossDomain: true,
+    jsonp: true,
+    success: function(rdata, textStatus, jqXHR){
+       if (window.DOMParser){
+         parser=new DOMParser();
+         data=parser.parseFromString(rdata.data,"text/xml");
+         ss_handleResponse_inv(data);
+       } else{ // Internet Explorer
+         xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+         xmlDoc.async=false;
+         xmlDoc.loadXML(rdata.data);
+         ss_handleResponse_inv(xmlDoc);
+       }
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+    }
+   });
+ }
+}
+ss_jQuery(document).ready(function(){
+  ss_inv_getinfo();
+  return true;
+});
+  </script>
+</head>
+
+<body margin="0">
+
+
+<script type="text/javascript">
+ if (ss_isMobile) {
+  ck = (function(name){var b=' '+document.cookie;var c=b.search(new RegExp('\b'+name+'='));if(c==-1)c=b.indexOf(name+'=');if(c==-1)b=null;else{c=b.indexOf('=',c)+1;var d=b.indexOf(';',c);if(d==-1)d=b.length;b=unescape(b.substring(c,d));}return b;})("ss_mb_0001288534");
+  if ((ck == null) || (ck == 'mb')) { 
+   var r = "https://www.shellac.net/cgi-shellac/sb/ss_mb.cgi?storeid=*1249fea48a520871965071&ss_parm=Aca79d162a9b6f61b649e1eeb3419d0dc";   if(window.location.search){r += '&' + window.location.search.replace('?', '');}
+   window.location.replace(r);
+  }
+ }
+</script>
+<script type="text/javascript" language="JavaScript">
+var menuids=["ShopSite"]
+function buildsubmenus_horizontal()
+{
+  for (var i=0; i<menuids.length; i++)
+  {
+    var ultags=document.getElementById(menuids[i]).getElementsByTagName("ul")
+    for (var t=0; t<ultags.length; t++)
+    {
+      if (ultags[t].parentNode.parentNode.id==menuids[i])
+      {
+        ultags[t].style.top=ultags[t].parentNode.offsetHeight+"px"
+      ultags[t].parentNode.getElementsByTagName("a")[0].className="mainfoldericon"
+      }
+      else{
+        ultags[t].style.left=ultags[t-1].getElementsByTagName("a")[0].offsetWidth+"px"
+        ultags[t].parentNode.getElementsByTagName("a")[0].className="subfoldericon"
+      }
+      ultags[t].parentNode.onmouseover=function(){
+        this.getElementsByTagName("ul")[0].style.visibility="visible"
+      }
+      ultags[t].parentNode.onmouseout=function(){
+        this.getElementsByTagName("ul")[0].style.visibility="hidden"
+      }
+    }
+  }
+}
+if (window.addEventListener)
+  window.addEventListener("load", buildsubmenus_horizontal, false)
+else if (window.attachEvent)
+  window.attachEvent("onload", buildsubmenus_horizontal)
+</script>
+<div class="suckertreemenu">
+<ul id="ShopSite">
+  <li><a href="https://www.shellac.net/color-theory-for-woodworkers.html" style="border-left: 2px solid black" title="COLOR THEORY for the Furniture Finisher & Woodworker" target="_blank">COLOR THEORY for the Furniture Finisher & Woodworker</a></li>
+  <li><a href="https://www.shellac.net/can_label_text.html"  title="Can Label Text & Application Information" >Can Label Text & Application Information</a></li>
+  <li><a href="https://www.shellac.net/deep_dark_finishes.pdf"  title="Deep Dark Finishes for Light Toned Woods" >Deep Dark Finishes for Light Toned Woods</a></li>
+</ul>
+</div>
+  <div id="content">
+    <div><center><a href=""></a></center><br>      <table>
+
+                    <tr>
+              <td class="header"><hr>
+<p style="text-align: center;"><span style="font-size: 20pt;"><strong><span style="color: #0000ff;"><em><span style="font-family: arial,helvetica,sans-serif;">Shellac.net</span></em> </span></strong><span style="color: #993300;"><strong><span style="font-family: times new roman, times, serif;"><em>Wood Finish Supply </em></span></strong></span></span><span style="font-size: 16pt; font-family: arial, helvetica, sans-serif; color: #000080;"><span style="font-size: 24pt;"><em>&amp;</em> </span><span style="color: #0000ff;"><span style="color: #000000; font-size: 22pt;"><strong>MeritIndustries.com</strong></span><br></span></span><span style="font-size: 16pt; font-family: arial, helvetica, sans-serif;"><em><span style="font-size: 10pt;">Home of:</span> <span style="font-size: 14pt; color: #0000ff;"><a href="https://www.shellac.net/mohawkfinishingproducts.html"><span style="color: #000080; font-size: 18pt;"><span style="font-size: 16pt;">MohawkFinishSupply.com</span></span></a><br></span><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif; color: #003300;"><span style="font-family: times new roman, times, serif;">Authorized Mohawk Distributor</span> </span></em></span><br><span style="font-size: 16pt;"><strong><span style="font-family: times new roman, times, serif;"><em><span style="color: #0000ff;">Select Products for Furniture &amp; Cabinet Finishes, Touch-Up, Repair, Maintenance</span><br><span style="font-size: 12pt;">&bull; &bull; &bull;</span><br></em></span></strong></span> <span style="font-size: 14pt;"><span style="color: #ff0000; font-family: arial, helvetica, sans-serif; font-size: 16pt;"><strong>New Hours</strong></span><em><span style="color: #800000;"><span style="font-family: times new roman, times, serif;"> Visit Our Showroom 9:00 - 4:00<strong><span style="color: #0000ff;"> Monday - Thursday </span></strong><strong><a style="color: #800000;" title="Our Location" href="https://www.shellac.net/news/showroom-open/" target="_blank" rel="noopener">24</a><a style="color: #800000;" title="Our Location" href="https://www.shellac.net/news/showroom-open/" target="_blank" rel="noopener">65 Second Street, Napa Ca 94559</a></strong></span></span></em></span><br><span style="font-size: 12pt;"><em><strong><span style="font-family: times new roman, times, serif;">Thank You for your support, we appreciate your business, </span></strong><span style="font-family: comic sans ms, sans-serif;">Ron &amp; Pete.</span></em></span></p>
+<p style="text-align: center;"><span style="font-size: 12pt; color: #ff0000;"><em><span style="font-family: comic sans ms, sans-serif;"><span style="color: #333333; font-size: 14pt;">Click here: </span><a style="color: #ff0000;" title="5/24/24 Class Information" href="https://www.shellac.net/class-information.html">for info on the <span style="font-size: 14pt;">New Class Friday May 24th&nbsp; "The Perfect Hand Applied Wood Finish"</span></a> </span></em></span>
+<hr><hr></td>
+            </tr>
+        
+                              <tr>
+              <td class="PageName"><h1>TOOLS, SUNDRIES, Miscellaneous</h1></td>
+            </tr>
+                  
+                <tr>
+          <td><p style="text-align: center;"><img width="240" vspace="3" border="0" hspace="3" height="65" align="absMiddle" src="https://www.shellac.net/media/MERITIndustries.jpg" alt="MERITIndustries.jpg" />
+<hr /></td>
+        </tr>
+        
+          
+  
+
+
+                  <tr>
+          <td>
+<table cellpadding="0" cellspacing="10" border="0" width="100%" id="pagecenterlinks"> 
+<tr><!-- Start of ROW -->
+ <td class="pa_cntr_lnk" width="33%">
+  <a href="https://www.shellac.net/merit_index.html" title="MERIT INDUSTRIES Index">MERIT INDUSTRIES Index</a>
+
+</td>
+ <td class="pa_cntr_lnk" width="33%">
+  <a href="https://www.shellac.net/Shellac_ordering_list.html" title="SHELLAC Flake, Button & SeedLac">SHELLAC Flake, Button & SeedLac</a>
+
+</td>
+ <td class="pa_cntr_lnk" width="33%">
+  <a href="https://www.shellac.net/mohawkfinishingproducts.html" title="MOHAWK Wood Finishing Products">MOHAWK WOOD FINISHING PRODUCTS</a>
+
+</td>
+</tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+ <td class="pa_cntr_lnk" width="33%">
+  <a href="https://www.shellac.net/.html" title="            ">           </a>
+
+</td>
+ <td class="pa_cntr_lnk" width="33%">
+  <a href="https://www.shellac.net/moving-packing.html" title="MOVING  -  PACKING">MOVING  -  PACKING</a>
+
+</td>
+</tr><!-- Last One --></table>
+          </td>
+        </tr>
+  
+
+        	<tr>
+		<td><div class="footer"></div></td>
+	</tr>
+        <tr>
+          <td>
+            <table class="Products" width="100%" align="center" border="1" cellpadding="3">
+              <tr><!-- Start of ROW -->
+                <td valign="top" align="left"><!-- rec 587 -->
+<a name="587"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>Paper PAINT STRAINER CONES: MEDIUM & FINE</b>  
+    <br><span style="color: #0000ff; font-family: arial,helvetica,sans-serif; font-size: 18pt;"><strong>Medium &amp; Fine Mesh STRAINER CONES</strong></span><br><img style="float: left; margin-right: 10px; margin-left: 10px;" src="https://www.shellac.net/media/paint_strainer.jpg" alt="" width="190" height="171"><span style="font-size: 12pt;"><span style="font-family: Times New Roman;"><span style="font-family: times new roman,times,serif;"><span style="font-size: 14pt;">Filter foreign matter or undissolved solid particles found in stains or finish coatings.<br></span></span><span style="font-size: 14pt;"><span style="font-family: times new roman,times,serif;">Paper Cone 6 in Dia., full flow cloth mesh tip leaves no finish in the strainer. </span><span style="font-family: times new roman,times,serif;"><br>Seed, Button and Black shellacs benefit by filtering through layers<br>of medium Cheese Cloth first.<br></span><span style="font-family: times new roman,times,serif;">Use Fine Mesh for final straining of shellac, varnish, lacquers, <br></span></span></span></span><span style="font-size: 12pt;"><span style="font-family: Times New Roman;"><span style="font-size: 14pt;"><span style="font-family: times new roman,times,serif;">and most any furniture finish, especially when spraying.</span></span></span><span style="font-family: comic sans ms,sans-serif; color: #0000ff; font-size: 14pt;"><em><br></em></span></span><span style="color: #0000ff;"><em><span style="font-family: comic sans ms,sans-serif; font-size: 12pt;">Strain through Medium filter followed by FINE mesh straining for best results.<br></span></em><span style="font-family: comic sans ms, sans-serif; font-size: 12pt; color: #000000;"><span style="font-size: 10pt;">Medium mesh is 226 microns&nbsp; &bull; Fine mesh is 190 microns</span></span><em><span style="font-family: comic sans ms,sans-serif; font-size: 12pt;">&nbsp;&nbsp;<br><span style="font-size: 10pt;">One micron is equivalent to one one-thousandth of a millimetre.</span> </span></em></span><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>PSM.20</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">PAINT STRAINERS, MEDIUM Mesh - Pack of 20</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$6.70</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="563_check" type="checkbox" name="itemnum" value="563" style="visibility: hidden;display:none;"> 
+            Quantity <input id="563_quantity" type="text" size="2" name="563:qnty"
+value="0" onchange="var checkVal = document.getElementById('563_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>PSM.8</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">PAINT STRAINERS, MEDIUM Mesh - Pack of 8</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$2.85</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="562_check" type="checkbox" name="itemnum" value="562" style="visibility: hidden;display:none;"> 
+            Quantity <input id="562_quantity" type="text" size="2" name="562:qnty"
+value="0" onchange="var checkVal = document.getElementById('562_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>PSM-250S</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName"> PAINT STRAINERS, MEDIUM Mesh - Sleeve of 250</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$54.95</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="4418_check" type="checkbox" name="itemnum" value="4418" style="visibility: hidden;display:none;"> 
+            Quantity <input id="4418_quantity" type="text" size="2" name="4418:qnty"
+value="0" onchange="var checkVal = document.getElementById('4418_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>PSF.20</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">PAINT STRAINER Cones; FINE Mesh - Pack of 20</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$9.20</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="569_check" type="checkbox" name="itemnum" value="569" style="visibility: hidden;display:none;"> 
+            Quantity <input id="569_quantity" type="text" size="2" name="569:qnty"
+value="0" onchange="var checkVal = document.getElementById('569_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>PSF.8</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">PAINT STRAINER Cones; FINE Mesh - Pack of 8</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$3.75</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="568_check" type="checkbox" name="itemnum" value="568" style="visibility: hidden;display:none;"> 
+            Quantity <input id="568_quantity" type="text" size="2" name="568:qnty"
+value="0" onchange="var checkVal = document.getElementById('568_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 3090 -->
+<a name="3090"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>Aerosol, BEE'S WAX POLISH • UPS Ground Only •</b>  
+    <br><span style="color: #0000ff; font-size: 14pt;"><span style="font-size: 18pt;"><strong><span style="font-family: arial,helvetica,sans-serif;">BEE'S WAX POLISH</span></strong></span><em><span style="font-family: arial,helvetica,sans-serif;"> (Aerosol)</span></em></span><br><span style="font-family: times new roman,times,serif; font-size: 12pt;"><span style="font-size: 14pt;">Old world formula Bee's Wax Polish in an Aerosol Can.</span><br><img style="float: left; margin: 2px 10px 2px 10px;" src="https://www.shellac.net/media/bee_aerosol.jpg" alt="" width="95" height="265"></span><span style="font-size: 14pt;"><span style="font-family: times new roman,times,serif;"><br></span><span style="font-family: times new roman,times,serif;">&bull; Won't Fingerprint</span></span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;"> &bull; Leaves No Wax Build Up &hellip; Ever</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;"> &bull; Makes Granite And Marble Acid Resistant</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;"> &bull; Needs No Buffing</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;"> &bull; Enhances The Natural Beauty of ALL Wood</span></p>
+<p><span style="font-size: 10pt; font-family: arial,helvetica,sans-serif;"><em><span style="font-size: 14pt;">Spray Sparingly, directly on the surface. </span><br><span style="font-size: 14pt;">Spread and wipe using only paper towels or cotton cloths.</span><br><span style="font-size: 14pt;"><strong><span style="color: #008000;">DO NOT USE microfiber cloths.</span></strong></span><br></em></span></p>
+<p><span style="color: #ff0000; font-size: 12pt;"><em><span style="font-family: comic sans ms, sans-serif;">Note:<strong> DO NOT USE on tile, linoleum, wood, tub or shower floors.</strong></span></em></span><br>
+<br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      ABW.1  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Aerosol, BEE'S WAX POLISH, ea. • UPS Only •</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+                  <span class="SubproductSalePriceContainer">
+          <span class="SubproductSaleRegularPrice">$12.95</span>
+          <span class="SubproductSaleAmount"><i>$11.00</i></span>
+          <span class="OnSaleText"> - On SALE !</span>
+        </span>
+                      </span>
+  &nbsp;-&nbsp;
+
+
+<input id="3091_check" type="checkbox" name="itemnum" value="3091" style="visibility: hidden;display:none;"> 
+  Quantity <input id="3091_quantity" type="text" size="2" name="3091:qnty"
+value="0" onchange="var checkVal = document.getElementById('3091_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      ABW.12  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">12 BEE'S WAX POLISH, 10.50 ea. • UPS Only •</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+                  <span class="SubproductSalePriceContainer">
+          <span class="SubproductSaleRegularPrice">$144.00</span>
+          <span class="SubproductSaleAmount"><i>$126.00</i></span>
+          <span class="OnSaleText"> - On SALE !</span>
+        </span>
+                      </span>
+  &nbsp;-&nbsp;
+
+
+<input id="3092_check" type="checkbox" name="itemnum" value="3092" style="visibility: hidden;display:none;"> 
+  Quantity <input id="3092_quantity" type="text" size="2" name="3092:qnty"
+value="0" onchange="var checkVal = document.getElementById('3092_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 4316 -->
+<a name="4316"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b><a href="https://www.shellac.net/bloxygen-finish-preserver-moreinfo.html">BLOXYGEN FINISH PRESERVER</a></b>  
+    <br><em><span style="font-size: 12pt; font-family: comic sans ms, sans-serif; color: #ff0000;">Click Above, for the can label and more information</span></em><strong><span style="font-size: 24pt;"><br><span style="color: #0000ff; font-family: arial, helvetica, sans-serif;">Bloxygen Finish Preserver </span></span></strong><span style="color: #0000ff; font-family: arial, helvetica, sans-serif;"><em><span style="font-size: 24pt;"><span style="font-size: 18pt;">for Unused Finishing Materials</span></span></em></span><strong><br></strong><span style="font-size: 14pt; font-family: arial, helvetica, sans-serif; color: #0000ff;"><span style="font-family: times new roman, times, serif; color: #000000;"><span style="color: #ff0000;"><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><em>STOP throwing away partially used oil paints and varnishes</em></span><strong><span style="font-size: 18pt;"> -</span>&nbsp; </strong></span></span></span><span style="color: #800000;"><span style="font-size: 14pt; font-family: arial, helvetica, sans-serif;"><span style="font-family: times new roman, times, serif;"><strong><span style="font-family: terminal, monaco, monospace; font-size: 18pt;">Use Bloxygen</span></strong></span></span></span><span style="font-size: 14pt; font-family: arial, helvetica, sans-serif; color: #0000ff;"><span style="font-family: times new roman, times, serif; color: #000000;"><br></span></span><img style="margin-right: 10px; margin-left: 10px; float: left;" src="https://www.shellac.net/media/bloxygen_spraying.jpg" alt="Bloxygen" width="265" height="293"><span style="font-size: 14pt; font-family: arial, helvetica, sans-serif; color: #0000ff;"><span style="font-family: times new roman, times, serif; color: #000000;">Bloxygen uses</span></span><span style="font-size: 18pt; font-family: arial, helvetica, sans-serif; color: #0000ff;"><span style="font-family: times new roman, times, serif; font-size: 14pt; color: #000000;"> ultra pure Argon, the natural inert gas<br>drives the oxygen and moisture from the container.<br>Simply blow the oxygen out of the container with Bloxygen,<br>then seal the lid. <br>The heavy, inert Bloxygen gas sinks down and blocks oxygen<br>from the liquid surface. Because Bloxygen is heavier than air,<br>it will seal the liquid from any air that may remain in the container.</span><span style="font-size: 12pt; color: #000000;"><br>&nbsp; &bull; Recommended for oil / solvent based products.</span><br><span style="font-size: 12pt; color: #000000;">&nbsp; &bull; Up to 75 uses per aerosol. &bull; NOT for use with latex or lacquer products.</span><br><span style="font-size: 12pt; color: #000000;">&nbsp; &bull; Non-flammable&nbsp; &bull; Non-toxic &nbsp; &bull; Contains argon </span><br></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">Is BLOXYGEN expensive?<br>It Is NOT expensive, BLOXYGEN lasts for about 75 uses for quart cans. <br></span><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">If you save just one half </span><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">of a $24 quart of varnish, you've paid for your BLOXYGEN.<br>The next 74 uses are "free!"</span><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>BLOX.1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">One Can: BLOXYGEN FINISH PRESERVER</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+                  <span class="SubproductSalePriceContainer">
+          <span class="SubproductSaleRegularPrice">$15.95</span>
+          <span class="SubproductSaleAmount"><i>$13.95</i></span>
+          <span class="OnSaleText"> - On SALE !</span>
+        </span>
+                      </span>
+  &nbsp;-&nbsp;
+
+
+<input id="4494_check" type="checkbox" name="itemnum" value="4494" style="visibility: hidden;display:none;"> 
+  Quantity <input id="4494_quantity" type="text" size="2" name="4494:qnty"
+value="0" onchange="var checkVal = document.getElementById('4494_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>BLOX.2</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">2 Cans: BLOXYGEN FINISH PRESERVER</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+                  <span class="SubproductSalePriceContainer">
+          <span class="SubproductSaleRegularPrice">$30.00</span>
+          <span class="SubproductSaleAmount"><i>$26.00</i></span>
+          <span class="OnSaleText"> - On SALE !</span>
+        </span>
+                      </span>
+  &nbsp;-&nbsp;
+
+
+<input id="4495_check" type="checkbox" name="itemnum" value="4495" style="visibility: hidden;display:none;"> 
+  Quantity <input id="4495_quantity" type="text" size="2" name="4495:qnty"
+value="0" onchange="var checkVal = document.getElementById('4495_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 659 -->
+<a name="659"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b><a href="https://www.shellac.net/metal_ de-corrode.html">Renaissance METAL DE-CORRODER</a></b>  
+    <br><span style="font-size: 10pt;"><span style="color: #ff0000;"><span style="font-family: Comic Sans MS;"><em><span style="font-size: 12pt;">Click above for De-Corroder Information</span>&nbsp; </em></span></span></span><span style="color: #0000cc;"><span style="font-size: large;"><span style="font-family: Arial;"><em><span style="font-family: Arial;"><span style="font-size: medium;">- - See: <span style="color: #ff0000;"><a style="color: #ff0000;" title="Metal De-Corroder" href="https://www.shellac.net/Metal_DeCorroder.pdf" target="_blank" rel="noopener"><span style="font-size: 14pt;">Printer Friendly Information Sheet</span></a></span></span></span></em></span></span><strong><span style="font-size: large;"><span style="font-family: Arial;"><em><span style="font-family: Arial;"><span style="font-size: medium;"><br></span></span></em><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt; color: #0000ff;">METAL DE-CORRODER</span><br></span></span></strong><span style="font-size: large;"><span style="font-family: Arial;"><span style="font-family: arial,helvetica,sans-serif; font-size: 14pt;">i</span></span></span></span><span style="color: #0000cc;"><span style="font-size: large;"><span style="font-family: Arial;"><span style="font-family: arial,helvetica,sans-serif; font-size: 14pt;"><img style="float: left; margin: 3px 9px 3px 9px;" src="https://www.shellac.net/media/DeCorrod.jpg" alt="" width="170" height="251"></span></span></span></span><span style="color: #0000cc;"><span style="font-size: large;"><span style="font-family: Arial;"><span style="font-family: arial,helvetica,sans-serif; font-size: 14pt;">s a Safe, Non-Toxic System for Rust Removal with Full Control</span>.</span></span></span> <span style="font-size: medium;"><span style="font-family: Times New Roman;"><br></span></span><span style="font-size: 14pt;"><span style="font-family: Times New Roman;"><span style="font-family: times new roman, times, serif;">Amine complex of hydro-oxycarboxilic acid in aqueous solution<br>pH: Approximately 4.0 </span><br><span style="font-family: times new roman, times, serif;"> <br>Use on: Iron, bronze, copper and copper alloys, brass, steel, zinc and galvanized materials.&nbsp; Also effectively cleans scale and rusty water stains.<br><br>Treatment selectively ruptures the bond between base metal and corrosion layer, reducing rust to a sludge, which is easily wiped or brushed away.</span></span></span></p>
+<p><span style="font-size: 14pt;"><span style="font-family: Times New Roman;"><span style="font-family: times new roman, times, serif;">Clean-water rinse stops the process.</span></span></span><br><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>MDCL</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Renaissance Metal De-Corroder, 1 Liter</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$87.95</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="102_check" type="checkbox" name="itemnum" value="102" style="visibility: hidden;display:none;"> 
+  Quantity <input id="102_quantity" type="text" size="2" name="102:qnty"
+value="0" onchange="var checkVal = document.getElementById('102_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>MDC1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Renaissance Metal De-Corroder, 100ml</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$27.95</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="103_check" type="checkbox" name="itemnum" value="103" style="visibility: hidden;display:none;"> 
+  Quantity <input id="103_quantity" type="text" size="2" name="103:qnty"
+value="0" onchange="var checkVal = document.getElementById('103_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 640 -->
+<a name="640"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b><a href="https://www.shellac.net/vulpex_cleaner_info.html">VULPEX, Non-Foaming, Acid-Free, Germicidal CLEANER</a></b>  
+    <br><span style="font-size: 12pt; font-family: comic sans ms,sans-serif;"><span style="color: #ff0000;"><em>Click above for Instructions&nbsp;&nbsp;&nbsp; <span style="color: #333333;">Click Here to:</span> <a title="VULPEX Instruction Sheet" href="https://www.shellac.net/vulpex_instructions.pdf"><span style="font-size: 14pt;"><span style="color: #ff0000;">Print or View VULPEX Instruction Sheet</span></span></a></em></span></span><br><span style="color: #0000ff; font-size: 14pt; font-family: arial,helvetica,sans-serif;"><span style="font-size: 18pt;"><strong>VULPEX CLEANER <em>Liquid Soap</em></strong></span></span><span style="font-family: times new roman,times,serif; font-size: 14pt;"><br></span><span style="color: #0000ff; font-size: 14pt; font-family: arial,helvetica,sans-serif;"><strong><img style="float: left; margin-right: 12px; margin-left: 12px;" src="https://www.shellac.net/media/vulpex2.jpg" alt="" width="163" height="224"></strong></span><span style="font-family: times new roman,times,serif; font-size: 14pt;">Vulpex is a safe cleaner for leather, furniture, carpets, oil paintings,<br>armour, precious metals, shell, marble, feathers, costumery, and stone. <br>Vulpex rinses away completely. <em>Not harmful to health or property.</em><br><br>Since its introduction in 1970, its extraordinary versatility has made <br>Vulpex a popular and indispensable medium in all branches of professional <br>restoration and conservation of fine arts and historic items.<br><br>Vulpex is supplied as a concentrate &amp;<span style="color: #0000ff;"> <em><strong>Must be mixed with water </strong></em></span></span><br><span style="font-family: times new roman, times, serif; font-size: 14pt; color: #0000ff;"><em><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or Stoddard's solvent </strong></em><em>(or mineral spirit) prior to use.</em></span><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>VP100</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">VULPEX, Non-Foaming, Acid-Free, CLEANER, 100 ml</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$27.95</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="98_check" type="checkbox" name="itemnum" value="98" style="visibility: hidden;display:none;"> 
+  Quantity <input id="98_quantity" type="text" size="2" name="98:qnty"
+value="0" onchange="var checkVal = document.getElementById('98_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>VP250</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">VULPEX, Non-Foaming, Acid-Free, CLEANER, 250 ml</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$58.95</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="571_check" type="checkbox" name="itemnum" value="571" style="visibility: hidden;display:none;"> 
+  Quantity <input id="571_quantity" type="text" size="2" name="571:qnty"
+value="0" onchange="var checkVal = document.getElementById('571_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>VPL</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">VULPEX, Non-Foaming, Acid-Free, CLEANER, 1 Liter</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$99.85</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="99_check" type="checkbox" name="itemnum" value="99" style="visibility: hidden;display:none;"> 
+  Quantity <input id="99_quantity" type="text" size="2" name="99:qnty"
+value="0" onchange="var checkVal = document.getElementById('99_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2373 -->
+<a name="2373"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>HEAVY DUTY Furniture MOVER BANDS, 5/8 in. wide - Set of 12 (6 each of 2 Sizes)</b>  
+
+  <br><strong><span style="color: #0000ff;"><span style="font-size: x-large;"><span style="font-family: Arial;">HEAVY DUTY RUBBER BANDS</span></span></span></strong><span style="color: #0000ff;"><span style="font-size: x-large;"><span style="font-family: Arial;">, </span></span></span><em><span style="color: #0000ff;"><span style="font-size: x-large;"><span style="font-family: Arial;">Set of 12</span></span></span></em><span style="font-size: large;"><span style="font-family: Times New Roman;"><span style="color: #ff0000;"><em><strong><span style="font-size: 18pt;">&nbsp; -- <span style="font-size: 24pt;">On Sale</span> --</span></strong></em></span><br></span></span><a title="Heavy Duty Rubber Bands" href="https://www.shellac.net/news/" target="_blank" rel="noopener"><strong><span style="color: #0000ff;"><span style="font-size: x-large;"><span style="font-family: Arial;"><img src="https://www.shellac.net/media/mover_bands_.jpg" alt="mover_bands_.jpg" width="190" height="146" align="left" border="0" hspace="8" vspace="2"></span></span></span></strong></a><span style="font-size: large;"><span style="font-family: Times New Roman;"><br>These "Delivery Bands / Mover Bands"<br>Quickly and Easily&nbsp;hold furniture pads in place.</span></span><em><span style="font-family: Comic Sans MS;"><span style="font-size: large;"><br></span></span><span style="font-family: Comic Sans MS;"><span style="font-size: large;"><span style="font-size: 12pt;"><span style="font-family: comic sans ms, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &amp;<br>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></span><a title="Rubber Band Clamping" href="https://www.shellac.net/news/2019/03/23/" target="_blank" rel="noopener"><span style="font-size: 12pt; font-family: comic sans ms, sans-serif;"><span style="font-size: 14pt;"><span style="font-size: 12pt;">click here to see:</span> </span></span></a><span style="color: #993366;"><span style="font-size: 12pt; font-family: comic sans ms, sans-serif;"><span style="color: #ff0000;"><a style="color: #ff0000;" title="Rubber Band Clamping" href="https://www.shellac.net/news/2019/03/23/" target="_blank" rel="noopener"><span style="font-size: 14pt;">Clamping Application suggestion</span></a></span><br><br></span></span><span style="font-family: Comic Sans MS;"><strong><span style="font-size: large;">12 Bands</span></strong><span style="font-size: medium; color: #ff0000;">&nbsp; (6 Each of 2 Sizes: 25 in.Tan, and 36 in. Blue)</span></span></em><br>
+
+
+
+      <i>RB-SET</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+        
+  
+          <strike>$19.95</strike>
+      <i>$15.95</i>            <span class="OnSaleText">  - On SALE !</span>
+
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="2373">
+    
+      Quantity <input type="text" size="2" name="2373:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2370 -->
+<a name="2370"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>HEAVY DUTY Rubber BANDS, 5/8" wide x 25 in. - One Dozen</b>  
+
+  <br><span style="font-size: 14pt; color: #0000ff;"><em><span style="font-family: Comic Sans MS;">Small / Tan </span></em></span><span style="font-size: 12pt; color: #ff0000;"><em><span style="font-family: Comic Sans MS;">(Package of 12)</span></em></span><br>
+
+
+
+      <i>RB-25</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+        
+  
+          <strike>$15.95</strike>
+      <i>$12.95</i>            <span class="OnSaleText">  - On SALE !</span>
+
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="2370">
+    
+      Quantity <input type="text" size="2" name="2370:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2372 -->
+<a name="2372"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>HEAVY DUTY Rubber BANDS, 5/8 wide x 36 in. - One Dozen</b>  
+
+  <br><span style="font-size: 12pt; color: #ff0000;"><span style="font-family: Comic Sans MS;"><em><span style="color: #0000ff;">Blue 36 in. </span>(Package of 12)</em></span></span><br>
+
+
+
+      <i>RB-36</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+        
+  
+          <strike>$17.95</strike>
+      <i>$14.95</i>            <span class="OnSaleText">  - On SALE !</span>
+
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="2372">
+    
+      Quantity <input type="text" size="2" name="2372:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2474 -->
+<a name="2474"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>COTTON TIE WEBBING - 100 Foot Roll</b>  
+
+  <br><span style="color: #0000ff; font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>COTTON TIE WEBBING</strong></span><br><span style="font-size: large;"><span style="font-family: Times New Roman;"><img src="https://www.shellac.net/media/CTW2.jpg" alt="CTW2.jpg" width="187" height="141" align="left" border="0" hspace="8" vspace="0"><span style="font-size: 14pt; font-family: times new roman, times, serif;"><br>Soft cotton webbing is non-abrasive, can be cut into lengths needed.</span><br><span style="font-size: 14pt; font-family: times new roman, times, serif;">Ideal to tie-off and secure furniture and cargo in vans.</span><br><span style="font-size: 14pt; font-family: times new roman, times, serif;">&bull; Extremely Strong </span><br><span style="font-size: 14pt; font-family: times new roman, times, serif;"> &bull; Will Not "burn" furniture </span><br><span style="font-size: 14pt; font-family: times new roman, times, serif;">&bull; All Cotton</span></span></span><span style="font-size: 14pt; font-family: times new roman, times, serif;"> -</span><span style="font-size: large;"><span style="font-family: Times New Roman;"><span style="font-size: 14pt;"><span style="font-family: times new roman, times, serif;"> 2 inches wide x 100 fe</span>et</span><br></span></span><br><br>
+
+
+
+      <i>TW-100</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$33.00</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="2474">
+    
+      Quantity <input type="text" size="2" name="2474:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2657 -->
+<a name="2657"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>NYLON WEBBING, 150 Ft Roll - 1" Wide</b>  
+
+  <br><span style="color: #0000ff; font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>NYLON WEBBING</strong></span><br> <span style="color: #0000ff;"><span style="font-size: x-large;"><span style="font-family: Arial;"><strong><img src="https://www.shellac.net/media/nl150_nylon_webbing.jpg" alt="nl150_nylon_webbing.jpg" width="170" height="127" align="left" border="0" hspace="8" vspace="0"></strong></span></span></span></p>
+<p><span style="font-size: 14pt; font-family: times new roman, times, serif;"><br>&bull; 150 Foot Roll</span></p>
+<p><span style="font-size: large; font-family: times new roman, times, serif;"><span style="font-size: 14pt;">&bull; 1 inch Wide</span> </span><p><br>
+
+
+
+      <i>NL-150</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$32.00</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="2657">
+    
+      Quantity <input type="text" size="2" name="2657:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2175 -->
+<a name="2175"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>STRETCH WRAP DISPENSER - HEAVY DUTY</b>  
+
+  <br><span style="font-size: 18pt; color: #0000ff;"><strong><span style="font-family: arial, helvetica, sans-serif;">STRETCH WRAP FILM&nbsp; </span></strong></span><span style="font-size: x-large;"><br>&nbsp;</span><span style="font-size: x-large;"><span style="font-size: 18pt;"><span style="font-family: Arial;"><strong><img src="https://www.shellac.net/media/SR_frame.jpg" alt="SR_frame.jpg" width="140" height="202" align="left" border="0" hspace="8" vspace="0"></strong></span></span></span><span style="font-size: x-large;">&nbsp; <br><span style="color: #ff0000; font-family: times new roman, times, serif; font-size: 24pt;"><strong><em>&nbsp;&nbsp; -- Clearance SALE -- </em></strong></span><br><span style="font-family: times new roman,times,serif; font-size: 14pt;"><strong>Heavy-duty</strong></span></span><span style="font-family: Times New Roman;"><span style="font-size: 14pt; font-family: times new roman,times,serif;">,<br>all steel stretch wrap dispenser with PVC handle <br>for hand applying stretch film around furniture or pallets.<br></span><em><span style="font-family: Arial;"><span style="font-size: large;"><br><span style="color: #0000ff;"><strong><span style="font-family: comic sans ms,sans-serif;">Fits rolls from 12 inches to 20 inches in height.</span></strong></span></span></span></em></span><br><br><br>
+
+
+
+      <i>SR310</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+        
+  
+          <strike>$49.95</strike>
+      <i>$34.95</i>            <span class="OnSaleText">  - On SALE !</span>
+
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="2175">
+    
+      Quantity <input type="text" size="2" name="2175:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2950 -->
+<a name="2950"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>PHILLIPS POWER BITS (1/4" Hex Shank)</b>  
+    <br><strong><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;">PHILLIPS Power Screwdriver BITS</span></span></span></strong><br />
+<img width="220" vspace="0" height="115" border="0" align="left" hspace="8" alt="philips_hex.jpg" src="https://www.shellac.net/media/philips_hex.jpg" /><br />
+<span style="font-size: large;"><span style="font-family: Times New Roman;">BITS For Electric Drills &amp; Screwguns&nbsp;</span></span><br />
+<em><span style="font-size: large;"><span style="font-family: Times New Roman;"><br />
+(1/4 inch - Hex Shank)</span></span></em><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>30-1P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 1-15/16" Point Size 1</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1130_check" type="checkbox" name="itemnum" value="1130" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1130_quantity" type="text" size="2" name="1130:qnty"
+value="0" onchange="var checkVal = document.getElementById('1130_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>30-2P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 1-15/16" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1131_check" type="checkbox" name="itemnum" value="1131" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1131_quantity" type="text" size="2" name="1131:qnty"
+value="0" onchange="var checkVal = document.getElementById('1131_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>30-3P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 1-15/16" Point Size 3</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1132_check" type="checkbox" name="itemnum" value="1132" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1132_quantity" type="text" size="2" name="1132:qnty"
+value="0" onchange="var checkVal = document.getElementById('1132_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>32-1P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 2-3/4" Point Size 1</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1151_check" type="checkbox" name="itemnum" value="1151" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1151_quantity" type="text" size="2" name="1151:qnty"
+value="0" onchange="var checkVal = document.getElementById('1151_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>32-2P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 2-3/4" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1152_check" type="checkbox" name="itemnum" value="1152" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1152_quantity" type="text" size="2" name="1152:qnty"
+value="0" onchange="var checkVal = document.getElementById('1152_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>32-3P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 2-3/4" Point Size 3</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1153_check" type="checkbox" name="itemnum" value="1153" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1153_quantity" type="text" size="2" name="1153:qnty"
+value="0" onchange="var checkVal = document.getElementById('1153_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>34-1P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 3-1/2" Point Size 1</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1167_check" type="checkbox" name="itemnum" value="1167" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1167_quantity" type="text" size="2" name="1167:qnty"
+value="0" onchange="var checkVal = document.getElementById('1167_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>34-2P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 3-1/2" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1170_check" type="checkbox" name="itemnum" value="1170" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1170_quantity" type="text" size="2" name="1170:qnty"
+value="0" onchange="var checkVal = document.getElementById('1170_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>34-3P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">BITS For electric drills & Screwguns 3-1/2" Point Size 3</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1171_check" type="checkbox" name="itemnum" value="1171" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1171_quantity" type="text" size="2" name="1171:qnty"
+value="0" onchange="var checkVal = document.getElementById('1171_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2951 -->
+<a name="2951"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>ROBERTSON (Square Drive) SCREWDRIVER BITS</b>  
+    <br><strong><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;">SQUARE DRVE SCREWDRIVER BITS<br />
+</span></span></span></strong><strong><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;"><img width="180" height="180" align="left" hspace="5" src="https://www.shellac.net/media/square_drive.jpg" alt="square_drive.jpg" /></span></span></span></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-size: large;"><span style="font-family: Times New Roman;">1/4 inch Hex Shank</span></span><strong><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;"><br />
+</span></span></span></strong><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>80-0R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 1-15/16" Point Size 0</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1421_check" type="checkbox" name="itemnum" value="1421" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1421_quantity" type="text" size="2" name="1421:qnty"
+value="0" onchange="var checkVal = document.getElementById('1421_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>80-1R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 1-15/16" Point Size 1</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1422_check" type="checkbox" name="itemnum" value="1422" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1422_quantity" type="text" size="2" name="1422:qnty"
+value="0" onchange="var checkVal = document.getElementById('1422_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>80-2R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 1-15/16" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1423_check" type="checkbox" name="itemnum" value="1423" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1423_quantity" type="text" size="2" name="1423:qnty"
+value="0" onchange="var checkVal = document.getElementById('1423_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>80-3R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 1-15/16" Point Size 3</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1424_check" type="checkbox" name="itemnum" value="1424" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1424_quantity" type="text" size="2" name="1424:qnty"
+value="0" onchange="var checkVal = document.getElementById('1424_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>82-1R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 2-3/4" Point Size 1</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1428_check" type="checkbox" name="itemnum" value="1428" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1428_quantity" type="text" size="2" name="1428:qnty"
+value="0" onchange="var checkVal = document.getElementById('1428_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>82-2R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 2-3/4" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1429_check" type="checkbox" name="itemnum" value="1429" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1429_quantity" type="text" size="2" name="1429:qnty"
+value="0" onchange="var checkVal = document.getElementById('1429_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>82-3R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 2-3/4" Point Size 3</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1430_check" type="checkbox" name="itemnum" value="1430" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1430_quantity" type="text" size="2" name="1430:qnty"
+value="0" onchange="var checkVal = document.getElementById('1430_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>84-1R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 3" Point Size 1</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1431_check" type="checkbox" name="itemnum" value="1431" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1431_quantity" type="text" size="2" name="1431:qnty"
+value="0" onchange="var checkVal = document.getElementById('1431_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>84-2R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 3" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1432_check" type="checkbox" name="itemnum" value="1432" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1432_quantity" type="text" size="2" name="1432:qnty"
+value="0" onchange="var checkVal = document.getElementById('1432_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>84-3R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT, 3" Point Size 3</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1433_check" type="checkbox" name="itemnum" value="1433" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1433_quantity" type="text" size="2" name="1433:qnty"
+value="0" onchange="var checkVal = document.getElementById('1433_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>88-2R</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON Square Drive POWER BIT,  6" Point Size 2</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$2.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1437_check" type="checkbox" name="itemnum" value="1437" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1437_quantity" type="text" size="2" name="1437:qnty"
+value="0" onchange="var checkVal = document.getElementById('1437_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2953 -->
+<a name="2953"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>SCREWDRIVER, SLOTTED POWER BITS</b>  
+    <br><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;"><strong>SLOTTED Screwdriver POWER BITS</strong></span></span></span><br />
+<img width="220" height="119" align="left" hspace="5" src="https://www.shellac.net/media/slotted_driver_bit.jpg" alt="slotted_driver_bit.jpg" />
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>320-1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 4-5</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1139_check" type="checkbox" name="itemnum" value="1139" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1139_quantity" type="text" size="2" name="1139:qnty"
+value="0" onchange="var checkVal = document.getElementById('1139_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-2</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 5-6</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1141_check" type="checkbox" name="itemnum" value="1141" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1141_quantity" type="text" size="2" name="1141:qnty"
+value="0" onchange="var checkVal = document.getElementById('1141_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-3</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 6-7</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.10</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1143_check" type="checkbox" name="itemnum" value="1143" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1143_quantity" type="text" size="2" name="1143:qnty"
+value="0" onchange="var checkVal = document.getElementById('1143_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-4</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 8-10</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.15</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1145_check" type="checkbox" name="itemnum" value="1145" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1145_quantity" type="text" size="2" name="1145:qnty"
+value="0" onchange="var checkVal = document.getElementById('1145_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-5</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 10-12</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1147_check" type="checkbox" name="itemnum" value="1147" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1147_quantity" type="text" size="2" name="1147:qnty"
+value="0" onchange="var checkVal = document.getElementById('1147_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-6</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 12-14</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$1.25</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1148_check" type="checkbox" name="itemnum" value="1148" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1148_quantity" type="text" size="2" name="1148:qnty"
+value="0" onchange="var checkVal = document.getElementById('1148_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-M</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 6-8 - with FINDER</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$3.50</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1149_check" type="checkbox" name="itemnum" value="1149" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1149_quantity" type="text" size="2" name="1149:qnty"
+value="0" onchange="var checkVal = document.getElementById('1149_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>320-P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SCREWDRIVER, SLOTTED Power Bit - Point Size 8-10 - with FINDER</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$3.50</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1150_check" type="checkbox" name="itemnum" value="1150" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1150_quantity" type="text" size="2" name="1150:qnty"
+value="0" onchange="var checkVal = document.getElementById('1150_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 1866 -->
+<a name="1866"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>MAGNETIC BIT HOLDER</b>  
+
+  <br><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;"><strong>MAGNETIC BIT HOLDER<br />
+</strong></span></span><img width="240" height="133" hspace="5" src="https://www.shellac.net/media/mag_bit_holder.jpg" alt="mag_bit_holder.jpg" /><br />
+</span><br>
+
+
+
+      <i>M490</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$4.00</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="1866">
+    
+      Quantity <input type="text" size="2" name="1866:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2952 -->
+<a name="2952"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>INSERT Screwdriver BITS</b>  
+    <br><span style="color: rgb(0, 0, 255);"><span style="font-size: x-large;"><span style="font-family: Arial;"><strong>Screwdriver INSERT&nbsp; BITS<br />
+<img width="200" vspace="2" height="86" align="textTop" hspace="5" src="https://www.shellac.net/media/phillipsInsertbit.jpg" alt="phillipsInsertbit.jpg" /> &nbsp;<img width="200" height="79" align="textTop" hspace="5" src="https://www.shellac.net/media/robertson_insertbit.jpg" alt="robertson_insertbit.jpg" />&nbsp;<img width="220" height="75" align="textTop" hspace="5" src="https://www.shellac.net/media/slotted_bit.jpg" alt="slotted_bit.jpg" />&nbsp; 
+</strong></span></span></span><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>440-0</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Phillips INSERT BIT - SIZE 4-5</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.80</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1242_check" type="checkbox" name="itemnum" value="1242" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1242_quantity" type="text" size="2" name="1242:qnty"
+value="0" onchange="var checkVal = document.getElementById('1242_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>440-1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Phillips INSERT BIT - SIZE 6-8</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1243_check" type="checkbox" name="itemnum" value="1243" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1243_quantity" type="text" size="2" name="1243:qnty"
+value="0" onchange="var checkVal = document.getElementById('1243_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>440-2</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Phillips INSERT BIT - SIZE 8-10</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1244_check" type="checkbox" name="itemnum" value="1244" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1244_quantity" type="text" size="2" name="1244:qnty"
+value="0" onchange="var checkVal = document.getElementById('1244_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>440-3</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Phillips INSERT BIT - SIZE 10-12</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1245_check" type="checkbox" name="itemnum" value="1245" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1245_quantity" type="text" size="2" name="1245:qnty"
+value="0" onchange="var checkVal = document.getElementById('1245_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>950-0</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON (Square Drive) INSERT BIT - Screw SIZE 4-5</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1480_check" type="checkbox" name="itemnum" value="1480" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1480_quantity" type="text" size="2" name="1480:qnty"
+value="0" onchange="var checkVal = document.getElementById('1480_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>950-1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON (Square Drive) INSERT BIT - Screw SIZE 6-8</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1481_check" type="checkbox" name="itemnum" value="1481" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1481_quantity" type="text" size="2" name="1481:qnty"
+value="0" onchange="var checkVal = document.getElementById('1481_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>950-2</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON (Square Drive) INSERT BIT - Screw SIZE 8-10</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1482_check" type="checkbox" name="itemnum" value="1482" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1482_quantity" type="text" size="2" name="1482:qnty"
+value="0" onchange="var checkVal = document.getElementById('1482_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>950-3</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">ROBERTSON (Square Drive) INSERT BIT - Screw SIZE 10-12</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.60</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1483_check" type="checkbox" name="itemnum" value="1483" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1483_quantity" type="text" size="2" name="1483:qnty"
+value="0" onchange="var checkVal = document.getElementById('1483_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>445-1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SLOTTED INSERT BIT - Screw SIZE 4-5</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.70</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1248_check" type="checkbox" name="itemnum" value="1248" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1248_quantity" type="text" size="2" name="1248:qnty"
+value="0" onchange="var checkVal = document.getElementById('1248_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>445-2</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SLOTTED INSERT BIT - Screw SIZE 6-8</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.70</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1249_check" type="checkbox" name="itemnum" value="1249" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1249_quantity" type="text" size="2" name="1249:qnty"
+value="0" onchange="var checkVal = document.getElementById('1249_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>445-3</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SLOTTED  INSERT BIT - Screw SIZE 8-10</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.70</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1250_check" type="checkbox" name="itemnum" value="1250" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1250_quantity" type="text" size="2" name="1250:qnty"
+value="0" onchange="var checkVal = document.getElementById('1250_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>445-4</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SLOTTED INSERT BIT - Screw SIZE 10-12</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$0.80</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="1251_check" type="checkbox" name="itemnum" value="1251" style="visibility: hidden;display:none;"> 
+            Quantity <input id="1251_quantity" type="text" size="2" name="1251:qnty"
+value="0" onchange="var checkVal = document.getElementById('1251_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 3784 -->
+<a name="3784"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>FINISH & FILLER SCRAPER</b>  
+
+  <br><span style="color: #0000ff;"><strong><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Finish &amp; Filler Scraper<br></span></strong></span><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><span style="font-family: times new roman, times, serif; font-size: 14pt;"><img style="float: left; margin-right: 9px; margin-left: 9px;" src="https://www.shellac.net/media/M999-9995.jpg" alt="FINISH &amp; FILLER SCRAPER" width="230" height="154"><br>The Finish &amp; Filler Scraper is a <span style="text-decoration: underline;"><strong>flexible</strong></span> metal cabinet scraper<br>with four cutting edges. <br></span></span><span style="font-size: 14pt;"><span style="font-family: arial, helvetica, sans-serif;"><span style="font-family: times new roman, times, serif;"><br>This tool is designed to level the Hard Fill and Hard Fill Plus repairs<br>and to remove finish imperfections such as runs, sags and dirt.</span></span></span><span style="color: #0000ff;"><strong><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"></span></strong></span><br><br><br>
+
+
+
+      <i>M999-9995</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+        
+  
+          <strike>$27.00</strike>
+      <i>$24.00</i>            <span class="OnSaleText">  - On SALE !</span>
+
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="3784">
+
+              Quantity <input type="text" size="2" name="3784:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 3517 -->
+<a name="3517"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>SMALL SCRATCH AWL</b>  
+    <br><span style="color: #0000ff;"><strong><span style="font-family: arial,helvetica,sans-serif; font-size: 18pt;">Small SCRATCH AWL</span></strong></span><br> <img src="https://www.shellac.net/media/478_scrath_awl.jpg" alt="Small Scratch Awl" width="380"><span style="font-family: times new roman,times,serif; font-size: 14pt;"><br>Fits nicely in the hand, excellent for small work applications. </span><br><span style="font-family: times new roman,times,serif; font-size: 14pt;">Use to scribe lines, and for layout, upholstery and a variety of uses. </span></p>
+<p><span style="font-family: arial,helvetica,sans-serif; font-size: 12pt;">&nbsp;&nbsp; &bull;&nbsp;Finished hardwood handle<br>&nbsp;&nbsp; &bull;&nbsp;Sharp pointed tempered blade<br>&nbsp;&nbsp; &bull;&nbsp;Blade length - 2&nbsp;inches<br>&nbsp;&nbsp; &bull;&nbsp;Overall Length 3 7/8 in.</span><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>SA478.1</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">SMALL SCRATCH AWL, One (1) Awl</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$3.75</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="3518_check" type="checkbox" name="itemnum" value="3518" style="visibility: hidden;display:none;"> 
+  Quantity <input id="3518_quantity" type="text" size="2" name="3518:qnty"
+value="0" onchange="var checkVal = document.getElementById('3518_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>SA478.3</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName"> SMALL SCRATCH AWL, Three (3) Awls</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$9.75</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="3520_check" type="checkbox" name="itemnum" value="3520" style="visibility: hidden;display:none;"> 
+  Quantity <input id="3520_quantity" type="text" size="2" name="3520:qnty"
+value="0" onchange="var checkVal = document.getElementById('3520_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 1304 -->
+<a name="1304"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>SCRATCH AWL</b>  
+
+  <br><span style="color: #0000ff; font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>SCRATCH AWL</strong></span><br><img style="margin-right: 10px; margin-left: 10px;" src="https://www.shellac.net/media/scratch_awl_3.jpg" alt="scratch_awl_3.jpg" width="190" height="179" align="left" hspace="6" vspace="2"></p>
+<p><span style="font-family: Times New Roman;"><span style="font-size: large;"><span style="font-family: times new roman, times, serif; font-size: 14pt;"><br>&bull; Full Tempered and Hardened Steel Blade</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;"> &bull; Amber translucent cellulose acetate handle.</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;"> &bull; Size 3<br></span></span><span style="font-size: 14pt;">&bull; 4.5 inch blade length<br></span></span><span style="font-size: 14pt; font-family: times new roman, times, serif;"><br>&bull; Made in the USA<br><br></span><br>
+
+
+
+      <i>500SA</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$6.98</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="1304">
+    
+      Quantity <input type="text" size="2" name="1304:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 4432 -->
+<a name="4432"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>TACK LIFTER  / CLAW TOOL</b>  
+
+  <br><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt; color: #0000ff;"><strong>TACK LIFTER / CLAW TOOL<br></strong></span><span style="font-family: times new roman, times, serif; font-size: 14pt;"><img style="margin-right: 15px; margin-left: 15px;" src="https://www.shellac.net/media/Tack_lifter_122.jpg" alt="Tack Lifter #122" width="440" height="123"><br>The #122 claw toll is specially designed for lifting tacks and small nails.<br>Hardwood handle.&nbsp; Nickel plated ferrule.<br>Forged steel blade. Length of blade - 2-7/8 in.</span><span style="font-family: times new roman, times, serif; font-size: 14pt;"><br>Overall length 7-1/4 in.<br></span>
+<br>
+
+
+
+      <i>TL122</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$18.95</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="4432">
+
+              Quantity <input type="text" size="2" name="4432:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 998 -->
+<a name="998"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>TACK & STAPLE REMOVER</b>  
+
+  <br><span style="font-size: large;"><span style="font-family: Times New Roman;"><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong><span style="color: #0000ff;">TACK &amp; STAPLE REMOVER</span></strong></span><br> <img src="https://www.shellac.net/media/124_tack_staple_remover.jpg" alt="124_tack_staple_remover.jpg" width="420" height="113" align="left" border="0" hspace="8" vspace="0"><br> <span style="font-family: times new roman, times, serif; font-size: 14pt;">&bull; Forged Steel Blade - 2 1/2. in long</span><br> </span><span style="font-size: 14pt; font-family: times new roman, times, serif;">&bull; Hard Wood handle<br> </span><span style="font-size: large;"><span style="font-family: Times New Roman;"><span style="font-family: times new roman, times, serif; font-size: 14pt;">&bull; Overall length 6 1/2 inches</span><br> </span></span></span><br> <br>
+
+
+
+      <i>121SR</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$17.95</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="998">
+    
+      Quantity <input type="text" size="2" name="998:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 995 -->
+<a name="995"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>STAPLE LIFTER</b>  
+
+  <br><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong><span style="color: #0000ff;">STAPLE LIFTER</span></strong></span><br><img style="margin-right: 9px; margin-left: 9px;" src="https://www.shellac.net/media/120_Osborne_Staple_Puller.jpg" alt="120_Osborne_Staple_Puller.jpg" width="230" height="173" align="left" border="0" hspace="3" vspace="2"></p>
+<p><span style="font-size: 14pt; font-family: times new roman, times, serif;">The correct angle for removing staples of any size,<br>from the smallest to the long leg staples and shredded material. <br></span></p>
+<p><span style="font-size: 14pt; font-family: times new roman, times, serif;"><span style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">Blade Length &ndash; 4.5&Prime;</span><br><span style="font-family: arial, helvetica, sans-serif;"><span style="font-size: 10pt;">Overall Length &ndash; 8.5&Prime;</span></span><em><span style="color: #0000ff;"><br>A very popular model.</span></em><br></span><span style="font-family: Times New Roman; font-size: 14pt;"><em><br>Not recommended for pulling out tacks.<br></em></span><br>
+
+
+
+      <i>120SL</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$19.95</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="995">
+    
+      Quantity <input type="text" size="2" name="995:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 1000 -->
+<a name="1000"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>STAPLE PULLER</b>  
+
+  <br><span style="font-size: large;"><span style="font-family: Times New Roman;"><span style="color: #0000ff; font-size: 18pt; font-family: arial, helvetica, sans-serif;"><strong>STAPLE PULLER</strong></span><br><img style="margin-right: 8px; margin-left: 8px;" src="https://www.shellac.net/media/stapleremover_124.jpg" alt="stapleremover_124.jpg" width="400" height="122" align="left" border="0" hspace="6" vspace="0"></span></span><span style="font-family: times new roman,times,serif; font-size: 14pt;"><br>&bull; Forged from alloy tempered steel.<br>&bull; Carefully hardened for long lasting use.<br>&bull; Hardwood handle, nickel plated ferrule.<br>&bull; Makes removal of staples very easy.<br>&bull; 6 inches - Overall length - Blade length, 2.25 in.<br></span><br>
+
+
+
+      <i>124SR</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$18.95</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="1000">
+    
+      Quantity <input type="text" size="2" name="1000:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 1070 -->
+<a name="1070"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>MAGNETIC UPHOLSTERY HAMMER</b>  
+
+  <br><span style="color: #0000ff;"><span style="font-size: 18pt;"><strong><span style="font-family: arial, helvetica, sans-serif;">Magnetic TACK HAMMER </span></strong><span style="font-family: arial, helvetica, sans-serif;"><span style="font-size: 14pt;">- <span style="font-size: 12pt;">C.S. OSBORNE &amp; CO.&nbsp;</span></span></span></span></span><br><img style="float: left; margin-right: 8px; margin-left: 8px;" src="https://www.shellac.net/media/magnetic_tack_hammer.jpg" alt="Magnetic Tack Hammer" width="265"><span style="font-family: times new roman, times, serif; font-size: 14pt;"><br>Forged steel. Hickory handle.&nbsp;</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;">Fully polished split head. Magnetic Faces.</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;">A versatile hammer used in upholstery &amp; leather trades.</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;">Made in the USA to U.S. Government specifications. </span><span style="font-family: times new roman, times, serif; font-size: 14pt;"><br><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; 9 1/2" Handle Length - 5 1/2" Head</span></span><br><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">&bull; Weight 12 Oz. </span><br><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">&bull; Head Weight 7.5 Oz.</span><br><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">&bull; Faces: Magnetic 5/16 in. - Large Face 1/2 in.&nbsp;</span><br><br>
+
+
+
+      <i>222H</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$35.00</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="1070">
+    
+      Quantity <input type="text" size="2" name="1070:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 4319 -->
+<a name="4319"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>1 Oz. JARS with LIDS</b>  
+    <br><strong><span style="color: #0000ff; font-family: arial, helvetica, sans-serif; font-size: 18pt;"><em>1 Ounce</em> GLASS &amp; PLASTIC JARS</span></strong></p>
+<p style="text-align: left;"><img style="margin-right: 12px; margin-left: 12px;" src="https://www.shellac.net/media/GlassJar_1oz_WhitePlasticLid.png" alt="Glass Jar White Lid" width="150" height="174"><strong><span style="color: #0000ff; font-family: arial, helvetica, sans-serif; font-size: 18pt;"><img style="margin: 5px 10px 5px 10px;" src="https://www.shellac.net/media/1oz_Plastic_jarlid" width="149" height="157"></span></strong></p>
+<p><span style="font-family: times new roman, times, serif; font-size: 14pt;"><strong>GLASS JAR</strong> with White Plastic Lid, </span><span style="font-family: times new roman, times, serif; font-size: 14pt;">Plastic Lid Liner - 1oz., </span><em><span style="font-family: times new roman, times, serif; font-size: 14pt;">Overall: &bull;&nbsp; 2-1/8 Tall </span></em><em><span style="font-family: times new roman, times, serif; font-size: 14pt;">&bull;&nbsp; </span><span style="font-family: times new roman, times, serif; font-size: 14pt;">1-1/2 Diameter<br></span></em><span style="font-family: times new roman, times, serif; font-size: 14pt;"><strong>PLASTIC JAR</strong> with Lined Black Plastic Lid - 1oz., </span><em><span style="font-family: times new roman, times, serif; font-size: 14pt;">(Light Weight, Excellent for portable Touch-Up Kits)</span></em><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>1OJ.G</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">GLASS JAR / White Plastic Lid, 1 oz</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$2.50</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="4321_check" type="checkbox" name="itemnum" value="4321" style="visibility: hidden;display:none;"> 
+  Quantity <input id="4321_quantity" type="text" size="2" name="4321:qnty"
+value="0" onchange="var checkVal = document.getElementById('4321_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>1OJ.P</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">PLASTIC JAR / WHITE Plastic LID, 1 oz</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$2.15</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="4320_check" type="checkbox" name="itemnum" value="4320" style="visibility: hidden;display:none;"> 
+  Quantity <input id="4320_quantity" type="text" size="2" name="4320:qnty"
+value="0" onchange="var checkVal = document.getElementById('4320_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 2887 -->
+<a name="2887"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>PLASTIC BOTTLES, High Density Cylinder Round</b>  
+    <br><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><span style="color: #0000ff;"><strong><strong>PLASTIC BOTTLES</strong> </strong>High Density <em>with Flip Top Cap</em></span></span><br> <img src="https://www.shellac.net/media/hd_bottles.jpg" alt="hd_bottles.jpg" width="140" height="167" align="left" border="0" hspace="8" vspace="2"><span style="font-size: large;"><span style="font-family: Times New Roman;"><br> <span style="font-size: x-large;"><span style="font-family: times new roman, times, serif; font-size: 14pt;">Cylinder Round BOTTLES</span><br> </span> <span style="font-family: times new roman, times, serif; font-size: 14pt;">Natural <em>(translucent)</em> Plastic Bottle including the Flip-Top Spout Cap. </span></span> <br><br></span></p>
+<p><span style="font-family: times new roman, times, serif; font-size: 14pt;">The 3mm spout orifice provides an easy and neat means<br>of measuring or dispensing small amounts of dye, solvent, or shellac. <br></span><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>PBQ</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Empty High Den. Plastic Bottle /Flip Top Cap, (32 Oz) Qt.</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$3.49</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="114_check" type="checkbox" name="itemnum" value="114" style="visibility: hidden;display:none;"> 
+  Quantity <input id="114_quantity" type="text" size="2" name="114:qnty"
+value="0" onchange="var checkVal = document.getElementById('114_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>PBP</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Empty High Den. Plastic Bottle / Flip Top Cap, (16 Oz) PINT</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$3.00</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="113_check" type="checkbox" name="itemnum" value="113" style="visibility: hidden;display:none;"> 
+  Quantity <input id="113_quantity" type="text" size="2" name="113:qnty"
+value="0" onchange="var checkVal = document.getElementById('113_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>PB8</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Empty High Den. Plastic Bottle / Flip Top Cap, (8 Oz) 1/2 Pint</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$2.80</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="112_check" type="checkbox" name="itemnum" value="112" style="visibility: hidden;display:none;"> 
+  Quantity <input id="112_quantity" type="text" size="2" name="112:qnty"
+value="0" onchange="var checkVal = document.getElementById('112_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 3821 -->
+<a name="3821"></a>
+
+
+
+
+
+
+      
+
+
+
+        <b>Unlined Metal PAINT CANS with LIDS</b>  
+    <br><span style="color: #0000ff;"><strong><span style="font-size: x-large;"><span style="font-family: Arial;">PAINT CANS </span></span></strong><span style="font-size: x-large;"><span style="font-family: Arial;">with</span></span><strong><span style="font-size: x-large;"><span style="font-family: Arial;"> LIDS</span></span></strong></span><br><span style="font-size: large;"><span style="font-family: Times New Roman;"><img src="https://www.shellac.net/media/mt_pt_can.jpg" alt="mt_pt_can.jpg" width="142" height="145" align="left" border="0" hspace="8" vspace="0"><br>These Unlined Paint Cans are ideal for storing <br>or shipping paint and other materials.<br>Made of tin plated steel. Lids are included.<br>Use for storing and mixing stains and solvents. <br>Metal cans must be used for oil based stains and finishes.</span></span><br><br>
+
+
+  
+  <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="super" value="-1">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items below then click 
+ <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART"> 
+    </strong></p>
+  
+      
+<div class="Subproduct">
+•      <i>RMCQ</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName"> Round Metal QUART CAN with LID</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$4.95</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="3820_check" type="checkbox" name="itemnum" value="3820" style="visibility: hidden;display:none;"> 
+            Quantity <input id="3820_quantity" type="text" size="2" name="3820:qnty"
+value="0" onchange="var checkVal = document.getElementById('3820_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+      
+<div class="Subproduct">
+•      <i>RMCP</i>  &nbsp;-&nbsp; 
+
+
+      <span class="SubproductName">Round Metal PINT CAN with LID</span>
+  
+
+&nbsp;-&nbsp;
+      <span class="SubproductPriceContainer">
+          <span class="SubproductPrice"><i>$4.59</i></span>
+              </span>
+  &nbsp;-&nbsp;
+
+
+<input id="2679_check" type="checkbox" name="itemnum" value="2679" style="visibility: hidden;display:none;"> 
+            Quantity <input id="2679_quantity" type="text" size="2" name="2679:qnty"
+value="0" onchange="var checkVal = document.getElementById('2679_check'); (this.value > 0 && checkVal.checked==false ) ? checkVal.checked=true : checkVal.checked=false;">&nbsp;&nbsp;
+  
+
+
+
+</div>
+
+
+
+
+
+
+
+    <p style="font-family:Arial, Helvetica, sans-serif;color:#bb0000;">Please enter quantities of desired items above then click 
+   <!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->    <input class="add" type="submit" value="ADD TO CART">
+   </strong></p>
+</form>  
+
+
+
+
+
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 688 -->
+<a name="688"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>WHITE COTTON LINEN RAGS - 1 Pound Bag</b>  
+
+  <br><span style="color: #0000ff;"><strong><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">White COTTON RAGS</span></strong> </span><strong><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt; color: #0000ff;"><em>- Table Linens</em></span></strong><br>&nbsp;&nbsp;&nbsp;<img style="float: left;" src="https://www.shellac.net/media/white_tablecloth_rags.jpg" width="210"> <br>&nbsp;&nbsp;&nbsp; <span style="font-size: 14pt; font-family: times new roman,times,serif;">&bull; Assorted White Cotton. <br>&nbsp;&nbsp;&nbsp; &bull; Sanitized recycled hotel table cloth linen<br>&nbsp;&nbsp;&nbsp; &bull; Triple Washed<br>&nbsp;&nbsp;&nbsp; &bull; Adsorbent<br>&nbsp;&nbsp;&nbsp; &bull; Cut to assorted rag sizes&nbsp; </span>--<span style="font-size: 12pt; font-family: arial,helvetica,sans-serif;"> <span style="color: #0000cc;"><em><span style="color: #0000ff;"><strong>1 Pound</strong> - Plastic Bag</span> </em></span></span><br><br><br>
+
+
+
+      <i>WCR1</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$3.95</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="688">
+
+              Quantity <input type="text" size="2" name="688:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr> <!-- END OF ROW -->
+<tr> <!-- Start OF Next ROW -->
+                <td valign="top" align="left"><!-- rec 825 -->
+<a name="825"></a>
+
+
+
+
+
+    <form action="https://www.shellac.net/cgi-shellac/sb/order.cgi" method="post">
+  
+      
+
+
+
+        <b>COTTON FINISHING RAGS - 1 Pound Bag</b>  
+
+  <br><span style="color: #0000ff; font-size: 18pt; font-family: arial,helvetica,sans-serif;"><strong>FINISHING RAGS,<em> Cotton</em></strong></span><br>&nbsp;&nbsp;<span style="font-size: 14pt;"> <img style="float: left; margin-right: 9px; margin-left: 9px;" src="https://www.shellac.net/media/finishing_rags.jpg" alt="Cotton Finishing Rags" width="225" height="183"> <br><span style="font-family: times new roman, times, serif;"><strong>General purpose, Absorbent Finishing Rags<br>&nbsp;&nbsp; SELECTED for use in <span style="color: #0000ff; font-size: 18pt;">Polishing, Staining, &amp; Finishing</span></strong></span></span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;">&nbsp;&nbsp;&nbsp; &bull; Assorted weaves &amp; thickness</span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;">&nbsp;&nbsp;&nbsp; &bull; Recycled Cotton Cloth, White &amp; Natural </span><br><span style="font-family: times new roman, times, serif; font-size: 14pt;">&nbsp;&nbsp;&nbsp; &bull; Washed &amp; Sanitized</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0000ff;">&nbsp;&nbsp;<span style="font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp; <br><em><span style="font-size: 12pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 Pound assorted sizes, in a Plastic Bag.</span></em></span></span><br><br>
+
+
+
+      <i>WCFR1</i>  &nbsp;-&nbsp; 
+
+
+
+  
+
+
+
+  
+          <i>$4.35</i>      &nbsp;-&nbsp;
+      
+
+
+
+<input type="hidden" name="storeid" value="*1249fea48a520871965071">
+<input type="hidden" name="dbname" value="products">
+<input type="hidden" name="function" value="add">
+<input type="hidden" name="itemnum" value="825">
+
+              Quantity <input type="text" size="2" name="825:qnty" value="1">&nbsp;&nbsp;
+
+<!-- VAR ADDBUTTONGRAPHIC IS NOT DEFINED -->  <input class="add" type="submit" value="ADD TO CART">
+
+
+
+
+
+
+  </form>
+
+
+
+</td>
+              </tr><!-- Last One -->            </table>
+          </td>
+        </tr>
+        
+        
+        <!-- Multi-Page Links -->
+                <tr>
+          <td><div class="footer"></div></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+        </tr>
+
+
+        
+        
+                              <tr>
+              <td class="footer"><hr><hr>
+<p style="text-align: center;"><span style="font-size: 16pt;"><span style="color: #0000ff;"><strong><span style="font-family: Arial;"><em>Shellac.net</em></span></strong></span> <span style="color: #993300;"><em><strong><span style="font-family: Times New Roman;">Wood Finish Supply</span></strong></em></span> <strong><span style="font-family: Arial;">/ <span style="color: #0000ff;"><span style="color: #000000; font-size: 14pt;">MeritIndustries.com</span><br></span></span></strong><span style="font-family: times new roman, times, serif; font-size: 14pt;"><em><span style="color: #0000ff;"><span style="color: #000000;">Authorized Mohawk Distributor</span></span></em></span></span><br><span style="font-family: arial, helvetica, sans-serif; font-size: 14pt;"><strong><span style="color: #ff0000;">New Hours </span></strong><em><span style="color: #ff0000;"><span style="color: #333333;">V<span style="font-size: 12pt;">isit us at</span></span></span></em><span style="font-size: 12pt;"><em>:</em></span></span><span style="font-size: large;"><span style="font-family: Times New Roman;"><em><span style="font-size: 14pt;"><span style="color: #800000; font-family: arial, helvetica, sans-serif;"><span style="font-size: 12pt;"> 2465 2nd St. Napa CA 94559 - 9:00 - 4:00</span> - <span style="font-family: times new roman, times, serif; color: #0000ff;"><strong>Monday - Thursday</strong> - </span></span></span><span style="font-size: 8pt;"><span style="color: #993366;"><span style="font-family: arial, helvetica, sans-serif;"><span style="font-size: 12pt;">Closed Friday</span><br></span></span></span></em></span></span><span style="font-size: 14pt;"><span style="color: #0000ff;"><em><span style="font-family: comic sans ms, sans-serif;">Assistance for placing your order </span></em></span></span><span style="font-size: 12pt;"><em><span style="font-family: comic sans ms, sans-serif;">(9:00 am to 3:30 pm Pacific Time) </span></em></span><span style="font-size: 12pt; color: #0000ff;"><em><span style="font-family: comic sans ms, sans-serif;"><span style="font-size: 14pt;">707-299-8016</span><br></span></em></span></p>
+<p style="text-align: center;"><span style="font-size: 11pt;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><em>Email:</em> <span style="color: #800000;"><a style="color: #800000;" href="mailto:wfs@mcn.org">wfs@mcn.org</a></span> ... <a title="Privacy Policy" href="http://www.shellac.net/PrivacyPolicy.html" target="_blank" rel="noopener">Privacy Policy</a></span><br><span style="font-size: 10pt; font-family: times new roman, times, serif;"><em>rev. 4/26/24
+<script type="text/javascript"></script>
+</em></span></span></p>
+<p style="text-align: center;"><a style="padding-right: 5px;" href="https://www.shellac.net/cgi-shellac/sb/image.cgi?key=security_redirect&amp;storeid=*1249fea48a520871965071&amp;lang=en-US" target="_blank" rel="noopener"><img src="https://www.shellac.net/cgi-shellac/sb/image.cgi?security=yes&amp;storeid=*1249fea48a520871965071" border="0"></a> <img style="margin-right: 2px; margin-left: 2px;" src="https://www.paypal.com/images/verification_seal.gif" alt="" width="70" border="0"> <img src="https://www.shellac.net/media/ss_size1/charge_cards.jpg" alt="Charge Cards" width="175">
+<script type="text/javascript"></script>
+</p>
+<div class="AuthorizeNetSeal" style="float: right; position: relative; top: -90px; right: 120px;">
+<script type="text/javascript">// <![CDATA[
+var ANS_customer_id="a9dea8a8-fd35-40f4-8b82-66acf7a465d3";
+// ]]></script>
+<script type="text/javascript"></script>
+</div>
+<!-- Shopping Guarantee Seal -->
+<p>
+<script type="text/javascript"></script>
+
+<hr><hr></td>
+            </tr>
+                  
+         
+                <tr>
+          <td id="footer_pagelinks"><div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/class-information.html" title="CLASS / WORKSHOP INFORMATION" >CLASS / WORKSHOP INFORMATION</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/mohawkfinishingproducts.html" title="MOHAWK WOOD FINISHING PRODUCTS" >MOHAWK WOOD FINISHING PRODUCTS</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/premier-touch-up-materials.html" title="PREMIER Touch-Up Materials" >PREMIER Touch-Up Materials</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/General Finishes Stains and Topcoats.html" title="GENERAL FINSHES Dyes, Stains, Coatings" >GENERAL FINSHES Dyes, Stains, Coatings</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/index.html" title="SHELLAC.Net Home Page" target="_blank">SHELLAC.Net Home Page</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/old_fashioned_milk_paint.html" title="MILK PAINT" >MILK PAINT</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/adhesives-glue-epoxy.html" title="ADHESIVES / GLUES" >ADHESIVES / GLUES</a>
+</div>
+<div class="footer_pagelinks">
+ <a class="footer_pagetitle" href="https://www.shellac.net/waxes_care.html" title="WAXES, CARE, Cleaning" >WAXES, CARE, Cleaning</a>
+</div>
+</td>
+        </tr>
+        
+      </table>
+    </div>
+  </div>
+
+  <div id="leftnav">
+    <div>
+                                        <center><a href="https://www.shellac.net"><img src="https://www.shellac.net/media/SNLogo.jpg" alt="Index"></a><br />&nbsp;<br /></center>
+              	
+ 
+<script type="text/javascript" language="JavaScript">
+              DisplayMiniCart("ss_cart_0001288534","Summary");
+              </script>
+            
+      <table class="pagelink">
+	              <tr>
+          <td align="left" class="search">
+            <form action="https://www.shellac.net/cgi-shellac/sb/productsearch.cgi?storeid=*1249fea48a520871965071" method="get">
+  <input type="hidden" name="storeid" value="*1249fea48a520871965071">
+  <br><span class="nobr">
+  Search<br><input type="text" name="search_field" class="search" size="13">
+  <input type="submit" value="Go">
+  </span>
+</form>
+          </td>
+        </tr>
+        	  
+
+	  
+        <tr>
+          <td id="left_pagelinks"><div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/class-information.html" title="CLASS / SEMINAR INFORMATION" >CLASS / SEMINAR INFORMATION</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/behlen_sale.html" title="SALE / CLEARANCE" >SALE / CLEARANCE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/HARDWARE_CLEARNACE.html" title="HARDWARE CLEARANCE" target="_blank">HARDWARE CLEARANCE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/chair-casters.html" title="CHAIR CASTERS - Clearance SALE" >CHAIR CASTERS - Clearance SALE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/new_items.shtml" title="•• NEW ITEMS ••" >•• NEW ITEMS ••</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/merit_index.html" title="MERIT INDUSTRIES" >MERIT INDUSTRIES</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/Shellac_ordering_list.html" title="•••  SHELLAC LIST            Complete Listing" >•••  SHELLAC LIST            Complete Listing</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/button_shellac.html" title="• BUTTON Shellac" target="_blank">• BUTTON Shellac</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/dewaxed_shellac.html" title="• DEWAXED Shellac" >• DEWAXED Shellac</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/seed_shellac.html" title="• SEED Shellac" >• SEED Shellac</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/waxy-shellacs.html" title="• WAXY Shellac" >• WAXY Shellac</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/Mohawk-54th-catalog-pdf.pdf" title="MOHAWK Catalog #54" >MOHAWK Catalog #54</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/mohawk-color-chart-56.pdf" title="MOHAWK Color Chart #56" >MOHAWK Color Chart #56</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/mohawkfinishingproducts.html" title="MOHAWK WOOD FINISHING PRODUCTS" target="_blank">MOHAWK WOOD FINISHING PRODUCTS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/abrasives.html" title="ABRASIVES / SANDPAPER" target="_blank">ABRASIVES / SANDPAPER</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/adhesives-glue-epoxy.html" title="ADHESIVES - GLUES - EPOXIES" >ADHESIVES - GLUES - EPOXIES</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/aerosol_toners.html" title="Aerosol TONERS" target="_blank">Aerosol TONERS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/clear_aerosols.html" title="CLEAR AEROSOLS" >CLEAR AEROSOLS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/clear_finishes.html" title="CLEAR Finishes & CLEAR Aerosols" >CLEAR Finishes & CLEAR Aerosols</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/spray_lacquers.html" title="SPRAY LACQUERS" >SPRAY LACQUERS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/books-dvds-reference.html" title="BOOKS, DVDs, Reference" >BOOKS, DVDs, Reference</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/brushes.html" title="BRUSHES" target="_blank">BRUSHES</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/brush_wipe.html" title="BRUSH & WIPE ON Finishes" >BRUSH & WIPE ON Finishes</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/burninsupplies.html" title="BURN-IN Supplies" >BURN-IN Supplies</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/merit_burn-in_sticks.html" title="BURN-IN Sticks by MERIT" >BURN-IN Sticks by MERIT</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/chair-stool-swivels.html" title="Chair SWIVELS" >Chair SWIVELS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/touch_up_powders.html" title="COLOR Replacement TOUCH-UP & BLENDAL POWDERS" >COLOR Replacement TOUCH-UP & BLENDAL POWDERS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/dyes_stains_colorants.html" title="DYE, STAINS, GLAZE & COLORANTS" >DYE, STAINS, GLAZE & COLORANTS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/ngr_dye_color_list.html" title="NGR DYE Color List" >NGR DYE Color List</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/epoxy.html" title="EPOXY" >EPOXY</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/finish_rub_out.html" title="Finish RUB-OUT" >Finish RUB-OUT</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/Fill_Sticks_TouchUp_Markers.shtml" title="FILL STICKS and GRAIN FILLERS" >FILL STICKS and GRAIN FILLERS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/floor-care-maintenance.html" title="FLOOR CARE" >FLOOR CARE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/furniture-care.html" title="FURNTURE CARE" >FURNTURE CARE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/General Finishes Stains and Topcoats.html" title="GENERAL FINISHES Topcoats & Stains" >GENERAL FINISHES Topcoats & Stains</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/stringed_Instrument_finishes.html" title="GUITAR & Stringed Instrument Finishing" >GUITAR & Stringed Instrument Finishing</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/hardware.html" title="HARDWARE" >HARDWARE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/old_fashioned_milk_paint.html" title="MILK PAINT - On SALE" >MILK PAINT - On SALE</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/oil_finishes.html" title="OIL Finishes" >OIL Finishes</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/premier_clear_lacquer_aerosols.html" title="PREMIER CLEAR LACQUER Aerosols" >PREMIER CLEAR LACQUER Aerosols</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/premire-fill-sticks-markers-listed-by-color.html" title="PREMIER Markers & Fill Sticks - by Color" >PREMIER Markers & Fill Sticks - by Color</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/aprons,rags_wipers.html" title="RAGS, TACK Cloths, WIPERS" >RAGS, TACK Cloths, WIPERS</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/shelf-supports.html" title="SHELF Supports" >SHELF Supports</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/shop_supplies_reference.html" title="SHOP SUPPLIES" target="_blank">SHOP SUPPLIES</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/solvents_thinners_reducers.html" title="SOLVENTS, THINNERS, Reducers" >SOLVENTS, THINNERS, Reducers</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/tools_sundries.html" title="TOOLS, SUNDRIES, Miscellaneous" >TOOLS, SUNDRIES, Miscellaneous</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/fillsticks.html" title="Touch-Up MARKERS & Fill Sticks" >Touch-Up MARKERS & Fill Sticks</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/upholstery.html" title="UPHOLSTERY" >UPHOLSTERY</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/waterborne_fiinishing.html" title="WATERBORNE FINISH Materials" >WATERBORNE FINISH Materials</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/waxes_care.html" title="WAXES, CARE, Cleaning" >WAXES, CARE, Cleaning</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/padding_finishes.html" title="WIPE ON  /  PADDING Finishes" >WIPE ON  /  PADDING Finishes</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/wood-parts.html" title="WOOD Parts, DOWELS, Pins, Buttons" >WOOD Parts, DOWELS, Pins, Buttons</a>
+</div>
+<div class="left_pagelinks">
+ <a class="left_pagetitle" href="https://www.shellac.net/news/" title="Wood Finish News Blog" target="_blank">Wood Finish News Blog</a>
+</div>
+</td>
+        </tr>
+
+        
+                <tr>
+          <td align="left" class="pagelink">
+            <a href="https://www.shellac.net/cgi-shellac/sb/order.cgi?func=3&amp;storeid=*1249fea48a520871965071&amp;html_reg=html">Your Account</a>
+          </td>
+        </tr>
+        
+        
+              </table>
+
+
+
+
+<p id="payment_logos" align="center"><img  src="https://www.shellac.net/media/paypal_logo_reflect.png" alt="paypal_logo_reflect.png" width="160" height="181" vspace="2" hspace="4" border="1"></p>
+<p id="payment_logos" align="center">
+<script type="text/javascript" data-pp-pubid="a4c80ec72d"
+data-pp-placementtype="120x90"> (function (d, t) {
+"use strict";
+var s = d.getElementsByTagName(t)[0], n = d.createElement(t);
+n.src = "//paypal.adtag.where.com/merchant.js";
+s.parentNode.insertBefore(n, s);
+}(document, "script"));
+</script>
+</p>
+
+<div id="ss_mb"></div>
+<script type="text/javascript">
+  ck = (function(name){var b=' '+document.cookie;var c=b.search(new RegExp('\b'+name+'='));if(c==-1)c=b.indexOf(name+'=');if(c==-1)b=null;else{c=b.indexOf('=',c)+1;var d=b.indexOf(';',c);if(d==-1)d=b.length;b=unescape(b.substring(c,d));}return b;})("ss_mb_0001288534");
+  if ((ck != null) && (ck == 'st')) { 
+    var ah = document.createElement("a");
+    ah.setAttribute("href", "https://www.shellac.net/cgi-shellac/sb/ss_mb.cgi?storeid=*1249fea48a520871965071&ss_parm=Aca79d162a9b6f61b649e1eeb3419d0dc");
+    ah.setAttribute("onclick", "set_mobile_cookie('ss_mb_0001288534', 'mb', 2);return true;");
+    ah.innerHTML="View Mobile Site";
+    x = document.getElementById("ss_mb");
+    x.appendChild(ah);
+ }
+</script>
+    </div>
+  </div>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-28997661-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script type="text/javascript">
+;(function(a,t,o,m,s){a[m]=a[m]||[];a[m].push({t:new Date().getTime(),event:'snippetRun'});var f=t.getElementsByTagName(o)[0],e=t.createElement(o),d=m!=='paypalDDL'?'&m='+m:'';e.async=!0;e.src='https://www.paypal.com/tagmanager/pptm.js?id='+s+d;f.parentNode.insertBefore(e,f);})(window,document,'script','paypalDDL','da29740a-d6d6-4268-8518-cdf69e30c556');
+</script></body>
+</html>
+ contentType 9 text/html url 47 https://www.shellac.net:443/tools_sundries.html responseCode 3 200 

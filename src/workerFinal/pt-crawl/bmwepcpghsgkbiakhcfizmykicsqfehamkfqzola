@@ -1,0 +1,847 @@
+bmwepcpghsgkbiakhcfizmykicsqfehamkfqzola length 5 37664 page 37664 <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=" ">
+    <meta name="author" content="Michael Chin" />
+    <title>Dynamic Topography</title>
+    <link type="image/png" rel="icon" href="/static/img/GPlates-icon.png" />
+    <link
+      href="/static/libs/bootstrap-3.3.6/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    
+    <link href="/static/css/portal.css" rel="stylesheet" />
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", "UA-55273523-1", "auto");
+      ga("send", "pageview");
+    </script>
+    <style>
+      body {
+        margin-bottom: 60px;
+        background-image: url("/static/img/background.png");
+      }
+      .footer {
+        display: none;
+        background-color: ghostwhite;
+        /*padding-top:10px;*/
+        min-height: 10px;
+        background-image: url("/static/img/navbar-bg.png");
+        border-radius: 6px 6px 0 0;
+        box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 128, 0.19);
+      }
+      .navbar-gplates {
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+        background-image: url("/static/img/navbar-bg.png");
+        border-radius: 0 0 6px 6px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 128, 0.19);
+      }
+      .main-container {
+        padding-top: 70px;
+      }
+
+      @media screen and (max-width: 750px) {
+        .copyright-long {
+          display: none;
+        }
+      }
+
+      #top-link-block {
+        position: fixed !important;
+      }
+
+      #top-link-block.affix-top {
+        /*display:none;*/
+        top: 99999px;
+      }
+
+      #top-link-block.affix {
+        position: fixed !important;
+        bottom: 1px;
+        right: 0px;
+        top: auto;
+        width: auto;
+        z-index: 9999;
+      }
+    </style>
+     
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-default navbar-gplates" data-spy="affix">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" target="_top"
+            ><img
+              src="/static/img/gplates-portal-banner.png"
+              style="margin-top: -7px; height: 35px"
+              alt="GPlates Portal"
+          /></a>
+        </div>
+        <!--navbar-header-->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <!-- menu -->
+          <ul class="nav navbar-nav" id="frontpage-menu" style="display: none">
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Resources <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="https://www.earthbyte.org/category/resources/"
+                    >EarthByte Resources</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.earthbyte.org/category/gplates/"
+                    >GPlates Resources</a
+                  >
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a
+                    href="https://www.earthbyte.org/gplates-2-2-software-and-data-sets/"
+                    >GPlates Sample Data</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Goto <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://www.gplates.org">www.GPlates.org</a></li>
+                <li>
+                  <a href="https://www.earthbyte.org">www.EarthByte.org</a>
+                </li>
+                <li>
+                  <a href="https://discourse.gplates.org">Community Forum</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a href="#apps-anchor" target="_top"
+                    ><span class="glyphicon glyphicon-th"></span>
+                    Applications</a
+                  >
+                </li>
+                <li>
+                  <a href="#people-anchor" target="_top"
+                    ><span class="glyphicon glyphicon-user"></span> People</a
+                  >
+                </li>
+                <li>
+                  <a href="#sponsors-anchor" target="_top"
+                    ><span class="glyphicon glyphicon-fire"></span> Sponsors</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >About Us <span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="https://www.earthbyte.org/people/">Our Team</a>
+                </li>
+                <li>
+                  <a href="https://www.earthbyte.org/contact-us-3/">Contact</a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a href="/portal/faq">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- end of menu -->
+
+          <div
+            class="nav navbar-nav navbar-left search-box"
+            id="frontpage-search-box"
+            style="display: none"
+          >
+            <!--The google custom search console is here https://cse.google.com/cse/all. Login with Michael's account-->
+            <script>
+              (function () {
+                var cx = "000998446279291668651:wikqm4r-ois";
+                var gcse = document.createElement("script");
+                gcse.type = "text/javascript";
+                gcse.async = true;
+                gcse.src = "https://cse.google.com/cse.js?cx=" + cx;
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(gcse, s);
+              })();
+            </script>
+            <gcse:search></gcse:search>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li>
+              <a id="login" href="/ac/login" target="_top"
+                ><span class="glyphicon glyphicon-log-in"></span> Log In</a
+              >
+            </li>
+            <li>
+              <a id="signup" href="/ac/signup" target="_top"
+                ><span class="glyphicon glyphicon-user"></span> Sign Up</a
+              >
+            </li>
+            
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!--container-fluid-->
+    </nav>
+
+    <span id="top-link-block" class="hidden">
+      <a
+        href="#top"
+        class="well well-sm"
+        style="
+          padding: 4px;
+          text-decoration: none;
+          box-shadow: none;
+          background-color: rgba(92, 184, 92, 0.7);
+          color: black;
+          border: none;
+        "
+        onclick="$('html,body').animate({scrollTop:0},'slow');return false;"
+      >
+        <i class="glyphicon glyphicon-arrow-up"></i> Back to Top
+      </a> </span
+    ><!-- /top-link-block -->
+
+      
+
+    <div class="container main-container">
+      
+    <div style="padding: 10px 10px 0 25px;">
+    <h2 style="text-align:center;">Dynamic Topography</h2>
+
+<br>
+
+<p><strong>Note:</strong> Click the headings to expand or collapse panels.</p>
+
+<div class="bs-example">
+    <div class="panel-group" id="accordion">
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-747">Seton et al., 2015</a>
+                </h4>
+            </div>
+            <div id="paper-747" class="panel-collapse collapse">
+                <div class="panel-body">
+                Seton, M., Flament, N., Whittaker, J., Müller, R. D., Gurnis, M., & Bower, D. J. (2015). 
+            <a href="http://authors.library.caltech.edu/57562/" target="_blank">Ridge subduction sparked reorganization of the Pacific plate-mantle system 60.50 million years ago.</a> 
+            Geophysical Research Letters, 42(6), 1732-1740.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld89&name=Model 2 (Seton et al., 2015)" target="_blank">Model 2 (Seton et al., 2015)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-748">Zahirovic et al., 2016a</a>
+                </h4>
+            </div>
+            <div id="paper-748" class="panel-collapse collapse">
+                <div class="panel-body">
+                Zahirovic, S., Flament, N., Müller, R. D, Seton, M., & Gurnis, M. (2016a). 
+            <a href="http://onlinelibrary.wiley.com/doi/10.1002/2016GC006434/abstract">Large fluctuations of shallow seas in low-lying Southeast Asia driven by mantle flow.</a> 
+            Geochemistry, Geophysics, Geosystems, 17(9), 3589-3607.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld98&name=Case 1 (Zahirovic et al., 2016a; 2016b)" target="_blank">Case 1 (Zahirovic et al., 2016a; 2016b)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld115&name=Case 2 (Zahirovic et al. 2016a, 2016b" target="_blank">Case 2 (Zahirovic et al. 2016a, 2016b</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld108&name=Case 3 (Zahirovic et al., 2016a; 2016b)" target="_blank">Case 3 (Zahirovic et al., 2016a; 2016b)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld107&name=Case 4 (Zahirovic et al., 2016a; 2016b)" target="_blank">Case 4 (Zahirovic et al., 2016a; 2016b)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-749">Zahirovic et al., 2016b</a>
+                </h4>
+            </div>
+            <div id="paper-749" class="panel-collapse collapse">
+                <div class="panel-body">
+                Zahirovic, S., Matthews, K. J., Flament, N., Müller, R. D., Hill, K. C., Seton, M., & Gurnis, M. (2016b). 
+            <a href="http://www.sciencedirect.com/science/article/pii/S0012825216302872" target="_blank">
+            Tectonic evolution and deep mantle structure of the eastern Tethys since the latest Jurassic.</a> 
+            Earth-Science Reviews, 162, 293-337.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld98&name=Case 1 (Zahirovic et al., 2016a; 2016b)" target="_blank">Case 1 (Zahirovic et al., 2016a; 2016b)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld115&name=Case 2 (Zahirovic et al. 2016a, 2016b" target="_blank">Case 2 (Zahirovic et al. 2016a, 2016b</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld108&name=Case 3 (Zahirovic et al., 2016a; 2016b)" target="_blank">Case 3 (Zahirovic et al., 2016a; 2016b)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld107&name=Case 4 (Zahirovic et al., 2016a; 2016b)" target="_blank">Case 4 (Zahirovic et al., 2016a; 2016b)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld241&name=Case 5 (Zahirovic et al., 2016b)" target="_blank">Case 5 (Zahirovic et al., 2016b)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-750">Flament et al., 2017</a>
+                </h4>
+            </div>
+            <div id="paper-750" class="panel-collapse collapse">
+                <div class="panel-body">
+                Flament, N., Williams, S., Müller, R. D., Gurnis, M., & Bower, D. J. (2017). 
+            Origin and evolution of the deep thermochemical structure beneath Eurasia. 
+            Nature Communications 7, 14164 doi: 10.1038/ncomms14164.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld106&name=Case 25 (Flament et al., 2017)" target="_blank">Case 25 (Flament et al., 2017)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-751">Müller et al., 2018</a>
+                </h4>
+            </div>
+            <div id="paper-751" class="panel-collapse collapse">
+                <div class="panel-body">
+                R.D. Müller, R. Hassan, M. Gurnis, N. Flament, S.E. Williams,
+                  <a href="http://www.sciencedirect.com/science/article/pii/S1342937X17302162" target=_blank>
+                  Dynamic topography of passive continental margins and their hinterlands since the Cretaceous</a>,
+                  Gondwana Research, Volume 53, 2018, Pages 225-251, ISSN 1342-937X,
+                  https://doi.org/10.1016/j.gr.2017.04.028. 
+                
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M1&name=M1" target="_blank">M1</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M2&name=M2" target="_blank">M2</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M3&name=M3" target="_blank">M3</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M4&name=M4" target="_blank">M4</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M5&name=M5" target="_blank">M5</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M6&name=M6" target="_blank">M6</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M7&name=M7" target="_blank">M7</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=M7Rate&name=M7 Rate" target="_blank">M7 Rate</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-752">Müller et al., 2008</a>
+                </h4>
+            </div>
+            <div id="paper-752" class="panel-collapse collapse">
+                <div class="panel-body">
+                Müller, R.D., Sdrolias, M., Gaina, C., Steinberger, B. and Heine, C., 2008. 
+                <a href="https://www.earthbyte.org/age-and-bathymetry-of-the-worlds-ocean-crust-for-the-last-140-million-years/" target=_blank>
+                Long-term sea-level fluctuations driven by ocean basin dynamics. </a>
+                science, 319(5868), pp.1357-1362.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=ngrand&name=dynto_ngrand" target="_blank">dynto_ngrand</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=s20rts&name=dynto_s20rts" target="_blank">dynto_s20rts</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=smean&name=dynto_smean" target="_blank">dynto_smean</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-753">Cao et al., 2018</a>
+                </h4>
+            </div>
+            <div id="paper-753" class="panel-collapse collapse">
+                <div class="panel-body">
+                Cao, X., Flament, N., Müller, D., &#38; Li, S.(2018). <a href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2017TC004830" target=_blank>
+                The dynamic topography of eastern China 
+                since the latest Jurassic Period.</a> Tectonics, 37. <a href="https://doi.org/10.1029/2017TC004830" target=_blank>https://doi.org/10.1029/2017TC004830</a>
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld189&name=Model 1 (Cao et al., 2018)" target="_blank">Model 1 (Cao et al., 2018)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld115n&name=Model 2 (Cao et al., 2018)" target="_blank">Model 2 (Cao et al., 2018)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-740">Barnett-Moore et al., 2017</a>
+                </h4>
+            </div>
+            <div id="paper-740" class="panel-collapse collapse">
+                <div class="panel-body">
+                Barnett-Moore, N., R. Hassan, R. D. Müller, S. E. Williams, and N. Flament (2017),
+            <a href="http://onlinelibrary.wiley.com/doi/10.1002/2016TC004280/full" target="_blank">
+        Dynamic topography and eustasy controlled the paleogeographic evolution of northern Africa since the mid-Cretaceous</a>
+        , Tectonics, 36, 929–944, doi:10.1002/2016TC004280.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C1&name=CI" target="_blank">CI</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C1s&name=CI(s)" target="_blank">CI(s)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C2&name=CII" target="_blank">CII</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C3&name=CIII" target="_blank">CIII</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C4&name=CIV" target="_blank">CIV</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C5&name=CV" target="_blank">CV</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=C6&name=CVI" target="_blank">CVI</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-741">Flament et al., 2014</a>
+                </h4>
+            </div>
+            <div id="paper-741" class="panel-collapse collapse">
+                <div class="panel-body">
+                Flament, N., Gurnis, M., Williams, S., Seton, M., Skogseid, J., Heine, C., and Dietmar Müller R. (2014).
+            <a href="http://www.sciencedirect.com/science/article/pii/S0012821X13006511" target="_blank">
+            Topographic asymmetry of the South Atlantic from global models of mantle flow and lithospheric stretching.</a>
+            Earth and Planetary Science Letters, 387, 107-119.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld21&name=HH2 (Flament et al., 2014)" target="_blank">HH2 (Flament et al., 2014)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-742">Shephard et al., 2014</a>
+                </h4>
+            </div>
+            <div id="paper-742" class="panel-collapse collapse">
+                <div class="panel-body">
+                Shephard, G. E., Flament, N., Williams, S., Seton, M., Gurnis, M., and Müller R. D. (2014).
+            <a href="http://onlinelibrary.wiley.com/doi/10.1002/2014JB011078/abstract" target="_blank">
+            Circum-Arctic mantle structure and long-wavelength topography since the Jurassic.</a>
+            Journal of Geophysical Research: Solid Earth. DOI: 10.1002/2014JB011078
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld51&name=C1 (Shephard et al., 2014)" target="_blank">C1 (Shephard et al., 2014)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld21&name=C2 (Shephard et al., 2014)" target="_blank">C2 (Shephard et al., 2014)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld24&name=C3 (Shephard et al., 2014)" target="_blank">C3 (Shephard et al., 2014)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld31&name=C4 (Shephard et al., 2014)" target="_blank">C4 (Shephard et al., 2014)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld34&name=C5 (Shephard et al., 2014)" target="_blank">C5 (Shephard et al., 2014)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-743">Bower et al., 2015</a>
+                </h4>
+            </div>
+            <div id="paper-743" class="panel-collapse collapse">
+                <div class="panel-body">
+                Bower, D. J., Gurnis, M., & Flament, N. (2015). <a href="http://www.sciencedirect.com/science/article/pii/S0031920114002313" target="_blank">
+        Assimilating lithosphere and slab history in 4-D Earth models.</a> Physics of the Earth and Planetary Interiors, 238, 8-22.
+            
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld71&name=G2 (Bower et al., 2015)" target="_blank">G2 (Bower et al., 2015)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld72&name=G3 (Bower et al., 2015)" target="_blank">G3 (Bower et al., 2015)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-744">Rubey et al., 2017</a>
+                </h4>
+            </div>
+            <div id="paper-744" class="panel-collapse collapse">
+                <div class="panel-body">
+                Rubey, M., Brune, S., Heine, C., Davies, D. R., Williams, S. E., and Müller, R. D.: 
+        <a href="https://www.solid-earth.net/8/899/2017/" target="_blank">Global patterns in Earth's dynamic topography since the Jurassic: the role of subducted slabs</a>, 
+        Solid Earth, 8, 899-919, https://doi.org/10.5194/se-8-899-2017, 2017.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=terra&name=Terra" target="_blank">Terra</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-745">Flament et al., 2015</a>
+                </h4>
+            </div>
+            <div id="paper-745" class="panel-collapse collapse">
+                <div class="panel-body">
+                Flament, N., Gurnis, M., Müller R. D., Bower, D. J., & Husson, L. (2015).
+            <a href="http://dx.doi.org/10.1016/j.epsl.2015.08.006" target="_blank">
+            Influence of subduction history on South American topography</a>.
+            Earth and Planetary Science Letters, 430, 9-18, http://dx.doi.org/10.1016/j.epsl.2015.08.006.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld136&name=Case 1 (Flament et al., 2015)" target="_blank">Case 1 (Flament et al., 2015)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld134&name=Case 2 (Flament et al., 2015)" target="_blank">Case 2 (Flament et al., 2015)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld112&name=Case 3 (Flament et al., 2015)" target="_blank">Case 3 (Flament et al., 2015)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld119&name=Case 4 (Flament et al., 2015)" target="_blank">Case 4 (Flament et al., 2015)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-746">Müller et al., 2016</a>
+                </h4>
+            </div>
+            <div id="paper-746" class="panel-collapse collapse">
+                <div class="panel-body">
+                Müller, R. D., Flament, N., Matthews, K. J., Williams, S. E., & Gurnis, M. (2016). 
+            <a href="http://www.sciencedirect.com/science/article/pii/S0012821X16300425" target="_blank">
+            Formation of Australian continental margin highlands driven by plate-mantle interaction.</a>.
+            Earth and Planetary Science Letters, 441, 60-70. http://dx.doi.org/10.1016/j.epsl.2016.02.025
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld115n&name=Model 1 ( Müller et al. 2016)" target="_blank">Model 1 ( Müller et al. 2016)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld98&name=Model 2 (Müller et al., 2016)" target="_blank">Model 2 (Müller et al., 2016)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld95&name=Model 3 (Müller et al., 2016)" target="_blank">Model 3 (Müller et al., 2016)</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld89&name=Model 4 (Müller et al., 2016)" target="_blank">Model 4 (Müller et al., 2016)</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-754">Cao et al., 2019</a>
+                </h4>
+            </div>
+            <div id="paper-754" class="panel-collapse collapse">
+                <div class="panel-body">
+                Cao, W., Flament, N., Zahirovic, S., Williams, S. and Müller, R.D. 2019. 
+            <a href="https://www.sciencedirect.com/science/article/pii/S0040195119301416" target=_blank>
+            The interplay of dynamic topography and eustasy on continental flooding in the late Paleozoic.</a> 
+            Tectonophysics. 761. 10.1016/j.tecto.2019.04.018.
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld324&name=AY18" target="_blank">AY18</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld321&name=KM16" target="_blank">KM16</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-755">Braz et al., 2021</a>
+                </h4>
+            </div>
+            <div id="paper-755" class="panel-collapse collapse">
+                <div class="panel-body">
+                Braz, C., Zahirovic, S., Salles, T., Flament, N., Harrington, L., & Müller, R. D. (2021). 
+            <a href="https://onlinelibrary.wiley.com/doi/10.1111/bre.12606?af=R" target=_blank>
+            Modelling the role of dynamic topography and eustasy in the evolution of the Great Artesian Basin.</a> 
+            Basin Research. doi:10.1111/bre.12606 
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gmcm9&name=D10_gmcm9" target="_blank">D10_gmcm9</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld89&name=D1_gld89" target="_blank">D1_gld89</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld98&name=D2_gld98" target="_blank">D2_gld98</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld106&name=D3_gld106" target="_blank">D3_gld106</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld107&name=D4_gld107" target="_blank">D4_gld107</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld115&name=D5_gld115" target="_blank">D5_gld115</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld178&name=D6_gld178" target="_blank">D6_gld178</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld200&name=D7_gld200" target="_blank">D7_gld200</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld205&name=D8_gld205" target="_blank">D8_gld205</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld241&name=D9_gld241" target="_blank">D9_gld241</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#paper-756">Young et al., 2022</a>
+                </h4>
+            </div>
+            <div id="paper-756" class="panel-collapse collapse">
+                <div class="panel-body">
+                Alexander Young, Nicolas Flament, Simon E. Williams, Andrew Merdith, Xianzhi Cao, R. Dietmar Müller (2022).
+            <a href="https://www.sciencedirect.com/science/article/pii/S0012821X22000875" target="_blank">
+            Long-term Phanerozoic sea level change from solid Earth processes.</a>
+            Earth and Planetary Science Letters, Volume 584, ISSN 0012-821X,
+                </div>
+                <ul>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld428_m21&name=Gld428_1Ga-0Ma" target="_blank">Gld428_1Ga-0Ma</a></li>
+                      
+                    <li><a href="/dynamic_topography_cesium/?model=gld428&name=Gld428_250-0Ma" target="_blank">Gld428_250-0Ma</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+</div>
+
+<p><strong>Note:</strong> Click <a href="/portal/dynamic_topography_model_list/">here</a> to see a full list of models. This research is supported by
+        <a href="http://www.auscope.org.au/" target=_blank>AuScope</a>.
+    </p>
+    <br>
+    
+    <br><br><br><br>
+
+
+    </div>
+    <!--container-->
+
+    <nav class="footer navbar navbar-fixed-bottom navbar-light">
+      <span class="copyright-long" style="margin-right: 3em"
+        >Copyright &copy; 2015-2022 The University of Sydney. All rights
+        reserved.</span
+      >
+      <a
+        class="copyright"
+        style="margin-right: 5px"
+        href="http://sydney.edu.au/disclaimer.html"
+        >Disclaimer</a
+      >
+      <a class="copyright" href="http://sydney.edu.au/privacy-policy.html"
+        >Privacy</a
+      >
+      <!--<p class="pull-right" style="margin-bottom:0px;"><a href="#" target="_self">Back to top</a></p>-->
+    </nav>
+
+    <div id="social-media-share-div" style="display: none">
+      <ul>
+        <li>
+          <div
+            class="fb-share-button"
+            data-href="http://portal.gplates.org"
+            data-layout="button"
+          ></div>
+        </li>
+        <li>
+          <a
+            href="https://twitter.com/share"
+            class="twitter-share-button"
+            {count}
+            >Tweet</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    
+
+    <script src="//portal.gplates.org/static/libs/jquery-2.1.1/jquery.min.js"></script>
+    <script src="//portal.gplates.org/static/libs/bootstrap-3.3.6/js/bootstrap.js"></script>
+
+     
+<script>
+$(function(){
+    $('#logout').attr("href", "/ac/logout/?next=/portal/dt/");
+    $('#login').attr("href", "/ac/login/?next=/portal/dt/");
+    $('#signup').attr("href", "/ac/signup/?next=/portal/dt/");
+    var urlHash = window.location.hash;
+    var found = false;
+    if(urlHash){
+        $('#accordion .panel-title a').each(function(){
+            console.log($( this ).text());
+            if("#"+$( this ).text() == urlHash){
+                $( this ).parent().parent().next().collapse('show');
+                found = true;
+            }
+        });
+    }
+    if(!found){
+        $('#accordion .collapse').first().collapse('show');
+    }
+});
+</script>
+ 
+    <script>
+      var lastScrollTop = 0;
+      var height;
+      var trigger = 350;
+      $(function () {
+        $(window).scroll(function (event) {
+          var st = $(this).scrollTop();
+          if (st > lastScrollTop) {
+            $(".navbar-gplates").hide();
+          } else {
+            $(".navbar-gplates").show();
+          }
+          lastScrollTop = st;
+
+          height = $(document).height() - $(window).height();
+          //console.log(height+" "+$(this).scrollTop());
+          if ($(this).scrollTop() > height - trigger) {
+            $(".footer").slideDown(300);
+          } else {
+            $(".footer").slideUp(300);
+          }
+
+          //if ( ($(window).height() + 100) < $(document).height() ) {
+          //    $('#top-link-block').removeClass('hidden').affix({
+          //    });
+          //};
+        });
+        $("#top-link-block")
+          .removeClass("hidden")
+          .affix({ offset: { top: 100 } });
+      });
+    </script>
+    
+  </body>
+</html>
+ contentType 9 text/html url 39 http://portal.gplates.org:80/portal/dt/ responseCode 3 200 

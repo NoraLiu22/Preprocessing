@@ -1,0 +1,1247 @@
+tivqyeiidermfmmmzmognmymhomqlisqlgkgtcug length 5 99786 page 99786 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>Notifications</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="Notifications" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2024-05-01T00:00:00Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl24_BSignUp" href="javascript:__doPostBack(&#39;ctl24$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl24_BSignIn" href="javascript:__doPostBack(&#39;ctl24$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl23_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl23$BLocale', 'ar');" id="ctl23_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'es');" id="ctl23_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'fr');" id="ctl23_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'ru');" id="ctl23_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Русский</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./notifications/" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBS4vdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZhYnMlMmZub3RpZmljYXRpb25zHglpbm5lcmh0bWwFFlNpZ24gdXAgZm9yIGFuIGFjY291bnRkAgMPFgQfAAUuL3VzZXIvc2lnbmluLz9yZXR1cm51cmw9JTJmYWJzJTJmbm90aWZpY2F0aW9ucx8BBQdTaWduIEluZAIDDxYCHgdWaXNpYmxlaBYEAgEPFgQfAAUvL3VzZXIvcHJvZmlsZS8/cmV0dXJudXJsPSUyZmFicyUyZm5vdGlmaWNhdGlvbnMeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIHDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCcnVkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC03MjYwLmpwZykWAgIBDxYCHwEFMVRoZSBOYWdveWEgUHJvdG9jb2wgb24gQWNjZXNzIGFuZCBCZW5lZml0LXNoYXJpbmdkAgEPZBYEAgEPFgQfAAUSL2Ficy9kZWZhdWx0LnNodG1sHwEFGkFjY2VzcyBhbmQgQmVuZWZpdC1zaGFyaW5nZAIDD2QWAmYPZBYCZg8WAh4FY2xhc3MFGm5hdmJhci1uYXYgbXItYXV0byBsZXZlbC0wFgICBw8WBh8GBQhuYXYtaXRlbR4HcGFnZS1pZAUENzI3NR8CaBYCZg8WAh8AZGQCAw9kFgICAQ9kFgJmD2QWAmYPZBYCAgEPFgQfBgUVbGlzdC11bnN0eWxlZCBsZXZlbC0wHwJoFgICAQ8WBh8GBQdsZXZlbC0wHwcFBDcyNzUfAmgWAgIBDxYCHwBkZAIFDxYCHwYFL2NvbC0xMiBwbC1tZC00IHByLW1kLTQgcGwtbGctNSBwci1sZy01IG5vLWFzaWRlFgQCAw8WAh8BBRVXZWRuZXNkYXkgLy8gNS4xLjIwMjRkAgcPZBYEAgIPZBYCAgIPZBYCAgMPZBYCAgMPZBYCZg9kFgICAw8WAh8CaGQCAw9kFgICAg9kFgICAw9kFgICAw9kFgJmD2QWBAIGD2QWAgIBD2QWAgIBD2QWAmYPZBYCAgUPFgIeBXZhbHVlBQEwZAIjD2QWAgIBD2QWAgIBD2QWAmYPZBYCAgUPFgIfCAUBMGQCBw8WAh8CaGRknL2eSXPv+fwFTnNgce4tbEnP0kXvQcI6GU5HPVzAvJo=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl17_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-7260.jpg)">
+    <h1 id="ctl17_ctl00_CCarouselTitle">The Nagoya Protocol on Access and Benefit-sharing</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/abs/default.shtml" id="ctl18_CPortal" class="navbar-brand">Access and Benefit-sharing</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl18_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7261">
+        <a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Nagoya Protocol</a>
+    <ul id="ctl18_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="10670">
+        <a href="/abs/gbf.shtml" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">ABS under the GBF</a>
+    </li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7262"><a href="/abs/about/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">About the Nagoya Protocol</a></li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7263"><a href="/abs/text/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">Nagoya Protocol Text</a></li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7269"><a href="/abs/background/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">History</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="9197"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Parties</a><ul id="ctl18_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="7270">
+        <a href="/abs/becoming-party/" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">Becoming a Party</a>
+    </li><li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="7433"><a href="/abs/nagoya-protocol/signatories/" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">List of Parties</a></li><li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9198"><a href="https://absch.cbd.int/search/countries" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">National information - country profiles</a></li><li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9419"><a href="/abs/keysteps.shtml" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">Key Steps towards implementation</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="8052"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Key Protocol issues</a><ul id="ctl18_ctl00_ctl02_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9068">
+        <a href="/abs/theabsch.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">ABS Clearing-House</a>
+    </li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9656"><a href="/abs/assessment.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Assessment and review</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9135"><a href="/abs/key-awareness.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Awareness-raising</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9184"><a href="/abs/key-capacitybuilding.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Capacity-building and development</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9132"><a href="/abs/compliance.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Compliance with the Protocol</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9811"><a href="/abs/cooperation.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Cooperation</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="10093"><a href="/dsi-gr" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Digital sequence information on genetic resources</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9186"><a href="/abs/key-financial.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Financial mechanism</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9131"><a href="/abs/art10.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Global multilateral benefit-sharing mechanism</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9133"><a href="/abs/modelclauses.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Model contractual clauses, codes of conduct, guidelines and best practices and/or standards</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9136"><a href="/abs/key-monitoring.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Monitoring and reporting</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9188"><a href="/abs/key-resource.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Resource mobilization</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="10053"><a href="/abs/specialized-instruments/" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Specialized international ABS instruments</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="9199"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">COP-MOP</a><ul id="ctl18_ctl00_ctl03_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl03_CMenuRow" class="nav-item" page-id="9203">
+        <a href="/abs/NPCOPMOP-Bureau.shtml" id="ctl18_ctl00_ctl03_CMenuRowLink" class="nav-link">COP-MOP Bureau</a>
+    </li><li id="ctl18_ctl00_ctl03_CMenuRow" class="nav-item" page-id="9200"><a href="/decisions/np-mop" id="ctl18_ctl00_ctl03_CMenuRowLink" class="nav-link">COP-MOP decisions</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item " page-id="7271"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Activities and Communications</a><ul id="ctl18_ctl00_ctl04_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl04_CMenuRow" class="nav-item" page-id="7272">
+        <a href="/abs/meetings/" id="ctl18_ctl00_ctl04_CMenuRowLink" class="nav-link">Meetings and Documents</a>
+    </li><li id="ctl18_ctl00_ctl04_CMenuRow" class="nav-item  active" page-id="7273"><a href="/abs/notifications/" id="ctl18_ctl00_ctl04_CMenuRowLink" class="nav-link">Notifications</a></li><li id="ctl18_ctl00_ctl04_CMenuRow" class="nav-item" page-id="7274"><a href="/abs/statements/" id="ctl18_ctl00_ctl04_CMenuRowLink" class="nav-link">Statements and Press releases</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7275"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Resources</a><ul id="ctl18_ctl00_ctl05_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="10184">
+        <a href="/abs/theABSweALLneed" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">10-year anniversary of the Protocol</a>
+    </li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9820"><a href="https://absch.cbd.int/" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">ABS Clearing-House</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="7105"><a href="/abs/awareness-raising/" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Awareness-raising</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="4164"><a href="/abs/bonn/" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Bonn Guidelines</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9822"><a href="https://absch.cbd.int/en/kb/tags/absch-announcement/Nagoya-Protocol-E-Learning-Courses/64ff7ab6cb7ea204216aa51a" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">E-Learning Courses</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9823"><a href="/abs/resources/factsheets.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Factsheets and Briefs</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9827"><a href="/abs/resources/protocol.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Protocol and decision booklets</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9825"><a href="/abs/resources/videos.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Videos</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9821"><a href="/abs/resources/other.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Other resources</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl27_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl27_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl27_TMenuItem" class="level-0" page-id="7260">
+            <a href="/abs" id="ctl27_TMenuItemLink">Access and Benefit-sharing</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7261">
+            <a id="ctl27_TMenuItemLink">Nagoya Protocol</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="10670">
+            <a href="/abs/gbf.shtml" id="ctl27_TMenuItemLink">ABS under the GBF</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7262">
+            <a href="/abs/about" id="ctl27_TMenuItemLink">About the Nagoya Protocol</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7263">
+            <a href="/abs/text" id="ctl27_TMenuItemLink">Nagoya Protocol Text</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7269">
+            <a href="/abs/background" id="ctl27_TMenuItemLink">History</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="9197">
+            <a id="ctl27_TMenuItemLink">Parties</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="7270">
+            <a href="/abs/becoming-party" id="ctl27_TMenuItemLink">Becoming a Party</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7433">
+            <a href="/abs/nagoya-protocol/signatories" id="ctl27_TMenuItemLink">List of Parties</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9198">
+            <a href="https://absch.cbd.int/search/countries" id="ctl27_TMenuItemLink">National information - country profiles</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9419">
+            <a href="/abs/keysteps.shtml" id="ctl27_TMenuItemLink">Key Steps towards implementation</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="8052">
+            <a id="ctl27_TMenuItemLink">Key Protocol issues</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="9068">
+            <a href="/abs/theabsch.shtml" id="ctl27_TMenuItemLink">ABS Clearing-House</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9656">
+            <a href="/abs/assessment.shtml" id="ctl27_TMenuItemLink">Assessment and review</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9135">
+            <a href="/abs/key-awareness.shtml" id="ctl27_TMenuItemLink">Awareness-raising</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9184">
+            <a href="/abs/key-capacitybuilding.shtml" id="ctl27_TMenuItemLink">Capacity-building and development</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9132">
+            <a href="/abs/compliance.shtml" id="ctl27_TMenuItemLink">Compliance with the Protocol</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9811">
+            <a href="/abs/cooperation.shtml" id="ctl27_TMenuItemLink">Cooperation</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="10093">
+            <a href="/dsi-gr" id="ctl27_TMenuItemLink">Digital sequence information on genetic resources</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9186">
+            <a href="/abs/key-financial.shtml" id="ctl27_TMenuItemLink">Financial mechanism</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9131">
+            <a href="/abs/art10.shtml" id="ctl27_TMenuItemLink">Global multilateral benefit-sharing mechanism</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9133">
+            <a href="/abs/modelclauses.shtml" id="ctl27_TMenuItemLink">Model contractual clauses, codes of conduct, guidelines and best practices and/or standards</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9136">
+            <a href="/abs/key-monitoring.shtml" id="ctl27_TMenuItemLink">Monitoring and reporting</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9188">
+            <a href="/abs/key-resource.shtml" id="ctl27_TMenuItemLink">Resource mobilization</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="10053">
+            <a href="/abs/specialized-instruments" id="ctl27_TMenuItemLink">Specialized international ABS instruments</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="9199">
+            <a id="ctl27_TMenuItemLink">COP-MOP</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="9203">
+            <a href="/abs/NPCOPMOP-Bureau.shtml" id="ctl27_TMenuItemLink">COP-MOP Bureau</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9200">
+            <a href="/decisions/np-mop" id="ctl27_TMenuItemLink">COP-MOP decisions</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0 active" page-id="7271">
+            <a id="ctl27_TMenuItemLink">Activities and Communications</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1 active">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="7272">
+            <a href="/abs/meetings" id="ctl27_TMenuItemLink">Meetings and Documents</a>
+        </li><li id="ctl27_TMenuItem" class="level-1 selected" page-id="7273">
+            <a href="/abs/notifications" id="ctl27_TMenuItemLink">Notifications</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7274">
+            <a href="/abs/statements" id="ctl27_TMenuItemLink">Statements and Press releases</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="7275">
+            <a id="ctl27_TMenuItemLink">Resources</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="10184">
+            <a href="/abs/theABSweALLneed" id="ctl27_TMenuItemLink">10-year anniversary of the Protocol</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9820">
+            <a href="https://absch.cbd.int/" id="ctl27_TMenuItemLink">ABS Clearing-House</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7105">
+            <a href="/abs/awareness-raising" id="ctl27_TMenuItemLink">Awareness-raising</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="4164">
+            <a href="/abs/bonn" id="ctl27_TMenuItemLink">Bonn Guidelines</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9822">
+            <a href="https://absch.cbd.int/en/kb/tags/absch-announcement/Nagoya-Protocol-E-Learning-Courses/64ff7ab6cb7ea204216aa51a" id="ctl27_TMenuItemLink">E-Learning Courses</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9823">
+            <a href="/abs/resources/factsheets.shtml" id="ctl27_TMenuItemLink">Factsheets and Briefs</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9827">
+            <a href="/abs/resources/protocol.shtml" id="ctl27_TMenuItemLink">Protocol and decision booklets</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9825">
+            <a href="/abs/resources/videos.shtml" id="ctl27_TMenuItemLink">Videos</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9821">
+            <a href="/abs/resources/other.shtml" id="ctl27_TMenuItemLink">Other resources</a>
+        </li></ul></li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl22_CItems"><a href="/abs/default.shtml">Access and Benefit-sharing</a><span> // Notifications</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Wednesday // 5.1.2024</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              <h1 class="cmsH1">Notifications</h1>
+
+
+<div id="ctl15_CSkin">
+    
+
+    <div id="ctl15_CSkin2">
+        
+        
+
+<div class="dgSearch" >
+    <span id="ctl15_W11986_txSearchCriteria_spanText">Search Criteria</span>
+
+</div>
+&nbsp;
+
+<!-- Simple Document Search -->
+<table  border="0" cellpadding="1" cellspacing="0">
+
+    
+    <tr id="ctl15_W11986_FCriteriaTheme">
+<td>
+            <span id="ctl15_W11986_txSubject_spanText">Subject:</span>
+
+        </td>
+<td colspan="3">
+            <select name="ctl15$W11986$tlThematicCode$ddlList" id="ctl15_W11986_tlThematicCode_ddlList" style="width:400px;"><option value="">&lt;Any Subject&gt;</option>
+<option selected="selected" value="ABS">Access to Genetic Resources and Benefit-sharing</option>
+<option value="AGR">Agricultural Biodiversity</option>
+<option value="BBI">Bio-Bridge Initiative</option>
+<option value="DEV">Biodiversity for Development</option>
+<option value="BIZ">Business and Biodiversity</option>
+<option value="CB">Capacity-building</option>
+<option value="CPB">Cartagena Protocol on Biosafety</option>
+<option value="CITY">Cities and Biodiversity</option>
+<option value="CHM">Clearing-House Mechanism</option>
+<option value="CC">Climate Change and Biodiversity</option>
+<option value="CEPA">Communication, Education and Public Awareness</option>
+<option value="COP">Conference of the Parties</option>
+<option value="CBD">Convention on Biological Diversity</option>
+<option value="COOP">Cooperation and Partnerships</option>
+<option value="DIGSEQ">Digital sequence information on genetic resources</option>
+<option value="DSHL">Dry and Sub-Humid Lands Biodiversity</option>
+<option value="ETI">Economics, Trade and Incentive Measures</option>
+<option value="ECOA">Ecosystem Approach</option>
+<option value="ECORES">Ecosystem Restoration</option>
+<option value="FIN">Financial Resources and Mechanism</option>
+<option value="FOR">Forest Biodiversity</option>
+<option value="GEND">Gender and Biodiversity</option>
+<option value="GBO">Global Biodiversity Outlook</option>
+<option value="GSPC">Global Strategy for Plant Conservation</option>
+<option value="GTI">Global Taxonomy Initiative</option>
+<option value="HH">Health and Biodiversity</option>
+<option value="IND">Identification, Monitoring and Indicators</option>
+<option value="IMPA">Impact Assessment</option>
+<option value="ICBD">Implementation of the Convention on Biological Diversity</option>
+<option value="WTR">Inland Waters Biodiversity</option>
+<option value="IBD">International Day for Biological Diversity</option>
+<option value="IYB">International Year of Biodiversity - 2010</option>
+<option value="IAS">Invasive Alien Species</option>
+<option value="ISL">Island Biodiversity</option>
+<option value="KM">Knowledge Management</option>
+<option value="KMGBF">Kunming-Montreal Global Biodiversity Framework</option>
+<option value="LR">Liability and Redress</option>
+<option value="MAR">Marine and Coastal Biodiversity</option>
+<option value="MNT">Mountain Biodiversity</option>
+<option value="NBSAP">National Biodiversity Strategies and Action Plans (NBSAP)</option>
+<option value="NR">National Reports</option>
+<option value="NEW">New and emerging issues</option>
+<option value="OCBD">Operations of the Convention on Biological Diversity</option>
+<option value="PB">Parliamentarians and Biodiversity</option>
+<option value="POST2020">Post-2020 framework</option>
+<option value="PA">Protected Areas / In-Situ Conservation</option>
+<option value="SCIA">Scientific Assessment</option>
+<option value="SSC">South-South Cooperation</option>
+<option value="STRAT">Strategic Plan / Biodiversity Targets</option>
+<option value="SBI">Subsidiary Body on Implementation</option>
+<option value="SBSTTA">Subsidiary Body on Scientific, Technical and Technological Advice</option>
+<option value="SUSE">Sustainable Use of Biodiversity</option>
+<option value="SWM">Sustainable Wildlife Management</option>
+<option value="SYNBIO">Synthetic Biology</option>
+<option value="TSC">Technical and Scientific Cooperation</option>
+<option value="TOUR">Tourism and Biodiversity</option>
+<option value="TKIP">Traditional Knowledge, Innovations and Practices - Article 8(j)</option>
+<option value="TTC">Transfer of Technology and Cooperation</option>
+<option value="UNDB">United Nations Decade on Biodiversity - 2011-2020</option>
+<option value="YOUTH">Youth and Biodiversity</option>
+</select>
+
+
+        </td>
+</tr>
+
+    <tr id="ctl15_W11986_FCriteriaReference">
+<td>
+            <span id="ctl15_W11986_txContains_spanText">Title Contains:</span>
+
+        </td>
+<td align="left">
+            <input name="ctl15$W11986$tbText" type="text" id="ctl15_W11986_tbText" Style="width: 150px;"></input>
+        </td>
+<td style="text-align: right; width: 80px;">
+        <!-- Year -->
+		     &#160;<span id="ctl15_W11986_txYear_spanText">Year:</span>
+&#160;
+	    </td>
+<td>
+	        <select name="ctl15$W11986$tlYear$ddlList" id="ctl15_W11986_tlYear_ddlList"><option selected="selected" value="">&lt;Any Year&gt;</option>
+<option value="2024">2024</option>
+<option value="2023">2023</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+<option value="2017">2017</option>
+<option value="2016">2016</option>
+<option value="2015">2015</option>
+<option value="2014">2014</option>
+<option value="2013">2013</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+<option value="2010">2010</option>
+<option value="2009">2009</option>
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+<option value="1999">1999</option>
+<option value="1998">1998</option>
+<option value="1997">1997</option>
+<option value="1996">1996</option>
+<option value="1995">1995</option>
+<option value="1994">1994</option>
+<option value="1993">1993</option>
+<option value="1992">1992</option>
+<option value="1991">1991</option>
+</select>
+
+
+        </td>
+</tr>
+
+    <tr id="ctl15_W11986_FCriteriaTextContains">
+<td style="width: 150px;">
+            <span id="ctl15_W11986_txRef_spanText">Reference:</span>
+
+        </td>
+<td align="left">
+            <input name="ctl15$W11986$tbRef" type="text" id="ctl15_W11986_tbRef" Style="width: 150px;"></input>
+        </td>
+<td style="text-align: right; width: 80px;">    			 	
+        <!-- Order  NOT IMPLEMENTED
+		    &#160;<span id="ctl15_W11986_txOrd_spanText">Order By:</span>
+&#160;
+		  -->
+        </td>
+<td>
+        <!--		
+	        <select name="ctl15$W11986$tlOrder$ddlList" id="ctl15_W11986_tlOrder_ddlList"><option selected="selected" value="DATE">Date</option>
+<option value="SUBJECT">Subject</option>
+</select>
+
+
+	       -->
+        </td>
+</tr>
+
+    <tr>
+        <td>&nbsp;</td>
+        <td colspan='3'>
+            <input type="submit" name="ctl15$W11986$btnGo" value="Go" id="ctl15_W11986_btnGo"></input>
+        </td>
+    </tr>
+</table>
+<!-- End Simple Document Search -->
+
+<table class='dgGrid' cellpadding='0' cellspacing='0' border='0' width="400px">
+    <tr class="dgPager">
+        
+    </tr>
+</table>
+
+    </div>
+</div>
+<p></p>
+
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        
+
+
+
+
+
+<div id="ctl16_W11987_divPagerTop" class="dgSearch" style="margin-bottom: 5px;">  <!--style="text-align: right; border-bottom: solid 1px #c0c0c0;"-->
+    <span id="ctl16_W11987_CPagerContainer1" class="floatFar" style="padding-right: 5px;">
+     <div><a style="white-space:nowrap;" disabled="disabled">&lt; Previous</a> | <a></a><b>1</b> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','1');">2</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','2');">3</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','3');">4</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','4');">5</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','5');">6</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','6');">7</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','7');">8</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','8');">9</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','9');">10</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','10');">...</a>  | <a href="javascript:__doPostBack('ctl16$W11987$ctl00$BPageLink','1');" style="white-space:nowrap;">Next &gt;</a><input name="ctl16$W11987$ctl00$CCurrentPage" type="hidden" id="ctl16_W11987_ctl00_CCurrentPage" value="0" /><input onclick="__doPostBack('ctl16$W11987$ctl00$BPageLink','')" name="ctl16$W11987$ctl00$BPageLink" type="button" id="ctl16_W11987_ctl00_BPageLink" style="display:none;" /></div></span>
+    <span id="ctl16_W11987_spanResultInfo">Results <b>1</b> to <b>25</b> of 465 results found</span>     
+</div>
+    
+<table width="100%">
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><h4 class='cmsH2' style='border-bottom: dotted 1px #c0c0c0'>2024</h4><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-05-01</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-041-cop16-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-041"><b>2024-041</b> (<i>SCBD/OES/DC/CE/91649</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS national focal points, Cartagena Protocol focal points, SBSTTA focal points, indigenous peoples and local communities and relevant organizations</i><br /><b>Hotel Booking System for the UN Biodiversity Conference 2024 in Cali, Colombia</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-04-29</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-039-cop16-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-039"><b>2024-039</b> (<i>SCBD/OES/DC/CE/91649</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS national focal points, Cartagena Protocol focal points, SBSTTA focal points, indigenous peoples and local communities, and relevant organizations</i><br /><b>Expressions of Interest for the UN Biodiversity Conference 2024 Exhibition, Pavilion and Country Office Spaces</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i><br /><span style="color:#950000">Action required by 2024-05-10</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-04-26</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-038-cop16-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-038"><b>2024-038</b> (<i>SCBD/OES/DC/91661</i>)</a><br />
+<i>Notification to: CBD national focal Points, Cartagena Protocol focal points, ABS focal points, SBSTTA focal points, indigenous people and local communities, and relevant stakeholders</i><br /><b>Registration for the Sixteenth meeting of the Conference of the Parties to the Convention on Biological Diversity (COP 16) and the concurrent meetings of the Parties to the Cartagena and Nagoya Protocols, and for the Fifth meeting of the Subsidiary Body on Implementation</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i><br /><span style="color:#950000">Action required by 2024-09-15</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-04-17</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-035-dsi-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-035"><b>2024-035</b> (<i>SCBD/ABS/DC/TS/CGA/AC/RKi/91584</i>)</a><br />
+<i>Notification to: CBD national focal points, Cartagena Protocol focal points, ABS focal points, indigenous peoples and local communities, and relevant organizations</i><br /><b>Second meeting of the Ad Hoc Open-ended Working Group on Benefit-sharing from the Use of Digital Sequence Information on Genetic Resources, 12-16 August 2024 - Montreal, Canada</b><br /><i>Subject(s): Digital sequence information on genetic resources, Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2024-07-31</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-02-29</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-022-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-022"><b>2024-022</b> (<i>SCBD/NPU/DC/TS/MD/GT/91532</i>)</a><br />
+<i>Notification to: CBD national focal points and ABS national focal points</i><br /><b>Global capacity-building workshop on operationalizing access and benefit-sharing national frameworks under the Nagoya Protocol, 30 September to 3 October 2024 - Bonn, Germany</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2024-03-29</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-02-15</b><br /><table><tr><td valign='top'><img src="/cms/images/icon-doc.gif"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-016-nbsap-en.docx'>English</a></td></tr><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-016-nbsap-fr.docx'>Français</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-016"><b>2024-016</b> (<i>SCBD/IMS/NP/JEC/MC/91545</i>)</a><br />
+<i>Notification to: National focal points for CBD and its Protocols of the following countries: Angola, Benin, Botswana, Burkina Faso, Burundi, Cameroon, Cape Verde, the Central African Republic, Chad, Comoros, Congo, Côte d'Ivoire, the Democratic Republic of the Congo, Djibouti, Eritrea, Equatorial Guinea, Eswatini, Ethiopia, Gabon, Gambia, Ghana, Guinea, Guinea-Bissau, Kenya, Liberia, Lesotho, Madagascar, Malawi, Mali, Mauritius, Mozambique, Namibia, Niger, Nigeria, Rwanda, Sao Tome and Principe, Senegal, Seychelles, Sierra Leone, Somalia, South Africa, South Sudan, Tanzania (United Republic of), Togo, Uganda, Zambia and Zimbabwe</i><br /><b>Regional Dialogues on National Biodiversity Strategies and Action Plans for African Countries, 30 May to 2 June 2024, Nairobi, Kenya</b><br /><i>Subject(s): National Biodiversity Strategies and Action Plans (NBSAP), Access to Genetic Resources and Benefit-sharing, Capacity-building, Cartagena Protocol on Biosafety, Financial Resources and Mechanism, Identification, Monitoring and Indicators, Kunming-Montreal Global Biodiversity Framework</i><br /><span style="color:#950000">Action required by 2024-03-15</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2024-01-25</b><br /><table><tr><td valign='top'><img src="/cms/images/icon-doc.gif"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2024/ntf-2024-009-nbsap-en.docx'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2024-009"><b>2024-009</b> (<i>SCBD/IMS/NP/JEC/MC/91504</i>)</a><br />
+<i>Notification to: National focal points for CBD and its Protocols of the following countries: Antigua and Barbuda, Bahamas, Barbados, Belize, Cuba, Dominica, Dominican Republic, Grenada, Guyana, Haiti, Jamaica, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, Trinidad and Tobago</i><br /><b>Sub-regional Dialogue on National Biodiversity Strategies and Action Plans, and Workshop on Target 3 of the GBF for the Caribbean Countries, 15-19 April 2024 - Georgetown, Guyana</b><br /><i>Subject(s): National Biodiversity Strategies and Action Plans (NBSAP), Access to Genetic Resources and Benefit-sharing, Capacity-building, Cartagena Protocol on Biosafety, Financial Resources and Mechanism, Identification, Monitoring and Indicators, Kunming-Montreal Global Biodiversity Framework, Protected Areas / In-Situ Conservation, Agricultural Biodiversity, Marine and Coastal Biodiversity</i><br /><span style="color:#950000">Action required by 2024-02-16</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><h4 class='cmsH2' style='border-bottom: dotted 1px #c0c0c0'>2023</h4><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-12-15</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-135-cop16-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-135"><b>2023-135</b> (<i>SCBD/OES/DC/91452</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS focal points, Cartagena Protocol focal points, indigenous peoples and local communities and relevant organizations</i><br /><b>Update on the Sixteenth meeting of the Conference of the Parties to the Convention on Biological Diversity, the Eleventh meeting of the Conference of the Parties serving as the meeting of the Parties to the Cartagena Protocol on Biosafety, and the Fifth meeting of the Conference of the Parties serving as the meeting of the Parties to the Nagoya Protocol on Access to Genetic Resources and the Fair and Equitable Sharing of Benefits Arising from their Utilization</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-11-28</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-125-nbsap-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-125"><b>2023-125</b> (<i>SCBD/IMS/NP/JEC/MC/91406</i>)</a><br />
+<i>Notification to: National focal points for CBD and its Protocols of the following countries: Cook Islands, Fiji, Federated States of Micronesia, Kiribati, Marshall Islands, Nauru, Niue, Palau, Papua New Guinea, Samoa, Solomon Islands, Tonga, Tuvalu, and Vanuatu</i><br /><b>Sub-regional Dialogue on National Biodiversity Strategies and Action Plans, Workshop on Target 3 of the GBF and UNEP Technical Workshop on the GEF Early Action Support Project for the Pacific Countries, 18-26 March 2024 - Nadi, Fiji</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing, Capacity-building, Cartagena Protocol on Biosafety, Financial Resources and Mechanism, Identification, Monitoring and Indicators, Kunming-Montreal Global Biodiversity Framework, National Biodiversity Strategies and Action Plans (NBSAP), Protected Areas / In-Situ Conservation</i><br /><span style="color:#950000">Action required by 2023-12-22</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-11-03</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-118-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-118"><b>2023-118</b> (<i>SCBD/NPU/DC/CGA/TS/AC/91369</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS focal points, Cartagena Protocol focal points, indigenous peoples and local communities and relevant organizations</i><br /><b>Webinar in preparation for the first meeting of the Ad Hoc Open-ended Working Group on Benefit-sharing from the Use of Digital Sequence Information on Genetic Resources, 7 November 2023</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-10-31</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-116-nbsap-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-116"><b>2023-116</b> (<i>SCBD/IMS/NP/JEC/MC/91357</i>)</a><br />
+<i>Notification to: National Focal Points for CBD and its Protocols of the following countries: Algeria, Egypt, Iran, Iraq, Jordan, Lebanon, Libya, Mauritania, Morocco, State of Palestine, Sudan, Syria, Tunisia, Yemen</i><br /><b>Regional Dialogue on National Biodiversity Strategies and Action Plans for Middle East and North Africa, 16-19 January 2024 - Amman, Jordan</b><br /><i>Subject(s): Capacity-building, Cartagena Protocol on Biosafety, Implementation of the Convention on Biological Diversity, Kunming-Montreal Global Biodiversity Framework, National Biodiversity Strategies and Action Plans (NBSAP), Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2023-11-24</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-10-31</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-114-nbsap-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-114"><b>2023-114</b> (<i>SCBD/IMS/NP/JEC/MC/91349</i>)</a><br />
+<i>Notification to: National focal points for CBD and its Protocols of the following countries: Afghanistan, Bangladesh, Bhutan, China, Democratic People’s Republic of Korea, India, Japan, Maldives, Mongolia, Nepal, Pakistan, Republic of Korea, and Sri Lanka</i><br /><b>Regional Dialogue on National Biodiversity Strategies and Action Plans for South and East Asia, 23-26 January 2024 - Tokyo, Japan</b><br /><i>Subject(s): Capacity-building, Cartagena Protocol on Biosafety, Implementation of the Convention on Biological Diversity, Kunming-Montreal Global Biodiversity Framework, National Biodiversity Strategies and Action Plans (NBSAP), Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2023-11-24</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-10-19</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-110-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-110"><b>2023-110</b> (<i>SCBD/NPU/DC/TS/BG/RKi/91289</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS focal points, cc: SBSTTA focal points</i><br /><b>Extension of deadline: Survey on indicators on access and benefit-sharing for the Kunming-Montreal Global Biodiversity Framework</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2023-10-27</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-10-03</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-105-cop15-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-105"><b>2023-105</b> (<i>SCBD/OES/DC/WY/GT/91193</i>)</a><br />
+<i>Notification to: CBD national focal points, Cartagena Protocol focal points, ABS focal points, cc: SBSTTA focal points</i><br /><b>Reminder on Credentials: Resumed Meetings, 19-20 October 2023 - Nairobi, Kenya</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-09-29</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-103-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-103"><b>2023-103</b> (<i>SCBD/NPU/DC/TS/BG/RKi/91289</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS focal points, cc: SBSTTA focal points</i><br /><b>Survey on indicators on access and benefit-sharing for the Kunming-Montreal Global Biodiversity Framework</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2023-10-16</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-09-25</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-102-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-102"><b>2023-102</b> (<i>SCBD/NPU/DC/TS/MD/NF/90804</i>)</a><br />
+<i>Notification to: ABS National Focal Points</i><br /><b>Composition of the Informal Advisory Committee to the Access and Benefit-sharing Clearing-House</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-09-14</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-097-cop15-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-097"><b>2023-097</b> (<i>SCBD/OES/DC/WY/GT/91193</i>)</a><br />
+<i>Notification to: CBD national focal points, Cartagena Protocol focal points, ABS focal points, indigenous peoples and local communities, and relevant organizations, cc: SBSTTA focal points</i><br /><b>Resumed second part of the Fifteenth meeting of the Conference of the Parties to the Convention on Biological Diversity, the tenth meeting of the Conference of the Parties serving as the meeting of the Parties to the Cartagena Protocol on Biosafety and the fourth meeting of the Conference of the Parties serving as the meeting of the Parties to the Nagoya Protocol on Access to Genetic Resources and the Fair and Equitable Sharing of Benefits Arising from their Utilization 
+(the resumed Meetings), 19-20 October 2023 - Nairobi, Kenya</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-08-31</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-095-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-095"><b>2023-095</b> (<i>SCBD/NPU/TS/CG/AC/91084</i>)</a><br />
+<i>Notification to: CBD national focal points, TK focal points, ABS focal points, indigenous peoples and local communities, and relevant organizations.</i><br /><b>"Information Note for Participants" and side-events registration: Twelfth meeting of the Ad Hoc Open-ended Working Group on Article 8(j) and Related Provisions of the Convention on Biological Diversity, and First meeting of the Ad Hoc Open-ended Working Group on Benefit-sharing from the Use of Digital Sequence Information on Genetic Resources</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing, Digital sequence information on genetic resources</i><br /><span style="color:#950000">Action required by 2023-09-25</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-08-22</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-092-bs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-092"><b>2023-092</b> (<i>SCBD/OES/DC/WM/TS/KG/PD/BG/PS/91221</i>)</a><br />
+<i>Notification to: CBD national focal points, Cartagena Protocol focal points, Nagoya Protocol focal points, indigenous peoples and local communities, relevant organizations and members of the Compliance Committees under the Cartagena and Nagoya Protocols</i><br /><b>Extension of the terms of office of members of the Compliance Committees under the Cartagena and Nagoya Protocols</b><br /><i>Subject(s): Cartagena Protocol on Biosafety, Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2024-12-31</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-07-31</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-082-cop16-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-082"><b>2023-082</b> (<i>SCBD/OES/DC/GT/91194</i>)</a><br />
+<i>Notification to: CBD national focal points, Cartagena Protocol focal Points, ABS focal points</i><br /><b>Sixteenth meeting of the Conference of the Parties to the Convention on Biological Diversity, Eleventh meeting of the Conference of the Parties serving as the meeting of the Parties to the Cartagena Protocol on Biosafety, and Fifth meeting of the Conference of the Parties serving as the meeting of the Parties to the Nagoya Protocol on Access to Genetic Resources and the Fair and Equitable Sharing of Benefits Arising from their Utilization</b><br /><i>Subject(s): Conference of the Parties, Convention on Biological Diversity, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-07-31</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-081-cop15-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-081"><b>2023-081</b> (<i>SCBD/OES/DC/WY/91193</i>)</a><br />
+<i>Notification to: To: CBD national focal points, SBSTTA focal points, indigenous peoples and local communities, and relevant organizations, Cc: Cartagena Protocol focal points, ABS focal points</i><br /><b>Resumed sessions of the second part of the Fifteenth meeting of the Conference of the Parties to the Convention on Biological Diversity, the tenth meeting of the Conference of the Parties serving as the meeting of the Parties to the Cartagena Protocol on Biosafety and the fourth meeting of the Conference of the Parties serving as the meeting of the Parties to the Nagoya Protocol on Access to Genetic Resources and the Fair and Equitable Sharing of Benefits Arising from their Utilization</b><br /><i>Subject(s): Conference of the Parties, Access to Genetic Resources and Benefit-sharing, Cartagena Protocol on Biosafety</i><br /><span style="color:#950000">Action required by 2023-08-30</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-07-21</b><br /><table><tr><td valign='top'><img src="/cms/images/icon-doc.gif"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-077-abs-en.docx'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-077"><b>2023-077</b> (<i>SCBD/NPU/DC/TS/MD/NF/90804</i>)</a><br />
+<i>Notification to: ABS national focal points from Africa and Asia-Pacific regions</i><br /><b>New deadline: Call for nominations for the Informal Advisory Committee to the Access and Benefit sharing Clearing-House</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2023-09-01</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-07-05</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-072-8j-DSI-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-072"><b>2023-072</b> (<i>SCBD/OES/DC/GT/91084</i>)</a><br />
+<i>Notification to: CBD national focal points, ABS focal points, indigenous peoples and local communities, and relevant organizations</i><br /><b>Registration for the Twelfth meeting of the Ad Hoc Open-ended Working Group on Article 8(j) and Related Provisions of the Convention on Biological Diversity, 12 to 16 November 2023, and the First meeting of the Ad Hoc Open-ended Working Group on Benefit-sharing from the Use of Digital Sequence Information on Genetic Resources, 14 to 18 November 2023 in Geneva, Switzerland</b><br /><i>Subject(s): Traditional Knowledge, Innovations and Practices - Article 8(j), Access to Genetic Resources and Benefit-sharing, Digital sequence information on genetic resources</i><br /><span style="color:#950000">Action required by 2023-08-31</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-06-21</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-068-nbsap-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-068"><b>2023-068</b> (<i>SCBD/IMS/JEC/MC/91105</i>)</a><br />
+<i>Notification to: National focal points for CBD and its Protocols of ASEAN member States (Brunei Darussalam, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand and Viet Nam) and Timor Leste</i><br /><b>Sub-regional Dialogue on National Biodiversity Strategies and Action Plans (NBSAPs),  14-17 August 2023 - Manila, Philippines</b><br /><i>Subject(s): Capacity-building, Cartagena Protocol on Biosafety, Implementation of the Convention on Biological Diversity, Kunming-Montreal Global Biodiversity Framework, National Biodiversity Strategies and Action Plans (NBSAP), Access to Genetic Resources and Benefit-sharing</i><br /><span style="color:#950000">Action required by 2023-07-07</span></td></tr></table></td>
+</tr>
+<tr id="ctl16_W11987_tr1">
+	<td id="ctl16_W11987_tdCol3" style="vertical-align:top;"><table width="100%" style='border-bottom: dotted 1px #c0c0c0'><tr>      <td style="width: 150px; vertical-align:top;"><b>2023-05-05</b><br /><table><tr><td valign='top'><img src="/images/pdf_button.png"><td><td><table><tr><td> &#160;<a href='/doc/notifications/2023/ntf-2023-050-abs-en.pdf'>English</a></td></tr></table></td></tr></table></td>      <td style="vertical-align:top;"><a href="/notifications/2023-050"><b>2023-050</b> (<i>SCBD/NPU/DC/LG/TS/AC/90992</i>)</a><br />
+<i>Notification to: ABS national focal points and CBD national focal points (where ABS focal points have not yet been designated), indigenous peoples and local communities, relevant organizations and relevant stakeholders</i><br /><b>Follow-up to decisions adopted at the fourth meeting of the Conference of the Parties serving as the meeting of the Parties to the Nagoya Protocol on Access and Benefit-Sharing</b><br /><i>Subject(s): Access to Genetic Resources and Benefit-sharing</i></td></tr></table></td>
+</tr>
+
+</table>
+
+<div id="ctl16_W11987_divPagerBottom" class="dgSearch" style="margin-top: 5px;">
+    <span id="ctl16_W11987_CPagerContainer2" class="floatFar" style="padding-right: 5px;">
+    <div><a style="white-space:nowrap;" disabled="disabled">&lt; Previous</a> | <a></a><b>1</b> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','1');">2</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','2');">3</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','3');">4</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','4');">5</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','5');">6</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','6');">7</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','7');">8</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','8');">9</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','9');">10</a> <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','10');">...</a>  | <a href="javascript:__doPostBack('ctl16$W11987$ctl01$BPageLink','1');" style="white-space:nowrap;">Next &gt;</a><input name="ctl16$W11987$ctl01$CCurrentPage" type="hidden" id="ctl16_W11987_ctl01_CCurrentPage" value="0" /><input onclick="__doPostBack('ctl16$W11987$ctl01$BPageLink','')" name="ctl16$W11987$ctl01$BPageLink" type="button" id="ctl16_W11987_ctl01_BPageLink" style="display:none;" /></div></span>
+</div>
+    
+   
+    
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 42 https://www.cbd.int:443/abs/notifications/ responseCode 3 200 

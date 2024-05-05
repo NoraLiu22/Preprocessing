@@ -1,0 +1,549 @@
+nejezijkbkiihqtgcgzqbshickocbkeahmuegase length 5 26075 page 26075 <HTML>
+<! -- final from authors, A. Friedlander formatting and spell check, 9/24/95; revisions from authors, 
+10/11/96>
+<HEAD>
+
+<TITLE>DogitaLS1: A Digital Library System Based on Hyper-G</TITLE>
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0 beta 1">
+</HEAD>
+
+<BODY background = "../lgray_bg.gif width = 700 height = 16"> 
+<p>
+<CENTER>
+<img src = "../mag_bar1.gif"> 
+<P>
+<H1>DogitaLS1</h1>
+<h3>A Digital Library System Based on Hyper-G
+</H3>
+</CENTER>
+<i><CENTER><a href = "10tochtermann-deutsch.html">DogitaLS1<br>
+Ein digitales Bibliothekssystem auf der Basis von Hyper-G
+</i></a></CENTER>
+
+<P>
+<CENTER>Klaus Tochtermann<BR>
+<A HREF="http://csdl.tamu.edu/">Center for the Study of Digital Libraries</A>
+<BR>
+Department of Computer Science<BR>
+Texas A&amp;M University<BR>
+College Station, TX 77843-3112 (USA)<BR>
+<I>tochterm@bush.cs.tamu.edu</I><BR>
+</CENTER>
+<P>
+<CENTER>Thomas Alders<BR>
+<A HREF="http://lrb.informatik.uni-dortmund.de/">Computer Science Department - LS1</A>
+<BR>
+Dortmund University<BR>
+44221 Dortmund (Germany)<BR>
+<I>alders@ls1.informatik.uni-dortmund.de</I><BR>
+</CENTER>
+<P>
+<CENTER>
+<b>D-Lib Magazine</b>, October 1996
+<p>
+<h6>ISSN 1082-9873</h6>
+<p>
+<img src = "../d-line1.gif"> 
+</center> 
+
+<H3>1 Introduction<BR>
+</H3>
+
+<P>
+The Internet and World Wide Web (Web) afford libraries new possibilities
+to disseminate information. For instance, many libraries are already
+offering on-line public access catalogs, public ftp sites, or
+repositories of Internet resources. In the near future, digital
+documents will belong to the document collection of a library
+as well. Since these trends are changing the definition of what
+a conventional library is, the terms &quot;virtual library&quot;
+and &quot;digital library&quot; have come into use.
+<P>
+In this paper, we only use the term &quot;digital library&quot;.
+In accordance with <A HREF="http://www.csdl.tamu.edu/DL94/paper/fox.html">Gladney, Fox et al. 
+1994</A>,
+we view a digital library as extending the holdings of a conventional
+library into digital documents and Internet resources. An Internet
+resource is a link to other digital documents which are stored
+elsewhere on the Internet. Thus, only the link is under control
+of the library, not the document to which the link points. Additionally,
+a digital library provides digital catalogs, containing meta-data
+about the holdings (i.e., digital documents, Internet resources,
+and physical documents like books, journals, etc.). Finally, a
+digital library must accomplish, as far as possible, all necessary
+services of conventional libraries and must also exploit the advantages
+of the technology used. According to <A 
+HREF="http://www.csdl.tamu.edu/DL95/papers/nuernberg/nuernberg.html">Nuernberg, Furuta et al. 
+1995</A>,
+a &quot;digital library system&quot; consists of several components.
+To set up and to use a digital library requires a client and server
+computing system and tools supporting interaction among people
+and between people and client or server software.
+<P>
+Normally, digital libraries are based on the Web server technology.
+This enables patrons to access the library using a Web client
+like Netscape Navigator or Microsoft's Internet Explorer. These
+days, a lot of different Web servers are available (e.g., <A 
+HREF="http://hoohoo.ncsa.uiuc.edu/docs/Overview.html">httpd from NCSA</A>,
+or the different <A HREF="http://www.netscape.com/comprod/server_central/">servers provided by 
+Netscape</A>).
+In <A HREF="http://www.dlib.org/projects.html">several projects </A>these
+servers have proven useful for building digital libraries. Beyond
+this, a second generation Internet information system exists,
+namely <A HREF="http://hyperg.iicm.tu-graz.ac.at/hyperg">Hyper-G or HyperWave </A>(we
+will be using the term &quot;Hyper-G&quot; throughout this paper).
+Since Hyper-G has already become widely adopted, our research
+group at Dortmund University decided to use Hyper-G to set up
+a digital library system called DogitaLS1. DogitaLS1 is an acronym
+for &quot;The Dortmund Digital Library System of LS1&quot; (LS1
+is the name of our lab at the Computer Science Department of the
+Dortmund University). <A HREF="http://www.ub.uni-freiburg.de/liberation/">LIBERATION</A>
+is another European project in which Hyper-G is being used to
+set up a digital library. The main idea of this project is to
+distribute already existing electronic information to libraries
+(e.g., via CD, local or wide area networks). Since this project
+has just begun, first results are not yet available.
+<P>
+In this paper, we report about our experiences with using Hyper-G
+as an underlying server technology for our digital library system.
+To do this, the remainder of the paper is structured as follows:
+<P>
+Section 2 gives a brief overview of Hyper-G. Then, section 3 describes
+the structure of DogitaLS1. It also shows how we exploit the concepts
+of Hyper-G for organizing the holding of DogitaLS1. In section
+4, we report about our experiences with using Hyper-G. This includes
+a list of requirements for future Internet information systems
+that aim at being used for digital library systems. Finally, we
+give a brief conclusion in section 5.<BR>
+
+<P>
+<B><FONT SIZE=2>Remark to the references used:<BR>
+</FONT></B><FONT SIZE=2>References to documents available on the
+Internet are made explicit by links pointing to them. All links
+have been proven to be defined in September 1996. Once the paper
+is published, any changes of URLs used in this paper will not
+further be updated by the authors. Thus, undefined links might
+be possible at some time in the future.</FONT>
+<HR>
+
+<H3>2 Hyper-G at a glance </H3>
+
+<P>
+Hyper-G is a second generation Internet information system that
+is being developed under the leadership of Herrmann Maurer and
+Frank Kappe at the Institute for Information Processing and Computer
+Supported New Media (<A HREF="http://hyperg.iicm.tu-graz.ac.at/iicm">IICM</A>)
+at Graz University (Austria). Hyper-G comprises server and client
+software. The <A HREF="http://hyperg.iicm.tu-graz.ac.at/hyperwave/server/specifications.html">server 
+software </A>is available for the several different operating systems including
+SUN Sparc and IBM AIX. The <A HREF="http://hyperg.iicm.tu-graz.ac.at/hyperwave/author">client 
+software </A>runs
+under Microsoft Windows (Amadeus) and under Unix (Harmony). Hyper-G
+complies with the WWW; widely accepted Web clients, like Netscape
+Navigator, can be used to browse a Hyper-G server. Hyper-G clients
+can be used to browse a WWW server like NSCA's httpd.
+<P>
+The key features of Hyper-G include
+<UL>
+<LI><B>collections</B> allowing authors to organize their documents
+hierarchically.
+<LI>an<B> object-oriented database </B>to store documents and
+meta-information about them (i.e., documents are not stored in
+the file system of the machine on which the server is installed).
+<LI>an <B>integrated search engine </B>for meta-information such
+as titles, keywords, and author as well as for full text. The
+search engine even allows iterative <FONT COLOR=#000000>search;
+that</FONT> is the result of a search query can be defined to
+be the search space of further queries. 
+<LI>a <B>link database</B> in which all links are stored. Links
+are separated from documents and they are also bi-directional.
+This is exploited to guarantee link consistency in Hyper-G.
+<LI>a <B>pre-defined set of attributes</B> which can be defined
+for each Hyper-G object (e.g., the keyword attribute can be used
+to store meta-information about collections or documents.).
+<LI><B>access control</B> through user names, passwords and hierarchically
+structured user groups. 
+</UL>
+
+<P>
+More information about Hyper-G can be found in the book &quot;<A HREF="http://hyperg.iicm.tu-
+graz.ac.at/hgbook">HyperWave - The Next Generation Web Solution</A>&quot;,
+recently launched by the development team of Hyper-G/HyperWave.
+<HR>
+
+<H3>3 DogitaLS1 </H3>
+
+<P>
+The aim of our research is to examine Hyper-G for defining organizational
+structures for digital libraries. To do this, we set up a digital
+research library for our lab providing a heterogeneous document
+collection, i.e., a collection containing:
+<UL>
+<LI>meta-data for physical documents,
+<LI>digital documents including meta-data, and
+<LI>Internet resources. 
+</UL>
+
+<P>
+In addition, we place a special emphasis on services for different
+type of users (e.g., librarians and patrons) as well as communication
+services. A more detailed description of the communication services
+is omitted here. We recommend our technical report &quot;<A 
+HREF="http://csdl.tamu.edu/csdl/trs.html">A first Step Toward Communication in Virtual 
+Libraries</A>&quot;
+for those who are interested in this area.
+<H4>3.1 Organizational Structure of DogitaLS1 </H4>
+
+<P>
+We installed six collections at the top level of DogitaLS1. The
+collections &quot;Catalogs&quot;, &quot;Digital Documents&quot;,
+and &quot;Internet Resources&quot; serve for storing meta-data
+about physical documents, digital documents including their meta-data,
+and Internet resources, respectively. The collections &quot;Services&quot;
+and &quot;Workspaces&quot; are needed for general services and
+communication services. Finally, an on-line help is provided in
+the collection &quot;On-line Help&quot; (c.f. figure 3.1). In
+the next sections, we describe how we took advantage of Hyper-G
+concepts for the integration of documents belonging to the different
+collections.
+<P>
+<B><FONT SIZE=2>Remark:</FONT></B><FONT SIZE=2> All screen shots
+are taken from Harmony. </FONT>
+<P>
+<CENTER><IMG SRC="http://www.csdl.tamu.edu/~tochterm/dlib/Figure31.jpg" ALT="Top Level of 
+DogitaLS1"></CENTER>
+<P>
+<CENTER>Figure 3.1: Top level of the collection hierarchy in DogitaLS1
+<BR>
+</CENTER>
+<P>
+<B>The collection &quot;Catalogs&quot;</B>
+<P>
+The collection &quot;Catalogs&quot; includes an alphabetic catalog
+in which meta-data about all books, journals, etc.
+of our research library are stored. A question was how to model the corresponding Hyper-G documents so 
+that we can take advantage
+of the integrated search engine of Hyper-G. One possible solution
+could have been to use attributes that can contain meta-information
+about a Hyper-G document. However, except for the keyword attribute,
+all the pre-defined attributes relate to a Hyper-G document and
+not to books or journals about which a Hyper-G document contains
+information. For example, assume the user <TT>tochterm</TT> creates
+a Hyper-G document providing meta-information about a book written
+by Aho and Ullman. Then, the attribute <TT>Author</TT> of the
+Hyper-G document contains the name <TT>tochterm</TT> and, thus,
+it cannot be used to store the names of the two authors Aho and
+Ullman. We therefore decided to put important information (authors,
+title and publication year) about books, journals, etc. into the
+title of the corresponding Hyper-G document (c.f. figure 3.2).
+Some other useful information, like umbrella words, is stored
+in the keyword attribute. (Note, the Hyper-G document itself contains
+much more meta-information about the cataloged book or journal.)
+As a result, a title search can be used to search for books by
+author's name, title or publication year. In addition, a keyword
+search can be used for searching by means of umbrella words.
+<P>
+<CENTER><IMG SRC="http://www.csdl.tamu.edu/~tochterm/dlib/Figure32.jpg" ALT="Title of 
+documents in collection Catalog"></CENTER>
+<P>
+<CENTER>Figure 3.2: Sample title for documents in the collection
+&quot;Catalogs&quot;</CENTER>
+<P>
+<B>The collection &quot;Digital Documents&quot;</B>
+<P>
+Digital documents (e.g., research reports and other publications
+written by members of our lab) are stored in this collection.
+To ease browsing through the document collection, we set up a
+small systematic catalog covering the different areas in which
+members of our lab do research. We had three requirements to meet
+when we started thinking about modeling digital documents in Hyper-G:
+<UL>
+<LI>each document should be available in different formats (e.g.
+HTML and Postscript);
+<LI>the title scheme for documents should be the same as the one
+used in the collection &quot;Catalog&quot;, and
+<LI>meta-data should be separated from documents. 
+</UL>
+
+<P>
+To capture this intention, the use of <A HREF="http://www.cnri.reston.va.us/home/cstr/arch/k-
+w.html">digital objects </A>as
+introduced by Kahn and Wilensky seemed appropriate to us. In their
+notion, a digital object can be regarded as a content-independent
+package. The principal components are a unique identifier for
+the digital object (its handle), and data. The data in the digital
+object package is, itself, a container for streams of bits that
+may take multiple forms (<FONT COLOR=#000000>e.g.,</FONT> Postscript
+or HTML). 
+<P>
+In DogitaLS1, we modeled digital objects by means of collections.
+Note, that we have now two different notions of collections: 1.
+we use them to define the overall structure of DogitaLS1, that
+is as containers for documents; 2. we use them to model digital
+objects. This might be irritating from a conceptual perspective.
+On the other hand, there was no other way in Hyper-G to represent
+digital objects<B><FONT COLOR=#DD0806>.</FONT></B> Figure 3.3
+sketches three digital objects belonging to &quot;Information
+Systems&quot; in the classification scheme for Digital Documents.
+<P>
+<CENTER><IMG SRC="http://www.csdl.tamu.edu/~tochterm/dlib/Figure33.jpg" ALT="Digital 
+Objects"></CENTER>
+<P>
+<CENTER>Figure 3.3: Digital objects belonging to &quot;Information
+Systems&quot; in the classification scheme for &quot;Digital Documents&quot;</CENTER>
+<P>
+When the collection is being created, Hyper-G assigns a server-wide
+unique handle to it. Each digital document is embedded in a collection
+<FONT COLOR=#000000>that </FONT>also contains meta-data about
+the document and different formats for the document (normally
+HTML and Postscript). The meta-data is stored as a collection
+head. In Hyper-G, a collection head is a special document which
+is always displayed, when a user (e.g., librarian or patron) accesses
+a collection. In this way, whenever a digital object is accessed,
+the user gets information about the data stored in this digital
+object. The following figure shows a digital object represented
+as collection in Hyper-G. The document &quot;Abstract: Kommunikation
+in virtuellen Bibliotheken&quot; contains an abstract and meta-data
+about the document. The actual document is available in two different
+formats, HTML and Postscript. 
+<P>
+<CENTER><IMG SRC="http://www.csdl.tamu.edu/~tochterm/dlib/Figure34.jpg" ALT="Digital 
+Object"></CENTER>
+<P>
+<CENTER>Figure 3.4: Example for a digital object in DogitaLS1
+<BR>
+</CENTER>
+<P>
+<B>The collection &quot;Internet Resources&quot;</B>
+<P>
+In this collection, links to interesting resources available on
+the Internet are collected. Each link is represented as a Hyper-G
+document. As a consequence, meta-information about each link can
+be stored in the keyword attribute of Hyper-G documents. Due to
+this, a keyword search for links is possible in DogitaLS1.
+<P>
+Links to resources in other Hyper-G servers are displayed in the
+same manner as if the resource were stored in DogitaLS1. This
+is a big advantage for setting up distributed digital libraries
+based on Hyper-G. The reason is that in distributed digital libraries,
+users need not know where documents are stored - whether locally
+or on remote servers. Among others, the following figure displays
+a link to the &quot;Journal of Universal Computer Science&quot;
+<FONT COLOR=#000000>which</FONT> is stored on a server in Graz
+(Austria). However, the user interface displays this link in the
+same way as a collection stored on the server of DogitaLS1.
+<P>
+<CENTER><IMG SRC="http://www.csdl.tamu.edu/~tochterm/dlib/Figure35.jpg" ALT="Links to other 
+resources"></CENTER>
+<P>
+<CENTER>Figure 3.5: Links to other resources in the Internet<BR>
+</CENTER>
+<P>
+<B>The collections &quot;Services&quot; and &quot;Workspaces&quot;</B>
+<P>
+The current version of DogitaLS1 provides several services (written
+in PERL) adapted to the needs of librarians and patrons. All these
+services are stored in the collection &quot;Services&quot;. The
+Common Gateway Interface mechanism is used to provide interaction
+among users and between users and DogitaLS1.
+<P>
+In the collection &quot;Workspaces&quot;, librarians and patrons
+have their own workspace where they can store private documents,
+private links, <FONT COLOR=#000000>etc.</FONT> Besides private
+documents, logical copies of all the services needed by a given
+librarian or patron are stored at this place. To do this, we exploit
+the <TT>copy document</TT> function of Hyper-G. The advantage
+of this approach is that all the services are available at a central
+place in DogitaLS1. This is a big relief when new librarians or
+patrons are to be added to or to be removed from the system. For
+adding a new user, we only have to create a new workspace and
+add copies of the services needed by the new user. For removing
+a user, we can just delete his collection without worrying about
+the documents and services stored therein.
+<HR>
+
+<H3>4 Experiences in the project </H3>
+
+<P>
+First, this section describes our experiences with Hyper-G. We
+also give a list of items that are not covered by Hyper-G but
+would have been useful for our digital library system. <BR>
+
+<P>
+<B>4.1 Valuation of concepts currently available in Hyper-G</B>
+<P>
+In general, both the server and client software run without severe
+problems. We are also grateful to the development team in Graz
+which normally helped us immediately when we had technical problems.
+Finally, a newsgroup (comp.infosystems.hyperg) may be used for
+asking other Hyper-G users questions. Thus, a lot of technical
+support exists for Hyper-G. Besides these more general comments,
+we evaluate concepts provided by Hyper-G with a special respect
+to digital libraries.
+<P>
+<B>Collections</B>
+<P>
+Collections in Hyper-G are very useful to define the structure
+for the holding of a digital library. Since collections in collections
+are allowed, it is also possible to set up more complex structures
+for organizing the document collection. 
+<P>
+<B>Link consistency</B>
+<P>
+Normally, more than one attempt is required for defining the organizational
+structure of a digital library. Unfortunately, new requirements
+arise usually after documents have already been stored in the
+library. In addition, at that time, links between documents have
+already been established. Since re-organizing the document collection
+in a digital library means moving documents from one collection
+to another, links are most probably affected. By contrast to &quot;traditional&quot;
+servers where a link denotes a path to a file on the server machine,
+in Hyper-G, links are objects separated from documents. The advantage
+of this is that in Hyper-G documents can be changed between collections
+without worrying about dangling links. This was a useful feature
+for prototyping several different collection hierarchies in DogitaLS1.
+
+<P>
+<B>Access rights</B>
+<P>
+Different parts of a collection can be made accessible to different
+types of users using access rights. An advantage of the concept
+of user accounts in Hyper-G is that they do not depend on user
+accounts on the server or on any other machine. Therefore, it
+is not necessary that patrons must have an account on another
+machine. A further advantage is that even links can be protected
+by access rights. This means that link filtering is possible.
+
+<P>
+<B>External tools</B>
+<P>
+Hyper-G provides a lot of external tools (e.g., <TT>hginstext,
+hginscoll, and hggetdata</TT> for inserting text documents in
+the server, for inserting collections in the server and for retrieving
+documents from the server, respectively). We could exploit these
+tools in different CGI-programs (e.g., for inserting already existing
+on-line-data of our research library in DogitaLS1).
+<P>
+<B>Aspects of distributed digital libraries</B>
+<P>
+In the near future, the holdings of digital libraries will not
+only be based on one server but will be distributed among several
+servers. In three ways, Hyper-G already covers aspects for distributed
+digital libraries:
+<UL>
+<LI>In distributed digital libraries, a document is normally stored
+only on one server. However, it will probably be helpful to have
+logical copies of the documents on other servers of the digital
+library as well. With the <TT>copy document</TT> function, such
+a concept is already available in Hyper-G (c.f., The collections
+&quot;Services&quot; and &quot;Workspaces&quot;).
+<LI>Clients display all documents and collections in the same
+way regardless of whether they are logical copies, links to documents
+on other Hyper-G <FONT COLOR=#000000>servers</FONT>, or the physical
+document on the server to which the client is connected. Thus,
+users are not aware of where the documents are stored. As a result,
+a distributed digital library appears to the user in the same
+way as a digital library that is not distributed.
+<LI>Link consistency is an important issue for distributed digital
+libraries since documents on the different servers will probably
+be interconnected densely. Fortunately, Hyper-G also guarantees
+link consistency for links that connect documents on different
+Hyper-G servers to one another. 
+</UL>
+
+<P>
+<B>4.2 Requirements for future systems</B>
+<P>
+This section lists items that we are missing in the current version
+of Hyper-G. To us, these items seem to be helpful for future Internet
+information systems that intend to be used for digital library
+systems.
+<UL>
+<LI>The search engine of Hyper-G does not provide the proximity
+operator NEAR to express queries like <TT>A NEAR B</TT>. However,
+to overcome this drawback users can exploit the iterative search
+in Hyper-G (c.f. section 2).
+<LI>Hyper-G presently lacks a <A HREF="http://lcweb.loc.gov/z3950/agency/">Z39.50 </A>interface.
+Z39.50 is a protocol for communication between computers for information
+retrieval. In particular, it is designed to support the retrieval
+of bibliographic records independent of the type of system on
+which they are stored. For example, we are currently preparing
+another project together with the library of the Dortmund University.
+On the basis of Z39.50, the meta-data collected in this project
+should also be made available and searchable in conjunction with
+other meta-data databases. Since Hyper-G does not support this
+protocol, we will have to store all the meta-data in an extra
+database. 
+<LI>Normally, different users have different access rights to
+the holding of a digital library. This means that a kind of super-user
+has to define the access rights for each new user account. Unfortunately,
+Hyper-G has no notion of what we call a &quot;sub-super-user&quot;.
+A super-user in Hyper-G has all access rights for the server software.
+This is more than is required to install user accounts. This could
+be regarded as a security problem since it might easily happen
+that too many rights are granted to a user (e.g., a patron gets
+access to collections of librarians). In contrast to a super-user,
+a &quot;sub-super-user&quot; has only restricted access rights.
+These access rights could also be adapted to the types of users
+for whom a &quot;sub-super-user&quot; is eligible to install accounts.
+To guarantee security, a &quot;sub-super-user&quot; can only grant
+all or fewer of the access rights he has. 
+</UL>
+
+<HR>
+
+<H3>5 Conclusion </H3>
+
+<P>
+On the basis of Hyper-G, we set up a digital library system. This
+system consists of the server and client software as well as different
+tools that we developed (however, we omitted the description of
+tools in this paper). The document collection of DogitaLS1 mainly
+consists of documents that are needed in the day-to-day work of
+members of our lab. Even though this document collection is rather
+small, Hyper-G has proven stable for huge amounts of documents
+as well. For example, the Graz University runs a Hyper-G server
+to store meta-data about its documents. In October 1995, this
+server contained more than 300,000 documents.
+<P>
+As we see it, Hyper-G offers several features that are not presently
+available in other Internet information systems. In this paper,
+we showed how most of these features can be exploited to serve
+needs of digital libraries. Since we are convinced of the capabilities
+of Hyper-G, we will be using it in a joint project with the library
+of the Dortmund University. The aim of this project is to build
+an electronic archive for master-level and doctoral theses.
+<HR>
+
+<H3>Acknowledgment </H3>
+
+<P>
+The first author is grateful to the Max Kade Foundation, New York
+USA, for funding his post-doc at the Center for the Study of Digital
+Libraries of the Texas A&amp;M University. 
+<P>
+<H5>Copyright &#169; 1996 Klaus Tochtermann and Thomas Alders</H5>
+<p>
+<center>
+<img src = "../d-line1.gif">
+<P>
+<A href = "../../../dlib.html"><IMG src="../hom_but.gif" border=0 ALT="D-Lib Magazine |"></A>
+<A href="../10contents.html">
+<IMG src="../mag_but2.gif" border=0 ALT=" Current Issue | "></A>
+<A href="http://www.dlib.org/Hypernews/get/dlib_responses.html">
+<img src = "../comm_but.gif" border = 0 ALT = "Comments"><br>
+<a href = "../10messages.html">
+<img src = "../prev.gif" border = 0 ALT = "Previous Story | "></a>
+<A href="../cmu/10thibadeau.html">
+<IMG src="../next.gif" border=0 ALT="Next Story"></A>
+<p>
+<img src = "../d-line2.gif">
+<P>
+<I>hdl:cnri.dlib/october96-tochtermann</I>
+</center>
+<p>
+</BODY>
+
+</HTML>
+
+ contentType 9 text/html url 62 http://www.dlib.org:80/dlib/october96/texas/10tochtermann.html responseCode 3 200 

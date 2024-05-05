@@ -1,0 +1,221 @@
+fsuicgyccagkdapgcmksdsrowehititokohqjkfq length 5 18175 page 18175 <!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content="Scientific American is the essential guide to the most awe-inspiring advances in science and technology, explaining how they change our understanding of the world and shape our lives."/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:site" content="@sciam"/><meta name="twitter:creator" content="@sciam"/><meta property="og:description" content="Scientific American is the essential guide to the most awe-inspiring advances in science and technology, explaining how they change our understanding of the world and shape our lives."/><meta property="og:type" content="website"/><meta property="og:locale" content="en_US"/><meta property="og:site_name" content="Scientific American"/><title>My Account - Scientific American | Scientific American</title><meta name="robots" content="index,follow"/><meta property="og:title" content="My Account - Scientific American | Scientific American"/><link rel="canonical" href="/account/"/><meta name="next-head-count" content="14"/><link rel="icon shortcut" href="/account/sciam-favicon.ico"/><script id="/widget/myaccount/partials/common/tabs.shtml" type="text/ng-template" data-nscript="beforeInteractive"><div class="wrapper-tabs">
+  <div class="scroll-tabs" drag-scroll>
+      <ul class="tabs header-navigation-tabs">
+          <li data-item="library"     ><a class="" href="#"><t>Library</t></a></li>
+          <li data-item="wallet"      ><a class="" href="#"><t>Cards</t></a></li>
+          <li data-item="transactions"><a class="" href="#"><t>Transactions</t></a></li>
+          <li data-item="payments"    ><a class="" href="#"><t>History</t></a></li>
+          <li data-item="bills"       ><a class="" href="#"><t>Bills</t></a></li>
+          <li data-item="pianoid-newsletters"><a class="" href="#"><t>Newsletters</t></a></li>
+          <li data-item="pianoid"     ><a class="" href="#"><t>Profile</t></a></li>
+          <li data-item="licensing"   ><a class="" href="#"><t>Site license</t></a></li>
+          <li data-item="userprofile" ><a class="" href="#"><t>User Profile</t></a></li>
+          <li data-item="help"        ><a class="" href="#"><t>Help</t></a></li>
+      </ul>
+  </div>
+</div>
+</script><script id="/widget/myaccount/partials/help/item.shtml" type="text/ng-template" data-nscript="beforeInteractive"><!-- My Account Help Item Component -->
+<span class="section-text link uppercase" ng-click="onViewAllClick()"><span class="arrow"></span><t>All inquiries</t></span>
+<span class="inquiry-state-name heading" ng-class="{green: inquiry.state == 'ACTIVE'}">{{inquiry.stateLabel}}</span>
+
+<div my-account-widget-scroll>
+    <blockquote class="help-inquiry-reason">{{inquiry.reason}}</blockquote>
+
+    <div class="ng-hide" error-section errors="errors" heading="{{'Couldn\'t submit comment' | t}}"></div>
+    <div class="table-conversation">
+        <table class="table">
+            <tbody>
+            <tr class="ng-hide" ng-show="!conversationPossibilty">
+                <td class="avatar">
+                </td>
+                <td class="message">
+                </td>
+            </tr>
+            <tr class="ng-hide response-form" ng-show="conversationPossibilty">
+                <td class="avatar">
+                    <div class="media-object"><img ng-src="{{inquiry.user.imageUrl}}"></div>
+                </td>
+                <td class="message">
+                    <div class="response" sourceindex="0">
+                        <div class="control-group">
+                            <textarea ng-model="message" rows="5" class="input-block-level"
+                                      placeholder="{{'Enter a response' | t}}" sourceindex="1"></textarea>
+                        </div>
+                        <div class="form-inline form-small submit-block">
+                            <div class="control-group pull-left">
+                                <button class="btn btn-green btn-wide" id="grant-access"
+                                        ng-click="onCreateMessage()"><t>Submit</t></button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-show="inquiry.state=='ACTIVE' && !conversationPossibilty">
+                <td colspan="2">
+                    <div class="bubble left">
+                        <div class="media-object"><img ng-src="{{comment.authorUrl}}"></div>
+                        <div class="message">
+                            <t>Waiting for publisher response...</t>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-repeat="comment in comments" class="comment">
+                <td colspan="2">
+                    <div class="bubble right">
+                        <div class="media-object"><img ng-src="{{comment.authorUrl}}"></div>
+                        <div class="message">
+                            <h3>{{comment.author}} <span
+                                    class="timestamp">{{comment.stamp| date: 'short'}}</span>
+                            </h3>
+                            <span class="help-inquiry-reason-in-comment" ng-bind-html="comment.text"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="comment cehck">
+                <td colspan="2">
+                    <div class="bubble right">
+                        <div class="media-object"><img ng-src="{{inquiry.user.imageUrl}}"></div>
+                        <div class="message">
+                            <h3>{{inquiry.user.name}} <span
+                                    class="timestamp">{{inquiry.stamp| date: 'short'}}</span></h3>
+
+                            <span class="help-inquiry-reason-in-comment" ng-bind-html="inquiry.reason"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="inquiry-details">
+        <div class="module app-avatar">
+            <img ng-if="payment.resourceImageUrl" ng-src="{{payment.resourceImageUrl}}">
+        </div>
+        <div class="module">
+            <b>{{payment.resourceName | tc:'resource.name'}}</b>
+        </div>
+        <div class="module">
+            <div class="title"><b><t>Access terms</t></b></div>
+            {{payment.accessTerms}}
+        </div>
+        <div class="module">
+            <div class="title"><b><t>Payment source</t></b></div>
+            {{payment.paymentMethodDisplayName}}
+        </div>
+    </div>
+</div></script><script id="/widget/myaccount/partials/help/list.shtml" type="text/ng-template" data-nscript="beforeInteractive"><!-- My Account Help List Component -->
+<div ng-show="inquires.length == 0" class="title-block first pull-left">
+  <h2 class="title"><t>Having an issue?</t></h2>
+  <div class="heading-comment"><t>Create an inquiry here, and we'll make sure your questions get answered ASAP.</t></div>
+</div>
+<span ng-show="inquires.length > 0" class="section-text uppercase"><t>Inquiries</t> ({{inquires.length}})</span>
+<button class="btn btn-green btn-add-card pull-right" ng-click="createInquiry()"><t>Get help!</t></button>
+
+<div ng-show="inquires.length > 0"
+    class="table-container" my-account-widget-scroll >
+  <table class="vanilla-table">
+      <tbody>
+      <tr ng-repeat="inquiry in inquires" ng-click="onInquiryClick(inquiry)" class="inquiry">
+          <td class="logo">
+              <img height="50"
+                    ng-src="{{inquiry.app.logo || '../images2/media-placeholder-tile.png'}}" />
+          </td>
+          <td class="inquiry-info">
+              <div><strong>{{inquiry.app.name}}</strong></div>
+              <div class="inquiry-reson">{{inquiry.reason | limitTo: 100}}...</div>
+          </td>
+          <td class="inquiry-state uppercase">
+              <span class="inquiry-state-name" ng-class="{green: inquiry.state == 'ACTIVE'}">{{inquiry.stateLabel}}</span>
+          </td>
+          <td class="inquiry-date">{{inquiry.stamp |date:'short'}}</td>
+      </tr>
+      </tbody>
+  </table>
+</div></script><script id="/widget/myaccount/partials/help/new.shtml" type="text/ng-template" data-nscript="beforeInteractive"><!-- My Account Help Create New Issue Component -->
+<span class="section-text link uppercase" ng-click="goBack()"><span class="arrow"></span><t>Purchases</t></span>
+
+<div error-section
+      errors="formErrors"
+      heading="{{'Couldn\'t submit issue' | t}}"></div>
+
+<div my-account-widget-scroll>
+    <div class="title-block">
+        <h2 class="title"><t>Get help with your content</t></h2>
+        <div ng-show="payment" class="heading-comment"><t>Enter a helpful description of your issue below then <hit></hit> the submit button. You can track the progress of your issue in the help section.</t></div>
+    </div>
+    <div ng-show="payment">
+        <div class="table-conversation">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td class="message">
+                        <div class="response">
+                            <div class="control-group">
+                                <textarea ng-model="inquiryText" rows="5" class="input-block-level high"
+                                          placeholder="{{'Enter a respond' | t}}"></textarea>
+                            </div>
+                            <div class="form-inline form-small submit-block">
+                                <div class="control-group pull-left">
+                                    <button class="btn btn-green btn-wide" id="grant-access"
+                                            ng-click="submit()"><t>Submit</t></button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="inquiry-details">
+            <div class="module app-avatar">
+                <img ng-if="payment.resourceImageUrl" ng-src="{{payment.resourceImageUrl}}">
+            </div>
+            <div class="module">
+                <b>{{payment.resourceName | tc:'resource.name'}}</b>
+            </div>
+            <div class="module">
+                <div class="title"><b><t>Access terms</t></b></div>
+                {{payment.accessTerms}}
+            </div>
+            <div class="module">
+                <div class="title"><b><t>Payment source</t></b></div>
+                {{payment.paymentMethodDisplayName}}
+            </div>
+        </div>
+
+    </div>
+</div></script><script id="/widget/myaccount/partials/help/selectResource.shtml" type="text/ng-template" data-nscript="beforeInteractive"><!-- My Account Help Create New Issue Component -->
+<span class="section-text link uppercase" ng-click="goBack()"><span class="arrow"></span><t>All inquiries</t></span>
+
+<div error-section
+      errors="formErrors"
+      heading="{{'Couldn\'t submit issue' | t}}"></div>
+<div my-account-widget-scroll>
+    <div class="title-block">
+        <h2 class="title"><t>Get help with your content</t></h2>
+        <div ng-show="purchases.length > 0" class="heading-comment"><t>Select the purchase you need help with from the list below.  If you don't see it here or you need general support, please contact <a href="mailto:support@piano.io">support@piano.io</a>.</t></div>
+        <div ng-show="purchases.length == 0" class="heading-comment"><t>Looks like you don't have any purchases to open an inquiry for.  If you need general support, please contact <a href="mailto:support@piano.io">support@piano.io</a>.</t></div>
+    </div>
+
+    <table ng-show="purchases.length > 0" class="vanilla-table">
+        <tbody>
+        <tr ng-repeat="purchase in purchases">
+            <td class="logo">
+                <img ng-if="purchase.resourceImage" ng-src="{{purchase.resourceImage}}">
+            </td>
+            <td class="title">
+                <div class="resource-title">{{purchase.resourceName | tc:'resource.name'}}</div>
+                <div class="expiration-date">
+                    <div class="clock"></div> <t>Expires</t> {{purchase.dateInSeconds | tpDate:purchase.dateFormat}}
+                </div>
+            </td>
+            <td class="actions">
+                <button ng-click="selectResource(purchase.id)" class="btn btn-green btn-small btn-wide btn-arrow"><t>Help</t> <span class="arrow"></span></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div></script><script id="gtm-dataLayer" data-nscript="beforeInteractive">window.dataLayer=window.dataLayer||[];window.tp=window.tp||[]</script><link rel="preload" href="https://www.scientificamerican.com/_next/static/css/d28f7390c1a3f42e.css" as="style" crossorigin=""/><link rel="stylesheet" href="https://www.scientificamerican.com/_next/static/css/d28f7390c1a3f42e.css" crossorigin="" data-n-g=""/><link rel="preload" href="https://www.scientificamerican.com/_next/static/css/193b3c108ca613f6.css" as="style" crossorigin=""/><link rel="stylesheet" href="https://www.scientificamerican.com/_next/static/css/193b3c108ca613f6.css" crossorigin="" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" crossorigin="" nomodule="" src="https://www.scientificamerican.com/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="https://www.scientificamerican.com/_next/static/chunks/webpack-5779a657052d0e6b.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/chunks/framework-8e279965036b6169.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/chunks/main-42fcd40dfa63225f.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/chunks/pages/_app-c7b26c5e8508e448.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/chunks/942-e2a9c6dfe6c3abb0.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/chunks/629-568df7149466aacf.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/chunks/pages/account-1819c086b57148cd.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/oU8VT8qK8AyNCFk3HRUB9/_buildManifest.js" defer="" crossorigin=""></script><script src="https://www.scientificamerican.com/_next/static/oU8VT8qK8AyNCFk3HRUB9/_ssgManifest.js" defer="" crossorigin=""></script></head><body class="__variable_97f68a __variable_4dd451 __variable_46c053 __variable_15388c"><div id="__next"><header id="nav" class="Default_nav__Np0YH"><div class="Default_nav__wrap__zX6wg"><nav class="Default_nav__layout__cXPu4 Default_container--nav__JRXgf"><div class="Default_nav__left__ZIFsZ"></div><div class="Default_nav__middle__ny9_L"><a class="Default_logo__EwUjE" href="/"><img alt="Scientific American" loading="lazy" width="200" height="70" decoding="async" data-nimg="1" style="color:transparent" src="/account/sciam-logo-header.svg"/></a></div><div class="Default_nav__right__I299i"><ul class="Default_nav__links__ze14H Default_desktop__rnsgJ"><li><a href="#">Sign In</a></li><li><a href="/page/newsletter-sign-up">Newsletters</a></li></ul><ul class="Default_nav__links__ze14H Default_mobile__4_Ezc"><li><a href="#">Sign In</a></li></ul></div></nav></div></header><main class="Default_main__kUyR6 __className_4dd451" id="main"><div class="Default_content__root__2McN7 Default_container--fluid__tJZI6" id="content"><div id="piano-container"></div></div></main><footer class="Footer_footer__UaG1g"><div class="Footer_grid__qjDt3"><div><ul><li><a href="https://www.scientificamerican.com/page/return-refund-policy/">Return &amp; Refund Policy</a></li><li><a href="https://www.scientificamerican.com/page/about-scientific-american/">About</a></li><li><a href="https://www.scientificamerican.com/pressroom/">Press Room</a></li></ul></div><div><ul class="footer-links"><li><a href="https://www.scientificamerican.com/page/frequently-asked-questions/subscriptions/">FAQs</a></li><li><a href="https://www.scientificamerican.com/page/contact-us/customer-service/">Contact Us</a></li><li><a href="https://www.scientificamerican.com/page/sitemap/topics/">Site Map</a></li></ul></div><div><ul class="footer-links"><li><a href="https://www.scientificamerican.com/mediakit/">Advertise</a></li><li><a href="https://www.scientificamerican.com/accessibility-statement/">Accessibility Statement</a></li><li><a href="https://www.scientificamerican.com/page/terms-of-use/">Terms of Use</a></li></ul></div><div><ul class="footer-links"><li><a href="https://www.scientificamerican.com/page/privacy-policy/">Privacy Policy</a></li><li><a href="https://www.scientificamerican.com/page/california-consumer-privacy-statement/">California Consumer Privacy Statement</a></li><li><a href="#">Use of cookies/Do not sell my data</a></li><li><a href="https://www.scientificamerican.com/page/international/">International Editions</a></li></ul></div></div><div><p>Scientific American is part of Springer Nature, which owns or has commercial relations with thousands of scientific publications (many of them can be found at www.springernature.com/us). Scientific American maintains a strict policy of editorial independence in reporting developments in science to our readers.</p><p>© 2024 SCIENTIFIC AMERICAN, A DIVISION OF SPRINGER NATURE AMERICA, INC.<br/>ALL RIGHTS RESERVED.</p></div></footer></div><script id="__NEXT_DATA__" type="application/json" crossorigin="">{"props":{"pageProps":{"dataLayerContent":{"title":"My Account","type":"Subscribe"}},"__N_SSG":true},"page":"/account","query":{},"buildId":"oU8VT8qK8AyNCFk3HRUB9","assetPrefix":"https://www.scientificamerican.com","isFallback":false,"gsp":true,"scriptLoader":[]}</script><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FLM662" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript></body></html> contentType 9 text/html url 47 https://www.scientificamerican.com:443/account/ responseCode 3 200 

@@ -1,0 +1,1081 @@
+ualaqenkjswmnehktewkzktmhccqninaamqahsfq length 6 104153 page 104153  <!--Layout of website top banner-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/lib/bootstrap2.3.2/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/site.min.css" rel="stylesheet" />
+    <script src="/lib/new-jQuery/dist/jquery.min.js"></script>
+    <script src="/Scripts/site.min.jason.js"></script>
+    <script src="/Scripts/dompurify.min.js"></script>
+
+    
+    <link href=/Content/Biblio/Biblio.css rel="stylesheet" type="text/css" />
+    <link rel="icon" href=/Content/Biblio/icons/bib-module-icon.png type="image/x-icon" />
+    <title>LDL: Bibliography</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="top-banner" id="top-left"></div>
+        <div class="top-banner" id="top-right"></div>
+
+        <nav>
+            <ul>
+                <li><a class="header-nav-link" href="/Homepage/MainContent">Home</a></li>
+
+                <li><a class="header-nav-link" href="/Biblio/Main">Bibliography</a></li>
+
+                <li><a class="header-nav-link" href="/SpeciesCatalog/Main">Species</a></li>
+
+                <li>
+                    <a class="header-nav-link" href="/Faunas/Main">Faunas</a>
+
+                    <ul style="width:120px" id="second">
+                        <li style="border-bottom:1px solid white;margin-bottom:3px"><a class="header-nav-link" href="/Faunas/Main">About</a></li>
+                        
+                        <li><a class="header-nav-link" href="/Albania/Main">Albania</a></li>
+                        <li><a class="header-nav-link" href="/Ireland/Main">Ireland</a></li>
+                        <li><a class="header-nav-link" href="/Italy/Main">Italy</a></li>
+                        <li><a class="header-nav-link" href="/Slovenia/Main">Slovenia</a></li>
+                        <li><a class="header-nav-link" href="/SouthAfrica/Main">South Africa</a></li>
+                        <li><a class="header-nav-link" href="/Switzerland/Main">Switzerland</a></li>
+                    </ul>
+                </li>
+
+                <li><a class="header-nav-link" href="/NeuroDirectory/Main">Directory</a></li>
+
+                <li><a class="header-nav-link" href="/Metakey/Main">Metakey</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        
+
+
+
+
+<nav>
+    
+
+<div class="sub-nav" id="sub-left">
+    <a href=/HomePage/MainContent style="text-decoration: none; font-size: 12px"><img src= 'https://lacewing.tamu.edu/neuropterida/ldl_icons/LDL-Main.png'  class='standard-icon' title='Lacewing Digital Library'/> LDL</a> &gt;
+    <a href="Main" style="text-decoration: none; font-size: 12px"><img src= 'https://lacewing.tamu.edu/neuropterida/ldl_icons/BotN-Main.png' + class='standard-icon' title='Bibliography of the Neuropterida'/> Bibliography</a> &gt;
+    Versions
+</div>
+
+<div class="sub-nav" id="sub-right">Bibliography of the Neuropterida (BotN &ndash; <a href='Main' target='_top'><img src="../Content/Biblio/icons/bib-module-icon.png" class="standard-icon gray-out" title='Bibliography of the Neuropterida' /></a>)</div>
+
+
+
+</nav>
+<style>
+    .highlight-row {
+        background-color: rgba(173,216,230,.5);
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('#FiguresTableBody tr:first').addClass('highlight-row');
+    });
+    $(document).on('click', '#FiguresTableBody tr', function () {
+        var selected = $(this).hasClass("highlight-row");
+        if (selected) {
+            return;
+        }
+        $("#FiguresTableBody tr").removeClass("highlight-row");
+        if (!selected)
+            $(this).addClass("highlight-row");
+    });
+
+    window.onload = function () {
+        function change_pic() {
+            // var button = document.getElementById("button");
+            var button = $(".button");
+            console.log(button);
+            // var picts = document.getElementById("picts");
+            $.each(button, function () {
+                var pict = $(this).children(".picts:first");
+                var picts = pict[0];
+                console.log("you clicked me!");
+
+                $(this).on('click', function () {
+                    //window.console.log(picts.getAttribute("src", 2));
+                    if (picts.getAttribute("src", 2) == "/Content/Shared/icons/down.png") {
+                        // button.innerText = "Hide legend";
+                        picts.setAttribute("title", "Hide legend");
+                        picts.setAttribute("src", "/Content/Shared/icons/up.png");
+                    } else {
+                        picts.setAttribute("title", "Show legend");
+                        // button.innerText = "Show legend";
+                        picts.setAttribute("src", "/Content/Shared/icons/down.png");
+
+                    };
+                });
+
+            })
+
+        }
+
+        change_pic();
+    }
+    function alignTableHeaderFooter(e) {
+        //console.log($(e).parent().find(".main-table-body").width())
+        $('.scroll-table-tr>td:nth-child(1)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td').css("padding-left", '0');
+        $('.scroll-table-tr>td').css("padding-right", '0');
+        $('.scroll-table-tr>td:nth-child(6)').css("padding-left", '5px');
+        //$('.scroll-table-tr>td:nth-child(7)').css("padding-left", '5px');
+        //$('.scroll-table-tr>td').css('word-break', 'break-all');
+        //$('.scroll-table-tr>td').css('white-space', 'pre-line')
+        //$('.scroll-table-tr>td:nth-child(1)').css("padding-left", '5px');
+        //$('.scroll-table-tr>td:nth-child(1)').css("padding-right", '4px');
+        $('.scroll-table-tr>td:nth-child(2)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td:nth-child(3)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td:nth-child(4)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td:nth-child(5)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td:nth-child(6)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td:nth-child(7)').width($(e).parent().find(".main-table-body").width() * 0.10)
+        $('.scroll-table-tr>td:nth-child(8)').width($(e).parent().find(".main-table-body").width() * 0.12)
+        //$('.scroll-table-tr>td:nth-child(9)').width($(e).parent().find(".main-table-body").width() * 0.18)
+        $(e).width($(e).parent().find(".main-table-body").width())
+    }
+    $(document).ready(function () {
+        $(".headerAndFooter").each(function (e, t) { alignTableHeaderFooter(t) })
+    });
+
+
+    // Throttle
+
+    function alignTable() {
+
+        $(".headerAndFooter").each(function (e, t) { alignTableHeaderFooter(t) })
+    };
+    function throttle(fn, delay) {
+        var timer = null;
+        console.log("Throttle")
+        return function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn()
+            }
+            );
+        }
+    };
+    window.onresize = throttle(alignTable, 100, 1000);
+</script>
+
+<div class="content">
+    <div class="text-body">
+        <h1 style="margin-right:17px;">Versions&nbsp;</h1>
+        <p class="header-paragraph-1" align="justify" style="margin-right:17px;">
+            Selected summary data are given below in tabular form for each of the numbered versions of the bibliography. These data briefly document the historical  growth and development of the Bibliography as an information resource for the global neuropterology community. Following the table is a short text history of the Bibliography, and notes pertaining to individual versions.
+        </p>
+
+        <table id="FiguresTable" style="margin-left:0;margin-top:7px;border-bottom:none" class="headerAndFooter overflow-auto results">
+            <caption>Table 1. &nbsp;&nbsp;  A comparison of the numbered versions of the <i>Bibliography of the Neuropterida</i>, summarizing its growth and development.</caption>
+            <thead>
+                <tr>
+                    <th width="10%" class="col" align="center" rowspan="2">
+                        Version
+                    </th>
+                    <th width="10%" class="col" align="center" rowspan="2">
+                        Version Date<br />
+                        <p class="small-font">(release XX.0)</p>
+                    </th>
+                    <th width="10%" class="col" align="center" rowspan="2">
+                        Citations<br />
+                        <p class="small-font"></p>
+                    </th>
+                    <th width="10%" class="col" align="center" rowspan="2">
+                        Linked Files<br />
+                        Total / Unique<br />
+                        <p class="small-font"></p>
+                    </th>
+                    <th width="10%" class="col" align="center" rowspan="2">
+                        Digital Pages<br />
+                        <p class="small-font"></p>
+                    </th>
+                    <th colspan="2" width="20%" class="col" align="center">
+                        Annotations
+                    </th>
+                    <th width="12%" class="col" align="center" rowspan="2">
+                        Format<br />
+                        <p class="small-font">(program)</p>
+                    </th>
+                    <th width="18%" class="col" align="center" rowspan="2">
+                        Benchmarks
+                    </th>
+                </tr>
+                <tr>
+                    <th width="10%">
+                        Taxon<br />
+                        <p class="small-font"></p>
+                    </th>
+                    <th width="10%">
+                        Figure<br />
+                        <p class="small-font"></p>
+                    </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="9"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="limited-height-table-body" style="border-top:none;">
+            <table id="FiguresTableBody" style="height: 400px;border-top:none;border-bottom:none;" class="main-table-body overflow-auto results">
+                <tbody style="overflow-y:scroll; height:650px;border-top:none;border-bottom:none;">
+
+                            <tr class="scroll-table-tr" style="border-top:none;">
+                                <td align="center">
+                                    12.19<br />(active release)
+                                </td>
+                                <td align="center">2024.02.14</td>
+                                <td align="center">
+                                    17973
+                                </td>
+                                <td align="center">26403 / 14661</td>
+                                <td align="center">0</td>
+                                <td align="center">96382</td>
+                                <td align="center">107277</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">23,000+ linked publication files;<br />105,000+ figure annotations;<br />95,000+ taxon annotations</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    12.0
+                                </td>
+                                <td align="center">2019.06.03</td>
+                                <td align="center">
+                                    17,126
+                                </td>
+                                <td align="center">18,836 / 10,788</td>
+                                <td align="center">158,400+</td>
+                                <td align="center">50,500+</td>
+                                <td align="center">75,600+</td>
+                                <td align="center">Web<br />
+(SQL Server 2012)</td>
+                                <td align="center">18,000+ linked files;<br />17,000+ citations;<br />150,000+ unique digital pages</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    11.0<br />(15 releases)
+                                </td>
+                                <td align="center">2016.08.07</td>
+                                <td align="center">
+                                    15,170
+                                </td>
+                                <td align="center">16,012 / 8750</td>
+                                <td align="center">135,100+</td>
+                                <td align="center">50,500+</td>
+                                <td align="center">75,600+</td>
+                                <td align="center">Web<br />
+(SQL Server 2012)</td>
+                                <td align="center">15,000+ citations;<br />16,000+ linked files</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    10.0
+                                </td>
+                                <td align="center">2013.06.04</td>
+                                <td align="center">
+                                    14,668
+                                </td>
+                                <td align="center">12,842 / 7364</td>
+                                <td align="center">108,600+</td>
+                                <td align="center">50,500+</td>
+                                <td align="center">67,500+</td>
+                                <td align="center">Web<br />
+(SQL Server 2012)</td>
+                                <td align="center">100,000+ linked pages;<br />50,000+ taxon annotations;<br />50,000+ figure annotations</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    9.0
+                                </td>
+                                <td align="center">2011.05.10</td>
+                                <td align="center">
+                                    13,289
+                                </td>
+                                <td align="center">10,180 / 5749</td>
+                                <td align="center">84,800+</td>
+                                <td align="center">35,600+</td>
+                                <td align="center">32,700+</td>
+                                <td align="center">Web<br />
+(SQL Server 2008)</td>
+                                <td align="center">first version with taxon and figure annotations;<br />10,000+ linked files</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    8.0
+                                </td>
+                                <td align="center">2009.04.07</td>
+                                <td align="center">
+                                    11,876
+                                </td>
+                                <td align="center">7765 / 4342</td>
+                                <td align="center">58,400+</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(SQL Server 2008)</td>
+                                <td align="center">first Lacewing Digital Library (LDL) version</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.06
+                                </td>
+                                <td align="center">2006.09.07</td>
+                                <td align="center">
+                                    11,442
+                                </td>
+                                <td align="center">2020 / 2010</td>
+                                <td align="center">21,600+</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.05
+                                </td>
+                                <td align="center">2006.02.01</td>
+                                <td align="center">
+                                    11,287
+                                </td>
+                                <td align="center">1020 / 1010</td>
+                                <td align="center">12,100+</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.04
+                                </td>
+                                <td align="center">2005.05.12</td>
+                                <td align="center">
+                                    11,149
+                                </td>
+                                <td align="center">529 / 519</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.03
+                                </td>
+                                <td align="center">2004.02.20</td>
+                                <td align="center">
+                                    10,658
+                                </td>
+                                <td align="center">58 / ca. 48</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.02.01
+                                </td>
+                                <td align="center">2003.07.03</td>
+                                <td align="center">
+                                    10,293
+                                </td>
+                                <td align="center">ca. 10 / ca. 10</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">first version with linked digital files</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.02
+                                </td>
+                                <td align="center">2003.06.17</td>
+                                <td align="center">
+                                    10,293
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.01
+                                </td>
+                                <td align="center">2003.02.??</td>
+                                <td align="center">
+                                    10,085
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">10,000+ citations</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    7.00
+                                </td>
+                                <td align="center">2002.12.13</td>
+                                <td align="center">
+                                    9882
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(FileMaker 5.5)</td>
+                                <td align="center">first database-driven web version</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    6.2
+                                </td>
+                                <td align="center">2001.02.27</td>
+                                <td align="center">
+                                    9542
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(ManagingGigabytes)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    6.1
+                                </td>
+                                <td align="center">1998.10.16</td>
+                                <td align="center">
+                                    8975
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(ManagingGigabytes)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    6.0
+                                </td>
+                                <td align="center">1997.12.??</td>
+                                <td align="center">
+                                    ca. 8600
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(ManagingGigabytes)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    5.0
+                                </td>
+                                <td align="center">1996.02.28</td>
+                                <td align="center">
+                                    ca. 8100
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Web<br />
+(Access / MS Word / HTML)</td>
+                                <td align="center">first HTML web version</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    4.0
+                                </td>
+                                <td align="center">1994.12.??</td>
+                                <td align="center">
+                                    7456
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Private Computer Printout & Web<br />
+(Rbase / MS Word / Gopher)</td>
+                                <td align="center">first on-line version</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    3.0
+                                </td>
+                                <td align="center">1994.06.??</td>
+                                <td align="center">
+                                    7236
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Private Computer Printout & Web<br />
+(Rbase / MS Word)</td>
+                                <td align="center">first databased version</td>
+                            </tr>
+                            <tr class="scroll-table-tr">
+                                <td align="center">
+                                    2.0
+                                </td>
+                                <td align="center">1989.05.??</td>
+                                <td align="center">
+                                    6444
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Private Computer Printout<br />
+(MS Word)</td>
+                                <td align="center">&ndash;</td>
+                            </tr>
+                            <tr class="scroll-table-tr" style="border-bottom:none;">
+                                <td align="center">
+                                    1.0
+                                </td>
+                                <td align="center">1988.05.??</td>
+                                <td align="center">
+                                    ca. 5500
+                                </td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">&ndash;</td>
+                                <td align="center">Private Computer Printout<br />
+(MS Word)</td>
+                                <td align="center">first numbered version</td>
+                            </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+        <div class=" headerAndFooter" style="margin-top:0;margin-left:0;margin-right:10px;border-top:2px solid #000">
+            <div style="margin-top:2px">
+                <a class="table-text-toggle" href="#"><span class="button"><img class="picts" src=/Content/Shared/icons/down.png title="Show legend"></span></a>
+                <span class="table-footer-text hide-text">
+                    <b><u>Columns</u></b>:
+                    <b><i>Citations</i></b> – the total number of reference citations contained in each version;
+                    <b><i>Digital Pages</i></b> – an estimate of the total number of unique digital pages contained in the unique linked files, calculated from page counts for individual publications contained in the Bibliography;
+                    <b><i>Figure Annotations</i></b> – the total number of figure annotations for each version;
+                    <b><i>Format</i></b> – the general presentation format of each version, and (below) its associated primary software program;
+                    <b><i>Linked Files</i></b> – the total number of digital files linked to each version and the number of unique publications represented in that total;
+                    <b><i>Notes</i></b> – notable version events and/or milestones;
+                    <b><i>Release Date</i></b> – the date on which each documented version of the Bibliography was released to the public Lacewing Digital Library web portal, in year.month.day format;
+                    <b><i>Taxon Annotations</i></b> – the total number of taxon annotations for each version;
+                    <b><i>Version</i></b> – the number associated with each documented version of the Bibliography; the “active datasets” line contains up-to-date data record counts for several columns (calculated programmatically from the current Bibliography datasets), these counts may correspond to the most recent documented version, or to subsequent undocumented dataset updates.
+                </span>
+            </div>
+        </div>
+        <div style="margin-right:17px;">
+            <p class="header-paragraph-2">
+                <b>
+                    <br />
+                    A Short History of the Bibliography of the Neuropterida
+                </b>
+            </p>
+            <p class="header-paragraph-1" align="justify">
+                Work on what  has become the  <i>Bibliography of the Neuropterida</i> (BotN) began in 1982. The earliest  version of the bibliography consisted of a 3x5 card set of neuropterid-related reference citations, which eventually grew to ca. 4000 type-written cards. With the increasing availability of personal microcomputers in the mid 1980's, all data from this card set were re-keyed as an ASCII text file in 1984 or 1985 and came to be managed as a suite of   word-processor files, first in MicroPro WordStar (running under the CP/M operating   system) and later in Microsoft Word (running under DOS and Windows). In late 1989 the then word-processor-based  citations were parsed into standardized bibliographic data fields using a Word macro and uploaded into a custom R:BASE 2.0 database, which was ported to R:Base 4.0 in ca. 1993. In mid 1996  the bibliography data files were migrated from R:BASE into   an early version of Microsoft Access. All subsequent management of the master data files underlying  the bibliography have utilized various  versions of Access (upgraded from Access 2003 to Access 2010 in August 2012). Beginning in 1994, a  series of publically-accessible versions of the bibliography have been made available on-line via the Internet. The digital technologies used to develop and deliver these versions have changed over time as databasing and Internet  technologies have evolved. Functionality improvements   and   resource growth in late versions the bibliography, together with the obsolescence of some previously-used development software, make it both inadvisable and impracticable to provide continued on-line access to most of the early versions of the bibliography. Brief notes for  many of the individual versions of the Bibliography are provided below.
+            </p>
+            <p class="header-paragraph-1" align="justify">
+                <span class="header-paragraph-2"><b>Version Notes</b></span>
+            </p>
+            <hr class="rule1">
+            <p class="header-paragraph-2"><b>Version 11.0 (July 2016):</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify"><i>Overview</i>: An interactive web site with the following page suite:  9 fixed html pages (Acknowledgments, Citation, Contacts, Cooperating Organizations, Introduction, Log In/ Logged In, Main, References, Versions), two search interface pages (Simple Search,  Advanced Search), four  interactively-generated  pages (Search Results, Bibliographic Record, Figures, Taxa), and one dynamic help  page. The interactive/dynamic pages use csHtml from .NET and Javascript to query and report data from a back-end Microsoft SQL Server 2012 database. <i>Bottom navigation bar elements</i> (11): Main, Introduction, Acknowledgments, Simple Search, Advanced Search, References, Citation, Contacts, Versions, Help, and Log In/Logged In. <i>Data tables</i> (5): tblLdlBibNeur (main bibliography data), tblLdlBibNeurEDocs (digital file data), tblLdlBibNeurFigs (figure annotations file data), tblLdlBibNeurTaxa (taxon annotations file data), tblLdlHelp (help page data).</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access 2010 database (.accdb). <i>Post-processing and web delivery</i>: Project data   generated and downloaded  as  tables in an Access database, then imported to a Microsoft SQL Server 2012 database using Microsoft SQL Server Management Studio 11, then linked using .NET and csHtml scripts to a custom web interface. </p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  6 July 2016. <i>New release date</i>: 8 July 2016. <i>Citations</i>: 15,170 total (502 new, many additional updated). <i> Digital files</i>: 16,012 total (3170 new), 8750 unique works (1386 new), 135,100+ unique pages (26,500 new). <i><i>Annotations</i></i>: 50,585 taxa (0 new), 75,604 figures (8016 new). <i>Original taxon name accounts in linked files</i>: 9369 available species-group names  (95.7% of 9786  names), 1575 available genus-group names (94.2% of 1671 names). <i>Last reference number</i>: r#15921. <i>Page Counts</i>: 48068 (Main), 52878 (Simple Search), 7070 (Advanced Search), on 7 July 2016. </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                Version 11.0 of the <i>Bibliography of the Neuropterida</i>  contains no major functionality updates from version 10.0. However, the back-end code was completely rewritten from scratch for the new version using Razor in csHtml in conjunction with the move of the LDL site to a new server. Many visual elements of the module---buttons, combo boxes, text boxes, tables, etc.---have also been upgraded to establish a new visual standard for the site.  Data updates for version 11.0 are summarized under “Notes” above.
+            </p>
+            <h4>Selected Page Archive </h4>
+            <p align="justify" class="indented-paragraph">
+            <p align="justify" class="indented-paragraph">
+                Fixed HTML pages: <a href=/Content/Shared/history/ver11/ver11archive-Main.pdf target="_blank">Main</a> | <a href=/Content/Shared/history/ver11/ver11archive-Introduction.pdf target="_blank">Introduction</a> | <a href=/Content/Shared/history/ver11/ver11archive-Acknowledgements.pdf target="_blank">Acknowledgments</a> | <a href=/Content/Shared/history/ver11/ver11archive-References.pdf target="_blank">References</a> | <a href=/Content/Shared/history/ver11/ver11archive-VersionHistory.pdf target="_blank">Version History</a>
+
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Search interface pages: <a href=/Content/Shared/history/ver11/ver11archive-SimpleSearch.pdf target="_blank">Simple Search</a> | <a href=/Content/Shared/history/ver11/ver11archive-AdvancedSearch.pdf target="_blank">Advanced Search</a>
+
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Sample interactive pages: <a href=/Content/Shared/history/ver11/ver11archive-SearchResults.pdf target="_blank">Search Results</a> | <a href=/Content/Shared/history/ver11/ver11archive-BibliographicRecord.pdf target="_blank">Bibliographic Record</a> | <a href=/Content/Shared/history/ver11/ver11archive-Taxa.pdf target="_blank">Taxa</a> | <a href=/Content/Shared/history/ver11/ver11archive-Figures.pdf target="_blank">Figures</a>
+
+
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 10.0 (June 2013):</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify"><i>Overview</i>: An interactive web site with the following page suite:  9 fixed html pages (Acknowledgments, Citation, Contacts, Cooperating Organizations, Introduction, Login, Main, References, Versions), two search interface pages (Simple Search,  Advanced Search), four  interactively-generated  pages (Search Results, Bibliographic Record, Figures, Taxa), and one dynamic help  page. The interactive/dynamic pages use ColdFusion scripts to query and/or report data from a back-end Microsoft SQL Server 2005 database. <i>Bottom navigation bar elements</i>: Main, Introduction, Acknowledgments, Simple Search, Advanced Search, References, Citation, Contacts, Versions, Help, and Login. <i>Data tables</i> (5): tblLdlBibNeur (main bibliography data), tblLdlBibNeurEDocs (digital file data), tblLdlBibNeurFigs (figure annotations file data), tblLdlBibNeurTaxa (taxon annotations file data), tblLdlHelp (help page data). This version contains no major functionality updates over version 9.0.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access 2010 database (.accdb). <i>Post-processing and web delivery</i>: HTML pages created in Dreamweaver. Project data   generated and downloaded  as  tables in an Access .accdb database, converted to an Access .mdb database,  ported to a Microsoft SQL Server Express Edition 9.0 database using Microsoft SQL Server Management Studio 10, then linked using ColdFusion scripts to a custom web interface. </p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  29 May 2013. <i>New release date</i>: 4 June 2013. <i>Citations</i>: 14,668 total (1379 new, 5525 updated). <i> Digital files</i>: 12,842 total (2662 new), 7364 unique works (1615 new), 108,664 unique pages (24,264 new). <i><i>Annotations</i></i>: 50,585 taxa (14,926 new), 67,588 figures (34,833 new). <i>Original taxon name accounts in linked files</i>: 8919 available species-group names  (92.1% of 9679  names), 1467 available genus-group names (90.3% of 1625 names). <i>Last reference number</i>: r#15373. <i>Page Counts</i>: 23908 (Main), 28217 (Simple Search), 3793 (Advanced Search), on 4 June 2013. </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                Version 10.0 of the <i>Bibliography of the Neuropterida</i>  contains no interface functionality updates from version 9.0. The emphasis for this version was the development of additional content. Substantial new content was developed in the following areas: citations (1379 new, 5525 updated), digital files (2662 new), taxon annotations (14,926 new), and figure annotations (34,833 new).
+            </p>
+            <h4>Selected Page Archive </h4>
+            
+            <p align="justify" class="indented-paragraph">
+                Fixed HTML pages: <a href=/Content/Shared/history/ver10/ver10archive-Main.pdf target="_blank">Main</a> | <a href=/Content/Shared/history/ver10/ver10archive-Introduction.pdf target="_blank">Introduction</a> | <a href=/Content/Shared/history/ver10/ver10archive-Acknowledgements.pdf target="_blank">Acknowledgments</a> | <a href=/Content/Shared/history/ver10/ver10archive-References.pdf target="_blank">References</a> | <a href=/Content/Shared/history/ver10/ver10archive-VersionHistory.pdf target="_blank">Version History</a>
+
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Search interface pages: <a href=/Content/Shared/history/ver10/ver10archive-SimpleSearch.pdf target="_blank">Simple Search</a> | <a href=/Content/Shared/history/ver10/ver10archive-AdvancedSearch.pdf target="_blank">Advanced Search</a>
+
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Sample interactive pages: <a href=/Content/Shared/history/ver10/ver10archive-SearchResults.pdf target="_blank">Search Results</a> | <a href=/Content/Shared/history/ver10/ver10archive-BibliographicRecord.pdf target="_blank">Bibliographic Record</a> | <a href=/Content/Shared/history/ver10/ver10archive-Taxa.pdf target="_blank">Taxa</a> | <a href=/Content/Shared/history/ver10/ver10archive-Figures.pdf target="_blank">Figures</a>
+
+
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 9.0 (May 2011):</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify"><i>Overview</i>: An HTML page suite consisting of 11 general  pages (Acknowledgments, Citation, Contacts, Cooperating Organizations, Figures, Introduction, Login, Main, References, Taxa, Versions), two search interface pages (Simple and Advanced), two search results pages (Search Results and Bibliographic Record), and one dynamic help  page. The search and results pages,  Figures and Taxa pages, and  dynamic help page use ColdFusion scripts to query and/or report data from a back-end Microsoft SQL Server 2005 database. <i>Bottom navigation bar elements</i>: Main, Introduction, Acknowledgments, Simple Search, Advanced Search, References, Citation, Contacts, Version History, Help, and Login. <i>Data tables</i> (5): tblLdlBibNeur (main bibliography data), tblLdlBibNeurEDocs (digital file data), tblLdlBibNeurFigs (figure annotations file data), tblLdlBibNeurTaxa (taxon annotations file data), tblLdlHelp (help page data).</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access 2003 database. <i>Post-processing and web delivery</i>: HTML pages created in Dreamweaver. Data tables downloaded  from Access as text files,  ported to a Microsoft SQL Server 2005 database, then linked using ColdFusion scripts to a custom web interface.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  10 May 2011. <i>Release date</i>: 10 May 2011. <i>Citations</i>: 13,289 total; 1413 new, 5042 updated. <i> Digital files</i>: 10,180 total, 2415 new, 5749 unique works, 84,400+ unique pages. <i><i>Annotations</i></i>: 35,659 taxa, 32,755 figures. <i>Original taxon name accounts in linked files</i>: 8066 available species-group names  (84.8% of 9506  names), 1308 available genus-group names (82.2% of 1592 names). <i>Last reference number</i>: r#13922. <i>Page Counts</i>: 12879 (Main), 12815 (Simple Search), 2262 (Advanced Search), on 10 May 2011. <i>General</i>: This was the first implementation of the Bibliography to contain Taxa and Figure annotations, and the first version to contain more that 10,000 linked digital files/sites.</p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                Version 9.0 of the <i>Bibliography of the Neuropterida</i> builds on the interface  created for version 8.0, and maintains the same look and feel. New functionality elements include: (1) first introduction of the Taxa page, for taxon annotations [linked from the Bibliographic Record page]; (2) first introduction of the Figures page, for figure annotations [linked from the Bibliographic Record page]; (3) expansion of the LDL "Printable View" concept to include buttons on Taxa, Figures, and Search Results pages; (4) expansion of the LDL "Email Comments/Corrections" concept to include buttons on the Taxa and Figures pages; (5) addition of Taxa and Figures buttons on the Taxa and Figures pages to allow toggeling between those pages for a specific reference; (6) expansion of the Restrictions options on the Simple and Advanced Search pages to include the new options Figure Taxon, Figure Subject, and Taxon Citation, also enabling searching in just these 'restrictions' fields without corresponding data in the Search By fields; (7) functionality of opening reference files  off the Bibliographic Record, Taxa and Figures pages modified to open files in a new copy/tab of browser, rather than in the active Bibliography module window.
+            </p>
+            <h4>Selected Page Archive </h4>
+
+            <p align="justify" class="indented-paragraph">
+                Fixed HTML pages: <a href=/Content/Shared/history/ver9/ver9archive-main.pdf target="_blank">Main</a> | <a href=/Content/Shared/history/ver9/ver9archive-introduction.pdf target="_blank">Introduction</a> | <a href=/Content/Shared/history/ver9/ver9archive-acknowledgments.pdf target="_blank">Acknowledgments</a> | <a href=/Content/Shared/history/ver9/ver9archive-references.pdf target="_blank">References</a> | <a href=/Content/Shared/history/ver9/ver9archive-versionhistory.pdf target="_blank">Version History</a>
+
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Search interface pages: <a href=/Content/Shared/history/ver9/ver9archive-simplesearch.pdf target="_blank">Simple Search</a> | <a href=/Content/Shared/history/ver9/ver9archive-advancedsearch.pdf target="_blank">Advanced Search</a>
+
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Sample interactive pages: <a href=/Content/Shared/history/ver9/ver9archive-searchresults.pdf target="_blank">Search Results</a> | <a href=/Content/Shared/history/ver9/ver9archive-bibliographicrecord.pdf target="_blank">Bibliographic Record</a> | <a href=/Content/Shared/history/ver9/ver9archive-taxa.pdf target="_blank">Taxa</a> | <a href=/Content/Shared/history/ver9/ver9archive-figures.pdf target="_blank">Figures</a>
+
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2">
+                <b>Version 8.0 (April 2009):</b>
+            </p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify"><i>Overview</i>: An HTML page suite consisting of nine general  pages (Main, Introduction, Acknowledgments, Cooperating Organizations, References, Citation, Contacts, Version History, Login), two search interface pages (Simple and Advanced), two search results pages (Search Results and Bibliographic Record), and one dynamic help  page. The search and results pages, and the dynamic help page, use ColdFusion scripts to query and report data from a back-end Microsoft SQL Server 2005 database. <i>Bottom navigation bar elements</i>: Main, Introduction, Acknowledgments, Simple Search, Advanced Search, References, Citation, Contacts, Version History, Help, and Login. <i>Data tables</i>: tblLdlBibNeur (main bibliography data), tblLdlBibNeurEDocs (digital file data), tblLdlHelp (help page data).</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access 2003 database. <i>Post-processing and web delivery</i>: HTML pages created in Dreamweaver. Bibliography  and help datasets downloaded  from Access as a text file,  ported to a Microsoft SQL Server 2005 database, then linked using ColdFusion scripts to a custom web interface.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  6 April 2009. <i>Release date</i>: 6 April 2009. <i>Citations</i>: 11,876 total; 434 new, 3242 updated. <i>Digital files/links</i>: 7765 total, 5745 new, 4342 unique works [2790 public], &gt;58,400 literature pages. <i>Original taxon name accounts in linked files</i>: 7262 available species-group names  (77.3% of 9389  names), 1140 available genus-group names (74.2% of 1537 names). <i>Last reference number</i>: r#12446. <i>Page Counts</i>: 0 (Main), 0 (Simple Search), 0 (Advanced Search), on 7 April 2009. <i>General</i>: This was the first implementation of the Bibliography to be delivered as a module of the Lacewing Digital Library web portal.</p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                Version 8.0 of the <i>Bibliography of the Neuropterida</i>  incorporates major updates in both content (see above) and design. The interface of the bibliography  has been completely redesigned to accomplish several objectives: (1) to integrate the bibliography into the Lacewing Digital Library [LDL; previously called the Global Lacewing Digital Library (GLDL)] web portal,  (2) to augment  bibliography search functionality,  (3) to display additional data in bibliographic records,  (4) to enhance access to linked digital files, and  (5) to accommodate  the development of a  bibliography help page. Users familiar with the 7.x versions of the bibliography will notice many interface and functionality changes in version 8.0. Some of the more significant  of these changes are discussed below.
+            </p>
+            <p align="justify" class="indented-paragraph">
+                The Bibliography home page has been  greatly simplified, with most of its former content  redistributed across a series of new pages with self-explanatory titles: Introduction, Acknowledgments, References, Citation, Contacts, and Version History. The contents of  these  pages have been   developed to reflect their names and to bring their texts up to date with the current version. The Version History page, in particular, has been augmented  to provide additional documentation about the growth and development of the Bibliography.
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Bibliography search functionality has been improved by providing separate 'Simple' and 'Advanced' search pages. Functionality improvements incorporated into the new search pages include additional search fields, more flexible searching within database fields, and the ability to  narrow search returns  by selecting   'restriction' criteria (such as language or the presence of linked digital files).
+                The  process of accessing  bibliographic records has been broken into  two steps. The first step, reported on the Search Results page, presents a tabular listing of synoptic citation records  that match the  user-entered search criteria. The second step, reported on the Bibliographic Record page, displays short and long bibliographic records for an individual work, and provides direct access to any  digital files available for that work through the Bibliography. Bibliographic Record pages are reached through links displayed on Search Results pages. Although this two-step process is slower than the one-step process used in earlier versions of the bibliography, it is the standard search process used in digital library catalogues and most other on-line bibliographic resources. A two-step search process has been  implemented here in order to accommodate  display of a larger number of Bibliographic Record data fields, including potential access to multiple digital files pertaining to a single work, and to  address broader issues associated with growth  in the citation base underlying the bibliography.
+            </p>
+            <p align="justify" class="indented-paragraph">
+                A new, interactive, Help page has  been added to the bibliography with this version. This page provides  information on the general  content of each  interface page in the bibliography, and, for the Search, Search Results and Bibliographic Record pages, provides detailed information on individual page elements. Also new to this version is a Login page, which provides access to restricted features of the bibliography. Access to these features is currently restricted to the bibliography's developers.
+            </p>
+            <p align="justify" class="indented-paragraph">
+                The  navigational features of the bibliography's interface have been significantly enhanced in  version 8.0.  A new  navigation bar,   containing links to most of the pages noted above, has been added to the bottom of all  bibliography pages, and functions  as the primary  means of navigation within the redesigned site. A second navigation bar, the 'breadcrumbs' bar, located in the upper left of the bibliography screen, is also available to provide  backward access through the site hierarchy of  the bibliography.
+            </p>
+            <p align="justify" class="indented-paragraph">
+                The new content, redesigned interface and enhanced functionality of  version 8.0 will hopefully improve access to neuropterid literature by bibliography users, while at the same time providing bibliography developers with  a more advanced digital platform  that can better support future development and integration of the bibliography with other Lacewing Digital Library components.
+            </p>
+            <h4>Selected Page Archive </h4>
+            <p align="justify" class="indented-paragraph">
+                Fixed HTML pages: <a href=/Content/Shared/history/ver8/bibmaincontent.pdf target="_blank">Main</a> | <a href=/Content/Shared/history/ver8/introduction.pdf target="_blank">Introduction</a> | <a href=/Content/Shared/history/ver8/acknowledgments.pdf target="_blank">Acknowledgments</a> | <a href=/Content/Shared/history/ver8/references.pdf target="_blank">References</a> | <a href=/Content/Shared/history/ver8/verhistory.pdf target="_blank">Version History</a>
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Search interface pages: <a href=/Content/Shared/history/ver8/searchsimple.pdf target="_blank">Simple Search</a> | <a href=/Content/Shared/history/ver8/searchadvanced.pdf target="_blank">Advanced Search</a>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+
+            <p class="header-paragraph-2">
+                <b>Version 7.06 (September 2006)</b>
+            </p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.05. <i>New functionality</i>: Full file name and 'complete' flag added to E-doc(s) link texts on results page.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access 2003 database. <i>Post-processing and web delivery</i>: As for version 7.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  7 September 2006. <i>Release date</i>: 7 September 2006. <i>Citations</i>: 11,442 total; 155 new, 2344 updated. <i>Digital files</i>: 2020 total, 1000 new, &gt;21,600 literature pages. <i>Original taxon name accounts in linked files</i>: 4144 available species-group names  (45.1% of 9193  names), 652 available genus-group names (43.1% of 1511 names). <i>Last reference number</i>: r#11815. <i>User sessions</i>: 6222-11532 for 8/9/2006 to 7/4/2009 (942 days).</p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.06 posted 7.ix.2006 -- A new version incorporating 155 new and   2344 updated reference citations, and 1000 new PDF files, that have been   recorded in the Bibliography of the Neuropterida database through 7 September   2006.&nbsp;For this new version of the bibliography the primary focus has been to   increase the number of PDFs of papers available as direct links from   Bibliography citations. The 1000 new digital files linked to this version nearly   doubles the number of digital files available through the Bibliography (now 2020   total files), and represents an additional 9500 pages of neuropterid literature   available conveniently on-line. More than 21,600 pages of neuropterid literature   are now available from the Bibliography. A particular emphasis has been placed   on making available copies of papers that contain the original descriptions of   new species and higher taxa. The files now available from the Bibliography   contain the original descriptions of 45.1% of all neuropterid species, and 43.1%   of neuropterid genera.
+            </p>
+            <p align="justify" class="indented-paragraph">90% or more of the known neuropterid-related papers published in each of the   following additional journals are now available as digital files through the   Bibliography:&nbsp;</p>
+            <p align="justify" class="indented-paragraph">
+                Annali del Museo Civico di Storia Naturale Giacomo Doria<br />
+                Arkiv för   Zoologi<br />
+                Boletín de la Sociedad Entomologica de   España<br />
+                Entomologist<br />
+                Memorie dell'Accademia Pontifica dei Nuovi Lincei,   Rome<br />
+                Notes from the Leyden Museum<br />
+                Revista de la [Real] Academia de   Ciencias Exactas Fisico-Quimicas y Naturales de Zaragoza<br />
+                Transactions of the   American Entomological Society
+            </p>
+            <p align="justify" class="indented-paragraph">This release of the Bibliography also makes available for the first time   complete digital facimiles of a number of important neuropteran monographs,   including: </p>
+            <p align="justify" class="indented-paragraph">Hagen, H. A. 1861. Synopsis of the Neuroptera of North America, with a list   of the South American species. Smithsonian Miscellaneous Collections 4(1):xx +   1-347. [BotN r#455]</p>
+            <p align="justify" class="indented-paragraph">Rambur, [J.] P. 1842. Histoire Naturelle des Insectes, Névroptères. Librairie   encyclopédique de Roret. Fain et Thunot, Paris. [xviii]+534 pp. [BotN   r#5314]</p>
+            <p align="justify" class="indented-paragraph">Tjeder, B. 1966. Neuroptera-Planipennia. The Lace-wings of Southern Africa.   5. Family Chrysopidae. Pp. 228-534 in South African Animal Life, B. Hanström, P.   Brinck and G. Rudebec, eds. Vol. 12. Swedish Natural Science Research Council,   Stockholm. [BotN r#6049]</p>
+            <p align="justify" class="indented-paragraph">Tjeder, B. 1967. Neuroptera-Planipennia. The Lace-wings of Southern Africa.   6. Family Nemopteridae. Pp. 290-501 in South African Animal Life, B. Hanström,   P. Brinck and G. Rudebec, eds. Vol. 13. Swedish Natural Science Research   Council, Stockholm. [BotN r#6050</p>
+            <p align="justify" class="indented-paragraph">Walker, F. 1853. List of the specimens of neuropterous insects in the   collection of the British Museum. Part II.--(Sialides--Nemopterides). British   Museum, London. [iii] + 193-476. [BotN r#6194]</p>
+            <p align="justify" class="indented-paragraph">
+                Working out of the interlibrary services office of the Texas A&amp;M   University Libraries, Mr. Franklin Leung has continued to coordinate a group of   student workers (including David Chaszar and Wilson Lu) in producing raw PDF   files for the project; and Shawn Hanrahan has continued in his role as the   primary "fact checker" of the files. My thanks again to them for their efforts   on the project."
+            </p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 7.05 (February 2006)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.04. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  27 January 2006. <i>Release date</i>: 1 February 2006. <i>Citations</i>: 11,287 total; 139 new, 1440 updated. <i>Digital files</i>: 1020 total, 491 new, &gt;12,100 literature pages. <i>Original taxon name accounts in linked files</i>: 2498 available species-group names  (27.3% of 9136  names), 452 available genus-group names (30.1% of 1500 names). <i>Last reference number</i>: r#11744. <i>User sessions</i>: 4802-6221 for 2/2/2006 to 7/9/2006 (219 days).
+                <!------------------------------------------------------------------------------------------------>
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.05 posted 1.ii.2006 -- A new version incorporating 139 new and   1440 updated reference citations, and 491 new PDF files, that have been recorded   in the Bibliography of the Neuropterida database through 27 January 2006.&nbsp;This   version of the Bibliography has reached an important new milestone in its   transformation into a true "digital library". Version 7.05 contains links to   digital files (mostly PDFs) of 1020 different neuropterid-related publications,   thus surpassing the 1000-paper mark. These digital files provide on-line access   to &gt;12,100 pages of text and figures, and include the original descriptions   of 2498 species-group names (27.3% of 9136 total available neuropterid   species-group names) and 452 genus-group names (30.1% of 1500 total available   neuropterid genus-group names). In the next year, we hope to link digital files   for an additional 500-1000 papers.
+            </p>
+            <p align="justify" class="indented-paragraph">&nbsp;&nbsp;&nbsp; 90% or more of the known neuropterid-related papers published in each of   the following journals are now included as digital files in the   Bibliography:&nbsp;</p>
+            <p align="justify" class="indented-paragraph">
+                Annals and Magazine of Natural History<br />
+                Australian Journal of Zoology,   Supplementary Series<br />
+                Broteria [including: Brotéria (Ciências Naturais) and   Brotéria (Zoológica)]<br />
+                Bulletin of the Museum of Comparative   Zoology<br />
+                Entomologist's Monthly Magazine<br />
+                Proceedings of the Linnean Society   of New South Wales<br />
+                Memorias de la Real Academia de Ciencias y Artes de   Barcelona<br />
+                Mitt[h]eilungen aus dem Naturwissenschaftlichen Verein für   Neu-Vorpommern und Rugen<br />
+                Psyche<br />
+                Stettiner Entomologische   Zeitung<br />
+                Zeitschrift der Arbeitsgemeinschaft Österreichischer Entomologen
+            </p>
+            <p align="justify" class="indented-paragraph">&nbsp;&nbsp;&nbsp; Files from many other journals are also represented in the BotN, but not   yet at the 90+% level for neuropterid-related papers.</p>
+            <p align="justify" class="indented-paragraph">&nbsp;&nbsp; Our ability to extend the Bibliography into a digital library has been   made possible by funding from the U.S. National Science Foundation as part of   the Global Lacewing Digital Library project. This funding has allowed us to hire   a team of dedicated student workers to produce and check large numbers of new   PDF files. I would like to thank here all of the following students who have   worked on this project over the past 18 months (listed alphabetically): David   Chaszar*, Lisa Doty, Sukhtej Gill, Shawn Hanrahan*, Akash Krisna, Franklin   Leung*, Wilson Lu* [current members of the PDF production/processing team as of   the posting of Version 7.05 are asterisked (*)]. The diligent attention of this   team to the many details involved in producing PDF files from original source   materials are very much appreciated and are resulting in a high-quality research   resource for the neuropterological community that will last far into the   future.&nbsp;</p>
+            <p align="justify" class="indented-paragraph">
+                &nbsp;&nbsp;&nbsp; My special thanks to Mr. Franklin Leung, who has helped to coordinate the   activities of the several student workers who are actively scanning and   producing the PDF files. I would also like to thank Dr. Lan Yang, director of   the interlibrary services office of the Texas A&amp;M University Libraries for   her librarianship and her assistance with student worker activities associated   with the project."
+            </p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 7.04 (May 2005)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.03. For new functionality see What's New below.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  11 May 2005. <i>Release date</i>: 12 May 2005. <i>Citations</i>: 11,149 total; 491 new, 2653 updated. <i>Digital files</i>: 529 total, 491 new. <i>Last reference number</i>: r#11593. <i>User sessions</i>: 3447-4801 for 13/5/2005 to 1/2/2006 (265 days).<!------------------------------------------------------------------------------------------------>
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.04 posted 12.v.2005 -- A new version incorporating 491 new and   2653 updated reference citations, and 471 new PDF files, that have been recorded   in the Bibliography of the Neuropterida database through 11 May 2005.&nbsp;
+            </p>
+            <p align="justify" class="indented-paragraph">This new version of the Bibliography is being posted to precede the 9th   International Symposium on Neuropterology, to be held next month in Ferrara,   Italy. In addition to its new and updated records, version 7.04 contains a large   number of new PDF files linked to the Bibliography for the first time. The   majority of these files have been produced with funding from the U.S. National   Science Foundation as part of the "Global Lacewing Digital Library" grant   awarded to the author in 2004. The new PDFs include most (or all) of the known   Neuropterida-related publications in the following journals: (1) Australian   Journal of Zoology, (2) Australian Journal of Zoology, Supplementary Series, (3)   Entomologist's Monthly Magazine, (4) Psyche and (5) Florida Entomologist. A   variety of miscellaneous papers from many other serials are also included. The   529 PDFs now linked to the Bibliography represent 4.7% of the 11,149 references   cited in version 7.04. My thanks go out to all of the authors, editors and   publishers who have generously given their permissions to permit the PDFs of   this literature to be delivered to the global neuropterological community   through the Bibliography. We are now actively producing and obtaining additional   PDFs for linking to future versions of the Bibliography. Over the next two years   our goal is to link a total of 2000-3000 papers to the Bibliography that will   contain 80-90% of the primary taxonomic literature of world neuropterid species.   To help us reach this goal, please continue to send me citations and reprints   (print, and if available, digital) of your new neuropterid works.</p>
+            <p align="justify" class="indented-paragraph">A note for those who may be interested in printing copies of papers from the   Bibliography ... For each of the papers being digitized as part of the Global   Lacewing Digital Library (GLDL) grant project we are creating two PDFs of each   paper. The first of these is based on a high-resolution (600 dpi) scan of each   paper. These files will be good for printing, but are not searchable. The second   PDF has lower resolution (i.e., it looks more "grainy" on the screen), and thus   will give a poorer print, but is searchable (if you are using one of the more   recent versions of Adobe Acrobat, you can search for specific text by clicking   on the "Search" button when you are viewing the file in Acrobat). Unfortunately,   for version 7.04 of the Bibliography, only the lower-quality, searchable, files   have been linked up. I'll link up the higher-quality files in a future version   after I figure out a convenient way to display multiple files for each cited   reference. So, if you want better-quality prints of GLDL-produced files, you   might want to wait before you start making lots of prints. Please note that   these comments pertain only to those files that we are producing as part of the   GLDL grant. The Bibliography also contains a variety of files derived from other   sources, e.g., publisher "PDF reprints", and various files and scans sent to me   by different authors. Those files are of widely differing and uncontrolled   (uncontrollable...) quality and may or may not print well. GLDL-grant-produced   files can be distinguished from other files by their filenames. An explanation   of this requires a knowledge of the file naming scheme adopted for the   Bibliography. The general naming scheme is as follows</p>
+            <p align="justify" class="indented-paragraph">Sample Filenames: navas1913ref569m-1393.pdf, navas1913ref569s-1394.pdf,   oswald1998ref9236-532.pdf</p>
+            <div align="left">
+                <table style="width: 50%; margin-left: 0;">
+                    <tbody>
+                        <tr>
+                            <td align="right" width="39%">Filename Part:</td>
+                            <td align="middle" width="10%">1</td>
+                            <td align="middle" width="9%">2</td>
+                            <td align="middle" width="9%">3</td>
+                            <td align="middle" width="9%">4</td>
+                            <td align="middle" width="5%">5</td>
+                            <td align="middle" width="4%">6</td>
+                            <td align="middle" width="9%">7</td>
+                            <td align="middle" width="5%">8</td>
+                            <td align="middle" width="8%">9</td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="39%">Sample Expanded Filename:</td>
+                            <td align="middle" width="10%">navas</td>
+                            <td align="middle" width="9%">1913</td>
+                            <td align="middle" width="9%">ref</td>
+                            <td align="middle" width="9%">569</td>
+                            <td align="middle" width="5%">m</td>
+                            <td align="middle" width="4%">-</td>
+                            <td align="middle" width="9%">1393</td>
+                            <td align="middle" width="5%">.</td>
+                            <td align="middle" width="8%">pdf</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p align="justify" class="indented-paragraph">
+                Filename Parts:<br />
+                (1, required) first author surname [all lower case, no   spaces, no diacritical marks],<br />
+                (2, required) nominal year of publication [the   "imprint" year, not necessarily the true year of publication],<br />
+                (3, required)   "ref" [short for "reference"],<br />
+                (4, required) Bibliography of the Neuropterida   (BotN) reference number [i.e., the BotN "r#"],<br />
+                (5, optional) file code   [currently one of the following:<br />
+                &nbsp;&nbsp;&nbsp; (absent), indicates a miscellaneous,   non-GLDL-grant produced file;<br />
+                &nbsp;&nbsp;&nbsp; "m" (short for "master") indicates a   GLDL-grant produced master file derived from a 600 dpi black and white scan or a   300 dpi color scan;<br />
+                &nbsp;&nbsp;&nbsp; "s" (short for "searchable") indicates a lower   quality GLDL-grant produced file searchable in Adobe Acrobat],<br />
+                (6, required)   separator dash ["-"],<br />
+                (7, required) an arbitrary, unique, digital file number   [this number is assigned when file data are entered into the BotN   database],<br />
+                (8, required) separator period ["."],<br />
+                (9, required) filename   extension [typically "pdf", but may be something else].
+            </p>
+            <p align="justify" class="indented-paragraph">
+                Thus, the higher-quality GLDL-grant produced files better adapted for   printing will be indicated by an "m" in filename position 5, lower quality   searchable files will be indicated by an "s" in the same position. Absence of a   letter in this position indicates a file of unknown relative printing quality."
+            </p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 7.03 (February 2004)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.02. For new functionality see What's New below. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  20 February 2004. <i>Release date</i>: February 2004. <i>Citations</i>: 10,658 total; 365 new, 2126 updated. <i>Digital files</i>: 58 total, ca. 48 new. <i>Last reference number</i>: r#11069. <i>User sessions</i>: 1896-3446 for 21/2/2004 to 12/5/2005 (447 days).<!------------------------------------------------------------------------------------------------>
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.03 -- A new version incorporating 365 new and 2126 updated   references recorded in the Bibliography database through 20 February 2004. This   version includes functionality on the search page for "Notes" field searching   (this allows searching for text in the various notes data given in many   citations, including general notes, dating notes, "Neuropterida parts" notes,   etc.) and for linking and displaying PDF files (with PDF reader software   installed on your computer) of some papers cited in the Bibliography. These two   functionality elements were first&nbsp;implemented in version 7.02.01 posted 3 July   2003, though at that time only 5-10 "test" PDF files were linked to the   Bibliography. Version 7.03 marks the first concerted effort to begin linking and   distributing PDF files via the Bibliography web site. A total of 58 such files   are linked to this version of the Bibliography. The most important set of files   linked in this group is a nearly complete set of PDF files of the papers   published by Longinos Navás in the Spanish serial <em>Revista de la Real   Academia de Ciencias Exactas Fisicas y Naturales de Madrid</em>. These PDFs   were generously provided to the Bibliography project by Prof. Dr. Pedro   Garcia-Barreno and Leticia de las Heras of the Real Academia de Ciencias   Exactas, Físicas y Naturales, Madrid.
+            </p>
+            <p align="justify" class="indented-paragraph">As the Bibliography continues to extent is functionality and usefulness   through the provision of direct access of PDF files of neuropterid literature, a   few words on the digital file posting policy of the Bibliography project may be   in order. To meet its legal and moral obligations to publishers and authors, the   Bibliography project will not knowingly link digital copies of papers in   violation of copyright protections or against the wishes of individual authors.   To ensure that digital files are properly posted, we will seek appropriate   permissions from extant publishers and living authors prior to posting copies   their works. It is gratifying to note here that the responses of both   individuals and publishers have been overwhelmingly positive in supporting the   initiative of the Bibliography of the Neuropterida project to make the world   literature on lacewings and their allies both freely and openly available on the   web. Between June 2003 and&nbsp;20 February 2004,&nbsp;104 neuropterist authors have   granted permissions to post digital copies of all (or substantially all) of   their past and future neuropterid-related publications on the Bibliography,   and&nbsp;the publishers of&nbsp;72 journals have provided similar permissions. To provide   special acknowledgement of the latter, which generally hold legal copyrights on   the materials published in their journals, a new page listing Collaborating   Societies and Publishers has been added to version 7.03 of the Bibliography web   site. Please join me in expressing appropriate appreciation to these societies   and publishers for supporting the Bibliography project.</p>
+            <p align="justify" class="indented-paragraph">I would like to express my appreciation to the following individuals for   there special contributions to the current version of the Bibliography:</p>
+            <p align="justify" class="indented-paragraph">(1) John RUBERSON. Last year John agreed to help provide citation coverage   for the Bibliography in the area of biological control and applied   Neuropterology. This year he provided me with his first list of references,   which added ca. 75 new citations to the Bibliography.</p>
+            <p align="justify" class="indented-paragraph">(2) Agostino LETARDI. Agostino is one of the steadiest and most long-standing   collaborators of the Bibliography project. This year Agostino provided me with   his 10th (!)&nbsp;list of additions/corrections (his first was way back in 1996, I   think). Agostino, a special thanks to you for your long-time support and   continuing interest in the Bibliography project.</p>
+            <p align="justify" class="indented-paragraph">(3) Vladimir MAKARKIN. The Bibliography has always strived to be global in   scope, but there are certain languages where this presents special problems for   me. Russian is one of these. Noting this, it is a great pleasure to note   Vladimir's&nbsp;recent contributions in helping to upgrade a broad range of Russian   language citations in the Bibliography. For version 7.02 Vladimir provided   additions/corrections for citations to the Russian paleoneuropterological   literature. For version 7.03 he has provide the first installment of similar   additions/corrections for the Russian literature on living lacewings. In   particular, he has provided a large number of transliterated and translated   Russian article titles,&nbsp;book titles, and journal names that have greatly   improved the citations of many Bibliography references to Russian-language   publications.</p>
+            <p align="justify" class="indented-paragraph">(4) ÁBRAHÁM Levente. Levente has provided the Bibliography project with a   nearly complete set of digital copies of his published neuropterid works to   date, and permission to post them. As soon as we also obtain publisher   permissions to post them, these copies will begin to show up as links in the   Bibliography.</p>
+            <p align="justify" class="indented-paragraph">(5) Michael OHL. Michael and I have had several flurries of e-mail   correspondence about the proper citation of a number of older neuropteran   works.&nbsp;His access to the excellent libraries of the Berlin Museum, and his   interest and willingness to share information gleaned from those&nbsp;collections   have markedly improved the citations of a number of old and rare works that few   of us will have the pleasure to examine personally.</p>
+            <p align="justify" class="indented-paragraph">
+                Many other individuals have sent me reprints, photocopies, and/or personal   publication lists. Thank you all. Please continue to send me these material so   that I can continue to expand and improve the Bibliography."
+            </p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 7.02 (June 2003)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.01. For new functionality see What's New below. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  17 June 2003. <i>Release date</i>: June 2003. <i>Citations</i>: 10,293 total; 213 new, 1805 updated. <i>Digital files</i>: ca. 10 (version 7.02.01). <i>Last reference number</i>: r#10695. <i>User sessions</i>: 763-1895 for 18/6/2003 to 20/2/2004 (248 days). <i>General</i>: Version 7.02.01 (posted 3 July 2003) was the first version of the bibliography  to contain linked digital  literature files.
+                <!------------------------------------------------------------------------------------------------>
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.02&nbsp;-- A new version incorporating&nbsp;203 new and 1805&nbsp;updated   references.&nbsp;This version includes (for the first time) active links to the   e-mail addresses of "first authors" whose e-mail addresses are known to me. If   your e-mail address is not shown, or is incorrectly shown, for papers on which   you are the "first author", please send me your current e-mail address so that   it can be incorporated into future editions of the Bibliography. A&nbsp;special   thanks to Vladimir Makarkin for providing 13 pages of corrections and additions   to (mostly Russian) fossil neuropterid references for this version. Vladimir has   also agreed to serve as a Russian language collaborator, submitting new (and   old) Russian references for inclusion in the Bibliography, and providing input   to help standardize the presentation of citations to Russian-language works on   the Neuropterida.&nbsp;With the issuance of Bibliography Version 7.02,&nbsp;new   bibliographic data derived from the MacLeod Literature Collection, which passed   to me (John Oswald) after Ellis' death in 1997, have now been completely entered   into the Bibliography.&nbsp;New information from this collection -- particularly&nbsp;data   from early 20th century separates -- have substantially augmented the   Bibliography. Data from this collection have been slowly being added to the   Bibliography over the past several years, but the bulk of the new information   has only recently been incorporated into the on-line Bibliography in Versions   7.01 and 7.02."
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 7.01 (February 2003)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.0. For new functionality see What's New below. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 7.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  3 February 2003. <i>Release date</i>: February 2003. <i>Citations</i>: 10,085 total; 203 new, 2511 updated. <i>Last reference number</i>: r#10479. <i>User sessions</i>: 328-762 for 4/2/2003 to 17/6/2003 (134 days).</p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.01&nbsp;-- A new version incorporating 200+ new and 2500+ updated   references. New functionality in the version includes: (1) a "true date of   publication" field in square brackets [] following the nominal year of   publication; (2)&nbsp;synoptic "First Author" information, including&nbsp;[where known]:   title,&nbsp;full name, "go by" name,&nbsp;year of birth,&nbsp;year of death,&nbsp;sex and e-mail   address. Special thanks to Agostino Letardi and Robert Güsten for providing   accumulated lists of additions and corrections for this version.
+            </p>
+            <p align="justify" class="indented-paragraph">
+                <em>Format</em>:&nbsp;Queryable FileMaker Pro 5.5 database   implementation.<br />
+                <em>Citations</em>: 10,085 total,&nbsp;203 new,&nbsp;2511 updated;   Recorded through: 3.ii.2003"
+            </p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 7.00 (December 2002)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">An HTML page suite consisting of four general information pages, one search interface page, and one search results page. The search and results pages use FileMaker  scripts to query and report data from a back-end FileMaker Pro 5.5 database.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access 97 database. <i>Post-processing and web delivery</i>: HTML pages created in Microsoft Word. Bibliography  dataset downloaded  from Access as a text file,  ported to a FileMaker Pro 5.5 database, then linked using FileMaker scripts to a custom web interface.  <i>Server site</i>: Department of Entomology, Texas A&amp;M University, College Station, TX, USA.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  10 December 2002. <i>Release date</i>: December 2002. <i>Citations</i>: 9882 total; 340 new, 1241 updated. <i>Last reference number</i>: r#10257. <i>User sessions</i>: 1-327 ("user session" counter for  version 7.x series  started at 0 with version 7.0) for 10/12/2002 to 3/2/2003 (59 days).
+                <i>General</i>: This was the first version of the bibliography which queried a back-end database. Web pages: Home, Format Notes, Publishers, Search Tips, Search, Results.
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 7.0-- BotN version&nbsp;7.0 was posted on 13 December 2002. This new   version contains citations to a total of 9882 publications, including&nbsp;340 new   citations and&nbsp;1241 updated citations entered in the BotN database between 20   February 2001 and 10 December 2002. Version 7.0 is a totally new web   implementation of the Bibliography that takes advantage of the web-serving   capabilities of FileMaker Pro 5.5 database software. The data for version 7.0   are served live from a simple, six-field,&nbsp;FileMaker Pro database table&nbsp;that was   populated with data exported from the master Bibliography of the Neuroptera   database in Microsoft  Access. This change will provide for better control by the   author over the web-serving software used to deliver the online version of the   Bibliography, and should facilitate more regular updating of the Bibliography on   the web (version 7.0 is the first new web posting in 20 months). With the change   in web-delivery software, the look of the bibliography has changed somewhat,   although the basic functionality of the site remains quite similar. Thank you to   all who have used and provided feedback on the Bibliography, and to those who   have provided new citations for this update. A special thanks to Agostino   Letardi, who has continued to provided annual updates from&nbsp;Italian and general   European neuropterid literature."
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 6.2 (February 2001)</b>. </p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 6.0.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 6.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>:  19 February 2001. <i>Release date</i>: February 2001. <i>Citations</i>: 9542 total; 567 new, 691 updated. <i>Last reference number</i>: ca. r#9840. <i>General</i>: This  was a data-only update of version 6.1 and was the last   MG-based implementation of the bibliography.</p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 6.2-- BotN version 6.2 was posted on 27 February 2001. This new   version contains citations to a total of 9542 publications, including 567 new   citations and 691 updated citations entered in the BotN database between 15   October 1998 and 19 February 2001. Thanks to all of the Bibliography   collaborators who have provided new citations for this update. A special thanks   to Agostino Letardi, who has provided regular updates of Italian and general   European neuropterid literature over the past several years."
+
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 6.1 (October 1998)</b>. </p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">As for version 6.0.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify">As for version 6.0.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  14 October 1998. <i>Release date</i>: October 1998. <i>Citations</i>: ca. 8975 total; ca. 375 new. <i>Last reference number</i>: ca. r#9220. <i>General</i>: This  was a data-only update of version 6.0.
+                <!------------------------------------------------------------------------------------------------>
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "BotN Version 6.1 -- BotN version 6.1 was posted on 16 October 1998. This version   contains citations to 8975 publications (ca. 300 more than version 6.0) entered   in the BotN database through 14 October 1998. Thanks to all of the Bibliography   collaborators who provided new citations for this update!"
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 6.00 (December 1997)</b>.</p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">A  dynamic HTML interface implementing  search and display functionality on one screen with three resizable frames. The search  interface queries a  dataset indexed with ManagingGigabytes (MG) full-text indexing software.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Access database. <i>Post-processing and web delivery</i>: Bibliography text downloaded from Access as a text file and ported to ManagingGigabytes  full-text indexing software; data indexed in MG and linked to a custom, framed, web interface. <i>Server site</i>: indented-paragraphnter for the Study of Digital Libraries, Department of Computer Science, Texas A&amp;M University, College Station, TX, USA.</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>:  December 1997. <i>Release date</i>: December 1997. <i>Citations</i>: ca. 8600 total; ca. 500 new. <i>Last reference number</i>: ca. r#8790. <i>General</i>: This was the first  interactively searchable web version of the bibliography.
+                <!------------------------------------------------------------------------------------------------>
+                The web interface and back-end functionality of this version were developed and implemented by
+                Murtaza S. Sonaseth and Ravi Wijayaratne  as a group project for a graduate course in computer information storage and retrieval.
+            </p>
+            <h4>What's New </h4>
+            <p align="justify" class="indented-paragraph">
+                [Quoted from Version 7.06] "New Look &amp; Functionality -- Thanks to Murtaza S. Sonaseth and Ravi   Wijayaratne, Version 6 of the Bibliography of the Neuroptera sports a new look   and greatly increased functionality. Murtaza and Ravi undertook the further   development of the bibliography web site as special project for a course in   computer Information Storage and Retrieval. The results are dramatic. The   underlying data in the bibliography can now be searched by author, year, title,   serial or full citation (including dating and other miscellaneous notes) to   allow targeted recovery of particular records. Try searching on your favorite   taxon name or key word. Thanks Murtaza and Ravi! New Collaborators-- Lara Senior   has taken over from Peter McEwen as Subject   Collaborator for Economic Entomology. New Citations -- The latest version of   the bibliography contains approximately 8600 citations (8100 in Version 5; 7500   in Version 4). New Corrections -- In addition to new references, Version 6   contains numerous corrections, updates and modifications of individual citation   records scattered throughout the underlying data."
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 5.00 (February 1996)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">A  simple HTML page suite containing a  static HTML implementation of the bibliography. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: R:BASE 4.0 database. <i>Post-processing and web delivery</i>: Bibliography text downloaded from R:BASE as a text file and post-processed with a Word macro and Word-based HTML conversion tools to produce a formatted HTML document; introductory HTML pages produced with Word-based HTML tools. <i>Server site</i>: Department of Entomology, Texas A&amp;M University, College Station, TX, USA. </p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify">
+                <i>Data entry cutoff</i>: 17 December 1995. <i>Release date</i>: 28 February 1996. <i>Citations</i>: ca. 8100 total; ca. 650 new. <i>Last reference number</i>: r#8234. <i>General</i>: First  web version of the bibliography.
+                <!------------------------------------------------------------------------------------------------>
+            </p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 4.00 (December 1994)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">A text file Gopher  implementation of the bibliography. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: R:Base 4.0 database. <i>Post-processing</i>: Downloaded R:Base text file  post-processed with a Word macro to produce a formatted text document. <i>Internet delivery</i>: Made available on the Internet via the Gopher network protocol. <i>Server site</i>: California Academy of Sciences, San Francisco, CA, USA. </p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>: 18 December 1994. <i>Release date</i>: December 1994. <i>Citations</i>: ca. 7456 total; ca. 220 new. <i>Last reference number</i>: r#7590. <i>General</i>: First  version of the bibliography implemented on the Internet.</p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 3.00 (June 1994)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">A  manuscript computer printout of the bibliography used for personal reference and further bibliography development; several copies of this manuscript were distributed to  neuropterist colleagues for personal reference.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: R:Base 4.0 database. <i>Post-processing</i>: Downloaded R:Base text file  post-processed with a Word macro to produce a formatted, printable Word document. <i>Web delivery</i>: Not applicable (never delivered to web).</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>: 10 June 1994. <i>Release date</i>: June 1994. <i>Citations</i>: ca. 7236 total; ca. 792 new. <i>Last reference number</i>: r#7491. <i>General</i>: First publically-distributed version of the bibliography.</p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 2.00 (May 1989)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">A private, manuscript, computer printout of the bibliography used for personal reference and further bibliography development.</p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>:  Microsoft Word. <i>Web delivery</i>: Not applicable (never delivered to web).</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>: 23 May 1989. <i>Release date</i>: Not applicable (never publically released). <i>Citations</i>: ca. 6444 total; ca. 950 new. <i>Last reference number</i>: r#1243 / r#6444 (this version was printed before all citations were numbered; r#1243 is the last number that appears in the printout; r#6444 is the highest number subsequently applied to any citation appearing in this version). <i>General</i>: This manuscript version of the bibliography was printed  from 16 separate Word documents and printed to 552 pages in 12 point Courier type.</p>
+            </p>
+            <hr class="rule1" style=" border-top: 1px solid #000000">
+            <p class="header-paragraph-2"><b>Version 1.00 (May 1988)</b></p>
+            <h4>Product</h4>
+            <p class="indented-paragraph" align="justify">A private, manuscript, computer printout of the bibliography used for personal reference and further bibliography development. </p>
+            <h4>Software</h4>
+            <p class="indented-paragraph" align="justify"><i>Master data files</i>: Microsoft Word. <i>Web delivery</i>: Not applicable (never delivered to web).</p>
+            <h4>Notes</h4>
+            <p class="indented-paragraph" align="justify"><i>Data entry cutoff</i>: 24 May 1988. <i>Release date</i>: Not applicable (never publically released). <i>Citations</i>: ca. 5500 total. <i>General</i>: This was the first numbered version of the bibliography. It was printed  from 11 separate Word documents, each covering a portion of the alphabet, and printed to 393 pages in 12 point Courier type. This version had been preceded by several earlier printed, but unnumbered, manuscript versions of the bibliography. </p>
+        </div>
+    </div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66638549-10"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66638549-10');
+</script>
+
+
+
+    </main>
+
+    <footer>
+        
+    <nav>
+        <span class="module">Bibliography: </span>
+        <a href="Main" target="_top">Main</a>
+        | <a href=/Biblio/Introduction target="_top">Introduction</a>
+        | <a href=/Biblio/SimpleSearch target="_top">Simple Search</a>
+        | <a href=/Biblio/AdvancedSearch target="_top">Advanced Search</a>
+        | <a href=/Biblio/Acknowledgments target="_top">Acknowledgments</a>
+        | <a href=/Biblio/References target="_top">References</a>
+        | <a href=/Biblio/Citation target="_top">Citation</a>
+        | <a href=/Biblio/Versions target="_top">Versions</a>
+        <!-- | <a href=/Biblio/Help?id=279 target="_top">Help</a> -->
+        |                 <a href=/Biblio/Login target="_top">Log In</a>
+
+    </nav>
+
+    </footer>
+
+    <script src="/lib/bootstrap2.3.2/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+ contentType 9 text/html url 45 https://lacewing.tamu.edu:443/Biblio/Versions responseCode 3 200 

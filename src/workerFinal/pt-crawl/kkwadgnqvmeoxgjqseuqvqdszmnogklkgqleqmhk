@@ -1,0 +1,2340 @@
+kkwadgnqvmeoxgjqseuqvqdszmnogklkgqleqmhk length 6 129637 page 129637 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>SCBD Museum of Nature and Culture</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="SCBD Museum of Nature and Culture" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2014-01-10T21:59:17Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl33_BSignUp" href="javascript:__doPostBack(&#39;ctl33$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl33_BSignIn" href="javascript:__doPostBack(&#39;ctl33$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl32_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl32$BLocale', 'ar');" id="ctl32_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl32_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl32$BLocale', 'es');" id="ctl32_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl32_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl32$BLocale', 'fr');" id="ctl32_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl32_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl32$BLocale', 'ru');" id="ctl32_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl32_CLanguage" class="language-option">Русский</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./museum/" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBSEvdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZtdXNldW0eCWlubmVyaHRtbAUWU2lnbiB1cCBmb3IgYW4gYWNjb3VudGQCAw8WBB8ABSEvdXNlci9zaWduaW4vP3JldHVybnVybD0lMmZtdXNldW0fAQUHU2lnbiBJbmQCAw8WAh4HVmlzaWJsZWgWBAIBDxYEHwAFIi91c2VyL3Byb2ZpbGUvP3JldHVybnVybD0lMmZtdXNldW0eBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIHDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCcnVkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQU/YmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC5qcGcpFgICAQ8WAh8BBR5XZWxjb21lIHRvIHRoZSBDQkQgU2VjcmV0YXJpYXRkAgEPZBYEAgEPFgQfAAUaL3NlY3JldGFyaWF0L2RlZmF1bHQuc2h0bWwfAQUTVGhlIENCRCBTZWNyZXRhcmlhdGQCAw9kFgJmD2QWAmYPFgIeBWNsYXNzBRpuYXZiYXItbmF2IG1yLWF1dG8gbGV2ZWwtMBYCAgYPFgYfBgUIbmF2LWl0ZW0eB3BhZ2UtaWQFBDQ3OTQfAmhkAgMPZBYCAgEPZBYCZg9kFgJmD2QWAgIBDxYEHwYFFWxpc3QtdW5zdHlsZWQgbGV2ZWwtMB8CaBYCAgEPFgYfBgUHbGV2ZWwtMB8HBQQ0Nzk0HwJoZAIFDxYCHwYFL2NvbC0xMiBwbC1tZC00IHByLW1kLTQgcGwtbGctNSBwci1sZy01IG5vLWFzaWRlFgICAw8WAh8BBRNGcmlkYXkgLy8gMS4xMC4yMDE0ZAIHDxYCHwJoZGRW9Y6kpgcVElFoxbJkanMYdbmWBLHjuCDBCRRjgB33Cw==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl26_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0.jpg)">
+    <h1 id="ctl26_ctl00_CCarouselTitle">Welcome to the CBD Secretariat</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/secretariat/default.shtml" id="ctl27_CPortal" class="navbar-brand">The CBD Secretariat</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl27_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl27_ctl00_CMenuRow" class="nav-item" page-id="3650">
+        <a id="ctl27_ctl00_CMenuRowLink" class="nav-link">About the Secretariat</a>
+    <ul id="ctl27_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl27_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3651">
+        <a href="/secretariat/role" id="ctl27_ctl00_ctl00_CMenuRowLink" class="nav-link">Role</a>
+    </li><li id="ctl27_ctl00_ctl00_CMenuRow" class="nav-item" page-id="8219"><a href="/secretariat/structure/" id="ctl27_ctl00_ctl00_CMenuRowLink" class="nav-link">Structure</a></li><li id="ctl27_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3657"><a href="/contact/" id="ctl27_ctl00_ctl00_CMenuRowLink" class="nav-link">Contact Us</a></li>
+</ul>
+</li><li id="ctl27_ctl00_CMenuRow" class="nav-item" page-id="3658"><a id="ctl27_ctl00_CMenuRowLink" class="nav-link">Staff</a><ul id="ctl27_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl27_ctl00_ctl01_CMenuRow" class="nav-item" page-id="10116">
+        <a href="/secretariat/executive-secretary" id="ctl27_ctl00_ctl01_CMenuRowLink" class="nav-link">Executive Secretary</a>
+    </li><li id="ctl27_ctl00_ctl01_CMenuRow" class="nav-item" page-id="5053"><a href="/secretariat/staff/" id="ctl27_ctl00_ctl01_CMenuRowLink" class="nav-link">Divisions</a></li><li id="ctl27_ctl00_ctl01_CMenuRow" class="nav-item" page-id="10557"><a href="/secretariat/former-es/" id="ctl27_ctl00_ctl01_CMenuRowLink" class="nav-link">Former Executive Secretaries</a></li>
+</ul>
+</li><li id="ctl27_ctl00_CMenuRow" class="nav-item " page-id="3667"><a id="ctl27_ctl00_CMenuRowLink" class="nav-link">Initiatives</a><ul id="ctl27_ctl00_ctl02_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl27_ctl00_ctl02_CMenuRow" class="nav-item  active" page-id="3611">
+        <a href="/museum/" id="ctl27_ctl00_ctl02_CMenuRowLink" class="nav-link">Museum of Nature and Culture</a>
+    </li><li id="ctl27_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3668"><a href="/secretariat/greening.shtml" id="ctl27_ctl00_ctl02_CMenuRowLink" class="nav-link">Greening of the SCBD</a></li>
+</ul>
+</li><li id="ctl27_ctl00_CMenuRow" class="nav-item" page-id="3671"><a id="ctl27_ctl00_CMenuRowLink" class="nav-link">Documents</a><ul id="ctl27_ctl00_ctl03_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl27_ctl00_ctl03_CMenuRow" class="nav-item" page-id="3672">
+        <a href="/secretariat/qr/" id="ctl27_ctl00_ctl03_CMenuRowLink" class="nav-link">Reports</a>
+    </li><li id="ctl27_ctl00_ctl03_CMenuRow" class="nav-item" page-id="4378"><a href="/secretariat/activities.shtml" id="ctl27_ctl00_ctl03_CMenuRowLink" class="nav-link">Activities</a></li><li id="ctl27_ctl00_ctl03_CMenuRow" class="nav-item" page-id="5786"><a href="/secretariat/mba/" id="ctl27_ctl00_ctl03_CMenuRowLink" class="nav-link">Monthly Bulletin of Activities</a></li>
+</ul>
+</li><li id="ctl27_ctl00_CMenuRow" class="nav-item" page-id="4794"><a href="/secretariat/opportunities" id="ctl27_ctl00_CMenuRowLink" class="nav-link">Employment and Business Opportunities</a><ul id="ctl27_ctl00_ctl04_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl27_ctl00_ctl04_CMenuRow" class="nav-item" page-id="4713">
+        <a href="/secretariat/vacancies" id="ctl27_ctl00_ctl04_CMenuRowLink" class="nav-link">Employment Opportunities</a>
+    </li><li id="ctl27_ctl00_ctl04_CMenuRow" class="nav-item" page-id="8279"><a href="/secretariat/business" id="ctl27_ctl00_ctl04_CMenuRowLink" class="nav-link">Business Opportunities</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl35_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl35_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl35_TMenuItem" class="level-0" page-id="3654">
+            <a href="/secretariat" id="ctl35_TMenuItemLink">The CBD Secretariat</a>
+        </li><li id="ctl35_TMenuItem" class="level-0" page-id="3650">
+            <a id="ctl35_TMenuItemLink">About the Secretariat</a>
+        <ul id="ctl35_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl35_TMenuItem" class="level-1" page-id="3651">
+            <a href="/secretariat/role" id="ctl35_TMenuItemLink">Role</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="8219">
+            <a href="/secretariat/structure" id="ctl35_TMenuItemLink">Structure</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="3657">
+            <a href="/contact" id="ctl35_TMenuItemLink">Contact Us</a>
+        </li></ul></li><li id="ctl35_TMenuItem" class="level-0" page-id="3658">
+            <a id="ctl35_TMenuItemLink">Staff</a>
+        <ul id="ctl35_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl35_TMenuItem" class="level-1" page-id="10116">
+            <a href="/secretariat/executive-secretary" id="ctl35_TMenuItemLink">Executive Secretary</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="5053">
+            <a href="/secretariat/staff" id="ctl35_TMenuItemLink">Divisions</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="10557">
+            <a href="/secretariat/former-es" id="ctl35_TMenuItemLink">Former Executive Secretaries</a>
+        </li></ul></li><li id="ctl35_TMenuItem" class="level-0 active" page-id="3667">
+            <a id="ctl35_TMenuItemLink">Initiatives</a>
+        <ul id="ctl35_TMenu" class="list-unstyled level-1 active">
+        
+    <li id="ctl35_TMenuItem" class="level-1 selected" page-id="3611">
+            <a href="/museum" id="ctl35_TMenuItemLink">Museum of Nature and Culture</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="3668">
+            <a href="/secretariat/greening.shtml" id="ctl35_TMenuItemLink">Greening of the SCBD</a>
+        </li></ul></li><li id="ctl35_TMenuItem" class="level-0" page-id="3671">
+            <a id="ctl35_TMenuItemLink">Documents</a>
+        <ul id="ctl35_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl35_TMenuItem" class="level-1" page-id="3672">
+            <a href="/secretariat/qr" id="ctl35_TMenuItemLink">Reports</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="4378">
+            <a href="/secretariat/activities.shtml" id="ctl35_TMenuItemLink">Activities</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="5786">
+            <a href="/secretariat/mba" id="ctl35_TMenuItemLink">Monthly Bulletin of Activities</a>
+        </li></ul></li><li id="ctl35_TMenuItem" class="level-0" page-id="4794">
+            <a href="/secretariat/opportunities" id="ctl35_TMenuItemLink">Employment and Business Opportunities</a>
+        <ul id="ctl35_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl35_TMenuItem" class="level-1" page-id="4713">
+            <a href="/secretariat/vacancies" id="ctl35_TMenuItemLink">Employment Opportunities</a>
+        </li><li id="ctl35_TMenuItem" class="level-1" page-id="8279">
+            <a href="/secretariat/business" id="ctl35_TMenuItemLink">Business Opportunities</a>
+        </li></ul></li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl31_CItems"><a href="/secretariat/default.shtml">Secretariat</a><span> // Museum</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Friday // 1.10.2014</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              
+<div id="ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl15_CSkin2">
+        <div class="hlite"><a name="CBDMuseumofNatureandCulture"></a><h1>CBD Museum of Nature and Culture</h1>
+<p></p>
+A work of art can often illustrate volumes more than mere words about the intricate cultural and social fabric of a country. The Convention on Biological Diversity’s Museum of Nature and Culture serves as a marvelous opportunity for Parties to share their cultural inheritance with the world, and to publicly showcase their country’s unique biological diversity in an artistic and symbolic way.
+<p></p>
+Since the Executive Secretary first sent a request for donations to the Museum of Nature and Culture in January 2006 to all Parties of the Convention, the response has been overwhelmingly positive. Several countries have graciously donated beautiful works of art that showcase their country’s rich and unique cultural heritage and its relationship to biological diversity.
+<p></p>
+By donating artwork to the Museum that is reflective of the biological diversity unique to each country, the world benefits from the beauty of the individual artwork as well as the immediate need to protect and conserve the world’s biological diversity for generations to come.
+<p></p>
+These pieces are now on permanent display as part of the Convention’s Museum of Nature and Culture exhibit, and greet the Secretariat&#39;s visitors as they enter.</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        <div id="ctl16_W7357_CContent" class="hlite">
+
+<!--
+
+</div>
+
+    </div>
+</div>
+<p></p>
+<div id="ctl17_CSkin">
+    
+
+    
+    
+    <div id="ctl17_CSkin2">
+        <div class="hlite"><a name="BhutandonatesmuraltoCBDMuseum"></a><h2>Bhutan donates mural to CBD Museum</h2>
+<p></p>
+
+<table cellspacing=10 width=100%><tr>
+<td> <a href="/images/photos/gallery/2006070501F.jpg"><img src="/images/photos/gallery/2006070501T.jpg" border=0></a><br>Mr. Rajritumr Chhetri (Bhutan) presents a mural painting, or Thangkha, depicting four friends living in harmony with nature, to CBD Executive Secretary Ahmed Djoghlaf for display in the CBD Museum of Nature and Culture.
+</td>
+</tr></table>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl18_CSkin">
+    
+
+    
+    
+    <div id="ctl18_CSkin2">
+        <div class="hlite"><a name="BisoncarvingdonatedbyPoland"></a><h2>Bison carving donated by Poland</h2>
+<p></p>
+
+<table cellspacing=10 width=100%><tr>
+<td> <a href="/images/photos/gallery/2006061401F.jpg"><img src="/images/photos/gallery/2006061401T.jpg" border=0></a><br>Mr. Roman Jankowiak, Senior Trade Commissioner of Poland, donates a wood carving of a bison to the Executive Secretary for display in the CBD Museum of Nature and Culture. Once close to extinction and still listed as endangered, the European bison was successfully recovered in Poland's Bialowieza National Park, the last primeval forest in Europe.</td>
+</tr></table>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl19_CSkin">
+    
+
+    
+    
+    <div id="ctl19_CSkin2">
+        <div class="hlite"><a name="Croatiasgiftsymbolizesthesalvationandprotectionofnature"></a><h2>Croatia&#39;s gift symbolizes the salvation and protection of nature</h2>
+<p></p>
+
+<table cellspacing=10 width=75%>
+<tr><td><a href="/images/photos/gallery/2006022205F.jpg"><img src="/images/photos/gallery/2006022205T.jpg" border=0></a></td>
+<td><a href="/images/photos/gallery/2006022206F.jpg"><img src="/images/photos/gallery/2006022206T.jpg" border=0></a></td></tr>
+<tr><td>H.E. Dr. Ivo Sanader, Prime Minister of the Republic of Croatia, and CBD Executive Secretary Ahmed Djoghlaf pose next to painting donated by Croatia.</td><td>Donated to the Museum on 22 February 2006,  Croatian artist Tihomir Loncar describes his painting, titled Uvala, as a "contemplative prayer for the salvation and protection of nature." </tr>
+</table>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl20_CSkin">
+    
+
+    
+    
+    <div id="ctl20_CSkin2">
+        <div class="hlite"><a name="AlgeriangiftdepictstheKasbahofAlgiers"></a><h2>Algerian gift depicts the Kasbah of Algiers</h2>
+<p></p>
+<a name="2006-11-06-algeria"></a>
+<p></p>
+
+<table cellspacing=10 width=70% ><tr>
+<td><a href="/images/photos/gallery/museum/2006-11-06-algeria-01.jpg"><img src="/images/photos/gallery/museum/2006-11-06-algeria-01-s.jpg" border=0></a> </td>
+<td><a href="/images/photos/gallery/museum/2006-11-06-algeria-02.jpg"><img src="/images/photos/gallery/museum/2006-11-06-algeria-02-s.jpg" border=0></a>
+</td></tr>
+<tr><td colspan=2>Mr. Abdelaziz Sebaa, Consul General, Consulate General of Algeria in Montreal, donates a ceramic painting depicting part of the Kasbah of Algiers, displaying its traditional and cultural lifestyle, and the vital relationship that exists between man and the fruits of nature.</tr>
+</table>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl21_CSkin">
+    
+
+    
+    
+    <div id="ctl21_CSkin2">
+        <div class="hlite"><a name="GiftfromTunisiareflectscountrysbiologicalwealth"></a><h2>Gift from Tunisia reflects country&#39;s biological wealth</h2>
+<p></p>
+<a name="2006-11-09-tunisia"></a>
+<p></p>
+<a href="/images/photos/gallery/museum/2006-11-09-tunisia-01.jpg"><img src="/images/photos/gallery/museum/2006-11-09-tunisia-01-s.jpg"/></a><a href="/images/photos/gallery/museum/2006-11-09-tunisia-02.jpg"><img src="/images/photos/gallery/museum/2006-11-09-tunisia-02-s.jpg"/></a><a href="/images/photos/gallery/museum/2006-11-09-tunisia-03.jpg"><img src="/images/photos/gallery/museum/2006-11-09-tunisia-03-s.jpg"/></a>
+<p></p>
+Tunisia&#39;s gift to the Museum reflects the biological wealth of ancient Tunisia. The mosaic depicts El Jem, a city that once was an important centre for the manufacture and export of olive oil, in the third century AD. H.E. Ambassador Abdessalem Hetira unveiled the gift on behalf of H.E. Mr. Zine El Abidine Ben Ali, the President of Tunisia.</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl22_CSkin">
+    
+
+    
+    
+    <div id="ctl22_CSkin2">
+        <div class="hlite"><a name="GovernmentofIndia"></a><h2>Government of India</h2>
+<p></p>
+
+<p></p>
+
+<table cellspacing=10 width=70% ><tr>
+<td><a href="/images/photos/gallery/museum/2006-11-20-india-01.jpg"><img src="/images/photos/gallery/museum/2006-11-20-india-01-s.jpg" border=0></a></td><td>Peacock vase, gift from the Government of India.</td></tr>
+</table>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl23_CSkin">
+    
+
+    
+    
+    <div id="ctl23_CSkin2">
+        <div class="hlite"><a name="CanadadonatesInuitartworkstoMuseum"></a><h2>Canada donates Inuit artworks to Museum</h2>
+<p></p>
+
+<table cellspacing=10 width=70% ><tr>
+<td valign='bottom'><a href="/images/photos/gallery/museum/2006-11-24-canada-02.jpg"><img src="/images/photos/gallery/museum/2006-11-24-canada-02-s.jpg" border=0></a>
+</td>
+<td><a href="/images/photos/gallery/museum/2006-11-24-canada-01.jpg"><img src="/images/photos/gallery/museum/2006-11-24-canada-01-s.jpg" border=0></a> </td>
+</tr>
+<tr><td colspan=2>The Government of Canada donated two unique Inuit artworks to the Museum. Titled “Light is Life” by Ruben Anton Komangapik, the sculpture on the left is made of skull and baleen of bow head whales. The painting, titled "Bull Moose," was painted by Norwal Morrisseau circa 1963.</td></tr>
+</table>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="ctl24_CSkin">
+    
+
+    <div id="ctl24_CSkin2">
+        
+        <div id="ctl24_W7356_CContent" class="hlite">
+
+-->
+
+</div>
+
+    </div>
+</div>
+<p></p>
+
+
+<div id="ctl25_CSkin">
+    
+
+    <div id="ctl25_CSkin2">
+        
+        
+<div style="width:auto">
+    <!-- Search -->
+    <div class="floatFar">
+        &nbsp;&nbsp;&nbsp;
+        <input name="ctl25$W7355$CSearchText" type="text" id="ctl25_W7355_CSearchText" style="font-size:7pt;font-family:tahoma;height:12px;" />
+        <input name="ctl25$W7355$BSearch" type="submit" id="ctl25_W7355_BSearch" value="Search" class="cms_button_small" />
+    </div>
+    <!-- Album path -->
+    <div id="ctl25_W7355_CPath" style="padding-top:5px">
+        <table cellspacing="0" cellpadding="0">
+        <tr>
+        
+            <td>
+                <a href="/museum?showAll=true" id="ctl25_W7355_DPathLink">All photos</a>
+            </td>
+        
+        </tr>
+        </table>
+    </div>
+</div>
+
+
+<!-- top Page browser-->
+
+
+<!-- Albums -->
+<div id="ctl25_W7355_DAlbum" style="clear:both;border-top:solid 1px #c0c0c0;padding-top:10px;">
+    <h3 id="ctl25_W7355_DAlbumTitle">Country</h3>
+    
+    <div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+<div id="PhotoFrameFloatingImageContainer" style="display:none;position:absolute;padding:15px 15px 15px 15px;background:white;border:solid 1px #707070;width:450px;z-index:9999">
+    <div id="PhotoFrameFloatingText" style="margin-bottom:10px"></div>
+    <div id="PhotoFrameFloatingImage" style="text-align:center"></div>
+</div>
+<div id="debug"></div>
+    <style >
+    .PhotoFrame 
+    {
+        text-align:center;
+        vertical-align:middle;
+        background:url(/cms/images/shadow.png) no-repeat;
+        padding:11px 20px 20px 11px;
+        display:inline-block;
+        width:200px;
+        height:200px;
+    }
+    </style>
+    
+    <script>
+    
+        var MouseOffset = new Object();
+        
+        MouseOffset.x = 15;
+        MouseOffset.y = 15;
+    
+        var mFloatingImageTimerID = 0;
+        
+        //===============================================
+        //
+        //
+        //===============================================
+        function HideFloatingImageContainer()
+        {
+            ClearFloatingImageTimer();
+
+            if(mFloatingImageTimerID==0)
+                mFloatingImageTimerID = window.setTimeout("HideFloatingImageContainerNow();", 200);
+        }
+
+        //===============================================
+        //
+        //
+        //===============================================
+        function HideFloatingImageContainerNow()
+        {
+            ClearFloatingImageTimer();
+
+            document.onmousemove = null;
+            document.getElementById("PhotoFrameFloatingImageContainer").style.display="none";
+        }
+
+        //===============================================
+        //
+        //
+        //===============================================
+        function ClearFloatingImageTimer()
+        {
+            if(mFloatingImageTimerID!=0)
+            {
+                window.clearTimeout(mFloatingImageTimerID);
+                mFloatingImageTimerID = 0;
+            }
+        }
+        
+
+        //===============================================
+        //
+        //
+        //===============================================
+        function ShowFloatingImageContainer(e, src, html)
+        {
+            ClearFloatingImageTimer();
+
+            var oHtml  = document.getElementById("PhotoFrameFloatingText");
+            var oImage = document.getElementById("PhotoFrameFloatingImage");
+            
+            oImage.innerHTML = "<img border=\"0\" src=\""+src+"\" />";
+            oHtml .innerHTML = html;
+            oHtml .style.display = html=="" ? "none" : "";
+
+            // Show
+            var oContainer = document.getElementById("PhotoFrameFloatingImageContainer");
+
+            followmouse(e);
+            
+            if(mFloatingImageTimerID==0)
+                mFloatingImageTimerID = window.setTimeout("ShowFloatingImageContainerNow();", 500);
+            
+        }
+        
+        //===============================================
+        //
+        //
+        //===============================================
+        function ShowFloatingImageContainerNow()
+        {
+            ClearFloatingImageTimer();
+
+            document.onmousemove=followmouse;
+
+            var oContainer = document.getElementById("PhotoFrameFloatingImageContainer");
+            oContainer.style.display = "";
+        }
+        
+        
+        //===============================================
+        //
+        //
+        //===============================================
+        function followmouse(e)
+        {
+            
+            var oContainer = document.getElementById("PhotoFrameFloatingImageContainer");
+
+            if (typeof window.event != "undefined")
+            {
+                e = window.event;
+                e.pageX = e.x;
+                e.pageY = e.y;
+            }
+
+	        if (typeof e != "undefined")
+	        {
+                if (typeof e.target != "undefined")
+                {
+                    e.offsetX    = e.layerX;
+                    e.offsetY    = e.layerY;
+                    e.srcElement = e.target;
+                }
+
+	            var iDocWidth  = document.all
+	                           ? document.documentElement.scrollLeft + document.documentElement.clientWidth 
+	                           : pageXOffset+window.innerWidth-15;
+	                           
+	            var iDocHeight = document.all
+	                           ? Math.min(document.documentElement.scrollHeight, document.documentElement.clientHeight) 
+	                           : Math.min(window.innerHeight)
+
+                
+                var iClientLeft   = document.documentElement.scrollLeft;
+                var iClientTop    = document.documentElement.scrollTop;
+                var iClientRight  = document.documentElement.scrollLeft + iDocWidth  - MouseOffset.x;
+                var iClientBottom = document.documentElement.scrollTop  + iDocHeight - MouseOffset.y;
+                
+                var iX      = e.pageX + MouseOffset.x;
+                var iY      = e.pageY + MouseOffset.y;
+                var iWidth  = Math.max(oContainer.offsetWidth,  oContainer.clientWidth);
+                var iHeight = Math.max(oContainer.offsetHeight, oContainer.clientHeight);
+
+                var iLeft   = e.clientX + document.documentElement.scrollLeft;
+                var iTop    = e.clientY + document.documentElement.scrollTop;
+                var iRight  = iLeft + iWidth;
+                var iBottom = iTop  + iHeight;
+                
+                if(iRight  > iClientRight)  iX = e.pageX - MouseOffset.x - iWidth;
+                if(iBottom > iClientBottom) iY -= (iBottom - iClientBottom);
+                
+                
+                oContainer.style.left = iX +"px";
+                oContainer.style.top  = iY +"px";
+                
+//                document.getElementById("debug").innerHTML = 
+//                    "x: " + iX + "y: " + iY +
+//                    "w: " + iWidth + "h: " + iHeight;
+            }
+        }
+        
+        if(!document.all)
+        {
+            var oContainer = document.getElementById("PhotoFrameFloatingImageContainer");
+            oContainer.parentNode.removeChild(oContainer);
+            document.body.appendChild(oContainer, document.body.lastChild);
+        }
+        
+    </script>
+
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dAlgeria" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2592&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2592&amp;width=450&amp;height=450&quot;, &quot;&lt;b>President of Algeria donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Algeria</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">4 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=951&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=951&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=951&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Stone Pine wooden bowl donated to the Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Austria</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dBelarus" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2149&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2149&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Belarus donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Belarus</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dBhutan" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=757&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=757&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Bhutan donates mural to CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Bhutan</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2683&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2683&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2683&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Bosnia and Herzogovina donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Bosnia and Herzegovina</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dBrazil" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=889&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=889&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Brazilian arts and crafts&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Brazil</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">3 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dCambodia" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2136&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2136&amp;width=450&amp;height=450&quot;, &quot;&lt;b>The Royal Government of Cambodia donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Cambodia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dCameroon" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1307&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1307&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Cameroon donates to the Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Cameroon</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dCanada" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=767&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=767&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Canada donates Inuit artworks to Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Canada</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">6 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1400&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1400&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1400&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Chad donates wood carved animals&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Chad</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=931&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=931&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=931&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Chile donates wood carving artwork to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Chile</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dChina" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1266&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1266&amp;width=450&amp;height=450&quot;, &quot;&lt;b>China donates artpiece to the museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">China</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=950&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=950&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=950&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Palm tree poster from Cote d&amp;#39;Ivoire&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">C&#244;te d&#39;Ivoire</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dCroatia" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=978&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=978&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Croatia&amp;#39;s gift symbolizes the salvation and protection of ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Croatia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=952&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=952&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=952&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Child&amp;#39;s drawing on biodiversity from Czech Republic&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Czech Republic</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dEcuador" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1308&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1308&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Presentation of gift from the Minister of Environment, ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Ecuador</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1820&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1820&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1820&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Contribution to the museum from Ethiopia&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Ethiopia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dFrance" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2643&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2643&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Donation from the Government of France&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">France</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=948&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=948&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=948&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Stone elephant carving from Gabon&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Gabon</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2146&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2146&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2146&amp;width=450&amp;height=450&quot;, &quot;&lt;b>The Government of Georgia donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Georgia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2764&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2764&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2764&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Donation from the Federal Republic of Germany&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Germany</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dGrenada" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2137&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2137&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Painting donated by the Government of Grenada&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Grenada</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2685&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2685&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2685&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Guinea donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Guinea</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dGuinea-Bissau" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=953&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=953&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Wooden statuettes from Guinea-Bissau&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Guinea-Bissau</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dHungary" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2640&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2640&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Donation from the Ministry of Rural Development of Hungary&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Hungary</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=766&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=766&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=766&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Peacock vases from the Government of India&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">India</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dIraq" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2676&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2676&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Iraq donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Iraq</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">5 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=936&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=936&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=936&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Sculpture: Bog Oak - from Ireland&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Ireland</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2479&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2479&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2479&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Governor of the Ishikawa Prefecture of Japan donates to the ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Japan</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=954&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=954&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=954&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Framed photograph of Vallee de la Haure-S&amp;#251;re from Luxembourg&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Luxembourg</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2480&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2480&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2480&amp;width=450&amp;height=450&quot;, &quot;&lt;b>CBD receives a replica of a Malaysian Giant Kite (Wau)&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Malaysia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2477&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2477&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2477&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Mauritania donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Mauritania</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=955&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=955&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=955&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Waterfall painting from Mauritius&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Mauritius</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dNew%2bZealand" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1267&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1267&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Framed woven-basket from New Zealand&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">New Zealand</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2248&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2248&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2248&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Norway Environment Minister donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Norway</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dPakistan" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=957&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=957&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Traditional embroidered Gabba&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Pakistan</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">3 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dPeru" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1401&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1401&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Peru presents gift to the CBD Museum of Nature and Culture&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Peru</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=758&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=758&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=758&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Bison carving donated by Poland&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Poland</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2255&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2255&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2255&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Portugal donates to the CBD Museum of Nature and Culture&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Portugal</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dRepublic%2bof%2bMoldova" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2682&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2682&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Republic of Moldova donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Republic of Moldova</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">5 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1676&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1676&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1676&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Rwanda Environment Management Authority donates to the CBD ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Rwanda</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1264&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1264&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1264&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Saint Lucia donates to the CBD Museum of Nature and Culture&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Saint Lucia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dSerbia" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2145&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2145&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Government of Serbia donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Serbia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dSeychelles" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1310&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1310&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Donation from the Ministry of Environment of Seychelles&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Seychelles</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1654&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1654&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1654&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Landscape pictures from Slovakia&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Slovakia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1655&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1655&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1655&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Commemorative IBD stamps and souvenir postcards from Sri ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Sri Lanka</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2140&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2140&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2140&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Syrian Arab Republic donates to the CBD Museum of Nature ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Syrian Arab Republic</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1309&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1309&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1309&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Tajikistan donates hand-woven scroll to the CBD Museum of ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Tajikistan</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2680&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2680&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2680&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Thailand donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Thailand</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=764&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=764&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=764&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Gift from Tunisia reflects country&amp;#39;s biological wealth&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Tunisia</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dTurkmenistan" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2143&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2143&amp;width=450&amp;height=450&quot;, &quot;&lt;b>CBD receives donation from Turkmenistan&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Turkmenistan</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=CountryName%3dUkraine" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2142&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2142&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Donation from the Ministry of Environmental Protection of ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Ukraine</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">2 items</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=2687&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=2687&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=2687&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Uruguay donates to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Uruguay</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?id=1313&returnurl=%2fmuseum" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1313&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1313&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Yemen donates artwork to the CBD Museum&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Yemen</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">1 item</div>
+        </div>
+    </div><div id="ctl25_W7355_DPhoto" class="floatNear" style="width:210px;display:inline-block;text-align:center">
+        <div id="ctl25_W7355_DPhotoEntry" style="text-align:center;margin-top:5px">
+            
+
+
+<div class="PhotoFrame" >
+    <a href="/museum?albumpath=&showOther=true" id="ctl25_W7355_DPhotoFrame_DLink">
+        <img src="/cms/ui/photos/photo.aspx?id=1656&width=170&height=169&crop=true" id="ctl25_W7355_DPhotoFrame_DImage" border="0" onmouseover="ShowFloatingImageContainer(event, &quot;/cms/ui/photos/photo.aspx?id=1656&amp;width=450&amp;height=450&quot;, &quot;&lt;b>Egyptologist donates papyrus scrolls to the CBD Museum of ...&lt;/b>&quot;);" onmouseout="HideFloatingImageContainer();" onclick="HideFloatingImageContainerNow();" />
+    </a>
+</div>
+
+
+        </div>
+
+        <div id="ctl25_W7355_DTextEntry" style="text-align:center;margin-bottom:5px;padding-right:10px;width:200px;height:45px;overflow:hidden">
+            <div id="ctl25_W7355_DAlbumText1" style="text-align:center;font-weight:bold;">Others</div>
+            <div id="ctl25_W7355_DAlbumText2" style="text-align:center;font-weight:lighter;color:#505050">9 items</div>
+        </div>
+    </div>
+
+    
+</div>
+<!-- Bottom Page browser-->
+
+
+<div style="clear:both;"></div>
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 30 https://www.cbd.int:443/museum responseCode 3 200 

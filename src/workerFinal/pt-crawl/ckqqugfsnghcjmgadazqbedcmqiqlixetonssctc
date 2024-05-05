@@ -1,0 +1,1453 @@
+ckqqugfsnghcjmgadazqbedcmqiqlixetonssctc length 5 86789 page 86789 
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <!-- charset must appear in the first 1024 bytes of the document -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+
+
+
+        <script type="text/javascript" src="https://cookie-cdn.cookiepro.com/consent/aa16308e-8418-4f98-934b-67ce9fe9c63b/OtAutoBlock.js" class="cookiepro-otautoblock"></script>
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="aa16308e-8418-4f98-934b-67ce9fe9c63b" class="cookiepro-otsdkstub"></script>
+    <script type="text/javascript">
+        function OptanonWrapper() {
+            // Get initial OnetrustActiveGroups ids
+            if (typeof OptanonWrapperCount == "undefined") {
+                otGetInitialGrps();
+            }
+
+            //Delete cookies
+            otDeleteCookie(otIniGrps);
+
+            // Assign OnetrustActiveGroups to custom variable
+            function otGetInitialGrps() {
+                OptanonWrapperCount = '';
+                otIniGrps = OnetrustActiveGroups;
+            }
+
+            function otDeleteCookie(iniOptGrpId) {
+                var otDomainGrps = JSON.parse(JSON.stringify(Optanon.GetDomainData().Groups));
+                var otDeletedGrpIds = otGetInactiveId(iniOptGrpId, OnetrustActiveGroups);
+                if (otDeletedGrpIds.length != 0 && otDomainGrps.length != 0) {
+                    for (var i = 0; i < otDomainGrps.length; i++) {
+                        //Check if CustomGroupId matches
+                        if (otDomainGrps[i]['CustomGroupId'] != '' && otDeletedGrpIds.includes(otDomainGrps[i]['CustomGroupId'])) {
+                            for (var j = 0; j < otDomainGrps[i]['Cookies'].length; j++) {
+                                // console.log("otDeleteCookie",otDomainGrps[i]['Cookies'][j]['Name'])
+                                //Delete cookie
+                                eraseCookie(otDomainGrps[i]['Cookies'][j]['Name']);
+                            }
+                        }
+
+                        //Check if Hostid matches
+                        if (otDomainGrps[i]['Hosts'].length != 0) {
+                            for (var j = 0; j < otDomainGrps[i]['Hosts'].length; j++) {
+                                //Check if HostId presents in the deleted list and cookie array is not blank
+                                if (otDeletedGrpIds.includes(otDomainGrps[i]['Hosts'][j]['HostId']) && otDomainGrps[i]['Hosts'][j]['Cookies'].length != 0) {
+                                    for (var k = 0; k < otDomainGrps[i]['Hosts'][j]['Cookies'].length; k++) {
+                                        //Delete cookie
+                                        eraseCookie(otDomainGrps[i]['Hosts'][j]['Cookies'][k]['Name']);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+                otGetInitialGrps(); //Reassign new group ids
+            }
+
+            //Get inactive ids
+            function otGetInactiveId(customIniId, otActiveGrp) {
+                //Initial OnetrustActiveGroups
+                // console.log("otGetInactiveId",customIniId)
+                customIniId = customIniId.split(",");
+                customIniId = customIniId.filter(Boolean);
+
+                //After action OnetrustActiveGroups
+                otActiveGrp = otActiveGrp.split(",");
+                otActiveGrp = otActiveGrp.filter(Boolean);
+
+                var result = [];
+                for (var i = 0; i < customIniId.length; i++) {
+                    if (otActiveGrp.indexOf(customIniId[i]) <= -1) {
+                        result.push(customIniId[i]);
+                    }
+                }
+                return result;
+            }
+
+            //Delete cookie
+            function eraseCookie(name) {
+                //Delete root path cookies
+                domainName = window.location.hostname;
+                document.cookie = name + '=; Max-Age=-99999999; Path=/;Domain=' + domainName;
+                document.cookie = name + '=; Max-Age=-99999999; Path=/;';
+
+                //Delete LSO incase LSO being used, cna be commented out.
+                localStorage.removeItem(name);
+
+                //Check for the current path of the page
+                pathArray = window.location.pathname.split('/');
+                //Loop through path hierarchy and delete potential cookies at each path.
+                for (var i = 0; i < pathArray.length; i++) {
+                    if (pathArray[i]) {
+                        //Build the path string from the Path Array e.g /site/login
+                        var currentPath = pathArray.slice(0, i + 1).join('/');
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + ';Domain=' + domainName;
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + ';';
+                        //Maybe path has a trailing slash!
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + '/;Domain=' + domainName;
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + '/;';
+
+
+                    }
+                }
+
+            }
+        }
+    </script>
+                
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="//cob.silverchair-cdn.com/Themes/Silver/app/js/jquery.3.4.1.min.js" type="text/javascript">\x3C/script>')</script>
+<script src="//cob.silverchair-cdn.com/Themes/Silver/app/vendor/v-638473440325722869/jquery-migrate-3.1.0.min.js" type="text/javascript"></script>
+
+    <script type='text/plain' src='https://platform-api.sharethis.com/js/sharethis.js#property=643701de45aa460012e1032e&amp;product=sop' async='async' class='optanon-category-C0004'></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10" />
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <!-- Turn off telephone number detection. -->
+    <meta name="format-detection" content="telephone=no" />
+
+<!-- Bookmark Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/apple-touch-icon1853126287.png">
+  <link rel="icon" type="image/png" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/favicon-32x32-1588085212.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/favicon-16x16-203215716.png" sizes="16x16">
+  <link rel="mask-icon" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/safari-pinned-tab975650023.svg" color="#5bbad5">
+  <link rel="icon" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/favicon-1720491505.ico">
+  <meta name="theme-color" content="#002f65">
+
+
+    
+
+
+  <link rel="stylesheet" type="text/css" href="//cob.silverchair-cdn.com/Themes/Client/app/css/v-638488182842692149/site.min.css" />
+  <link rel="stylesheet" type="text/css" href="//cob.silverchair-cdn.com/Themes/Silver/app/icons/v-638473440312722733/style.css" />
+  <link rel="stylesheet" type="text/css" href="//cob.silverchair-cdn.com/Themes/Client/app/css/v-638473439426493145/bg_img.css" />
+
+<link rel="stylesheet" href="https://use.typekit.net/jkq7xuh.css">
+
+
+            <link href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/CSS/jcs/v-638126538193195457/site.css" rel="stylesheet" type="text/css" />
+
+            <script>
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.setAttribute('type', 'text/plain');
+                        j.setAttribute('class', 'optanon-category-C0002');
+                        j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-5KXMNBB');
+            </script>
+            <script>
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.setAttribute('type', 'text/plain');
+                        j.setAttribute('class', 'optanon-category-C0002');
+                        j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-T6TZKLZ');
+            </script>
+
+    
+
+        <script type="text/javascript">
+            var App = App || {};
+            App.LoginUserInfo = {
+                isInstLoggedIn: 0,
+                isIndividualLoggedIn: 0
+            };
+
+            App.CurrentSubdomain = 'jcs';
+            App.SiteURL = 'journals.biologists.com/jcs';
+        </script>
+    
+    
+    <title>Editor biographies  | Journal of Cell Science | The Company of Biologists | Journal of Cell Science | The Company of Biologists</title>
+        <meta name="description" content="Editor biographies  | Journal of Cell Science | The Company of Biologists | Journal of Cell Science | The Company of Biologists
+              
+Editor biographies
+
+
+Michael Way (Editor-in-Chief)
+Michael Way obtained his PhD from the University of Cambridge, UK, and received postdoctoral training at the Medical Research Council Laboratory of Molecular Biology, Cambridge, UK, and the Whitehead Institute, Massachusetts Institute of Technology in Cambridge, MA, USA. He was a group leader in the...">
+
+
+
+
+    
+
+
+
+<script type="text/plain" async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" class="optanon-category-C0004"></script>
+
+    <script>
+        var SCM = SCM || {};
+        SCM.pubGradeAdsEnabled = false;
+    </script>
+
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+
+    googletag.cmd.push(function () {
+    googletag.pubads().disableInitialLoad();
+
+    
+    });
+</script>
+    
+
+
+
+    <script src="https://js.stripe.com/v3/"></script>
+    
+
+
+
+
+</head>
+
+<body data-sitename="journalofcellscience" class="off-canvas pg_SelfServePage pg_selfservepage   " theme-jcs data-sitestyletemplate="Journal" >
+            <noscript>
+                <iframe  src="https://www.googletagmanager.com/ns.html?id=GTM-5KXMNBB"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <noscript>
+                <iframe  src="https://www.googletagmanager.com/ns.html?id=GTM-T6TZKLZ"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <a href="#skipNav" class="skipnav">Skip to Main Content</a>
+<input id="hdnSiteID" name="hdnSiteID" type="hidden" value="1000007" /><input id="hdnAdDelaySeconds" name="hdnAdDelaySeconds" type="hidden" value="3000" /><input id="hdnAdConfigurationTop" name="hdnAdConfigurationTop" type="hidden" value="basic" /><input id="hdnAdConfigurationRightRail" name="hdnAdConfigurationRightRail" type="hidden" value="basic" />
+    
+
+
+
+
+    <section class="master-header row vt-site-header">
+
+    <div class="ad-banner js-ad-banner">
+
+    <div class="widget-AdBlock widget-instance-HeaderAd">
+            
+
+    <input type="hidden"
+           class="hfAdBlockInfo"
+           data-divid="div-gpt-ad-1593437456398-0"
+           data-slotname="/155913954/JCS"
+           data-targetname=""
+           data-sizes="[[728, 90]]"
+           data-enabled-on-mobile="True"
+           data-adprovider-typeid="1"
+           data-accountid=""
+           data-outofpagead="False"
+           data-sticky-time="5"/>
+    <div class="adblock-wrap js-adblock-wrap " style="width:728px;">
+                <p class="adblock-advertisement-text js-adblock-advertisement-text hide">Advertisement</p>
+
+            <div id="div-gpt-ad-1593437456398-0" adslot="/155913954/JCS" class="adblock-slot-placeholder js-adblock" style="width:728px; height:90px;"></div>
+
+    </div>
+ 
+    </div>
+
+    </div>
+
+    <div class="widget-SitePageHeader widget-instance-SitePageHeader">
+            <div class="site-theme-header">
+        <div class="site-theme-header_contents global-nav-base">
+
+
+
+<div class="global-nav">
+            <a class="js-dropdown-trigger global-nav-trigger" href="javascript:;">
+            <picture>
+                <source media="(min-width: 601px)" srcset="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg">
+                <img class="logo-JournalofCellScience site-theme-header-image" src="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg" alt="The Company of Biologists logo" />
+            </picture>
+                <i class="icon-general_arrow-down arrow-icon"></i>
+        </a>
+        <nav class="navbar-menu global-nav-dropdown js-dropdown">
+            <div class="site-theme-header-logo">
+                <a href="/" class="site-theme-header-image-wrap">
+                        <picture>
+                            <source media="(min-width: 601px)" srcset="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg">
+                            <img class="logo-JournalofCellScience site-theme-header-image" src="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg" alt="The Company of Biologists logo" />
+                        </picture>
+                </a>
+                <a href="javascript:;" class="icon-general-close menu-close js-menu-close"><span class="screenreader-text">Close</span></a>
+            </div>
+                    <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Journals " id="site-menu-item-8100">
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Journals <i class="icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Development " id="site-menu-item-8102">
+                        <a href="/dev" class="nav-link">Development </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Journal-of-Cell-Science " id="site-menu-item-8103">
+                        <a href="/jcs" class="nav-link">Journal of Cell Science </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Journal-of-Experimental-Biology " id="site-menu-item-8104">
+                        <a href="/jeb" class="nav-link">Journal of Experimental Biology </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Disease-Models-&amp;-Mechanisms " id="site-menu-item-8105">
+                        <a href="/dmm" class="nav-link">Disease Models &amp; Mechanisms </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Biology-Open " id="site-menu-item-8106">
+                        <a href="/bio" class="nav-link">Biology Open </a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Community-sites " id="site-menu-item-8101">
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Community sites <i class="icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-The-Node " id="site-menu-item-8107">
+                        <a href="https://thenode.biologists.com/" class="nav-link">The Node </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-preLights " id="site-menu-item-8108">
+                        <a href="https://prelights.biologists.com/" class="nav-link">preLights </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-FocalPlane " id="site-menu-item-8109">
+                        <a href="https://focalplane.biologists.com/" class="nav-link">FocalPlane </a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-For-librarians " id="site-menu-item-8110">
+                        <a href="https://www.biologists.com/library-hub/" class="nav-link">For librarians </a>
+
+                    
+                </li>
+        </ul>
+
+        </nav>
+    
+</div>
+
+
+
+
+        <div class="mobile-menu-trigger_wrap mobile-search_wrap">
+            <a href="javascript:;"
+               class="mobile-search_toggle at-search-toggle"
+               role="button"
+               aria-expanded="false"
+               data-theme-dropdown-trigger="search-dropdown"><i class="icon-menu_search"><span class="screenreader-text">Search Dropdown Menu</span></i></a>
+        </div>
+    <div class="navbar-search-container mobile-dropdown search-dropdown" data-theme-dropdown="search-dropdown">
+        <div class="navbar-search">
+            <form class="microsite-search js-MicrositeSearch">
+                <fieldset class="searchbar-fieldset">
+                    <legend><span class="screenreader-text">header search</span></legend>
+                    <div class="navbar-search-input_wrap">
+                        <label for="MicrositeSearchTerm-SitePageHeader"><span class="screenreader-text">search input</span></label>
+                        
+                        <input class="navbar-search-input microsite-search-term at-microsite-search-term search-term-autosuggest"
+                               data-autosuggest-hint="micrositeSearchTermInputHint-SitePageHeader"
+                               data-autosuggest-results="micrositeAutoCompleteResults-SitePageHeader"
+                               data-autosuggest-id="MicrositeSearchTerm-SitePageHeader"
+                               data-searchfilter="search-filter-SitePageHeader"
+                               placeholder="Search..."
+                               type="text" maxlength="255"
+                                autocomplete="off"                                id="MicrositeSearchTerm-SitePageHeader"
+                               title="search input">
+                        
+                        <input type="hidden" name="hfAutoCompleteMaxResults" class="hfAutoCompleteMaxResults" value="6" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrAutoSuggestMinimumCharactersLength" class="hfSolrAutoSuggestMinimumCharactersLength" value="2" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalName" class="hfSolrJournalName" value="" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalID" class="hfSolrJournalID" value="" aria-hidden="true" />
+                        <label for="micrositeSearchTermInputHint-SitePageHeader">
+                            <span class="screenreader-text">Search input auto suggest</span>
+                        </label>
+                        <input type="text"
+                               id="micrositeSearchTermInputHint-SitePageHeader"
+                               data-autosuggest-id="micrositeSearchTermInputHint-SitePageHeader"
+                               class="microsite-search-term-input-hint"
+                               autocomplete="off" />
+                        <ul data-autosuggest-id="micrositeAutoCompleteResults-SitePageHeader" class="term-list hidden"></ul>
+                    </div>
+                        <div class="navbar-search-filter_wrap">
+                            <label for="navbar-search-filter-site-SitePageHeader">
+                                <span class="screenreader-text">filter your search</span>
+                            </label>
+                            <select class="navbar-search-filter navbar-search-filter-site at-navbar-search-filter" id="navbar-search-filter-site-SitePageHeader" data-autosuggest-id="search-filter-SitePageHeader">
+<option class="header-search-bar-filters-item" value="/search-results?page=1&q={searchQuery}" data-siteid="0" >All content</option><option class="header-search-bar-filters-item" value="/journals/search-results?page=1&q={searchQuery}&fl_SiteID=3&allJournals=1" data-siteid="3" >All journals</option><option class="header-search-bar-filters-item selected" value="/jcs/search-results?page=1&q={searchQuery}&fl_SiteID=1000007" data-siteid="1000007" selected>Journal of Cell Science</option>                            </select>
+                        </div>
+                    <div class="navbar-search-submit_wrap">
+                        <a href="javascript:;" class="microsite-search-icon navbar-search-submit icon-menu_search"><span class="screenreader-text">Search</span></a>
+                    </div>
+                </fieldset>
+            </form><!-- /#MicrositeSearch -->
+        </div><!-- /.navbar-search -->
+<div class="navbar-search-advanced">
+    <a href="/advanced-search" class="advanced-search">Advanced Search</a>
+</div>    </div><!-- /.navbar-search-container -->
+
+    <input type="hidden" name="parentSiteName" class="hfParentSiteName" value="Journals Gateway" aria-hidden="true" />
+    <input type="hidden" class="hfSolrMaxAllowSearchChar" value="100" aria-hidden="true" />
+    <input type="hidden" class="hfJournalShortName" value="" aria-hidden="true" />
+    <input type="hidden" class="hfSearchPlaceholder" value="" aria-hidden="true" />
+    <input type="hidden" name="hfGlobalSearchSiteURL" class="hfGlobalSearchSiteURL" value="" aria-hidden="true" />
+    <input type="hidden" name="hfSearchSiteURL" id="hfSiteURL" value="journals.biologists.com/jcs" aria-hidden="true" />
+    <input type="hidden" class="hfQuickSearchUrl" value="/jcs/search-results?page=1&amp;q={searchQuery}&amp;fl_SiteID=1000007" aria-hidden="true" />
+    <script type="text/javascript">
+        (function () {
+            var hfSiteUrl = document.getElementById('hfSiteURL');
+            var siteUrl = hfSiteUrl.value;
+            var subdomainIndex = siteUrl.indexOf('/');
+
+            hfSiteUrl.value = location.host + (subdomainIndex >= 0 ? siteUrl.substring(subdomainIndex) : '');
+        })();
+    </script>
+
+ 
+
+    <div class="tablet-menu-trigger_wrap">
+        <!-- MOBILE SHOPPING CART ICON -->
+        <a href="javascript:;"
+           class="tablet-sign-in"
+           data-theme-dropdown-trigger="tablet-user-dropdown"
+           aria-controls="tablet-user-dropdown"
+           aria-expanded="false"><i class="icon-menu_account"><span class="screenreader-text">User Tools Dropdown</span></i></a>
+    </div>
+<div class="site-theme-header-menu-item_wrap tablet-menu" id="tablet-user-dropdown" data-theme-dropdown="tablet-user-dropdown">
+    <!-- DESKTOP SHOPPING CART ICON -->
+
+    <!-- DESKTOP REGISTRATION -->
+        <div class="site-theme-header-menu-item"><a href="/my-account/register?siteId=1000007&amp;returnUrl=%2fjcs%2fpages%2feditor-bios" class="register at-register js-register-user-modals">Register</a></div>
+
+    <!-- DESKTOP INSTITUTIONS -->
+
+        <!-- DESKTOP SIGN IN -->
+        <div class="site-theme-header-menu-item not-authenicated">
+            <a href="javascript:;"
+                class="dropdown-toggle signin at-signin-dropdown at-signin-username"
+                id="header-account-info-user-fullname"
+                data-login-location="/SignIn/LoginForm/LoginFormPopup?returnUrl="
+                data-theme-dropdown-trigger="sign-in-dropdown"
+                aria-controls="sign-in-dropdown"
+                aria-expanded="false">
+                
+Sign in                <i class="icon-general_arrow-down arrow-icon"></i>
+            </a>
+            <div class="dropdown-panel dropdown-panel-signin dropdown-panel-form at-signin-dropdown-panel" id="sign-in-dropdown" data-theme-dropdown="sign-in-dropdown">
+                <div class="spinner"></div>
+            </div><!-- /.dropdown-panel -->
+        </div>
+
+</div>
+
+        </div><!-- /.site-theme-header_content -->
+    </div><!-- /.site-theme-header- -->
+
+    <div class="journal-header journal-bg">
+        <div class="journal-header_content ">
+
+    <div class="journal-logo_wrap">
+        <a href="//journals.biologists.com/jcs" class="journal-logo-link">
+            <picture>
+                <source media="(min-width: 601px)" srcset="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/JCS_title_cropped1117566901.svg">
+                <img class="logo-JournalofCellScience journal-logo" src="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/JCS_title_cropped1117566901.svg" alt="Journal of Cell Science" />
+            </picture>
+        </a>
+    </div>
+
+            
+
+
+<div class="navbar-menu_wrap">
+            <a class="mobile-site-menu-toggle" data-theme-dropdown-trigger="microsite-nav-menu" aria-controls="microsite-nav-menu" aria-expanded="false" href="javascript:;"><i class="icon-menu_hamburger"><span class="screenreader-text">Toggle Menu</span></i><span class="tablet-menu-label">Menu</span></a>
+            <nav class="navbar-menu" id="microsite-nav-menu" data-theme-dropdown="microsite-nav-menu">
+                        <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-10561">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Articles<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10566">
+
+                        <a href="/jcs/accepted-manuscripts" class="nav-link">Accepted manuscripts</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10567">
+
+                        <a href="/jcs/issue" class="nav-link">Latest complete issue</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10568">
+
+                        <a href="/jcs/issue-covers" class="nav-link">Issue archive</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10569">
+
+                        <a href="/jcs/pages/archive-article-type" class="nav-link">Archive by article type</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10570">
+
+                        <a href="/jcs/pages/special-issues" class="nav-link">Special issues</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10571">
+
+                        <a href="/jcs/../jcs/collections" class="nav-link">Subject collections</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10572">
+
+                        <a href="/jcs/pages/interviews" class="nav-link">Interviews</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10573">
+
+                        <a href="/jcs/pages/essay-series" class="nav-link">Essay series</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10574">
+
+                        <a href="/jcs/pages/alerts" class="nav-link">Sign up for alerts</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-10562">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">About us<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10575">
+
+                        <a href="/jcs/pages/about" class="nav-link">About JCS</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10576">
+
+                        <a href="/jcs/pages/edboard" class="nav-link">Editors and Board</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10577">
+
+                        <a href="/jcs/pages/editor-bios" class="nav-link">Editor biographies</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10578">
+
+                        <a href="https://www.biologists.com/travelling-fellowships/" class="nav-link">Travelling Fellowships</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10579">
+
+                        <a href="https://www.biologists.com/grants/" class="nav-link">Grants and funding</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10580">
+
+                        <a href="https://www.biologists.com/meetings/" class="nav-link">Journal Meetings</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10581">
+
+                        <a href="https://www.biologists.com/workshops/" class="nav-link">Workshops</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10582">
+
+                        <a href="https://www.biologists.com/" class="nav-link">The Company of Biologists</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10583">
+
+                        <a href="https://forest.biologists.com/" class="nav-link">The Forest of Biologists</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10584">
+
+                        <a href="/jcs/pages/news" class="nav-link">Journal news</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-10563">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">For authors<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10585">
+
+                        <a href="/jcs/pages/submit-manuscript" class="nav-link">Submit a manuscript</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10586">
+
+                        <a href="/jcs/pages/aims" class="nav-link">Aims and scope</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10587">
+
+                        <a href="/jcs/pages/presub-enquiries" class="nav-link">Presubmission enquiries</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10588">
+
+                        <a href="/jcs/pages/article-types#fast" class="nav-link">Fast-track manuscripts</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10589">
+
+                        <a href="/jcs/pages/article-types" class="nav-link">Article types</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10590">
+
+                        <a href="/jcs/pages/manuscript-prep" class="nav-link">Manuscript preparation</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10591">
+
+                        <a href="/jcs/pages/cover-suggestions" class="nav-link">Cover suggestions</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10592">
+
+                        <a href="/jcs/pages/editorial-process" class="nav-link">Editorial process</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10593">
+
+                        <a href="/jcs/pages/promoting" class="nav-link">Promoting your paper</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10594">
+
+                        <a href="/jcs/pages/open-access" class="nav-link">Open Access</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10595">
+
+                        <a href="/jcs/pages/jcs-prize" class="nav-link">JCS Prize</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10596">
+
+                        <a href="/jcs/pages/manuscript-transfer-network" class="nav-link">Manuscript transfer network</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10597">
+
+                        <a href="/jcs/pages/article-transfer-biology-open" class="nav-link">Biology Open transfer</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-10564">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Journal info<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10598">
+
+                        <a href="/jcs/pages/journal-policies" class="nav-link">Journal policies</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10599">
+
+                        <a href="/jcs/pages/rights-permissions" class="nav-link">Rights and permissions</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10600">
+
+                        <a href="/jcs/pages/media-policies" class="nav-link">Media policies</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10601">
+
+                        <a href="/jcs/pages/reviewer-guide" class="nav-link">Reviewer guide</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10602">
+
+                        <a href="/jcs/pages/alerts" class="nav-link">Sign up for alerts</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10603">
+
+                        <a href="https://www.biologists.com/library-hub/" class="nav-link">For librarians</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-10565">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Contacts<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10604">
+
+                        <a href="/jcs/pages/contacts" class="nav-link">Contacts</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10605">
+
+                        <a href="https://www.biologists.com/subscriptions/" class="nav-link">Subscriptions</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10606">
+
+                        <a href="https://www.biologists.com/sponsorships-landing-page/" class="nav-link">Advertising</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-10607">
+
+                        <a href="/jcs/../contact-us" class="nav-link">Feedback</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+        </ul>
+
+            </nav>
+</div><!-- /.navbar -->
+
+        </div><!-- /.center-inner-row -->
+
+    </div><!-- /.journal-header -->
+
+
+<input id="routename" name="RouteName" type="hidden" value="jcs" /> 
+    </div>
+
+</section>
+
+    <div id="main" class="content-main js-main ui-base">
+        <section class="master-main row">
+            <div class="content-main_content">
+                <a href="#" id="skipNav" class="screenreader-text" tabindex="-1">Skip Nav Destination</a>
+                
+
+<div id="mainContent" class="ss-content page-column--center center-content">
+    <div class="widget-SelfServeContent widget-instance-SelfServeContent">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="editor-bios" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<div>
+<h1>Editor biographies</h1>
+<a name="page"></a></div>
+<div style="clear: both; margin-bottom: 30px;"><a id="way" name="way"></a><img alt="Michael Way" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/way.jpg?versionId=6804" style="width: 120px; margin: 5px 0px 30px; float: left; height: 164px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Michael Way (Editor-in-Chief)</h2>
+<p style="margin-left: 170px;">Michael Way obtained his PhD from the University of Cambridge, UK, and received postdoctoral training at the Medical Research Council Laboratory of Molecular Biology, Cambridge, UK, and the Whitehead Institute, Massachusetts Institute of Technology in Cambridge, MA, USA. He was a group leader in the Cell Biology Programme at the European Molecular Biology Laboratory, Heidelberg, Germany, for 6.5 years before moving to the Cancer Research UK London Research Institute in 2001. The goal of Michael's research is to understand how signalling networks and their underlying machinery regulate cytoplasmic transport and cell migration. He has been a Journal of Cell Science Editor since 2005, and Editor-in-Chief since 2012.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Actin, cytoskeleton, GTPases, microtubules, motility, myosin and kinesin motors, signalling (phospho-tyrosine and SH2/SH3 adaptor type), viruses.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="green" name="green"></a><img alt="Kathleen J. Green" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/green.jpg?versionId=6804" style="width: 120px; margin: 5px 0px 30px; float: left; height: 164px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Kathleen J. Green (Deputy Editor-in-Chief)</h2>
+<p style="margin-left: 170px;">Kathleen Green graduated with Distinction in Biology from Pomona College, CA, USA, in 1977 and went on to obtain a PhD in Cell and Developmental Biology at Washington University in St Louis in 1982. After carrying our her postdoctoral training in Cell Biology at Northwestern University Medical School, Kathleen joined the faculty of the Pathology and Dermatology Departments, where she is currently the Joseph L. Mayberry Professor of Pathology and Associate Chair for Research and Graduate Education. Kathleen also serves as Program Leader for the Tumor Invasion, Metastasis and Angiogenesis Basic Science Program of the R.H. Lurie Comprehensive Cancer Center. Kathleen's research program is directed towards elucidating the structure and function of cell-cell adhesion molecules and their associated intercellular junctions in tissue morphogenesis and differentiation, and in pathological processes such as cancer, autoimmune disorders and inherited diseases. Kathleen served on the Journal of Cell Science Editorial Advisory Board from 1992-2002, when she became an Editor.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Plakins, cell adhesion, cell migration, actin, cadherins, desmosomes, epithelial differentiation, focal adhesions, intercellular junctions, intermediate filaments.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="basto" name="basto"></a><img alt="Renata Basto" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/R. Basto_Crop.jpg?versionId=6804" style="width: 120px; margin: 5px 0px 30px; float: left; height: 165px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;"> Renata Basto </h2>
+<p style="margin-left: 170px;"> Renata Basto completed her undergraduate studies in Genetics and Microbiology at the Faculty of Sciences, University of Lisbon in Portugal. Her thesis work, under the supervision of Roger Karess and Rui Gomes, focused on studying the metaphase-to-anaphase transition in <em>Drosophila</em> to identify novel components of the spindle assembly checkpoint. She then moved to the University of Cambridge to work with Jordan Raff at the Gurdon Institute on the consequences of centrosome number alterations during fly development. At the end of 2008, Renata was recruited as a Junior Group Leader in the Cell Biology department of the Institut Curie in Paris, France, as a CNRS researcher. Work in the Basto lab uses a variety of model systems such as <em>Drosophila</em>, mouse, human tissue culture and ovarian cancers to address the molecular mechanisms that, in response to centrosome or chromosome number deviations, perturb development and lead to loss of genetic stability. She has been a Journal of Cell Science Editor since 2023.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Cell cycle, centrosomes, chromosomes, <em>Drosophila</em>, mitosis, genetic instability, mitotic spindle, microtubules, aneuploidy and polyploidy.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="billadeau" name="billadeau"></a><img alt="Daniel Billadeau" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Daniel-Billadeau-12628387.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 156px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Daniel Billadeau</h2>
+<p style="margin-left: 170px;">Daniel Billadeau received his BS in Genetics and Cell Biology from the University of Minnesota – Saint Paul, PhD in Pathobiology from the University of Minnesota – Minneapolis, and postdoctoral training in the area of Molecular Immunology at Mayo Clinic in Rochester, Minnesota. Daniel subsequently became an Assistant Professor in the Division of Oncology Research and Department of Immunology at Mayo Clinic, where he has risen through the ranks to Full Professor. Daniel is also a faculty member of the Department of Biochemistry and Molecular Biology and presently serves as the Associate Director for Basic Science in the NCI-funded Mayo Clinic Comprehensive Cancer Center. He is also the Leader of the Growth, Senescence and Cancer platform in the newly formed Mayo Clinic Center for Biomedical Discovery. Daniel has had a long-standing interest in delineating the signaling pathways regulating natural-killer-cell cytotoxicity and T-cell activation with a specific emphasis toward mechanisms impacting the actin and microtubule cytoskeletons. More recently, his work has also included investigations into the mechanisms regulating receptor trafficking through the endosomal network via WASH and the retromer complexes. Lastly, his lab continues to perform studies in cancer biology where he focuses on signaling pathways regulating pancreatic cancer proliferation and survival as well as pathways involved in generating and maintaining cancer-initiating cells. He has been a Journal of Cell Science Editor since 2015.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Signalling, cancer biology, immune cells, actin microtubules.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="cook" name="cook"></a><img alt="Simon Cook" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Simon Cook photo_crop.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 130px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Simon Cook</h2>
+<p style="margin-left: 170px;">Simon Cook became interested in signal transduction during his Biochemistry degree at Royal Holloway College, University of London before going on to do a PhD in Michael Wakelam’s laboratory at the University of Glasgow, where he studied phospholipase C and D signalling.  He then joined Frank McCormick’s lab at ONYX Pharmaceuticals in the San Francisco Bay Area as a post-doc studying the RAS-RAF-MEK-ERK1/2 pathway. He remained at ONYX as an Associate Staff Scientist, Staff Scientist and member of the RAS Group Steering Committee, and also served as Project Manager for the Inflammation Project.  Simon then joined the Babraham Institute as a Tenure-Track Group Leader and held a Cancer Research UK Senior Cancer Research Fellowship from 2000-2006.  From 2013-2021, he coordinated Knowledge Exchange and Commercialisation activities within the Institute. Since 2020, Simon has led Babraham’s Signalling Programme and he is currently Institute Director. His research focuses on protein kinase signalling pathways, their regulation and their role in controlling cell proliferation, cell survival and senescence. His translational work with Biotech/Pharma focuses on how these pathways are deregulated in inflammation, cancer and ageing. He joined Journal of Cell Science as an editor in 2024.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Cell signalling, signal transduction, protein kinases, cell proliferation, cell survival, cell senescence, cancer, inflammation, aging.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="ewald" name="ewald"></a><img alt="Andrew Ewald" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Ewald%20pic.jpg?versionId=6804" style="width: 140px; margin: 5px 0px 30px; float: left; height: 119px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Andrew Ewald</h2>
+<p style="margin-left: 170px;">Andrew Ewald received his undergraduate degree in physics with honors from Haverford College. He earned his PhD in biochemistry and molecular biophysics from the California Institute of Technology, studying with Scott Fraser. He completed postdoctoral work with Zena Werb in mammary biology and cancer at the University of California, San Francisco. Andrew joined the Johns Hopkins faculty in 2008, and is an Associate Professor of Cell Biology, Oncology and Biomedical Engineering. Andrew studies how cells build organs during normal development and how these same processes contribute to breast cancer metastasis. His lab recently identified a unique class of breast cancer cells that lead the process of invasion into surrounding tissues – a first step in cancer metastasis. His students and fellows are currently working to identify molecular strategies to prevent and treat metastatic breast cancer. Andrew was the 3D Cell Biology Guest Editor on Journal of Cell Science during 2015/2016, and became a permanent Editor in 2016.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Epithelial morphogenesis, organoids, 3D cell biology.</p>
+<div style="clear: both; margin-bottom: 30px;"><a id="hill" name="hill"></a><img alt="Caroline Hill" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Head%20shot%20C%20Hill%202.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 154px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Caroline Hill</h2>
+<p style="margin-left: 170px;">Caroline Hill got her PhD from the University of Cambridge, UK, where she worked on chromatin structure with Jean Thomas. She then did her postdoc with Richard Treisman at the Imperial Cancer Research Fund, London, UK, working on the regulation of c-fos gene expression by growth factors. In 1995 she set up her own research lab at the Ludwig Institute for Cancer Research, London, UK to study signalling by TGF-beta superfamily ligands. She moved to the Cancer Research UK London Research Institute in 1998, to head the Developmental Signalling Laboratory. She moved to the Francis Crick Institute in 2015, where she is now an Assistant Research Director. Her work is focused on determining the mechanisms by which TGF-beta superfamily ligands signal to the nucleus, their function in normal physiological conditions, in particular in early vertebrate development, and understanding how their deregulated signaling leads to human disease. She was elected a member of EMBO in 2002 and elected a fellow of the Academy of Medical Sciences in 2019. She has been a Journal of Cell Science Editor since 2020.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Signal transduction, growth factors, cytokines, transcription, zebrafish development, cancer, chromatin and epigenetics.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Hodivala-Dilke" name="Hodivala-Dilke"></a><img alt="Kairbaan Hodivala-Dilke" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Kairbaan head shot 2017crop.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 127px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Kairbaan Hodivala-Dilke</h2>
+<p style="margin-left: 170px;"> Kairbaan Hodivala-Dilke obtained her undergraduate degree in Biology at Southampton University, UK, and then obtained a PhD from The ICRF in London, UK, focussing on cell adhesion and skin cancer, under the supervision of Fiona Watt. She then carried out postdoctoral training with Richard Hynes at Massachusetts Institute of Technology, USA, working on in vivo models of cell adhesion in blistering diseases, platelet biology and angiogenesis. Kairbaan has been a Laboratory Head at Barts Cancer Institute since 2004. In 2015, she was awarded the Hooke Medal by the British Society of Cell Biology. She is also an Elected member of the European Molecular Biology Organisation and an Elected Fellow of The Academy of Medical Science (FMedSci). Her lab currently focuses on tumour blood vessels, angiocrine and pericrine signalling, the tumour microenvironment, and cancer progression. She has been a Journal of Cell Science Editor since 2023.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Integrins, cell adhesion, blood vessels, angiogenesis, angiocrine and pericrine signalling, tumour microenvironment, cancer progression, mouse models of cancer.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="king" name="king"></a><img alt="Megan King" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Megan King photo.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 130px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Megan King</h2>
+<p style="margin-left: 170px;"> Megan King received her BA in Biochemistry from Brandeis University and her PhD in Biochemistry and Molecular Biophysics from the University of Pennsylvania. During her postdoctoral training with Günter Blobel at Rockefeller University, she discovered new mechanisms for the targeting and function of integral inner nuclear membrane proteins. Since joining the Cell Biology Department at the Yale School of Medicine in 2009, Megan has continued to investigate the broad array of biological functions that are integrated at the nuclear envelope, from genome integrity to nuclear mechanics to mechanotransduction. In 2018 she teamed up with Patrick Lusk and now co-leads the joint LusKing Lab, which focuses on nuclear mechanics, dynamics and quality control. Megan is a past recipient of the New Innovator Award and was named a Searle Scholar and an Allen Distinguished Investigator. She has been a Journal of Cell Science Editor since 2023.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Nuclear pores complexes, nuclear organisation, nuclear integrity, nuclear mechanics, chromatin structure and dynamics, mechanotransduction, quality control.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="jls" name="jls"></a><img alt="Jennifer Lippincott-Schwartz" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/schwartz.jpg?versionId=6804" style="width: 120px; margin: 5px 0px 30px; float: left; height: 164px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Jennifer Lippincott-Schwartz</h2>
+<p style="margin-left: 170px;">Jennifer Lippincott-Schwartz obtained her PhD from Johns Hopkins University in Baltimore, MD, USA, and received postdoctoral training at the National Institute of Child Health and Human Development (NICHD) in Bethesda, MD. From 1992-2016, she acted as Chief of the Section on Organelle Biology in the Cell Biology and Metabolism Branch at the NICHD, before moving her lab to Janelia Research Campus, where she is a Senior Group Leader and Head of Janelia's 4D Cellular Physiology program. Jennifer's research is focussed on understanding how intracellular organelles are assembled and inherited, and how proteins move within cells. Her lab uses various fluorescent imaging techniques to visualize and track molecules and organelles at both diffraction-limited and super-resolution scales. Jennifer has been a Journal of Cell Science Editor since 2000.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Microscopy, membrane trafficking, organelles, ER, Golgi, microtubules, motors, organelle biogenesis and membrane-cytoskeletal interactions, protein trafficking, vesicles, autophagy, mitochondria, ESCRT proteins, actin, dynamin, fly embryo development.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Ou" name="Ou"></a><img alt="Guangshuo Ou" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Ou.jpg?versionId=6804" style="width: 131px; margin: 5px 0px 30px; float: left; height: 164px;" />
+<h2 style="margin-left: 170px;">Guangshuo Ou</h2>
+<p style="margin-left: 170px;">Guangshuo obtained his PhD in cell and developmental biology from the University of California, Davis. His thesis work, conducted under the guidance of Jon Scholey, focused on ciliogenesis in <em>Caenorhabditis elegans</em> neurons and elucidated how microtubule-based motor proteins are used to build neuronal cilia. Guangshuo received his postdoctoral training with Ron Vale at the University of California, San Francisco, where he developed imaging techniques to study neuroblast migration and division in <em>C. elegans</em> larvae and discovered a novel myosin-based mechanism underlying neuroblast asymmetric division. In 2011 he was recruited by the Junior One Thousand Talent Plan Award by the Chinese government as an investigator at the Institute of Biophysics Chinese Academy of Sciences. In 2013 his group relocated to the School of Life Sciences at Tsinghua University in Beijing, and he became a principle investigator of the Joint Center for Life Sciences at Tsinghua and Peking Universities. He continues to study neuroblast development using <em>C. elegans</em> as a model organism. Guangshuo has been a Journal of Cell Science Editor since 2017.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Cell division, cell migration, ciliogenesis, cytoskeleton, motor proteins, neural development and <em>C. elegans.</em></p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Parton" name="Parton"></a><img alt="Rob Parton" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Rob Parton photo.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 112px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Robert Parton</h2>
+<p style="margin-left: 170px;">Robert Parton studied at the Universities of Edinburgh and Leicester before moving to the European Molecular Biology Laboratory in Heidelberg, Germany. He received Royal Society and EMBO postdoctoral fellowships to work with Gareth Griffiths and Kai Simons before becoming a junior group leader studying plasma membrane domains and cell surface dynamics. In 1996, he moved to the University of Queensland, Brisbane, Australia, where he is currently a group leader in the Institute for Molecular Bioscience and Deputy Director of the Centre for Microscopy and Microanalysis. His group uses a range of techniques, including advanced light and electron microscopy, and a number of experimental systems such as zebrafish, tissue explants, and cultured cells. His main research areas include microdomains of the plasma membrane, with a particular focus on caveolae, lipid droplets and their role in fighting infection, and novel pathways of endocytosis. He is a Fellow of the Australian Academy of Science, an Associate Member of EMBO, and an Australian Research Council Laureate Fellow. He joined Journal of Cell Science as an editor in 2024.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Electron microscopy, membrane trafficking, caveolae, caveolins, cavins, lipid droplets, membrane lipids, endocytosis, muscle structure and function, zebrafish.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Rikhy" name="Rikhy"></a><img alt="Richa Rikhy" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Richa Rikhy photo.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 148px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Richa Rikhy</h2>
+<p style="margin-left: 170px;">Richa is a Professor and Wellcome Trust DBT India Alliance Senior Fellow in the Biology Department at the Indian Institute of Science Education and Research (IISER) in Pune, India. For her PhD, Richa worked with KS Krishnan at the Department of Biological Sciences in the Tata Institute of Fundamental Research, Mumbai, India, where she studied the mechanisms regulating dynamin dependent synaptic vesicle recycling in the <em>Drosophila</em> neuromuscular junction. During her post doc with Jennifer Lippincott-Schwartz at the Cell Biology and Metabolism Branch in the National institute of Child Health and Development, NIH, Bethesda, USA, she studied the mechanisms by which trafficking and mitochondrial dynamics regulate early embryogenesis and stem cell differentiation in <em>Drosophila</em>. Richa started an independent research group in 2010. She studies the role of BAR domain-containing proteins in epithelial morphogenesis in embryogenesis in Drosophila. She also studies how mitochondrial dynamics and activity regulate actin remodelling, polarity formation and differentiation of epithelial cells in <em>Drosophila</em>. Richa joined the journal team as an editor in 2024. </p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+<em>Drosophila</em>, embryogenesis, morphogenesis, epithelial cell polarity, BAR domain function, actin remodelling, mitochondrial dynamics, mitochondrial fusion, mitochondrial fission, Drp1, Opa1, Mfn, epithelial cell differentiation.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="schiavo" name="schiavo"></a><img alt="Giampietro Schiavo" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/schiavo.jpg?versionId=6804" style="width: 120px; margin: 5px 0px 30px; float: left; height: 164px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Giampietro Schiavo</h2>
+<p style="margin-left: 170px;">Giampietro Schiavo obtained his PhD from the University of Padua, Italy, and received postdoctoral training at the Department of Biomedical Studies, University of Padua, and at the Memorial Sloan Kettering Cancer Center in New York, USA. He was then recruited as junior group leader at the Cancer Research UK London Research Institute, where he was Head of the Molecular Neuropathobiology Laboratory. Giampietro's lab moved to the University College London Institute of Neurology in 2013. The goal of Giampietro's research is to understand the mechanisms underlying neuronal membrane trafficking, and how neurons control the uptake and sorting of ligands in health and disease. Elected a Fellow of the Academy of Medical Sciences in 2011. He has been a Journal of Cell Science Editor since 2007.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Neurobiology, membrane sorting and trafficking, molecular motors.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="yoshimori" name="yoshimori"></a><img alt="Tamotsu Yoshimori" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Yoshimori_pic.jpg?versionId=6804" style="width: 120px; margin: 5px 0px 30px; float: left; height: 158px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Tamotsu Yoshimori</h2>
+<p style="margin-left: 170px;">Tamotsu Yoshimori was educated at Osaka University in Japan, where he received his PhD in Medical Science. He was an assistant professor at Kansai Medical University, a postdoctoral researcher at European Molecular Biology Laboratory, an associate professor at the National Institute of Basic Biology and as a professor at both the National Institute of Genetics and the Research Institute for Microbial Diseases of Osaka University. He is now a professor of genetics at the Graduate School of Medicine and a professor of intracellular membrane dynamics at the Graduate School of Frontier Bioscience, Osaka University. Tamotsui's research interests are focused on intracellular membrane trafficking, and particularly on autophagy. He has been a Journal of Cell Science Editor since 2013.</p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Autophagy, membrane trafficking, endocytic pathway, secretory pathway, organelles, ER, Golgi, endosomes, lysosomes, organelle biogenesis, protein transport, vesicles, membrane dynamics, protein degradation, quality control.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Collinson" name="Collinson"></a><img alt="Lucy Collinson" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Collinson Headshot.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 137px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;">Lucy Collinson (Guest Editor: Imaging Cell Architecture and Dynamics)</h2>
+<p style="margin-left: 170px;"> Lucy Collinson is an electron microscopist with a background in microbiology and cell biology. She holds a degree and PhD in medical microbiology and carried out post-doctoral research investigating membrane trafficking pathways. Lucy has led a series of biological EM facilities since 2004, at University College London and then at the Cancer Research UK London Research Institute, which became part of the Francis Crick Institute in 2015. With a team of 10 electron microscopists and 3 physicists, she oversees more than 100 research projects with more than 60 research groups within the Crick, imaging across scales from proteins to whole organisms. Her microscopy and technology development interests include volume EM, correlative imaging techniques, cryo-microscopy, X-ray microscopy, image analysis, citizen science, microscope design and prototyping. She is part of the team who have built an international volume EM community, and she is currently building new democratised tools for correlative imaging and translating advanced imaging workflows for clinical and diagnostic applications.<br />
+<strong></strong></p>
+<p style="margin-left: 170px;"><strong> Lucy is coordinating the ‘Imaging Cell Architecture and Dynamics’ special issue, which is due to be published in late 2024.  <a href="https://journals.biologists.com/jcs/pages/imaging">Click here for more information</a>.</strong></p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Light microscopy, electron microscopy, X-ray microscopy, volume EM, CLEM, correlative, multimodal, imaging, cell biology.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Jacquemet" name="Jacquemet"></a><img alt="Guillaume Jacquemet" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Guillaume Jacquemet_crop.jpg
+?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 130px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;"> Guillaume Jacquemet (Guest Editor: Imaging Cell Architecture and Dynamics)</h2>
+<p style="margin-left: 170px;"> Guillaume Jacquemet earned his PhD from the University of Manchester, UK, and then carried postdoctoral training at the University of Turku, Finland. He currently serves as an Associate Professor at Åbo Akademi University. His laboratory uses and develops live imaging and image analysis methodologies to investigate how cancer cells interact with and respond to their surroundings during metastasis.<br />
+<strong></strong></p>
+<p style="margin-left: 170px;"><strong> Guillaume is coordinating the ‘Imaging Cell Architecture and Dynamics’ special issue, which is due to be published in late 2024. <a href="https://journals.biologists.com/jcs/pages/imaging">Click here for more information</a>.</strong></p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Light microscopy, cell adhesion, cell biology, imaging.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="Garcia-Saez" name="Garcia-Saez"></a><img alt="Ana J. Garcia-Saez" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/Ana Garcia Saez_crop.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 130px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;"> Ana J. Garcia-Saez (Guest Editor: Cell Biology of Mitochondria)</h2>
+<p style="margin-left: 170px;"> Ana J. Garcia-Saez is a Professor at the Institute for Genetics, University of Cologne, Germany where she has been a faculty member since 2019. Since October 2023 she has concurrently assumed the position of the Director of the Max Planck Institute (MPI) of Biophysics in Frankfurt am Main, Germany. Her primary areas of research include cell death, biophysics, molecular and cellular biology, biochemistry and advanced microscopy. Her projects have been centered around membrane organisation and dynamics, apoptosis regulation, Bcl-2 proteins, and single molecule techniques. Ana’s scientific achievements have been recognized by her selection as an EMBO Young Investigator and a Henriette Herz-Scout of the Alexander von Humboldt foundation, and by two prestigious ERC (European Research Council) Grants.<br />
+<strong></strong></p>
+<p style="margin-left: 170px;"><strong> Ana is coordinating the ‘Cell Biology of Mitochondria’ special issue, which is due to be published in early 2025. The deadline for submissions is 1 October 2024. <a href="https://journals.biologists.com/jcs/pages/mitochondria">Click here for more information</a>.</strong></p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Mitochondria, membrane organisation and dynamics, mitochondrial dynamics and contacts, apoptosis, mitochondrial permeabilisation, biophysics, Bcl-2 protein complexes.</p>
+</div>
+<div style="clear: both; margin-bottom: 30px;"><a id="McBride" name="McBride"></a><img alt="Heidi McBride" src="https://cob.silverchair-cdn.com/ImageLibrary/JCellScience/editors/McBride Headshot_crop.jpg?versionId=6804" style="width: 130px; margin: 5px 0px 30px; float: left; height: 130px; border-width: 1px; border-style: solid;" />
+<h2 style="margin-left: 170px;"> Heidi McBride (Guest Editor: Cell Biology of Mitochondria)</h2>
+<p style="margin-left: 170px;"> Heidi McBride is a Professor at McGill University in the Montreal Neurological Institute. Her work focuses on the molecular mechanisms and function of mitochondrial dynamics. The overarching theme of her research is to understand the fundamental behaviour of mitochondria, including fusion, fission and the generation of mitochondrial-derived vesicles (MDVs). The overarching goal is to identify the molecular mechanisms of communication required to mediate cellular transitions, including metabolic, cell cycle, immune pathways and cell death transitions. Recent areas of research interest include mechanisms of mitochondrial contributions to neurodegeneration; the mechanisms of MDV formation; and the role of the mitochondria as a unique signalling platform in the cell. <br />
+<strong></strong></p>
+<p style="margin-left: 170px;"><strong> Heidi is coordinating the ‘Cell Biology of Mitochondria’ special issue, which is due to be published in early 2025. The deadline for submissions is 1 October 2024. <a href="https://journals.biologists.com/jcs/pages/mitochondria">Click here for more information</a>.</strong></p>
+<p style="margin-left: 170px;"><strong>Areas of expertise</strong><br />
+Mitochondria, mitochondrial-derived vesicles, mitochondrial fusion and fission, SUMOylation, metabolism, iron transport and homeostasis, peroxisome biogenesis, homeostasis and function, neurodegeneration.</p>
+</div>
+<p style="margin-left: 170px;"><a class="back-to-top" data-hide-link-title="0" href="#page" style="line-height: 20.8px;"><em class="icon-chevron-up">&nbsp;</em>Back to top</a></p>
+</div>
+
+
+
+ 
+    </div>
+</div>
+
+<div id="Sidebar" class="page-column page-column--right">
+    <div class="sidebar-widget_wrap">
+    <div class="widget-DynamicWidgetLayout widget-instance-SelfServe_RightRail">
+        <div class="widget widget-dynamic " data-count="0">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+
+    </div>
+
+</div> 
+    </div>
+
+    </div>
+</div>
+
+
+
+
+            </div><!-- /.content-main_content -->
+        </section>
+    </div>
+    <div class="mobile-mask">
+    </div>
+    <section class="footer_wrap vt-site-footer">
+        
+
+
+<div class="ad-banner js-ad-banner ad-banner-footer">
+
+    <div class="widget-AdBlock widget-instance-FooterAd">
+            
+
+ 
+    </div>
+
+</div>
+
+<div class="sticky-footer-ad js-sticky-footer-ad">
+
+    <div class="widget-AdBlock widget-instance-StickyAd">
+            
+
+ 
+    </div>
+
+</div>
+
+
+    <div class="widget-SitePageFooter widget-instance-SitePageFooter">
+            <div class="journal-footer journal-bg">
+        <div class="journal-footer_content clearfix foot-right">
+    <div class="journal-footer-menu">
+            <ul>
+                <li class="link-0">
+                    <a href="/jcs/pages/about">About JCS</a>
+                </li>
+                <li class="link-1">
+                    <a href="/jcs/pages/edboard">Editors and Board</a>
+                </li>
+                <li class="link-2">
+                    <a href="/jcs/pages/aims">Aims and scope</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="link-0">
+                    <a href="/jcs/pages/submit-manuscript">Submit a manuscript</a>
+                </li>
+                <li class="link-1">
+                    <a href="/jcs/pages/manuscript-prep">Manuscript preparation</a>
+                </li>
+                <li class="link-2">
+                    <a href="/jcs/pages/journal-policies">Journal policies</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="link-0">
+                    <a href="/jcs/pages/rights-permissions">Rights and permissions</a>
+                </li>
+                <li class="link-1">
+                    <a href="/jcs/pages/alerts">Sign up for alerts</a>
+                </li>
+                <li class="link-2">
+                    <a href="/jcs/pages/contacts">Contacts</a>
+                </li>
+            </ul>
+        
+    </div>
+    <div class="journal-footer-affiliations aff-right">
+        <!-- <h3>Affiliations</h3> -->
+            <a href="/jcs" target="">
+                <img id="footer-logo-JournalofCellScience" class="journal-footer-affiliations-logo" src="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/jcs/JCS_footer-1181661556.svg" alt="Journal of Cell Science" />
+            </a>
+    </div>
+        </div>
+    </div>
+ 
+    </div>
+
+
+
+<div class="site-theme-footer">
+        <div class="site-theme-footer_content">
+    <div class="widget-SelfServeContent widget-instance-UmbrellaFooterSelfServe">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="GlobalFooter_Links" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<div class="theme-footer">
+<div class="flex-row">
+<div class="col-6 footer-nav">
+<div class="flex-row">
+<div class="col-2">
+<div class="footer-links-group with-header">
+<ul class="list-lvl-0 long-links">
+    <li class="list-lvl-0"><a href="/dev" target="_blank">Development</a></li>
+    <li class="list-lvl-0"><a href="/jcs" target="_blank">Journal of Cell Science</a></li>
+    <li class="list-lvl-0"><a href="/jeb" target="_blank">Journal of Experimental Biology</a></li>
+    <li class="list-lvl-0"><a href="/dmm" target="_blank">Disease Models &amp; Mechanisms</a></li>
+    <li class="list-lvl-0"><a href="/bio" target="_blank">Biology Open</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+<div class="col-2">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0"><a href="https://thenode.biologists.com/">The Node</a></li>
+    <li class="list-lvl-0"><a href="https://prelights.biologists.com/">preLights</a></li>
+    <li class="list-lvl-0"><a href="https://focalplane.biologists.com/">FocalPlane</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+<div class="col-2">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0"><a href="https://www.biologists.com/grants">Grants</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/meetings">Journal Meetings</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/workshops">Workshops</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+<div class="col-2">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0"><a href="https://www.biologists.com/library-hub">Library hub</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/subscribe">Company news</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/contact">Contacts</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+</div>
+<!-- close .footer-nav .flex-row -->
+</div>
+<!-- close .footer-nav -->
+<div class="col-3 footer-branding">
+<div class="footer-logo-wrap">
+<!-- If there are multiple logos, duplicate div.footer-logo -->
+<div class="footer-logo">
+<a href="/journals">
+<img alt="The Company of Biologists Logo" src="https://cob.silverchair-cdn.com/ImageLibrary/logo-footer.svg?versionId=6231" />
+</a>
+</div>
+</div>
+<div class="social-icons-wrap">
+<ul class="social-icons-list"><a href="#">
+    <!-- Twitter -->
+    </a>
+    <li><a href="#"></a><a class="social-link" href="https://twitter.com/Co_Biologists"><span class="icon-social-twitter"></span><span class="screenreader-text">Twitter</span></a></li>
+    <!-- LinkedIn -->
+    <li><a class="social-link" href="https://www.linkedin.com/company/the-company-of-biologists/"><span class="icon-social-linkedin"></span><span class="screenreader-text">LinkedIn</span></a></li>
+    <!--Youtube---->
+    <li><a class="social-link" href="https://www.youtube.com/user/CompanyofBiologists"><span class="icon-social-youtube"></span><span class="screenreader-text">Youtube</span></a></li>
+    <!-- WeChat-->
+    <li><a class="social-link social-link-wechat" href="/ImageLibrary/WeChat.jpg" target="_blank"><span><img alt="WeChat logo" src="https://cob.silverchair-cdn.com/ImageLibrary/wechat-white-transparent-noring.png?versionId=3065" style="height: 22px;margin-top: 9px;" />
+    <style>
+        .social-link-wechat:hover, .social-link-wechat:focus {
+        color:transparent !important;
+        }
+        .social-link-wechat:hover img, .social-link-wechat:focus img {
+        filter: invert(100);
+        }
+    </style>
+    </span></a></li>
+    <!-- Mastodon-->
+    <li><a class="social-link social-link-mastodon" href="https://biologists.social/@Co_Biologists" target="_blank"><img src="https://cob.silverchair-cdn.com/ImageLibrary/Mastodon_Social_Icon_Circle_BW_TransparencyNoBlk.png?versionId=6231" alt="Mastodon icon" style="width: 38px; height: 38px; margin-top: 0px;" /><br />
+    </a></li>
+</ul>
+</div>
+</div>
+<!-- close .footer-branding -->
+</div>
+<!-- close .flex-row -->
+</div>
+<!-- close .theme-footer -->
+<div class="legal-links-row">
+<div class="legal-links-wrap">
+<ul class="legal-links">
+    <li><a href="https://www.biologists.com/privacy-policy">Privacy policy</a></li>
+    <li><a href="https://www.biologists.com/terms-conditions">Terms &amp; conditions</a></li>
+    <li><a href="https://www.biologists.com/copyright-permissions">Copyright policy</a></li>
+    <li><a href="https://www.biologists.com/cookies/">Cookies</a></li>
+    <li class="copyright">© 2024 The Company of Biologists. All rights reserved.</li>
+</ul>
+<ul class="legal-links">
+    <li>Registered Charity 277992 | Registered in England and Wales | Company Limited by Guarantee No 514735<br />
+    Registered office: Bidder Building, Station Road, Histon, Cambridge CB24 9LF, UK</li>
+</ul>
+</div>
+<!-- close .legal-links-wrap -->
+</div>
+<!-- close .legal-links-row -->
+
+
+
+ 
+    </div>
+
+
+
+        </div><!-- /.center-inner-row -->
+</div><!-- /.site-theme-footer -->
+<div class="ss-ui-only">
+
+    <div class="widget-SelfServeContent widget-instance-SSuiOnlySelfServe">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="SSuiOnly" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<style type="text/css">
+    .boxed-text .caption {
+    display: block;
+    }
+    .boxed-text .caption .title.-title {
+    float: none;
+    font-weight: bold;
+    margin-bottom: .75rem;
+    }
+    /* Start COB-414 */
+    .base-font {
+    font-size: 1rem !important;
+    }
+    .widget-SitePageFooter .journal-footer .journal-footer_content {
+    flex-wrap: nowrap !important;
+    }
+    @media (max-width: 899px) {
+    .widget-SitePageFooter .journal-footer .journal-footer_content {
+    flex-wrap: wrap !important;
+    }
+    }
+    .site-theme-footer .site-theme-footer_content .legal-links-row {
+    background: #646262;
+    padding: 1rem 0;
+    }
+    .site-theme-footer .site-theme-footer_content .legal-links-row .legal-links-wrap {
+    float: none;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    }
+    /* End COB-414 */
+    /* Start COB-415 */
+    .article-title-main {
+    font-size: 1.75rem !important;
+    }
+    .pg_article h4.section-title {
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .5px !important;
+    }
+    .pg_article .content-inner-wrap h2 {
+    font-size: 1.375rem !important;
+    }
+    .pg_article .content-inner-wrap h4 {
+    font-size: 0.875rem !important;
+    }
+    /* End COB-415 */
+    /*SCMP-26926*/
+    body.leftRailModalOpen .page-column--center.can-stick {
+    z-index: 1;
+    }
+    /*SCMP-26926*/
+    /*Self Serve overrides*/
+    .widget-SelfServeContent .homepage-panel-text h1,
+    .widget-SelfServeContent .homepage-panel-text h2,
+    .widget-SelfServeContent .homepage-panel-text h3,
+    .widget-SelfServeContent .homepage-panel-text h4 {
+    margin-top: 0;
+    }
+    .widget-SelfServeContent .homepage-panel-text h1+p,
+    .widget-SelfServeContent .homepage-panel-text h2+p,
+    .widget-SelfServeContent .homepage-panel-text h3+p,
+    .widget-SelfServeContent .homepage-panel-text h4+p {
+    margin-top: .25rem;
+    }
+    .widget-SelfServeContent h1+p,
+    .widget-SelfServeContent h2+p,
+    .widget-SelfServeContent h3+p,
+    .widget-SelfServeContent h4+p {
+    margin-top: .25rem;
+    }
+    .widget-SelfServeContent h1,
+    .widget-SelfServeContent h2,
+    .widget-SelfServeContent h3,
+    .widget-SelfServeContent h4 {
+    margin-top: 1rem;
+    }
+    .widget-SelfServeContent h1+h2,
+    .widget-SelfServeContent h2+h3,
+    .widget-SelfServeContent h3+h4 {
+    margin-top: .5rem;
+    }
+    .widget-SelfServeContent h1 {
+    font-size: 1.75rem;
+    }
+    .widget-SelfServeContent h2 {
+    font-size: 1.4rem;
+    }
+    .widget-SelfServeContent h3 {
+    font-size: 1.25rem;
+    }
+    .widget-SelfServeContent h4 {
+    font-size: 1.125rem;
+    }
+    .widget-SelfServeContent h5 {
+    font-size: 16px;
+    font-weight: bold;
+    }
+    .widget-SelfServeContent p+ul,
+    .widget-SelfServeContent p+ol {
+    margin-top: -.75rem;
+    margin-bottom: .75rem;
+    }
+    /*end self serve overrides*/
+    .pg_Collections .widget-MultiQuerySelectableContentList {
+    border: none;
+    }
+</style>
+
+
+
+ 
+    </div>
+
+</div>
+
+<div class="ad-banner js-ad-interstitial">
+
+    <div class="widget-AdBlock widget-instance-Interstitial">
+            
+
+ 
+    </div>
+
+</div>
+    </section>
+
+
+
+
+
+    
+    
+
+
+    <div class="widget-SiteWideModals widget-instance-SiteWideModals">
+        <div id="revealModal" class="reveal-modal" data-reveal>
+    <div id="revealContent"></div>
+    <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+</div>
+
+<div id="globalModalContainer" class="modal-global-container">
+    <div id="globalModalContent">
+        <div class="js-globalModalPlaceholder"></div>
+    </div>
+    <a class="close-modal js-close-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+</div>
+<div id="globalModalOverlay" class="modal-overlay js-modal-overlay"></div>
+
+    <div id="NeedSubscription" class="reveal-modal small" data-reveal>
+            <div class="subscription-needed">
+                <h5 class="modal-heading">This Feature Is Available To Subscribers Only</h5>
+                <p><a class="btn modal-sign_in-btn" href="/sign-in?returnUrl=%2fjcs%2fpages%2feditor-bios">Sign In</a> or <a class="modal-register-link" href="/my-account/register?siteId=1000007&amp;returnUrl=%2fjcs%2fpages%2feditor-bios">Create an Account</a></p>
+            </div>
+
+
+        <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+    </div>
+
+
+<div id="noAccessReveal" class="reveal-modal tiny" data-reveal>
+    <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+    <div id="noAccessForm">
+        <div class="spinner"></div>
+    </div>
+</div>
+ 
+    </div>
+
+    
+
+
+
+<script type="text/javascript">
+    MathJax = {
+        tex: {
+            inlineMath: [['|$', '$|'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- CookiePro Default Categories -->
+    <!-- When the Cookie Compliance code loads, if cookies for the associated group have consent...
+         it will dynamically change the tag to: script type=text/JavaScript...
+         the code inside the tags will then be recognized and run as normal. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="//cob.silverchair-cdn.com/Themes/Client/app/jsdist/v-638488182993945370/site.min.js"></script>
+
+
+    
+  
+
+
+
+
+    
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            App.SearchAutoComplete.init(["Keywords"]);
+        });
+        </script>
+    
+    
+
+
+
+
+    <div class="ad-banner js-ad-riser ad-banner-riser">
+
+    <div class="widget-AdBlock widget-instance-RiserAd">
+            
+
+ 
+    </div>
+
+    </div>
+
+
+
+        
+    <div class="end-of-page-js"></div>
+</body>
+</html>
+
+ contentType 9 text/html url 57 https://journals.biologists.com:443/jcs/pages/editor-bios responseCode 3 200 

@@ -1,0 +1,415 @@
+lougfehcgemoqsoqpmzkagoshcoqrmfqekrmmqlq length 5 26763 page 26763 ﻿<!DOCTYPE html>
+<html lang="es" ng-app="amphibiaweb" ng-controller="AmphibiawebController">
+
+<head>
+    <base href="/faunaweb/amphibiaweb/">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anfibios del Ecuador</title>
+    <meta name="description" content="Anfibios del Ecuador" />
+    <meta name="keywords" content="fauna, web, ecuador, amphibia, reptilia, mammalia" />
+    <meta name="author" content="jorgeoandres" />
+    <meta name="fragment" content="!">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css?v1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/faunaweb.css?v1.4" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/clean-blog.min.css" />
+    <link rel="alternate" hreflang="es" href="https://bioweb.bio/" />
+    <link rel="stylesheet" href="../plugins/ui-select/select.css">
+    <link href="../css/owl.carousel.css" rel="stylesheet" media="screen">
+    <link href="../css/owl.theme.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="../../portal/plugins/angular-autocomplete/autocomplete.css">
+    <link rel="stylesheet" href="/vendor/magnific-popup/magnific-popup.css">
+    <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script type='application/ld+json'>
+        {"@context":"https://www.schema.org","@type":"Organization","name":"Amphibiaweb","url":"https://bioweb.bio/faunaweb/amphibiaweb/","logo":"https://bioweb.bio/faunaweb/img/logo/amphibiaweb.svg","description":"AmphibiaWebEcuador es el portal web que publica en línea la información más completa de los anfibios del Ecuador. AmphibiaWebEcuador forma parte de la enciclopedia virtual FaunaWebEcuador, un esfuerzo educativo liderado por científicos ecuatorianos para dar acceso abierto e irrestricto a información biológica de nuestra fauna.","address":{"@type":"PostalAddress","addressLocality":"Quito","addressRegion":"Pichincha","postalCode":"170121","addressCountry":"Ecuador"},"hasMap":"https://www.google.com.ec/maps/place/Pontifical+Catholic+University+of+Ecuador/@-0.2088135,-78.4923993,18z/data=!4m8!1m2!2m1!1sPUCE!3m4!1s0x91d59a10b8c57123:0x7cc4dcd53937a7dd!8m2!3d-0.209239!4d-78.491436"}
+    </script>
+    <script type="application/ld+json">
+        {"@context":"https://schema.org","@type":"WebSite","url":"https://bioweb.bio/faunaweb/amphibiaweb/","potentialAction":{"@type":"SearchAction","target":"https://bioweb.bio/faunaweb/amphibiaweb/BusquedaSencilla/{search_term_string}","query-input":"required name=search_term_string"}}
+    </script>
+    <script src="../js/modernizr.custom.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K6F8EFBPQV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-K6F8EFBPQV');
+    </script>
+</head>
+
+<body id="amphibiaweb" class="cbp-spmenu-push">
+    <div class="contenido">
+        <div id="menu">
+            <header class="bp-header cf">
+                <div class="dummy-logo">
+                    <div class="row nopadding">
+                        <a href="https://www.puce.edu.ec/">
+                            <center><img src="../img/logo/1.1.svg" class="img-responsive"
+                                    style="cursor: pointer; width: 60%;"></center>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <nav id="ml-menu" class="menu">
+                <div class="menu__wrap">
+                    <ul data-menu="main" class="menu__level">
+                        <li class="menu__item" style="border: 0;">
+                            <a class="menu__link hidden" href="#"></a>
+                        </li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href="wqwq"><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu__item" style="border: 0; margin-bottom:15px;">
+                            <input class="form-control" placeholder="Buscar / Search" ng-model="busquedaSimple"
+                                ng-keyup="$event.keyCode == 13 ? buscarEspecieSencilla(busquedaSimple,false) : null" />
+                            <a class="hidden"></a>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="BusquedaEspecies">Búsqueda Avanzada</a></li>
+                        <!--<li class="menu__item"><a class="menu__link" href="Mapa/Punto">Buscar en mapa</a></li>-->
+                        <li class="menu__item"><a class="menu__link" href="home">Introducción</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Noticias">Noticias</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Contenidos">Contenidos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="GeografiaClima">Geografía y clima</a></li>
+                        <li class="menu__item"><a class="menu__link" data-submenu="submenu-4" href="#"
+                                ng-click="navigate('DiversidadBiogeografia')">Biogeografía</a></li>
+                        <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#"
+                                ng-click="navigate('Conservacion')">Conservación</a></li>
+                        <!--<li class="menu__item"><a class="menu__link" href="/galeria/IndiceTaxonomico/1">Fotos</a></li>-->
+                        <li class="menu__item"><a class="menu__link" href="/galeria/IndiceTaxonomico/1">Fotos</a></li>
+                        <!--<li class="menu__item"><a class="menu__link" data-submenu="submenu-6" href="#">Fotos</a></li>-->
+                        <li class="menu__item"><a class="menu__link" href="Cantos">Cantos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="GuiasPDF">Guías PDF</a></li>
+                        <li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#"
+                                ng-click="navigate('IndiceTaxonomico')">Listas de Especies</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Publicaciones">Publicaciones</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Enlaces">Enlaces</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Citar">¿Cómo citar?</a></li>
+                        <li class="menu__item"><a class="menu__link" href="UsoDatos">Uso de datos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Glosario">Glosario</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Agradecimientos">Agradecimientos</a></li>
+                        <li class="menu__item"><a class="menu__link" href="QuienesSomos">¿Quiénes somos?</a></li>
+                        <!--<li class="menu__item"><a class="menu__link" data-submenu="submenu-5" href="#" ng-click="navigate('QuienesSomos/SantiagoRon')">¿Quiénes somos?</a></li>-->
+                        <li class="hidden-sm hidden-lg hidden-md menu-amphibia menu__item">
+                            <a href="/faunaweb.html" class="menu__link" target="_self">
+                                <center><img src="../img/logo/faunawebshort.svg" alt="FaunaWeb" style="width:30px;">
+                                </center>
+                            </a>
+                        </li>
+                        <li class="hidden-sm hidden-lg hidden-md menu-amphibia menu__item"><a href="/"
+                                class="menu__link">
+                                <center><img src="../../img/bioweb.svg" style="width:70px;" /></center>
+                            </a></li>
+                        <!--<li class="hidden-sm hidden-lg hidden-md menu-reptilia menu__item">
+                            <a href="../reptiliaweb/" class="menu__link" target="_self">
+                                <center><img src="../img/logo/reptiliaOptimizado.png" style="width:30px;" /></center>
+                            </a>
+                        </li>
+                        <li class="hidden-sm hidden-lg hidden-md menu-mammalia menu__item">
+                            <a href="../mammaliaweb/" class="menu__link" target="_self">
+                                <center><img src="../img/logo/mammaliaOptimizado.png" style="width:30px;" /></center>
+                            </a>
+                        </li>-->
+                        <li class="menu__item" style="border: 0;">
+                            <a class="menu__link hidden" href="#"></a>
+                        </li>
+                    </ul>
+                    <ul data-menu="submenu-1" class="menu__level">
+                        <li class="menu__item" style="border: 0;">
+                            <a class="menu__link hidden" href="#"></a>
+                        </li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href="#"><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="IndiceTaxonomico">Lista de Especies</a></li>
+                        <li class="menu__item"><a class="menu__link" href="EspeciesEstadisticas">Número Especies</a>
+                        </li>
+                    </ul>
+                    <ul data-menu="submenu-2" class="menu__level">
+                        <li class="menu__item" style="border: 0;">
+                            <a class="menu__link hidden" href="#"></a>
+                        </li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href="#"><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="Conservacion">Información General</a></li>
+                        <li class="menu__item"><a class="menu__link" href="ListaRojaAWE">Lista Roja</a></li>
+                    </ul>
+                    <ul data-menu="submenu-3" class="menu__level">
+                        <li class="menu__item" style="border: 0;">
+                            <a class="menu__link hidden" href="#"></a>
+                        </li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href="#"><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="/galeria/IndiceTaxonomico/1">Galería</a></li>
+                        <li class="menu__item"><a class="menu__link" href="Cantos">Cantos</a></li>
+                    </ul>
+                    <ul data-menu="submenu-4" class="menu__level">
+                        <li class="menu__item" style="border: 0;">
+                            <a class="menu__link hidden" href="#"></a>
+                        </li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href="#"><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="DiversidadBiogeografia">Biodiversidad</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="RegionesNaturales">Regiones</a></li>
+                    </ul>
+
+                    <ul data-menu="submenu-5" class="menu__level">
+                        <li class="menu__item" style="border: 0;"><a class="menu__link hidden" href=""></a></li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href=""><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="menu__item"><a class="menu__link" href="QuienesSomos/SantiagoRon">Santiago Ron</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="QuienesSomos/AndresMerino">Andrés Merino</a>
+                        </li>
+                        <li class="menu__item"><a class="menu__link" href="QuienesSomos/DiegoOrtiz">Diego Ortiz</a></li>
+                        <!--<li class="menu__item"><a class="menu__link" href="EspeciesEstadisticas">Número Especies</a></li>-->
+                    </ul>
+                    <ul data-menu="submenu-6" class="menu__level">
+                        <li class="menu__item" style="border: 0;"><a class="menu__link hidden" href=""></a></li>
+                        <li class="menu__item hidden-sm hidden-lg hidden-md" style="border: 0;">
+                            <div class="row">
+                                <div class="col-xs-9 col-xs-offset-1">
+                                    <a href=""><img src="../img/logo/amphibiaweb.svg" class="img-responsive"
+                                            style="cursor: pointer;"></a>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="menu__item"><a class="menu__link" href="/galeria/IndiceTaxonomico/1">General</a></li>
+                        <li class="menu__item"><a class="menu__link" href="/galeria/Renacuajos">Renacuajos</a></li>
+
+                        <!--<li class="menu__item"><a class="menu__link" href="EspeciesEstadisticas">Número Especies</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+
+
+        </div>
+        <div class="content-derecho">
+            <div class="content" id="main" ng-init="verificarCookies()">
+                <nav class="navbar navbar-default navbar-fixed-top" id="menuamphibiaweb">
+                    <div class="col-xs-12">
+                        <div class="navbar-header">
+                            <button class="action action--open navbar-toggle collapsed" aria-label="Open Menu"
+                                id="menuOpen"> <span class="sr-only">Toggle navigation</span> <span
+                                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                                    class="icon-bar"></span> </button>
+                            <button class="action action--close navbar-toggle" style="display:none;"
+                                aria-label="Close Menu" id="menuClose"> <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <a class="navbar-brand"> <img src="../img/logo/1.1.svg" alt="FaunaWeb"> </a>
+                        </div>
+                        <div id="navbar2" class="navbar-collapse collapse">
+                            <div style="margin: auto; width: 50%; margin-left:48% ">
+                                <a href="/faunaweb/amphibiaweb/" class="navbar-brand" target="_self"><img
+                                        src="../img/logo/anfibiocenternew.svg" alt="Bioweb"></a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <!--<li style="margin-right: -30px;" class="menu-animalito menu-amphibia">
+                                    <a href="/faunaweb.html" class="navbar-brand" target="_self"><img src="../img/logo/faunawebshort.svg" alt="FaunaWeb"></a>
+                                </li>-->
+                                <li class="menu-animalito menu-amphibia">
+                                    <a href="/" class="navbar-brand" target="_self"><img src="../../img/bioweb.svg"
+                                            alt="Bioweb"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <section class="content" data-ng-view=""></section>
+                <footer>
+
+                    <div id="tf-clients" class="text-center">
+                        <div class="container">
+                            <div id="clients" class="owl-carousel owl-theme">
+                                <div class="item"> <img src="../img/logo/museozoologiaOptimizado.png"></div>
+                                <div class="item"> <img src="img/amphibiaweb-logo.jpg" style="height: 70px"></div>
+                                <div class="item"> <img src="img/bioweb-logo.jpg" style="height: 50px"></div>
+                                <div class="item"> <img src="img/jrs-logo.jpg" style="height: 50px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <div id="cookiesBar" class="container" style="display: none;">
+                    <div class="inner row center-block">
+                        <div id="noticias" class="col">
+                            <p>
+                                BIOWEB utiliza cookies propias y de terceros. Si continúa navegando, se considera que
+                                acepta su uso. <a href="PoliticasDeUsoCookies" target="_blank"
+                                    rel="noreferrer noopener nofollow" class="info"> Ver políticas</a> <button
+                                    ng-click="aceptarCookies()" class="btn btn-success">Aceptar</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-xs-12">
+                        <div id="noticias" class="row" style="color:#000; padding: 10px;">
+                            <apoyo class="col-xs-3">
+                                <p class="text-center"><a href="mailto:santiago.r.ron@gmail.com"
+                                        target="_top">Contáctenos: Santiago Ron</a></p>
+                            </apoyo>
+                            <apoyo class="col-xs-7">
+                                <p class="text-center"> Con el apoyo de: <img src="/img/senescyt.svg"
+                                        style="height:30px;" /> <img src="/img/pucesmall.svg" style="height:30px;" />
+                                </p>
+                            </apoyo>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/spectrogram-v12.js"></script>
+    <script src="../js/classie.js"></script>
+    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="../dist/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/angular-route.js"></script>
+    <script src="/angular/angular-cookies.js"></script>
+    <script src="/angular/angular-sanitize.js"></script>
+    <script src="/angular/lodash.min.js"></script>
+    <script src="../plugins/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="../plugins/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+    <script src="../plugins/ng-file-upload/dist/ng-file-upload.min.js"></script>
+    <script src="../plugins/angular-google-maps/angular-google-maps.js"></script>
+    <script src="../plugins/angular-google-maps/angular-simple-logger.js"></script>
+    <script src="../plugins/angular-filter/angular-filter.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-touch.min.js"></script>
+    <script src="../plugins/angular-ui-bootstrap/ui-bootstrap-2.3.0.min.js"></script>
+    <script src="../plugins/angularjs-dropdown-multiselect/angularjs-dropdown-multiselect.js"></script>
+    <script src="js/angular/app.js?v26.8"></script>
+    <script src="js/angular/controllers/AmphibiawebController.js?v17.4"></script>
+    <script src="js/angular/services/paginasServices.js"></script>
+    <script src="js/angular/services/parameterService.js"></script>
+    <script src="js/angular/services/excelService.js"></script>
+    <script src="../plugins/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="../plugins/angular-checklist/checklist-model.js"></script>
+    <script src="../plugins/ui-select/select.js"></script>
+    <!--<script src="../plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>-->
+    <script type="text/javascript"
+        src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyCFRMQMBVmtmnt8HnyWT6jr-dP9TJUGvSw'></script>
+    <script src="../dist/js/location/locationpicker.jquery.min.js"></script>
+    <script src="../dist/js/location/angularLocationpicker.jquery.min.js"></script>
+    <script type="text/javascript" src="../plugins/chartjs/Chart.min.js"></script>
+    <script type="text/javascript" src="../plugins/angular-chart/angular-chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+    </script>
+    <script src="../js/menu.js"></script>
+    <script src="../js/owl.carousel.js"></script>
+    <script type="text/javascript" src="../dist/js/imagesLoaded.min.js"></script>
+    <script src="../../portal/plugins/angular-autocomplete/autocomplete.js"></script>
+    <script>
+        (function () {
+            var menuEl = document.getElementById('ml-menu'),
+                mlmenu = new MLMenu(menuEl, {
+                    backCtrl: true,
+                });
+            var openMenuCtrl = document.querySelector('.action--open'),
+                closeMenuCtrl = document.querySelector('.action--close');
+            openMenuCtrl.addEventListener('click', openMenu);
+            closeMenuCtrl.addEventListener('click', closeMenu);
+
+            function openMenu() {
+                classie.add(menuEl, 'menu--open');
+                $(".action--close").show();
+                $(".action--open").hide();
+            }
+
+            function closeMenu() {
+                classie.remove(menuEl, 'menu--open');
+                $(".action--open").show();
+                $(".action--close").hide();
+            }
+            var gridWrapper = document.querySelector('.content');
+
+            function loadDummyData(ev, itemName) {
+                ev.preventDefault();
+                closeMenu();
+                gridWrapper.innerHTML = '';
+                classie.add(gridWrapper, 'content--loading');
+                setTimeout(function () {
+                    classie.remove(gridWrapper, 'content--loading');
+                    gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+                }, 700);
+            }
+        })();
+        $(document).ready(function () {
+            $("#clients").owlCarousel({
+                navigation: false,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                autoHeight: true,
+                itemsCustom: [
+                    [0, 1],
+                    [450, 2],
+                    [600, 2],
+                    [700, 2],
+                    [1000, 4],
+                    [1200, 5],
+                    [1400, 5],
+                    [1600, 5]
+                ],
+            });
+        });
+    </script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../css/bootstrap/js/bootstrap.min.js"></script>-->
+</body>
+
+</html> contentType 9 text/html url 67 https://bioweb.bio:443/faunaweb/amphibiaweb/Glosario/Definicion/149 responseCode 3 200 

@@ -1,0 +1,904 @@
+qcwcreksiesabiughikknqtexmqgkoogtayauotg length 5 46436 page 46436 <!DOCTYPE html>
+<html>
+<!-- InstanceBegin template="/Templates/div-air.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <!-- InstanceBeginEditable name="doctitle" -->
+  <title>Air Quality Forecast</title>
+  <!-- InstanceEndEditable -->
+  <!-- InstanceBeginEditable name="head" -->
+  <meta name="keywords" content="air, resources, division, air, quality, des, nhdes, nh, new hampshire, environmental services" />
+  <meta name="description" content="The Air Resources Division (ARD) is responsible for achieving and maintaining air quality in New Hampshire that is protective of public health and our natural environment." />
+  <!-- InstanceEndEditable -->
+  <!-- InstanceParam name="OptionalRegion1" type="boolean" value="false" -->
+  <!-- InstanceParam name="thread" type="boolean" value="true" -->
+    <link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+  <link href="css/nhdes.css?v03112021" rel="Stylesheet" media="screen" type="text/css" />
+  <link href="css/formatting.css?v10262022" rel="Stylesheet" media="screen" type="text/css" />
+  <link rel="stylesheet" href="css/leaflet/v0.7.7/leaflet.css" />
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css" />
+  <link rel="stylesheet" href="css/leaflet.label.css" />
+  <link rel="stylesheet" href="css/AirQuality.css" />
+  <style type="text/css">
+    
+  </style>
+  <script type="text/javascript">
+    // JS classes in ./js/jscl
+    var dojoConfig = {
+      baseUrl: "./js/",
+      tlmSiblingOfDojo: false
+    };
+  </script>
+  <script src="js/leaflet/v0.7.7/leaflet.js" type="text/javascript"></script>
+  <script src="js/leaflet.label.js" type="text/javascript"></script>
+  <script src="//code.highcharts.com/adapters/standalone-framework.js" type="text/javascript"></script>
+  <script src="js/moment.js" type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js" data-dojo-config="async: true" type="text/javascript"></script>
+  <script type="text/javascript">
+    app = new Object();
+    require(['dojo/_base/declare', 'dojo/_base/lang', 'dojo/dom', 'dojo/on', 'dojo/dom-attr', 'dojo/dom-style', 'dojo/query', 'dojo/_base/array', 'dojo/request/xhr', 'dojo/json', 'dojo/dom-construct', 'dojo/dom-geometry', 'dojo/window', 'dojo/_base/window', 'dijit/Dialog', 'dojo/_base/fx', 'dojo/dnd/Moveable', 'dojo/date', 'dojo/domReady!'], function (declare, lang, dom, on, domAttr, domStyle, query, array, xhr, JSON, domConstruct, domGeom, win, winbase, Dialog, fx, Moveable, date) {
+      var url = 'json/forecast_data.json',
+          url2 = 'GeoJSON/MapJSON.jgz';
+      xhr(url, {
+        handleAs: 'json'
+      }).then(function (data) {
+        data.d0 = moment(Date.parse(data.date));
+        data.d1 = moment(data.d0).add(1, 'days');
+        data.d2 = moment(data.d0).add(2, 'days');
+        data.d3 = moment(data.d0).add(3, 'days');
+        app.forecast_data = data;
+        app.buildPage();
+      }, function (err) {
+        alert('Error');
+      });
+      xhr(url2, {
+        handleAs: 'json'
+      }).then(function (data) {
+        countyBoundaryJSON = data['countyboundaries'];
+        monareasJSON = data['monareas'];
+      }, function (err) {
+        alert('Error2');
+      });
+
+      app.hideMap = function () {
+        var foreMapDiv = dom.byId('foreMapDiv');
+        if (foreMapDiv) {
+          domStyle.set(foreMapDiv, { 'display': 'none' });
+        }
+      };
+
+      app.buildPage = function () {
+        var divForecast = dom.byId('divForecast'),
+            table, tbody, tr, th, td, anch;
+
+        // Helper function: returns a sort list of keys found in elements object.
+        var buildElementKeys = function () {
+          elementKeys = [];
+          for (var k in elements) {
+            elementKeys.push(k);
+          }
+          elementKeys.sort();
+          return elementKeys;
+        };
+
+        // Helper function:  builds the header for for the specified type ('County' or 'Region').
+        var buildHeader = function (s) {
+          tr = domConstruct.create('tr', {}, tbody);
+          th = domConstruct.create('th', { 'innerHTML': s }, tr);
+          array.forEach([0, 1, 2, 3], function (i) {
+            th = domConstruct.create('th', { 'innerHTML': headerDate(i) + '<br>' }, tr);
+            anch = domConstruct.create('a', { 'innerHTML': 'view map', 'href': 'javascript:void(0)' }, th);
+            on(anch, 'click', function (e) {
+              viewMap(i);
+            });
+          });
+        };
+
+        var viewMap = function (col) {
+          //alert('Will show forecast map for ' + dObj.format('dddd, MMMM D') + '.');
+          // First step:  query the table cells for this column (col)
+          var dObj = app.forecast_data['d' + col],
+              qs = 'td.data[id$="_' + col + '"]',
+              cells = query(qs),
+              mapShading = {},
+              foreMapDiv = dom.byId('foreMapDiv'),
+              foreMapHeader = dom.byId('foreMapHeader'),
+              foreMapContainer = dom.byId('foreMapContainer'),
+              airdataTable = dom.byId('airdataTable'),
+              posTable = domGeom.position(airdataTable, true),
+              hStr = 'Air Quality Forecast map for:<br>';
+          hStr += dObj.format('dddd') + ', ' + dObj.format('MMMM D, YYYY') + '<br>';
+          hStr += 'Primary Pollutant: ' + app.forecast_data.poc;
+          mDate = dObj;
+
+          var aCnt = 0;
+          array.forEach(cells, function (n) {
+            aCnt += 1;
+            var nID = n.id,
+                region = nID.split('_')[1] + '',
+                aqi = domAttr.get(n, 'class').replace('data aqi_', '');
+            mapShading[region] = aqi;
+          });
+          MmapShading = mapShading;
+
+          // Second step:  create foreMapDiv if it does not already exist
+          if (!foreMapDiv) {
+            foreMapDiv = domConstruct.create('div', {
+              'id': 'foreMapDiv', 'style':
+              { 'top': posTable.y + 'px', 'visibilty': 'hidden' }
+            }, winbase.body());
+            var w = domStyle.get(foreMapDiv, 'width'),
+                h = domStyle.get(foreMapDiv, 'height'),
+                valLeft = (posTable.x - (w + 10));
+            domStyle.set(foreMapDiv, { 'left': Math.max(0, valLeft) + 'px', 'visibility': 'visible' });
+            foreMapHeader = domConstruct.create('div', { 'id': 'foreMapHeader', 'innerHTML': hStr }, foreMapDiv);
+            h = h - domGeom.position(foreMapHeader, true).h;
+            on(foreMapHeader, 'mouseover', function () {
+              app.dnd = new Moveable(foreMapDiv);
+            });
+            on(foreMapHeader, 'mouseout', function () {
+              app.dnd.destroy();
+            });
+            foreMapContainer = domConstruct.create('div', {
+              'id': 'foreMapContainer',
+              'style': { 'width': (w - 5) + 'px', 'height': (h - 5) + 'px' }
+            }, foreMapDiv);
+          } else {
+            domStyle.set(foreMapDiv, { 'display': 'block' });
+            if (foreMapHeader) {
+              domConstruct.destroy(foreMapHeader);
+            }
+            foreMapHeader = domConstruct.create('div', { 'id': 'foreMapHeader', 'innerHTML': hStr }, foreMapDiv, 'first');
+            on(foreMapHeader, 'mouseover', function () {
+              app.dnd = new Moveable(foreMapDiv);
+            });
+            on(foreMapHeader, 'mouseout', function () {
+              app.dnd.destroy();
+            });
+          }
+
+          if (typeof (myMap) !== 'undefined') {
+            if (myMap.panTo) {
+              myMap.remove();
+            }
+          }
+
+          myMap = L.map(foreMapContainer, {
+            center: [43.99676629896825, -71.619873046875],
+            zoom: 7.40,
+            dragging: false,
+            touchZoom: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            boxZoom: false,
+            trackResize: false,
+            zoomControl: false,
+            attributionControl: false
+          });
+
+          L.geoJson(monareasJSON, {
+            onEachFeature: function (feature) {
+              null;
+            },
+            style: function (feature) {
+              // Base style
+              var myStyle = { 'color': '#000', 'weight': 1, 'fillOpacity': 1 },
+                aqiVal = mapShading[feature.properties.FIPS],
+                shadeColor = app.aqiColor(aqiVal);
+              myStyle.fillColor = shadeColor;
+              myStyle.color = shadeColor;
+              return myStyle;
+            }
+          }).addTo(myMap);
+          L.geoJson(countyBoundaryJSON, { style: { 'color': '#000', 'weight': 1 } }).addTo(myMap);
+
+          var labels = [{ 'name': 'Coos', 'latlng': [44.7, -71.35] },
+                        { 'name': 'Grafton', 'latlng': [43.88, -71.96] },
+                        { 'name': 'Carroll', 'latlng': [43.83, -71.30] },
+                        { 'name': 'Sullivan', 'latlng': [43.37, -72.35] },
+                        { 'name': 'Belknap', 'latlng': [43.53, -71.55] },
+                        { 'name': 'Merrimack', 'latlng': [43.31, -71.80] },
+                        { 'name': 'Strafford', 'latlng': [43.29, -71.18] },
+                        { 'name': 'Cheshire', 'latlng': [42.90, -72.39] },
+                        { 'name': 'Hillsborough', 'latlng': [42.97, -71.92] },
+                        { 'name': 'Rockingham', 'latlng': [43.03, -71.30] }];
+
+          array.forEach(labels, function (l) {
+            var lIcon = L.divIcon({
+              html: l.name,
+              className: 'countyLabel'
+            });
+            var lDiv = L.marker(l.latlng, { icon: lIcon }).addTo(myMap);
+          });
+
+          var getLegendVals = function () {
+            var legendVals = [];
+            for (k in MmapShading) {
+              if (legendVals.indexOf(MmapShading[k]) === -1) {
+                legendVals.push(MmapShading[k]);
+              }
+            }
+            legendVals.sort();
+            return legendVals;
+          };
+
+          var MapLegend = L.Control.extend({
+            options: {
+              position: 'topleft'
+            },
+            onAdd: function (map) {
+              var legendVals = getLegendVals(),
+                  div = domConstruct.create('div', { 'className': 'mapLegend infoPanel' }),
+                  i, br, span;
+              domConstruct.create('div', { 'innerHTML': 'Map Legend', 'style': { 'fontWeight': 'bold' } }, div);
+              domConstruct.create('br', {}, div);
+              array.forEach(legendVals, function (aqi) {
+                var c = app.aqiColor(aqi),
+                    n = app.aqiLU(aqi).replace(/<br>/ig, ' ');
+                i = domConstruct.create('i', { 'style': { 'background': c } }, div);
+                span = domConstruct.create('span', { 'innerHTML': n }, div);
+                br = domConstruct.create('br', {}, div);
+              });
+              return div;
+            }
+          });
+          var CloseButton = L.Control.extend({
+            options: {
+              position: 'bottomright'
+            },
+            onAdd: function (map) {
+              var div = domConstruct.create('div', { 'id': 'divCloseForeMap' }),
+          button = domConstruct.create('input', { 'type': 'button', 'value': 'Close Map' }, div);
+              on(button, 'click', function () {
+                app.hideMap();
+              });
+              return div;
+            }
+          });
+
+          myMap.addControl(new MapLegend());
+          myMap.addControl(new CloseButton());
+        };
+
+
+
+        // Helper function:  builds the date string for display in the header.
+        var headerDate = function (n) {
+          var dObj = app.forecast_data['d' + n],
+              s = dObj.format('dddd') + '<br>' + dObj.format('MMMM D');
+          return s;
+        };
+
+        // Elements in the table
+        var elements = {
+          '01': { 'name': 'Belknap' },
+          '03': { 'name': 'Carroll' },
+          '05': { 'name': 'Cheshire' },
+          '07': { 'name': 'Coos' },
+          '09': { 'name': 'Grafton' },
+          '11': { 'name': 'Hillsborough' },
+          '13': { 'name': 'Merrimack' },
+          '15': { 'name': 'Rockingham' },
+          '17': { 'name': 'Strafford' },
+          '19': { 'name': 'Sullivan' },
+          '21': { 'name': 'Seacoast*' },
+          '23': { 'name': 'High Elevations**' }
+        };
+        var elementKeys = buildElementKeys();
+        divForecast.innerHTML = '';
+        dom.byId('spanPOC').innerHTML = app.forecast_data.poc;
+        table = domConstruct.create('table', { 'id': 'airdataTable', 'cellpadding': '5', 'border': '2' }, divForecast);
+        tbody = domConstruct.create('tbody', {}, table);
+
+        buildHeader('County');
+
+        array.forEach(elementKeys, function (k) {
+          if (k === '21') {
+            buildHeader('Region');
+          }
+
+          tr = domConstruct.create('tr', {}, tbody);
+          var tdVals = app.forecast_data.data[k];
+          td = domConstruct.create('td', { 'innerHTML': elements[k].name }, tr);
+
+          var dCnt = 0;
+          array.forEach(tdVals, function (d) {
+            td = domConstruct.create('td', {
+              'innerHTML': app.aqiLU(d, true),
+              'id': 'dt_' + k + '_' + dCnt,
+              'className': 'data aqi_' + d
+            }, tr);
+            dCnt += 1;
+          });
+        });
+        table = domConstruct.create('table', { 'style': {'marginLeft':'auto', 'marginRight':'auto'}}, divForecast);
+        tbody = domConstruct.create('tbody', {}, table);
+        tr = domConstruct.create('tr', {}, tbody);
+        td = domConstruct.create('td', { 'innerHTML': '* coastal Rockingham county<br>** elevations above 3000 ft in Carroll, Coos and Grafton counties' }, tr);
+      };
+
+      app.aqiLU = function (aqi, upper) {
+        if (typeof (upper) !== 'boolean') {
+          upper = false;
+        }
+        var lut = { '1': 'Good', '2': 'Moderate', '3': 'Unhealthy<br>for Sensitive<br>People', '4': 'Unhealthy', '5': 'Very<br>Unhealthy', '6': 'Hazardous' },
+            retVal = '';
+        if (lut.hasOwnProperty(aqi)) {
+          if (upper) {
+            retVal = lut[aqi].toUpperCase();
+          } else {
+            retVal = lut[aqi];
+          }
+        }
+        return retVal;
+      };
+      app.aqiColor = function (aqi) {
+        var retVal;
+        switch (parseInt(aqi, 10)) {
+          case 1:
+            // Green
+            retVal = '#80ff80';
+            break;
+          case 2:
+            // Yellow
+            retVal = '#ffff66';
+            break;
+          case 3:
+            // Orange
+            retVal = '#ff8040';
+            break;
+          case 4:
+            // Red
+            retVal = '#ff0000';
+            break;
+          case 5:
+            // Purple
+            retVal = '#993366';
+            break;
+          case 6:
+            // what color?
+            retVal = '#7e0023';
+            break;
+          default:
+            retVal = '#ffffff';
+            break;
+        }
+        return retVal;
+      };
+
+    });
+  </script>
+</head>
+<body style="position: relative; min-height: 100%; top: 0px;" class="nhgov">
+    <!-- START OF NEW HEADER -->
+    <div id="pageHeader">
+        <div id="headerGraybar" class="pgheader-table">
+            <!-- Links in the Gray Bar (center-justified): totally optional -->
+            <!--
+            <div class="pgheader-cell">
+                <div class="graybar-links">
+                    <a href="https://www.des.nh.gov/" title="NHDES Home">DES Home</a>
+                </div>
+                <div class="graybar-links">
+                    <a href="https://www4.des.state.nh.us/OnestopDataProviders">Data Provider Login</a>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <div id="headerCenterbar" class="pgheader-table">
+            <div id="headerLeft" class="pgheader-cell">
+                <a href="https://www.des.nh.gov/" title="Home" rel="home" class="site-logo">
+                    <img src="Images/logo-environmental-services.png" alt="Home">
+                </a>
+            </div>
+
+            <div id="headerCenter" class="pgheader-cell">
+                <div class="agency-info">
+                    <ul class="agency-links">
+                        <li>
+                            <a href="https://www.des.nh.gov/advisories">Advisories</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/events">Events</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/onestop-navigation">OneStop</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/about">About</a>
+                        </li>
+                        <li>
+                            <a href="https://www.des.nh.gov/contact" data-drupal-link-system-path="node/286">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <ul>
+                        <li class="facebook"><a href="https://www.facebook.com/NHEnvironmentalServices/" title="Visit our Facebook page"><i class="fab fa-facebook-square"></i></a></li>
+                        <li class="twitter"><a href="https://twitter.com/NHDES" title="Visit our Twitter page"><i class="fab fa-twitter"></i></a></li>
+                        <li class="instagram"><a href="https://www.instagram.com/nhenvironmentalservices" title="Visit our Instagram page"><i class="fab fa-instagram"></i></a></li>
+                        <li class="youtube"><a href="https://www.youtube.com/user/NHDES" title="Visit our Youtube page"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="headerRight" class="pgheader-cell">
+                <img src="Images/livefree.png" alt="New Hampshire state seal">
+            </div>
+        </div>
+
+        <div id="headerBluebar" class="pgheader-table">
+            <!-- Links in the Blue Bar (right-justified): totally optional -->
+            <div class="pgheader-cell">
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/home-and-recreation" title="Home and Recreation">Home and Recreation</a>
+                </div>
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/business-and-community/municipal-resources" title="Municipal Resources">Municipal Resources</a>
+                </div>
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/business-and-community/business-resources" title="Business Resources">Business Resources</a>
+                </div>
+                <div class="bluebar-links">
+                    <a href="https://www.des.nh.gov/search" title="Site Search">Site Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF NEW HEADER -->
+  <div id="container">
+      <div id="innerContainer" style="margin-top: -3px;">
+          <!-- Begin Left Sidebar -->
+          <div id="leftsidebar">
+              <!-- Default Nested Blue Menu Code Starts Here -->
+              <div id="menuBLUE" style="display: none;">
+                  <ul id="navlist">
+                      <li id="active"><a href="https://www.des.nh.gov/">DES Home</a></li>
+                      <li><a href="https://www.des.nh.gov/search">Site Search</a></li>
+                      <li><a href="https://www.des.nh.gov/about">About DES</a> </li>
+                      <li><a href="https://www.des.nh.gov/resource-center/media-center">Media Center</a></li>
+                      <li><a href="https://www.des.nh.gov/home-and-recreation">Home and Recreation</a></li>
+                      <li><a href="https://www.des.nh.gov/business-and-community/municipal-resources">Muncicipal Resources</a></li>
+                      <li><a href="https://www.des.nh.gov/business-and-community/business-resources">Business Resources</a></li>
+                      <li><a href="https://www.des.nh.gov/rules-and-regulatory">Rules and Regulatory</a></li>
+                      <li><a href="https://www.des.nh.gov/contact">Contact Us</a></li>
+                      <li><a href="https://www.des.nh.gov/sitemap">Site Map</a></li>
+                  </ul>
+              </div>
+              <!-- Default Nested Blue Menu Code Ends Here -->
+              <div id="onestop" style="margin-top: 44px;">
+                  <p>
+                      <a href="https://www4.des.state.nh.us/DESOnestop/BasicSearch.aspx">
+                          <img src="./images/onestop.gif" alt="One Stop data and Information" height="45" width="125" />
+                      </a>
+                  </p>
+              </div>
+              <!--
+            <object data="./images/Alert_app.swf" id="Alert_app" type="application/x-shockwave-flash"  height="136" width="155"></object>
+            -->
+              <p>
+                  <a href="https://visitor.r20.constantcontact.com/manage/optin?v=001dZZfSJUF90B7pVuGHqxRT5eDWE0hccVzuy7LwAfgp-b0DUNCwkjSuOyncV8jPSXknGQnWnoetr3C6VKjIZH-T3mS60FpN70op_3mR5PTRhw%3D">
+                      <img src="./images/enews.gif" alt="eNews" height="50" width="125" />
+                  </a>
+              </p>
+              <p style="display: none;">
+                  <a href="https://twitter.com/NHDES">
+                      <img src="./images/twitter_logo.gif" alt="twitter icon" height="58" width="158" />
+                  </a>
+              </p>
+              <p>
+                  <a href="https://www.nhec.nh.gov/">
+                      <img src="./images/nhec-logo.gif" alt="NH Environmental Councils logo" height="86" width="160" />
+                  </a>
+              </p>
+          </div>
+          <!-- End Left Sidebar -->
+          <!-- Begin Right Sidebar -->
+          <div id="rightsidebar">
+              <!-- InstanceBeginEditable name="rightsidebarcontent" -->
+              <!-- InstanceEndEditable -->
+              <br />
+              <table class="featuretableBLUE">
+                  <tbody>
+                      <tr>
+                          <th>
+                              Air Quality
+                          </th>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p>
+                                  <a href="./">Air Quality Current Data</a>
+                              </p>
+							  <p>
+                                  <a href="CitizenAirMonitoringProgram/">Citizen Air Monitoring Program</a>
+                              </p>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+              <table class="featuretableBLUE">
+                  <tbody>
+                      <tr>
+                          <th>
+                              Air Resources Division
+                          </th>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p>
+                                  <a href="https://www.des.nh.gov/air">Air Resources</a>
+                              </p>
+                              <!--
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/overview.htm">Division Overview</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/programs.htm">Programs/Bureaus/Units</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/regulations.htm">Rules/Regulatory</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/publications.htm">Publications</a></p>
+                            <p>
+                              <a href="http://des.nh.gov/organization/divisions/air/contactus.htm">Contact Us</a></p>
+                            -->
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+              <table class="featuretableBLUE" style="display: none;">
+                  <tbody>
+                      <tr>
+                          <th>
+                              The Department
+                          </th>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p>
+                                  <a href="https://www.des.nh.gov/about/leadership">Leadership</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/air">Air Resources Division</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/waste">Waste Mgmt. Division</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/water">Water Division</a>
+                              </p>
+                              <p>
+                                  <a href="https://www.des.nh.gov/about/boards-and-committees">Boards and Committees</a>
+                              </p>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+              <!--
+            <div id="calendar">
+              <a href="http://www4.egov.nh.gov/sign-up/public/cal.asp?w=list&amp;y=5">
+                <img src="./images/calendar-graphic.gif" alt="DES Event Calendar" height="152" width="180" /></a>
+            </div>
+            -->
+              <p>
+                  &nbsp;
+              </p>
+          </div>
+          <!-- End Right Sidebar -->
+          <div id="mainContent3col">
+              <a name="skip"></a>
+              <br />
+              <div id="breadcrumb" style="display: none;">
+                  <!-- InstanceBeginEditable name="breadcrumb" -->
+                  <a href="http://des.nh.gov/organization/divisions/index.htm">Divisions</a> &gt; <a href="http://des.nh.gov/organization/divisions/air/index.htm">
+                      Air Resources Division
+                  </a> &gt; <a href="./index.html">Air Quality Forecast</a> &gt;
+                  <!-- InstanceEndEditable -->
+                  <br />
+              </div>
+              <div id="pagetitlecontainer">
+                  <!-- InstanceBeginEditable name="Page Title" -->
+                  Air Quality Forecast
+                  <!-- InstanceEndEditable -->
+              </div>
+              <div id="introcontainer">
+                  <!-- InstanceBeginEditable name="Introduction" -->
+                  <!-- InstanceEndEditable -->
+              </div>
+              <div id="content">
+                  <!-- InstanceBeginEditable name="Content" -->
+                  <table class="aq_table">
+                      <tbody>
+                          <tr valign="top">
+                              <td>
+                                  <p>
+                                      This page provides forecast information on New Hampshire's air quality. The information can be used to help you plan your
+                                      daily activities and protect your health. You can also learn what the current air pollution levels are in your area by clicking
+                                      on the Current Air Quality link.
+                                  </p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <table style="margin-left: auto; margin-right: auto;">
+                                      <tr>
+                                          <td style="text-align: center; font-size: 125%; font-weight: bold;">
+                                              Air Quality Forecast<br />
+                                              The pollutant of concern for the period: <span id="spanPOC"></span>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div id="divForecast">
+                                              </div>
+                                          </td>
+                                      </tr>
+                                  </table>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+                  <map id="FPMap0" name="FPMap0">
+                      <area shape="polygon" coords="-1, 16, -1, 3, 86, 3, 86, 16" alt="Range for Ozone: 0 to less than 60 parts per billion. Range for Fine Particles: 0 to less than 15.5 micrograms per cubic meter.">
+                      <area shape="polygon" coords="86, 16, 86, 3, 185, 3, 185, 16" alt="Range for Ozone: 60 to less than 76 parts per billion. Range for Fine Particles: 15.5 to less than 35.5 micrograms per cubic meter.">
+                      <area shape="polygon" coords="185, 16, 185, 3, 293, 3, 293, 16" alt="Range for Ozone: 76 to less than 96 parts per billion. Range for Fine Particles: 35.5 to less than 55.5 micrograms per cubic meter.">
+                      <area shape="polygon" coords="292, 15, 292, 2, 391, 2, 391, 15" alt="Range for Ozone: 96 to  less than 116 parts per billion. Range for Particles: 55.5 to less than 140.5 micrograms per cubic meter.">
+                  </map>
+                  <center>
+                      <br />
+                      <br />
+                      <center>
+                      </center>
+                      <table id="tableRelativeLevels" bgcolor="#FFFFFF" width="600" style="visibility: visible;">
+                          <tbody>
+                              <tr>
+                                  <td align="center" valign="top">
+                                      <strong>Relative Pollutant Levels Chart Comparison</strong>
+                                      <img src="./images/relative_levels.gif" usemap="#FPMap0" style="text-align: Center" alt="map" height="41" width="588" border="0" />
+                                      <br />
+                                      <br />
+                                      <br />
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </center>
+                  <div class="aq_table">
+                      <p align="left">
+                          The air quality forecast for New Hampshire is also available on the New Hampshire Department of Environmental Services'
+                          <i>Air Quality Information Line</i> at <b>(800) 935-SMOG</b>.
+                      </p>
+                      <p align="left">
+                          The forecast is made for two different air pollutants:&nbsp;&nbsp;ground-level ozone and particle pollution.&nbsp;&nbsp;The
+                          pollutant whose concentration is highest relative to federal standards is shown in the table above. &nbsp;An <a href="https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/2020-01/ard-16.pdf" target="_blank" rel="noopener noreferrer">
+                              Air Quality Action Day
+                          </a> is issued when unhealthy levels are forecast for either pollutant.
+                      </p>
+                      <p align="left">
+                          Ground-level ozone,
+                          more commonly called summertime smog, is formed when pollutants (nitrogen oxides and volative organic compounds) react chemically
+                          in the presence of sunlight.&nbsp;&nbsp; Since ground-level ozone is a summertime pollutant, air quality forecasts for ozone
+                          are provided from April through September.
+                      </p>
+                      <p align="left">
+                          Fine Particle Pollution
+                          consists of both solid and liquid particles that are less than 2.5 microns in diameter (a micron is a millionth of a meter).&nbsp;&nbsp;Exposure
+                          to particle pollution is associated with numerous serious health effects.&nbsp;&nbsp;Air quality forecasts for particle
+                          pollution are provided year-round.
+                      </p>
+                  </div>
+                  <div align="center">
+                      <center>
+                          <br>
+                          <p align="center">
+                              <span class="SubTitle">Air Quality Guide for Ozone and Particle Pollution</span>
+                          </p>
+                          <!-- START OF INNER TABLE #3:  FOR AIR QUALITY GUIDE -->
+                          <center>
+                          </center>
+                          <table cellspacing="0" cellpadding="5" border="1" class="aq_table">
+                              <tbody>
+                                  <tr>
+                                      <td style="font-size: 10pt" rowspan="2">
+                                          <p align="center">
+                                              <b>Air Quality Descriptor</b>
+                                          </p>
+                                      </td>
+                                      <td style="font-size: 10pt" colspan="2" class="Bold">
+                                          <p align="center">
+                                              Populations Affected &amp; Recommended Actions
+                                          </p>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td style="font-size: 10pt">
+                                          <p align="center">
+                                              <b>Ozone</b>
+                                          </p>
+                                      </td>
+                                      <td style="font-size: 10pt">
+                                          <p align="center">
+                                              <b>
+                                                  Particle Pollution<br>
+                                                  (fine particles)
+                                              </b>
+                                          </p>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td bgcolor="#80FF80" align="center">
+                                          <p align="center">
+                                              <b>GOOD</b>
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#80FF80" align="left">
+                                          <p align="left">
+                                              No health impacts expected in this range.
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#80FF80" align="left">
+                                          No health impacts expected in this range.
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td valign="middle" bgcolor="#FFFF66" align="center">
+                                          <p align="center">
+                                              <b>MODERATE</b>
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#FFFF66" align="left">
+                                          Unusually sensitive people* should consider limiting prolonged outdoor exertion.
+                                      </td>
+                                      <td valign="middle" bgcolor="#FFFF66" align="left">
+                                          Unusually sensitive people* should consider limiting prolonged exertion.
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td valign="middle" bgcolor="#FF7E00" align="center">
+                                          <p align="center">
+                                              <b><font color="#FFFFFF">UNHEALTHY FOR SENSITIVE GROUPS</font></b>
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#FF7E00" align="left">
+                                          <p align="left">
+                                              <font color="#FFFFFF">
+                                                  Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged
+                                                  outdoor exertion.&nbsp;
+                                              </font>
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#FF7E00" align="left">
+                                          <font color="#FFFFFF">People with heart or lung disease, older adults, and children should reduce prolonged or heavy exertion.</font>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td valign="middle" bgcolor="#FF0000" align="center">
+                                          <b><font color="#FFFFFF">UNHEALTHY</font></b>
+                                      </td>
+                                      <td valign="middle" bgcolor="#FF0000" align="left">
+                                          <font color="#FFFFFF">
+                                              Active children and adults, and people with respiratory disease, such as asthma, should avoid prolonged
+                                              outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion.
+                                          </font>
+                                      </td>
+                                      <td valign="middle" bgcolor="#FF0000" align="left">
+                                          <font color="#FFFFFF">
+                                              People with heart or lung disease, older adults, and children should avoid prolonged or heavy exertion.&nbsp;
+                                              Everyone else should reduce prolonged or heavy exertion.
+                                          </font>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td valign="middle" bgcolor="#99004C" align="center">
+                                          <p align="center">
+                                              <b><font color="#FFFFFF">VERY UNHEALTHY</font></b>
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#99004C" align="left">
+                                          <p align="left">
+                                              <font color="#FFFFFF">
+                                                  &nbsp;Active children and adults, and people with respiratory disease, such as asthma, should avoid
+                                                  all outdoor exertion. Everyone else, especially children, should limit outdoor exertion.
+                                              </font>
+                                          </p>
+                                      </td>
+                                      <td valign="middle" bgcolor="#99004C" align="left">
+                                          <font color="#FFFFFF">
+                                              People with heart or lung disease, older adults, and children should avoid all physical activity outdoors.&nbsp;
+                                              Everyone else should avoid prolonged or heavy exertion.
+                                          </font>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td valign="middle" bgcolor="#7E0023" align="center">
+                                          <b><font color="#FFFFFF">HAZARDOUS</font></b>
+                                      </td>
+                                      <td valign="middle" bgcolor="#7E0023" align="left">
+                                          <font color="#FFFFFF">Everyone should avoid all outdoor exertion.</font>
+                                      </td>
+                                      <td valign="middle" bgcolor="#7E0023" align="left">
+                                          <font color="#FFFFFF">
+                                              Everyone should avoid all physical activity outdoors; people with respiratory or heart disease, the
+                                              elderly and children should remain indoors and keep activity levels low.
+                                          </font>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <!-- END OF INNER TABLE #3:  FOR AIR QUALITY GUIDE -->
+                      </center>
+                  </div>
+                  <div align="left">
+                      <!-- START OF INNER TABLE #4:  FOR AIR QUALITY GUIDE NOTES-->
+                      <table width="453" class="aq_table">
+                          <tbody>
+                              <tr>
+                                  <td width="453">
+                                      <p align="left" style="font-size: 9pt">
+                                          * Unusually sensitive refers to individual people who are highly vulnerable to the effects of air pollution.
+                                      </p>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <!-- END OF INNER TABLE #2:  FOR NOTES -->
+                  </div>
+                  <div>
+                      <p>
+                          <span class="SubTitle">Related Topics</span>
+                      </p>
+                      <ul style="margin-top: 0px">
+                          <li><a href="index.html">Current Air Quality</a> </li>
+                          <li><a href="https://www.airnow.gov/state/?name=new-hampshire">U.S. EPA AirNow</a> </li>
+                          <li><a href="https://origin.hazecam.net/">CAMNET Realtime Air Pollution and Visibility Monitoring</a> </li>
+                          <li><a href="https://www.maine.gov/dep/air/ozone/index.html">Maine air quality forecast</a> </li>
+                          <li><a href="https://www.mass.gov/topics/air-quality">Massachusetts air quality</a> </li>
+                      </ul>
+                      <p>
+                      </p>
+                  </div>
+                  <!-- end #mainContent3col -->
+              </div>
+          </div>
+          <!-- end #container -->
+          </div>
+      </div>
+    <div id="pageFooter">
+        <div id="addresscontainer">
+            <div id="address">
+                <br />
+                NH Department of Environmental Services | 29 Hazen Drive | PO Box 95 | Concord, NH 03302-0095<br />
+                (603) 271-3503 | TDD Access: Relay NH 1-800-735-2964 | Hours: M-F, 8am-4pm<br />
+            </div>
+        </div>
+        <!-- This clearing element should immediately follow the #mainContent3col div in order to force the #container div to contain all child floats -->
+        <br class="clearfloat" />
+        <div class="footercontainer">
+            <div class="left-element">
+                <a href="https://www.nh.gov/index.htm">NH.gov</a> | <a href="https://www.nh.gov/policy/index.htm">privacy policy</a> | <a href="https://www.nh.gov/policy/accessibility.htm">
+                    accessibility policy
+                </a>
+            </div>
+            <div class="right-element">
+                <span id="copyrightNote"></span>
+            </div>
+        </div>
+    </div>
+  <div id="divGraph">
+    <div id="gContainer">
+    </div>
+  </div>
+    <script type="text/javascript">
+        var crNote = document.getElementById('copyrightNote');
+        if (crNote) {
+            crNote.innerHTML = 'copyright ' + new Date().getFullYear() + '. State of New Hampshire';
+        }
+    </script>
+</body>
+<!-- InstanceEnd -->
+</html>
+ contentType 9 text/html url 64 https://www4.des.state.nh.us:443/airdata/AirQualityForecast.html responseCode 3 200 

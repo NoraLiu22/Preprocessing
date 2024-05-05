@@ -1,0 +1,2513 @@
+xizgiafevifmdqtqokpovepmtceotkiommvemstm length 6 111527 page 111527 <!DOCTYPE html>
+<html ng-app="herbonautesApp">
+    <head>
+        
+		<meta http-equiv="X-UA-Compatible" content="IE=10" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+		<meta charset="utf-8">
+        
+        <title>TETTRIs, jouons ensemble ! 2 - Les herbonautes</title>
+        
+        <link rel="stylesheet" media="screen" href="/css/bootstrap.css">
+        <link rel="stylesheet" media="screen" href="/css/ng-tags-input.min.css">
+        <link rel="stylesheet" media="screen" href="/css/main.css?20180906">
+        <link rel="stylesheet" media="screen" href="/css/discussions.css">
+
+     	 <link rel="stylesheet" media="screen" href="/css/dc.css" />
+
+<style>
+    .chart {  }
+    .dc-chart g.row text {fill: black !important;}
+
+    table.legend td {
+        width: 50%;
+        cursor: pointer;
+    }
+    table.legend.no-width td {
+        width: 20%;
+        cursor: pointer;
+    }
+</style>
+
+               	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" media="screen" href="/css/icomoon.css">
+
+        <!--[if IE]>
+        <link rel="stylesheet" media="screen" href="/css/ie-debug.css">
+        <![endif]-->
+        
+        <!--[if IE 8]>
+        <link rel="stylesheet" media="screen" href="/css/ie8-debug.css">
+        <![endif]-->
+
+        <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+
+
+
+
+
+        <script src="/js/angular.min.js" type="text/javascript"></script>
+        <script src="/js/angular-route.min.js"></script>
+        <script src="/js/angular-resource.min.js"></script>
+        <script src="/js/angular-sanitize.min.js"></script>
+        <script src="/js/angular-cookies.min.js"></script>
+        <script src="/js/angular-upload.min.js" type="text/javascript"></script>
+        <script src="/js/ng-tags-input.min.js" type="text/javascript"></script>
+        <script src="/js/moment-with-locales.min.js" type="text/javascript"></script>
+        <script src="/js/angular-moment.min.js" type="text/javascript"></script>
+        <script src="/js/elasticsearch.angular.min.js" type="text/javascript"></script>
+        <script src="/js/angular-elastic-textarea.js" type="text/javascript"></script>
+        <script src="/js/truncate.js" type="text/javascript"></script>
+        <script src="/js/ui-bootstrap-tpls-0.8.0.js" type="text/javascript"></script>
+		<script src="/js/app.js" type="text/javascript"></script>
+       	<script src="/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+        <script src="/js/jquery-ui-1.8.21.custom.min.js" type="text/javascript"></script>
+        <script src="/js/mustache.js" type="text/javascript"></script>
+        <script src="/js/lodash.js" type="text/javascript"></script>
+
+
+        <script src="/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/js/herbonautes.js" type="text/javascript"></script>
+
+
+
+
+
+       			<script>
+            var searchAction = function(options) {var pattern = '/search?term=:term';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var showUserAction = function(options) {var pattern = '/users/:login';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var showMissionAction = function(options) {var pattern = '/missions/:id';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var showBotanistAction = function(options) {var pattern = '/botanists/:id';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var listSpecimensAction = function(options) {var pattern = '/specimens?genus=:genus&family=:family';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+            var listSpecimensSpAction = function(options) {var pattern = '/specimens?specificEpithet=:specificepithet&genus=:genus';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var showSpecimenAction = function(options) {var pattern = '/specimens/:institute/:collection/:code';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var specimenBubbleAction = function(options) {var pattern = '/specimens/:id/bubble';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+            var specimenBubblesAction = function(options) {var pattern = '/specimens/bubbles?id=:id';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+            var showDiscussionAction = function(options) {var pattern = '/discussions/show/:id';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var visitorIndex = false;
+		</script>
+
+        <script>
+            // Ajout pour tags
+			var showTagAction = function(options) {var pattern = '/tags/show/:tagLabel';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var userImageAction = function(options) {var pattern = '/users/:login/:imageId.jpg';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+			var missionImageAction = function(options) {var pattern = '/missions/:id/:imageId.jpg';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+		</script>
+
+
+
+
+        <script>
+			herbonautes.timezoneOffset = -60;
+            herbonautes.ctxPath = '';
+        	herbonautes.actions = {
+        		toSpecimen: function(options) {var pattern = '/specimens/:institute/:collection/:code';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toMission: function(options) {var pattern = '/missions/:id';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toUser: function(options) {var pattern = '/users/:login';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toUserImage: function(options) {var pattern = '/users/:login/:imageId.jpg';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toGeolocalisationsForMission: function(options) {var pattern = '/missions/:id/contributions/geos';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toDatesForMission: function(options) {var pattern = '/missions/:id/contributions/dates';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toContributionRatingsForMission: function(options) {var pattern = '/missions/:id/contributions/ratings';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toMarkAlertAsRead: function(options) {var pattern = '/alerts/:id/read';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toSearch: function(options) {var pattern = '/search?term=:term';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toMissionsMenu: function(options) {var pattern = '/missionsmenu';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toProfileMenu: function(options) {var pattern = '/profilemenu';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+        		toMessages: function(options) {var pattern = '/messages/to/:login';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                startQuiz: function(options) {var pattern = '/quiz/:name/start';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+
+                // ANGULAR MISSION
+
+
+                Missions: {
+                    specimenWithContributionReports:         function(options) {var pattern = '/missions/:id/contributions';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    reloadQuestionsConfiguration:            function(options) {var pattern = '/missions/:id/questions/reload';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    allQuestions:                            function(options) {var pattern = '/missions/:id/questions';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    statsContributionsByQuestion:            function(options) {var pattern = '/missions/:id/stats/contributions';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    statsContributionsByUserDetails:         function(options) {var pattern = '/missions/:id/stats/contributionsByUserDetails';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    joinMission:                             function(options) {var pattern = '/missions/:id/membership';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    startRecolnatTransfer:                   function(options) {var pattern = '/missions/:id/settings/recolnat/transfer';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    recolnatTransferReport:                  function(options) {var pattern = '/missions/:id/settings/recolnat/report';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+                },
+
+                References: {
+                    searchRecord:                  function(options) {var pattern = '/modules/admin/references/:referenceId/search';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    allReferences:                 function(options) {var pattern = '/modules/admin/references';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    allRecords:                    function(options) {var pattern = '/modules/admin/references/:referenceId/records';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    getReference:                  function(options) {var pattern = '/modules/admin/references/:referenceId';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+                },
+
+                User: {
+                    currentUser:                   function(options) {var pattern = '/modules/user/current';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    currentUserPassedQuiz:         function(options) {var pattern = '/modules/user/current/passedquiz';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                    specimenWithContributions:     function(options) {var pattern = '/users/:userId/contributions?missionId=:missionId&page=:page';for(key in options) {var val = options[key];pattern = pattern.replace(':' + encodeURIComponent(key), ( (val===undefined || val===null)?'': val));}return pattern;}
+,
+                }
+            }
+
+        	herbonautes.contributionTypes = ['COUNTRY','REGION_1','REGION_2','DATE','COLLECTOR','IDENTIFIEDBY','LOCALITY','GEOLOCALISATION','UNUSABLE'];
+
+
+        </script>
+
+        <script>
+			herbonautes.templates.activities = {
+				'MISSION_PUBLISH': 'La mission {{{link.mission}}} vient d\'être publiée',
+				'MISSION_JOIN': '{{{link.user}}} vient de rejoindre la mission {{{link.mission}}}',
+				'CONTRIBUTION_ADD': '{{{link.user}}} a identifié {{i18n.contribution.type}} pour le spécimen {{{link.contribution.specimen}}} dans la mission {{{link.contribution.mission}}}',
+                'CONTRIBUTION_V2_ADD': '{{{link.user}}} a identifié le champ {{{question.label}}} pour le spécimen {{{link.specimen}}} dans la mission {{{link.mission}}}',
+				'BADGE_WIN': '{{{link.user}}} a obtenu le badge <b>{{i18n.badge.type}}</b>',
+				'COMMENT_MISSION': '{{{link.comment.user}}} a posté un message sur la mission {{{link.comment.mission}}}',
+				'COMMENT_SPECIMEN': '{{{link.comment.user}}} a posté un message sur le spécimen {{{link.comment.specimen}}}',
+				'SIGN_UP': '{{{link.user}}} vient de rejoindre les Herbonautes'
+			}
+
+			herbonautes.images = {
+				user: function(user, link) {
+					var html = '<img src="' + herbonautes.actions.toUserImage({login: user.login, imageId: user.imageId || 'nopic'}) + '" />';
+					if (link) {
+						html = '<a href="' + herbonautes.actions.toUser({login: user.login}) + '">'
+						+ html + '</a>';
+					}
+					return html
+				}
+			}
+
+			herbonautes.links = {
+				specimen: function(specimen) {
+					var linkTemplate = '<a href="{{url}}">{{specimen.genusSpecies}} ({{specimen.institute}}/{{specimen.collection}}/{{specimen.code}})</a>';
+					return Mustache.render(linkTemplate, {
+						url: herbonautes.actions.toSpecimen({
+								institute: specimen.institute,
+								collection: specimen.collection,
+								code: specimen.code,
+							}),
+						specimen: specimen
+					});
+				},
+				user: function(user) {
+					return '<a href="' + herbonautes.actions.toUser({login: user.login}) + '">'
+							+ user.login + '</a>';
+				},
+				mission: function(mission, tab) {
+					return '<a href="' + herbonautes.actions.toMission({id: mission.id}) + (tab ? '?tab=' + tab : '') + '">'
+					+ mission.title + '</a>';
+				}
+			}
+
+		</script>
+
+        <script src="/js/no-html5-browser.js" type="text/javascript"></script>
+
+        <script>
+            var missionsSearchNumber = '2';
+            var botanistsSearchNumber = '8';
+            var specimensSearchNumber = '3';
+            var herbonautesSearchNumber = '4';
+            var discussionsSearchNumber = '4';
+            var scientificNamesSearchNumber = '4';
+            var tagsSearchNumber = '4';
+            var fullSearchResultsNumber = '10';
+            var nbDiscussionsToLoadPerCall = '10';
+            var elasticIndex = 'herbonautes_prod';
+			var elasticHostExplore = 'https://search.recolnat.org';
+            var elasticHostHerbonautes = 'http://lesherbonautes.mnhn.fr/elastic';
+
+            var herbonautesBaseUrl = 'http://lesherbonautes.mnhn.fr/';
+        </script>
+
+            <script src="/js/herbonautes-app.js" type="text/javascript"></script>
+
+		     	   <script type="text/javascript">
+var i18nMessages = {"validation.unique":"Must be unique","category.discussions":"Discussions","contribution.help.content.geolocalisation":"\u003cp\u003eRenseigner la Géolocalisation de la récolte de cette plante. Vous avez 2 possibilités.\u003col\u003e\u003cli\u003eEntrer directement les coordonnées géographiques figurant sur l\\\u0027étiquette.\u003cbr/\u003eLes deux cases correspondent à Latitude (Nord/Sud) et Longitude (Est/Ouest). \u003cbr/\u003eFormats acceptés :\u003cbr/\u003ecase Latitude: 43 16 40 N  - case Longitude: 0 23 41 O\u003cbr/\u003eou, case Latitude: 43º16\\\u002740\"N - case Longitude: 0º23\\\u002741\"W\u003cbr/\u003eou, case Latitude: 43º16\\\u002740\"N - case Longitude: 0º23\\\u002741\"O\u003cbr/\u003eou, case Latitude: 43,15651    - case Longitude: 0,15871\u003cbr/\u003e\u003c/li\u003e\u003cli\u003eSituer le plus précisément possible  le lieu sur une carte cliquez à droite sur \\\u0027Carte\\\u0027.\u003cbr/\u003eCliquez sur la carte à l\\\u0027endroit le plus  précis correspondant à la Localité figurant sur l\\\u0027étiquette. Il est possible d\\\u0027utiliser le champs de  recherches en haut à gauche de la carte.\u003c/li\u003e\u003c/ol\u003e\u003c/p\u003e","error.bad.login.or.password":"Mauvais identifiants","badge.animator":"Animateur","stats.legend.MEMBERS":"Membres","select.region":"Sélectionnez une région","error.application":"Application error","badge.sharer":"Partageur","contribution.geolocalisation.short":"Géo.","badge.sherlock":"Sherlock","contribution.region_1.short":"Rég.","transfer.question.collect_number":"Numéro de récolte","contribution.locality.short":"Loc.","contribution.region_2.short":"/s Rég.","message.user.profile.saved":"Vos informations ont été enregistrées","contribution.help.content.country":"\u003cp\u003eDans la liste déroulante, sélectionner le pays dans lequel la plante a été Récoltée.\u003c/p\u003e \u003cp\u003e\u003cstrong\u003eAttention\u003c/strong\u003e : le pays sélectionné est le \u003cspan style\u003d\"text-decoration: underline;\"\u003epays actuel\u003c/span\u003e\u003c/p\u003e\u003cp style\u003d\"padding-left: 30px;\"\u003eExemples : \u003cbr/\u003e 1/ pour une plante de Nouvelle-Hollande (nom de l\\\u0027Australie au 17e et 18e siècle), le pays correct est Australie\u003cbr/\u003e2/ pour une plante de Tchécoslovaquie, pays réunissant l\\\u0027actuelle République tchèque et la Slovaquie entre 1918 et 1992, il est nécessaire de rechercher sur les étiquettes une information plus précise quant à la localité de récolte de la plante, afin de déterminer si le pays à sélectionner est la République Tchèque ou la Slovaquie.\u003cbr/\u003eDans ces 2 exemples, le nom du pays actuel n\\\u0027apparaissant pas sur les étiquettes, la case \\\u0027Je l\\\u0027ai déduit\\\u0027 doit être cochée.\u003c/p\u003e\u003cp\u003eSi aucune information ne permet de connaître le pays, ou si il s\\\u0027agit d\\\u0027une plante cultivée, cochez la case \"Pas d\\\u0027information\".\u003c/p\u003e","validation.exists":"déjà utilisé","alert.specimen.comment":"%1$s a posté un message sur le spécimen %2$s :\u003cbr/\u003e %3$s","alert.conflict.v2":"L\u0027interprétation de %1$s sur la question %3$s du spécimen %2$s (%6$s) diffère de la votre (%5$s). Rendez vous sur \u003ca href\u003d\"%4$s\"\u003ela page spécimen\u003c/a\u003e pour en discuter ou \"contribuer\" à une correction.","since.months":"%s mois","contribution.identifiedby":"Déterminateur","stats.legend.validated":"Validé","since.minutes":"%s minute%s","user.deleted.account":"[compte supprimé]","contribution.type.region_2":"la sous-région","contribution.type.region_1":"la région","message.user.image.ignored":"Le fichier image que vous avez choisi n\u0027est pas compatible","validation.match":"Format non valide (caractères autorisés : lettres, chiffres, \u0027_\u0027)","transfer.question.region":"Région","since.hours":"%s heure%s","contribution.help.title.region_2":"Sous-région","contribution.help.title.region_1":"région","contribution.type.date":"la date","transfer.cause.MULTIPLE_DETERMINATIONS":"Plusieurs déterminations","contribution.geolocalisation":"Géolocalisation","validation.email":"Adresse e-mail invalide","badge.pioneer":"Pionnier","activity.loading":"Chargement","message.email.change.success":"Votre adresse mail a été modifiée","error.not.found":"Not found","activity.no.data":"Toute l\u0027activité est affichée","contribution.help":"Aide","badge.podium.explained":"Vous avez atteint le podium sur une mission","stats.legend.conflicts":"Conflits","transfer.cause.HERBONAUTES_NO_DATA":"Pas de donnée Herbonautes","contribution.type.collector":"le récolteur","badge.podium":"Podium","validation.max":"Cannot be greater than %2$d","validation.before":"Must be before %2$s","validation.bad.password":"Mot de passe incorrect","category.scientificnames":"Noms scientifiques","since.now":"À l\u0027instant","contribution.help.title.country":"Pays","message.delete":"Supprimer","validation.invalid":"Format incorrect","transfer.cause.RECOLNAT_ALREADY_EXISTS":"Donnée Recolnat existante","category.tags":"Tags","since.format":"dd MMMM yyyy","badge.candle":"Bougie","contribution.help.title.identifiedby":"Déterminateur","validation.minSize":"Minimum size is %2$d","alert.quit.mission.success":"Vous ne faites désormais plus partie de la mission","activity.btn.more":"Afficher plus d\u0027activité","badge.cool.explained":"Vous avez ajouté votre image à votre profil","category.botanists":"Botanistes","contribution.help.content.date":"\u003cp\u003eEntrer la date de la récolte. Vous pouvez rencontrez trois cas de figure :\u003c/p\u003e\u003col\u003e\u003cli\u003ela date exacte est indiquée sur l\\\u0027étiquette : renseigner alors la date sous le format JJ/MM/AAAA (exemple 27/12/1934).\u003c/li\u003e\u003cli\u003eune date est indiquée mais elle recouvre une Période donnée renseigner alors la date sous la forme d\\\u0027une Période sous la forme \\\u0027Entre JJ/MM/AAAA et JJ/MM/AAAA\\\u0027.\u003cbr/\u003eExemples : pour l\\\u0027indication de date \\\u0027mars 1875\\\u0027, on entre la Période \\\u0027Entre 01/03/1875 et 30/03/1875\\\u0027.\u003cbr/\u003epour l\\\u0027indication de date \\\u0027missions 1870-1872\\\u0027, on entre la Période \\\u0027Entre 01/01/1870 et 31/12/1872\\\u0027.\u003c/li\u003e\u003cli\u003eaucune information de date n\\\u0027est mentionnée sur la ou les étiquettes : cocher \\\u0027Pas d\\\u0027information\\\u0027.\u003c/li\u003e\u003c/ol\u003e","validation.required":"Obligatoire","badge.ender.explained":"Vous avez complété toutes les contributions pour un spécimen","badge.high_five":"Tope là !","badge.classifier":"Classificateur","badge.explorer.explained":"Vous faites partie des premiers contributeurs  pour la mission","contribution.type.locality":"la Localité","badge.solidary":"Solidaire","since.years":"%s an%s","contribution.help.title.locality":"Localité","badge.ender":"Finisseur","alert.mission.published":"Une nouvelle mission vient d\u0027être publiée : %1$s","contribution.identifiedby.short":"Dét.","badge.sherlock.explained":"Vous avez déduit une information","error.no.blank.specimen":"Vous ne pouvez pas contribuer","validation.after":"Must be after %2$s","contribution.help.content.collector":"\u003cp\u003e\u003cspan style\u003d\"text-decoration: underline;\"\u003eRécolté par\u003c/span\u003e :\u003c/p\u003e\u003cp\u003eEntrer le nom du botaniste qui a Récolté la plante, comme indiqué sur l\\\u0027étiquette, sous la forme \"Nom, Initiale du Prénom.\", (ex.: Dupont, T.). En validant, cette contribution sera enregistrée. Une aide existe en tapant les premières lettres du nom, une liste apparaît, il suffit alors de le sélectionner en transformant les Prénoms en initiales; \u003c/p\u003e\u003cp\u003eSi plusieurs récolteurs sont indiquées sur l\\\u0027étiquette, il est possible de les indiquer successivement de la même façon en cliquant sur \\\u0027Ajouter un récolteur\\\u0027.\u003c/p\u003e\u003cp\u003eSi aucun nom de récolteur n\\\u0027est mentionné sur l\\\u0027étiquette : cocher \\\u0027Pas d\\\u0027information\\\u0027.\u003c/p\u003e\u003cbr/\u003e\u003cstrong\u003eAttention\u003c/strong\u003e : le récolteur et le déterminateur sont souvent deux personnes différentes ! L\\\u0027abréviation \\\u0027det.\\\u0027 devant un nom de personne indique clairement le déterminateur, mais cette abréviation n\\\u0027apparaît hélas pas systématiquement...\u003c/p\u003e","stats.legend.COMPLETE_SPECIMENS":"Spécimens complets","activity.tabs.site":"Tout le site","contribution.country.short":"Pays","validation.maxSize":"Maximum size is %2$d","validation.isTrue":"Must be checked","contribution.help.title.botanists":"Botanistes","error.content.title":"La page que vous demandez est introuvable.","contribution.collector":"Récolteurs","message.to":"Destinataire","contribution.help.title.geolocalisation":"Géolocalisation","badge.night.explained":"Vous avez contribué la nuit","validation.equals":"Must be equal to \u0026{%2$s}","error.unknow.login":"Idenfiant inconnu","contribution.help.title.unusable":"Marquer une photo inutilisable","validation.range":"Not in the range %2$d through %3$d","contribution.type.geolocalisation":"la Géolocalisation","validation.phone":"Not a valid phone","alert.conflict":"L\u0027interprétation de %1$s (%4$s : %5$s) sur le spécimen %2$s diffère de la votre (%4$s : %6$s). Rendez vous sur \u003ca href\u003d\"%3$s\"\u003ela page spécimen\u003c/a\u003e pour en discuter ou \"contribuer\" à une correction.","alert.pass.quiz":"Passez le quiz \"%s\" pour débloquer","error.no.more.specimen":"Il n\u0027y a plus de spécimen à tirer au sort pour cette mission","transfer.question.locality":"Localité","error.404":"Message d\u0027erreur : \u003ccode\u003e%s\u003c/code\u003e \u003cbr/\u003e \u003c/span\u003eNous sommes désolés pour la gène occasionnée.\u003c/span\u003e","message.delete.confirmation":"Etes-vous sûr de vouloir supprimer ce message?","message.user.deleted.account":"Votre compte a été supprimé.","contribution.help.content.identifiedby":"\u003cp\u003e \u003c/p\u003e\u003cp\u003e\u003cspan style\u003d\"text-decoration: underline;\"\u003eDéterminé par\u003c/span\u003e :\u003c/p\u003e\u003cp\u003eEntrer le nom du botaniste qui a Déterminé/identifié la plante.\u003cbr/\u003e\u003cstrong\u003eAttention\u003c/strong\u003e : le récolteur et le déterminateur sont souvent deux personnes différentes ! L\\\u0027abréviation \\\u0027det.\\\u0027 devant un nom de personne indique clairement le déterminateur, mais cette abréviation n\\\u0027apparaît hélas pas systématiquement...\u003c/p\u003e","contribution.type.unusable":"le spécimen inutilisable","alert.mission.comment":"%1$s a posté un message sur la mission %2$s","message.invitation.welcome":"Merci d\u0027avoir rejoint les Herbonautes","transfer.cause.RECOLNAT_MISSING_ROW":"Colonne manquante","contribution.collector.short":"Réc.","error.bad.format":"Format incorrect","error.contribution.period.invalid":"Date de fin antérieure à la date de début","validation.object":"Validation failed","transfer.question.geo":"Géolocalisation","stats.legend.inProgress":"En cours","btn.loading":"Chargement","validation.min":"Cannot be lower than %2$d","validation.ipv6":"Not a valid IP v6 address","validation.ipv4":"Not a valid IP address","message.email.invalid":"L\u0027adresse \u0027%s\u0027 est invalide","contribution.help.content.region_2":"\u003cp\u003eDans la liste déroulante, sélectionner la sous-région (ou entité équivalente comme le département) dans lequel la plante a été Récoltée.\u003cbr/\u003eExplorez bien tous les recoins de la photo pour rechercher si la sous-région ou le département est mentionné quelque part.\u003c/p\u003e\u003cp\u003eCochez  la case \\\u0027Je l\\\u0027ai déduit\\\u0027 si le nom de la sous-région ou le département  n\\\u0027apparaît pas tel quel sur les étiquettes, et résulte de votre  interprétation d\\\u0027une autre information (telle que la ville).\u003c/p\u003e\u003cp\u003eSi aucune information ne permet de connaître la sous-région ou département, cochez la case \"Pas d\\\u0027information\".\u003c/p\u003e","contribution.help.content.region_1":"\u003cp\u003eDans la liste déroulante, sélectionner la région/district/province dans laquelle la plante a été Récoltée.\u003cbr/\u003eExplorez bien tous les recoins de la photo pour rechercher si la région/district/province est mentionnée quelque part.\u003c/p\u003e\u003cp\u003eCochez la case \\\u0027Je l\\\u0027ai déduit\\\u0027 si le nom de la région/district/province n\\\u0027apparaît pas tel quel sur les étiquettes, et résulte de votre interprétation d\\\u0027une autre information (telle que le département ou la ville).\u003c/p\u003e\u003cp\u003eSi aucune information ne permet de connaître la région/district/province, cochez la case \"Pas d\\\u0027information\".\u003c/p\u003e","transfer.question.unusable":"Inutilisable","quiz.modal.text":"Vous venez d\u0027accèder au quiz \"%1$s\". Ce quiz vous permettra de passer au niveau supérieur (%2$s).","validation.reserved.name":"Nom déjà utilisé","contribution.botanists.short":"Bot.","error.occured":"Oops, an error occured","contribution.region_2":"Sous-région","category.herbonauts":"Herbonautes","stats.legend.CONFLICTS":"En conflit","contribution.region_1":"Région","message.resolution.confirmation":"Etes-vous sûr de vouloir choisir ce message comme solution?","transfer.cause.CONFLICT_RECOLNAT_HERBONAUTES":"Conflit Herbonautes/Recolnat","validation.min.lng":"La longitude doit être supérieure à -180º","alert.password.sent":"Votre mot de passe vient d\u0027être envoyé","error.exception":"This exception has been logged with id \u003cstrong\u003e%s\u003c/strong\u003e.","validation.future":"Must be in the future","since.days":"%s jour%s","contribution.date":"Date","validation.min.lat":"La latitude doit être supérieure à -90º","contribution.type.botanists":"les botanistes","category.missions":"Missions","validation.required.level":"Niveau %s requis","contribution.help.title.date":"Date","for":"pour","contribution.type.identifiedby":"le déterminateur","transfer.question.collect":"Récolteur","badge.pedagogue":"Pédagogue","alert.announce":"Nouvelle annonce dans la mission %1$s","contribution.help.content.locality":"\u003cp\u003eRecopier avec fidélité les données géographiques de la Localité de récolte figurant sur  l\\\u0027étiquette.\u003cbr/\u003eRespecter l\\\u0027ordre des mots, la langue, l\\\u0027orthographe, et les abréviations.\u003c/p\u003e\u003cp\u003eExemples :\u003cbr/\u003e\u003col\u003e\u003cli\u003e\\\u0027Massif de Manongarivo, versant ouest du Mt. Bekolosy, sur les berges de la rivière.\\\u0027\u003c/li\u003e\u003cli\u003e\\\u0027Above the village of Ambodisakoana  E of Ankaramy\\\u0027.\u003c/li\u003e\u003c/ol\u003e\u003c/p\u003e","message.since":"Il y a %s","contribution.type.country":"le pays","error.apologies":"Une erreur est survenue","transfer.question.date":"Date","validation.url":"Not a valid URL","transfer.question.country":"Pays","badge.cool":"Cool","contribution.date.short":"Date","error.mandatory":"Obligatoire","transfer.question.identified":"Déterminateur","alert.unusable.picture":"spécimen marqué comme inutilisable","contribution.unusable.short":"Inut.","validation.max.lng":"La longitude doit être inférieure à 180º","stats.legend.CONTRIBUTIONS":"Contributions","validation.max.lat":"La latitude doit être inférieure à 90º","message.moderator":"Ce message a été modéré par","badge.invitation":"Parrain","activity.my.missions":"Mes missions","message.new":"Nouveau message","validation.different.passwords":"Mot de passe différents","validation.past":"Must be in the past","contribution.locked.country":"Pays","contribution.help.title.collector":"Récolteurs","activity.my.actions":"Mes actions","error.bad.period":"Période incorrecte","contribution.conflict.error.message":"Pour résoudre le conflit, cliquer sur le symbole","btn.validate":"Valider","badge.lucky":"Porte-bonheur","since.seconds":"%s seconde%s","alert.join.mission.success":"Merci et bienvenue","contribution.locality":"Localité","contribution.help.content.botanists":"\u003cp\u003e\u003cspan style\u003d\"text-decoration: underline;\"\u003eRécolté par\u003c/span\u003e :\u003c/p\u003e\u003cp\u003eEntrer le nom du botaniste qui a Récolté la plante, comme indiqué sur l\\\u0027étiquette, sous la forme \"Nom, Initiale du Prénom.\", (ex.: Dupont, T.). En validant, cette contribution sera enregistrée. Rentrer les premières lettres du nom, une liste de noms apparaît, sélectionner le nom adéquat; \u003c/p\u003e\u003cp\u003eSi plusieurs récolteurs sont indiqués sur l\\\u0027étiquette, il est possible de les indiquer successivement de la même façon en cliquant sur \\\u0027Ajouter un récolteur\\\u0027.\u003c/p\u003e\u003cp\u003eSi aucun nom de récolteur n\\\u0027est mentionné sur l\\\u0027étiquette : cocher \\\u0027Pas d\\\u0027information\\\u0027.\u003c/p\u003e\u003cp\u003e \u003c/p\u003e\u003cp\u003e\u003cspan style\u003d\"text-decoration: underline;\"\u003eDéterminé par\u003c/span\u003e :\u003c/p\u003e\u003cp\u003eEntrer le nom du botaniste qui a Déterminé/identifié la plante.\u003cbr/\u003e\u003cstrong\u003eAttention\u003c/strong\u003e : le récolteur et le déterminateur sont souvent deux personnes différentes ! L\\\u0027abréviation \\\u0027det.\\\u0027 devant un nom de personne indique clairement le déterminateur, mais cette abréviation n\\\u0027apparaît hélas pas systématiquement...\u003c/p\u003e","category.specimens":"Spécimens","contribution.country":"Pays","badge.writer":"Ecrivain","contribution.botanists":"Botanistes","badge.explorer":"Eclaireur","contribution.help.content.unusable":"\u003cp\u003eCliquer sur ce bouton si la photo représente une plante cultivée, a plusieurs étiquettes, plusieurs dates de récoltes ou aucune donnée.\u003c/p\u003e","error.title":"Erreur","badge.night":"Noctambule","validation.notFound":"Object not found for id %2$s","message.invitation.sent":"Merci ! Les invitations ont été envoyées"};
+
+/**
+ * Fixme : only parse single char formatters eg. %s
+ */
+var i18n = function(code) {
+    var message = i18nMessages && i18nMessages[code] || code;
+    // Encode %% to handle it later
+    message = message.replace(/%%/g, "\0%\0");
+    if (arguments.length > 1) {
+        // Explicit ordered parameters
+        for (var i=1; i<arguments.length; i++) {
+            var r = new RegExp("%" + i + "\\$\\w", "g");
+            message = message.replace(r, arguments[i]);
+        }
+        // Standard ordered parameters
+        for (var i=1; i<arguments.length; i++) {
+            message = message.replace(/%\w/, arguments[i]);
+        }
+    }
+    // Decode encoded %% to single %
+    message = message.replace(/\0%\0/g, "%");
+    // Imbricated messages
+    var imbricated = message.match(/&\{.*?\}/g);
+    if (imbricated) {
+        for (var i=0; i<imbricated.length; i++) {
+            var imbricated_code = imbricated[i].substring(2, imbricated[i].length-1).replace(/^\s*(.*?)\s*$/, "$1");
+            message = message.replace(imbricated[i], i18nMessages[imbricated_code] || "");
+        }
+    }
+    return message;
+};
+</script>
+		
+        <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+        <script type="text/javascript">
+            window.cookieconsent_options = {
+				"message":"Ce site utilise des cookies",
+				"dismiss":"OK",
+								"theme":"dark-bottom"};
+        </script>
+
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+        <!-- End Cookie Consent plugin -->
+
+	</head>
+    <body>
+
+
+    	
+    <div class="wrap">
+    <div class="navbar links" >
+		<div class="navbar-inner">
+			<div class="container">
+				<div class="pull-right">	
+											
+						<a href="http://lesherbonautes.mnhn.fr/contents/faq">FAQ</a>
+											|
+						<a href="http://lesherbonautes.mnhn.fr/contents/consignes">Consignes</a>
+									</div>
+       		</div>
+ 		</div>
+ 	</div>
+ 	
+
+    <div class="navbar header">
+      <div class="navbar-inner">
+
+        <div class="container">
+          <a class="btn btn-navbar" id="phone-menu-btn" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/"><h1>Les herbonautes</h1>
+          <div>L'herbier numérique collaboratif citoyen</div></a>
+
+           <div class="nav-collapse">
+            <ul class="nav">
+           	  
+           	  <li class="dropdown" id="menu-links">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu-links">
+				      Qui sommes-nous
+				      <b class="caret"></b>
+				    </a>
+				    <ul class="dropdown-menu">
+						
+			      	 								<li><a href="http://lesherbonautes.mnhn.fr/contents/herbonautes">Pourquoi ce site ?</a></li>
+													<li><a href="http://lesherbonautes.mnhn.fr/contents/herbierparis">L'Herbier de Paris</a></li>
+													<li><a href="http://lesherbonautes.mnhn.fr/stats">Statistiques des herbonautes</a></li>
+													<li><a href="http://lesherbonautes.mnhn.fr/contents/appelaprojets">Appel &agrave; projets</a></li>
+										      
+				    </ul>
+				  </li>
+
+
+
+
+
+
+			                               <li id="menu-missions"><a href="/missions">Missions</a></li>
+			  
+
+                <!-- hidden links for mobile -->
+                <li class="dropdown" id="mobile-links">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu-links">
+						Liens utiles
+                        <b class="caret"></b>herb
+                    </a>
+                    <ul class="dropdown-menu">
+					
+					                        <li><a href="http://lesherbonautes.mnhn.fr/contents/faq">FAQ</a></li>
+					                        <li><a href="http://lesherbonautes.mnhn.fr/contents/consignes">Consignes</a></li>
+					
+                    </ul>
+                </li>
+
+				<li>
+					<a href="/discussions/all">Discussions</a>
+				</li>
+
+                <li>
+
+                    <!-- <input type="hidden" id="search-item-url" />
+                <form id="search-form" method="get" action="/search">
+            		<input
+            			type="text"
+            			class="search-box" id="search-box"
+            			placeholder="Accès rapide" name="term" />
+         		</form> -->
+
+				  <span ng-controller="QuickSearchCtrl">
+					  <form id="search-form">
+                          <input type="text" class="form-control search-box" placeholder="Accès rapide"
+                                 ng-model="selectedResult"
+                                 typeahead="result as result.text for result in getResults($viewValue)"
+                                 typeahead-template-url="typeahead-template"
+                                 typeahead-on-select="onSelect($item, $model, $label)"
+                                 typeahead-wait-ms="250" />
+
+                          <script type="text/ng-template" id="typeahead-template">
+                              <div class="typeahead-group-header" ng-if="match.model.firstInGroup && match.model.group != 'allResults'">{{match.model.group}}</div>
+                              <a href="{{ match.model.url }}">
+                                  <span ng-if="!(match.model.group == 'allResults') && match.model.group != 'Discussions'" ng-bind-html="match.label | typeaheadHighlight:query" ></span>
+                                  <span ng-if="!(match.model.group == 'allResults') && match.model.group == 'Discussions'" ng-bind-html="match.label | words:5 | typeaheadHighlight:query"></span>
+                                  <span ng-if="match.model.group == 'allResults'" ng-bind-html="match.label" ></span>
+                              </a>
+                              <div class="divider" ng-show="match.model.group == 'allResults'"></div>
+                          </script>
+                      </form>
+				  </span>
+
+
+
+
+                </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+          
+          
+			<div id="profile-menu" class="pull-right nav hide">
+	
+	<a class="dropdown-toggle profile-btn" data-toggle="dropdown" href="#">
+				<b class="caret"></b>
+	</a>
+
+
+	<ul class="dropdown-menu">
+
+				
+		<li><a id="profile-link" href="										#
+					"><i class="icon-user"></i> Mon profil</a></li>
+
+		<li><a href="/invitation/form"><i class="icon-bullhorn"></i> Parrainer</a></li>
+
+		
+        
+		
+		<li class="divider"></li>
+		<li><a href="/logout"><i class="icon-off"></i> Déconnexion</a></li>
+
+	</ul>
+</div>			<div class="login nav-collapse pull-right ">
+	<ul class="nav">
+		<li><a href="#" id="login-button">Se connecter</a></li>
+	</ul>
+</div>          
+        </div>
+      </div>
+    </div>
+
+
+		<div class="container wrapper">
+			
+			<!--  
+			<input type="text" id="search-input" data-provide="typeahead" />
+			
+			
+			
+			<script>
+			$('#search-input').typeahead({
+			    source: function (typeahead, q) {
+			        return $.get('/search', { q: q }, function (data) {
+			            return typeahead.process(data);
+			        });
+			    }
+			});
+			</script>
+			-->
+												
+			<div class="alert alert-success hide" id="alert-success-box">
+				<a class="close" data-dismiss="alert" href="#">��</a>
+				<span id="alert-success-content"></span>
+			</div>
+			
+			
+        	
+
+
+<div ng-controller="MissionCtrl" ng-init="init(26137132)">
+
+    <div class="row">
+    <div class="span3 avatar">
+                <img alt="avatar" class="avatar bordered"
+        src="/missions/26137132/26137143.jpg" />
+            </div>
+    <div class="span9 _mission-description">
+
+        <div class="row">
+            <div class="span9">
+
+
+
+            
+
+
+            
+
+
+                <h2>TETTRIs, jouons ensemble ! 2</h2>
+
+                                            </div>
+        </div>
+
+
+    <div class="row">
+    <div class="span5">
+    <p>Le projet européen TETTRIs vise à produire un changement transformateur du rôle de la taxonomie dans la connaissance de la biodiversité.</p>
+
+    <dl class="clearfix">
+
+        <dt>Nombre de spécimens</dt>
+
+        
+        <dd><span id="specimens-count" class="count"
+            data-refresh-url="/missions/26137132/specimens/count">2865</span>
+        </dd>
+
+
+        <!--  -->
+                <dt>Contributions</dt>
+        <dd>6507</dd>
+
+
+        <dt>Chef de mission</dt>
+        
+        <dd>
+            <ul>
+                            <li><a href="/users/Eva">Eva</a></li>
+                        </ul>
+        </dd>
+
+        <dt>Ouverture</dt>
+        <dd>29 avril 2024</dd>
+
+    </dl>
+
+                                            
+    
+        
+        <a href="/missions/26137132/specimens/random" class="btn btn-success">Contribuer</a>
+
+        
+    
+
+        
+    </div>
+
+    <div class="span4">    <div class="alert-box announcements">     <div class="announcement ">
+        <em>23 avril 2024</em>
+        <h4>continuons &agrave; jouer ensemble !</h4>
+        <p>Des missions &agrave; venir
+Prochainement, Les Herbonautes, Die Herbonauten et DoeDat vont collaborer ensemble dans le cadre du projet TETTRIs. &Agrave; suivre !</p>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    </div>
+    </div>
+
+
+    
+    <div class="row">
+        <div class="span12 page-stats">
+
+            <div class="row">
+
+                <div class="span6">
+                    
+                    <div class="row">
+                        <div class="span2">
+                            <div class="first stat">
+                             <span class="count">18</span>
+                            <span class="item">membres</span>
+                            </div>
+                        </div>
+
+
+                        <div class="span2">
+                            <div class="stat">
+                                                                <span class="count">1663</span>
+                                <span class="item">spécimens vus</span>
+                            </div>
+                        </div>
+
+                        <div class="span2">
+                            <div class="stat">
+                                                                <span class="count">1643</span>
+                                <span class="item">spécimens complets</span>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+
+            
+            <div class="span3">
+                                    <h4>Avancement de la mission</h4>
+                
+                    <div class="progress progress-success ">
+                        <div class="bar" style="width: 57.3472949389%"></div>
+
+                    </div>
+                Objectif : <span>1643 / 2865 specimens</span>
+                </div>
+
+
+                <div class="span3">
+                <h4>Top contributeurs</h4>
+                <div class="contributor-stat" ng-repeat="user in topContributors" ng-cloak>
+
+
+                    <a ng-if="!user.deleted" ng-href="{{ userProfileUrl(user) }}" >
+
+                        <img class="bordered" ng-src="{{ userPic(user) }}" />
+                        {{ user.deleted ? '' : user.login }}
+
+                    
+                    </a>
+                    <a ng-if="user.deleted" >
+
+                        <img class="bordered" ng-src="{{ userPic(user) }}" />
+
+
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+
+    
+    <div class="row">
+    <div class="span8">
+
+    <div class="tabbable">
+
+    <ul class="nav nav-tabs">
+        <li><a href="#presentation-tab-pane" id="presentation-tab"
+            data-toggle="tab">Presentation</a></li>
+                <li><a href="#stats-tab-pane" id="stats-tab"
+               data-toggle="tab">Stats</a></li>
+        <li><a href="#contributions-tab-pane" id="contributions-tab"
+            data-toggle="tab">Contributions</a></li>
+        <li><a href="#ratings-tab-pane" id="ratings-tab" data-toggle="tab">Membres</a></li>
+
+                <li><a href="#map-tab-pane" id="map-tab" data-toggle="tab">Carte</a></li>
+        <li><a href="#tags-tab-pane" id="tags-tab" data-toggle="tab">Tags (<span ng-cloak>{{$root.nbTagsTab}}</span>)</a></li>
+        <li><a href="#comments-tab-pane" id="comments-tab"
+                data-toggle="tab">Discussions (<span ng-cloak>{{$root.nbDiscussionsTab}}</span>)</a></li>
+    </ul>
+
+
+    <div class="tab-content">
+
+    <div class="tab-pane" id="presentation-tab-pane">
+    <p><h2 style="text-align: center;">
+	<strong>TETTRIs, jouons ensemble ! 2</strong></h2>
+<h3 style="text-align: center;">
+	Transforming European Taxonomy through Training, Research and Innovations</h3>
+<h2>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img alt="" src="/contents/images/26088520" style="font-size: 12px; width: 700px; height: 412px;" /></h2>
+<p>
+	Pour plus d&#39;information :</p>
+<p>
+	<a href="https://tettris.eu/">https://tettris.eu/</a></p>
+<p>
+	&nbsp;</p>
+<table border="3" cellpadding="1" cellspacing="1" style="width: 600px; height: 270px">
+	<tbody>
+		<tr>
+			<td>
+				<p style="text-align: justify;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">Dans le cadre du projet TETTRIs, le MNHN participera entre autres, &agrave; la t&acirc;che d&eacute;di&eacute;e au&nbsp;</span><em style="font-size: 14px;">crowdsourcing specimen annotation</em><span style="font-size: 14px;">. Nous proposons ainsi de mettre &agrave; profit la force et l&rsquo;exp&eacute;rience des Herbonautes pour alimenter ces travaux.</span></span></p>
+				<p style="text-align: justify;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">Concr&egrave;tement, nous souhaitons constituer un lot de sp&eacute;cimens d&rsquo;herbier qui pourra faire l&rsquo;objet d&rsquo;une collaboration avec d&rsquo;autres programmes europ&eacute;ens de sciences participatives comme Die Herbonauten et DoeDat.</span></span></p>
+				<h4>
+					<span style="color: rgb(0, 128, 128);">Consignes :</span></h4>
+				<p style="text-align: justify;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">Apr&egrave;s la premi&egrave;re mission TETTRIs qui visait &agrave; identifier des sp&eacute;cimens d&#39;Allemagne ou &eacute;crit en allemand, nous cherchons cette fois dans la collection de l&rsquo;herbier de Paris, des sp&eacute;cimens avec les crit&egrave;res suivants&nbsp;:</span></span></p>
+				<p style="text-align: justify;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">- r&eacute;coltes provenant des localit&eacute;s belges</span></span></p>
+				<p style="text-align: justify;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">- sp&eacute;cimens de r&eacute;colteurs belges</span></span></p>
+				<p style="text-align: justify;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">Nous vous proposons de noter pour ce deuxime lot de sp&eacute;cimens pr&eacute;s&eacute;lectionn&eacute;s &agrave; l&#39;aide de l&#39;OCR,&nbsp;<strong>le pays</strong>&nbsp;et la&nbsp;<strong>langue utilis&eacute;e pour noter les informations de r&eacute;colte</strong>,<strong> autre que le fran&ccedil;ais.</strong></span></span></p>
+				<p style="margin-left: -0.55pt;">
+					<span style="color: rgb(0, 128, 128);"><span style="font-size: 14px;">Merci par avance !</span></span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	&nbsp;</p>
+</p>
+    </div>
+
+    
+    <div class="tab-pane" id="stats-tab-pane">
+<div ng-controller="StatsMissionCtrl" ng-init="init(26137132)">
+
+<div class="row">
+    <div class="span8" id="chart-box-full">
+    </div>
+    <div class="span4" id="chart-box-half">
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="span4">
+        <div class="stat-box">
+            <h3>Top des botanistes renseignés</h3>
+
+            <em id="no-botanists" style="display: none">Pas de question "Récolteur" ou "Déterminateur" pour cette mission</em>
+
+
+            <div id="with-botanists">
+                <em ng-hide="(topBotanistList && topBotanistList.length > 0)">Aucune donnée pour l'instant</em>
+
+                <table class="stat-table" style="width:100%" ng-cloak ng-show="!noBotanistQuestion() &&topBotanistList && topBotanistList.length > 0">
+                    <tr>
+                        <th style="text-align:left">Nom</th>
+                        <th style="text-align:right">Nombre d'entrées validées</th>
+                    </tr>
+                    <tr ng-repeat="botanist in topBotanistList" ng-if="$index < 10">
+                        <td>
+                            <a ng-href="{{ botanistUrl(botanist[1]) }}">{{ botanist[0] }}</a>
+
+                        </td>
+
+                        <td style="text-align:right"><span class="number">{{ formatNumber(botanist[2]) }}</span></td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="span4">
+        <div class="stat-box">
+            <div id="chart-centuries" class="chart">
+                <h3>Les siècles</h3>
+
+            </div>
+            <div id="empty-centuries" style="display:none">
+                <h3>Les siècles</h3>
+                <em>Aucune donnée pour l'instant</em>
+            </div>
+            <div id="no-centuries" style="display:none">
+                <h3>Les siècles</h3>
+                <em>Pas de question "Date" sur cette mission</em>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row stat-row">
+
+    <div class="span4">
+        <div class="stat-box">
+            <div id="chart-countries" class="chart">
+                <h3>Pays</h3>
+
+
+
+
+            </div>
+            <div id="control-countries" style="display:none">
+
+                <a class="btn btn-mini btn-default" ng-show="showMoreCountries()" ng-click="moreCountries()">Afficher plus de pays</a>
+                <a class="btn btn-mini btn-default reset" style="display:none" href="javascript:$('#control-countries .reset').hide();countryChart.filterAll();dc.redrawAll();">Annuler la selection</a>
+                <a class="btn btn-mini btn-default" ng-show="showTopOnlyCountries()" ng-click="topCountriesOnly()">Top 10 uniquement</a>
+                <br><br/>
+                <em>Sélectionnez un pays pour voir le détail de ses régions</em>
+                <hr/>
+            </div>
+
+            <div id="legend-countries" class="legend-box">
+
+            </div>
+
+            <div id="empty-countries" style="display:none">
+                <h3>Pays</h3>
+                <em>Aucune donnée pour l'instant</em>
+            </div>
+
+            <div id="no-countries" style="display:none">
+                <h3>Pays</h3>
+                <em>Pas de question "Pays" sur cette mission</em>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="span4">
+        <div class="stat-box">
+            <div id="chart-regions" class="chart">
+                <h3>Régions <span id="unique-country" style="display:none">(<span></span>)</span></h3>
+            </div>
+
+
+            <div id="control-regions" style="display:none">
+
+                <a class="btn btn-mini btn-default" ng-show="showMoreRegions()" ng-click="moreRegions()">Afficher plus de régions</a>
+                <a class="btn btn-mini btn-default reset" style="display:none" href="javascript:$('#control-regions .reset').hide();regionChart.filterAll();dc.redrawAll();">Annuler la sélection</a>
+                <a class="btn btn-mini btn-default" ng-show="showTopOnlyRegions()" ng-click="topRegionsOnly()">Top 10 uniquement</a>
+                <br><br/>
+                <em>Sélectionnez un pays pour voir le détail de ses régions</em>
+                <hr/>
+            </div>
+
+            <div id="legend-regions" class="legend-box"></div>
+
+            <div id="empty-regions" style="display:none">
+                <h3>Régions</h3>
+                <em>Aucune donnée pour l'instant</em>
+            </div>
+
+            <div id="no-regions" style="display:none">
+                <h3>Régions</h3>
+                <em>Pas de question "Régions" sur cette mission</em>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+    <div class="row stat-row">
+        <div class="span8">
+            <div class="stat-box">
+
+                <div id="chart-contributions-day" class="chart">
+                    <h3>Activité des herbonautes
+                        <small><a style="display:none" class="reset" href="javascript:contributionZoomChart.filterAll();dc.redrawAll();">(annuler la sélection)</a></small>
+                    </h3>
+
+                    <a class="btn btn-mini btn-default" id="cumul-on" style="display:none">Valeurs cumulées</a>
+                    <a class="btn btn-mini btn-default" id="cumul-off">Valeurs quotidiennes</a>
+
+                </div>
+                <div id="chart-zoom-chart"></div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="span8">
+            <div class="stat-box">
+                <div id="chart-specimens-day" class="chart">
+                    <h3>Nombre de spécimens</h3>
+
+                    <div id="legend-specimens" class="legend-box">
+
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="span4">
+            <div class="stat-box nv">
+                <h3>Avancement par question</h3>
+                <div id="chart1" class="chart">
+                    <svg></svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<style>
+    .nv .chart svg {
+        height: 280px;
+    }
+</style>
+
+
+<script type="text/javascript" src="/js/d3.min.js"></script>
+<script type="text/javascript" src="/js/crossfilter.js"></script>
+
+<script type="text/javascript" src="/js/dc.js"></script>
+
+
+<script type="text/javascript" src="/js/colorbrewer.js"></script>
+
+<script>
+
+    var frLocale = d3.locale({
+        dateTime: "%A, le %e %B %Y, %X",
+        date: "%d/%m/%Y",
+        time: "%H:%M:%S",
+        periods: ["AM", "PM"], // unused
+        days: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+        shortDays: ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+        months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+        shortMonths: ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+    });
+
+    var tickFormat = frLocale.timeFormat.multi([
+        ["%H:%M", function(d) { return d.getMinutes(); }],
+        ["%H:%M", function(d) { return d.getHours(); }],
+        ["%a %d", function(d) { return d.getDay() && d.getDate() != 1; }],
+        ["%b %d", function(d) { return d.getDate() != 1; }],
+        ["%B", function(d) { return d.getMonth(); }],
+        ["%Y", function() { return true; }]
+    ]);
+
+
+    var timeData;
+    d3.time.format = frLocale.timeFormat;
+
+    // (function() {
+    var missionId = 26137132;
+    var countries, regions;
+    var countryChart = dc.pieChart("#chart-countries");
+    var regionChart = dc.pieChart("#chart-regions");
+    var centuryChart = dc.rowChart("#chart-centuries");
+    var contributionByDayChart = dc.lineChart('#chart-contributions-day');
+    var contributionZoomChart = dc.barChart('#chart-zoom-chart');
+    //var specimenByDayChart = dc.lineChart('#chart-specimens-day');
+    var specimenByDayChart = dc.compositeChart("#chart-specimens-day");
+
+    //var contributionByDayChart = dc.lineChart('#chart-contributions-day');
+    //var contributionZoomChart = dc.barChart('#chart-zoom-chart');
+    var countryTop = 10,
+            regionTop = 10;
+
+
+
+    function romanize (num) {
+        if (!+num)
+            return false;
+        var digits = String(+num).split(""),
+                key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+                    "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+                    "","I","II","III","IV","V","VI","VII","VIII","IX"],
+                roman = "",
+                i = 3;
+        while (i--)
+            roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+        return Array(+digits.join("") + 1).join("M") + roman;
+    }
+
+    function toObjectArray(data) {
+        var res = [];
+
+        for (var i = 0; i < data.length; i++) {
+            res.push({ label: data[i][0], refId: data[i][1], value: data[i][2] })
+        }
+        return res;
+    }
+
+    function topCountries(data, limit) {
+
+        var topArray = [];
+        var other = [otherCat, 0];
+        for (var i = 0; i < data.length; i++) {
+            if (i < limit) {
+                topArray.push(data[i]);
+            } else {
+                other[1] = other[1] + data[i][1];
+            }
+        }
+        if (other[1] > 0) {
+            topArray.push(other);
+        }
+        return topArray;
+    }
+
+
+
+    function displayCenturies() {
+        // Les siècles
+        if (!_.find(missionQuestions, function(q) { return q.name == "collect_date" })) {
+            $("#chart-centuries").hide();
+            $("#no-centuries").show();
+            dc.deregisterChart(centuryChart);
+            return;
+        }
+
+        d3.json(herbonautes.ctxPath + '/stats/global/centuries?missionId=' + missionId, function (data) {
+
+            console.log("data centuries", data);
+
+            if (data.length == 0) {
+                $("#chart-centuries").hide();
+                $("#empty-centuries").show();
+                return;
+            }
+
+            function toObjectArray(data) {
+                var res = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i][1]) {
+                        res.push({century: data[i][0], value: data[i][1]})
+                    }
+                }
+                return res;
+            }
+
+            var arr = toObjectArray(data);
+            var ndx = crossfilter(arr);
+
+            var centuryDim = ndx.dimension(function (d) {
+                var y = d3.time.year(new Date(d.century));
+                var c = Math.floor(y.getFullYear() / 100) + 1;
+                return -c;
+
+            });
+
+            var centuryGroup = centuryDim.group().reduceSum(function (d) {
+                return d.value
+            });
+
+            var newWidth = document.getElementById('chart-box-half').offsetWidth;
+
+            centuryChart
+                    .width(newWidth)
+                    .height(250)
+                    .margins({top: 20, left: 10, right: 50, bottom: 20})
+                    .group(centuryGroup)
+                    .dimension(centuryDim)
+                    .renderLabel(true)
+                    .ordinalColors(["grey"] /*['#3182bd', '#6baed6', '#9ecae1', '#c6dbef', '#dadaeb'] */)
+                    .keyAccessor(function (d) {
+                        return -d.key;
+                    })
+                    .label(function (d) {
+                        //return d.key;
+                        return romanize(-d.key) + "ème";
+                    })
+
+//
+                    .title(function (d) {
+                        return d.value + " spécimens";
+                        //return romanize(c) + "ème";
+                    })
+                    .elasticX(true)
+                    .xAxis().ticks(4);
+
+                centuryChart.filter = function () {};
+
+
+
+            console.log(centuryDim.group().all());
+
+        });
+
+
+    }
+    var uniqueCountry;
+
+    var countryTop = 10,
+            regionTop = 10;
+
+
+
+    function displayCountryChart(callback) {
+
+        if (!_.find(missionQuestions, function(q) { return q.name == "country"})) {
+            $("#chart-countries").hide();
+            $("#control-countries").hide();
+            $("#legend-countries").hide();
+            $("#no-countries").show();
+            dc.deregisterChart(countryChart);
+            return;
+        }
+
+        d3.json(herbonautes.ctxPath + '/stats/global/countries?missionId=' + missionId, function (data) {
+
+            if (data.length == 0) {
+                $("#chart-countries").hide();
+                $("#control-countries").hide();
+                $("#legend-countries").hide();
+                $("#empty-countries").show();
+                return;
+            }
+
+            countries = toObjectArray(data);
+            var ndx = crossfilter(countries);
+            //var all = ndx.groupAll();
+            //var all = ndx.groupAll();
+            //console.log(all);
+            var valDim = ndx.dimension(function (d) {
+                return d.value
+            });
+
+            var topLabels = _.map(valDim.top(countryTop), function (d) {
+                return d.label
+            });
+            //console.log(topLabels);
+            var labelDim = ndx.dimension(function (d) {
+                return d.label
+            });
+
+            var group;
+
+
+            group = labelDim.group(function (d) {
+                //console.log("group", d);
+                if (_.contains(topLabels, d)) {
+                    return d;
+                } else {
+                    return "Autres";
+                }
+            }).reduceSum(function (d) {
+                return d.value
+            });
+
+
+
+
+            var newWidth = document.getElementById('chart-box-half').offsetWidth;
+
+            countryChart.dimension(labelDim)
+                    .group(group)
+                    .radius((newWidth - 100) / 2)
+                //.minAngleForLabel(0)
+                    .label(function (d) {
+                        // console.log("label", d);
+                        return d.key;
+                    })
+            //.legend(dc.legend().y(newWidth - 200));
+
+            countryChart.on("filtered", function (chart, filter) {
+
+                //if (filter == "Autres") {
+                //    countryTop += 10;
+                //    countryChart.filterAll();
+                //    displayCountryChart();
+                //    return;
+                //}
+
+                uniqueCountry = null;
+
+                if (countryChart.filters().length == 1) {
+                    uniqueCountry = countryChart.filters()[0];
+                }
+
+                if (countryChart.filters().length > 0) {
+                    $("#control-countries .reset").show();
+                }
+
+                if (!!uniqueCountry) {
+
+                    var filteredCountry = _.find(countries, function (c) {
+                        return c.label == uniqueCountry;
+                    });
+
+                    var refId = filteredCountry ? filteredCountry.refId : null;
+
+                    countryId = refId;
+                    displayRegionChart();
+                } else {
+                    countryId = null;
+                    displayRegionChart();
+                }
+
+                displayUniqueCountry(uniqueCountry);
+
+            })
+
+
+            countryChart.width(newWidth).height(newWidth).transitionDuration(0);
+            //regionChart.width(newWidth).height(newWidth).transitionDuration(0);
+
+            console.log("width country : " + newWidth);
+
+
+            console.log("display country legend");
+            displayCountryLegend();
+
+            if (callback) callback();
+
+
+            dc.renderAll();
+
+
+
+
+
+
+            //        .dimension(dim)
+            //        .group(group)
+            //        .width(250)
+            //        .height(250)
+            //        .radius(100)
+            //        .label(function(d) { return d.key });
+            //chart.keyAccessor(function(d) { return d[0]; });
+            //chart.valueAccessor(function(d) { return d[1]; });
+
+
+        });
+    }
+
+    function displayRegionLegend() {
+
+        console.log("display region legend");
+
+        $("#control-regions").show();
+
+        var regions = regionChart.data();
+        var colors = regionChart.colors();
+
+        console.log("display region legend", regions);
+
+        var countryLegendHtml = '<table class="legend">';
+        for (var i = 0; i < regions.length ; i++) {
+
+            if (i % 2 == 0) { countryLegendHtml += "<tr>" }
+
+            var colorSquare = '<span class="square" style="background:' + colors(regions[i].key) + '">&nbsp;</span>'
+
+            countryLegendHtml += '<td data-country="' + regions[i].key +  '">' + colorSquare + " " + regions[i].key + '</td>';
+
+            if (i % 2 == 1) { countryLegendHtml += "</tr>" }
+        }
+        countryLegendHtml += "</div>";
+
+
+        $("#legend-regions").html(countryLegendHtml).show();
+
+        console.log("UPDATE LEGEND", countryLegendHtml);
+
+    }
+
+    function displayCountryLegend() {
+
+        console.log("display country legend");
+
+        $("#control-countries").show();
+
+        var countries = countryChart.data();
+        var colors = countryChart.colors();
+
+        var countryLegendHtml = '<table class="legend">';
+        for (var i = 0; i < countries.length ; i++) {
+
+            if (i % 2 == 0) { countryLegendHtml += "<tr>" }
+
+            var colorSquare = '<span class="square" style="background:' + colors(countries[i].key) + '">&nbsp;</span>'
+
+            countryLegendHtml += '<td data-country="' + countries[i].key +  '">' + colorSquare + " " + countries[i].key + '</td>';
+
+            if (i % 2 == 1) { countryLegendHtml += "</tr>" }
+        }
+        countryLegendHtml += "</div>";
+
+        $("#legend-countries").html(countryLegendHtml).show();
+
+
+
+    }
+
+    $("#legend-countries").on('click', 'td', function(e) {
+        var country = $(this).data("country");
+        countryChart.filter(country);
+    });
+
+
+    function displayUniqueCountry(uniqueCountry) {
+        if (uniqueCountry) {
+            $("#unique-country span").text(uniqueCountry);
+            $("#unique-country").show();
+        } else {
+            $("#unique-country").hide();
+        }
+    }
+
+    var countryId = null;
+    function displayRegionChart(callback) {
+
+        if (!_.find(missionQuestions, function(q) { return q.name == "region1"})) {
+            $("#chart-regions").hide();
+            $("#control-regions").hide();
+            $("#legend-regions").hide();
+            $("#no-regions").show();
+            dc.deregisterChart(regionChart)
+            return;
+        }
+
+        var url = herbonautes.ctxPath + '/stats/global/regions1?missionId=' + missionId + (!!countryId ? ('&country=' + countryId) : '');
+
+        console.log("display regions '" + url + "'");
+        //, countryId);
+
+        d3.json(url, function (data) {
+
+            if (data.length == 0) {
+                $("#chart-regions").hide();
+                $("#control-regions").hide();
+                $("#legend-regions").hide();
+                $("#empty-regions").show();
+                return;
+            }
+
+            regions = toObjectArray(data);
+            var ndx = crossfilter(regions);
+            //var all = ndx.groupAll();
+            //var all = ndx.groupAll();
+            //console.log(all);
+            var valDim = ndx.dimension(function(d) { return d.value });
+            var topLabels = _.map(valDim.top(regionTop), function(d) { return d.label });
+            //console.log(topLabels);
+            var labelDim = ndx.dimension(function(d) { return d.label });
+            var group = labelDim.group(function(d) {
+                //console.log("group", d);
+                if (_.contains(topLabels, d)) {
+                    return d;
+                } else {
+                    return "Autres";
+                }
+            }).reduceSum(function(d) { return d.value });
+
+
+            var newWidth = document.getElementById('chart-box-half').offsetWidth;
+
+            regionChart.dimension(labelDim)
+                    .group(group)
+                    .radius((newWidth - 100) / 2)
+                //.minAngleForLabel(0)
+                    .label(function(d) {
+                        // console.log("label", d);
+                        return d.key;
+                    })
+            //.legend(dc.legend().y(newWidth - 200));
+
+            regionChart.filter = function() {};
+
+
+
+            //countryChart.width(newWidth).height(newWidth).transitionDuration(0);
+            regionChart.width(newWidth).height(newWidth).transitionDuration(0);
+
+            console.log("width : " + newWidth);
+
+            displayRegionLegend();
+
+            if (callback) { callback() };
+
+            dc.renderAll();
+
+            //        .dimension(dim)
+            //        .group(group)
+            //        .width(250)
+            //        .height(250)
+            //        .radius(100)
+            //        .label(function(d) { return d.key });
+            //chart.keyAccessor(function(d) { return d[0]; });
+            //chart.valueAccessor(function(d) { return d[1]; });
+
+
+        });
+
+    }
+
+    var contribStart, contribEnd;
+    var specimenStart, specimenEnd;
+
+    var cumulContrib = true;
+
+    $("#cumul-on").click(function() {
+        $("#cumul-on").hide();
+        $("#cumul-off").show();
+        cumulContrib = true;
+        displayContributions();
+    });
+    $("#cumul-off").click(function() {
+        $("#cumul-off").hide();
+        $("#cumul-on").show();
+        cumulContrib = false;
+        displayContributions();
+    })
+
+    function displayContributions() {
+
+
+
+        d3.json(herbonautes.ctxPath + '/stats/global/contributionsByDay?missionId=' + missionId, function (data) {
+
+            console.log("Display contributions", data);
+
+            timeData = [];
+
+            if (!contribStart) {
+                contribStart = new Date(data[0][0]);
+                contribEnd = new Date(data[data.length - 1][0]);
+            }
+
+            console.log("scale", contribStart, contribEnd);
+
+            var cumulValue = 0;
+            for (var i = 0; i < data.length; i++) {
+
+                if (cumulContrib) {
+                    cumulValue += data[i][1];
+                } else {
+                    cumulValue = data[i][1];
+                }
+
+                timeData.push({ date: new Date(data[i][0]),
+                    day: d3.time.day(new Date(data[i][0])),
+                    week: d3.time.week(new Date(data[i][0])),
+                    time: data[i][0], value: cumulValue })
+            }
+
+            //  console.log(timeData);
+
+            var ndxTime = crossfilter(timeData);
+
+            var contribDayDim = ndxTime.dimension(function(d) {
+                return d.day;
+            });
+
+            var contribWeekDim = ndxTime.dimension(function(d) {
+                return d.week;
+            });
+            //dayDim.group().reduceSum(function(d) { return d.value }).all()
+            var contribDayGroup = contribDayDim.group().reduceSum(function(d) {
+                return +d.value;
+            });
+            var contribWeekGroup = contribWeekDim.group(function(d) { return d3.time.week(new Date(d)) }).reduceSum(function(d) {
+                return +d.value;
+            });
+
+            var dateFormat = d3.time.format('%d/%m/%Y');
+
+            var newWidth = document.getElementById('chart-box-full').offsetWidth;
+
+            //var timeScale = d3.time.scale().domain([new Date(2012, 10, 1), new Date()]);
+
+            contributionZoomChart.width(newWidth)
+                    .height(40)
+                    .margins({top: 0, right: 50, bottom: 20, left: 60})
+                    .dimension(contribDayDim)
+                    .group(contribWeekGroup)
+                    .centerBar(true)
+                    .gap(1)
+                    .x(d3.time.scale().domain([contribStart, contribEnd]))
+                    .round(d3.time.month.round)
+                    .alwaysUseRounding(true)
+                    .xUnits(d3.time.months);
+            contributionZoomChart.yAxis().ticks(0);
+            contributionZoomChart.xAxis().tickFormat(tickFormat);
+
+
+
+            contributionByDayChart
+                    .renderArea(false)
+                    .width(newWidth)
+                    .height(200)
+                    .transitionDuration(1000)
+                    .margins({top: 30, right: 50, bottom: 25, left: 60})
+                    .dimension(contribDayDim)
+                    .mouseZoomable(true)
+                // Specify a "range chart" to link its brush extent with the zoom of the current "focus chart".
+                    .rangeChart(contributionZoomChart)
+                    .x(d3.time.scale().domain([contribStart, contribEnd]))
+                    .round(d3.time.month.round)
+                    .xUnits(d3.time.months)
+                    .elasticY(true)
+                    .renderHorizontalGridLines(true)
+
+                // Position the legend relative to the chart origin and specify items' height and separation.
+                    .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
+                    .brushOn(false)
+                    .colors(function() { return "#3182bd"; })
+                // Add the base layer of the stack with group. The second parameter specifies a series name for use in the
+                // legend.
+                // The `.valueAccessor` will be used for the base layer
+                    .group(contribDayGroup, cumulContrib ? "Contributions" : 'Contributions par jour')
+                    .valueAccessor(function (d) {
+                        return d.value;
+                    })
+                // Stack additional layers with `.stack`. The first paramenter is a new group.
+                // The second parameter is the series name. The third is a value accessor.
+
+                // Title can be called by any stack layer.
+                    .title(function (d) {
+                        var value = d.value.avg ? d.value.avg : d.value;
+                        if (isNaN(value)) {
+                            value = 0;
+                        }
+                        return dateFormat(d.key); //+ '\n' + numberFormat(value);
+                    })
+                    .xAxis().tickFormat(tickFormat);
+
+            console.log("contributions", data.length);
+
+            dc.renderAll();
+
+        });
+    }
+
+    var missionQuestions;
+
+    function buildStats() {
+
+
+        d3.json(herbonautes.ctxPath + '/missions/' + missionId + '/questions', function(questions) {
+
+            missionQuestions = questions;
+
+
+            if (!_.find(missionQuestions, function(q) {
+                return q.name == "collector" || q.name == "identifier"
+            })) {
+                // Pas de botanists
+                $("#no-botanists").show();
+                $("#with-botanists").hide();
+            }
+
+            displayCenturies();
+            displayCountryChart();
+            displayRegionChart();
+            displayContributions();
+            buildOldStats();
+
+            window.onresize = function(event) {
+                var halfW = document.getElementById('chart-box-half').offsetWidth;
+                var fullW = document.getElementById('chart-box-full').offsetWidth;
+
+                countryChart.width(halfW).height(halfW).radius((halfW - 100) / 2 ).transitionDuration(0);
+                regionChart.width(halfW).height(halfW).radius((halfW - 100) / 2 ).transitionDuration(0);
+                contributionByDayChart.width(fullW).transitionDuration(0);
+                contributionZoomChart.width(fullW).transitionDuration(0);
+                specimenByDayChart.width(fullW).transitionDuration(0);
+                centuryChart.width(halfW).transitionDuration(0);
+
+                dc.renderAll();
+            };
+
+        });
+    }
+
+    // })();
+
+</script>
+
+<script src="/js/herbonautes-app.js" type="text/javascript"></script>
+
+<script src="/js/nv.d3.min.js"></script>
+<script src="/js/stats.js"></script>
+
+
+
+<script>
+
+    var globalstats;
+
+    var hiddenData = {};
+
+    function buildOldStats() {
+
+            var questions = missionQuestions;
+
+            // Build contributions by question stats
+            d3.json(herbonautes.ctxPath + '/missions/' + missionId + '/stats/contributions', function(stats) {
+
+                //console.log(stats);
+
+                var statusList = [
+                    { key: "validated", color: "green" },
+                    { key: "inProgress", color: "grey" },
+                    { key: "conflicts", color: "orange" }
+                ];
+
+                var statsContributionsData = _.map(statusList, function(status) {
+                    var stat = _.extend({}, status);
+                    stat.values = _.map(questions, function(q) {
+
+                        var sum = _.reduce(stats, function(memo, s) {
+                            if (s.question.name == q.name) {
+                                return memo + s[status.key];
+                            }
+                            return memo;
+                        }, 0);
+
+                        return {
+                            "label" : q.shortLabel,
+                            "value" : sum
+                        }
+                    });
+                    stat.key = i18n("stats.legend." + status.key); //overide i18n
+                    return stat;
+
+                });
+
+                buildContributionByQuestion('#chart1 svg', statsContributionsData);
+
+            });
+
+            d3.json(herbonautes.ctxPath + '/missions/' + missionId + '/stats/daily', function(stats) {
+                var colorByType = {
+                    MEMBERS: 'blue',
+                    CONFLICTS: 'orange',
+                    COMPLETE_SPECIMENS: 'green',
+                    CONTRIBUTIONS: 'grey'
+                }
+
+
+
+                var statTimeData = _.chain(stats).groupBy("date").toArray().map(function(arr) {
+
+                    function val(type) {
+                       var v = _.find(arr, function(d) { return d.type == type });
+                        return v ? v.value : 0;
+                    }
+
+                    var obj = { date: new Date(arr[0].date) }
+
+                    obj.completeSpecimens = val("COMPLETE_SPECIMENS");
+                    obj.contributions = val("CONTRIBUTIONS");
+                    obj.members = val("MEMBERS");
+                    obj.conflicts = val("CONFLICTS");
+
+
+                    return obj;
+                }).sortBy(function(d) { return d.date }).value();
+
+                console.log("statTimeData ", statTimeData);
+
+                var ndxStatTime = crossfilter(statTimeData);
+
+                var contribDateDim = ndxStatTime.dimension(function(d) {
+                    return d.date;
+                });
+
+
+                //dayDim.group().reduceSum(function(d) { return d.value }).all()
+                var contribMembersGroup = contribDateDim.group().reduceSum(function(d) {
+                    return +d.members
+                });
+
+                var contribConflictsGroup = contribDateDim.group().reduceSum(function(d) {
+                    return +d.conflicts;
+                });
+
+                var contribValidGroup = contribDateDim.group().reduceSum(function(d) {
+                    return +d.completeSpecimens;
+                });
+
+                var dateFormat = d3.time.format('%d/%m/%Y');
+
+                var newWidth = document.getElementById('chart-box-full').offsetWidth;
+
+                if (!specimenStart) {
+                    specimenStart = statTimeData[0].date;
+                    specimenEnd = statTimeData[statTimeData.length - 1].date;
+                }
+
+
+                var labels = {
+                    members: "Membres",
+                    conflicts: "Spécimens en conflit",
+                    complete: "Spéciméns validés"
+                }
+
+                //specimenByDayChart.compose()
+
+
+
+                specimenByDayChart
+                        //.renderArea(false)
+                        .width(newWidth)
+                        .height(200)
+                        .transitionDuration(1000)
+                        .margins({top: 30, right: 50, bottom: 25, left: 40})
+                        .dimension(contribDateDim)
+                        .mouseZoomable(false)
+                        .x(d3.time.scale().domain([specimenStart, specimenEnd]))
+                        .round(d3.time.month.round)
+                        .xUnits(d3.time.months)
+                        .elasticY(true)
+                        .renderHorizontalGridLines(true)
+                        .brushOn(false)
+                        .shareColors(true)
+                        //.group(contribMembersGroup, labels.members)
+                        //.valueAccessor(function (d) {
+                        //    return  hiddenData["members"] ? 0 : d.value;
+                        //})
+                        //.stack(contribConflictsGroup, labels.conflicts, function (d) {
+                        //    return hiddenData["conflicts"] ? 0 : d.value;
+                        //})
+                        //.stack(contribValidGroup, labels.complete, function (d) {
+                        //    return hiddenData["complete"] ? 0 : d.value;
+                        //})
+                        .title(function (d) {
+                            var value = d.value.avg ? d.value.avg : d.value;
+                            if (isNaN(value)) {
+                                value = 0;
+                            }
+                            return dateFormat(d.key) + " : " + value;
+                        })
+                        .colors(function(v) {
+                            console.log("color for ", v);
+                            if (v == labels["members"]) {
+                                return "grey";
+                            }
+                            if (v == labels["complete"]) {
+                                return "green";
+                            }
+                            if (v == labels["conflicts"]) {
+                                return "orange";
+                            }
+                            return "blue";
+                        })
+
+                        function specimenLineChart(group, type) {
+                            return dc.lineChart(specimenByDayChart).group(group, labels[type])
+                                    .valueAccessor(function (d) {
+                                        return  hiddenData[type] ? 0 : d.value;
+                                    });
+                        }
+
+                        specimenByDayChart.compose([
+                            specimenLineChart(contribMembersGroup, "members"),
+                            specimenLineChart(contribValidGroup, "complete"),
+                            specimenLineChart(contribConflictsGroup, "conflicts")
+
+                        ]);
+
+
+                specimenByDayChart.xAxis().tickFormat(tickFormat);
+
+
+                var colors = specimenByDayChart.colors();
+                function square(lab) {
+                    return '<span class="square" style="background:' + colors(lab) + '">&nbsp;</span>'
+                }
+
+                $("#legend-specimens").html(
+                    '<div class="legend-control">'
+                    + '<span class="item" data-type="members">' + square(labels.members) + " " + labels.members     + '</span>' + '&nbsp;'
+                    + '<span class="item" data-type="complete">' + square(labels.complete) + " " + labels.complete   + '</span>' + '&nbsp;'
+                    + '<span class="item" data-type="conflicts">' + square(labels.conflicts) + " " + labels.conflicts + '</span>' + '&nbsp;' + '</div>'
+                );
+
+                $("#legend-specimens").on('click', '.item', function() {
+                    var type = $(this).data("type");
+                    if ($(this).hasClass("data-hidden")) {
+                        $(this).removeClass("data-hidden");
+                        hiddenData[type] = false;
+                    } else {
+                        $(this).addClass("data-hidden");
+                        hiddenData[type] = true;
+                    }
+                    dc.renderAll();
+                });
+
+                dc.renderAll();
+
+
+
+
+
+
+                /*var colorByType = {
+                    MEMBERS: 'blue',
+                    CONFLICTS: 'orange',
+                    COMPLETE_SPECIMENS: 'green',
+                    CONTRIBUTIONS: 'grey'
+                }
+
+                var timeData = _.chain(stats).groupBy("type")
+                        .mapValues(function(v, k) {
+                            var val = _.map(v, function(o) { return [o.date, o.value] });
+                            return { key: i18n("stats.legend." + k), values: val, color: colorByType[k] } })
+                        .values()
+                        .value();
+
+                //console.log("data", stats, timeData);
+
+                buildTimed("#chart-time svg", timeData);*/
+            });
+
+            //buildDemo('#chart2 svg', data);
+            //buildDemo('#chart3 svg', data);
+
+    }
+
+
+
+</script>
+
+
+
+
+</div>
+
+
+        <div class="tab-pane horizontal_scrollable" id="contributions-tab-pane">
+<label><input type="checkbox" ng-model="contributionWithConflictsOnly" ng-change="resetContributionsPage()" /> Conflits uniquement</label>
+
+<table
+    id="contributions-table"
+    class="table contributions paginable">
+
+    <thead>
+        <tr>
+            <th class="specimen">spécimen</th>
+            <th class="contribution" ng-repeat="q in questions">{{ q.shortLabel }}</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        <tr ng-repeat="stat in contributionsStats">
+            <td>
+                <a ng-href="{{ specimenPageUrl(stat, missionId) }}">{{ stat.specimen.code }}</a><br/>
+                                <span class="since" h-time-ago="stat.lastModifiedAt" server-time="1714903013405"></span>
+
+            </td>
+
+            <td ng-repeat="q in questions" class="contribution" ng-init="qs = questionStat(stat, q.name)">
+                 <span ng-if="!qs">
+                    &middot;
+                 </span>
+                 <span ng-if="qs">
+                    <span
+                                    style="cursor:pointer"
+                                        tooltip-placement="{{ 'top '}}"
+                                       tooltip-trigger="mouseenter"
+                                       tooltip="{{ contributionTooltip(qs) }}"
+                                       ng-class="{ 'badge': true, 'badge-success': qs.validated, 'badge-warning': qs.conflicts  }">{{ qs.answerCount }}</span>
+                 </span>
+            </td>
+
+                    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="{{ questions.length + 2 }}">
+        <a ng-show="!noMoreContributions && !contributionLoading" class="btn btn-small" ng-click="nextContributionsPage()">Afficher plus de contributions</a>
+            <a ng-show="!!contributionLoading" class="btn btn-small" disabled>Chargement</a>
+        <span ng-show="noMoreContributions">Toutes les contributions sont affichées</span>
+    </tr>
+    </tfoot>
+
+</table>
+
+      
+</div>
+
+    <div class="tab-pane horizontal_scrollable" id="ratings-tab-pane"><table
+        id="ratings-table"
+        class="table contributions paginable">
+
+    <thead>
+    <tr>
+        <th class="rank">#</th>
+        <th class="specimen">Herbonaute</th>
+        <th class="contribution total">Total</th>
+        <th class="contribution" ng-repeat="q in questions">{{ q.shortLabel }}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="stat in ratingStats">
+            <td class="rank">{{ $index + 1 }}</td>
+            <td ng-if="!stat.user.deleted">
+                <a ng-href="{{ userProfileUrl(stat.user) }}"><img ng-src="{{ userImageUrl(stat.user) }}" /></a>
+                <a ng-href="{{ userProfileUrl(stat.user) }}">{{ stat.user.login }}</a>
+            </td>
+            <td ng-if="stat.user.deleted">
+				[compte supprimé]
+			</td>
+            <td class="contribution">{{ stat.answerCount }}</td>
+            <td ng-repeat="q in questions" class="rating contribution" ng-init="c = answerCount(stat, q.name)">
+                <span ng-if="c">{{c.answerCount}}</span>
+                <span ng-if="!c">&middot;</span>
+            </td>
+        </tr>
+
+    </tbody>
+
+    <tfoot>
+    <tr>
+        <td colspan="{{ questions.length + 3 }}">
+            <a ng-hide="noMoreRatings || ratingLoading" ng-click="nextRatingPage()" class="btn btn-small" >Afficher les membres suivants</a>
+            <button ng-show="ratingLoading" disabled class="btn btn-small btn-disabled" >Chargement</button>
+            <span ng-show="noMoreRatings">Tous les membres sont affichés</span>
+        </td>
+    </tr>
+    </tfoot>
+
+</table>
+
+<em>Seuls les membres ayant contribué au moins une fois apparaissent dans le classement.</em>
+
+</div>
+
+    
+    <div class="tab-pane map-container" id="map-tab-pane"> 
+
+<div id="mission-map-canvas" class="map" style="height:500px; width:100%"></div>
+
+<link rel="stylesheet" href="/leaflet/leaflet.css">
+<link rel="stylesheet" href="/leaflet.markercluster/MarkerCluster.css">
+<link rel="stylesheet" href="/leaflet.markercluster/MarkerCluster.Default.css">
+
+<script src="/leaflet/leaflet.js" type="text/javascript"></script>
+<script src="/leaflet.markercluster/leaflet.markercluster.js" type="text/javascript"></script>
+
+
+
+<script type="text/javascript">
+
+	function markerIcon(color) {
+	    var color = color || 'blue';
+        var icon = new L.Icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-' + color + '.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+        return icon;
+	}
+
+	function initializeMap() {
+        var mapElement = document.getElementById("mission-map-canvas");
+
+        var topoAttribution = 'Kartendaten: &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende, <a href="http://viewfinderpanoramas.org">SRTM</a> | Kartendarstellung: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)';
+
+        map = L.map(mapElement).setView([20, 0], 2);
+        L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            attribution: topoAttribution,
+            zoomControl: false
+        }).addTo(map);
+
+        map.zoomControl.setPosition('bottomright');
+
+        window.leafletMap = map;
+
+
+        function addMarkers(markers) {
+
+            var cluster = L.markerClusterGroup();
+
+            _.each(markers, function(m) {
+
+                // Fix user contribution geolocation
+                if (!!m.position) {
+                    m.latitude = m.position.lat;
+                    m.longitude = m.position.lng;
+                }
+
+                if (!m.latitude || !m.longitude) {
+                    return;
+				}
+
+                var pos = [m.latitude, m.longitude];
+                var marker = new L.marker(pos);
+
+                cluster.addLayer(marker);
+
+                marker.setIcon(markerIcon('green'));
+                marker.on('click', onMarkerClick);
+
+                function onMarkerClick(e) {
+
+                    var masterSpecimenId = m.masterId || m.specimenId;
+                    var bubbleURL = specimenBubbleAction({id: masterSpecimenId});
+
+                    var popup = e.target.getPopup();
+                    if (!popup) {
+						$.ajax({
+							url: bubbleURL,
+							success: function(popupContent) {
+								marker.bindPopup(popupContent).openPopup();
+								popup.openPopup();
+							}
+						});
+					} else {
+                        popup.openPopup();
+					}
+
+                }
+
+            })
+
+            map.addLayer(cluster);
+
+        }
+
+        // Add markers
+        $.ajax({
+            url: '/missions/26137132/contributions/geos',
+            dataType: 'json',
+            success: addMarkers
+        });
+
+	}
+
+
+
+	// Initialisation de la map lors de l'affichage de l'onglet
+	$('#map-tab').on('shown', function() {
+		initializeMap();
+	});
+
+</script>
+
+
+
+</div>
+
+    <div class="tab-pane" id="tags-tab-pane">
+                    <div id="elementTags" ng-controller="elementTagsCtrl"  ng-init="init('MISSION', '26137132', 'taxonomic biodiversity societal actors')" class="row-fluid">
+    
+    <div id="tags-list">
+        <div ng-repeat="tag in elementTags" ng-class="tag.tagType">
+            <i ng-class="tag.tagType == 'MISSION' ? 'icon-book' : tag.tagType == 'SPECIMEN' ? 'icon-leaf' : 'icon-tag'"></i><a href="#" ng-click="showTag(tag.tagLabel)" onclick="return false;">{{tag.tagLabel}}</a>
+                    </div>
+    </div>
+
+
+</div>            </div>
+
+    <div class="tab-pane" id="comments-tab-pane">
+                    
+
+
+<div id="discussionsBox" ng-controller="discussionCtrl"  ng-init="init('MISSION', 'taxonomic biodiversity societal actors', null, null, null)" class="row-fluid">
+
+        
+    <div id="discussion_categories_filters" class="discussion_categories" ng-show="!!!discussionId && nbDiscussions > 0">
+        <button class="btn btn-info" id="filter_button">Filtrer par catégorie</button>
+        <button ng-cloak ng-repeat="category in categories" ng-class="(isSelectedCategoryFilter(category.id)) ? 'selectedCategory' : ''" class="btn category" type="button" ng-click="selectOrUnselectCategoryFilter(category.id)">{{category.label}}</button>
+    </div>
+
+            <p ng-hide="nbDiscussions > 0" class="noResults">
+            Aucun résultat
+        </p>
+    
+    <div ng-repeat="discussion in discussions" id="discussion{{discussion.id}}" class="discussion row-fluid {{ forceDiscussionId == discussion.id ? 'discussion_force' : '' }}">
+        <div class="discussion_tags" ng-cloak>
+
+            <div ng-repeat="tag in discussion.tags" ng-class="tag.tagType">
+                <a ng-href="{{getTagUrl(tag.tagLabel)}}" ><i ng-class="tag.tagType == 'MISSION' ? 'icon-book' : tag.tagType == 'SPECIMEN' ? 'icon-leaf' : 'icon-tag'"></i>{{tag.tagLabel}}</a>
+            </div>
+
+                    </div>
+        <div class="message row-fluid" ng-repeat="message in discussion.messages" ng-show="$first || message.resolution || $index >= discussion.nbMessagesInit - 1 || isOpenedDiscussion(discussion.id)" ng-class="{'background-dark': $index % 2 == 0, 'background-light': $index % 2 == 1, 'no_margin': $first}">
+            <div class="pull-left resolved_block" title="Discussion résolue">
+                &nbsp;<i class="icon-ok" ng-show="message.resolution"></i>
+            </div>
+            <div class="pull-left img_block">
+                <img ng-src="{{getMessageImageUrl(message)}}" alt="{{message.author}}" ng-class="{'first_image': $first}" ng-cloak />
+            </div>
+            <div class="pull-right message_content_block">
+                                                <div class="discussion_title row-fluid" ng-show="$first && discussion.title != null" ng-cloak>
+                    {{discussion.title}}
+                </div>
+                <div class="message_author row-fluid" ng-if="message.author != '_'">
+                    <a ng-href="{{getUserPageUrl(message.author)}}" ng-cloak>{{message.author}}</a>
+                </div>
+                    <div class="message_author row-fluid" ng-if="message.author == '_'">
+                        <i>[compte supprimé]</i>
+                    </div>
+                <div class="message_content row-fluid">
+                    <span ng-show="message.moderator == ''" ng-bind-html="message.text | htmlLinky" ng-cloak></span>
+                    <span ng-show="message.moderator != ''">
+                        Ce message a été modéré par {{message.moderator}}
+                    </span>
+                </div>
+                <div class="message_timeago row-fluid">
+                                        <span class="since" h-time-ago="message.date" server-time="1714903013407"></span>
+                </div>
+            </div>
+            <div class="showAllMessagesBlock"
+                 ng-show="$first && discussion.nbMessagesInit > 2 && !isOpenedDiscussion(discussion.id) && !resolutionShowed(discussion)"
+                    >
+                <span class="solution_button" ng-click="openDiscussion(discussion.id)">Montrer tous les messages</span>
+            </div>
+        </div>
+
+        
+        <div class="closed_discussion_div row-fluid" ng-show="discussion.resolved"  ng-class="(discussion.messages.length % 2 == 0) ? 'background-dark' : 'background-light'">
+            La discussion est close
+        </div>
+
+
+
+
+
+    </div>
+    <div class="moreButtonDiv" ng-if="buttonMoreDisplayed">
+        <a href="#" class="btn btn-success" onclick="return false;" ng-click="getDiscussionsFilteredByCategories()">Charger plus de discussions</a>
+    </div>
+
+</div>            </div>
+
+
+    </div>
+    </div>
+
+    </div>
+
+
+
+    <div class="span4">
+
+    <div id="short-comments-box">
+        <h3>Derniers messages</h3>
+
+                    
+<div id="lastMessagesBox" ng-controller="lastMessagesBoxCtrl"  ng-init="init('MISSION', 'taxonomic biodiversity societal actors')" class="row-fluid">
+
+            <p ng-hide="messages.length > 0" class="noResults">
+            Aucun résultat
+        </p>
+    
+    <div class="message row-fluid" ng-repeat="message in messages" >
+        <div class="pull-left img_block">
+            <img ng-src="{{getMessageImageUrl(message)}}" alt="{{message.author}}" ng-cloak />
+        </div>
+
+        <div class="pull-right message_content_block">
+            <div class="message_author row-fluid">
+                <a ng-if="message.author != '_'" ng-href="{{getUserPageUrl(message.author)}}" ng-cloak>{{message.author}}</a>
+                <em ng-if="message.author == '_'" ng-cloak>[compte supprimé]</em>
+            </div>
+            <div class="message_content row-fluid">
+                <span ng-show="message.moderator == ''" ng-bind-html="message.text | htmlLinky" ng-cloak></span>
+            <span ng-show="message.moderator != ''">
+                Ce message a été modéré par {{message.moderator}}
+            </span>
+            </div>
+            <div class="message_timeago row-fluid">
+                                <span class="since" h-time-ago="message.date" server-time="1714903013408"></span>
+            </div>
+        </div>
+
+    </div>
+</div>        
+    </div>
+
+    <div id="activity-box">
+    <h3>Activité</h3>
+
+     
+
+<ul 
+	id="mission-list-7032fe63-d4da-455a-a47d-80196cd847c3" 
+	class="activities paginable"
+	data-paginate-url="/activities?view=mission&id=26137132"
+	data-paginate-btn="#mission-btn-7032fe63-d4da-455a-a47d-80196cd847c3"
+	data-before-attr="activity-id">
+</ul>
+					
+<div class="centered">
+	<a class="btn btn-small" id="mission-btn-7032fe63-d4da-455a-a47d-80196cd847c3">Afficher plus d'activité</a>
+	<a class="btn btn-small hide" id="mission-loading-7032fe63-d4da-455a-a47d-80196cd847c3">Chargement</a>
+	<span class="hide" id="mission-no-data-7032fe63-d4da-455a-a47d-80196cd847c3">Toute l'activité est affichée</span>
+</div>
+					
+<script type="text/javascript">
+	herbonautes.initActivityList(
+		'#mission-list-7032fe63-d4da-455a-a47d-80196cd847c3',
+		'#mission-btn-7032fe63-d4da-455a-a47d-80196cd847c3',
+		'#mission-loading-7032fe63-d4da-455a-a47d-80196cd847c3',
+		'#mission-no-data-7032fe63-d4da-455a-a47d-80196cd847c3'
+	);
+</script>
+
+
+
+
+
+    <script>
+                $(function() {
+                    $('#activity-box .activities').paginate();
+                })
+                </script>
+    </div>
+    </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+// Positionnement sur l'onglet par d��faut
+$(function() {
+	
+	var initialized = {
+		ratings: false
+	}
+
+
+    $('#contributions-tab').on('shown', function() {
+
+	})
+
+	
+	$('#ratings-tab').on('shown', function() {
+		if(!initialized.ratings) {
+			initialized.ratings = true;
+			$('#ratings-table').paginate();
+		}
+	});
+
+    $('#stats-tab').on('shown', function() {
+        if(!initialized.stats) {
+            initialized.stats = true;
+            buildStats(26137132);
+        }
+    })
+	
+	$('#presentation-tab').tab('show');
+	$('#presentation-tab').trigger('shown');
+	
+			initAnnouncementsBox();
+		
+	$('#show-comments-tab-button').click(function() {
+		$('#comments-tab').tab('show');
+		return false;
+	});
+	
+	herbonautes.needReload = true;
+	
+});
+
+</script>
+
+        	
+		</div>
+		<div id="push" class="container"></div>
+	</div>
+		 <div class="footer container">
+		 	
+		 		
+	<div class="row title">
+		<div class="span12">
+			<p>Les herbonautes est proposé par</p>
+		</div>
+	</div>
+	<div class="row logos">
+		<div class="span4 partner">
+			<a href="http://www.mnhn.fr">
+			<img src="/img/logo_mnhn.png" title="Site du Muséum national d'Histoire naturelle" />
+			</a>
+		</div>
+		<div class="span4 partner">
+			<a href="http://www.tela-botanica.org">
+			<img src="/img/logo_tela.png" title="Site de Tela Botanica" />
+			</a>
+		</div>
+		<div class="span4 partner">
+			<a href="http://recolnat.org">
+			<img src="/img/logo_erecolnat.png" title="Site de Recolnat" />
+			</a>
+		</div>
+	</div>
+		 </div>
+	 	 <div class="ground container">
+       		<div class="row">
+				<div class="span12">
+				<div class="poweredby"><span>Conçu et développé par</span> <a href="http://www.bluescale.com" target="_blank"><img src="/img/logo_bluescale_white.png" title="Bluescale" /></a></div>
+				</div>
+			</div>
+		</div>
+       
+		
+				<div class="modal hide" id="signedup-modal">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">x</button>
+				<h3>Bienvenue</h3>
+			</div>
+			<div class="modal-body">
+				
+				<p>Vous faites maintenant partie des herbonautes</p>
+				
+			</div>
+		</div>
+		<div class="modal hide" id="login-modal">
+		  <div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		  <h3>&nbsp;</h3>
+		  </div>
+		  <div class="modal-body">
+		  <div id="fb-root"></div>
+		  	<table>
+		  		<tr>
+		  			<td style="vertical-align: top;width:260px;border-right: 1px solid #AAA">
+		  				<h3>Se connecter</h3>
+		  				<br>
+		  				<br>
+
+						
+							<p>La connexion est assurée par le portail d'authentification <b>Recolnat</b>.</p>
+
+							<p>Utilisez le même mot de passe si vous êtes déjà inscrit.</p>
+
+							<a class="btn btn-info" href="/login">Se connecter</a>
+
+												
+
+						
+
+		  				
+		  			</td>
+		  			<td style="vertical-align: top;width:260px;padding-left: 15px">
+		  				<h3>S'inscrire</h3>
+		  				<br>
+		  				<br>
+		  				
+						
+							<p>L'inscription se fait sur le portail <b>Recolnat</b>.</p>
+
+							<p>Choisissez <b>Créer un compte</b> ou connectez-vous avec votre compte <b>Facebook</b>.</p>
+
+							<a class="btn btn-info" href="/login">S'inscrire</a>
+
+												
+		  			</td>
+		  		</tr>
+                		  	</table>
+		  </div>
+		</div>		
+		  		
+
+		<div class="modal hide" id="badge-modal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Nouveau badge ! Félicitations !</h3>
+			</div>
+			<div class="modal-body">
+				<table>
+					<tr>
+						<td><div id="badge-img" class="badge-user">&nbsp;</div></td>
+						<td><p id="badge-message"></p>
+							<p id="badge-explained"></p></td>
+					</tr>
+				</table>
+				
+				
+			</div>
+		</div>
+		
+
+		<script>
+		
+			function urlForSearchItem(item) {
+				switch(item.category) {
+					case 'users':
+						return showUserAction({login: item.label});
+					case 'missions': 
+						return showMissionAction({id: item.id});
+					case 'botanists':
+						return showBotanistAction({id: item.id});
+					case 'specimens':
+						if (item.code) {
+							return showSpecimenAction({institute: item.institute, collection: item.collection, code: item.code});
+						} else {
+							return listSpecimensAction({family: item.family, genus: item.genus});
+						}
+						
+					case 'all':
+						return item.url;
+					default:
+						return '#';
+				}
+			}
+		
+			$.widget("custom.catcomplete", $.ui.autocomplete, {
+				_renderMenu: function( ul, items ) {
+					var self = this,
+						currentCategory = "";
+					
+					if (items.length == 1 && items[0].noResult) { 
+						ul.append( "<li class='ui-autocomplete-category'>Aucun résultat</li>"); 
+					} else {
+						
+						$.each( items, function( index, item ) {
+							if ( item.category != currentCategory ) {
+								ul.append( "<li class='ui-autocomplete-category'>");
+								currentCategory = item.category;
+							}
+							self._renderItem( ul, item );
+						});
+						ul.append( "<li class='divider'></li>"); 
+						var url = herbonautes.actions.toSearch({term: $('#search-box').val()});
+						$('<li></li>')
+							.data('item.autocomplete', {
+								category: 'all',
+								url: url
+							})
+							.append('<a href="' + url + '">Tous les Résultats</a>')
+							.appendTo(ul);
+						//ul.append( '<li><a href="' + url + '">Tous les Résultats</a></li>'); 
+					}
+				},
+				_renderItem: function(ul, item) {
+					
+					var url = urlForSearchItem(item);
+					
+					return $('<li></li>')
+					.data('item.autocomplete', item)
+					.append('<a href="' + url + '">' + item.label + '</a>')
+					.appendTo(ul);
+				}
+			});
+			
+			
+			
+			$(function() {
+				$('#search-box').catcomplete({
+					source: '/search',
+					minLength: 1,
+					delay: 50,
+					focus: function(event, ui) {
+						$('#search-item-url').val(urlForSearchItem(ui.item));
+						return false;
+					},
+					select: function(event, ui) {
+						window.location.href = $('#search-item-url').val();
+						return false; 
+					}
+				});
+			});
+
+			
+		</script>
+		
+		<script>
+			function badgeAlert(type) {
+				var templ = 'Vous avez débloqué le badge <b>{{type}}</b>';
+				$('#badge-modal .modal-body #badge-message').html(
+					Mustache.render(templ, {type : i18n('badge.' + type.toLowerCase())})
+				);
+				$('#badge-modal #badge-img')
+					.removeClass()
+					.addClass('badge-user')
+					.addClass('badge-' + type.toLowerCase());
+				$('#badge-explained').text(i18n('badge.' + type.toLowerCase() + '.explained'));				
+				$('#badge-modal').modal('show');
+			}
+			
+		</script>
+		
+
+        <script>
+
+            // Angular i18n Actions
+            herbonautesApp.service('PlayActions', [function() {
+
+                this.startQuiz = herbonautes.actions.startQuiz;
+
+            }]);
+
+        </script>
+
+		<!--  -->
+
+		<!-- -->
+		
+
+
+    <script type="text/ng-template" id="template/popover/popover-html-unsafe-popup.html">
+        <div class="popover {{placement}}" ng-class="{ in: isOpen(), fade: animation() }">
+            <div class="arrow"></div>
+
+            <div class="popover-inner">
+                <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+                <div class="popover-content" bind-html-unsafe="content"></div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="templates/disk-usage-box.html">
+
+        <div class="alert alert-{{ report.status }}" ng-if="!!report">
+
+            <h5>Espace disque ({{ getDiskUsagePercent() | number : 1 }} % utilisé)</h5>
+            <div class="progress progress-{{ report.status }}">
+                <div class="bar" style="width: {{ getDiskUsagePercent() }}%"></div>
+            </div>
+                        <p><b>Espace disponible :</b> <span>{{ toGo(report.freeSpaceInBytes) }} Go / {{ toGo(report.totalSpaceInBytes) }} Go</span></p>
+			<p><b>Estimation spécimens disponibles : </b> {{ report.approxSpecimenCountLeft }} sp.</p>
+
+        </div>
+
+    </script>
+
+
+	</body>
+</html> contentType 9 text/html url 50 http://lesherbonautes.mnhn.fr:80/missions/26137132 responseCode 3 200 

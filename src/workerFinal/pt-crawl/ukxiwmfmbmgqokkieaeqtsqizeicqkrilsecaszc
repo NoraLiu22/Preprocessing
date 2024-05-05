@@ -1,0 +1,178 @@
+ukxiwmfmbmgqokkieaeqtsqizeicqkrilsecaszc length 4 6835 page 6835 <!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Validate User</title>
+    <link rel="icon" href="//gsw.silverchair-cdn.com/Themes/Client/app/img/favicons/favicon.ico">
+    <style type="text/css">
+
+        body {
+            margin: 0 .5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .container {
+            padding-top: 2rem;
+            max-width: 350px;
+            margin: auto;
+        }
+
+        .container .explanation-message {
+            margin: 2rem 0;
+            font-family: "Source Sans Pro",sans-serif, Helvetica, Aria;
+        }
+
+        .container .button {
+            margin-top: 2rem;
+            -webkit-appearance: none;
+            font-family: "Source Sans Pro",sans-serif, Helvetica, Aria;
+            font-size: 1rem;
+            font-weight: bold;
+            background: #2880ba;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: .75rem 1rem;
+            line-height: 1em;
+            display: inline-block;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        #captcha>div {
+            margin: 0 auto;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://gsw.silverchair-cdn.com/UI/app/svg/umbrella/logo-gsw.svg" alt="GeoScienceWorld" class="gsw-header-image governor-site-logo">
+        <div>
+            <div class="explanation-message">
+                We are sorry, but we are experiencing unusual traffic at this time. Please help us confirm that you are not a robot and we will take you to your content.
+            </div>
+                <script>
+                var SCM = SCM || {};
+                
+                SCM.Captcha = (function () {
+                
+                    var _simpleCaptchaResponseIdentifier = '#txtCaptchaInputId';
+                    var _googleReCaptchaResponseIdentifier = '.g-recaptcha-response'; 
+                
+                    return {
+                        Init : init,
+                        GetCaptchaResponse : getCaptchaResponse,
+                        ResetCaptcha : resetCaptcha
+                    };
+                
+                    // initializes the gRecaptcha v2 js
+                    // returns true if init succeeds, false otherwise (helps with debugging)
+                    function init(captchaModelSiteKey) {
+                        
+                        if (window.grecaptcha !== undefined && window.grecaptcha !== null) {
+                            window.grecaptcha.render('captcha', {'sitekey': captchaModelSiteKey });
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    // returns the detected captcha response, empty string otherwise\
+                    function getCaptchaResponse($formContainer) {
+                        
+                        var element = $formContainer.find(_simpleCaptchaResponseIdentifier);
+                
+                        if (element.is(':visible')) {
+                            return element.val();
+                        }
+                        
+                        element = $formContainer.find(_googleReCaptchaResponseIdentifier);
+                
+                        if (element.length) {
+                            return element.val();
+                        }
+                
+                        return '';
+                    }
+                    
+                    // resets the google captcha (if it exists)
+                    function resetCaptcha($formContainer) {
+                        var element = $formContainer.find(_googleReCaptchaResponseIdentifier);
+                
+                        if (element.length) {
+                            // grecaptcha is loaded by ajax response from third party
+                            // see ReCaptcha.cshtml 
+                            window.grecaptcha.reset();
+                        }
+                    }
+                
+                })();
+                </script>
+    <div class="widget widget-ReCaptcha widget-instance-Captcha_GeoScienceWorld">
+                <div id="captcha" data-captchakey="6Lc3rkoUAAAAAE0Z0Bs_wojjZc5HSrhWWwYiwyw6" data-fallback-captcha-key=""></div>
+        <div class="captchaAlert" style="color: #c60f13; display: none">
+            Could not validate captcha.  Please try again.
+        </div>
+            <script type="text/javascript">
+                var onloadCallback = function() {
+                    SCM.Captcha.Init('6Lc3rkoUAAAAAE0Z0Bs_wojjZc5HSrhWWwYiwyw6');
+                };
+            </script>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en"
+                    async defer>
+            </script>
+    <input type="hidden" id="recaptchaWidgetInstance" value="Captcha_GeoScienceWorld" />
+    <input type="hidden" id="recaptchaUseV3" value="False" />
+ 
+    </div>
+
+            <form method="post" id="captchaForm">
+                <input type="hidden" name="content" value="/georef/search-results?f_Authors=Pengjie+Cai" />
+                <input type="hidden" name="userCaptchaResponse" id="userCaptchaResponse" />
+                <div class="btn-wrap">
+                    <button id="btnSubmit" class="button">Take me to my Content</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var btnSubmit = document.getElementById('btnSubmit');
+        var txtCaptchaInputId = document.getElementById('txtCaptchaInputId');
+
+        btnSubmit.onclick = function () {
+            handleCaptchaResponse();
+        }
+
+        if (txtCaptchaInputId !== null) {
+            txtCaptchaInputId.onkeyup = function (e) {
+
+                var keyCode = (e.which || e.keyCode);
+
+                if (keyCode === 13) {
+                    handleCaptchaResponse();
+                }
+                return false;
+            }
+        }
+
+        function handleCaptchaResponse() {
+            var userCaptchaResponse = document.getElementById('userCaptchaResponse');
+            var userResponse = ((txtCaptchaInputId === null) ? grecaptcha.getResponse() : txtCaptchaInputId.value);
+            if (userResponse !== '') {
+                userCaptchaResponse.value = userResponse;
+                document.getElementById('captchaForm').submit();
+                return true;
+            }
+        }
+    </script>
+
+</body>
+</html> contentType 9 text/html url 80 https://pubs.geoscienceworld.org:443/georef/search-results?f_Authors=Pengjie+Cai responseCode 3 200 

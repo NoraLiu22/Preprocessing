@@ -1,0 +1,1168 @@
+icwidebgvshobkwkjqumwqfqmswaqgiqxkzmvive length 5 79535 page 79535 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>Assessment and review</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="Assessment and review" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2024-04-26T18:51:30Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl24_BSignUp" href="javascript:__doPostBack(&#39;ctl24$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl24_BSignIn" href="javascript:__doPostBack(&#39;ctl24$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl23_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl23$BLocale', 'ar');" id="ctl23_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'es');" id="ctl23_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'fr');" id="ctl23_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'ru');" id="ctl23_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Русский</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'zh');" id="ctl23_CLink" class="dropdown-item" hreflang="zh">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">中文</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./assessment.shtml" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBTEvdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZhYnMlMmZhc3Nlc3NtZW50LnNodG1sHglpbm5lcmh0bWwFFlNpZ24gdXAgZm9yIGFuIGFjY291bnRkAgMPFgQfAAUxL3VzZXIvc2lnbmluLz9yZXR1cm51cmw9JTJmYWJzJTJmYXNzZXNzbWVudC5zaHRtbB8BBQdTaWduIEluZAIDDxYCHgdWaXNpYmxlaBYEAgEPFgQfAAUyL3VzZXIvcHJvZmlsZS8/cmV0dXJudXJsPSUyZmFicyUyZmFzc2Vzc21lbnQuc2h0bWweBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIIDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCemhkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC03MjYwLmpwZykWAgIBDxYCHwEFMVRoZSBOYWdveWEgUHJvdG9jb2wgb24gQWNjZXNzIGFuZCBCZW5lZml0LXNoYXJpbmdkAgEPZBYEAgEPFgQfAAUSL2Ficy9kZWZhdWx0LnNodG1sHwEFGkFjY2VzcyBhbmQgQmVuZWZpdC1zaGFyaW5nZAIDD2QWAmYPZBYCZg8WAh4FY2xhc3MFGm5hdmJhci1uYXYgbXItYXV0byBsZXZlbC0wFgICBw8WBh8GBQhuYXYtaXRlbR4HcGFnZS1pZAUENzI3NR8CaBYCZg8WAh8AZGQCAw9kFgICAQ9kFgJmD2QWAmYPZBYCAgEPFgQfBgUVbGlzdC11bnN0eWxlZCBsZXZlbC0wHwJoFgICAQ8WBh8GBQdsZXZlbC0wHwcFBDcyNzUfAmgWAgIBDxYCHwBkZAIFDxYCHwYFL2NvbC0xMiBwbC1tZC00IHByLW1kLTQgcGwtbGctNSBwci1sZy01IG5vLWFzaWRlFgICAw8WAh8BBRNGcmlkYXkgLy8gNC4yNi4yMDI0ZAIHDxYCHwJoZGRhGqACF6m5VAyZeZqOx6/zJpRt8R2GntqhrAItXO1j3Q==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl17_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-7260.jpg)">
+    <h1 id="ctl17_ctl00_CCarouselTitle">The Nagoya Protocol on Access and Benefit-sharing</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/abs/default.shtml" id="ctl18_CPortal" class="navbar-brand">Access and Benefit-sharing</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl18_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7261">
+        <a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Nagoya Protocol</a>
+    <ul id="ctl18_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="10670">
+        <a href="/abs/gbf.shtml" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">ABS under the GBF</a>
+    </li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7262"><a href="/abs/about/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">About the Nagoya Protocol</a></li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7263"><a href="/abs/text/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">Nagoya Protocol Text</a></li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7269"><a href="/abs/background/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">History</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="9197"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Parties</a><ul id="ctl18_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="7270">
+        <a href="/abs/becoming-party/" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">Becoming a Party</a>
+    </li><li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="7433"><a href="/abs/nagoya-protocol/signatories/" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">List of Parties</a></li><li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9198"><a href="https://absch.cbd.int/search/countries" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">National information - country profiles</a></li><li id="ctl18_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9419"><a href="/abs/keysteps.shtml" id="ctl18_ctl00_ctl01_CMenuRowLink" class="nav-link">Key Steps towards implementation</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item " page-id="8052"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Key Protocol issues</a><ul id="ctl18_ctl00_ctl02_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9068">
+        <a href="/abs/theabsch.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">ABS Clearing-House</a>
+    </li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item  active" page-id="9656"><a href="/abs/assessment.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Assessment and review</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9135"><a href="/abs/key-awareness.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Awareness-raising</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9184"><a href="/abs/key-capacitybuilding.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Capacity-building and development</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9132"><a href="/abs/compliance.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Compliance with the Protocol</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9811"><a href="/abs/cooperation.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Cooperation</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="10093"><a href="/dsi-gr" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Digital sequence information on genetic resources</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9186"><a href="/abs/key-financial.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Financial mechanism</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9131"><a href="/abs/art10.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Global multilateral benefit-sharing mechanism</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9133"><a href="/abs/modelclauses.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Model contractual clauses, codes of conduct, guidelines and best practices and/or standards</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9136"><a href="/abs/key-monitoring.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Monitoring and reporting</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9188"><a href="/abs/key-resource.shtml" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Resource mobilization</a></li><li id="ctl18_ctl00_ctl02_CMenuRow" class="nav-item" page-id="10053"><a href="/abs/specialized-instruments/" id="ctl18_ctl00_ctl02_CMenuRowLink" class="nav-link">Specialized international ABS instruments</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="9199"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">COP-MOP</a><ul id="ctl18_ctl00_ctl03_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl03_CMenuRow" class="nav-item" page-id="9203">
+        <a href="/abs/NPCOPMOP-Bureau.shtml" id="ctl18_ctl00_ctl03_CMenuRowLink" class="nav-link">COP-MOP Bureau</a>
+    </li><li id="ctl18_ctl00_ctl03_CMenuRow" class="nav-item" page-id="9200"><a href="/decisions/np-mop" id="ctl18_ctl00_ctl03_CMenuRowLink" class="nav-link">COP-MOP decisions</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7271"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Activities and Communications</a><ul id="ctl18_ctl00_ctl04_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl04_CMenuRow" class="nav-item" page-id="7272">
+        <a href="/abs/meetings/" id="ctl18_ctl00_ctl04_CMenuRowLink" class="nav-link">Meetings and Documents</a>
+    </li><li id="ctl18_ctl00_ctl04_CMenuRow" class="nav-item" page-id="7273"><a href="/abs/notifications/" id="ctl18_ctl00_ctl04_CMenuRowLink" class="nav-link">Notifications</a></li><li id="ctl18_ctl00_ctl04_CMenuRow" class="nav-item" page-id="7274"><a href="/abs/statements/" id="ctl18_ctl00_ctl04_CMenuRowLink" class="nav-link">Statements and Press releases</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7275"><a id="ctl18_ctl00_CMenuRowLink" class="nav-link">Resources</a><ul id="ctl18_ctl00_ctl05_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="10184">
+        <a href="/abs/theABSweALLneed" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">10-year anniversary of the Protocol</a>
+    </li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9820"><a href="https://absch.cbd.int/" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">ABS Clearing-House</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="7105"><a href="/abs/awareness-raising/" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Awareness-raising</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="4164"><a href="/abs/bonn/" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Bonn Guidelines</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9822"><a href="https://absch.cbd.int/en/kb/tags/absch-announcement/Nagoya-Protocol-E-Learning-Courses/64ff7ab6cb7ea204216aa51a" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">E-Learning Courses</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9823"><a href="/abs/resources/factsheets.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Factsheets and Briefs</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9827"><a href="/abs/resources/protocol.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Protocol and decision booklets</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9825"><a href="/abs/resources/videos.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Videos</a></li><li id="ctl18_ctl00_ctl05_CMenuRow" class="nav-item" page-id="9821"><a href="/abs/resources/other.shtml" id="ctl18_ctl00_ctl05_CMenuRowLink" class="nav-link">Other resources</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl27_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl27_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl27_TMenuItem" class="level-0" page-id="7260">
+            <a href="/abs" id="ctl27_TMenuItemLink">Access and Benefit-sharing</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7261">
+            <a id="ctl27_TMenuItemLink">Nagoya Protocol</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="10670">
+            <a href="/abs/gbf.shtml" id="ctl27_TMenuItemLink">ABS under the GBF</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7262">
+            <a href="/abs/about" id="ctl27_TMenuItemLink">About the Nagoya Protocol</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7263">
+            <a href="/abs/text" id="ctl27_TMenuItemLink">Nagoya Protocol Text</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7269">
+            <a href="/abs/background" id="ctl27_TMenuItemLink">History</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="9197">
+            <a id="ctl27_TMenuItemLink">Parties</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="7270">
+            <a href="/abs/becoming-party" id="ctl27_TMenuItemLink">Becoming a Party</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7433">
+            <a href="/abs/nagoya-protocol/signatories" id="ctl27_TMenuItemLink">List of Parties</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9198">
+            <a href="https://absch.cbd.int/search/countries" id="ctl27_TMenuItemLink">National information - country profiles</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9419">
+            <a href="/abs/keysteps.shtml" id="ctl27_TMenuItemLink">Key Steps towards implementation</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0 active" page-id="8052">
+            <a id="ctl27_TMenuItemLink">Key Protocol issues</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1 active">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="9068">
+            <a href="/abs/theabsch.shtml" id="ctl27_TMenuItemLink">ABS Clearing-House</a>
+        </li><li id="ctl27_TMenuItem" class="level-1 selected" page-id="9656">
+            <a href="/abs/assessment.shtml" id="ctl27_TMenuItemLink">Assessment and review</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9135">
+            <a href="/abs/key-awareness.shtml" id="ctl27_TMenuItemLink">Awareness-raising</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9184">
+            <a href="/abs/key-capacitybuilding.shtml" id="ctl27_TMenuItemLink">Capacity-building and development</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9132">
+            <a href="/abs/compliance.shtml" id="ctl27_TMenuItemLink">Compliance with the Protocol</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9811">
+            <a href="/abs/cooperation.shtml" id="ctl27_TMenuItemLink">Cooperation</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="10093">
+            <a href="/dsi-gr" id="ctl27_TMenuItemLink">Digital sequence information on genetic resources</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9186">
+            <a href="/abs/key-financial.shtml" id="ctl27_TMenuItemLink">Financial mechanism</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9131">
+            <a href="/abs/art10.shtml" id="ctl27_TMenuItemLink">Global multilateral benefit-sharing mechanism</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9133">
+            <a href="/abs/modelclauses.shtml" id="ctl27_TMenuItemLink">Model contractual clauses, codes of conduct, guidelines and best practices and/or standards</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9136">
+            <a href="/abs/key-monitoring.shtml" id="ctl27_TMenuItemLink">Monitoring and reporting</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9188">
+            <a href="/abs/key-resource.shtml" id="ctl27_TMenuItemLink">Resource mobilization</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="10053">
+            <a href="/abs/specialized-instruments" id="ctl27_TMenuItemLink">Specialized international ABS instruments</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="9199">
+            <a id="ctl27_TMenuItemLink">COP-MOP</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="9203">
+            <a href="/abs/NPCOPMOP-Bureau.shtml" id="ctl27_TMenuItemLink">COP-MOP Bureau</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9200">
+            <a href="/decisions/np-mop" id="ctl27_TMenuItemLink">COP-MOP decisions</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="7271">
+            <a id="ctl27_TMenuItemLink">Activities and Communications</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="7272">
+            <a href="/abs/meetings" id="ctl27_TMenuItemLink">Meetings and Documents</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7273">
+            <a href="/abs/notifications" id="ctl27_TMenuItemLink">Notifications</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7274">
+            <a href="/abs/statements" id="ctl27_TMenuItemLink">Statements and Press releases</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="7275">
+            <a id="ctl27_TMenuItemLink">Resources</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="10184">
+            <a href="/abs/theABSweALLneed" id="ctl27_TMenuItemLink">10-year anniversary of the Protocol</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9820">
+            <a href="https://absch.cbd.int/" id="ctl27_TMenuItemLink">ABS Clearing-House</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="7105">
+            <a href="/abs/awareness-raising" id="ctl27_TMenuItemLink">Awareness-raising</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="4164">
+            <a href="/abs/bonn" id="ctl27_TMenuItemLink">Bonn Guidelines</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9822">
+            <a href="https://absch.cbd.int/en/kb/tags/absch-announcement/Nagoya-Protocol-E-Learning-Courses/64ff7ab6cb7ea204216aa51a" id="ctl27_TMenuItemLink">E-Learning Courses</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9823">
+            <a href="/abs/resources/factsheets.shtml" id="ctl27_TMenuItemLink">Factsheets and Briefs</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9827">
+            <a href="/abs/resources/protocol.shtml" id="ctl27_TMenuItemLink">Protocol and decision booklets</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9825">
+            <a href="/abs/resources/videos.shtml" id="ctl27_TMenuItemLink">Videos</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="9821">
+            <a href="/abs/resources/other.shtml" id="ctl27_TMenuItemLink">Other resources</a>
+        </li></ul></li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl22_CItems"><a href="/abs/default.shtml">Access and Benefit-sharing</a><span> // Assessment and review</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Friday // 4.26.2024</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              <h1 class="cmsH1">Assessment and review</h1>
+<div id="ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl15_CSkin2">
+        <div class="hlite">
+<p></p>
+<div class="card"><div class="card-body"><div class="card-text"><a href="text/articles/default.shtml?sec=abs-31">Article 31</a> of the Nagoya Protocol provides that the Conference of the Parties serving as the meeting of the Parties to the Protocol undertake, four years after the entry into force of the Protocol and thereafter at intervals determined by the Conference of the Parties serving as the meeting of the Parties to the Protocol, an evaluation of the effectiveness of the Protocol. </div></div></div>
+<p></p>
+
+<p></p>
+With the entry into force of the Nagoya Protocol on 12 October 2014, the Conference of the Parties serving as the meeting of the Parties to the Protocol carried out the first evaluation at its third meeting in 2018. The key findings of the first assessment, as well as the framework of indicators to measure progress in the future, can be found in annex to <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">decision 3/1</a>. The second assessment and review of the effectiveness of the Protocol will be conducted by the Conference of the Parties serving as the meeting of the Parties at its sixth meeting.</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        
+
+<style>
+	ul.cmsTab{border-bottom:1px solid silver;margin:0 0 14px 0;padding-bottom:19px;padding-left:10px}
+	ul.cmsTab>li{display:inline;list-style-type:none;cursor:pointer;background:#e8ebf0;border:1px solid silver;color:#606060;float:left;font-size:11px;font-weight:400;line-height:14px;margin-right:8px;padding:2px 10px 2px 10px;text-decoration:none}
+	ul.cmsTab>li.cmsTabCurrent{background:#fff;border-bottom:1px solid #fff;color:#000}
+</style>
+
+<div class="cmsTab">
+	<ul id="ctl16_W19597_CTabs" class="cmsTab"><li class="cmsTabCurrent" tab="0">SUMMARY</li><li tab="1">DECISIONS</li><li tab="2">DOCUMENTS</li><li tab="3">NOTIFICATIONS</li><li tab="4">FIRST ASSESSMENT AND REVIEW</li><li tab="5">SECOND ASSESSMENT AND REVIEW</li></ul> 
+	<div id="ctl16_W19597_CContents"><div style="display:;" tab="0"><div id="ctl16_W19597_ctl12_CSkin">
+    
+
+    
+    
+    <div id="ctl16_W19597_ctl12_CSkin2">
+        <div class="hlite"><a name="history"></a>
+<p></p>
+<div class="card"><div class="card-body"><div class="card-text"><b>Fourth meeting of the Subsidiary Body on Implementation (May 2024)</b>
+<p></p>
+At its <a href="https://www.cbd.int/conferences/nairobi-2024/sbi-04/documents">fourth meeting</a> the Subsidiary Body on Implementation (SBI), to be held from 21 to 29 May 2024 in Nairobi, Kenya, will have before it a <a href="https://www.cbd.int/documents/CBD/SBI/4/12">note</a> by the Secretariat containing a proposed methodology for conducting the second assessment and review and is expected to adopt a recommendation for consideration by the Conference of the Parties serving as the meeting of the Parties to the Protocol at its fifth meeting.
+<p></p>
+<b>Relevant Documents</b><ul><li>Development of the methodology for the second assessment and review of the effectiveness of the Nagoya Protocol – <a href="https://www.cbd.int/documents/CBD/SBI/4/12">CBD/SBI/4/12</a> </li></ul></div></div></div>
+<p></p>
+<div class="alert alert-secondary">COP-MOP 3 (November 2018)</div>
+<p></p>
+On the basis of the outcomes of <a href="https://www.cbd.int/meetings/SBI-02">second meeting </a>of the Subsidiary Body on Implementation, the Conference of the Parties serving as the meeting of the Parties to the Protocol (COP-MOP), at its <a href="https://www.cbd.int/conferences/2018/np-mop-03/documents">third meeting</a>, adopted decision <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">NP-3/1</a> on the first assessment and review of the effectiveness of the Nagoya Protocol four years after its entry into force.
+<p></p>
+In this decision, COP-MOP welcomed the progress made by Parties, as well as non-Parties, in establishing legislative, administrative or policy measures on ABS and institutional arrangements. However, it was also recognized that further efforts were needed to make the Protocol fully operational. Parties also identified areas where further work is needed, challenges in implementation and possible mechanisms to address those challenges in accordance with national circumstances. The outcomes from the first assessment and review, including its <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">key findings</a> contained in annex I of the decision, can assist in advancing the implementation of the Protocol and provide guidance for future work to ensure the fair and equitable sharing of benefits from the utilization of genetic resources and associated traditional knowledge.
+<p></p>
+Furthermore, in decision NP-3/1 COP-MOP agreed to a <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">framework of indicators</a> to measure progress in implementation in the future (annex II of the decision). The framework also includes reference points for each indicator as of February 2018 resulting from the analysis conducted. The reference points allow having a baseline against which progress can be measured in the future. COP-MOP also decided to revisit and adapt the framework in the light of further progress made with implementation. COP-MOP also decided to conduct the second assessment and review of the effectiveness of the Protocol at its sixth meeting, which will take place in 2024, and requested the Executive Secretary to propose a methodology for conducting the second assessment and review, taking into account the outcomes and lessons learned from the first assessment and review process, experiences from the assessment and review process under the Cartagena Protocol on Biosafety, and the post-2020 global biodiversity framework.
+<p></p>
+
+<p></p>
+<div class="card"><div class="card-body"><div class="card-text"><b>Meeting of SBI-2 (July 2018)</b>
+<p></p>
+The <a href="https://www.cbd.int/meetings/SBI-02">second meeting</a> of the Subsidiary Body on Implementation, which convened from 9 to 13 July 2018 in Montreal, Canada, considered the analysis and synthesis of information as well as the draft framework of indicators prepared by the Secretariat, taking into account the inputs from the Compliance Committee and adopted a recommendation for consideration by the Parties to the Protocol at their third meeting.
+<p></p>
+The recommendation from SBI-2 <a href="https://www.cbd.int/doc/recommendations/sbi-02/sbi-02-rec-02-en.pdf">(Recommendation SBI-2/2)</a> includes a draft decision to MOP-3.
+<p></p>
+The following documents were prepared to inform discussions at <a href="https://www.cbd.int/meetings/SBI-02">SBI-2</a>:<ul><li><a href="https://www.cbd.int/doc/c/15ec/ada6/2e4895fca3076383e4b74164/sbi-02-03-en.pdf">Assessment and review of the effectiveness of the Nagoya Protocol</a> (CBD/SBI/2/3)</li><li><a href="https://www.cbd.int/doc/c/767b/a3b0/e4934613a1a3fd1116b1c89a/sbi-02-inf-03-en.pdf">Analysis of information contained in the interim national reports and information published in the access and benefit-sharing clearing house</a> (CBD/SBI/2/INF/3)</li><li><a href="https://www.cbd.int/doc/c/d474/9227/bbd0b9ae98a935a740ade88a/sbi-02-inf-04-en.pdf">Statistical overview of the answers provided in the interim national report for the Nagoya Protocol</a> (CBD/SBI/2/INF/4)</li><li><a href="https://www.cbd.int/doc/c/0fef/9bc0/f887096f2d6234b48839e2dc/sbi-02-inf-07-en.pdf">Review of implementation and operation of the Access and Benefit-sharing Clearing-House</a> (CBD/SBI/2/INF/7)</li><li><a href="https://www.cbd.int/doc/c/3df4/9e69/2f8171a41db41a25a3edca40/sbi-02-inf-08-en.pdf">Stock-taking of model contractual clauses, codes of conduct, guidelines, best practices and standards as well as indigenous peoples and local communities’ customary laws, community protocols and procedures</a> (CBD/SBI/2/INF/8) </li></ul></div></div></div>
+<p></p>
+<div class="alert alert-secondary">COP-MOP 2 (December 2016)</div>
+<p></p>
+Assessment and review was first considered by the COP-MOP at its <a href="/conferences/2016/np-mop-2/documents">second meeting</a>. The meeting considered a <a href="/doc/meetings/abs/np-mop-02/official/np-mop-02-11-en.pdf">note</a> by the Executive Secretary, containing a proposed methodology for conducting the first assessment and review of the Protocol, including a suggested timeline and possible sources of information. In <a href="/doc/decisions/np-mop-02/np-mop-02-dec-04-en.pdf">decision NP-2/4</a>, the COP-MOP agreed on the <a href="/abs/assessment-elements.shtml">elements</a> to be included in the first assessment and review and on the sources of information to be used for assessing each of these elements, and requested the Executive Secretary to, among other actions, assess any needs for additional information. Per decision <a href="https://www.cbd.int/doc/decisions/np-mop-02/np-mop-02-dec-02-en.pdf">decision NP-2/2</a>, the implementation and operation of the ABS Clearing-House will be reviewed as part of the assessment and review process.<br /> <br />In 2017-2018, in line with decision NP-2/4, the Executive Secretary prepared an analysis and synthesis of relevant information for the first assessment and review of the Protocol and a draft framework of indicators as a basis for measuring, in the second assessment and review and thereafter, progress in achieving the objective of the Protocol, for the consideration of the Subsidiary Body on Implementation at its second meeting. The <a href="https://www.cbd.int/abs/compliance.shtml#tab=3">Compliance Committee</a> also provided inputs to the first assessment and review of the Protocol to assist in addressing challenges to its implementation.<br /></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</div><div style="display:none;" tab="1"><div id="ctl16_W19597_ctl16_CSkin">
+    
+
+    
+    
+    <div id="ctl16_W19597_ctl16_CSkin2">
+        <div class="hlite"><div class="alert alert-secondary">COP-MOP Decisions</div>
+<p></p>
+<ul><li><a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">Decision NP-3/1 on assessment and review of the effectiveness of the Protocol (Article 31)</a></li><li><a href="https://www.cbd.int/doc/decisions/np-mop-02/np-mop-02-dec-04-en.pdf">Decision NP-2/4 on assessment and review of the effectiveness of the Protocol (Article 31)</a></li><li><a href="https://www.cbd.int/doc/decisions/np-mop-01/np-mop-01-dec-03-en.pdf">Decision NP-1/3 on monitoring and reporting (Article 29)</a>
+<p></p>
+</li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</div><div style="display:none;" tab="2"><div id="ctl16_W19597_ctl17_CSkin">
+    
+
+    
+    
+    <div id="ctl16_W19597_ctl17_CSkin2">
+        <div class="hlite">
+<p></p>
+<div class="alert alert-secondary">Key Documents</div>
+<p></p>
+<a name="Secondassessmentandreview"></a><h3>Second assessment and review</h3><ul><li>Development of the methodology for the second assessment and review of the effectiveness of the Nagoya Protocol - <a href="https://www.cbd.int/documents/CBD/SBI/4/12">CBD/SBI/4/12</a></li><li>Framework of indicators and reference points to measure progress (Annex II) - <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">CBD/NP/MOP/DEC/3/1</a></li></ul>
+<p></p>
+<a name="Firstassessmentandreview"></a><h3>First assessment and review</h3> <ul><li>Assessment and Review of the effectiveness of the Nagoya Protocol - <a href="https://www.cbd.int/doc/c/15ec/ada6/2e4895fca3076383e4b74164/sbi-02-03-en.pdf">CBD/NP/SBI/2/3</a></li><li>Analysis of information contained in the interim national reports and information published in the access and benefit-sharing clearing house - <a href="https://www.cbd.int/doc/c/767b/a3b0/e4934613a1a3fd1116b1c89a/sbi-02-inf-03-en.pdf">CBD/SBI/2/INF/3</a></li><li>Statistical overview of the answers provided in the interim national report for the Nagoya Protocol - <a href="https://www.cbd.int/doc/c/d474/9227/bbd0b9ae98a935a740ade88a/sbi-02-inf-04-en.pdf">CBD/SBI/2/INF/4</a></li><li>Review of implementation and operation of the Access and Benefit-sharing Clearing-House - <a href="https://www.cbd.int/doc/c/0fef/9bc0/f887096f2d6234b48839e2dc/sbi-02-inf-07-en.pdf">CBD/SBI/2/INF/7</a></li><li>Stock-taking of model contractual clauses, codes of conduct, guidelines, best practices and standards as well as indigenous peoples and local communities’ customary laws, community protocols and procedures - <a href="https://www.cbd.int/doc/c/3df4/9e69/2f8171a41db41a25a3edca40/sbi-02-inf-08-en.pdf">CBD/SBI/2/INF/8</a> </li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</div><div style="display:none;" tab="3"><div id="ctl16_W19597_ctl14_CSkin">
+    
+
+    
+    
+    <div id="ctl16_W19597_ctl14_CSkin2">
+        <div class="hlite"><div class="alert alert-secondary">Latest notifications</div>
+<p></p>
+<ul><li>2017-10-16 - <a href="https://www.cbd.int/doc/notifications/2017/ntf-2017-104-abs-en.pdf">Contribution to the first Assessment and Review of the Effectiveness of the Nagoya Protocol</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</div><div style="display:none;" tab="4"><div id="ctl16_W19597_ctl13_CSkin">
+    
+
+    
+    
+    <div id="ctl16_W19597_ctl13_CSkin2">
+        <div class="hlite"><a name="OutcomesofthefirstassessmentandreviewoftheProtocol"></a><h3>Outcomes of the first assessment and review of the Protocol</h3>
+<p></p>
+The Conference of the Parties serving as the meeting of the Parties to the Protocol (COP-MOP), at its <a href="https://www.cbd.int/conferences/2018/np-mop-03/documents">third meeting</a>, adopted decision <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">NP-3/1</a> on the first assessment and review of the effectiveness of the Nagoya Protocol four years after its entry into force. The outcomes from the first assessment and review, including its <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">key findings</a> contained in annex I of this decision, can assist in advancing the implementation of the Protocol and provide guidance for future work to ensure the fair and equitable sharing of benefits from the utilization of genetic resources and associated traditional knowledge.
+<p></p>
+
+<p></p>
+<a name="ElementsincludedinthefirstassessmentandreviewoftheProtocolandsourcesofinformation"></a><h3>Elements included in the first assessment and review of the Protocol and sources of information</h3>
+<p></p>
+At its second meeting, the COP-MOP considered the methodology proposed by the Executive Secretary to conduct the first assessment and review of the effectiveness of the Protocol, in accordance with <a href="text/articles/default.shtml?sec=abs-31">Article 31</a>, and adopted decision <a href="https://www.cbd.int/doc/decisions/np-mop-02/np-mop-02-dec-04-en.pdf">NP-2/4</a> in which it decided on the elements to be included in the assessment and the sources of information to be used for assessing each element. The elements and sources of information were as follows: <br />
+<p></p>
+<table class="table table-bordered"><tr><th style="width:100px;" ><b>Element</b> </th>
+<td style="width:150px;" ><b>Source of information</b> </td>
+</tr><tr><td>(a) Extent of implementation of the provisions of the Protocol and related obligations of Parties, including assessment of progress by Parties in establishing institutional structures and access and benefit-sharing measures to implement the Protocol </td>
+<td>Interim national reports<br /> Access and Benefit-sharing Clearing-House<br /> National reports under the Convention<br /> National biodiversity strategies and action plans<br /> Possible targeted survey of focal points and/or users <br /></td>
+</tr><tr><td>(b) Establishment of a reference point to measure effectiveness </td>
+<td>Interim national reports (questions 13, 15, 16, 18, 24, 35, 46) <br />Access and Benefit-sharing Clearing-House </td>
+</tr><tr><td>(c) Establishment of a reference point on support available for implementation </td>
+<td>Interim national reports (questions 56, 57, 61, 62, 63) <br />Access and Benefit-sharing Clearing-House<br />Information on capacity-building projects and resources <br /></td>
+</tr><tr><td>(d) Assessment of effectiveness of Article 18 (extent of implementation) </td>
+<td>Interim national reports (questions 31-34) <br /></td>
+</tr><tr><td>(e) Assessment of implementation of Article 16 in light of developments in other relevant international organizations, including, inter alia, the World Intellectual Property Organization (WIPO) </td>
+<td>Interim national reports (question 25) <br />Reports of, inter alia, the WIPO Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore <br /></td>
+</tr><tr><td>(f) Stock-taking of the use of model contractual clauses, codes of conduct, guidelines, best practices and standards as well as indigenous peoples and local communities’ customary laws, community protocols and procedures </td>
+<td>Interim national reports (questions 42 and 51-53) <br />Access and Benefit-sharing Clearing-House <br />Possible targeted survey of focal points and/or users <br /></td>
+</tr><tr><td>(g) Review of implementation and operation of the Access and Benefit-sharing Clearing-House, including number of ABS measures made available; number of countries that have published information on their competent national authorities; number of internationally recognized certificates of compliance that have been constituted and number of checkpoint communiqu&#233;s published </td>
+<td>Interim national reports (question 3) <br />Access and Benefit-sharing Clearing-House, including information on the use of the help function/dialogue box <br />Reports of meetings of the informal advisory committee on the Access and Benefit-sharing Clearing-House <br />Possible targeted survey of focal points and/or users <br /></td>
+</tr></table>
+<p></p>
+<div class="card"><div class="card-body"><div class="card-text">In line with decision NP-2/4, the Executive Secretary prepared an analysis and synthesis of relevant information for the first assessment and review of the Protocol and a draft framework of indicators as a basis for measuring progress for the consideration of the Subsidiary Body on Implementation at its second meeting. The Executive Secretary also issued notification <a href="https://www.cbd.int/doc/notifications/2017/ntf-2017-104-abs-en.pdf">2017-104</a> to invite relevant stakeholders and indigenous peoples and local communities to provide information on the development, update and use of model contractual clauses, codes of conduct, guidelines, best practices and/or standards in relation to access and benefit-sharing and on customary laws and the development of community protocols and procedures in relation to access to traditional knowledge associated with genetic resources and the fair and equitable sharing of benefits arising out of the utilization of such knowledge, respectively. The submissions can be found <a href="https://www.cbd.int/abs/assessment-contribution/">here</a>. </div></div></div></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</div><div style="display:none;" tab="5"><div id="ctl16_W19597_ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl16_W19597_ctl15_CSkin2">
+        <div class="hlite"><a name="Preparationsforthesecondassessmentandreview"></a><h3>Preparations for the second assessment and review</h3>
+<p></p>
+At its third meeting, the Conference of the Parties serving as the meeting of the Parties (COP-MOP) welcomed the framework of indicators and reference points contained in annex to <a href="https://www.cbd.int/doc/decisions/np-mop-03/np-mop-03-dec-01-en.pdf">decision NP-3/1</a> and agreed to use the reference points as a baseline against which progress can be measured in the future.
+<p></p>
+It also decided to conduct the second assessment and review of the effectiveness of the Protocol at its sixth meeting and requested the Executive Secretary to propose a methodology for conducting this assessment, taking into account the outcomes and lessons learned from the first assessment and review process, experiences from the assessment and review process under the Cartagena Protocol on Biosafety, and the post-2020 global biodiversity framework.
+<p></p>
+The methodology for the second assessment and review is to be considered by the <a href="https://www.cbd.int/conferences/nairobi-2024/sbi-04/documents">Subsidiary Body on Implementation</a> at its fourth meeting. On the basis of <a href="https://www.cbd.int/documents/CBD/SBI/4/12">document CBD/SBI/4/12</a>, the body is to make recommendations in this regard to COP-MOP at its fifth meeting. The issue of intervals for subsequent assessment and review of the effectiveness of the Protocol is to be considered at a subsequent meeting of COP-MOP.</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</div></div>
+</div>
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 44 https://www.cbd.int:443/abs/assessment.shtml responseCode 3 200 

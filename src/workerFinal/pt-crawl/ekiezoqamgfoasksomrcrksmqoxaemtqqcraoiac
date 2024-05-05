@@ -1,0 +1,1368 @@
+ekiezoqamgfoasksomrcrksmqoxaemtqqcraoiac length 5 58366 page 58366 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	APS Image Database
+</title><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script src="//code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .PageTasksPanel
+        {
+            /* Not needed for the Image Database
+                position: absolute;
+                bottom: 30px;
+                left: 2px;
+            */
+        }
+
+        /*override caption sytle to hide the caption text that is compiled in certain page tables*/
+        caption
+        {
+            display: none;
+        }
+    </style>
+
+    
+
+    
+    <meta name="description" content="Access a continually growing, searchable collection of vetted plant disease and pest images for teaching, extension, and more."/>
+
+    <link type="text/css" href="App_Themes/Search.css" rel="stylesheet"  />
+    <link type="text/css" href="App_Themes/imageResult.css" rel="stylesheet"/>
+    <link type="text/css" href="App_Themes/packagePreview.css" rel="stylesheet"/>
+    <link type="text/css" href="App_Themes/basketView.css" rel="stylesheet"/>
+
+    
+    
+    
+
+    <!-- This needs to run AFTER the page is loaded! -->
+    <script type="text/javascript">
+
+        $(document).ready(function ()
+        {
+            $(".results").hide();
+
+            var renderTextToLeft = $(".packagePreview .renderTextToLeft");
+            //Create a container for the structure.
+            renderTextToLeft.wrap("<div class='renderTextToLeftContainer'></div>");
+
+            //This code will take any control wih the specified class and  prepend a span directly to
+            //the right of the control and copies the controls value into the span.
+            //Used for rending button labels to the right of buttons without a css nightmare.
+            renderTextToLeft.each(function (index, element)
+            {
+                $("<span>" + $(element).val() + "</span>").insertBefore($(element));
+                $(element).css("color", "transparent");
+            });
+
+            //Move the footer into the absolute positioned background so it is
+            //visible in the correct location.
+            $("#footerLayout").detach().appendTo('.formHeader div.background');
+
+            //Position required for Image Database
+            //TODO: Need better path than just login.
+            $('div.loginContainer div.login').detach().prependTo("div#headerNavigation");
+            $("div#headerNavigation div.login").addClass("globalNavItem");
+
+            //Set up product window if the user is already logged in.
+            $.getJSON("handlers/RoleCheck.ashx")
+                .done(function (roleToken) { if (roleToken.IsAuthenticated) { PrepareImageDatabasePurchaseScreen(); }})
+                .fail(function () { alert("error setting up product purchase screen."); });
+
+        });
+
+    </script>
+
+</head>
+
+<body class="PageTasksPanel">
+	<form method="post" action="./" id="TemplateForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQ4NDU3MjQ2OA9kFgJmD2QWAgIDD2QWAgIDD2QWAgIBD2QWAgIBD2QWAgIBD2QWDgIBDw8WAh4EVGV4dAUZNyw3NjIgaW1hZ2VzIGFuZCBncm93aW5nIWRkAgMPZBYCAgEPZBYCAgEPD2QWAh4LcGxhY2Vob2xkZXIFBEhvc3RkAgUPZBYCAgEPZBYCAgEPD2QWAh8BBQxDYXVzYWwgQWdlbnRkAgcPZBYCAgEPZBYCAgEPD2QWAh8BBRBEaXNlYXNlL0Rpc29yZGVyZAIJD2QWAgIBD2QWAgIBDw9kFgIfAQUVVHlwZSBvZiBDYXVzYWwgQWdlbnQgZAILD2QWAgIBD2QWAgIBDw9kFgIfAQULQ29udHJpYnV0b3JkAg0PEA8WAh4LXyFEYXRhQm91bmRnZBAVGhZDb2xsZWN0aW9uL1B1YmxpY2F0aW9uIUEgRmFybWVyJ3MgR3VpZGUgdG8gQ29ybiBEaXNlYXNlcyRBIEZhcm1lcidzIEd1aWRlIHRvIFNveWJlYW4gRGlzZWFzZXM3Q29tcGVuZGl1bSBvZiBBbGZhbGZhIERpc2Vhc2VzIGFuZCBQZXN0cywgVGhpcmQgRWRpdGlvbj9Db21wZW5kaXVtIG9mIEFwcGxlIGFuZCBQZWFyIERpc2Vhc2VzIGFuZCBQZXN0cywgU2Vjb25kIEVkaXRpb24rQ29tcGVuZGl1bSBvZiBCZWFuIERpc2Vhc2VzLCBTZWNvbmQgRWRpdGlvbjVDb21wZW5kaXVtIG9mIEJlZXQgRGlzZWFzZXMgYW5kIFBlc3RzLCBTZWNvbmQgRWRpdGlvblZDb21wZW5kaXVtIG9mIEJsdWViZXJyeSwgQ3JhbmJlcnJ5LCBhbmQgTGluZ29uYmVycnkgRGlzZWFzZXMgYW5kIFBlc3RzLCBTZWNvbmQgRWRpdGlvbh9Db21wZW5kaXVtIG9mIEJyYXNzaWNhIERpc2Vhc2VzNENvbXBlbmRpdW0gb2YgQ2hpY2twZWEgYW5kIExlbnRpbCBEaXNlYXNlcyBhbmQgUGVzdHMnQ29tcGVuZGl1bSBvZiBDb2ZmZWUgRGlzZWFzZXMgYW5kIFBlc3RzK0NvbXBlbmRpdW0gb2YgQ29ybiBEaXNlYXNlcywgRm91cnRoIEVkaXRpb245Q29tcGVuZGl1bSBvZiBDdWN1cmJpdCBEaXNlYXNlcyBhbmQgUGVzdHMsIFNlY29uZCBFZGl0aW9uQkNvbXBlbmRpdW0gb2YgR3JhcGUgRGlzZWFzZXMsIERpc29yZGVycywgYW5kIFBlc3RzLCBTZWNvbmQgRWRpdGlvbiRDb21wZW5kaXVtIG9mIEhvcCBEaXNlYXNlcyBhbmQgUGVzdHNBQ29tcGVuZGl1bSBvZiBPbmlvbiBhbmQgR2FybGljIERpc2Vhc2VzIGFuZCBQZXN0cywgU2Vjb25kIEVkaXRpb240Q29tcGVuZGl1bSBvZiBPcm5hbWVudGFsIFBhbG0gRGlzZWFzZXMgYW5kIERpc29yZGVyc0hDb21wZW5kaXVtIG9mIFJob2RvZGVuZHJvbiBhbmQgQXphbGVhIERpc2Vhc2VzIGFuZCBQZXN0cywgU2Vjb25kIEVkaXRpb243Q29tcGVuZGl1bSBvZiBTb3liZWFuIERpc2Vhc2VzIGFuZCBQZXN0cywgRmlmdGggRWRpdGlvbipDb21wZW5kaXVtIG9mIFN1bmZsb3dlciBEaXNlYXNlcyBhbmQgUGVzdHNIQ29tcGVuZGl1bSBvZiBTd2VldHBvdGF0byBEaXNlYXNlcywgUGVzdHMsIGFuZCBEaXNvcmRlcnMsIFNlY29uZCBFZGl0aW9uN0NvbXBlbmRpdW0gb2YgVG9tYXRvIERpc2Vhc2VzIGFuZCBQZXN0cywgU2Vjb25kIEVkaXRpb24vQ29tcGVuZGl1bSBvZiBUdXJmZ3Jhc3MgRGlzZWFzZXMsIFRoaXJkIEVkaXRpb241Q29tcGVuZGl1bSBvZiBXaGVhdCBEaXNlYXNlcyBhbmQgUGVzdHMsIFRoaXJkIEVkaXRpb25UUGxhbnQgRGlzZWFzZXMgQ2F1c2VkIGJ5IEJhY3RlcmlhOiBBbiBJbWFnZSBEYXRhYmFzZSBhbmQgRWR1Y2F0aW9uYWwgUmVzb3VyY2UgQ0QtUk9NKFRoZSBSYW5kYWxsIFJvd2UgTGVnYWN5IEltYWdlIENvbGxlY3Rpb24VGgEwAzIyNAMyMzIDMjE1AzIxNgMyMTcDMjE4AzIxOQMyMjADMjIxAzIyMgMyMjMDMjI1AzI0MgMyMjYDMjI3AzIyOAMyMzADMjMxAzIzMwMyMzQDMjM1AzIzNgMyMzcDMjI5AzI0MxQrAxpnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2RkZDJlw28gxMi11Fs8JGigmuoorfKh" />
+
+
+<script src="scripts/basketView.js" type="text/javascript"></script>
+<script src="scripts/imagePreview.js" type="text/javascript"></script>
+<script src="scripts/TypeAhead.js" type="text/javascript"></script>
+<script src="scripts/search.js" type="text/javascript"></script>
+<script src="scripts/ReportIssue.js" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Is1qWYPTAzIdakwpq2P-HKFQMWFHgtdJXsUeKmrwRK9yQkStCIrQ4yYI2Oismwnptyn_zVDxRWbE9rnWbuY5tR3sFwPgJK54AGaV0v2GcipPt6sH1cBs8Nj6-B38PD9dr_cyZBinvEicCLVLy5aEv-POMWzuSbVgkZTeufPqXlEX3YvZ0&amp;t=49337fe8" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BBBC20B8" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdACBxqpBEybxf3H2RT6MZrM+9RT8Fk86rYaq6SBAge+s0AIG6xQ899Hgus8CTDyiNlcfhvQdpoYHo3K6R4vVjMYKq86cWTPEtKF1ZKCkQVRcAMvmQmwcPQyCTYzP9mLKSXXQSgjRubsmhV3nVvASyjzbswWxUGNwMmCoWLfzdzeDE8SD1wH0DGOzdWz+20OxFvv8QyUJBhn9C6E3nI9scwauzDDlxs7bGcJNPVDKZri3oq9JOpts3d8pcGJ3cLzS6ekZRF9VUHKkVN8FPQaXIKxnc4kgZybYJSUmR7ctupu4ysBKRzt6FWvQ0qo45P2B8wtGtv2S8DgTJm0lyXAfPah7OveREvECYG1fk8JgCLyhDFs/JcYjGJlcZyb/CSR1BzwW4qzAm7KSaSpgP2ZKPFl2aSRGwsqKxBWGLDenOwRGgK4FnyV3v2zUeCFjvk10pK8yEcV8TLr6DBf0yLPFCWcfyE7tQhyRfnpUXa5mOfy81ezXgORnZE70Q1egeIRojIGOZVI6bmnAx/3uKj3jMTgMO3sSanxQYw5PSvkEVsIVzXXhPZ5UO+He1s/QtkNUK0hwRyrtLa4Ct9d2Xp3lBRqrH8hxDXXIAGMI47TZk1hXNM+stZ71ZaUfiN8mhb3SKQf1Um1R3/AtVDZQiE1ACDx/4PdWXHHmoy4HZiXYJ3k38BOsNM7larMcSQAqytVskdyDg0dBi" />
+
+    
+
+	<div id="Div1">
+
+
+        
+
+    
+    <div id="pagesubnav"></div>
+    <div class="imageDatabase">
+        <div class="formHeader homePageLayout">
+
+            <div>
+                <div class="menu">
+                    <ul>
+                        
+                        <li><div class="first"><a href="https://www.apsnet.org/edcenter/resources/ImageDatabase/Pages/default.aspx">About the Database</a></div></li>
+                        <li><div><a href="https://www.apsnet.org/edcenter/resources/ImageDatabase/Pages/Terms.aspx">Terms of Use</a></div></li>
+                        <li><div><a HREF="javascript:checkRoles(null)">Subscribe</a></div></li>
+                        <li><div><a href="https://www.apsnet.org/edcenter/resources/ImageDatabase/Pages/Permission.aspx">Request Permission</a></div></li>
+                        <li><div><a href="https://www.apsnet.org/edcenter/resources/ImageDatabase/Pages/Submit.aspx">Submit an Image</a></div></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="openAccessSearch">
+                <a href="search.aspx?publicationId=229&ps=1">View</a>
+                <span> Open Access Images.</span>
+                <span class="OpenAccess" style="float:none; clear:both; display:inline-block;"></span>
+            </div>
+
+            
+
+
+
+<style type="text/css">
+
+    .searchParameters .freeText
+    {
+        float: left!important;
+        /*margin-right: 10px!important;*/
+        max-width: 840px!important;
+        width: 100%;
+    }
+
+    .searchParameters .filters
+    {
+        float: none;
+        clear: both;
+    }
+
+    .searchParameters .filters .header
+    {
+        display:block;
+        text-align:center;
+        padding: 5px 0px 5px;
+        height:20px;
+        background-color:rgba(180, 187, 0, 1);
+    }
+
+
+
+
+
+
+    div.hoverSearchTips
+    {
+        display:inline-block ;
+        float:left;
+    }
+
+    div.hoverSearchTips .searchTips
+    {
+        display: none;
+		text-align:left;
+    }
+
+
+	
+    div.hoverSearchTips:hover  .searchTips
+    {
+        display:block;
+        border:2px solid black;
+        position:fixed;
+        max-width:900px;
+        width:90%;
+        background-color:whitesmoke;
+        padding:10px;
+        z-index:5000;
+    }
+
+    div.searchLogic
+    {
+        width:auto!important;
+        float:right!important;
+    }
+
+    div.searchLogic > select
+    {
+        display:inline-block;
+        height:36px;
+        width:250px;
+    }
+
+    fieldset
+    {
+
+        margin:10px 0px 10px;
+        border-color: lightgray;
+        float:none;
+        clear:both;
+    }
+
+
+
+    .filters .filter input.value
+    {
+        max-width:350px;
+        width:100%;
+    }
+
+    .filters .filter .publication
+    {
+        max-width:355px;
+        width:100%;
+        height:36px;
+        padding-bottom:0px!important;
+    }
+
+    .searchParameters div.basicSearch
+    {
+        display:inline-block;
+        width:100%;
+        padding-bottom:10px;
+    }
+
+    .searchParameters .controls input
+    {
+        width : 100px;
+        margin : 10px;
+    }
+
+
+
+
+    .searchParameters input.advancedSearch,
+    .searchParameters input.hoverSearchTips,
+    .searchParameters input.clearSearch,
+    .searchParameters input.search
+    {
+        height:30px!important;
+        width:130px!important;
+        border-width:3px!important;
+    }
+
+    .filter.publication select option[value='0'],
+    .placeHolder {
+        color: GrayText;
+    }
+
+
+
+</style>
+
+<div id="ContentPlaceHolder1_SearchParameters_pnlSearchParameters" class="searchParameters" style="display:block; clear:both; float:none; max-width:1100px; margin:auto; left:0px; right:0px;">
+	
+
+    <div>
+        <div>
+            <div class="logo">
+                <img alt="APS Image Database" src="app_themes/images/APS-img-data-grn342.png"/>
+            </div>
+
+            <span id="ContentPlaceHolder1_SearchParameters_lblImageCount" class="imageCount">7,762 images and growing!</span>
+
+
+            <div style="margin:auto;">
+                <div class="basicSearch">
+                    <input type="text" id ="txtFreeTextSearch" class="freeText" placeholder="Search"  onkeypress="txtFreeTextSearch_KeyPress(this, event)" />
+                    <div class="searchLogic">
+                        <select class="value" name="ddlLogicalOperator" id="ddlLogicalOperator" style="padding-bottom:8px;">
+	                        <option value="ALL">Search using all of these terms</option>
+	                        <option value="ANY">Search using any of these terms</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="collapseContainer">
+                    <div class="collapse collapsed">
+                        <input type="button" class="collapseButton advancedSearch" value="Refine Search" onclick="collapse(this)">
+                        
+                        <div class="container filters">
+
+                            <div class="header">
+                                Fill in any or all of these fields:
+                            </div>
+
+                            <div>
+                                <div class="filter host">
+                                    
+
+
+<div>
+    <div id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery1_typeAheadQuery" class="typeAhead" qtype="queryContainer" queryType="Host" style="float:left;">
+		
+        <div>
+            <input name="ctl00$ContentPlaceHolder1$SearchParameters$TypeAheadQuery1$txtQuery" type="text" id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery1_txtQuery" class="value" autocomplete="off" qtype="queryField" onblur="queryBlurred(this)" onfocus="queryFocused(this)" onkeyPress="return queryKeyPress(this, event)" onkeyDown="return queryKeyDown(this, event)" onkeyup="return queryKeyUp(this, event)" placeholder="Host" />  
+        </div>
+        <div class="results"></div>
+    
+	</div>
+    <div class="debug" style="display:none;">
+        <div class="hover"></div>
+        <div class="query"></div>    
+        <div class="timer"></div>
+        <div class="timeoutHandle"></div>
+    </div>
+</div>
+                                </div>
+
+                                <div class="filter pestPath">
+                                    <div class="field">
+                                        
+
+
+<div>
+    <div id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery2_typeAheadQuery" class="typeAhead" qtype="queryContainer" queryType="PestPath" filterMethod="buildFilter" style="float:left;">
+		
+        <div>
+            <input name="ctl00$ContentPlaceHolder1$SearchParameters$TypeAheadQuery2$txtQuery" type="text" id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery2_txtQuery" class="value" autocomplete="off" qtype="queryField" onblur="queryBlurred(this)" onfocus="queryFocused(this)" onkeyPress="return queryKeyPress(this, event)" onkeyDown="return queryKeyDown(this, event)" onkeyup="return queryKeyUp(this, event)" placeholder="Causal Agent" />  
+        </div>
+        <div class="results"></div>
+    
+	</div>
+    <div class="debug" style="display:none;">
+        <div class="hover"></div>
+        <div class="query"></div>    
+        <div class="timer"></div>
+        <div class="timeoutHandle"></div>
+    </div>
+</div>
+                                    </div>
+                                </div>
+
+                                <div class="filter disease">
+                                    <div class="field">
+                                        
+
+
+<div>
+    <div id="ContentPlaceHolder1_SearchParameters_taqDisease_typeAheadQuery" class="typeAhead" qtype="queryContainer" queryType="disease" style="float:left;">
+		
+        <div>
+            <input name="ctl00$ContentPlaceHolder1$SearchParameters$taqDisease$txtQuery" type="text" id="ContentPlaceHolder1_SearchParameters_taqDisease_txtQuery" class="value" autocomplete="off" qtype="queryField" onblur="queryBlurred(this)" onfocus="queryFocused(this)" onkeyPress="return queryKeyPress(this, event)" onkeyDown="return queryKeyDown(this, event)" onkeyup="return queryKeyUp(this, event)" placeholder="Disease/Disorder" />  
+        </div>
+        <div class="results"></div>
+    
+	</div>
+    <div class="debug" style="display:none;">
+        <div class="hover"></div>
+        <div class="query"></div>    
+        <div class="timer"></div>
+        <div class="timeoutHandle"></div>
+    </div>
+</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="filter pestPathDiseaseType">
+                                    <div class="field">
+                                        
+
+
+<div>
+    <div id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery4_typeAheadQuery" class="typeAhead" qtype="queryContainer" queryType="pestPathDiseaseType" style="float:left;">
+		
+        <div>
+            <input name="ctl00$ContentPlaceHolder1$SearchParameters$TypeAheadQuery4$txtQuery" type="text" id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery4_txtQuery" class="value" autocomplete="off" qtype="queryField" onblur="queryBlurred(this)" onfocus="queryFocused(this)" onkeyPress="return queryKeyPress(this, event)" onkeyDown="return queryKeyDown(this, event)" onkeyup="return queryKeyUp(this, event)" placeholder="Type of Causal Agent " />  
+        </div>
+        <div class="results"></div>
+    
+	</div>
+    <div class="debug" style="display:none;">
+        <div class="hover"></div>
+        <div class="query"></div>    
+        <div class="timer"></div>
+        <div class="timeoutHandle"></div>
+    </div>
+</div>
+                                    </div>
+                                </div>
+
+                                <div class="filter contributor">
+                                    <div class="field">
+                                        
+
+
+<div>
+    <div id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery3_typeAheadQuery" class="typeAhead" qtype="queryContainer" queryType="contributor" style="float:left;">
+		
+        <div>
+            <input name="ctl00$ContentPlaceHolder1$SearchParameters$TypeAheadQuery3$txtQuery" type="text" id="ContentPlaceHolder1_SearchParameters_TypeAheadQuery3_txtQuery" class="value" autocomplete="off" qtype="queryField" onblur="queryBlurred(this)" onfocus="queryFocused(this)" onkeyPress="return queryKeyPress(this, event)" onkeyDown="return queryKeyDown(this, event)" onkeyup="return queryKeyUp(this, event)" placeholder="Contributor" />  
+        </div>
+        <div class="results"></div>
+    
+	</div>
+    <div class="debug" style="display:none;">
+        <div class="hover"></div>
+        <div class="query"></div>    
+        <div class="timer"></div>
+        <div class="timeoutHandle"></div>
+    </div>
+</div>
+                                     </div>
+                                </div>
+
+                                <div class="filter publication">
+                                    <span class="label">
+                                        <select name="ctl00$ContentPlaceHolder1$SearchParameters$ddlPublicationList" id="ContentPlaceHolder1_SearchParameters_ddlPublicationList" class="publication">
+		<option value="0">Collection/Publication</option>
+		<option value="224">A Farmer&#39;s Guide to Corn Diseases</option>
+		<option value="232">A Farmer&#39;s Guide to Soybean Diseases</option>
+		<option value="215">Compendium of Alfalfa Diseases and Pests, Third Edition</option>
+		<option value="216">Compendium of Apple and Pear Diseases and Pests, Second Edition</option>
+		<option value="217">Compendium of Bean Diseases, Second Edition</option>
+		<option value="218">Compendium of Beet Diseases and Pests, Second Edition</option>
+		<option value="219">Compendium of Blueberry, Cranberry, and Lingonberry Diseases and Pests, Second Edition</option>
+		<option value="220">Compendium of Brassica Diseases</option>
+		<option value="221">Compendium of Chickpea and Lentil Diseases and Pests</option>
+		<option value="222">Compendium of Coffee Diseases and Pests</option>
+		<option value="223">Compendium of Corn Diseases, Fourth Edition</option>
+		<option value="225">Compendium of Cucurbit Diseases and Pests, Second Edition</option>
+		<option value="242">Compendium of Grape Diseases, Disorders, and Pests, Second Edition</option>
+		<option value="226">Compendium of Hop Diseases and Pests</option>
+		<option value="227">Compendium of Onion and Garlic Diseases and Pests, Second Edition</option>
+		<option value="228">Compendium of Ornamental Palm Diseases and Disorders</option>
+		<option value="230">Compendium of Rhododendron and Azalea Diseases and Pests, Second Edition</option>
+		<option value="231">Compendium of Soybean Diseases and Pests, Fifth Edition</option>
+		<option value="233">Compendium of Sunflower Diseases and Pests</option>
+		<option value="234">Compendium of Sweetpotato Diseases, Pests, and Disorders, Second Edition</option>
+		<option value="235">Compendium of Tomato Diseases and Pests, Second Edition</option>
+		<option value="236">Compendium of Turfgrass Diseases, Third Edition</option>
+		<option value="237">Compendium of Wheat Diseases and Pests, Third Edition</option>
+		<option value="229">Plant Diseases Caused by Bacteria: An Image Database and Educational Resource CD-ROM</option>
+		<option value="243">The Randall Rowe Legacy Image Collection</option>
+
+	</select>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="filter figureNumber" style="display:none;">
+                                <span class="label">Figure Number</span>
+                                <input type="text" class="value" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="hoverSearchTips" >
+                    <input
+                        type="button"
+                        value="Search Tips"
+                        class="hoverSearchTips">
+                    <div class="searchTips">
+                        <h5>Basic Search</h5>
+                        <ul>
+                            <li>At the right of the Search field, choose one of these options: “Search using all of these terms” or “Search using any of these terms”.</li>
+                            <li>To search for a specific phrase, put quotation marks around it—for example, “downy mildew”.</li>
+                            <li>To exclude a term, type a “-“ (minus) in front of it—for example, tomato -blight.</li>
+                            <li>Clear the Search field and search results by clicking the Clear Search button.</li>
+                        </ul>
+                        <h5>Refined Search</h5>
+                        <ul>
+                            <li>Start typing the desired term in one of the Refined Search fields, and a list of options will drop down; select the desired term.</li>
+                            <li>After each search, the options in drop-down fields are based on your current search results.</li>
+                            <li>To begin a new search, click the Clear Search button.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <input
+                    type="button"
+                    value="Clear Search"
+                    title="clears all search parameters and results"
+                    class="clearSearch"
+                    onclick="new function () { window.location.href = 'search.aspx'; }"/>
+                <input
+                    type="button"
+                    id="cmdSearch"
+                    class="search"
+                    value="Submit Search"
+                    title="Search"
+                    onclick="cmdSearch_Click()"/>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+            
+            <div class="background">
+                <img src="handlers/Image.ashx?SS=1" class="background"/>
+                <div  class="banner">
+                    <div style="max-width:372px; margin:auto; display:block; padding-bottom:10px; display:none;">
+                        <span>
+                            <input
+                                id="cmdViewSubscriptionPlans"
+                                type="button"
+                                value="SUBSCRIBE"
+                                title="Access scientifically peer-reviewed images and fact sheets for your teaching, extension, and diagnostic needs."
+                                onclick="new function(){checkRoles(null);}"/>
+                        </span>
+                        <span>
+                            <input
+                                id="cmdViewPermissionRequests"
+                                type="button"
+                                value="PERMISSION REQUESTS"
+                                title="Request permission to reproduce these images in books, brochures, and other media."
+                                onclick="window.open('http://www.apsnet.org/publications/imageresources/ImageDatabase/Pages/Permission.aspx');"/>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="displayFieldOptions" style="display:inline-block;">
+                        <div style="margin:2px; display:inline-block; float:left; padding-right:5px;">
+                            <input
+                                id="cmdViewBasket"
+                                type="button"
+                                value="Save Selected Items"
+                                onclick ="cmdViewBasket_onClick(this)" />
+                        </div>
+                    </div>
+
+                    <div class="previewSize">
+                        <span class="label">Thumbnail Size</span>
+                        <select id="ddlPreviewSize" class="value"  onchange="resizePreviewImages(this)">
+	                        <option value="200">Small</option>
+	                        <option value="300" selected="selected">Regular</option>
+                            <option value="600">Large</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="searchResultMessages">
+                    <div class="emptySet">
+                        No results were returned.
+                    </div>
+                    <div class="error"></div>
+                </div>
+                <div class="imageSearchStats"></div>
+                <div class="imageSearchResults"></div>
+            </div>
+        </div>
+    </div>
+    <div class="loading" style="display:none;">
+        <div class="dialog"></div>
+        <div class="spinner"></div>
+    </div>
+
+    
+
+    <div class="packagePreviewContainer" onclick="cmdClosePreview_onCLick()">
+        <div  
+            id="packagePreview"
+            class="packagePreview"
+            style="display:none;">
+            <div class="controls">
+                <input id="cmdClosePreview" type="button" class="close" onclick="cmdClosePreview_onCLick()" value="Close" />
+            </div>
+            <div class="controls">
+                <input id="cmdSeeFullSize" type="button" onclick="return cmdSeeFullSize_onClick()" value="View Full Size" />
+                <input id="cmdViewPDF" type="button" onclick="return cmdViewPDF_onCLick()" value="View Formatted Fact Sheet (pdf)" />
+                <input id="cmdSavePackage" type="button" onclick="return cmdSavePackage_onCLick()" value="Save Image and Fact Sheet" />    
+                <input value="Select" type="button" class="renderTextToLeft addToBasket" onclick ="cmdAddToBasket_onCLick(this);"/>
+            </div>
+     
+            <div class="image">
+                <img  alt="" src="" />
+            </div>
+
+            <div class="donationAcknowledgement">
+                © APS - Open Access
+            </div>
+
+            <div class="label">
+                <div class="imageSize"></div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+
+
+<div class="membershipRequiredPromptContainer">
+        <div class="membershipRequiredPrompt">
+            <div class="content">
+                <div class="loginRequired">
+                    <div class="TextBlock" style="width:100%; text-align:center;">
+                        <h2 style="font-weight:900; width:80%; margin:auto;">
+                            Subscribe to the NEW APS Image Database and Get Instant Visual Gratification!
+                        </h2>
+                    </div>
+                    <div>
+                        <h3>How to subscribe:</h3>
+                        <div style="color:red;">
+                        <i>
+                            You must first be logged in to access the images without watermarks and use  
+                            the advanced features of the</i> APS Image Database. <i>If you do not yet have an 
+                            account with us see "Not an APS Member" options below.
+                        </i>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div>
+                        <h3>Already an APS member or subscriber to the Image Database?</h3>
+                        <div class="collapseContainer">
+                            <div class="collapse collapsed">
+
+                                <input 
+                                    type="button"
+                                    class="collapseButton" 
+                                    value="Click to login"
+                                    title="Click to login"
+                                    onclick="collapse(this)" />
+
+                                <div class="container">
+
+                                    <div class="textBlock">
+                                        Please log in to the site. If you are not an Image Database subscriber, you will be 
+                                        given the option to add the Image Database to your membership once logged in. An 
+                                        Image Database subscription is <b>$57.00</b> 
+                                        per year for APS members. Your first-year subscription will be prorated 
+                                        to begin and end with your membership period.
+                                    </div>
+                                    <br />
+                                    <div class="login">
+                                        <div class="field userName">
+                                            <span class="label">UserID</span>
+                                            <span class="value"><input type="text" /></span>
+                                        </div>
+
+                                        <div class="field password">
+                                            <span class="label">Password</span>
+                                            <span class="value"><input type="password" /></span>
+                                        </div>
+
+                            
+                                        <div class="field rememberMe">
+                                            <span class="label">Remember Me</span>
+                                            <span class="value"><input type="checkbox" /></span>
+                                        </div>
+
+
+                                        <div class="control">
+                                            <input type="button" value="Login" onclick="login_onClick()" />
+                                        </div>
+
+
+
+                                        <script type="text/javascript">
+                                            function login_onClick()
+                                            {
+
+                                                var loginRequest = new Object();
+                                                loginRequest.UserId = $(".loginRequired .login .field.userName .value input[type='text']").val();
+                                                loginRequest.Password = $(".loginRequired .login .field.password .value input[type='password']").val();
+                                                //loginRequired login .field.rememberMe .value
+                                                loginRequest.RememberMe = false;
+                                                var jsonobj = JSON.stringify(loginRequest);
+                                                $.post("\login.axd", jsonobj, function (response)
+                                                {
+                                                    if (response.LoginSuccessful)
+                                                    {
+                                                        if (response.ImageDatabaseUser)
+                                                        {
+                                                            closeMembershipRequiredPrompt();
+                                                            var actionToTake = $(".membershipRequiredPromptContainer").data("actionToTake");
+                                                            $(".membershipRequiredPromptContainer").removeData("actionToTake");
+                                                            actionToTake();
+                                                        }
+                                                        else
+                                                        {
+                                                            //User is logged in, but does not hold a subscription
+                                                            //Prepate the Purchase screen.
+                                                            PrepareImageDatabasePurchaseScreen();
+
+                                                            $(".membershipRequiredPromptContainer").css("display", "block");
+                                                            $(".membershipRequiredPromptContainer .backDrop").css("display", "block");
+                                                            $(".membershipRequiredPromptContainer .content .loginRequired").css("display", "none");
+                                                            $(".membershipRequiredPromptContainer .content .membershipRequired").css("display", "block");
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        alert("Login Failed!");
+                                                    }
+
+                                                }, "JSON")
+                                                .fail(function (response, errorTitle, errorMessage)
+                                                {
+                                                    alert("There was an error attempting to log you in.");
+                                                });
+                                            }
+
+                                        </script> 
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Not an APS member? You can:</h3>
+
+                        <div class="collapseContainer">
+                            <div class="collapse collapsed">
+
+                                <input 
+                                    type="button"
+                                    class="collapseButton" 
+                                    value="Click to see join options"
+                                    title="Click to see join options"
+                                    onclick="collapse(this)" />
+
+                                <div class="container">
+                                    <ol>
+                                        <li>
+                                            <div>
+                                                <div>
+                                                    Click here to Join APS and add the Image Database to your membership. 
+                                                    Membership with an Image Database subscription is 
+                                                    <b>$157.00</b>  
+                                                    per year.
+                                                </div>
+                                                <div style="margin-top:5px;margin-bottom:5px">
+                                                    <a href="https://my.apsnet.org/_JoinRenew/membershiptype.aspx?ID=join&rb_returnUrl=%2fcustom%2fimageDatabase%2fSearch.aspx&rb_text=ReturnToImageDatabase">Join Here</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <div>
+                                                    Create an account and login.  When you attempt to access advanced 
+                                                    features, you will be given the chance to subscribe to the Image Database 
+                                                    for <b>$67.00</b> per year.
+                                                </div>
+                                                <div style="margin-top:5px;margin-bottom:5px">
+                                                    <a href="https://my.apsnet.org/APS/Create_Account/iCore/Contacts/CreateAccount.aspx">Create New Account</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>  
+                    </div>
+
+                    <div class="TextBlock">
+                        You can also order your subscription by calling 1.651.994.3806 or 1.651.454.7250. 
+                        Or email APS staff at <a href="mailto:aps@scisoc.org">aps@scisoc.org</a>.
+                    </div>
+                    <div style="margin-top:20px;">
+                        <i>
+                            Note: Subscriptions include many uses of the database images for education. 
+                            Those purchasing images for commercial use must pay an additional fee. 
+                            See <a href="http://www.apsnet.org/publications/imageresources/ImageDatabase/Pages/Terms.aspx">Terms of Use</a>.
+                        </i>
+                    </div>
+                    <div class="controls">
+                        <input type="button" onclick="closeMembershipRequiredPrompt();" value="OK" style="margin:auto; display:block; margin-bottom:20px;" />
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="membershipRequired">
+                    <div class="TextBlock" style="color:red; font-style:italic;">
+                        Thanks for logging in. We see that you are not a subscriber to the APS Image Database. 
+                        To access the images without watermarks and use the advanced features, you can purchase 
+                        your subscription here and continue with the advanced features.
+                    </div>
+                    
+
+
+
+
+    <style>
+
+        .availableProducts 
+        {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border: 1px solid gray;
+            padding: 5px;
+        }
+
+        .availableProducts  .productRow .code
+        {
+            display:none;
+        }
+
+        .availableProducts .productRow .description 
+        {
+            width: 300px;
+            display: inline-block;
+            vertical-align:top;
+        }
+
+       .availableProducts  .productRow .price
+       {
+           float:right;
+       }
+
+       .creditCard .label
+       {
+           width:200px;
+           float:left;
+       }
+
+       .creditCard .row
+       {
+           margin-bottom:2px;
+       }
+
+       .creditCard .cvv .value
+       {
+           width:30px;
+       }
+
+     .membershipRequiredPrompt .content .controls 
+     {
+        width: 150px;
+        display:block;
+        margin:auto;
+        margin-top:20px;
+    }
+
+
+    </style>
+
+    <div>
+        <div>
+            <div class="availableProducts"></div> 
+            <div class="creditCard">
+                <div class="name row">
+                    <span class="label">Card Holder Name</span><input type="text" class="value"/>
+                </div>
+                <div class="cardType row">
+                    <span class="label">Card Type</span><select class="value"></select>
+                </div>
+                <div class="number row">
+                    <span class="label">Card Number</span><input type="text" class="value"/>
+                </div>
+                <div class="cvv row">
+                    <span class="label">Card Security Code</span><input type="text" class="value"/>
+                </div>
+                <div class="expirationDate row">
+                    <span class="label">Expiration Date</span>
+                    <span class="month">
+                        <select class="value">
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </span>
+                    <span class="year"><select class="value"></select></span>
+                </div>
+            </div>
+            <div class="controls">
+                <input type="button" value="Cancel" class="cancel" />
+                <input type="button" value="Purchase" class="purchase" />
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+        function PrepareImageDatabasePurchaseScreen()
+        {
+            PreparePurchaseScreen("IMGDB")
+
+        }
+
+
+        function PreparePurchaseScreen(productCodes)
+        {
+            $(".controls input[type='button'].cancel").click(closeMembershipRequiredPrompt);
+            $(".controls input[type='button'].purchase").click(makePurchase);
+            $.getJSON("\AddProduct.axd?pl=" + productCodes, function (data)
+            {
+                var availableProducts = $("div.availableProducts");
+                $(data.PriceLookupList).each(function (index, element)
+                {
+                    var html = '<div class="productRow">';
+                    html += '<span><input type="checkbox" class="rowSelect" value="' + element.Code + '" /></span>';
+                    html += '<span class="code">' + element.Code + '</span>';
+                    html += '<span class="description">' + element.Description + '</span>';
+                    html += '<span class="price" price="' + element.ProratedPrice + '">' + element.FormattedProratedPrice + '</span>';
+                    html += '</div>';
+                    availableProducts.append(html)
+                });
+
+                availableProducts.append('<div class="productRow total"><span value="label">Total</span><span class="value"></span></div>');
+                availableProducts.find("input[type='checkbox']").click(SelectProduct);
+
+                //If there is only one possible option then default the selection and hide the total and checkbox.
+                if (data.PriceLookupList.length == 1)
+                {
+                    availableProducts.find(".productRow input[type='checkbox'].rowSelect").prop("checked", true);
+                    availableProducts.find(".productRow input[type='checkbox'].rowSelect").css("display", "none");
+                    availableProducts.find(".productRow.total").css("display", "none");
+                }
+
+                var cctypeselect = $(".creditCard  .cardType select.value");
+                cctypeselect.html("");
+                cctypeselect.append($('<option></option>').val("").html("Select a credit card type"));
+                $(data.CashAccounts)
+                    .each(function (index, element)
+                    {
+                        cctypeselect.append($('<option></option>').val(element.key).html(element.value));
+                    });
+                populateYearSelect();
+
+            });
+        }
+
+        function SelectProduct(sender)
+        {
+            var total = 0;
+            var x = $("div.availableProducts input[type = 'checkbox']:checked");
+            var y = x.parents('.productRow').find('span.price');
+            y.each(function (index, element) { total += Number($(element).attr("price")) });
+            $("div.availableProducts .productRow.total .value").text("$" + total.toFixed(2));
+        }
+
+        function populateYearSelect()
+        {
+            var d = new Date();
+            var currentYear = d.getFullYear();
+            var yearSelect = $(".creditCard .expirationDate .year select.value");
+            yearSelect.html("");
+            for (var y = currentYear; y < currentYear + 10; y++)
+            {
+                yearSelect.append($('<option></option>').val(y).html(y));
+            }
+        }
+
+        function makePurchase()
+        {
+
+
+            var cmdPurchase =  $(".controls input[type='button'].purchase");
+            
+            
+            cmdPurchase.attr("disabled", "disabled");
+
+
+
+            //Get selected products
+            var selectedProductCodes = [];
+            var x = $("div.availableProducts input[type = 'checkbox']:checked");
+            x.each(function (index, element) { selectedProductCodes[selectedProductCodes.length] = $(element).val() });
+
+            var obj = new Object();
+            obj.NewProductCodes = selectedProductCodes;
+            obj.CardHolderName = $(".creditCard .name input.value").val();
+            obj.CashAccount = $(".creditCard .cardType select.value").val();
+            obj.CardNumber = $(".creditCard .number input.value").val();
+            obj.CardSecurityValue = $(".creditCard .cvv input.value").val();
+            obj.CardExpirationMonth = $(".creditCard .expirationDate .month select.value").val();
+            obj.CardExpirationYear = $(".creditCard .expirationDate .year select.value").val();
+            var json = JSON.stringify(obj);
+
+
+
+
+
+
+
+            $.ajaxSetup({
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                }
+            });
+            
+            //$.post("\AddProduct.axd", json)
+            $.post("https://my.apsnet.org/AddProduct.axd", json)
+            .done
+            (
+                function (response)
+                {
+                    response = $.parseJSON(response);
+                    if (response.Successful)
+                    {
+                        alert("Payment Authorized.");
+                        closeMembershipRequiredPrompt();
+
+                        //Call the originl method reference from a data element
+                        var actionToTake = $(".membershipRequiredPromptContainer").data("actionToTake");
+                        $(".membershipRequiredPromptContainer").removeData("actionToTake");
+                        actionToTake();
+                    }
+                    else if(response.Declined)
+                    {
+                        alert("Your card was declined for the following reason - " + response.Message)
+                    }
+                    else
+                    {
+                        alert(response.Message)
+                    }
+                }
+            )
+            .fail
+            (
+                function(response)
+                {
+                    alert("We're sorry, but there was an error processing your credit card.");
+                }
+            )
+            .always
+            (
+                function (response)
+                {
+                    cmdPurchase.removeAttr("disabled");
+                }
+            )
+        }
+
+    </script> 
+
+
+                </div>
+            </div>
+            <div class="footer"></div>
+        </div>
+        <div class="backDrop"></div>
+    </div>
+
+    <iframe class="fileDownload"  style="display:none;"></iframe>
+    <div id="divBackDrop" class="backDrop"></div>
+
+    
+    
+
+
+<style>
+
+    .reportIssueViewContainer
+    {
+
+        position:fixed;
+        top:10px;
+        left:0px;
+        width:100%;
+        height:100%;
+        z-index: 220;
+        display:none;
+    }
+    
+
+</style>
+
+<div class="reportIssueViewContainer">
+    <div class="reportIssue">
+        <div class="controls">
+            <input type="button" class="close" value="Close" onclick="closeSubmitReport(this);" />
+        </div>
+        <div class="title">
+            <span>Submit Issue Report</span>
+        </div> 
+        <div class="content">
+            <img class="image" style="height:200px; display:block;margin:auto;" alt=""/>
+        </div>
+        <div>
+            <textarea class="description"></textarea>
+        </div>
+        <div class="controls">
+            <input type="button" class="submit" value="Submit Report" onclick="submitReport(this);" />
+        </div>
+    </div>
+</div>
+    
+
+<style>
+
+
+    div.basketViewContainer
+    {
+        position:fixed;
+        top:10px;
+        left:0px;
+        width:100%;
+        height:100%;
+        z-index: 220;
+        display:none;
+    }
+
+
+    div.basketViewContainer .basketView .basketRow .content .controls
+    {
+
+        width:110px;
+        clear:none;
+        float:left; /*to make firefox honor with width command*/
+        margin:0px;
+    }
+
+    div.basketViewContainer .basketView .basketRow .content .controls .renderTextToLeftContainer span
+    {
+        float:left;
+        padding-right: 5px;
+    }
+
+</style>
+
+<div class="basketViewContainer">
+    <div class="basketView">
+        <div class="controls">
+            <input type="button" class="save" value="Download" onclick="cmdSaveBasketPackage_onClick();"/>
+
+            <input
+                id="cmdCloseBasketView"
+                type="button" 
+                class="close"
+                value="Close"
+                onclick="cmdCloseBasketView_onClick(this)" />
+        </div>
+        <div class="container">
+            <div class="rows"></div>
+        </div>
+    </div>
+</div>
+    
+
+    <style>
+
+        .downloadAgreementContainer
+        {
+            position:fixed;
+            top:10px;
+            left:0px;
+            width:100%;
+            height:100%;
+            z-index: 500;
+            display:none;
+        }
+
+        .downloadAgreementContainer .downloadAgreement 
+        {     
+            margin:auto;     
+        }
+
+        .downloadAgreementContainer .downloadAgreement div.controls
+        {
+            margin-top:20px;
+            margin-bottom:10px;
+            float:right;
+        }
+
+        .downloadAgreementContainer .downloadAgreement div.controls input
+        {
+            margin-left:10px; 
+        }
+
+
+        .downloadAgreement
+        {
+            height:90%;
+            width:70%;
+            background-color:white;
+            border:5px black solid;
+            display:none;
+            z-index:500;
+            padding:10px;
+            max-height:600px;
+            max-width:650px;
+
+        }
+
+
+        .downloadAgreement .title
+        {
+            font-size:12pt;
+            font-weight:900;
+            margin-bottom: 20px;
+        }
+
+        .downloadAgreement .title>span:first-child 
+        {
+            font-style:italic;
+        }
+
+        .downloadAgreement .content
+        {
+            height:80%;
+            overflow-y:scroll;
+        }
+
+        .downloadAgreement .content ul 
+        {
+            margin-top:5px;
+        }
+
+    </style>
+
+<div class="downloadAgreementContainer">
+    <div class="downloadAgreement">
+
+        <div class="title">
+            <span>APS Image Database: </span><span>Abbreviated Terms and Conditions of Use</span>
+        </div>
+
+        <div class="content">
+            <u>A subscriber may this material for his/her own personal</u>
+            <ul>
+                <li>noncommercial work; diagnostics; research; educational work</li>
+            </ul>
+            <u>Instructors may use this material to enrich their own courses</u>
+            <ul>
+                <li>in print and via PowerPoint</li>
+            </ul>
+            <u>Instructors can post this material on an intranet network if</u>
+            <ul>
+                <li>it is only during the class duration and accessed only by its registered students</li>
+                <li>less than 10 APS images are used in a single presentation</li>
+            </ul>
+            <u>A subscriber (as author) can use this material in an extension fact sheet or bulletin if</u>
+            <ul>
+                <li>it is fewer than 10 pages long and free to the public</li>
+                <li>less than 10 APS images are used in a single fact sheet or bulletin</li>
+            </ul>
+            <u>The following uses are prohibited, unless written permission is obtained and any fees paid.</u>
+            <ul>
+                <li>by persons other than the subscriber or by an institution</li>
+                <li>in a commercial work, i.e., whether by a commercial or a nonprofit publisher</li>
+                <li>in any extension publication other than an extension fact sheet or bulletin</li>
+                <li>posting on the Internet</li>
+            </ul>
+            Full Terms and Conditions of Use are available on the <a href="http://www.apsnet.org"><i>APS Image Database</i> Terms of Use page.</a>
+            <br /><br /><br />
+            I agree to use this material according to the full Terms and Conditions of Use.
+        </div>
+
+        <div class="controls">
+            <input type="button" class="cancel" value="Cancel" />
+            <input type="button" class="ok" value="I Agree" />
+        </div>
+    </div>
+
+</div>
+
+    <!-- Templates (stored in external files for sanity sake so that this file is easier to read.) -->
+    
+
+<script id="basketRowTemplate" class="basketRowTemplate"   type="text/html"> 
+    <div class="basketRow" >
+        <div class="content">              
+            <div class="controls">
+                <input type="button" 
+                    class="delete"    
+                    title="Remove Image from Download List" 
+                    imageid="{[ImageId]}" 
+                    onclick="cmdDeleteBasketRow_OnClick(this)"/>
+                <div class="label" >Remove Image</div>
+            </div>
+            <div class="caption">
+                {[ImageCaption]}
+            </div>
+            <div class="image">
+                <img src="Handlers/image.ashx?ID={[ImageId]}&sz=300" alt="" />
+            </div>
+        </div>
+    </div>
+</script>
+    
+
+<script id="imageResultSectionTemplate" class="imageResultSectionTemplate"   type="text/html"> 
+    <div class='section collapse collapsed' 
+        index='[{index}]' 
+        style='width:100%; display:block; clear:both;'>
+
+
+        <div class="header">
+            <div class="controls">
+                <input type='button' style='color:transparent; float:left;' class='collapseButton'/>
+            </div>
+             <div>        
+                <span>Results for </span><span class='title'></span>
+            </div>
+        </div>
+        
+        <div class='container'></div>
+        <div class="controls">
+            <div class="paging">
+                <div class="label"></div>
+                <div>
+                    <input 
+                        type="button" value="Show More" class="showMore" 
+                        onclick="showMore(this);"
+                        title="Show more images results"/>
+                    <input 
+                        type="button" value="Show Remaining" class="showRemaining" 
+                        onclick="showRemaining(this);"
+                        title="Show remaining images results"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+    <script type="text/javascript" >
+        var x = $(".globalNav > tbody> tr> td");
+        x.css("display", "none");
+        var x2 = $(".globalNav > tbody> tr> td:first-child");
+        x2.css("display", "block");
+        var a = x2.find("a");
+        a.text("APS Home");
+        a.attr("href", "http://www.apsnet.org/");
+        //This line here will hide the first column of the table from the iMIS masterpage.
+        //$("#headerBar + table > tbody >tr >td:first-child").css("display", "none");
+
+    </script>
+
+
+
+
+    </div>
+
+	</form>
+    </body>
+</html>
+ contentType 9 text/html url 37 https://imagedatabase.apsnet.org:443/ responseCode 3 200 

@@ -1,0 +1,649 @@
+pqfidivsqitmfmqmaelouaeosiicacokwgxqxeoq length 5 28006 page 28006 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118374315-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-118374315-1');
+</script>
+
+<HTML>
+    <HEAD>
+        <TITLE>
+            Eratosthenes
+        </TITLE>
+        <!-- Please supply a correct e-mail address here -->
+        <LINK REV="made" HREF="mailto:USERNAME@HOSTNAME">
+    </HEAD>
+    <META NAME="description" content ="The interactive applet on this
+        page illustrates the Sieve of Eratosthenes. There are also links
+        and information about Eratosthenes of Cyrene">
+    <BODY BGCOLOR=ffffff>
+        <P>
+            <IMG SRC="images/UUlogo.gif" ALIGN="LEFT" BORDER=1
+                HSPACE=10>
+        </P>
+        <H6>
+            <A HREF="http://www.math.utah.edu/~alfeld/">
+                Peter Alfeld,
+            </A>
+            ---
+            <A HREF="http://www.math.utah.edu/">
+                Department of Mathematics,
+            </A>
+            ---
+            <A HREF="http://www.science.utah.edu/">
+                College of Science
+            </A>
+            ---
+            <A HREF="http://www.utah.edu/HTML_Docs/UofU_Home.html">
+                University of Utah
+            </A>
+        </H6>
+        <H1>
+            Eratosthenes of Cyrene
+        </H1>
+        <P>
+            A versatile scholar, Eratosthenes of Cyrene lived
+            approximately 275-195 BC.  He was the first to estimate
+            accurately the diameter of the earth.  For several decades,
+            he served as the director of the famous
+            <A HREF="http://zoro.cis.temple.edu/~chs/paideia/alexandreia.html">
+                library in Alexandria.
+            </A>
+            He was highly regarded in the ancient world, but
+            unfortunately only fragments of his writing have survived.
+            Eratosthenes died at an advanced age from voluntary
+            starvation, induced by despair at his blindness.
+        </P>
+        <P>
+            Here are some links to Eratosthenes related web pages:
+        </P>
+        <UL>
+            <LI>
+                A worldwide
+                <A HREF="
+                    http://www.ed.uiuc.edu/Activity-Structures/Collaborative-Problem-Solving/parallel-problem-solving/Eratosthenes-Experiment.html">
+                    experiment
+                </A>
+                based on Eratosthenes original computation of the
+                Earth's circumference.
+            </LI>
+            <LI>
+                A page on
+                <A HREF="http://www.utexas.edu/ftp/depts/grg/ustudent/frontiers/fall95/morrison/morrison.html">
+                    Ancient Geography.
+                </A>
+            </lI>
+            <LI>
+                <A HREF="http://aleph0.clarku.edu/~djoyce/mathhist/greece.html">
+                    Maps, lists, resources, and links
+                </A>
+                pertaining to ancient Greek mathematics.
+            </LI>
+            <LI>
+                <A HREF="http://zoro.cis.temple.edu/~chs/paideia/alexandreia.html">
+                    The library of Alexandria.
+                </A>
+            </li>
+        </UL>
+        <H1>
+            The Sieve of Eratosthenes
+        </H1>
+        <P>
+            Eratosthenes also conceived the &quot;Sieve of Eratosthenes
+            &quot;, a method of identifying prime numbers.  If you have
+            a
+            <A HREF="http://www.math.utah.edu/~alfeld/java.html">
+                Java
+            </A>
+            compatible browser you can use that sieve right here, from
+            this Applet:
+            <APPLET CODE="Sieve.class"
+                CODEBASE="http://www.math.utah.edu/~alfeld/java-classes"
+                WIDTH = 700 HEIGHT = 55 HSPACE=20 VSPACE=20>
+                <H2>
+                    However, your browser does not support
+                    <A HREF="http://www.math.utah.edu/java/">
+                        Java.
+                    </A>
+                    If it did you would not see this message!  Get a
+                    java compatible browser such as
+                    <A HREF="http://home.netscape.com/">
+                        Netscape,
+                    </A>
+                    of a sufficiently advanced version.
+                </H2>
+                <P>
+                </APPLET>
+                <H2>
+                    What is the Sieve of Eratosthenes?
+                </P>
+            </H2>
+            <P>
+                A
+                <A HREF="math/prime.html">
+                    <EM>prime number</EM>
+                </A>
+                is a natural number greater than 1 that can be divided
+                without remainder only by itself and by 1.  Natural
+                numbers <EM>n</EM> that can be divided by a number less
+                than <EM>n</EM> and greater than 1 are <EM>composite
+                </EM> numbers.  The <B>Sieve of Eratosthenes</B>
+                identifies all prime numbers up to a given number <EM>n
+                </EM> as follows:
+            </P>
+            <OL>
+                <LI>
+                    Write down the numbers 1, 2, 3, ..., n.  We will
+                    eliminate composites by marking them.  Initially all
+                    numbers are unmarked.
+                </li>
+                <LI>
+                    Mark the number 1 as special (it is neither prime
+                    nor composite).
+                </li>
+                <LI>
+                    Set <EM>k=1</EM>.  Until <EM>k</EM> exceeds or
+                    equals the square root of <EM>n</EM> do this:
+                    <UL>
+                        <LI>
+                            Find the first number in the list greater
+                            than k that has not been identified as
+                            composite.  (The very first number so found
+                            is 2.) Call it <EM>m.</EM> Mark the numbers
+<PRE><em> 2m, 3m, 4m, ... </em>
+</PRE>
+                            as composite.  (Thus in the first run we
+                            mark all even numbers greater than 2.  In
+                            the second run we mark all multiples of 3
+                            greater than 3.)
+                        </li>
+                        <LI>
+                            <EM>m</EM> is a prime number.  Put it on
+                            your list.
+                        </lI>
+                        <LI>
+                            Set <EM>k=m</EM> and repeat.
+                        </LI>
+                    </OL>
+                </li>
+                <LI>
+                    Put the remaining unmarked numbers in the sequence
+                    on your list of prime numbers.
+                </LI>
+            </UL>
+            <A HREF="images/sieve.gif">
+                <IMG SRC="images/pattern.gif" ALIGN=RIGHT VSPACE=10
+                    HSPACE=10>
+            </A>
+            <P>
+                This is exactly what the applet does.  If the natural
+                numbers are arranged in a rectangular array than marking
+                the composites gives rise to interesting patterns.  The
+                Figure nearby shows one of these patterns (the prime
+                numbers from 2 through 12,743), but seeing the pattern
+                develop is much more interesting than seeing the static
+                final result.  Experiment with various options yourself!
+                <A HREF="images/sieve.gif">
+                    Click here or on the pattern
+                </A>
+                to see a similar pattern made of boxes 2 by 2 pixels
+                large, forming a 529 by 369 rectangle, and showing all
+                primes up to and including 195197.
+
+            </P>
+            <P>
+                Since this is an educational page I'll give you a home
+                work problem: <B>Explain the vertical streaks that seem
+                to be present in the pattern.</B> Once you are done with
+                that, explain why there are no horizontal streaks!
+                
+                    Send me your answer!
+                </A>
+            </P>
+            <P>
+                The remainder of this page is
+            </P>
+            <H2>
+                A User's Guide to the Sieve of Eratosthenes Applet
+            </H2>
+            <P>
+                <IMG SRC="images/control.gif" BORDER=2 VSPACE=10
+                    HSPACE=10>
+            </P>
+            <H2>
+                A quick tour
+            </H2>
+            <P>
+                To see how it works, do the following:
+            </P>
+            <UL>
+                <LI>
+                    Click on the applet.  Two windows, called &quot;
+                    Sieve of Eratosthenes Controls&quot; and &quot;The
+                    Sieve of Eratosthenes&quot; will pop up on your
+                    screen.  They should look like the images nearby on
+                    this page and fit on your screen.  Arrange them
+                    conveniently so that you can see both windows
+                    without obstruction.  Let's call them <EM>the
+                    control panel</EM> and the <EM> drawing window</EM>.
+                    The boxes in the drawing window should form a 10 by
+                    10 array representing the numbers 0 through 99
+                    arranged as we read (i.e., from the top left corner
+                    to the bottom right corner).  Check you
+                    understanding by clicking on some of the black boxes
+                    and seeing the corresponding numbers show up in the
+                    textfield labeled <EM>pick:</EM> in the 3rd row of
+                    the control panel.  The blue box corresponds to 1,
+                    which as we saw is different from all other numbers.
+                    The number zero is not shown since it isn't a
+                    natural number.
+                </li>
+                    <IMG SRC="images/draw.gif" ALIGN=RIGHT BORDER=2
+                        VSPACE=10 HSPACE=10>
+                <LI>
+                    Move the cursor into the drawing window and hit the
+                    key &quot;s&quot; (for &quot;step&quot;).  The
+                    square corresponding to the number 4 is colored
+                    white.  That means it is not a prime number (since
+                    it is a multiple of 2).  Hit &quot;s&quot; again.
+                    The number six square is colored white.  Do this a
+                    few times until you see what's happening.
+                </li>
+                <LI>
+                    Hit the key &quot;p&quot; (for &quot;prime&quot;).
+                    The multiples of 2 will be finished off.
+                </li>
+                <LI>
+                    Hit &quot;s&quot; again (or &quot;p&quot;) to see
+                    what happens to the multiples of 3.
+                </li>
+                <LI>
+                    Hit &quot;a&quot; (for &quot;all&quot;) to see the
+                    rest of the process.  The prime numbers from 2 to
+                    100 are now marked with black boxes.  Click on some
+                    of them to see that they do indeed correspond to the
+                    prime numbers.
+                </li>
+                <LI>
+                    In the second row of the control panel, change the
+                    number in the textfield labeled &quot;size&quot; to
+                    2. (To do this, highlight the 20 that's in the
+                    field, type 2, and hit return.) Then click on &quot;
+                    do it all&quot; in the first row of the control
+                    panel.  You'll see patterns emerge as the Sieve of
+                    Eratosthenes proceeds, and the final picture (if you
+                    didn't resize the drawing window) should look like
+                    the pattern in the image above..
+                </li>
+                <LI>
+                    If the process is too slow for your taste, do this:
+                    <OL>
+                        <LI>
+                            Click on &quot;reset&quot; in the control
+                            panel.
+                        </li>
+                        <LI>
+                            Change &quot;Delay&quot; in the second row
+                            of the control panel to 0.
+                        </li>
+                        <LI>
+                            Click on &quot;Do it all&quot;.
+                        </li>
+                        <LI>
+                            If this is still not fast enough, select
+                            &quot; Fast&quot; in the upper right corner
+                            of the control panel, click on &quot;reset
+                            &quot;, and click on &quot;do it all&quot;
+                            again.  Now the sieve will run as fast as it
+                            can on your machine.
+                        </li>
+                    </OL>
+                </li>
+            </UL>
+            <H2>
+                Details of the Operation.
+            </H2>
+            <H2>
+                To Start
+            </H2>
+            <P>
+                Starting is very simple.  You click on the applet.
+            </P>
+            <H2>
+                To Quit
+            </H2>
+            <P>
+                Quitting is also very simple.  It can be accomplished in
+                a number of ways:
+            </P>
+            <UL>
+                <LI>
+                    Click in the applet on your web page.
+                </li>
+                <LI>
+                    Click on the <B>QUIT</B> button in the control
+                    panel.
+                </li>
+                <LI>
+                    Type &quot;x&quot;, &quot;X&quot;, &quot;Q&quot;, or
+                    &quot;q&quot; in any window.
+                </li>
+                <LI>
+                    Quit your browser.
+                </li>
+            </UL>
+            <H2>
+                The Control Panel
+            </H2>
+            <P>
+                Let's run through the rows of the control panel:
+            </P>
+            <OL>
+                <LI>
+                    <B> Row 1.</B>
+                    <UL>
+                        <LI>
+                            <B>do it all!</B> This button starts the
+                            sieve, which will run to completion (unless
+                            it is interrupted).
+                        </li>
+                        <LI>
+                            <B>do 1 prime</B> will start the sieve and
+                            let it run until the multiples of the
+                            current prime are all marked.  If the button
+                            is clicked during a full run (started by <B>
+                            do it all!</B> ) the run will stop after the
+                            current prime is completed.
+                        </li>
+                        <LI>
+                            <B>do 1 step</B> similarly will take 1 step
+                            of the sieve and then cause it to stop.  It
+                            will also stop a run in progress.
+                        </li>
+                        <LI>
+                            <B>reset</B> will return the drawing window
+                            to its original state.
+                        </li>
+                        <LI>
+                            <B>resize</B> is required for one of the
+                            methods for resizing the drawing window.  To
+                            use it, resize the drawing window manually
+                            and then click on it.
+                        </li>
+                        <LI>
+                            The <B>safe/fast</B> menu will select the
+                            safe or fast mode.  In the fast mode the
+                            program runs a little faster and uses less
+                            memory.  In the safe mode you can partially
+                            cover and uncover, or even close and reopen,
+                            the drawing window and its contents will be
+                            restored.
+                        </li>
+                        </li>
+                    </UL>
+                </li>
+                <LI>
+                    <B>Row 2.</B>
+                    <UL>
+                        <LI>
+                            <B>Size:</B> This is the size (in pixels) of
+                            the square corresponding to the numbers 1,
+                            2, ...  . Changing the size will also cause
+                            the drawing window to be reset.  The minimum
+                            possible size is 1.  If the size is greater
+                            than 4 then each square is surrounded by a
+                            green outline. Altering the size will
+                            increase or decrease the <EM>n</EM> but not
+                            the size of the drawing window.
+                        </li>
+                        <LI>
+                            <B>Delay:</B> This is the delay in
+                            milliseconds used when marking a number as
+                            composite.  During the delay the
+                            corresponding square is rendered in red.
+                            For large investigations the delay should be
+                            set to zero, but for demonstrations larger
+                            values may be suitable.
+                        </li>
+                    </UL>
+                </li>
+                <LI>
+                    <B>Row 3</B>
+                    <UL>
+                        <LI>
+                            <B>Primes:</B> The text window with the
+                            buttons &quot;-&quot; and &quot;+&quot; next
+                            to it displays the primes that have been
+                            found.  By default the largest one is
+                            displayed.  You can go up and down in the
+                            list by clicking on the &quot;-&quot; and
+                            &quot;+&quot; buttons, respectively.
+                            Overwriting the number in the text field
+                            will cause the next largest prime to be
+                            displayed (within the range of primes found
+                            by the sieve).
+                        </li>
+                        <LI>
+                            <B>pick:</B> Clicking on one of the squares
+                            in the drawing window will cause the
+                            corresponding number to appear in the text
+                            field.  This is useful for orienting
+                            yourself.
+                        </li>
+                        </li>
+                    </UL>
+                </li>
+                <LI>
+                    <B>Row 4.</B> The text windows give the horizontal
+                    and vertical extents extent of the drawing window
+                    (in boxes) and the length of the list used in the
+                    sieve.  You can resize the drawing window by
+                    specifying the horizontal and vertical extents in
+                    the text windows.
+                </li>
+                <LI>
+                    <B>Row 5.</B> I increase the version number whenever
+                    there is a significant change in the code, by an
+                    amount roughly proportional to the change.  If you
+                    are using an old version then you should probably
+                    replace it with the newer version provided here (see
+                    the downloading instructions below).  The <B>Run #
+                    </B> is the total number of runs since November 1,
+                    1996, by all copies of the program, to date.  I'm
+                    not trying to spy on you, but I am curious how much
+                    the program is used, and I'm also fascinated by the
+                    technology.  The count is obtained by sending an
+                    inquiry to my system which returns the current
+                    count.  This ability to communicate over the net
+                    opens a lot possibilities which are as yet not even
+                    recognized.  If my server daemon is down the program
+                    runs fine without indicating a count.
+                </li>
+            </OL>
+            <H2>
+                The Drawing Window
+            </H2>
+            <P>
+                You can resize the drawing window in several ways:
+            </P>
+            <UL>
+                <LI>
+                    Change the horizontal or vertical extent of the
+                    drawing area in the control panel.  This will
+                    interrupt any drawing in progress.
+                </li>
+                <LI>
+                    <B>While no drawing is in progress</B>, change the
+                    size of the window manually, and then click on
+                    &quot;resize &quot;.
+                </li>
+            </UL>
+            <P>
+                You can also control the drawing action via the key
+                board as follows:
+            </P>
+            <UL>
+                <LI>
+                    &quot;a&quot; or &quot;A&quot; are the equivalent of
+                    <B> do it all!</B>
+                </li>
+                <LI>
+                    &quot;p&quot; or &quot;P&quot; are the equivalent of
+                    <B> do 1prime</B>
+                </li>
+                <LI>
+                    &quot;s&quot; or &quot;S&quot; are the equivalent of
+                    <B> do 1 step</B>
+                </li>
+                <LI>
+                    &quot;r&quot; or &quot;R&quot; are the equivalent of
+                    <B> reset</B>
+                </li>
+                <LI>
+                    &quot;d&quot; or &quot;D&quot; set the delay equal
+                    to zero and accelerate the drawing.
+                </li>
+                <LI>
+                    &quot;x&quot;, &quot;X&quot;, &quot;q&quot; or
+                    &quot;Q &quot; are the equivalent of <B>quit</B>
+                </li>
+            </UL>
+            <H2>
+                Getting the most out of your applet.
+            </H2>
+            <P>
+                To compute the largest possible range of primes on your
+                machine do the following:
+            </P>
+            <OL>
+                <LI>
+                    Click on &quot;reset&quot; or otherwise make sure
+                    the drawing has stopped.
+                </li>
+                <LI>
+                    Set &quot;size&quot; to 1.
+                </li>
+                <LI>
+                    Make the drawing window as large as possible, and
+                    lower the window, or close it.
+                </li>
+                <LI>
+                    Click on &quot;resize&quot;.
+                </li>
+                <LI>
+                    Set the delay to zero and click on &quot;do it all!
+                    &quot;, or with the cursor in the drawing window
+                    type &quot;d&quot; and &quot;a&quot;.
+                </li>
+            </OL>
+            <P>
+                On my machine this process gives rise to a window that
+                1254 by 894, with <EM>n=1,121,075.</EM>.
+            </P>
+            <H2>
+                Running Standalone and Downloading
+            </H2>
+            <P>
+                You may download the byte code of this software and
+                incorporate it into your own web pages or run it on your
+                system in a standalone mode.  You need the following
+                Java classes:
+            </P>
+            <UL>
+                <LI>
+                    <A HREF="http://www.math.utah.edu/~alfeld/java-classes/Sieve.class">
+                        Sieve.class
+                    </A>
+                </li>
+                <LI>
+                    <A HREF="http://www.math.utah.edu/~alfeld/java-classes/ControlSieve.class">
+                        ControlSieve.class
+                    </A>
+                </li>
+                <LI>
+                    <A HREF="http://www.math.utah.edu/~alfeld/java-classes/DrawSieve.class">
+                        DrawSieve.class
+                    </A>
+                </li>
+            </UL>
+            <P>
+                When you click on these links (which point to binary
+                files) you'll probably see something strange on your
+                system. However, you should be able to download the
+                files properly in spite of their appearance.
+            </P>
+            <P>
+                <B>Sieve</B> is the class that calls all others.  To run
+                the software in standalone mode on a Unix system just
+                type <B> java Sieve</B> in the directory that contains
+                your class files.  If you want to base an Applet on your
+                files make sure you specify the code base (the directory
+                containing your class files) similarly as in the html
+                code of this page.  The code base must be accessible
+                over the net, otherwise you get a security exception and
+                things don't work right.
+            </P>
+            <P>
+                If you do download the software I invite you to
+                
+                    let me know
+                </A>
+                so that I can put you on my mailing list and inform you
+                about future improvements.  Of course, also let me know
+                if you have any troubles.
+            </P>
+            <P>
+                There is no help information built into the program (at
+                least not yet).  This page is intended to be the
+                documentation for the program.  So you may want to copy
+                the page, print it, or provide a link to it.
+            </P>
+            <H2>
+                Known Bugs
+            </H2>
+            <P>
+                This is a list of known bugs.  I'm working on them, but
+                at the moment it's not clear to me how to find and
+                correct them (otherwise I'd fix them immediately).  If
+                you have any suggestions, or would like to report other
+                bugs, please
+                
+                    write to me!
+                </A>
+            </P>
+            <UL>
+                <LI>
+                    Some actions during the drawing process cause the
+                    computation to go faster, but at the expense of
+                    resisting interruption, and omitting to repaint the
+                    drawing window after covering or closing it.  These
+                    actions include resizing the drawing window or and
+                    clicking somewhere in the drawing window.  Until
+                    this bug is fixed, perhaps you can look at it as a
+                    feature!
+                </li>
+            </UL>
+            <HR>
+            [02-Jun-1998]
+            <P>
+                <A HREF="index.html">
+                    Return to Peter Alfeld's Home Page.
+                </A>
+            </P>
+            <H5>
+                Designed for
+                <A HREF="http://home.netscape.com/">
+                    netscape
+                </A>
+                and
+                <A HREF="http://www.math.utah.edu/~alfeld/java.html">
+                    Java.
+                </A>
+            </H5>
+        </BODY>
+    </HTML>
+ contentType 9 text/html url 49 http://www.math.utah.edu:80/~pa/Eratosthenes.html responseCode 3 200 

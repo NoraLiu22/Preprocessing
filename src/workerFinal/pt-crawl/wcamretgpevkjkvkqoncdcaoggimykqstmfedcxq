@@ -1,0 +1,1024 @@
+wcamretgpevkjkvkqoncdcaoggimykqstmfedcxq length 5 56482 page 56482 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>Site Map</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="Site Map" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2013-12-18T18:44:08Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl23_BSignUp" href="javascript:__doPostBack(&#39;ctl23$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl23_BSignIn" href="javascript:__doPostBack(&#39;ctl23$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl22_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl22$BLocale', 'ar');" id="ctl22_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl22$BLocale', 'es');" id="ctl22_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl22$BLocale', 'fr');" id="ctl22_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl22$BLocale', 'ru');" id="ctl22_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">Русский</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./map/" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBR4vdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZtYXAeCWlubmVyaHRtbAUWU2lnbiB1cCBmb3IgYW4gYWNjb3VudGQCAw8WBB8ABR4vdXNlci9zaWduaW4vP3JldHVybnVybD0lMmZtYXAfAQUHU2lnbiBJbmQCAw8WAh4HVmlzaWJsZWgWBAIBDxYEHwAFHy91c2VyL3Byb2ZpbGUvP3JldHVybnVybD0lMmZtYXAeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIHDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCcnVkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC0zODM2LkpQRykWAgIBDxYCHwEFD1RoZSBDQkQgV2Vic2l0ZWQCAQ9kFgQCAQ8WBB8ABRIvd2ViL2RlZmF1bHQuc2h0bWwfAQUPVGhlIENCRCBXZWJzaXRlZAIDD2QWAmYPZBYCZg8WAh4FY2xhc3MFGm5hdmJhci1uYXYgbXItYXV0byBsZXZlbC0wFgICAw8WBh8GBQhuYXYtaXRlbR4HcGFnZS1pZAUENDA2Mx8CaBYCZg8WAh8AZGQCAw8WBB8GBVdsYXlvdXRfX3JlZ2lvbiBsYXlvdXRfX3JlZ2lvbi0tbGVmdCBsZWZ0LWFydGljbGUtbWVudS1jb250YWluZXIgY29sLTAgY29sLWxnLTMgbm8tYXNpZGUfAmhkAgUPFgIfBgUvY29sLTEyIHBsLW1kLTQgcHItbWQtNCBwbC1sZy01IHByLWxnLTUgbm8tYXNpZGUWAgIDDxYCHwEFF1dlZG5lc2RheSAvLyAxMi4xOC4yMDEzZAIHDxYCHwJoZGTKoRnJkVg+bsjqfqOMEA6O0kAss4UojXjvKyR5E53wgA==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl16_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-3836.JPG)">
+    <h1 id="ctl16_ctl00_CCarouselTitle">The CBD Website</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/web/default.shtml" id="ctl17_CPortal" class="navbar-brand">The CBD Website</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl17_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl17_ctl00_CMenuRow" class="nav-item " page-id="3790">
+        <a id="ctl17_ctl00_CMenuRowLink" class="nav-link">Website Information</a>
+    <ul id="ctl17_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item  active" page-id="3796">
+        <a href="/map/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">Site Map</a>
+    </li><li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3793"><a href="/terms/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">Terms of Use</a></li><li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3794"><a href="/privacy/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">Privacy Policy</a></li><li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item" page-id="5081"><a href="/credits/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">Photo Credits</a></li><li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3795"><a href="/copyright/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">Copyright</a></li>
+</ul>
+</li><li id="ctl17_ctl00_CMenuRow" class="nav-item" page-id="4063"><a id="ctl17_ctl00_CMenuRowLink" class="nav-link">User Services</a><ul id="ctl17_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="3791">
+        <a href="/feedback/" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Feedback</a>
+    </li><li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="2625"><a href="/user/signup" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Sign Up for an Account</a></li><li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9215"><a href="/user/signin" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Sign In</a></li><li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="9233"><a href="/user/signout" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Sign Out</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl21_CItems"><a href="/web/default.shtml">CBD Website</a><span> // Site Map</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Wednesday // 12.18.2013</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              <h1 class="cmsH1">Site Map</h1>
+
+
+<div id="ctl15_CSkin">
+    
+
+    <div id="ctl15_CSkin2">
+        
+        <table id="ctl15_W12707_CTable" width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top" style="padding:10px;" width="32%"><div id="ctl15_W12707_ctl19_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl19_CSkin2">
+        <div class="hlite"><a name="ConventiononBiologicalDiversity"></a><h3>Convention on Biological Diversity</h3>
+<p></p>
+<b>About the Convention</b><ul><li><a href="/history/">History of the Convention </a></li><li><a href="/convention/text/">Convention Text</a></li><li><a href="/convention/parties/list/">List of Parties</a></li><li><a href="/decisions/default.shtml">Decisions</a></li><li><a href="/gbo3/">Global Biodiversity Outlook (GBO 3)</a></li></ul>
+<p></p>
+<b>Convention Bodies</b><ul><li><a href="/cop/">Conference of the Parties (COP)</a></li><li><a href="/sbstta/">Subsidiary Body on Scientific, Technical and Technological Advice (SBSTTA)</a></li><li><a href="/wgri/">Working Group on the Review of Implementation (WGRI)</a></li><li><a href="/abs/icnp">Intergovernmental Committee for the Nagoya Protocol (ICNP)</a></li><li><a href="/convention/wg8j.shtml">Working Group on Article 8(j)</a></li><li><a href="/convention/wgpa.shtml">Working Group on Protected Areas</a></li></ul>
+<p></p>
+<b>Strategic Plan for Biodiversity 2011-2020</b>
+<p></p>
+<ul><li><a href="/sp/elements/">Key Elements</a></li><li><a href="/sp/targets/">Aichi Biodiversity Targets</a></li><li><a href="/sp/implementation/">Implementation</a></li><li><a href="/2011-2020/">United Nations Decade on Biodiversity 2011-2020</a></li></ul>
+<p></p>
+<b>Mechanisms</b>
+<p></p>
+<ul><li><a href="/nbsap/">National Biodiversity Strategies and Action Plans (NBSAPs)</a></li><li><a href="/reports/">National Reports</a></li><li><a href="/financial/">Financial Resources and Mechanism</a></li><li><a href="/lifeweb/">LifeWeb for Financing for Protected Areas</a></li><li><a href="/chm/">Clearing-House Mechanism (CHM)</a></li></ul>
+<p></p>
+<b>Cooperation &amp; Partnerships</b>
+<p></p>
+<ul><li><a href="/ssc/">South-South Cooperation</a></li><li><a href="/csp/">Consortium of Scientific Partners on Biodiversity</a></li><li><a href="/rio/">Rio Conventions</a></li><li><a href="/brc/">Biodiversity-related Conventions</a></li><li><a href="/jbf/">Japan Biodiversity Fund</a></li><li><a href="/agreements/">Partnership Agreements</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" style="padding:10px;" width="32%"><div id="ctl15_W12707_ctl12_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl12_CSkin2">
+        <div class="hlite"><a name="CartagenaProtocolonBiosafety"></a><h3>Cartagena Protocol on Biosafety</h3>
+<p></p>
+<b>About the Protocol</b><ul><li><a href="https://bch.cbd.int/protocol/background/">Background</a></li><li><a href="https://bch.cbd.int/protocol/text/">Text of the Cartagena Protocol</a></li><li><a href="https://bch.cbd.int/protocol/issues/">Key Protocol Issues</a></li><li><a href="https://bch.cbd.int/protocol/issues/cpb_stplan.shtml">Strategic Plan</a></li></ul>
+<p></p>
+<b>Parties</b><ul><li><a href="https://bch.cbd.int/protocol/parties/">List of Parties</a></li><li><a href="https://bch.cbd.int/protocol/ratification.shtml">Becoming a Party</a></li><li><a href="https://bch.cbd.int/database/compiled-national-contacts/">National Contacts</a></li><li><a href="https://bch.cbd.int/protocol/cpb_natreports.shtml">National Reports</a></li><li><a href="https://bch.cbd.int/protocol/budget/">Status of Contributions</a></li></ul>
+<p></p>
+<b>COP-MOP</b><ul><li><a href="https://bch.cbd.int/protocol/cpb_bureau.shtml">COP-MOP Bureau</a></li><li><a href="https://bch.cbd.int/protocol/cpb_mopmeetings.shtml">COP-MOP Meetings</a></li><li><a href="https://bch.cbd.int/protocol/cpb_bureau.shtml">COP-MOP Decisions</a></li></ul>
+<p></p>
+<b>Resources</b><ul><li><a href="https://bch.cbd.int/about/">Biosafety Clearing-House</a></li><li><a href="https://bch.cbd.int/protocol/cpb_faq.shtml">Frequently Asked Questions (FAQs) </a></li><li><a href="https://bch.cbd.int/protocol/cpb_media.shtml">Media and Outreach</a></li><li><a href="https://bch.cbd.int/protocol/cpb_media_video1.shtml">Video: the Cartagena Protocol on Biosafety</a></li><li><a href="https://bch.cbd.int/database/resources/">Search the Biosafety Information Resource Centre (BIRC)</a></li></ul>
+<p></p>
+<b>Publications</b><ul><li><a href="https://bch.cbd.int/protocol/cpb_publications.shtml">Protocols and Decisions</a></li><li><a href="https://bch.cbd.int/protocol/cpb_factsheets.shtml">Fact Sheets and Banners</a></li><li><a href="https://bch.cbd.int/protocol/cpb_newsletter.shtml">Newsletter</a></li><li><a href="https://bch.cbd.int/protocol/cpb_otherpubl.shtml">Other Publications</a></li></ul>
+<p></p>
+<ul><li><a href="https://bch.cbd.int/protocol/supplementary/">Nagoya – Kuala Lumpur Supplementary Protocol on Liability and Redress</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" style="padding:10px;" width="32%"><div id="ctl15_W12707_ctl13_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl13_CSkin2">
+        <div class="hlite"><a name="NagoyaProtocolonABS"></a><h3>Nagoya Protocol on ABS</h3>
+<p></p>
+<b>Nagoya Protocol</b><ul><li><a href="/abs/about/">About the Nagoya Protocol</a></li><li><a href="/abs/text/">Nagoya Protocol Text</a></li><li><a href="/abs/becoming-party/">Becoming a Party</a></li><li><a href="/abs/nagoya-protocol/signatories/">Signatories to the Nagoya Protocol</a></li><li><a href="/abs/icnp/">Intergovernmental Committee</a></li><li><a href="/abs/bureau/">ICNP-Bureau </a></li><li><a href="/abs/background/">Background</a></li></ul>
+<p></p>
+<b>Resources</b><ul><li><a href="/abs/awareness-raising/">Awareness-raising material on ABS</a></li><li><a href="/abs/measures/">ABS Measures Search Page</a></li><li><a href="/abs/instruments/">Existing instruments, guidelines, codes of conduct and tools addressing ABS</a></li><li><a href="/abs/resources/contracts.shtml">Model ABS Agreements and Contractual Clauses</a></li><li><a href="/abs/government-chm/">Governmental CHMs</a></li></ul>
+<p></p>
+
+<p></p>
+<b>ABS Developments under the CBD Prior to the Nagoya Protocol</b><ul><li><a href="/abs/pre-protocol/documentation/">Relevant documentation from the negotiations of the Nagoya Protocol</a></li><li><a href="/abs/bonn/">Bonn Guidelines</a></li><li><a href="/abs/capacity/">Capacity-building prior to the Nagoya Protocol</a></li><li><a href="/abs/casestudies/">ABS Case Studies</a></li><li><a href="/abs/bot-gards/">Ex Situ Collections</a></li><li><a href="/abs/roster/">ABS Roster of Experts</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+</tr>
+<tr>
+<td valign="top" style="padding:10px;"><div id="ctl15_W12707_ctl16_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl16_CSkin2">
+        <div class="hlite"><a name="Secretariat"></a><h3>Secretariat</h3>
+<p></p>
+<b>About the Secretariat</b><ul><li><a href="/secretariat/role.shtml">Role of the Secretariat</a></li><li><a href="/secretariat/divisions.shtml">Divisions</a></li></ul>
+<p></p>
+<b>Staff</b><ul><li><a href="/secretariat/es.shtml">Executive Secretary</a></li><li><a href="/secretariat/list-staff.shtml">Staff List</a></li></ul>
+<p></p>
+<b>Initiatives</b><ul><li><a href="/programmes/outreach/press/museum.shtml">CBD Museum of Nation and Culture</a></li><li><a href="/secretariat/greening.shtml">Greening of the SCBD</a></li></ul>
+<p></p>
+<b>Documents</b><ul><li><a href="/secretariat/quarterly.shtml">Quarterly Reports</a></li><li><a href="/secretariat/audit.shtml">Audit Report</a></li><li><a href="/secretariat/activities.shtml">Reports on Activities of the Secretariat</a></li><li><a href="/secretariat/jobs.shtml">Employment and Business Opportunities</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" style="padding:10px;"><div id="ctl15_W12707_ctl14_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl14_CSkin2">
+        <div class="hlite"><a name="Programmes"></a><h3>Programmes</h3> <b>Thematic Programmes</b>
+<p></p>
+<ul><li><a href="/agro/default.shtml">Agricultural Biodiversity</a></li><li><a href="/drylands/default.shtml">Dry and Sub-humid Lands Biodiversity</a></li><li><a href="/forest/default.shtml">Forest Biodiversity</a></li><li><a href="/waters/default.shtml">Inland Waters Biodiversity</a></li><li><a href="/island/default.shtml">Island Biodiversity</a></li><li><a href="/marine/default.shtml">Marine and Coastal Biodiversity</a></li><li><a href="/mountain/default.shtml">Mountain Biodiversity</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl15_W12707_ctl22_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl22_CSkin2">
+        <div class="hlite"><b>Major Groups</b>
+<p></p>
+<ul><li><a href="/authorities/">Local Authorities</a></li><li><a href="/parliamentarians/">Parliamentarians</a></li><li><a href="/business/">Business</a></li><li><a href="/universities/">Universities &amp; Scientific Community_</a></li><li><a href="/youth/default.shtml">Children &amp; Youth</a></li><li><a href="https://greenwave.cbd.int/en/home">The Green Wave</a></li><li><a href="/ngo/">Non-Govermental Organizations (NGOs)</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" style="padding:10px;"><div id="ctl15_W12707_ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl15_CSkin2">
+        <div class="hlite"><a name=""></a><h3>&#160;</h3><b>Cross-cutting Issues</b>
+<p></p>
+<ul><li><a href="/development/">Biodiversity for Development</a></li><li><a href="/climate/default.shtml">Climate Change and Biological Diversity</a></li><li><a href="/cepa/default.shtml">Communication, Education &amp; Public Awareness</a></li><li><a href="/incentives/default.shtml">Economics, Trade and Incentive Measures</a></li><li><a href="/ecosystem/default.shtml">Ecosystem Approach</a></li><li><a href="/gender/">Gender and Biodiversity</a></li><li><a href="/gspc/default.shtml">Global Strategy for Plant Conservation</a></li><li><a href="/gti/default.shtml">Global Taxonomy Initiative</a></li><li><a href="/impact/default.shtml">Impact Assessment</a></li><li><a href="/indicators/default.shtml">Identification, Monitoring, Indicators and Assessments</a></li><li><a href="/invasive/default.shtml">Invasive Alien Species</a></li><li><a href="/liability/default.shtml">Liability and Redress, Article 14.2</a></li><li><a href="/protected/default.shtml">Protected Areas</a></li><li><a href="/sustainable/default.shtml">Sustainable Use of Biodiversity</a></li><li><a href="/tech-transfer/default.shtml">Technology Transfer and Cooperation</a></li><li><a href="/tourism/default.shtml">Biological Diversity and Tourism</a></li><li><a href="/traditional/default.shtml">Traditional Knowledge, Innovations and Practices - Article 8(j)</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+</tr>
+<tr>
+<td valign="top" style="padding:10px;"><div id="ctl15_W12707_ctl21_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl21_CSkin2">
+        <div class="hlite"></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" style="padding:10px;"><div id="ctl15_W12707_ctl17_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl17_CSkin2">
+        <div class="hlite"><a name="Information"></a><h3>Information</h3>
+<p></p>
+<b>News and Communications</b>
+<p></p>
+<ul><li><a href="/new/">What&#39;s New History</a></li><li><a href="/statements.shtml">Statements</a></li><li><a href="/notifications/">Notifications</a></li><li><a href="/information/news.shtml">News Headlines on Biodiversity</a></li><li><a href="/press-releases/">Press Releases</a></li><li><a href="/rss/">RSS Feeds</a></li><li><a href="http://twitter.com/#!/cbdnews">Twitter</a></li><li><a href="http://www.facebook.com/UNBiodiversity">Facebook</a></li><li><a href="/forums.shtml">Discussion Forums</a></li></ul>
+<p></p>
+<b>National Information</b>
+<p></p>
+<ul><li><a href="/countries/">Country Profiles</a></li><li><a href="/information/parties.shtml">List of Parties</a></li><li><a href="/information/nfp.shtml">Lists of National Focal Points</a></li><li><a href="/nbsap/">National Biodiversity Strategies and Action Plans (NBSAPs)</a></li><li><a href="/reports/">National Reports</a></li><li><a href="/convention/parties/contributions.shtml">Status of Contributions</a></li></ul>
+<p></p>
+<b>Multimedia</b>
+<p></p>
+<ul><li><a href="/photos/">Photo Gallery</a></li><li><a href="/videos/">Video Gallery</a></li><li><a href="http://www.youtube.com/user/chmcbd">YouTube</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" style="padding:10px;"><div id="ctl15_W12707_ctl18_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl18_CSkin2">
+        <div class="hlite"><a name=""></a><h3>&#160;</h3><b>General References</b>
+<p></p>
+<ul><li><a href="/decisions/">Decisions</a></li><li><a href="/recommendations/">Recommendations</a></li><li><a href="/meetings/">Meetings</a></li><li><a href="/information/library.shtml">Library and Documentation </a></li><li><a href="/guidelines/">Principles, Guidelines and Tools</a></li><li><a href="/doc/negotiation/">Resources for Negotiators</a></li><li><a href="/ecolex/">ECOLEX - A Gateway to Biodiversity-Related Law</a></li><li><a href="/case-studies/">Case Studies</a></li><li><a href="/links/">Related Websites</a></li><li><a href="/agreements/">Partnership Agreements</a></li></ul>
+<p></p>
+</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl15_W12707_ctl20_CSkin">
+    
+
+    
+    
+    <div id="ctl15_W12707_ctl20_CSkin2">
+        <div class="hlite"><b>Thematic Databases</b>
+<p></p>
+<ul><li><a href="/ecosystem/sourcebook/">Ecosystem Approach Sourcebook</a></li><li><a href="https://adaptation.cbd.int/">Climate Change Adaptation Database</a></li><li><a href="/incentives/case-studies.shtml">Database on Incentive Measures</a></li><li><a href="/assessments/">Database of Scientific Assessments</a></li><li><a href="/programmes/cross-cutting/technology/search.aspx">Database on Technology Transfer</a></li><li><a href="/impact/case-studies/">Case Studies on Impact Assessment </a></li><li><a href="/drylands/cs/">Case Studies - Dry and Sub-Humid Land Biodiversity</a></li><li><a href="/abs/measures/">ABS Measures Search Page</a></li><li><a href="/abs/projects.shtml">Access to Genetic Resources and Benefit-sharing</a></li><li><a href="/abs/roster/">ABS Roster of Experts</a></li></ul></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 27 https://www.cbd.int:443/map responseCode 3 200 

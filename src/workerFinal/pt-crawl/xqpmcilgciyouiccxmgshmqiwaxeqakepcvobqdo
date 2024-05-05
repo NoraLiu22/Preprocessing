@@ -1,0 +1,574 @@
+xqpmcilgciyouiccxmgshmqiwaxeqakepcvobqdo length 5 38028 page 38028  <!--Layout of website top banner-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/lib/bootstrap2.3.2/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/site.min.css" rel="stylesheet" />
+    <script src="/lib/new-jQuery/dist/jquery.min.js"></script>
+    <script src="/Scripts/site.min.jason.js"></script>
+    <script src="/Scripts/dompurify.min.js"></script>
+
+    
+    <link rel="icon" href=/Content/SpeciesCatalog/icons/NSW-Main-page-icon.png type="image/x-icon" />
+    <link href=/Content/SpeciesCatalog/SpeciesCatalog.css rel="stylesheet" type="text/css" /> 
+    <title>LDL: Species</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="top-banner" id="top-left"></div>
+        <div class="top-banner" id="top-right"></div>
+
+        <nav>
+            <ul>
+                <li><a class="header-nav-link" href="/Homepage/MainContent">Home</a></li>
+
+                <li><a class="header-nav-link" href="/Biblio/Main">Bibliography</a></li>
+
+                <li><a class="header-nav-link" href="/SpeciesCatalog/Main">Species</a></li>
+
+                <li>
+                    <a class="header-nav-link" href="/Faunas/Main">Faunas</a>
+
+                    <ul style="width:120px" id="second">
+                        <li style="border-bottom:1px solid white;margin-bottom:3px"><a class="header-nav-link" href="/Faunas/Main">About</a></li>
+                        
+                        <li><a class="header-nav-link" href="/Albania/Main">Albania</a></li>
+                        <li><a class="header-nav-link" href="/Ireland/Main">Ireland</a></li>
+                        <li><a class="header-nav-link" href="/Italy/Main">Italy</a></li>
+                        <li><a class="header-nav-link" href="/Slovenia/Main">Slovenia</a></li>
+                        <li><a class="header-nav-link" href="/SouthAfrica/Main">South Africa</a></li>
+                        <li><a class="header-nav-link" href="/Switzerland/Main">Switzerland</a></li>
+                    </ul>
+                </li>
+
+                <li><a class="header-nav-link" href="/NeuroDirectory/Main">Directory</a></li>
+
+                <li><a class="header-nav-link" href="/Metakey/Main">Metakey</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        
+
+
+
+
+
+<nav>
+    
+
+<div class="sub-nav" id="sub-left">
+    <a href=/HomePage/MainContent style="text-decoration: none; font-size: 12px"><img src= 'https://lacewing.tamu.edu/neuropterida/ldl_icons/LDL-Main.png'  class='standard-icon' title='Lacewing Digital Library'/> LDL</a> &gt;
+    <a href="Main" style="text-decoration: none; font-size: 12px"><img src='../Content/SpeciesCatalog/icons/NSW-Main-page-icon.png' class='standard-icon' title='Neuropterida Species of the World' /> Species</a> &gt;
+    Advanced Search
+</div>
+
+<div class="sub-nav" id="sub-right">Neuropterida Species of the World (NSW &ndash; <a href='Main' target='_top'><img src='../Content/SpeciesCatalog/icons/NSW-Main-page-icon.png' class='standard-icon gray-out' title='Neuropterida Species of the World' /></a>)</div>
+
+
+
+</nav>
+
+<div class="content">
+    <div class="text-body" style="margin-left: 50px;">
+        <h1>Advanced Search</h1>
+        <form method="GET" action="AdvancedSearchResults" name="sengine" target="_top">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td width="230px"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><font color="#0000FF"><b>Scientific Name</b></font></td>
+                    </tr>
+                    <!-- ********************ORDER*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Order</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asordercriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input class="inputformat" name="asorder" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., meg, megaloptera, gal, tera)</td>
+                        <td width="50px"></td>
+                    </tr>
+                    <!-- ********************FAMILY*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Family</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asfamilycriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asfamily" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., dil, dilaridae, rid, dae)</td>
+                    </tr>
+                    <!-- ********************SUB FAMILY*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Subfamily</b>:</td>
+                        <td>
+                            <select class="wide-select" name="assubfamilycriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="assubfamily" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************TRIBE*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Tribe</b>:</td>
+                        <td>
+                            <select class="wide-select" name="astribecriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="astribe" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                    </tr>
+                    <!-- ********************SUB TRIBE*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Subtribe</b>:</td>
+                        <td>
+                            <select class="wide-select" name="assubtribecriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="assubtribe" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <!-- ********************ORIGINAL GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Original Genus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asoriginalgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asoriginalgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., chry, chrysopa, ryso, opa)</td>
+                    </tr>
+                    <!-- ********************CURRENT GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Current Genus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascurrentgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascurrentgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                    </tr>
+                    <!-- ********************ORIGINAL/CURRENT GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Original or Current Genus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asoriginalcurrentgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asoriginalcurrentgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************ORIGINAL SUB GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Original Subgenus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asoriginalsubgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asoriginalsubgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************CURRENT SUB GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Current Subgenus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascurrentsubgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascurrentsubgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************ORIGINAL/CURRENT SUB GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Original or Current Subgenus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asoriginalcurrentsubgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asoriginalcurrentsubgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************ORIGINAL/CURRENT GENUS OR SUB GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Original or Current, Genus or Subgenus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asoriginalcurrentgenussubgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asoriginalcurrentgenussubgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************COMBINATION GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Genus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationgenus" style="width:100%" type="text" class="inputformat" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., chry, chrysopa, ryso, opa)</td>
+                    </tr>
+                    <!-- ********************COMBINATION SUB GENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Subgenus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationsubgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationsubgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************COMBINATION GENUS OR SUBGENUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Genus or Subgenus</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationgenussubgenuscriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationgenussubgenus" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <!-- ********************COMBINATION SPECIES GROUP*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination (Species Group)</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationspeciesgroupcriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationspeciesgroup" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;</td>
+                    </tr>
+                    <!-- ********************COMBINATION SPECIES*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Species</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationspeciescriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationspecies" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., pall, pallidus, llid, dus)</td>
+                    </tr>
+                    <!-- ********************COMBINATION SUBSPECIES*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Subspecies</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationsubspeciescriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationsubspecies" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************COMBINATION VARIETY*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Infrasubspecies</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationvarietycriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationvariety" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************COMBINATION SUBINFRASUBSPECIES*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination Subinfrasubspecies</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationsubinfrcriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationsubinfr" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************COMBINATION SPECIES/SUBSPECIES/VARIETY********** -->
+                    <tr>
+                        <td align="right" class="DF1row" nowrap="nowrap"><b>Combination Any Species-Group Name</b>:</td>
+                        <td>
+                            <select class="wide-select" name="ascombinationspeciessubspeciesvarietycriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="ascombinationspeciessubspeciesvariety" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="center">
+                            <font size="-1">(For best results omit the nomenclatural gender endings of any species-group names.)</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><font color="#0000FF"> <b>Miscellaneous</b></font></td>
+                        <td></td>
+                    </tr>
+                    <!-- ********************AUTHOR*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Author</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asauthorcriteria">
+                                    <option value="beginswith" selected="selected">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asauthor" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., Ban, Banks, ank, nks)</td>
+                    </tr>
+                    <!-- ********************YEAR*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Year</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asyearcriteria">
+                                    <option value="beginswith">begins with</option>
+                                    <option value="is" selected="selected">is</option>
+                                    <option value="contains">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asyear" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., 1948, 194, 94, 948)</td>
+                    </tr>
+                    <!-- ********************JOURNAL*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Journal</b>:</td>
+                        <td>
+                            <select class="wide-select" name="asjournalcriteria">
+                                    <option value="beginswith">begins with</option>
+                                    <option value="is">is</option>
+                                    <option value="contains" selected="selected">contains</option>
+                                    <option value="endswith">ends with</option>
+                            </select>
+                        </td>
+                        <td><input name="asjournal" class="inputformat" style="width:100%" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., ent, annals, jour, ology)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><font color="#0000FF"> <b>Number</b></font></td>
+                        <td></td>
+                    </tr>
+                    <!-- ********************GENUS NUMBER*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Genus# is</b>:</td>
+                        <td><input name="asgenusnumber" style="width:100%;height:29.5px;" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(CombGenu[or Subg]TaxObjID)</td>
+                    </tr>
+                    <!-- ********************SPECIES NUMBER*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Species# is</b>:</td>
+                        <td><input name="asspeciesnumber" style="width:100%;height:29.5px;" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(CombSpec[or Subs, or Infr]TaxObjID)</td>
+                    </tr>
+                    <!-- ********************REFERENCE NUMBER*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Reference# is</b>:</td>
+                        <td><input name="asreferencenumber" style="width:100%;height:29.5px;" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(BibObjID, =BotN r#, =ref#)</td>
+                    </tr>
+                    <!-- ********************COMBINATION NUMBER*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Combination# is</b>:</td>
+                        <td><input name="ascombinationnumber" style="width:100%;height:29.5px;" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(CombObjID, =comb#)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><font color="#0000FF"> <b>Restrictions</b></font></td>
+                        <td></td>
+                    </tr>
+                    <!-- ********************NAME STATUS*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Name Status</b>:</td>
+                        <td colspan="2">
+                            <select class="wide-select" name="asnamestatus">
+                                    <option value="availableorunavailable" selected="selected">available or unavailable</option>
+                                    <option value="availableonly">available only</option>
+                                    <option value="unavailableonly">unavailable only</option>
+                                    <option value="validonly">valid only</option>
+                                    <option value="availableinvalidonly">available/invalid only</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- ********************EXTANT/FOSSIL*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Extant / Extinct</b>:</td>
+                        <td colspan="2">
+                            <select class="wide-select" name="asextantfossil">
+                                    <option value="extantorfossil" selected="selected">extant or extinct</option>
+                                    <option value="extantonly">extant only</option>
+                                    <option value="fossilonly">extinct only</option>
+                                    <option value="extantandfossil">extant and extinct</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="right">
+                            <button style="width:160px;margin-top:10px" type="submit" class="btn btn-info">Search</button>
+                        </td>
+                        <td>
+                            <a style="color:white;margin-left:10px;width:140px;margin-top:10px"
+                                href="AdvancedSearch" class="btn btn-info">Reset</a>
+
+                        </td>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script>
+    window.onload = customFocusElement('asorder');
+</script>
+
+
+        <br />
+        <br />
+    </main>
+
+    <footer>
+        
+    <nav>
+        <span class="module" style="color: #9B6702">Neuropterida Species:  </span>
+        <a href="Main" target="_top">Main</a>
+        | <a href=/SpeciesCatalog/Introduction target="_top">Introduction</a>
+        | <a href=/SpeciesCatalog/Classification target="_top">Classification</a>
+        | <a href=/SpeciesCatalog/SimpleSearch target="_top">Simple Search</a>
+        | <a href=/SpeciesCatalog/AdvancedSearch target="_top">Advanced Search</a>
+        | <a href=/SpeciesCatalog/Acknowledgments target="_top">Acknowledgments</a>
+        | <a href=/SpeciesCatalog/References target="_top">References</a>
+        <!-- | <a href= /SpeciesCatalog/Citation target="_top">Citation</a> -->
+        | <a href=/SpeciesCatalog/Versions target="_top">Versions</a>
+        <!-- | <a href=/SpeciesCatalog/Help?id=19 target="_top">Help</a> -->
+        |                <a href=/SpeciesCatalog/Login target="_top">Log In</a>
+
+    </nav>
+
+    </footer>
+
+    <script src="/lib/bootstrap2.3.2/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+ contentType 9 text/html url 59 https://lacewing.tamu.edu:443/SpeciesCatalog/AdvancedSearch responseCode 3 200 

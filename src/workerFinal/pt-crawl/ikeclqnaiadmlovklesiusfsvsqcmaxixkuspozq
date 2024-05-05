@@ -1,0 +1,2121 @@
+ikeclqnaiadmlovklesiusfsvsqcmaxixkuspozq length 6 185839 page 185839 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Master1_Head1"><link href="../../css/lightwindow.css" rel="stylesheet" type="text/css" media="screen" /><link href="../../css/layout_a.css" rel="stylesheet" type="text/css" /><link href="../../css/gallery.css" rel="stylesheet" type="text/css" />
+     <style type="text/css">
+        .modalBackground {
+	        background-color:Gray;
+	        filter:alpha(opacity=70);
+	        opacity:0.7;
+        } 
+    </style>
+    <!--[if IE 6]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.arrowlistmenu .headerbar {margin:0px;}
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]-->
+ 
+  
+    <script type="text/javascript" src="../../js/prototype.js"></script>  
+	<script type="text/javascript" src="../../js/scriptaculous.js?load=effects"></script>	
+
+        <script type="text/javascript" src="../../js/Original_lightwindow.js"></script> 
+    <script type="text/javascript" src="../../js/skinnytip.js"></script>
+    
+   <script type="text/javascript">
+    document.oncontextmenu=new Function("return false")
+    function SetPopup()
+    {  
+        var w = screen.width;
+        var h = screen.height;
+        var popW = 200, popH = 100;
+        var leftPos = (w-popW)/2;
+        var topPos = (h-popH)/2;                    
+        document.getElementById('MessageDiv').style.top = topPos + 'px'; 
+        document.getElementById('MessageDiv').style.left = leftPos + 'px'; 
+    }     
+    
+        function KeyCheck(btn,e)
+        {         
+              var code = (window.event) ? event.keyCode : e.keyCode;
+              if(code == '13')
+              {                    
+                    document.getElementById(btn).click(); 
+                     return false;  
+              }
+        }
+    
+    function ResetGlobalSearchText()
+    {
+        var txtSearch = document.getElementById('Master1_txtSearch');
+        if (txtSearch.value == '')
+        {
+            txtSearch.value = 'بحث في كل الأقسام';
+        }
+    }
+    
+    function ClearGlobalSearchText()
+    {
+        var txtSearch = document.getElementById('Master1_txtSearch');
+        if (txtSearch.value == 'بحث في كل الأقسام')
+        {
+            txtSearch.value = '';
+        }
+    }
+     function Hide(obj)
+        {        
+            if( obj.className == "dimmed") return;
+            if(obj.disabled!=true ) 
+                document.getElementById('hidepage').style.display = 'block';
+        }
+        
+        
+        function opacity(id, opacStart, opacEnd, millisec) {
+	        //speed for each frame
+	        var speed = Math.round(millisec / 100);
+	        var timer = 0;
+
+	        //determine the direction for the blending, if start and end are the same nothing happens
+	        if(opacStart > opacEnd) {
+		        for(i = opacStart; i >= opacEnd; i--) {
+			        setTimeout("changeOpac(" + i + ",'" + id + "')",(timer * speed));
+			        timer++;
+		        }
+		        setTimeout("document.getElementById('" + id + "').style.display = 'none';", (timer * speed));
+	        } else if(opacStart < opacEnd) {
+		        for(i = opacStart; i <= opacEnd; i++)
+			        {
+			        setTimeout("changeOpac(" + i + ",'" + id + "')",(timer * speed));
+			        timer++;
+		        }
+		        document.getElementById(id).style.display = 'block';
+	        }
+        }
+
+        //change the opacity for different browsers
+        function changeOpac(opacity, id) {
+	        var object = document.getElementById(id).style; 
+	        object.opacity = (opacity / 100);
+	        object.MozOpacity = (opacity / 100);
+	        object.KhtmlOpacity = (opacity / 100);
+	        object.filter = "alpha(opacity=" + opacity + ")";
+        }
+        
+        function showTip(abbr)
+        {
+            var countElement;
+            var title;
+            var content;
+            var width;
+            
+            switch (abbr)
+            {
+                case 'IM':
+                    countElement = document.getElementById('Master1_lblCntIM');
+                    title = 'صور';
+                    content = 'العدد: ' + countElement.innerHTML + ' صورة';
+                    break;
+                case 'DC':
+                    countElement = document.getElementById('Master1_lblCntDC');
+                    title = 'وثائق';
+                    content = 'العدد: ' + countElement.innerHTML + ' وثيقة';
+                    break;
+                case 'VI':
+                    countElement = document.getElementById('Master1_lblCntVI');
+                    title = 'أفلام';
+                    content = 'العدد: ' + countElement.innerHTML + ' فيلم';
+                    break;
+                case 'AU':
+                    countElement = document.getElementById('Master1_lblCntAU');
+                    title = 'صوتيات';
+                    content = 'العدد: ' + countElement.innerHTML + ' صوتية';
+                    break;
+                case 'SP':
+                    countElement = document.getElementById('Master1_lblCntSP');
+                    title = 'خطب';
+                    content = 'العدد: ' + countElement.innerHTML + ' خطبة';
+                    break;
+                case 'PS':
+                    countElement = document.getElementById('Master1_lblCntPS');
+                    title = 'صحافة';
+                    content = 'العدد: ' + countElement.innerHTML + ' صحيفة';
+                    break;
+                case 'AR':
+                    countElement = document.getElementById('Master1_lblCntAR');
+                    title = 'مقدمات و أبحاث';
+                    content = 'العدد: ' + countElement.innerHTML + ' مقدمة';
+                    break;
+                case 'MP':
+                    countElement = document.getElementById('Master1_lblCntMP');
+                    title = 'خرائط';
+                    content = 'العدد: ' + countElement.innerHTML + ' خريطة';
+                    break;
+                case 'MN':
+                    countElement = document.getElementById('Master1_lblCntMN');
+                    title = 'نقود';
+                    content = 'العدد: ' + countElement.innerHTML + ' عملة';
+                    break;
+                case 'ST':
+                    countElement = document.getElementById('Master1_lblCntST');
+                    title = 'طوابع';
+                    content = 'العدد: ' + countElement.innerHTML + ' طابع';
+                    break;
+                case 'MD':
+                    countElement = document.getElementById('Master1_lblCntMD');
+                    title = 'أوسمة';
+                    content = 'العدد: ' + countElement.innerHTML + ' وسام';
+                    break;
+                case 'BK':
+                    countElement = document.getElementById('Master1_lblCntBK');
+                    title = 'كتب';
+                    content = 'العدد: ' + countElement.innerHTML + ' كتاب';
+                    break;
+                case 'CV':
+                    countElement = document.getElementById('Master1_lblCntCV');
+                    title = 'أغلفة';
+                    content = 'العدد: ' + countElement.innerHTML + ' غلاف';
+                    break;
+                case 'AD':
+                    countElement = document.getElementById('Master1_lblCntAD');
+                    title = 'إعلانات';
+                    content = 'العدد: ' + countElement.innerHTML + ' إعلان';
+                    break;
+            }
+            
+            if (countElement.innerHTML == '')
+            {
+                content = '';
+                width = 60;
+             }
+             else
+                 width = 110;
+           
+            return tooltip(content, title, 'width:'+width+',backcolor:#aa9669,xoffset:-30,yoffset:20');
+        }
+        
+        window.onresize = function()
+        {
+            var w = document.body.offsetWidth;
+            var h = document.body.offsetHeight;
+            document.getElementById('hidepage').style.width = w + 'px';
+            document.getElementById('hidepage').style.height = h + 'px';
+            document.getElementById('tdAlignment').style.height = parseInt(h / 2 - 25) + 'px';
+
+            document.getElementById('tdMessageBoxAlignment').style.width = w + 'px';
+            document.getElementById('tdMessageBoxAlignment').style.height = h + 'px';
+            SetPopup();
+        }
+    </script>
+    
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22853348-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<title>
+	(¯`ذاكرة مصر المعاصرة - الوثائق`¯)
+</title></head>
+<body id="Master1_MasterBody">
+   
+    <form name="aspnetForm" method="post" action="./DocumentsLucene.aspx" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/ScriptResource.axd?d=mqJdD8dMUB7XW6j0M-rseMPIx3OMT3JGYSsSVtD3aVJEQ00uffSzzu0CeCH2VsLHABBis_mh43iTX92YpLrCCxnwt3D5z9i2TiUpo-PuloB_qPbl8M5zR5b03KpPfzzxkL53MEZMPQXkVX_IFuvkkn6uybVFzWs1M0gRtb5oNwI1&amp;t=363be08" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A5BEEFF6" />
+<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="EhRVpGgCoJ-8QvM9HgHi5esKk6GcAc4yimc894IdQRSeZdQupWI1sj-zgnGN3Ms6dIXggeuc-DIPCrq5S0axuH3SsRwTNMQiAwRsBSIwVTABj46U8RU2cm_9U5q5EQMwQHvSWDaIMR5WmllW0yci_g2" />
+        
+       
+        <div id="hidepage" style="display:none; top:0; right:0; position:absolute; z-index:500; background-color:black; filter:alpha(opacity=70); opacity:0.7;">
+            <table align="center">
+                <tr>
+                    <td id="tdAlignment">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <img src='../../images/loading.gif' align="middle"/>
+                    </td>                
+                </tr>
+            </table>
+        </div>
+        <div id="divMessageBox"  style="display:none;">
+            <div id="tdMessageBoxAlignment"  style="top:0; right:0; position:absolute; z-index:500; background-color:black; filter:alpha(opacity=70); opacity:0.7;">
+            </div>
+             <div id='MessageDiv' style=" position:absolute; z-index:600; height:100px; width:200px; ">
+                <div id="Master1_updatePanelMessageBox">
+	
+                        <div id="Master1_pnlMessage" style="background-color:#ece4be; border-width:3px; border-style:solid; border-color:#3d1501; padding:3px; width:250px;">
+		
+                            <br />
+                            <p>
+                                <span id="Master1_lblMessage"></span><br />
+                            </p>        
+                            <p style="text-align: center;">            
+                                <input type="submit" name="Master1$OkButton" value="موافق" id="Master1_OkButton" />
+                            </p>    
+                        
+	</div>
+                    
+</div>
+                </div>
+    </div>
+    
+    <div id="page">
+        <div id="banner">
+            <div id="title"><a id="Master1_LinkButton1" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;Master1$LinkButton1&quot;, &quot;&quot;, false, &quot;&quot;, &quot;../home/Default.aspx&quot;, false, true))"></a></div>
+            <div id="globalsearch">
+                 <input name="Master1$txtSearch" type="text" id="Master1_txtSearch" class="globalsearch" onfocus="ClearGlobalSearchText();" onblur="ResetGlobalSearchText();" onkeydown="javascript:KeyCheck(&#39;Master1_btnSearch&#39;,event )" value="بحث في كل الأقسام" />               
+                <input onclick="this.disabled='disabled'; __doPostBack('Master1$btnSearch','')" name="Master1$btnSearch" type="button" id="Master1_btnSearch" class="go" style="cursor:pointer" />
+                <center>
+                    <a href="../../collections/AdvancedSearch/ChooseType.aspx" class="lightwindow"><img class="master_adv_srch_btn" src="../../images/adv_srch.gif" alt=""/></a>
+                </center>
+            </div>
+        </div>
+    <div id="layout_a">
+        <div id="Master1_UP_Categories">
+	
+                <div id="categories_left" align=left>
+                    <div id="Master1_tblCategories">
+                        <li id="Master1_tdIM" class="">
+                            <a href="../Images/ImagesLucene.aspx" id="Master1_ancrIM">
+                                <span id="Master1_lblCntIM">(٨١٨٧٤)</span>
+                                <img src="../../images/images.jpg" id="Master1_imgIM" border="0" onmouseover="showTip(&#39;IM&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathIM" style="display:none">../Collections/Images/ImagesLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdDC" class="current">
+                            <a id="Master1_ancrDC">
+                                <span id="Master1_lblCntDC">(٢٥٧٣٦)</span>
+                                <img src="../../images/documents2.jpg" id="Master1_imgDC" border="0" onmouseover="showTip(&#39;DC&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathDC" style="display:none">../Collections/Documents/DocumentsLucene.aspx</label>
+                        </li>              
+                        <li id="Master1_tdVI" class="">
+                            <a href="../DocumentaryVideos/DocumentaryVideosLucene.aspx" id="Master1_ancrVI">
+                                <span id="Master1_lblCntVI">(٢٠٠٤)</span>
+                                <img src="../../images/films.jpg" id="Master1_imgVI" border="0" onmouseover="showTip(&#39;VI&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathVI" style="display:none">../Collections/DocumentaryVideos/DocumentaryVideosLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdAU" class="">
+                            <a href="../DocumentaryAudios/DocumentaryAudiosLucene.aspx" id="Master1_ancrAU">
+                                <span id="Master1_lblCntAU">(١١٢٧)</span>
+                                <img src="../../images/sounds.jpg" id="Master1_imgAU" border="0" onmouseover="showTip(&#39;AU&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathAU" style="display:none">../Collections/DocumentaryAudios/DocumentaryAudiosLucene.aspx</label>
+                        </li>              
+                        <li id="Master1_tdSP" class="">
+                            <a href="../Speeches/SpeechesLucene.aspx" id="Master1_ancrSP">
+                                <span id="Master1_lblCntSP">(١٨٦٣)</span>
+                                <img src="../../images/speeches.jpg" id="Master1_imgSP" border="0" onmouseover="showTip(&#39;SP&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathSP" style="display:none">../Collections/Speeches/SpeechesLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdPS" class="">
+                            <a href="../Press/PressLucene.aspx" id="Master1_ancrPS">
+                                <span id="Master1_lblCntPS">(٢٧٣٣٦)</span>
+                                <img src="../../images/press.jpg" id="Master1_imgPS" border="0" onmouseover="showTip(&#39;PS&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathPS" style="display:none">../Collections/Press/PressLucene.aspx</label>
+                        </li>                
+                        <li id="Master1_tdAR" class="">
+                            <a id="Master1_ancrAR">
+                                <span id="Master1_lblCntAR">(٦٣٥٠)</span>
+                                <img src="../../images/articles.jpg" id="Master1_imgAR" border="0" onmouseover="showTip(&#39;AR&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathAR" style="display:none"></label>
+                        </li>
+                        <li id="Master1_tdBK" class="">
+                            <a href="../Books/BooksLucene.aspx" id="Master1_ancrBK">
+                                <span id="Master1_lblCntBK">(٢٧٥)</span>
+                                <img src="../../images/books.jpg" id="Master1_imgBK" border="0" onmouseover="showTip(&#39;BK&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathBK" style="display:none">../Collections/Books/BooksLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdMP" class="">
+                            <a href="../Maps/MapsLucene.aspx" id="Master1_ancrMP">
+                                <span id="Master1_lblCntMP">(٢٣١)</span>
+                                <img src="../../images/maps.jpg" id="Master1_imgMP" border="0" onmouseover="showTip(&#39;MP&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathMP" style="display:none">../Collections/Maps/MapsLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdMD" class="">
+                            <a href="../Medals/MedalsLucene.aspx" id="Master1_ancrMD">
+                                <span id="Master1_lblCntMD">(٢٠٩)</span>
+                                <img src="../../images/medals.jpg" id="Master1_imgMD" border="0" onmouseover="showTip(&#39;MD&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathMD" style="display:none">../Collections/Medals/MedalsLucene.aspx</label>
+                        </li>               
+                        <li id="Master1_tdMN" class="">
+                            <a href="../Money/MoneysLucene.aspx" id="Master1_ancrMN">
+                                <span id="Master1_lblCntMN">(٣٤٥)</span>
+                                <img src="../../images/money.jpg" id="Master1_imgMN" border="0" onmouseover="showTip(&#39;MN&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathMN" style="display:none">../Collections/Money/MoneysLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdST" class="">
+                            <a href="../Stamps/StampsLucene.aspx" id="Master1_ancrST">
+                                <span id="Master1_lblCntST">(١١١٢)</span>
+                                <img src="../../images/stamps.jpg" id="Master1_imgST" border="0" onmouseover="showTip(&#39;ST&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathST" style="display:none">../Collections/Stamps/StampsLucene.aspx</label>
+                        </li>
+                      <li id="Master1_tdCV" class="">
+                            <a href="../Covers/CoversLucene.aspx" id="Master1_ancrCV">
+                                <span id="Master1_lblCntCV">(٢٢٣٢)</span>
+                                <img src="../../images/covers.jpg" id="Master1_imgCV" border="0" onmouseover="showTip(&#39;CV&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathCV" style="display:none">../Collections/Covers/CoversLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdAD" class="">
+                            <a href="../Advertise/AdvertiseLucene.aspx" id="Master1_ancrAD">
+                                <span id="Master1_lblCntAD">(١٦٤٩)</span>
+                                <img src="../../images/adv.jpg" id="Master1_imgAD" border="0" onmouseover="showTip(&#39;AD&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathAD" style="display:none">../Collections/Advertise/AdvertiseLucene.aspx</label>
+                        </li>
+                   </div>        
+               </div>
+            
+</div>
+      <div id="sidebar">
+      
+    
+    <div id="sidebar">     
+        <div id="Master1_ContentPlaceHolder2_updatePanelResults">
+	
+                <div id="Master1_ContentPlaceHolder2_divRulersDetails" class="details">
+                     <div class="title">
+                        <a id="Master1_ContentPlaceHolder2_ancrCloseRulers" style="cursor:pointer" class="close" onclick="hideRulers();">
+                            <img src="../../images/close2.gif" alt="Close" />
+                        </a>
+                        <a href="../../Types/Rulers/List.aspx">حكام</a>
+                     </div>
+                     <ul>
+                        
+                    </ul>   
+                     
+                </div>
+            
+                <div id="Master1_ContentPlaceHolder2_divPrimeMinistersDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrClosePrimeMinisters" style="cursor:pointer" class="close" onclick="hidePrimeMinisters();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Ministers/List.aspx">رؤساء الوزراء</a></div>
+                    <ul>
+                           
+                    </ul>                
+                </div>
+            
+                <div id="Master1_ContentPlaceHolder2_divEventsDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrCloseEvents" style="cursor:pointer" class="close" onclick="hideEvents();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Events/List.aspx">أحداث</a></div>
+                    <ul>
+                             
+                     </ul>                
+                </div>
+                
+                <div id="Master1_ContentPlaceHolder2_divSubjectsDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrCloseSubjects" style="cursor:pointer" class="close" onclick="hideSubjects();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Subject/List.aspx">موضوعات</a></div>
+                    <ul>
+                                                
+                    </ul>
+                </div>
+            
+                <div id="Master1_ContentPlaceHolder2_divGeneralPersonsDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrCloseGeneralPersons" style="cursor:pointer" class="close" onclick="hideGeneralPersons();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Persons/List.aspx">شخصيات عامة</a></div>
+                     <ul>
+                                                
+                    </ul>                    
+                </div>        
+                       
+                <div class="arrowlistmenu">                 
+                    <div class="headerbar"><a href="../Home/default.aspx">الرئيسية</a>
+                </div>
+                <div class="headerbar">
+                    <a href="../../Types/Rulers/List.aspx"><span id="Master1_ContentPlaceHolder2_lblRulers">حكام</span></a>
+                </div>
+                <div id="Master1_ContentPlaceHolder2_divRulers" style="display:block;">
+                    <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstRulers_ctl00_test" title="محمد علي باشا (٣٢٣)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstRulers$ctl00$test&#39;,&#39;&#39;)">محمد علي باشا (٣٢٣)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstRulers_ctl01_test" title="إبراهيم باشا (١٢)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstRulers$ctl01$test&#39;,&#39;&#39;)">إبراهيم باشا (١٢)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstRulers_ctl02_test" title="عباس حلمي الأول (١٣)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstRulers$ctl02$test&#39;,&#39;&#39;)">عباس حلمي الأول (١٣)</a>                                
+                                </li>
+                                                    
+                    </ul>                          
+                </div>
+                <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreRulers" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreRulers&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="المزيد" width="20" height="8" border="0"  />
+                    </a> 
+                </div>
+                <div class="headerbar">
+                    <a href="../../Types/Ministers/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblPrimeMinisters">رؤساء الوزراء</span>
+                    </a>
+               </div>
+               <div id="Master1_ContentPlaceHolder2_divPrimeMinisters" style="display:block;">
+                     <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstPrimeMinisters_ctl00_test" title="نوبار باشا نوبريان (٧٧)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstPrimeMinisters$ctl00$test&#39;,&#39;&#39;)">نوبار باشا نوبريان (٧٧)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstPrimeMinisters_ctl01_test" title="محمد توفيق (١٨٠)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstPrimeMinisters$ctl01$test&#39;,&#39;&#39;)">محمد توفيق (١٨٠)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstPrimeMinisters_ctl02_test" title="محمد باشا شريف (٦٣)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstPrimeMinisters$ctl02$test&#39;,&#39;&#39;)">محمد باشا شريف (٦٣)</a>                                
+                                </li>
+                                                    
+                    </ul>       
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMorePrimeMinisters" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMorePrimeMinisters&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="المزيد" width="20" height="8" border="0"  />
+                    </a> 
+               </div>                   
+               <div class="headerbar">
+                    <a href="../../Types/Events/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblEvents">أحداث</span>
+                    </a>
+               </div>
+               
+               <div id="Master1_ContentPlaceHolder2_divEvents" style="display:block;">
+                   <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstEvents_ctl00_test" title="حملة فريزر على مصر (١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstEvents$ctl00$test&#39;,&#39;&#39;)">حملة فريزر على مصر (١)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstEvents_ctl01_test" title="مذبحة القلعة  (٥)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstEvents$ctl01$test&#39;,&#39;&#39;)">مذبحة القلعة  (٥)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstEvents_ctl02_test" title="الحرب العالمية الثانية  (١٤)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstEvents$ctl02$test&#39;,&#39;&#39;)">الحرب العالمية الثانية  (١٤)</a>                                
+                                </li>
+                                                    
+                    </ul>                       
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreEvents" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreEvents&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="المزيد" width="20" height="8" border="0"  />
+                    </a> 
+               </div>
+             
+               <div class="headerbar">
+                    <a href="../../Types/Subject/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblSubjects">موضوعات</span>
+                    </a>
+               </div>
+             
+               <div id="Master1_ContentPlaceHolder2_divSubjects" style="display:block;">
+                    <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstSubjects_ctl00_test" title="أبنية ومنشآت  (١٥٧٨)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstSubjects$ctl00$test&#39;,&#39;&#39;)">أبنية ومنشآت  (١٥٧٨)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstSubjects_ctl01_test" title="الاتصالات السلكية واللاسلكية (٨٣)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstSubjects$ctl01$test&#39;,&#39;&#39;)">الاتصالات السلكية...(٨٣)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstSubjects_ctl02_test" title="الأحزاب السياسية (٩٧)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstSubjects$ctl02$test&#39;,&#39;&#39;)">الأحزاب السياسية (٩٧)</a>                                
+                                </li>
+                                                    
+                    </ul>                               
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreSubjects" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreSubjects&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="المزيد" width="20" height="8" border="0"  />
+                    </a> 
+               </div>
+               
+               <div class="headerbar">
+                    <a href="../../Types/Persons/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblGeneralPersons">شخصيات عامة</span>
+                    </a>
+               </div>
+               <div id="Master1_ContentPlaceHolder2_divGeneralPersons" style="display:block;">
+                    <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstGeneralPersons_ctl00_test" title="إبراهيم أباظة (٢)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstGeneralPersons$ctl00$test&#39;,&#39;&#39;)">إبراهيم أباظة (٢)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstGeneralPersons_ctl01_test" title="إبراهيم جميل مصطفى بدران (١٠٣)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstGeneralPersons$ctl01$test&#39;,&#39;&#39;)">إبراهيم جميل مصطفى بدران (١٠٣)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstGeneralPersons_ctl02_test" title="إبراهيم زكي (١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstGeneralPersons$ctl02$test&#39;,&#39;&#39;)">إبراهيم زكي (١)</a>                                
+                                </li>
+                                                    
+                    </ul>                        
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreGeneralPersons" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreGeneralPersons&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="المزيد" width="20" height="8" border="0"  />
+                    </a> 
+               </div>
+                          
+
+                
+            
+            </div>
+        
+</div>
+    
+    <div class="footer"> </div>
+    </div>
+  
+      </div>
+       <div>
+      
+    
+    <script type="text/javascript">
+         function RemoveRuler(strRulerName)
+        {
+            document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = strRulerName;
+            document.getElementById('Master1_ContentPlaceHolder1_Button5').click();
+        }
+        
+        function RemovePrimeMinister(strPrimeMinisterName)
+        {
+            document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = strPrimeMinisterName;
+            document.getElementById('Master1_ContentPlaceHolder1_Button6').click();
+        }
+        
+        function RemoveEvent(iEventID) 
+        {
+            document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iEventID;
+            document.getElementById('Master1_ContentPlaceHolder1_Button2').click();
+        }
+        
+        function RemoveSubject(iSubjectID)
+        {
+            document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iSubjectID;
+            document.getElementById('Master1_ContentPlaceHolder1_Button3').click();
+        }
+         function RemoveGeneralPerson(strGeneralPersonName)
+        {
+            document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = strGeneralPersonName;
+            document.getElementById('Master1_ContentPlaceHolder1_Button1').click();
+        }
+        function RemoveDate()
+        {
+            document.getElementById('Master1_ContentPlaceHolder1_Button4').click();
+        }
+        
+        function showRulers()
+        {
+            opacity('Master1_ContentPlaceHolder2_divRulersDetails', 0, 95, 2000);
+        }
+        
+        function hideRulers()
+        {
+            opacity('Master1_ContentPlaceHolder2_divRulersDetails', 95, 0, 2000);
+        }
+        
+        function showPrimeMinisters()
+        {
+            opacity('Master1_ContentPlaceHolder2_divPrimeMinistersDetails', 0, 95, 2000);
+        }
+        
+        function hidePrimeMinisters()
+        {
+            opacity('Master1_ContentPlaceHolder2_divPrimeMinistersDetails', 95, 0, 2000);
+        }
+        
+        function showEvents()
+        {
+            opacity('Master1_ContentPlaceHolder2_divEventsDetails', 0, 95, 2000);
+        }
+        
+        function hideEvents()
+        {
+            opacity('Master1_ContentPlaceHolder2_divEventsDetails', 95, 0, 2000);
+        }
+        
+        function showSubjects()
+        {
+            opacity('Master1_ContentPlaceHolder2_divSubjectsDetails', 0, 95, 2000);
+        }
+        
+        function hideSubjects()
+        {
+            opacity('Master1_ContentPlaceHolder2_divSubjectsDetails', 95, 0, 2000);
+        }
+        
+        function showGeneralPersons()
+        {
+            opacity('Master1_ContentPlaceHolder2_divGeneralPersonsDetails', 0, 95, 2000);
+        }
+        
+        function hideGeneralPersons()
+        {
+            opacity('Master1_ContentPlaceHolder2_divGeneralPersonsDetails', 95, 0, 2000);
+        }
+        
+        function OpenViewerWindows(id,s)
+        {  
+            var w = screen.width;
+            var h = screen.height;
+            //var popW = screen.width - 22, popH = screen.height - 122;
+            var popW = 1000, popH = 760;
+            var leftPos = (w-popW)/2;
+            var topPos = (h-popH)/2;                    
+          // var myWin = window.open('../../DocumentViewer/TextViewer.aspx?w='+popW+'&h='+popH+'&type=document&id='+id+'&s='+s, 'DocViewer','scrollbars=1,toolbar=0,location=0,statusbar=0,menubar=0,resizable=1,width='+popW+',height='+popH+',left='+leftPos+',top='+topPos);
+            var myWin = window.open('../../NewDocumentViewer.aspx?DocumentID=DC_' + id, 'DocViewer', 'scrollbars=1,toolbar=0,location=0,statusbar=0,menubar=0,resizable=0,width=' + popW + ',height=' + popH + ',left=' + leftPos + ',top=' + topPos);
+           if (myWin && !myWin.closed)
+                myWin.focus();        
+        }     
+        function OpenTextViewerWindows(id)
+        {  
+            var w = screen.width;
+            var h = screen.height;
+            //var popW = screen.width - 22, popH = screen.height - 122;//800, popH = 632;
+            var popW = 1000, popH = 760;
+            var leftPos = (w-popW)/2;
+            var topPos = (h-popH)/2;                    
+         //  var myWin = window.open('../../TxtViewer/TextViewer.aspx?ID='+id+'&type=Document', 'TxtViewer','scrollbars=1,toolbar=0,location=0,statusbar=0,menubar=0,resizable=1,width='+popW+',height='+popH+',left='+leftPos+',top='+topPos);
+            var myWin = window.open('../../NewTextViewer.aspx?TextID=DC_' + id, 'TxtViewer','scrollbars=1,toolbar=0,location=0,statusbar=0,menubar=0,resizable=1,width='+popW+',height='+popH+',left='+leftPos+',top='+topPos);
+            if (myWin && !myWin.closed)
+                myWin.focus();        
+        }       
+        
+        function clickButton(e)
+        { 
+              var evt = e ? e : window.event;
+              
+              if (evt.keyCode == 13)
+              { 
+                    document.getElementById('Master1_ContentPlaceHolder1_btnChangePage').click(); 
+                    return false; 
+              }
+        }
+        
+        function clickButtonUP(e)
+        { 
+              var evt = e ? e : window.event;
+              
+              if (evt.keyCode == 13)
+              { 
+                    document.getElementById('Master1_ContentPlaceHolder1_btnChangePageUP').click(); 
+                    return false; 
+              }
+        }   
+        
+        function ResetTimeLine()
+        {           
+            var fromYear = document.getElementById('Master1_ContentPlaceHolder1_txtOriginalFromYear').value;
+          
+            var toYear = document.getElementById('Master1_ContentPlaceHolder1_txtOriginalToYear').value;
+   
+            positionRightSlider(fromYear);
+            positionLeftSlider(toYear);
+        } 
+        
+       
+    </script>
+    <script src="../../js/SpryCollapsiblePanel.js" type="text/javascript"></script>
+   
+    <div >
+    <div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;" dir='rtl'></div>
+        <div id="Master1_ContentPlaceHolder1_updatePanelPath">
+	
+                <div id="path">
+                    <div >
+                        <div id="Master1_ContentPlaceHolder1_Div1" class="tabs">                        
+                            <ul id="Master1_ContentPlaceHolder1_ulTabs">
+                                 <div>
+                                    <li>
+                                        <span class="bg">
+                                            <span >
+                                                <div class='pathtitle'>وثائق</div>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </div>
+                            <div dir="rtl">
+		<div><li><span class="bg"><a id="Master1_ContentPlaceHolder1_D"></a><span>١٧٩٩ - ١٩٨١</span></span></li></div>
+	</div></ul>
+                            <div style="display:none">
+                                <input name="Master1$ContentPlaceHolder1$txtRemovedID" type="text" id="Master1_ContentPlaceHolder1_txtRemovedID" />
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$Button4','')" id="Master1_ContentPlaceHolder1_Button4" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$Button5','')" id="Master1_ContentPlaceHolder1_Button5" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$Button6','')" id="Master1_ContentPlaceHolder1_Button6" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$Button2','')" id="Master1_ContentPlaceHolder1_Button2" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$Button3','')" id="Master1_ContentPlaceHolder1_Button3" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$Button1','')" id="Master1_ContentPlaceHolder1_Button1" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$btnChangePage','')" id="Master1_ContentPlaceHolder1_btnChangePage" type="button"></button>
+                                <button onclick="Hide(this); __doPostBack('Master1$ContentPlaceHolder1$btnChangePageUP','')" id="Master1_ContentPlaceHolder1_btnChangePageUP" type="button"></button>                                
+                                <input name="Master1$ContentPlaceHolder1$txtOriginalFromYear" type="text" id="Master1_ContentPlaceHolder1_txtOriginalFromYear" />
+                                <input name="Master1$ContentPlaceHolder1$txtOriginalToYear" type="text" id="Master1_ContentPlaceHolder1_txtOriginalToYear" />
+                            </div>
+                        </div>
+                    </div>    
+                </div> 
+            
+</div>
+
+        <div id="content">       
+            <div id="innercontent">
+              <div >
+                <div id="Master1_ContentPlaceHolder1_updatePanelDocuments">
+	
+                    <center class="articles_type">
+                        
+                        </center>
+                        
+                        
+                        <div id="Master1_ContentPlaceHolder1_divUpperPaging" class="paging">
+                            <div id="Master1_ContentPlaceHolder1_updatePanel1">
+		
+                                    <div class="views" style="display:none">
+                                        <img src="../../images/list.gif" width="15" height="14" class="dimmed"/>
+                                        <img src="../../images/gallery.gif" width="15" height="14" class="dimmed"/>                                                                      
+                                     </div>
+                                     <div class="paging_nav">
+                                        <div class="left_nav">
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingNextUP" title="التالى" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$lbtnListPagingNextUP&#39;,&#39;&#39;)"><img src="../../images/next.png" id="Master1_ContentPlaceHolder1_imgListPagingNextUP" class="" /></a>
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingLastUP" title="الأخير" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$lbtnListPagingLastUP&#39;,&#39;&#39;)"><img src="../../images/last.png" id="Master1_ContentPlaceHolder1_imgListPagingLastUP" class="" /></a>
+                                        </div>                                
+                                        <div class="middle_page">
+                                            <span><span id="Master1_ContentPlaceHolder1_lblListCountUP">١٢٨٧</span>
+                                            <span id="Master1_ContentPlaceHolder1_lblListSeparatorUP">/</span></span>
+                                            
+                                            <input name="Master1$ContentPlaceHolder1$txtListCurrentUP" type="text" id="Master1_ContentPlaceHolder1_txtListCurrentUP" style="width:23px" onkeypress="return clickButtonUP(event)" value="١" />
+                                            <input type="submit" name="Master1$ContentPlaceHolder1$btnListShowPageUP" value="" onclick="Hide(this);" id="Master1_ContentPlaceHolder1_btnListShowPageUP" class="go" />
+                                        </div>
+                                        <div class="right_nav">
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingFirstUP" disabled="disabled" title="الأول"><img src="../../images/first.png" id="Master1_ContentPlaceHolder1_imgListPagingFirstUP" class="dimmed" /></a>
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingPrevUP" disabled="disabled" title="السابق"><img src="../../images/prev.png" id="Master1_ContentPlaceHolder1_imgListPagingPrevUP" class="dimmed" /></a>
+                                        </div>
+                                    </div> 
+                                    &nbsp;<span id="Master1_ContentPlaceHolder1_LBL_Result" class="count"></span>
+                                   
+                                
+	</div>
+                        </div>
+                        
+                       <div id="list_view">
+                        
+                        <div>
+		<table cellspacing="0" align="Center" border="0" id="ctl00_ContentPlaceHolder1_grdDocuments" width="98%">
+			<tr>
+				<td>
+                                        <div id='CollapsiblePanel1' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblDate"></span>
+                                                                </span>
+                                                                مسودة بيان عن أملاك ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblDescription"><b>الوصف: </b>مسودة بيان ببعض الملاحظات حول المسطحات التى تقع بحوض حسن ...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblType"><b>نوع الوثيقة: </b>مسودة</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lblOriginalSource"></span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl02_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl02$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel2' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblDate"></span>
+                                                                </span>
+                                                                بيان مساحة صفط العرفا ببني سويف لدائرة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblDescription"><b>الوصف: </b>بيان مساحي عن الأطيان الداخلة ضمن أطيان دائرة محمد محمود ...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblType"><b>نوع الوثيقة: </b>بيان أطيان</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lblOriginalSource"></span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl03_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl03$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel3' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblDate"></span>
+                                                                </span>
+                                                                مسودة خطاب بخصوص مساحات بناحية صفط العرفا وصفط النور
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblDescription"><b>الوصف: </b>مسودة خطاب إلى السيد الفونس الألفي المحامي بخصوص بعض المس...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblType"><b>نوع الوثيقة: </b>مراسلة</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lblOriginalSource"><b>المصدر الأصلي: </b>محمد محمود باشا</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl04_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl04$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel4' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblDate"></span>
+                                                                </span>
+                                                                إقرار باطيان ملك ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblDescription"><b>الوصف: </b>إقرار من السيد محمد محفوظ من مركز البداري أسيوط بعلمه بأن...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblType"><b>نوع الوثيقة: </b>اقرار</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lblOriginalSource"><b>المصدر الأصلي: </b>محمد محفوظ</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl05_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl05$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel5' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblDate"><b>التاريخ: </b>٢٩ / ١١ / ١٩٥٨</span>
+                                                                </span>
+                                                                إنذار محمود وهمام محمد محمود بسداد أقساط أطيان مباعة
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblDescription"><b>الوصف: </b>إنذار على يد محضر بناء على طلب الأستاذ محمود محمد محمود و...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblType"><b>نوع الوثيقة: </b>انذار</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lblOriginalSource"><b>المصدر الأصلي: </b>محمد زهير جرانة والفونس الالفى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl06_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl06$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel6' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblDate"><b>التاريخ: </b>٢٥ / ١٢ / ١٩٥٥</span>
+                                                                </span>
+                                                                كشف تحديد الأطيان الكائنة بناحية دوينة بمديرية أسيوط
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblDescription"><b>الوصف: </b>كشف تحديد مساحات عن الأطيان الزراعية الكائنة بزمام ناحية ...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblType"><b>نوع الوثيقة: </b>كشف</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lblOriginalSource"><b>المصدر الأصلي: </b>مأمورية الشهر العقارى بأسيوط</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl07_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl07$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel7' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblDate"><b>التاريخ: </b>من ٠٣ / ١٢ / ١٩٥٨ إلى ٢٤ / ١٢ / ١٩٥٨</span>
+                                                                </span>
+                                                                إنذار بتسجيل عقد ملكية قطعة أرض
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblDescription"><b>الوصف: </b>إنذار على يد محضر بناء على طلب السيد محمود محمد محمود وأخ...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblType"><b>نوع الوثيقة: </b>انذار</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lblOriginalSource"><b>المصدر الأصلي: </b>محمد زهير جرانة والفونس الالفى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl08_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl08$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel8' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblDate"><b>التاريخ: </b>٠١ / ٠٩ / ١٩٥٣</span>
+                                                                </span>
+                                                                محضر تصديق الشهر العقاري على عقد بيع أرض
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblDescription"><b>الوصف: </b>محضر تصديق الشهر العقاري بخصوص عقد بيع قطعة أرض مباعة لإس...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblType"><b>نوع الوثيقة: </b>محضر</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lblOriginalSource"><b>المصدر الأصلي: </b>مأمورية الشهر العقارى بأسيوط</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl09_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl09$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel9' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblDate"><b>التاريخ: </b>٣٠ / ٠٣ / ١٩٦٦</span>
+                                                                </span>
+                                                                طلب إعطاء رقم وقتي في الشهر العقاري لنفاذ عقد بيع أرض
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblDescription"><b>الوصف: </b>طلب من جلال يوسف المحامي إلى أمين مكتب الشهر العقارى بأسي...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblType"><b>نوع الوثيقة: </b>طلب</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lblOriginalSource"><b>المصدر الأصلي: </b>جلال يوسف المحامى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl10_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl10$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel10' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblDate"><b>التاريخ: </b>٠٩ / ٠٨ / ١٩٥٣</span>
+                                                                </span>
+                                                                محضر تصديق على عقد بيع اطيان زراعية ملك ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblDescription"><b>الوصف: </b>صورة طبق الأصل من يد محضر تصديق على عقد بيع مقدم من محمد ...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblType"><b>نوع الوثيقة: </b>محضر</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lblOriginalSource"><b>المصدر الأصلي: </b>مصلحة الشهر العقارى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl11_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl11$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel11' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblDate"><b>التاريخ: </b>١٩ / ٠١ / ١٩٦٦</span>
+                                                                </span>
+                                                                تفويض وكيل ورثة المرحوم محمد محفوظ للسادة المحضرين بمحاكم أسيوط
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblDescription"><b>الوصف: </b>تفويض السيد حامد المليجى المحامى بأسيوط عن ورثة المرحوم م...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblType"><b>نوع الوثيقة: </b>تفويض</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lblOriginalSource"><b>المصدر الأصلي: </b>حامد المليجى المحامى - محاكم اسيوط</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl12_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl12$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel12' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblDate"><b>التاريخ: </b>٢٩ / ٠٥ / ١٩٦٧</span>
+                                                                </span>
+                                                                شهادة عقارية لمحمود محمد عن التصرفات التي تمت للأطيان الزراعية
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblDescription"><b>الوصف: </b>شهادة عقارية من مكتب الشهر العقاري ببني سويف من جلال يوسف...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblType"><b>نوع الوثيقة: </b>شهادة</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lblOriginalSource"><b>المصدر الأصلي: </b>جلال يوسف المحامى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl13_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl13$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel13' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblDate"><b>التاريخ: </b>٢٤ / ٠٦ / ١٩٦٧</span>
+                                                                </span>
+                                                                خطاب بخصوص شهادة عقارية عن رسوم التصرفات التي تمت للأطيان الزراعية
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblDescription"><b>الوصف: </b>خطاب من جلال يوسف المحامى إلى محمود محمد محمود بخصوص إرسا...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblType"><b>نوع الوثيقة: </b>خطاب</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lblOriginalSource"><b>المصدر الأصلي: </b>جلال يوسف المحامى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl14_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl14$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel15' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblDate"><b>التاريخ: </b>١٠ / ١٠ / ١٩٥٥</span>
+                                                                </span>
+                                                                إنذار على يد محضر بخصوص تقديم مستندات بيع اطيان زراعية
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblDescription"><b>الوصف: </b>إنذار على يد محضر بناءً على طلب السيد محمد محفوظ من ناحية...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblType"><b>نوع الوثيقة: </b>إنذار</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lblOriginalSource"><b>المصدر الأصلي: </b>مكتب أمل حبيب المحامى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl15_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl15$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel16' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblDate"><b>التاريخ: </b>٣٠ / ١١ / ١٩٥٨</span>
+                                                                </span>
+                                                                إنذار على يد محضر بخصوص تعجيل دعوى تسجيل عقد بيع أطيان زراعية
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblDescription"><b>الوصف: </b>إنذار على يد محضر بناء على طلب الأستاذ محمود وهمام محمد م...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblType"><b>نوع الوثيقة: </b>انذار</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lblOriginalSource"><b>المصدر الأصلي: </b>محمد زهير جرانة والفونس الالفى</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl16_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl16$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel17' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblDate"><b>التاريخ: </b>٢٩ / ٠٤ / ١٩٥٩</span>
+                                                                </span>
+                                                                حكم بصحة ونفاذ عقدي بيع أطيان زراعية ملك ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblDescription"><b>الوصف: </b>حكم صادر من محكمة أسيوط بخصوص القضية المرفوعة من محمد محف...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblType"><b>نوع الوثيقة: </b>حكم</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lblOriginalSource"><b>المصدر الأصلي: </b>محكمة أسيوط</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl17_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl17$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel18' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblDate"><b>التاريخ: </b>٣١ / ١٠ / ١٩٥٣</span>
+                                                                </span>
+                                                                إقرار باستمرار مكلفات أطيان زراعية في ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblDescription"><b>الوصف: </b>إقرار من عبد الرحمن محمود سليمان بأن الأطيان الزراعية الت...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblType"><b>نوع الوثيقة: </b>اقرار</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblTyping"><b>نوع الخط: </b>خط يد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lblOriginalSource"><b>المصدر الأصلي: </b>عبد الرحمن محمود سليمان</span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl18_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl18$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel19' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblDate"><b>التاريخ: </b>٠١ / ٠٦ / ١٩٥٣</span>
+                                                                </span>
+                                                                عقد بيع أطيان زراعية ملك ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblDescription"><b>الوصف: </b>عقد بيع أطيان زراعية من الأستاذ محمود محمد محمود وهمام مح...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblType"><b>نوع الوثيقة: </b>عقد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lblOriginalSource"></span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl19_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl19$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel20' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblDate"><b>التاريخ: </b>٢٠ / ٠٧ / ١٩٥٣</span>
+                                                                </span>
+                                                                عقد بيع أطيان زراعية ملك ورثة محمد محمود باشا
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblDescription"><b>الوصف: </b>عقد بيع أطيان زراعية من الأستاذ محمود محمد محمود وهمام مح...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblType"><b>نوع الوثيقة: </b>عقد</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lblOriginalSource"></span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl20_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl20$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr><tr>
+				<td>
+                                        <div id='CollapsiblePanel22' class="CollapsiblePanel">
+                                            <div  tabindex="0">
+                                                 <ul>
+                                                    <li>
+                                                        <div>                                        
+                                                            <a href="javascript:void(0);" id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_ancrDocument">
+                                                                <span class="date_list"> 
+                                                                        <span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblDate"></span>
+                                                                </span>
+                                                                مذكرة بالأطيان المملوكة لهمام محمد محمود عند صدور قانون الاصلاح الزراعي
+                                                            </a>
+                                                        </div>
+                                            
+                                                    </li>                                                    
+                                                </ul>
+                                            </div>
+                                         <div style="overflow:hidden;  width:650px; height:0px">
+                                                      <br />                           
+                                            <div class="inset">
+                                            <b class="top"><b class="b1"></b>
+                                            <b class="b2"></b><b class="b3"></b>
+                                            <b class="b4"></b></b>
+                                            <div class="boxcontent">
+                                            <p>     <div></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblDescription"><b>الوصف: </b>مذكرة بالأطيان المملوكة للسيد همام محمد محمود عند صدور قا...</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblType"><b>نوع الوثيقة: </b>مذكرة</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblLanguage"><b>اللغة: </b>العربية</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblTyping"><b>نوع الخط: </b>مطبوع</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblCollection"><b>المجموعة: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblSource"><b>المصدر: </b>دائرة محمد محمود باشا</span></div>
+                                                    <div><span id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lblOriginalSource"></span></div>
+                                                    
+                                                    <div>
+                                                     <div class="open" align=left>
+                                                          <a id="Master1_ContentPlaceHolder1_grdDocuments_ctl21_lbtnShowPress" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$grdDocuments$ctl21$lbtnShowPress&#39;,&#39;&#39;)">اعرض</a>
+                                                     </div>
+                                                    </div>
+                                            </p>
+                                            </div>
+                                            <b class="bottom"><b class="b4b"></b><b class="b3b">
+                                            </b><b class="b2b"></b><b class="b1b"></b></b>
+                                            </div>
+                                            <br />
+                                        </div>
+                                             </div>
+                                        
+                                    </td>
+			</tr>
+		</table>
+	</div>
+                        </div>
+                           
+                        
+                        
+                        
+                        
+                        <div id="Master1_ContentPlaceHolder1_divBottomPaging" class="paging" style="display:none">
+                            <div id="Master1_ContentPlaceHolder1_updatePanelCount">
+		
+                                    <div class="views" style="display:none">   
+                                            <img src="../../images/list.gif" width="15" height="14" class="dimmed"/>
+                                             <img src="../../images/gallery.gif" width="15" height="14" class="dimmed"/>                                                                       
+                                     </div>
+                                     <div class="paging_nav">
+                                        <div class="left_nav">
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingNext" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$lbtnListPagingNext&#39;,&#39;&#39;)"><img src="../../images/next.png" id="Master1_ContentPlaceHolder1_imgListPagingNext" class="" /></a>
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingLast" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$lbtnListPagingLast&#39;,&#39;&#39;)"><img src="../../images/last.png" id="Master1_ContentPlaceHolder1_imgListPagingLast" class="" /></a>
+                                        </div>
+                                    
+                                        <div class="middle_page">
+                                            <span><span id="Master1_ContentPlaceHolder1_lblListCount">١٢٨٧</span>
+                                            <span id="Master1_ContentPlaceHolder1_lblListSeparator">/</span></span>
+                                            
+                                            <input name="Master1$ContentPlaceHolder1$txtListCurrent" type="text" id="Master1_ContentPlaceHolder1_txtListCurrent" style="width:23px" onkeypress="return clickButton(event)" value="١" />
+                                            <input type="submit" name="Master1$ContentPlaceHolder1$btnListShowPage" value="" onclick="Hide(this);" id="Master1_ContentPlaceHolder1_btnListShowPage" class="go" />
+                                        </div>
+                                        <div class="right_nav">
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingFirst" disabled="disabled"><img src="../../images/first.png" id="Master1_ContentPlaceHolder1_imgListPagingFirst" class="dimmed" /></a>
+                                            <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnListPagingPrev" disabled="disabled"><img src="../../images/prev.png" id="Master1_ContentPlaceHolder1_imgListPagingPrev" class="dimmed" /></a>
+                                        </div>
+                                    </div>  
+                                     
+                                
+	</div>
+                        </div>
+                        
+                    
+</div>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    </div>
+
+    
+
+      </div>
+       <div id="Master1_UP_TimeLine">
+	  
+              <div style="display:none">                                 
+                    <input name="Master1$TB_FromYear" type="text" value="1" id="Master1_TB_FromYear" />
+                    <input name="Master1$TB_ToYear" type="text" value="1" id="Master1_TB_ToYear" />
+                    <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$btnApplyTimeLine','')" id="Master1_btnApplyTimeLine" type="button"></button>                                                     
+              </div>                              
+          
+</div>  
+          
+        <div style="clear:both;"></div>  
+    </div>
+   <div align=center>
+            
+ 
+ <script type="text/javascript">
+   
+    var Active=false;
+    var START_YEAR = 1799;
+    var END_YEAR = 1981;
+    var STEP = 5; //every 5 pixels = 1 year
+    
+    //You can change this value for left and right adjustments
+    var ADJ_LEFT = 6;//adjustment years from left
+    var ADJ_RIGHT = 7;//adjustment years from right
+    
+    window.onload = function() 
+    {   
+        positionRightSlider(document.getElementById('Master1_TB_FromYear').value);
+        positionLeftSlider(document.getElementById('Master1_TB_ToYear').value);
+        
+        if(Active==false)
+        {
+            document.getElementById("tdRight").style.display = 'none';
+            document.getElementById("tdLeft").style.display = 'none';
+            document.getElementById("tdMiddle").style.display = 'none';
+            return;
+        }
+        else
+        {              
+            //document.getElementById("tdLeft").onmousedown = mdownL;
+            document.getElementById("DivLeft").onmousedown = mdownL;
+           // document.getElementById("tdRight").onmousedown = mdownR;
+            document.getElementById("DivRight").onmousedown = mdownR;
+            document.getElementById("LeftYear").onmousedown = mdownL;
+            document.getElementById("RightYear").onmousedown = mdownR;                    
+            document.getElementById("timeline").onmousemove = mmove;  
+            
+            if(document.getElementById("LeftYear").innerHTML == '')
+            {                    
+                document.getElementById("tdLeft").style.width = (ADJ_LEFT*STEP) + "px"; //this width to write the current year number inside
+                document.getElementById("tdRight").style.width = (ADJ_RIGHT*STEP) + "px";//this width to write the current year number inside                       
+                
+                document.getElementById("LeftYear").innerHTML = NumToAr(END_YEAR);
+                document.getElementById("RightYear").innerHTML = NumToAr(START_YEAR);
+            }
+        }
+        disableSelection(document.getElementById('DivLeft')) ;
+        disableSelection(document.getElementById('DivRight')) ;
+    }
+    
+    
+     //dragging mode
+    var dragging = false;   
+    var ds = [];
+    var pos = [];  
+    var type='';
+ 
+        
+    function mdownL(e) {                      
+        if (!e) e = window.event; //IE
+        ds[0] = e.clientX;
+        ds[1] = e.clientY;
+        type = 'left';                    
+        if(document.getElementById("tdLeft").style.width)
+            pos[0] = parseInt(document.getElementById("tdLeft").style.width);               
+        else
+            pos[0] = 100;// 100 is just a lucky value
+        dragging = true;  
+        document.onmouseup =  mup; //to stop dragging if mouse up inside or outside the time line                               
+     }
+     
+     function mdownR(e) {                      
+        if (!e) e = window.event; //IE
+        ds[0] = e.clientX;
+        ds[1] = e.clientY;
+        type = 'right';
+        if(document.getElementById("tdRight").style.width)
+            pos[0] = parseInt(document.getElementById("tdRight").style.width);               
+        else
+            pos[0] = 100;// 100 is just a lucky value
+        dragging = true;   
+        document.onmouseup =  mup; //to stop dragging if mouse up inside or outside the time line   
+     }     
+      
+     function mmove(e) {
+        if (!e) e = window.event; // IE                      
+        if(dragging==false) return;
+                      
+        leftYear =  parseInt(NumToEn(document.getElementById("LeftYear").innerHTML));         
+        rightYear = parseInt(NumToEn(document.getElementById("RightYear").innerHTML));
+         
+        if(type=='left')      
+        {       
+            wid = pos[0] + (e.clientX - ds[0]);
+            newleft = END_YEAR - parseInt((wid)/STEP) + ADJ_LEFT;    
+            if((wid> ADJ_LEFT*STEP) && (newleft-rightYear >1) )          
+            {                   
+                document.getElementById("LeftYear").innerHTML = NumToAr(newleft);
+                document.getElementById("tdLeft").style.width =  wid+"px";                                                                                
+            }
+        }
+        else if(type=='right')
+        {
+            wid = pos[0] - (e.clientX - ds[0]);
+            newright = START_YEAR + parseInt((wid)/STEP) - ADJ_RIGHT;   //7 years for adjustments , 5pixels = 1 year and there is 35px extra width in the first               
+            if((wid> ADJ_RIGHT*STEP) && (leftYear-newright >1)) 
+            {                
+               document.getElementById("RightYear").innerHTML = NumToAr(newright);
+               document.getElementById("tdRight").style.width =  wid+"px";                                                                                
+            }
+        }   
+     }        
+               
+     function mup() {
+        if(dragging == true)
+        {       
+            document.getElementById('Master1_TimeLine1_hiddenFromDate').value = NumToEn(document.getElementById("RightYear").innerHTML);        
+            document.getElementById('Master1_TimeLine1_hiddenToDate').value = NumToEn(document.getElementById("LeftYear").innerHTML);        
+            document.getElementById('Master1_btnApplyTimeLine').click();  
+        }
+        dragging = false;              
+     }
+    
+    function positionRightSlider(year)
+    {   
+        if(year=='')return;
+        if(year==1) year = START_YEAR;
+        document.getElementById('Master1_TimeLine1_hiddenFromDate').value = year;      
+        document.getElementById("RightYear").innerHTML = NumToAr(year);
+        document.getElementById("tdRight").style.width = STEP *((year - START_YEAR) + ADJ_RIGHT) +"px";   
+        Active = true;          
+    }
+    
+    function positionLeftSlider(year)
+    {
+        if(year=='')return;
+        if(year==1) year = END_YEAR;
+        document.getElementById('Master1_TimeLine1_hiddenToDate').value = year;   
+        document.getElementById("LeftYear").innerHTML = NumToAr(year);
+        document.getElementById("tdLeft").style.width = STEP *((END_YEAR - year) + ADJ_LEFT) +"px"; 
+        Active = true;          
+        document.getElementById("tdLeft").style.visibility = "visible";
+        document.getElementById("tdMiddle").style.visibility= "visible";
+        document.getElementById("tdRight").style.visibility = "visible";
+        document.getElementById("LeftYear").style.visibility = "visible";
+        document.getElementById("RightYear").style.visibility = "visible";
+    }
+    
+    //Convert English Numbers to Arabic  
+   function NumToAr(str)
+   {
+        var myOldString = str+'';
+        var myNewString = myOldString.replace(/0/g, "٠").replace(/1/g, "١").replace(/2/g, "٢").replace(/3/g, "٣").replace(/4/g, "٤").replace(/5/g, "٥").replace(/6/g, "٦").replace(/7/g, "٧").replace(/8/g, "٨").replace(/9/g, "٩");
+        return myNewString;
+   }
+   //Convert Arabic Numbers to English 
+   function NumToEn(str)
+   {
+        var myOldString = str+'';
+        var myNewString = myOldString.replace(/٠/g, "0").replace(/١/g, "1").replace(/٢/g, "2").replace(/٣/g, "3").replace(/٤/g, "4").replace(/٥/g, "5").replace(/٦/g, "6").replace(/٧/g, "7").replace(/٨/g, "8").replace(/٩/g, "9");
+        return myNewString;
+   }
+
+    function disableSelection(target)
+    {  
+        if (typeof target.onselectstart!="undefined") //IE route
+        {
+            target.onselectstart=function(){return false;}
+        }
+        else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+        {
+            target.style.MozUserSelect="none";
+        }
+    }
+    
+   
+ </script>
+
+ 
+ <style>
+     #tdLeft{
+         background-color:#5d4e2f; filter:alpha(opacity=30);-moz-opacity:0.30; opacity: 0.30; visibility:hidden; 
+     }
+     #tdRight{
+        background-color:#5d4e2f; filter:alpha(opacity=30);-moz-opacity:0.30; opacity: 0.30; visibility:hidden;
+     }
+     #tblTimeLine{
+        width: 986px; background-image: url(../../images/TimeLine.gif); background-repeat: no-repeat;  background-position-y:top; 
+     }
+     #DivLeft{
+        background-image: url(../../images/Arrow_left.gif); position:relative; margin:0px 0px 0px -25px;
+                                background-repeat: no-repeat; background-position: right center;  cursor:pointer; width:20px;height:30px;
+     }
+     #DivRight{
+        background-image: url(../../images/Arrow_right.gif);position:relative;  margin:0px -25px 0px 0px;
+                             background-repeat: no-repeat; background-position: left center;  cursor:pointer; width:20px;height:30px;
+     }
+     .Tyear{ color:#F7F1DA; background-color:#A85A22; width:30px; visibility:hidden;}
+     
+ </style>
+ <div id="timeline" dir="ltr" >
+     <table id="tblTimeLine" border="0" >
+        <tr style="height:36px" > 
+            <td id="tdLeft"  align="right">
+            </td>            
+            <td id="tdMiddle" style="visibility:hidden;" >
+                <table  width=100% border=0 >
+                    <tr>
+                        <td align=left><div  id="DivLeft" style="z-index:500"><img src='../../images/spacer.gif'/></div> 
+                        </td>
+                        <td align=right><div id="DivRight" style="z-index:500"><img src='../../images/spacer.gif'/></div>
+                        </td>
+                    </tr>
+                </table>                        
+            </td>
+             <td id="tdRight" align="left">
+            </td>
+       </tr>
+       <tr  style="height:33px">
+            <td  style="color:black; font-size:small; cursor:pointer;" align="right">
+                <div class="Tyear" id="LeftYear"> </div>
+            </td>
+            <td>
+            </td>
+             <td  style="font-size:small; cursor:pointer;" align="left">
+             <div  class="Tyear" id="RightYear"> </div>
+            </td>
+        </tr>
+     </table>
+ </div>
+ <input name="Master1$TimeLine1$hiddenFromDate" type="text" id="Master1_TimeLine1_hiddenFromDate" style="display: none" value="1799" />
+ <input name="Master1$TimeLine1$hiddenToDate" type="text" id="Master1_TimeLine1_hiddenToDate" style="display: none" value="1981" />
+       
+       
+    
+                       
+        </div>     
+	<div id="footer" align="center">
+    <a href="http://www.bibalex.org/isis" target="_blank"><img src="../../images/spacer.gif"  width="74" height="35" hspace="20" alt="ISIS" border="0" align="left" /></a>
+       <a href="http://www.bibalex.org" target="_blank"><img src="../../images/spacer.gif" width="47" height="35" hspace="5" alt="Bibliotheca Alexandrina" border="0" align="left" /></a>
+       <div id="about"> <a href="../../Collections/Home/Sitemap.aspx" target="_blank">خريطة الموقع</a> | <a href="../../Collections/Home/Aboutus.aspx" target="_blank">عن المشروع </a> | <a href="../../Collections/Home/Thanks.aspx" target="_blank">شكر </a> | <a href="../../Collections/Home/Contactus.aspx" target="_blank">اتصل بنا</a> | <a href="../../Collections/Home/FAQ.aspx" target="_blank">أسئلة متكررة</a> | <a href="../../Collections/Home/Bibliography.aspx" target="_blank">المراجع</a></div>
+      </div>
+ </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+document.getElementById('hidepage').style.display = "none";var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel1', {contentIsOpen:false});var CollapsiblePanel2 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel2', {contentIsOpen:false});var CollapsiblePanel3 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel3', {contentIsOpen:false});var CollapsiblePanel4 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel4', {contentIsOpen:false});var CollapsiblePanel5 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel5', {contentIsOpen:false});var CollapsiblePanel6 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel6', {contentIsOpen:false});var CollapsiblePanel7 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel7', {contentIsOpen:false});var CollapsiblePanel8 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel8', {contentIsOpen:false});var CollapsiblePanel9 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel9', {contentIsOpen:false});var CollapsiblePanel10 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel10', {contentIsOpen:false});var CollapsiblePanel11 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel11', {contentIsOpen:false});var CollapsiblePanel12 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel12', {contentIsOpen:false});var CollapsiblePanel13 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel13', {contentIsOpen:false});var CollapsiblePanel15 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel15', {contentIsOpen:false});var CollapsiblePanel16 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel16', {contentIsOpen:false});var CollapsiblePanel17 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel17', {contentIsOpen:false});var CollapsiblePanel18 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel18', {contentIsOpen:false});var CollapsiblePanel19 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel19', {contentIsOpen:false});var CollapsiblePanel20 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel20', {contentIsOpen:false});var CollapsiblePanel22 = new Spry.Widget.CollapsiblePanel('CollapsiblePanel22', {contentIsOpen:false});var w = document.body.offsetWidth; var h = document.body.offsetHeight; document.getElementById('hidepage').style.width = w + 'px'; document.getElementById('hidepage').style.height = h + 'px';document.getElementById('tdAlignment').style.height = parseInt(h / 2 - 25) + 'px';var w = document.body.offsetWidth; var h = document.body.offsetHeight; document.getElementById('tdMessageBoxAlignment').style.width = w + 'px'; document.getElementById('tdMessageBoxAlignment').style.height = h + 'px';SetPopup();//]]>
+</script>
+</form>
+</body>
+</html>
+ contentType 9 text/html url 76 http://modernegypt.bibalex.org:80/Collections/Documents/DocumentsLucene.aspx responseCode 3 200 

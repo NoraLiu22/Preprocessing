@@ -1,0 +1,1724 @@
+csumpsxmvcrgriwgnakkrsxiwcagesgcxoikvcoq length 6 115995 page 115995 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>Meetings and Documents</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="Meetings and Documents" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2024-04-19T00:00:00Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl23_BSignUp" href="javascript:__doPostBack(&#39;ctl23$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl23_BSignIn" href="javascript:__doPostBack(&#39;ctl23$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl22_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl22$BLocale', 'ar');" id="ctl22_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl22$BLocale', 'es');" id="ctl22_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl22$BLocale', 'fr');" id="ctl22_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl22$BLocale', 'ru');" id="ctl22_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl22_CLanguage" class="language-option">Русский</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./meetings/" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBSkvdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZjaG0lMmZtZWV0aW5ncx4JaW5uZXJodG1sBRZTaWduIHVwIGZvciBhbiBhY2NvdW50ZAIDDxYEHwAFKS91c2VyL3NpZ25pbi8/cmV0dXJudXJsPSUyZmNobSUyZm1lZXRpbmdzHwEFB1NpZ24gSW5kAgMPFgIeB1Zpc2libGVoFgQCAQ8WBB8ABSovdXNlci9wcm9maWxlLz9yZXR1cm51cmw9JTJmY2htJTJmbWVldGluZ3MeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIHDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCcnVkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC0zNjc5LmpwZykWAgIBDxYCHwEFGENsZWFyaW5nLUhvdXNlIE1lY2hhbmlzbWQCAQ9kFgQCAQ8WBB8ABRIvY2htL2RlZmF1bHQuc2h0bWwfAQUYQ2xlYXJpbmctSG91c2UgTWVjaGFuaXNtZAIDD2QWAmYPZBYCZg8WAh4FY2xhc3MFGm5hdmJhci1uYXYgbXItYXV0byBsZXZlbC0wFgICBg8WBh8GBQluYXYtaXRlbSAeB3BhZ2UtaWQFBDI1NjYfAmgWAmYPFgIfAGRkAgMPZBYCAgEPZBYCZg9kFgJmD2QWAgIBDxYEHwYFFWxpc3QtdW5zdHlsZWQgbGV2ZWwtMB8CaBYCAgEPFgYfBgUObGV2ZWwtMCBhY3RpdmUfBwUEMjU2Nh8CaBYCAgEPFgIfAGRkAgUPFgIfBgUvY29sLTEyIHBsLW1kLTQgcHItbWQtNCBwbC1sZy01IHByLWxnLTUgbm8tYXNpZGUWBAIDDxYCHwEFE0ZyaWRheSAvLyA0LjE5LjIwMjRkAgcPZBYCAgIPZBYCAgIPZBYCAgMPZBYCAgMPZBYCZg9kFgQCAQ9kFgoCAQ8WAh8BBQ9TZWFyY2ggQ3JpdGVyaWFkAgcPZBYCZg8WAh8BBQhDb3VudHJ5OmQCCw9kFgRmDxYCHwEFBVllYXI6ZAICDxYCHwEFBk1vbnRoOmQCDQ9kFgJmDxYCHwEFD1RpdGxlIENvbnRhaW5zOmQCDw9kFgRmDxYCHwEFFURlc2NyaXB0aW9uIENvbnRhaW5zOmQCAQ9kFgICAQ8WAh4FdmFsdWVkZAIJDxQrAAsPFgweEEN1cnJlbnRQYWdlSW5kZXhmHghEYXRhS2V5cxYAHhBWaXJ0dWFsSXRlbUNvdW50AjseC18hSXRlbUNvdW50AjIeFV8hRGF0YVNvdXJjZUl0ZW1Db3VudAI7HglQYWdlQ291bnQCAmQUKwACPCsABAEAFgIeCkhlYWRlclRleHQFD0RhdGVzIGFuZCBWZW51ZTwrAAQBABYCHw8FB01lZXRpbmcWBB4MUGFnZXJWaXNpYmxlZx4EXyFTQgKAgIAIZGRkZGRkZGQWAmYPZBZoAgIPZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgQPDxYEHghDc3NDbGFzcwUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIGDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAggPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCCg8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIMDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAg4PDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCEA8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAISDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAhQPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCFg8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIYDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAhoPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCGw8PFgQfEgUJZGdBbHRJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIdDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAh8PDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCIQ8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIjDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAiUPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCJw8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIpDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAisPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCLQ8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIvDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAjEPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCMw8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAI1Dw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAjcPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCOQ8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAI7Dw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAj0PDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCPw8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJBDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAkMPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCRQ8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJGDw8WBB8SBQlkZ0FsdEl0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAkgPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCSg8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJLDw8WBB8SBQlkZ0FsdEl0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAkwPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCTg8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJQDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAlIPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCVA8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJWDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAlgPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCWg8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJcDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAl0PDxYEHxIFCWRnQWx0SXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCXw8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAJhDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAmIPZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgcPFgIfAmhkZIVhkOsBqJbY8bCZEyZ2ySnuCSgHnTDjMo/NATgGqy7A" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl16_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-3679.jpg)">
+    <h1 id="ctl16_ctl00_CCarouselTitle">Clearing-House Mechanism</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/chm/default.shtml" id="ctl17_CPortal" class="navbar-brand">Clearing-House Mechanism</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl17_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl17_ctl00_CMenuRow" class="nav-item" page-id="4688">
+        <a id="ctl17_ctl00_CMenuRowLink" class="nav-link">About the CHM</a>
+    <ul id="ctl17_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item" page-id="4690">
+        <a href="/chm/intro/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">Introduction</a>
+    </li><li id="ctl17_ctl00_ctl00_CMenuRow" class="nav-item" page-id="4693"><a href="/chm/faq/" id="ctl17_ctl00_ctl00_CMenuRowLink" class="nav-link">FAQ</a></li>
+</ul>
+</li><li id="ctl17_ctl00_CMenuRow" class="nav-item" page-id="3681"><a id="ctl17_ctl00_CMenuRowLink" class="nav-link">Programme</a><ul id="ctl17_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="4653">
+        <a href="/chm/background/" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Background</a>
+    </li><li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="3483"><a href="/chm/strategy/" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Strategy</a></li><li id="ctl17_ctl00_ctl01_CMenuRow" class="nav-item" page-id="3484"><a href="/chm/work/" id="ctl17_ctl00_ctl01_CMenuRowLink" class="nav-link">Activities</a></li>
+</ul>
+</li><li id="ctl17_ctl00_CMenuRow" class="nav-item" page-id="3682"><a id="ctl17_ctl00_CMenuRowLink" class="nav-link">Implementation</a><ul id="ctl17_ctl00_ctl02_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9620">
+        <a href="/chm/award/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">CHM Award</a>
+    </li><li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="4023"><a href="/information/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">Information Centre</a></li><li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3800"><a href="/chm/network/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">CHM Network</a></li><li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3798"><a href="/chm/nfp/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">CHM National Focal Points</a></li><li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="8499"><a href="/chm/guidance/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">Guidance</a></li><li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3809"><a href="/chm/capacity-building/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">Capacity Building</a></li><li id="ctl17_ctl00_ctl02_CMenuRow" class="nav-item" page-id="5817"><a href="/chm/logo/" id="ctl17_ctl00_ctl02_CMenuRowLink" class="nav-link">CHM Logo</a></li>
+</ul>
+</li><li id="ctl17_ctl00_CMenuRow" class="nav-item" page-id="3684"><a id="ctl17_ctl00_CMenuRowLink" class="nav-link">Informal Advisory Committee</a><ul id="ctl17_ctl00_ctl03_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl03_CMenuRow" class="nav-item" page-id="3803">
+        <a href="/chm/iac/mandate/" id="ctl17_ctl00_ctl03_CMenuRowLink" class="nav-link">Mandate</a>
+    </li><li id="ctl17_ctl00_ctl03_CMenuRow" class="nav-item" page-id="6560"><a href="/chm/iac/members/" id="ctl17_ctl00_ctl03_CMenuRowLink" class="nav-link">Members</a></li><li id="ctl17_ctl00_ctl03_CMenuRow" class="nav-item" page-id="3805"><a href="/chm/iac/meetings/" id="ctl17_ctl00_ctl03_CMenuRowLink" class="nav-link">Meetings</a></li><li id="ctl17_ctl00_ctl03_CMenuRow" class="nav-item" page-id="4662"><a href="/chm/iac/procedures/" id="ctl17_ctl00_ctl03_CMenuRowLink" class="nav-link">Operational Procedures</a></li>
+</ul>
+</li><li id="ctl17_ctl00_CMenuRow" class="nav-item " page-id="2566"><a id="ctl17_ctl00_CMenuRowLink" class="nav-link">Related Information</a><ul id="ctl17_ctl00_ctl04_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl17_ctl00_ctl04_CMenuRow" class="nav-item  active" page-id="4659">
+        <a href="/chm/meetings/" id="ctl17_ctl00_ctl04_CMenuRowLink" class="nav-link">Meetings and Documents</a>
+    </li><li id="ctl17_ctl00_ctl04_CMenuRow" class="nav-item" page-id="4694"><a href="/chm/notifications/" id="ctl17_ctl00_ctl04_CMenuRowLink" class="nav-link">Notifications</a></li><li id="ctl17_ctl00_ctl04_CMenuRow" class="nav-item" page-id="4658"><a href="/chm/websites/" id="ctl17_ctl00_ctl04_CMenuRowLink" class="nav-link">Related Web Sites</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl25_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl25_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl25_TMenuItem" class="level-0" page-id="3679">
+            <a href="/chm" id="ctl25_TMenuItemLink">Clearing-House Mechanism</a>
+        </li><li id="ctl25_TMenuItem" class="level-0" page-id="4688">
+            <a id="ctl25_TMenuItemLink">About the CHM</a>
+        <ul id="ctl25_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl25_TMenuItem" class="level-1" page-id="4690">
+            <a href="/chm/intro" id="ctl25_TMenuItemLink">Introduction</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="4693">
+            <a href="/chm/faq" id="ctl25_TMenuItemLink">FAQ</a>
+        </li></ul></li><li id="ctl25_TMenuItem" class="level-0" page-id="3681">
+            <a id="ctl25_TMenuItemLink">Programme</a>
+        <ul id="ctl25_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl25_TMenuItem" class="level-1" page-id="4653">
+            <a href="/chm/background" id="ctl25_TMenuItemLink">Background</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="3483">
+            <a href="/chm/strategy" id="ctl25_TMenuItemLink">Strategy</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="3484">
+            <a href="/chm/work" id="ctl25_TMenuItemLink">Activities</a>
+        </li></ul></li><li id="ctl25_TMenuItem" class="level-0" page-id="3682">
+            <a id="ctl25_TMenuItemLink">Implementation</a>
+        <ul id="ctl25_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl25_TMenuItem" class="level-1" page-id="9620">
+            <a href="/chm/award" id="ctl25_TMenuItemLink">CHM Award</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="4023">
+            <a href="/information" id="ctl25_TMenuItemLink">Information Centre</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="3800">
+            <a href="/chm/network" id="ctl25_TMenuItemLink">CHM Network</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="3798">
+            <a href="/chm/nfp" id="ctl25_TMenuItemLink">CHM National Focal Points</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="8499">
+            <a href="/chm/guidance" id="ctl25_TMenuItemLink">Guidance</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="3809">
+            <a href="/chm/capacity-building" id="ctl25_TMenuItemLink">Capacity Building</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="5817">
+            <a href="/chm/logo" id="ctl25_TMenuItemLink">CHM Logo</a>
+        </li></ul></li><li id="ctl25_TMenuItem" class="level-0" page-id="3684">
+            <a id="ctl25_TMenuItemLink">Informal Advisory Committee</a>
+        <ul id="ctl25_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl25_TMenuItem" class="level-1" page-id="3803">
+            <a href="/chm/iac/mandate" id="ctl25_TMenuItemLink">Mandate</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="6560">
+            <a href="/chm/iac/members" id="ctl25_TMenuItemLink">Members</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="3805">
+            <a href="/chm/iac/meetings" id="ctl25_TMenuItemLink">Meetings</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="4662">
+            <a href="/chm/iac/procedures" id="ctl25_TMenuItemLink">Operational Procedures</a>
+        </li></ul></li><li id="ctl25_TMenuItem" class="level-0 active" page-id="2566">
+            <a id="ctl25_TMenuItemLink">Related Information</a>
+        <ul id="ctl25_TMenu" class="list-unstyled level-1 active">
+        
+    <li id="ctl25_TMenuItem" class="level-1 selected" page-id="4659">
+            <a href="/chm/meetings" id="ctl25_TMenuItemLink">Meetings and Documents</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="4694">
+            <a href="/chm/notifications" id="ctl25_TMenuItemLink">Notifications</a>
+        </li><li id="ctl25_TMenuItem" class="level-1" page-id="4658">
+            <a href="/chm/websites" id="ctl25_TMenuItemLink">Related Web Sites</a>
+        </li></ul></li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl21_CItems"><a href="/chm/default.shtml">Clearing-House Mechanism</a><span> // Meetings and Documents</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Friday // 4.19.2024</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              
+
+
+<div id="ctl15_CSkin">
+    
+
+    <div id="ctl15_CSkin2">
+        
+        
+
+<style>
+.EventTypeSCBD  {background-color:#FAF8CC; }
+.EventTypeOther { }
+
+tr[id$="CCriteriaCalendar"] td:nth-child(2),
+tr[id$="CCriteriaTheme"] td:nth-child(2), tr[id$="CCriteriaCountry"] td:nth-child(2),
+tr[id$="CCriteriaYear"] td:nth-child(2), tr[id$="CCriteriaOrganization"] td:nth-child(2), 
+tr[id$="CCriteriaText"] td:nth-child(2),tr[id$="CCriteriaDescriptionText"] td:nth-child(2){ width: 400px;}
+tr[id$="CCriteriaYear"] td:nth-child(4) { text-align: right; }
+
+select[id$="tlCalendar_ddlList"]   { width: 400px; }
+select[id$="tlThm_ddlList"]        { width: 400px; }
+select[id$="clCtr_ddlCountryList"] { width: 400px; }
+select[id$="ddlOrganization"]      { width: 400px; }
+select[id$="ddlYear"]              { width: 160px; }
+input[id$="tbText"]                { width: 395px; }
+
+.article-container div[id$="CContent"] table, div[id$="CSearchForm"] table  { width: unset; }
+.article-container select[id$="tlThm_ddlList"], .article-container select[id$="clCtr_ddlCountryList"]{ width: 460px;}
+.article-container select[id$="ddlYear"]  { width: 200px; }
+.article-container select[id$="ddlMonth"] { width: 168px; text-align:right;}
+.article-container  input[id$="tbText"]   { width: 460px; }
+.article-container tr[id$="_CCriteriaText"] td:nth-child(2) {width:460px; padding:2px 0px;}
+
+/* OLD template */
+
+tr.dgItem > td,
+tr.dgAltItem > td {
+    border-style: none;
+}
+
+tr.dgItem,
+tr.dgAltItem {
+    border-bottom: dotted 1px #c0c0c0;
+}
+
+tr.dgItem    > td div.links a,
+tr.dgAltItem > td div.links a {
+    display: block;
+}
+/* NEW template */
+body.phoenix tr.dgMainGroup > td {
+    font-size: 125%;
+}
+
+body.phoenix tr.dgHeader {
+    display:none;
+}
+
+body.phoenix tr.dgSep > td {
+    padding-top:20px
+}
+
+body.phoenix tr.dgItem    > td,
+body.phoenix tr.dgAltItem > td {
+      padding:5px
+}
+
+body.phoenix tr.dgItem,
+body.phoenix tr.dgAltItem {
+      border-bottom: dotted 1px rgba(0,0,0,.05);
+}
+
+body.phoenix tr.dgPager,
+body.phoenix tr.dgItem {
+    background-color: rgba(0,0,0,.05);
+}
+
+
+body.phoenix tr.dgItem    > td div.links a,
+body.phoenix tr.dgAltItem > td div.links a {
+    background-color: #0c9d4d;
+    display: inline-block;
+    padding: 5px 7px;
+    border-radius: 3px;
+    color: white;
+    margin-left:3px;
+    margin-right:3px;}
+</style>
+
+<div id="ctl15_W4793_CSearchForm">
+    <div id="ctl15_W4793_LSearchCriteria" class="dgSearch">Search Criteria</div>
+    &nbsp;
+
+    <table border='0' cellpadding='1' cellspacing='0' style="margin-bottom: 10px;" > 
+        <tr id="ctl15_W4793_CCriteriaCalendar">
+<td align="right" style="white-space:nowrap">
+                <span id="ctl15_W4793_txCalendar_spanText">Calendar:</span>
+
+            </td>
+<td colspan="3">
+                <select name="ctl15$W4793$tlCalendar$ddlList" id="ctl15_W4793_tlCalendar_ddlList"><option selected="selected" value="SCBD">SCBD Calendar</option>
+<option value="GLOBAL">Global Calendar</option>
+<option value="PRE-CBD">Pre-CBD Calendar</option>
+<option value="RIO">Rio Conventions Calendar</option>
+<option value="BRC">Biodiversity-Related Conventions Calendar</option>
+<option value="CITIES">Cities Calendar</option>
+<option value="IBD">International Biodiversity Day Calendar</option>
+<option value="IYB">International Year of Biodiversity Calendar</option>
+</select>
+
+
+            </td>
+</tr>
+
+        <tr id="ctl15_W4793_CCriteriaTheme">
+<td align="right" style="white-space:nowrap">
+                <span id="ctl15_W4793_txSubject_spanText">Subject:</span>
+
+            </td>
+<td colspan="3">
+                <select name="ctl15$W4793$tlThm$ddlList" id="ctl15_W4793_tlThm_ddlList"><option value="">&lt;Any Subject&gt;</option>
+<option value="ABS">Access to Genetic Resources and Benefit-sharing</option>
+<option value="AGR">Agricultural Biodiversity</option>
+<option value="ARC">Arctic Biodiversity</option>
+<option value="BBI">Bio-Bridge Initiative</option>
+<option value="DEV">Biodiversity for Development</option>
+<option value="FUEL">Biofuels and Biodiversity</option>
+<option value="BTB">Biosafety and Biotechnology</option>
+<option value="BIZ">Business and Biodiversity</option>
+<option value="CB">Capacity-building</option>
+<option value="CPB">Cartagena Protocol on Biosafety</option>
+<option value="CHPO">Chemicals and Pollution</option>
+<option value="CITY">Cities and Biodiversity</option>
+<option selected="selected" value="CHM">Clearing-House Mechanism</option>
+<option value="CC">Climate Change and Biodiversity</option>
+<option value="CEPA">Communication, Education and Public Awareness</option>
+<option value="COP">Conference of the Parties</option>
+<option value="CBD">Convention on Biological Diversity</option>
+<option value="COOP">Cooperation and Partnerships</option>
+<option value="DIGSEQ">Digital sequence information on genetic resources</option>
+<option value="DIGISTRAT">Digital Strategy</option>
+<option value="DSHL">Dry and Sub-Humid Lands Biodiversity</option>
+<option value="ETI">Economics, Trade and Incentive Measures</option>
+<option value="ECOA">Ecosystem Approach</option>
+<option value="ECORES">Ecosystem Restoration</option>
+<option value="ENDS">Endangered Species</option>
+<option value="XCH">Exchange of Information</option>
+<option value="EXS">Ex-Situ Conservation</option>
+<option value="FIN">Financial Resources and Mechanism</option>
+<option value="FOR">Forest Biodiversity</option>
+<option value="GEND">Gender and Biodiversity</option>
+<option value="GURT">Genetic Use Restriction Technologies</option>
+<option value="GEOENG">Geo-engineering and Biodiversity</option>
+<option value="GBO">Global Biodiversity Outlook</option>
+<option value="GSPC">Global Strategy for Plant Conservation</option>
+<option value="GTI">Global Taxonomy Initiative</option>
+<option value="GLP">Governance, Law and Policy</option>
+<option value="HH">Health and Biodiversity</option>
+<option value="IND">Identification, Monitoring and Indicators</option>
+<option value="IMPA">Impact Assessment</option>
+<option value="ICBD">Implementation of the Convention on Biological Diversity</option>
+<option value="WTR">Inland Waters Biodiversity</option>
+<option value="IPR">Intellectual Property Rights</option>
+<option value="IBD">International Day for Biological Diversity</option>
+<option value="IYB">International Year of Biodiversity - 2010</option>
+<option value="IAS">Invasive Alien Species</option>
+<option value="ISL">Island Biodiversity</option>
+<option value="KM">Knowledge Management</option>
+<option value="KMGBF">Kunming-Montreal Global Biodiversity Framework</option>
+<option value="LR">Liability and Redress</option>
+<option value="LIB">Library and Documentation</option>
+<option value="MAR">Marine and Coastal Biodiversity</option>
+<option value="MIGS">Migratory Species</option>
+<option value="MNT">Mountain Biodiversity</option>
+<option value="NBSAP">National Biodiversity Strategies and Action Plans (NBSAP)</option>
+<option value="NR">National Reports</option>
+<option value="NEW">New and emerging issues</option>
+<option value="OCBD">Operations of the Convention on Biological Diversity</option>
+<option value="PB">Parliamentarians and Biodiversity</option>
+<option value="PLR">Polar Biodiversity</option>
+<option value="POST2020">Post-2020 framework</option>
+<option value="PA">Protected Areas / In-Situ Conservation</option>
+<option value="RS">Research and Science</option>
+<option value="STC">Scientific and Technical Cooperation</option>
+<option value="SCIA">Scientific Assessment</option>
+<option value="SSC">South-South Cooperation</option>
+<option value="STRAT">Strategic Plan / Biodiversity Targets</option>
+<option value="SBI">Subsidiary Body on Implementation</option>
+<option value="SBSTTA">Subsidiary Body on Scientific, Technical and Technological Advice</option>
+<option value="SDEV">Sustainable Development / Millenium Development Goals</option>
+<option value="SUSE">Sustainable Use of Biodiversity</option>
+<option value="SWM">Sustainable Wildlife Management</option>
+<option value="SYNBIO">Synthetic Biology</option>
+<option value="TSC">Technical and Scientific Cooperation</option>
+<option value="TOUR">Tourism and Biodiversity</option>
+<option value="TKIP">Traditional Knowledge, Innovations and Practices - Article 8(j)</option>
+<option value="TTC">Transfer of Technology and Cooperation</option>
+<option value="UN">United Nations</option>
+<option value="UNDB">United Nations Decade on Biodiversity - 2011-2020</option>
+<option value="YOUTH">Youth and Biodiversity</option>
+</select>
+
+
+            </td>
+</tr>
+
+        <tr id="ctl15_W4793_CCriteriaCountry">
+<td id="ctl15_W4793_LTextCountry" align="right" style="white-space:nowrap">Country:</td>
+<td colspan="3">
+                <select name="ctl15$W4793$clCtr$ddlCountryList" id="ctl15_W4793_clCtr_ddlCountryList"><option selected="selected" value="">&lt;Any Country&gt;</option>
+<option value="af">Afghanistan</option>
+<option value="al">Albania</option>
+<option value="dz">Algeria</option>
+<option value="ad">Andorra</option>
+<option value="ao">Angola</option>
+<option value="ag">Antigua and Barbuda</option>
+<option value="ar">Argentina</option>
+<option value="am">Armenia</option>
+<option value="au">Australia</option>
+<option value="at">Austria</option>
+<option value="az">Azerbaijan</option>
+<option value="bs">Bahamas</option>
+<option value="bh">Bahrain</option>
+<option value="bd">Bangladesh</option>
+<option value="bb">Barbados</option>
+<option value="by">Belarus</option>
+<option value="be">Belgium</option>
+<option value="bz">Belize</option>
+<option value="bj">Benin</option>
+<option value="bt">Bhutan</option>
+<option value="bo">Bolivia (Plurinational State of)</option>
+<option value="ba">Bosnia and Herzegovina</option>
+<option value="bw">Botswana</option>
+<option value="br">Brazil</option>
+<option value="bn">Brunei Darussalam</option>
+<option value="bg">Bulgaria</option>
+<option value="bf">Burkina Faso</option>
+<option value="bi">Burundi</option>
+<option value="cv">Cabo Verde</option>
+<option value="kh">Cambodia</option>
+<option value="cm">Cameroon</option>
+<option value="ca">Canada</option>
+<option value="cf">Central African Republic</option>
+<option value="td">Chad</option>
+<option value="cl">Chile</option>
+<option value="cn">China</option>
+<option value="co">Colombia</option>
+<option value="km">Comoros</option>
+<option value="cg">Congo</option>
+<option value="ck">Cook Islands</option>
+<option value="cr">Costa Rica</option>
+<option value="ci">C&#244;te d&#39;Ivoire</option>
+<option value="hr">Croatia</option>
+<option value="cu">Cuba</option>
+<option value="cy">Cyprus</option>
+<option value="cz">Czechia</option>
+<option value="kp">Democratic People&#39;s Republic of Korea</option>
+<option value="cd">Democratic Republic of the Congo</option>
+<option value="dk">Denmark</option>
+<option value="dj">Djibouti</option>
+<option value="dm">Dominica</option>
+<option value="do">Dominican Republic</option>
+<option value="ec">Ecuador</option>
+<option value="eg">Egypt</option>
+<option value="sv">El Salvador</option>
+<option value="gq">Equatorial Guinea</option>
+<option value="er">Eritrea</option>
+<option value="ee">Estonia</option>
+<option value="sz">Eswatini</option>
+<option value="et">Ethiopia</option>
+<option value="eur">European Union</option>
+<option value="fj">Fiji</option>
+<option value="fi">Finland</option>
+<option value="fr">France</option>
+<option value="ga">Gabon</option>
+<option value="gm">Gambia</option>
+<option value="ge">Georgia</option>
+<option value="de">Germany</option>
+<option value="gh">Ghana</option>
+<option value="gr">Greece</option>
+<option value="gd">Grenada</option>
+<option value="gt">Guatemala</option>
+<option value="gn">Guinea</option>
+<option value="gw">Guinea-Bissau</option>
+<option value="gy">Guyana</option>
+<option value="ht">Haiti</option>
+<option value="va">Holy See</option>
+<option value="hn">Honduras</option>
+<option value="hu">Hungary</option>
+<option value="is">Iceland</option>
+<option value="in">India</option>
+<option value="id">Indonesia</option>
+<option value="ir">Iran (Islamic Republic of)</option>
+<option value="iq">Iraq</option>
+<option value="ie">Ireland</option>
+<option value="il">Israel</option>
+<option value="it">Italy</option>
+<option value="jm">Jamaica</option>
+<option value="jp">Japan</option>
+<option value="jo">Jordan</option>
+<option value="kz">Kazakhstan</option>
+<option value="ke">Kenya</option>
+<option value="ki">Kiribati</option>
+<option value="kw">Kuwait</option>
+<option value="kg">Kyrgyzstan</option>
+<option value="la">Lao People&#39;s Democratic Republic</option>
+<option value="lv">Latvia</option>
+<option value="lb">Lebanon</option>
+<option value="ls">Lesotho</option>
+<option value="lr">Liberia</option>
+<option value="ly">Libya</option>
+<option value="li">Liechtenstein</option>
+<option value="lt">Lithuania</option>
+<option value="lu">Luxembourg</option>
+<option value="mg">Madagascar</option>
+<option value="mw">Malawi</option>
+<option value="my">Malaysia</option>
+<option value="mv">Maldives</option>
+<option value="ml">Mali</option>
+<option value="mt">Malta</option>
+<option value="mh">Marshall Islands</option>
+<option value="mr">Mauritania</option>
+<option value="mu">Mauritius</option>
+<option value="mx">Mexico</option>
+<option value="fm">Micronesia (Federated States of)</option>
+<option value="mc">Monaco</option>
+<option value="mn">Mongolia</option>
+<option value="me">Montenegro</option>
+<option value="ma">Morocco</option>
+<option value="mz">Mozambique</option>
+<option value="mm">Myanmar</option>
+<option value="na">Namibia</option>
+<option value="nr">Nauru</option>
+<option value="np">Nepal</option>
+<option value="nl">Netherlands (Kingdom of the)</option>
+<option value="nz">New Zealand</option>
+<option value="ni">Nicaragua</option>
+<option value="ne">Niger</option>
+<option value="ng">Nigeria</option>
+<option value="nu">Niue</option>
+<option value="mk">North Macedonia</option>
+<option value="no">Norway</option>
+<option value="om">Oman</option>
+<option value="pk">Pakistan</option>
+<option value="pw">Palau</option>
+<option value="pa">Panama</option>
+<option value="pg">Papua New Guinea</option>
+<option value="py">Paraguay</option>
+<option value="pe">Peru</option>
+<option value="ph">Philippines</option>
+<option value="pl">Poland</option>
+<option value="pt">Portugal</option>
+<option value="qa">Qatar</option>
+<option value="kr">Republic of Korea</option>
+<option value="md">Republic of Moldova</option>
+<option value="ro">Romania</option>
+<option value="ru">Russian Federation</option>
+<option value="rw">Rwanda</option>
+<option value="kn">Saint Kitts and Nevis</option>
+<option value="lc">Saint Lucia</option>
+<option value="vc">Saint Vincent and the Grenadines</option>
+<option value="ws">Samoa</option>
+<option value="sm">San Marino</option>
+<option value="st">Sao Tome and Principe</option>
+<option value="sa">Saudi Arabia</option>
+<option value="sn">Senegal</option>
+<option value="rs">Serbia</option>
+<option value="sc">Seychelles</option>
+<option value="sl">Sierra Leone</option>
+<option value="sg">Singapore</option>
+<option value="sk">Slovakia</option>
+<option value="si">Slovenia</option>
+<option value="sb">Solomon Islands</option>
+<option value="so">Somalia</option>
+<option value="za">South Africa</option>
+<option value="ss">South Sudan</option>
+<option value="es">Spain</option>
+<option value="lk">Sri Lanka</option>
+<option value="ps">State of Palestine</option>
+<option value="sd">Sudan</option>
+<option value="sr">Suriname</option>
+<option value="se">Sweden</option>
+<option value="ch">Switzerland</option>
+<option value="sy">Syrian Arab Republic</option>
+<option value="tj">Tajikistan</option>
+<option value="th">Thailand</option>
+<option value="tl">Timor-Leste</option>
+<option value="tg">Togo</option>
+<option value="to">Tonga</option>
+<option value="tt">Trinidad and Tobago</option>
+<option value="tn">Tunisia</option>
+<option value="tr">Türkiye</option>
+<option value="tm">Turkmenistan</option>
+<option value="tv">Tuvalu</option>
+<option value="ug">Uganda</option>
+<option value="ua">Ukraine</option>
+<option value="ae">United Arab Emirates</option>
+<option value="gb">United Kingdom of Great Britain and Northern Ireland</option>
+<option value="tz">United Republic of Tanzania</option>
+<option value="us">United States of America</option>
+<option value="uy">Uruguay</option>
+<option value="uz">Uzbekistan</option>
+<option value="vu">Vanuatu</option>
+<option value="ve">Venezuela (Bolivarian Republic of)</option>
+<option value="vn">Viet Nam</option>
+<option value="ye">Yemen</option>
+<option value="zm">Zambia</option>
+<option value="zw">Zimbabwe</option>
+</select>
+
+
+
+
+
+
+            </td>
+</tr>
+
+        <tr id="ctl15_W4793_CCriteriaOrganization">
+<td align="right" style="white-space:nowrap">
+                <span id="ctl15_W4793_ctl06_spanText">Organized by:</span>
+
+            </td>
+<td colspan="3">
+                <select name="ctl15$W4793$ddlOrganization" id="ctl15_W4793_ddlOrganization"><option selected="selected" value="">&lt;Any Organizer&gt;</option>
+<option value="3406">Secretariat of the Convention on Biological Diversity</option>
+</select>
+            </td>
+</tr>
+
+        <tr id="ctl15_W4793_CCriteriaYear">
+<td id="ctl15_W4793_LTextYear" align="right" style="white-space:nowrap">Year:</td>
+<td style="width:180px;">
+                <select name="ctl15$W4793$ddlYear" id="ctl15_W4793_ddlYear" onchange="document.getElementById(&#39;ctl15_W4793_ddlMonth&#39;).value=&#39;0&#39;;"><option selected="selected" value="0">&lt;Any Time&gt;</option>
+<option value="1">&lt;Upcoming Meetings&gt;</option>
+<option value="2">&lt;Previous Meetings&gt;</option>
+<option value="2024">2024</option>
+<option value="2023">2023</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+<option value="2017">2017</option>
+<option value="2016">2016</option>
+<option value="2015">2015</option>
+<option value="2014">2014</option>
+<option value="2013">2013</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+<option value="2010">2010</option>
+<option value="2009">2009</option>
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+<option value="1999">1999</option>
+<option value="1998">1998</option>
+<option value="1997">1997</option>
+<option value="1996">1996</option>
+<option value="1995">1995</option>
+<option value="1994">1994</option>
+<option value="1993">1993</option>
+<option value="1992">1992</option>
+<option value="1991">1991</option>
+<option value="1990">1990</option>
+<option value="1988">1988</option>
+</select>
+            </td>
+<td id="ctl15_W4793_LTextMonth" style="width:46px;text-align:center">Month:</td>
+<td style="width:170px;">
+                <select name="ctl15$W4793$ddlMonth" id="ctl15_W4793_ddlMonth" Style="width:169px;"><option selected="selected" value="0">&lt;Any Month&gt;</option>
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+            </td>
+</tr>
+
+        <tr id="ctl15_W4793_CCriteriaText">
+<td id="ctl15_W4793_LTextTitleContains" align="right" style="white-space:nowrap">Title Contains:</td>
+<td colspan="3">
+                <input name="ctl15$W4793$tbText" type="text" id="ctl15_W4793_tbText" />
+            </td>
+</tr>
+
+        
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                <input type="submit" name="ctl15$W4793$BSearch" value="Search" id="ctl15_W4793_BSearch" class="btn btn-primary btn-sml"></input>
+            </td>
+        </tr>
+    </table> 
+    
+    <input name="ctl15$W4793$CCurrentSearchCriteriaCalendarCode" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaCalendarCode" value="SCBD" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaThematicCode" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaThematicCode" value="CHM" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaCountryCode" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaCountryCode" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaOrganizationCode" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaOrganizationCode" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaYear" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaYear" value="0" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaMonth" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaMonth" value="0" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaTitleContains" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaTitleContains" />
+    <input name="ctl15$W4793$CCurrentSearchCriteriaDescriptionContains" type="hidden" id="ctl15_W4793_CCurrentSearchCriteriaDescriptionContains" />
+</div>
+<span id="ctl15_W4793_spanDebug"></span>
+
+<!-- Info -->
+<p id="ctl15_W4793_pInfo" align="center"></p>
+<!-- Debug -->
+
+
+<!-- Datagrid -->
+<table class="dgGrid" cellspacing="0" cellpadding="0" id="ctl15_W4793_dg" style="border-collapse:collapse;" ><tr class="dgPager" align="right"><td align="right" colspan="2"><span><span class='floatNear'>Results <b>1</b> to <b>50</b> of 59 results found</span>&nbsp;Pages:&nbsp;</span><span>1</span>&nbsp;<a href="javascript:__doPostBack(&#39;ctl15$W4793$dg$ctl01$ctl02&#39;,&#39;&#39;)">2</a></td></tr><tr class="dgMainGroup"><td colspan="2"><h2>Previous Meetings</h2></td></tr><tr class="dgHeader"><td class="EventTypeOther">Dates and Venue</td><td class="EventTypeOther">Meeting</td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2021</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_0" style="margin:2 2 2 2">23 November 2021<br />Online</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_0" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/006195'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>July 2020</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_1" style="margin:2 2 2 2">9 July 2020<br />Online</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_1" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHM-IAC-2020-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2019</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_2" style="margin:2 2 2 2">26 November 2019<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_2" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/005950'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>June 2019</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_3" style="margin:2 2 2 2">17 - 19 June 2019<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_3" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHM-IAC-2019-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>April 2019</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_4" style="margin:2 2 2 2">14 - 18 April 2019<br />Riyadh, Saudi Arabia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_4" style="margin:2 2 2 2"> <div>Subregional Workshop on National Clearing-House Mechanisms for the Member States of the Gulf Cooperation Council</div><div class="links"><a href='/meetings/CHMWS-2019-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2018</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_5" style="margin:2 2 2 2">24 November 2018<br />Sharm El-Sheikh, Egypt</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_5" style="margin:2 2 2 2"> <div>Biosafety Clearing-House Training Workshop</div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>July 2018</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_6" style="margin:2 2 2 2">10 July 2018<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_6" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2018-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>March 2018</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_7" style="margin:2 2 2 2">5 - 9 March 2018<br />Cairo, Egypt</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_7" style="margin:2 2 2 2"> <div>Subregional Workshop for Arabic-speaking Countries on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMWS-2018-02'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>January 2018</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_8" style="margin:2 2 2 2">29 January - 2 February 2018<br />Bangkok, Thailand</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_8" style="margin:2 2 2 2"> <div>Regional Workshop for Asia on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMWS-2018-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>December 2017</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_9" style="margin:2 2 2 2">7 - 8 December 2017<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_9" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2017-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2017</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_10" style="margin:2 2 2 2">14 - 16 November 2017<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_10" style="margin:2 2 2 2"> <div>Third meeting of the Informal Advisory Committee to the Access and Benefit-sharing Clearing-House</div><div class="links"><a href='/meetings/ABSCHIAC-2017-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>December 2016</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_11" style="margin:2 2 2 2">11 December 2016<br />Cancun, Mexico</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_11" style="margin:2 2 2 2"> <div>Biosafety Clearing-House Training Workshop</div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_12" style="margin:2 2 2 2">3 December 2016<br />Cancun, Mexico</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_12" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2016-02'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2016-02/official/chmiac-2016-02-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>June 2016</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_13" style="margin:2 2 2 2">13 - 17 June 2016<br />Nadi, Fiji</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_13" style="margin:2 2 2 2"> <div>Regional workshop for the Pacific on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMWS-2016-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>May 2016</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_14" style="margin:2 2 2 2">1 May 2016<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_14" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2016-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2016-01/official/chmiac-2016-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>April 2016</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_15" style="margin:2 2 2 2">4 - 8 April 2016<br />Belgrade, Serbia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_15" style="margin:2 2 2 2"> <div>Regional Workshop for Central and Eastern Europe and Western Asia on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMWS-2016-02'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>October 2015</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_16" style="margin:2 2 2 2">30 - 31 October 2015<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_16" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2015-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2015-01/official/chmiac-2015-01-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>October 2014</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_17" style="margin:2 2 2 2">5 October 2014<br />Pyeongchang, Republic of Korea</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_17" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2014-02'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2014-02/official/chmiac-2014-02-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>June 2014</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_18" style="margin:2 2 2 2">13 - 14 June 2014<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_18" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2014-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2014-01/official/chmiac-2014-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>May 2014</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_19" style="margin:2 2 2 2">5 - 9 May 2014<br />Buea, Cameroon</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_19" style="margin:2 2 2 2"> <div>Regional workshop for African countries on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHM-WS-2014-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chm-ws-2014-01/official/chm-ws-2014-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>October 2013</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_20" style="margin:2 2 2 2">2 - 4 October 2013<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_20" style="margin:2 2 2 2"> <div>Informal Advisory Committee to the pilot phase of the Access and Benefit-sharing Clearing-house</div><div class="links"><a href='/meetings/ABS-IAC-CH-01'>Documents &#187;</a> <a href='/doc/meetings/abs/abs-iac-ch-01/official/abs-iac-ch-01-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>September 2013</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_21" style="margin:2 2 2 2">16 - 20 September 2013<br />Gros Islet, Saint Lucia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_21" style="margin:2 2 2 2"> <div>Regional Workshop for the Caribbean Countries on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHM-RW-2013-CAR'>Documents &#187;</a> <a href='/doc/meetings/chm/chm-rw-2013-car/official/chm-rw-2013-car-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>May 2013</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_22" style="margin:2 2 2 2">6 - 10 May 2013<br />Villa de Leyva, Colombia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_22" style="margin:2 2 2 2"> <div>	Regional Workshop for Latin America on the Clearing-house Mechanism (CHM)</div><div class="links"><a href='/meetings/CHM-RW-2013-LA'>Documents &#187;</a> <a href='/doc/meetings/chm/chm-rw-2013-la/official/chm-rw-2013-la-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>October 2012</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_23" style="margin:2 2 2 2">7 October 2012<br />Hyderabad, India</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_23" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2012-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2012-01/official/chmiac-2012-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>March 2012</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_24" style="margin:2 2 2 2">28 - 30 March 2012<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_24" style="margin:2 2 2 2"> <div>Seventh meeting of the Informal Advisory Committee of the Biosafety Clearing-House</div><div class="links"><a href='/meetings/BCHIAC-07'>Documents &#187;</a> <a href='/doc/meetings/bch/bchiac-07/official/bchiac-07-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>December 2011</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_25" style="margin:2 2 2 2">12 - 16 December 2011<br />Dehradun, India</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_25" style="margin:2 2 2 2"> <div>Sub-Regional Capacity-Building Workshop for South Asia on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHM-CBW-2011-SA'>Documents &#187;</a> <a href='/doc/meetings/chm/chm-cbw-2011-sa/official/chm-cbw-2011-sa-04-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>October 2010</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_26" style="margin:2 2 2 2">17 October 2010<br />Nagoya, Aichi Prefecture, Japan</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_26" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2010-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2010-01/official/chmiac-2010-01-04-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>May 2008</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_27" style="margin:2 2 2 2">18 May 2008<br />Bonn, Germany</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_27" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2008-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2008-01/official/chmiac-2008-01-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2007</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_28" style="margin:2 2 2 2">19 - 21 November 2007<br />Quebec City, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_28" style="margin:2 2 2 2"> <div>Arctic Region Workshop on Indigenous Communities, Tourism and Biodiversity: New Information and Web-based Technologies</div><div class="links"><a href='/meetings/WSTOURIDG-01'>Documents &#187;</a> <a href='/doc/meetings/tour/wstouridg-01/official/wstouridg-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>July 2007</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_29" style="margin:2 2 2 2">7 July 2007<br />UNESCO, Paris, France</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_29" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2007-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2007-01/official/chmiac-2007-01-04-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>December 2006</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_30" style="margin:2 2 2 2">14 - 16 December 2006<br />Quito, Ecuador</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_30" style="margin:2 2 2 2"> <div>Joint Article 8(j) and Clearing-House Mechanism Capacity-Building Workshop on Networking and Information Exchange (Latin America and the Caribbean Region)</div><div class="links"><a href='/meetings/WSCBLAC-01'>Documents &#187;</a> <a href='/doc/meetings/tk/wscblac-01/official/wscblac-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>March 2006</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_31" style="margin:2 2 2 2">19 March 2006<br />Curitiba, Brazil</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_31" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2006-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2006-01/official/chmiac-2006-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>December 2005</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_32" style="margin:2 2 2 2">13 - 15 December 2005<br />Tallinn, Estonia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_32" style="margin:2 2 2 2"> <div>CBD Clearing-House Mechanism and EC Clearing-House Mechanism joint regional meeting for Central and Eastern Europe</div><div class="links"><a href='/meetings/CHMEC-02'>Documents &#187;</a> <a href='/doc/meetings/chm/chmec-02/official/chmec-02-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2005</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_33" style="margin:2 2 2 2">27 November 2005<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_33" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2005-02'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2005-02/official/chmiac-2005-02-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_34" style="margin:2 2 2 2">21 - 25 November 2005<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_34" style="margin:2 2 2 2"> <div>Technical Workshop on the introduction of new information and web-based technologies</div><div class="links"><a href='/meetings/CHMTWIT-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>March 2005</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_35" style="margin:2 2 2 2">9 - 11 March 2005<br />Brasilia, Brazil</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_35" style="margin:2 2 2 2"> <div>Latin American and Caribbean Regional Workshop on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMLAC-02'>Documents &#187;</a> <a href='/doc/meetings/chm/chmlac-02/official/chmlac-02-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>February 2005</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_36" style="margin:2 2 2 2">23 - 25 February 2005<br />Bucharest, Romania</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_36" style="margin:2 2 2 2"> <div>Technical Workshop on the development of regional Clearing-House Mechanisms</div><div class="links"><a href='/meetings/CHMTW-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmtw-01/official/chmtw-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_37" style="margin:2 2 2 2">6 February 2005<br />Bangkok, Thailand</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_37" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2005-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2005-02/official/chmiac-2005-02-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_38" style="margin:2 2 2 2">3 - 5 February 2005<br />Bangkok, Thailand</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_38" style="margin:2 2 2 2"> <div>Asia and the Pacific Regional Workshop on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMAP-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmap-01/official/chmap-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>January 2005</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_39" style="margin:2 2 2 2">10 - 21 January 2005<br />Bujumbura, Burundi</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_39" style="margin:2 2 2 2"> <div>Central African Sub-Regional Training Workshop for Key Partners of National Clearing-House Mechanisms</div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2004</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_40" style="margin:2 2 2 2">2 - 3 November 2004<br />Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_40" style="margin:2 2 2 2"> <div>Informal Meeting on Interoperability of Information among the Three Rio and Other Environmental Conventions</div><div class="links"><a href='/meetings/CHMIMINTEROP-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiminterop-01/official/chmiminterop-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>February 2004</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_41" style="margin:2 2 2 2">13 and 17 February 2004<br />Kuala Lumpur, Malaysia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_41" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2004-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2004-01/official/chmiac-2004-01-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>December 2003</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_42" style="margin:2 2 2 2">16 - 18 December 2003<br />Ouagadougou, Burkina Faso</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_42" style="margin:2 2 2 2"> <div>The Clearing-House Mechanism: exchange of experiences on its implementation at national level and developing scientific and technical cooperation</div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 2003</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_43" style="margin:2 2 2 2">9 November 2003<br />Montreal, Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_43" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism</div><div class="links"><a href='/meetings/CHMIAC-2003-02'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2003-02/official/chmiac-2003-02-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>September 2003</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_44" style="margin:2 2 2 2">9 - 11 September 2003<br />Prague, Czechia</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_44" style="margin:2 2 2 2"> <div>Convention on Biological Diversity Clearing-House Mechanism and European Community Clearing-House Mechanism joint regional meeting for Central and Eastern Europe</div><div class="links"><a href='/meetings/CHMEC-01'>Documents &#187;</a> <a href='/doc/meetings/cop/cop-07/information/cop-07-inf-05-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>August 2003</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_45" style="margin:2 2 2 2">12 - 14 August 2003<br />Cancun, Mexico</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_45" style="margin:2 2 2 2"> <div>Joint Latin America and Caribbean regional meeting on the Clearing-House Mechanism and the Inter-American Biodiversity Information Network: building partnerships through effective networking</div><div class="links"><a href='/meetings/CHMIBIN-01'>Documents &#187;</a> <a href='/doc/meetings/cop/cop-07/information/cop-07-inf-04-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>March 2003</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_46" style="margin:2 2 2 2">31 March - 2 April 2003<br />Nairobi, Kenya</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_46" style="margin:2 2 2 2"> <div>Africa regional meeting on the Clearing-House Mechanism</div><div class="links"><a href='/meetings/CHMAFR-01'>Documents &#187;</a> <a href='/doc/meetings/cop/cop-07/information/cop-07-inf-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_47" style="margin:2 2 2 2">9 March 2003<br />Montreal, Montreal, Canada</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_47" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2003-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2003-01/official/chmiac-2003-01-02-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>February 2003</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_48" style="margin:2 2 2 2">24 - 26 February 2003<br />Santa Cruz de la Sierra, Bolivia (Plurinational State of)</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_48" style="margin:2 2 2 2"> <div>Ad Hoc Technical Expert Group on Traditional Knowledge and Clearing-House Mechanism</div><div class="links"><a href='/meetings/TEGTKCHM-01'>Documents &#187;</a> <a href='/doc/meetings/tk/tegtkchm-01/official/tegtkchm-01-03-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>April 2002</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl15_W4793_dg_spanDates_49" style="margin:2 2 2 2">9 April 2002<br />The Hague, Netherlands (Kingdom of the)</div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl15_W4793_dg_spanMeeting_49" style="margin:2 2 2 2"> <div>Meeting of the Informal Advisory Committee to the Clearing-house Mechanism (CHM-IAC)</div><div class="links"><a href='/meetings/CHMIAC-2002-01'>Documents &#187;</a> <a href='/doc/meetings/chm/chmiac-2002-01/official/chmiac-2002-01-minutes-en.doc'>Final Report &#187;</a></div></div>
+            </td></tr><tr><td class="EventTypeOther">&nbsp;</td><td class="EventTypeOther">&nbsp;</td></tr></table>
+
+<table class='dgGrid' cellpadding='0' cellspacing='0' border='0'><tr class="dgPager">
+<td align="right" colspan="2"><span><span class='floatNear'>Results <b>1</b> to <b>50</b> of 59 results found</span>&nbsp;Pages:&nbsp;</span><span>1</span>&nbsp;<a href="javascript:__doPostBack(&#39;ctl15$W4793$dg$ctl01$ctl02&#39;,&#39;&#39;)">2</a></td> 
+</tr></table>
+
+	
+
+	
+	
+    
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 37 https://www.cbd.int:443/chm/meetings/ responseCode 3 200 

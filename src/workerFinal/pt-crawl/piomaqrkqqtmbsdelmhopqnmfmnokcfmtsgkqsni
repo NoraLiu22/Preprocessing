@@ -1,0 +1,2539 @@
+piomaqrkqqtmbsdelmhopqnmfmnokcfmtsgkqsni length 5 78568 page 78568 <!DOCTYPE html>
+
+<html lang="en">
+    <head>
+    <meta charset="utf-8" >
+    <link rel="canonical" href="https://ethz.ch/staffnet/en.html"/>
+<link rel="alternate" hreflang="en" href="https://ethz.ch/staffnet/en.html"/>
+<link rel="alternate" hreflang="de" href="https://ethz.ch/staffnet/de.html"/>
+<script type="text/javascript">
+
+    // promise polyfill
+    !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t():"function"==typeof define&&define.amd?define(t):t()}(0,function(){"use strict";function e(e){var t=this.constructor;return this.then(function(n){return t.resolve(e()).then(function(){return n})},function(n){return t.resolve(e()).then(function(){return t.reject(n)})})}function t(e){return new this(function(t,n){function o(e,n){if(n&&("object"==typeof n||"function"==typeof n)){var f=n.then;if("function"==typeof f)return void f.call(n,function(t){o(e,t)},function(n){r[e]={status:"rejected",reason:n},0==--i&&t(r)})}r[e]={status:"fulfilled",value:n},0==--i&&t(r)}if(!e||"undefined"==typeof e.length)return n(new TypeError(typeof e+" "+e+" is not iterable(cannot read property Symbol(Symbol.iterator))"));var r=Array.prototype.slice.call(e);if(0===r.length)return t([]);for(var i=r.length,f=0;r.length>f;f++)o(f,r[f])})}function n(e){return!(!e||"undefined"==typeof e.length)}function o(){}function r(e){if(!(this instanceof r))throw new TypeError("Promises must be constructed via new");if("function"!=typeof e)throw new TypeError("not a function");this._state=0,this._handled=!1,this._value=undefined,this._deferreds=[],l(e,this)}function i(e,t){for(;3===e._state;)e=e._value;0!==e._state?(e._handled=!0,r._immediateFn(function(){var n=1===e._state?t.onFulfilled:t.onRejected;if(null!==n){var o;try{o=n(e._value)}catch(r){return void u(t.promise,r)}f(t.promise,o)}else(1===e._state?f:u)(t.promise,e._value)})):e._deferreds.push(t)}function f(e,t){try{if(t===e)throw new TypeError("A promise cannot be resolved with itself.");if(t&&("object"==typeof t||"function"==typeof t)){var n=t.then;if(t instanceof r)return e._state=3,e._value=t,void c(e);if("function"==typeof n)return void l(function(e,t){return function(){e.apply(t,arguments)}}(n,t),e)}e._state=1,e._value=t,c(e)}catch(o){u(e,o)}}function u(e,t){e._state=2,e._value=t,c(e)}function c(e){2===e._state&&0===e._deferreds.length&&r._immediateFn(function(){e._handled||r._unhandledRejectionFn(e._value)});for(var t=0,n=e._deferreds.length;n>t;t++)i(e,e._deferreds[t]);e._deferreds=null}function l(e,t){var n=!1;try{e(function(e){n||(n=!0,f(t,e))},function(e){n||(n=!0,u(t,e))})}catch(o){if(n)return;n=!0,u(t,o)}}var a=setTimeout;r.prototype["catch"]=function(e){return this.then(null,e)},r.prototype.then=function(e,t){var n=new this.constructor(o);return i(this,new function(e,t,n){this.onFulfilled="function"==typeof e?e:null,this.onRejected="function"==typeof t?t:null,this.promise=n}(e,t,n)),n},r.prototype["finally"]=e,r.all=function(e){return new r(function(t,o){function r(e,n){try{if(n&&("object"==typeof n||"function"==typeof n)){var u=n.then;if("function"==typeof u)return void u.call(n,function(t){r(e,t)},o)}i[e]=n,0==--f&&t(i)}catch(c){o(c)}}if(!n(e))return o(new TypeError("Promise.all accepts an array"));var i=Array.prototype.slice.call(e);if(0===i.length)return t([]);for(var f=i.length,u=0;i.length>u;u++)r(u,i[u])})},r.allSettled=t,r.resolve=function(e){return e&&"object"==typeof e&&e.constructor===r?e:new r(function(t){t(e)})},r.reject=function(e){return new r(function(t,n){n(e)})},r.race=function(e){return new r(function(t,o){if(!n(e))return o(new TypeError("Promise.race accepts an array"));for(var i=0,f=e.length;f>i;i++)r.resolve(e[i]).then(t,o)})},r._immediateFn="function"==typeof setImmediate&&function(e){setImmediate(e)}||function(e){a(e,0)},r._unhandledRejectionFn=function(e){void 0!==console&&console&&console.warn("Possible Unhandled Promise Rejection:",e)};var s=function(){if("undefined"!=typeof self)return self;if("undefined"!=typeof window)return window;if("undefined"!=typeof global)return global;throw Error("unable to locate global object")}();"function"!=typeof s.Promise?s.Promise=r:s.Promise.prototype["finally"]?s.Promise.allSettled||(s.Promise.allSettled=t):s.Promise.prototype["finally"]=e});
+    
+    var siteMapStorageKey = '/content/associates/services/en';
+
+    var currentPath = '/staffnet/en';
+
+    window.ethSitemap = {};
+
+    window.ethSitemap.loaded = new Promise(function (resolve, reject) {
+      var xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+          if (xmlhttp.status == 200) {
+            if (xmlhttp.responseText) {
+              window.ethSitemap.data = JSON.parse(xmlhttp.responseText);
+              resolve(window.ethSitemap.data);
+              window.sessionStorage.setItem(siteMapStorageKey, xmlhttp.responseText)
+            }
+          } else {
+            reject();
+          }
+        }
+      };
+
+      xmlhttp.open("GET", "/staffnet/en/.navigation.json", true);
+      xmlhttp.send();
+    });
+
+  </script>
+<script>    
+    
+    const accountType = window.localStorage.getItem('ch.ethz.user.type');
+
+    var isInternal = window.sessionStorage.getItem('ch.ethz.user.isInternal');
+    if (!isInternal) {
+    	fetch("/bin/ethz/base/stats").then((response) => response.json()).then((data) => {
+    		isInternal = data.is_internal;
+    	    window.sessionStorage.setItem('ch.ethz.user.isInternal', isInternal);
+    	});
+    }
+    
+    const isAuthor = this.getCookieValue('is_author');
+	
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+        'event': 'pageData',
+        'ch1': '', 
+        'ch2': '', 
+        'ch3': '', 
+        'page_title': 'Homepage',
+        'internal_page_path': '/',
+        'logged_in': 'false',
+        'account_type': accountType ? accountType : '', 
+        'is_author': isAuthor != '' ? 'true' : 'false',
+        'section': 'Staffnet',
+        'institut': '',
+        'group': '',
+        'is_internal': isInternal == 'true' ? 'true' : 'false',
+    });
+    
+    function getCookieValue(cname) {
+        var name = cname + '=';
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return '';
+      };
+    </script>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5KC3PX6');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    
+<meta property="og:url" content="https://ethz.ch/staffnet/en.html" />
+    <meta property="og:title" content="Homepage" />
+    <meta property="og:image" content="https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg" />
+    <meta property="og:image:alt" content="" /><meta name="twitter:card" content="summary" />
+            <meta name="twitter:site" content="" />
+            <meta name="twitter:title" content="Homepage" />
+            <meta name="twitter:image" content="https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg" />
+            <meta name="twitter:image:alt" content="" />
+        <meta name="Systemueberwachung" content="ETHZ" >
+    <meta name="ethz_lmd" content="2024-05-03T16:07:48.806Z" >
+    
+    
+    <meta name="pagetype" content="web" />
+
+
+    
+
+
+
+
+<link rel="stylesheet" href="/etc/designs/ethz/css.css" type="text/css">
+<link rel="stylesheet" href="/etc/clientlibs/ethz/components.css" type="text/css">
+<script src="/etc/designs/ethz/js/default.js"></script>
+<script src="/etc/clientlibs/ethz/components.js"></script>
+
+
+<meta name="msapplication-TileColor" content="#215CAF">
+    <meta name="theme-color" content="#215CAF">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#215CAF-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="icon" sizes="192x192" href="/etc/designs/ethz/img/icons/ETH-APP-Icons-Theme-white/192-xxxhpdi.png">
+    <meta name="msapplication-TileImage" content="/etc/designs/ethz/img/icons/ETH-APP-Icons-Theme-white/144-xxhdpi.png">
+    
+    
+
+<title>Homepage – Staffnet | ETH Zurich</title>
+<meta name="apple-mobile-web-app-title" content="Homepage – Staffnet | ETH Zurich"/>
+
+</head><body id="eth-blue" class="homepage eth-blue">
+
+    <!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KC3PX6"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+<!-- skipLinks -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="skipLinksDiv">
+        <ul id="skipLinks">
+                    
+            <li data-order="0"><a accesskey="0" href="" id="activateScreenReaderMode">Press Enter to activate screen reader mode.</a></li>
+            <li data-order="1"><a accesskey="1" href="/staffnet/en/" class="accesskey" title="Directly go to the homepage">Homepage</a></li>
+            <li data-order="2"><a accesskey="2" href="#navList" class="accesskey" title="Directly go to the navigation">Navigation</a></li>
+            <li data-order="3"><a accesskey="3" href="https://ethz.ch/staffnet/en/utils/search.html" class="accesskey" title="Directly go to the search">Search</a></li>
+            <li data-order="4"><a accesskey="4" href="#content" class="accesskey" title="Directly go to the content">Content</a></li>
+            <li data-order="5"><a accesskey="5" href="#footer" class="accesskey" title="Directly go to the footer">Footer</a></li>
+
+            
+            
+              
+              
+                  
+              
+            
+            
+                <li data-order="6">
+                    <a accesskey="6" href="/staffnet/en/utils/contact" class="accesskey" title="Directly go to the contact">
+                      Contact
+                    </a>
+                </li>
+            
+
+            
+            
+                                    
+	                    <li data-order="7"><a accesskey="7" href="/staffnet/en/footer/sitemap.html" class="accesskey" title="Sitemap">Sitemap</a></li>
+                
+            
+            
+        </ul>
+</div>
+
+<div class="site-wrapper">
+        <!-- header -->
+        <header class="site-header header--with-department-breadcrumb">
+    
+<div id="userStatusBar" style="display: none;"></div>
+	<script type="text/javascript">
+	    jQuery(document).ready(function loadStatusbar() {
+	      var statusbar = $('#userStatusBar');
+	      if (!ETHZ_Design.Impersonation.isImpersonationOverlayOpen(statusbar)) {
+	          var sbLoaded = $.ajax({
+	              type:     'GET',
+	              dataType: 'HTML',
+	              cache:    false,
+	              url:      '/staffnet/en/_jcr_content.statusbar.html',
+	              success:  function (response) {          
+	                  if (response) {
+	                    if (response.lastIndexOf("</" + "html" + ">") != -1) {
+	                        // We got a complete HTML document -> replace whole document
+	                        document.open("text/html","replace");
+	                        document.write(response);
+	                        document.close();
+	                      } else {
+	                          statusbar.html(response);
+	                          ETHZ_Design.DropDown.register(statusbar);
+	                          ETHZ_Design.Impersonation.register(statusbar);
+	  
+	                          $('body').addClass('loggedin');
+	                          statusbar.show();
+	                          
+	                          // Remove the login link when logged in
+	                          $('a.login').remove();
+	
+	                          eth.mobileNavPosition();
+	                      }
+	                  }            
+	                },
+	                    
+	                
+	
+	          });
+	            
+	      }
+	      
+	    });
+	</script>
+<div class="header__logos header__container">
+        <a href="https://ethz.ch/en.html" title="ETH Zurich homepage">
+            <img src="/etc/designs/ethz/img/header/ethz_logo_black.svg" id="Logo" alt="Logo of ETH Zurich, to homepage"/>
+        </a>
+        <div class="header__headlines">            
+            <h2 class="header__headline--big" aria-label="Header Staffnet
+">
+                <a href="/staffnet/en.html" title="Home">
+                    Staffnet
+</a>
+            </h2>
+        </div>
+    </div>
+
+    <div id="navTopRoot" class="header__nav-primary eth-blue">
+    <div class="header__navbar header__container">
+        <nav id="nav-primary" aria-labelledby="header__nav-primary-label" class="nav-primary js-nav-primary">
+            <h3 id="header__nav-primary-label" class="hidden">Main Navigation</h3>
+            <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav-primary--inner" class="header__mobile-nav-trigger header__mobile-only js-header__mobile-nav-trigger">
+                <span aria-hidden="true" class="header__mobile-nav-icon"></span>
+                Menu</button>
+            <div id="nav-primary--inner" class="header__nav-level header__nav-level--root js-header__nav-level--root">
+                <!-- navigation -->
+
+
+<ul id="navList" data-current="navitem2866175045">
+    <li id="navitem2866175045" class="header__mobile-only to-homepage">
+              <a href="/staffnet/en.html">
+                Homepage</a>
+            </li>
+        <li id="navitem233915949" data-groupCodes="" class="">
+          <a href="/staffnet/en/news-and-events.html">
+              News &amp; events</a>
+        </li>
+        <li id="navitem3129454180" data-groupCodes="" class="">
+          <a href="/staffnet/en/organisation.html">
+              Organisation</a>
+        </li>
+        <li id="navitem1448038861" data-groupCodes="" class="">
+          <a href="/staffnet/en/employment-and-work.html">
+              Employment &amp; work</a>
+        </li>
+        <li id="navitem134513208" data-groupCodes="" class="">
+          <a href="/staffnet/en/teaching.html">
+              Teaching</a>
+        </li>
+        <li id="navitem5498841" data-groupCodes="" class="">
+          <a href="/staffnet/en/finance-and-controlling.html">
+              Finance &amp; controlling</a>
+        </li>
+        <li id="navitem141271030" data-groupCodes="" class="">
+          <a href="/staffnet/en/it-services.html">
+              IT Services</a>
+        </li>
+        <li id="navitem2345093867" data-groupCodes="" class="">
+          <a href="/staffnet/en/service.html">
+              More services</a>
+        </li>
+        </ul>
+<div class="header__mobile-only">
+                        <hr>
+                        <h3 class="header__nav-primary-title">Services</h3>
+                        <ul>
+	    <li>
+        <a href="/students/en.html" title="">Student portal</a>
+    </li>
+<li>
+        <a href="https://www.alumni.ethz.ch/en/" title="">Alumni Association</a>
+    </li>
+<li>
+            <a href="/en.html" title="">
+                ETH main page</a>
+        </li>
+	    <li>
+	            <a class="contact" href="/staffnet/en/utils/contact" title="Open contact information">
+	                Contact</a>
+	        </li>
+	    <li>
+	        <a class="login footer__login-link" href="/login/en.html?resource=%2Fcontent%2Fassociates%2Fservices%2Fen.html" title="Login with ETH user account">
+        <span aria-hidden="true" class="material-icons">lock</span>
+        <span class="footer__login-text">Login</span>
+    </a>
+</li>
+	</ul>
+</div>
+                </div>
+        </nav>
+        <div class="header__search-trigger">
+    <h3 class="screenreader">Search</h3>
+    <div
+      id="search-app"
+      data-init="searchApp"
+      data-is-overlay="true"
+      data-search-page-link="/staffnet/en/utils/search.html"
+      data-location-page-link="/staffnet/en/utils/location"
+      data-api-url="/bin/ethz/search"
+      data-current-site-supported-langs='["en","de"]'
+      data-is-main-site="true"
+      data-all-sites-supported-langs='["de","en","fr","it"]'
+      data-most-searched-quick-links='["ETHIS", "Jobs", "Scholarship", "PhD", "Admission", "Application"]'
+      data-locale="htmlElement">
+    </div>
+</div>
+
+<div class="header__search-link-container">
+  <a class="header__search-link" href="/staffnet/en/utils/search.html">
+    <span aria-hidden="true" class="material-icons">search</span>
+  </a>
+</div><div class="header__language header__mobile-only">
+            <label for="lang-selector" class="hidden">
+            en</label>
+        <select id="lang-selector" class="custom-select custom-select--link custom-select--dark">
+            <option value="en" selected="selected">
+                en</option>
+            <option value="/staffnet/de.html">
+                    de</option>
+            </select>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+      jQuery(document).ready(function() {
+          $.ajax({
+              type:     'GET',
+              dataType: 'HTML',
+              url:      '/staffnet/en/.navigation.html',
+              success:  function(response) { 
+                  if (response) {
+                      var currentNodeId = $('#navList').attr("data-current");
+
+                      if (response.lastIndexOf("</" + "html" + ">") != -1) {
+                          // We got a complete HTML document -> replace whole document
+                          document.open("text/html","replace");
+                          document.write(response);
+                          document.close();
+                      } else {
+                          $('#navList').replaceWith(response);
+                      }
+                      
+                      var ua = window.navigator.userAgent;
+                      var msie = ua.indexOf("MSIE ");
+
+                      // Init MobileNav unless is Internet Explorer
+                      if (!(msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))) {
+	                      const mobileNav = new MobileNav(currentNodeId);
+	                      mobileNav.init();
+	                  }
+
+                      $('.js-header__nav-level--root').accessibleMegaMenu({
+                        // enables left/right navigation within mega menu.
+                        // you must add this class to the HTML.
+                        panelGroupClass: 'js-sub-nav-group',
+                      });
+
+                      // remove login link when already logged in
+                      if($('#userStatusBar:visible').length) {
+                          $('a.login').remove();
+                      }
+                  }                
+              }
+          });
+      });
+  </script>
+<!-- navigation -->
+    <div class="header__nav-meta header__desktop-only">
+        <div class="header__container">
+            <nav aria-labelledby="header__departments-title" class="header__departments">
+                <h3 id="header__departments-title" class="hidden">
+                    Departments</h3>
+                <ul>
+                    <li class="item--organization">
+                        <a href="https://ethz.ch/en.html" title="ETH Zurich homepage">
+                            ETH Zurich</a>
+                        <span aria-hidden="true" class="material-icons">chevron_right</span>
+                        </li>
+                    <!-- breadcrumb -->
+                            <li>
+        <a title="Staffnet Home" href="/staffnet/en.html">
+            Staffnet</a>
+        </li>
+</ul>
+            </nav>
+            <nav aria-labelledby="header__services-title" class="header__services">
+                <h3 id="header__services-title" class="hidden">Language Selection</h3>
+                <ul>
+                    <li>
+                        <label for="lang-selector-long" class="hidden">
+            en</label>
+        <select id="lang-selector-long" class="custom-select custom-select--link custom-select--dark">
+            <option value="en" selected="selected">
+                English</option>
+            <option value="/staffnet/de.html">
+                    Deutsch</option>
+            </select>
+    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    
+</header><!-- content -->
+        <section id="content" class="site-content">
+        <h1 class="screenreader">Main content</h1>
+            <div id="overviewContainer" class="site-content__wrapper site-content--homepage">
+                <!-- carousel, image or nothing -->
+                <div class="site-content__homepage-main">
+                    <!-- main content -->
+                    <div class="content-main col-lg-9 col-xs-12 hyphenate" id="mainContent">
+                        <!-- social media image -->
+    <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-twocolumn contains-teaserbox">
+
+<a id="par_teaserbox" style="visibility:hidden"></a>
+        <div class="teaserbox basecomponent">
+
+
+
+
+
+
+
+
+            
+        
+            
+            
+                <div class="contentSubContainer contains-textimage contains-image">
+                    
+
+
+
+<div class="textList last-child">
+    <h1 class="donthyphenate">Online course: When relatives need help</h1>
+    <div>
+        
+            
+            
+                
+                    
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-textimage contains-image">
+
+<a id="par_image" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                        
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="https://ethz.ch/staffnet/en/service/courses-continuing-education/details.10709o.html">
+			<img alt="Event website" src="/staffnet/en/_jcr_content/par/teaserbox/par/image/image.imageformat.1484.1479687836.jpg"/>
+		</a>
+	</figure>
+        </div>	
+                        
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="par_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>The event offers information and practical support tools for ETH employees and students who have to reconcile work/studies and caring for relatives. Event language: German.</p>
+<p><b>Date: Tuesday, 7 May 2024 <br>
+ Time: 12.30–13.30 <br>
+ Location: Zoom (without recording)</b></p>
+<p><a href="https://ethz.ch/staffnet/en/service/courses-continuing-education/details.10709o.html" class="eth-link">Registration (until 6 May) and further information</a></p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div></div>
+
+    
+
+                
+            
+        
+    </div>
+</div>
+
+                </div>                        
+            
+        
+    
+    
+
+</div>
+<a id="par_twocolumn" style="visibility:hidden"></a>
+        <div class="twocolumn basecomponent"><div class="row">
+        <div class="col-xs-12 col-md-6 no-spacing-bottom">
+            <div class="parsys basecomponent"><div class="parsys basecomponent contains-teaserbox">
+
+<a id="par_left_teaserbox_1110209825" style="visibility:hidden"></a>
+        <div class="teaserbox basecomponent">
+
+
+
+
+
+
+
+
+            
+        
+            
+            
+                <div class="contentSubContainer contains-greybox">
+                    
+
+
+
+<div class="textList last-child">
+    <h1 class="donthyphenate">ALEA Award: Call for Nominations</h1>
+    <div>
+        
+            
+                
+                    
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-greybox">
+
+<a id="par_greybox" style="visibility:hidden"></a>
+        <div class="greybox parsys basecomponent"><div class="greybox__wrapper  is-first is-last is-themed-light eth-grey">
+    <div class="text-box">
+        <div class="parsys basecomponent"><div class="parsys basecomponent contains-textimage contains-image">
+
+<a id="par_fullwidthimage" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                        
+                        
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="https://ethz.ch/staffnet/en/employment-and-work/working-environment/family/alea-award.html">
+			<img alt="Website of the ALEA Award" src="/staffnet/en/_jcr_content/par/twocolumn/par_left/teaserbox_1110209825/par/greybox/par/fullwidthimage/image.imageformat.1484.118298053.jpg"/>
+		</a>
+	</figure>
+        </div>	
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="par_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>The ALEA – Art of Leadership Award honours ETH members who display an exemplary leadership style.</p>
+<p>Would you like to nominate someone? <a href="https://ethz.ch/staffnet/en/employment-and-work/working-environment/family/alea-award.html" class="eth-link">Then submit your nomination by 10 May</a>.</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div></div>
+</div>
+</div>
+
+<div class="greyboxend basecomponent"></div>
+</div>
+</div></div>
+
+    
+
+                
+            
+            
+        
+    </div>
+</div>
+
+                </div>                        
+            
+        
+    
+    
+
+</div>
+<a id="par_left_teaserbox" style="visibility:hidden"></a>
+        <div class="teaserbox basecomponent">
+
+
+
+
+
+
+
+
+            
+        
+            
+            
+                <div class="contentSubContainer contains-greybox">
+                    
+
+
+
+<div class="textList last-child">
+    <h1 class="donthyphenate">Volunteers wanted for CYBATHLON 2024</h1>
+    <div>
+        
+            
+                
+                    
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-greybox">
+
+<a id="par_greybox" style="visibility:hidden"></a>
+        <div class="greybox parsys basecomponent"><div class="greybox__wrapper  is-first is-last is-themed-light eth-blue">
+    <div class="text-box">
+        <div class="parsys basecomponent"><div class="parsys basecomponent contains-textimage contains-image">
+
+<a id="par_fullwidthimage" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                        
+                        
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="https://cybathlon.ethz.ch/en/cybathlon-2024/volunteers">
+			<img alt="Cybathlon Website" src="/staffnet/en/_jcr_content/par/twocolumn/par_left/teaserbox/par/greybox/par/fullwidthimage/image.imageformat.1484.987238019.jpg"/>
+		</a>
+	<figcaption>
+	    <div aria-hidden="true" class="image-component__caption">
+	      	(Photograph: ETH Zurich / CYBATHLON)</div>
+	  </figcaption>
+	</figure>
+        </div>	
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="par_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>Be part of the CYBATHLON 2024 as a volunteer from 25 to 27 October. <a href="https://cybathlon.ethz.ch/en/cybathlon-2024/volunteers" class="eth-link">Register now</a>.</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div></div>
+</div>
+</div>
+
+<div class="greyboxend basecomponent"></div>
+</div>
+</div></div>
+
+    
+
+                
+            
+            
+        
+    </div>
+</div>
+
+                </div>                        
+            
+        
+    
+    
+
+</div>
+<a id="par_left_teaserbox_1628111921" style="visibility:hidden"></a>
+        <div class="teaserbox basecomponent">
+
+
+
+
+
+
+
+
+            
+        
+            
+            
+                <div class="contentSubContainer contains-greybox">
+                    
+
+
+
+<div class="textList last-child">
+    <h1 class="donthyphenate">Bike to Work: participate and win big!</h1>
+    <div>
+        
+            
+                
+                    
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-greybox">
+
+<a id="par_greybox" style="visibility:hidden"></a>
+        <div class="greybox parsys basecomponent"><div class="greybox__wrapper  is-first is-last is-themed-light eth-blue">
+    <div class="text-box">
+        <div class="parsys basecomponent"><div class="parsys basecomponent contains-linklist contains-textimage contains-image">
+
+<a id="par_fullwidthimage" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                        
+                        
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="https://rebrand.ly/cwr5cca">
+			<img alt="Website of Bike to Work" src="/staffnet/en/_jcr_content/par/twocolumn/par_left/teaserbox_1628111921/par/greybox/par/fullwidthimage/image.imageformat.1484.974834919.png"/>
+		</a>
+	</figure>
+        </div>	
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="par_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p><span><span>How does it work? From May to the end of June, cycle to work as often as possible and win prizes worth a total of CHF 120,000.</span></span></p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+<a id="par_linklist" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper  is-last">
+      
+      
+      
+      
+         
+         
+           
+           
+             <a class="eth-link has-icon-before" href="https://rebrand.ly/cwr5cca">
+            <span class="eth-link__label">external page</span>
+            <span aria-hidden="true" class="material-icons">call_made</span>
+            Register now</a>       
+    
+           
+          
+      
+      
+    </div>
+  
+  
+
+</div>
+</div></div>
+</div>
+</div>
+
+<div class="greyboxend basecomponent"></div>
+</div>
+</div></div>
+
+    
+
+                
+            
+            
+        
+    </div>
+</div>
+
+                </div>                        
+            
+        
+    
+    
+
+</div>
+</div></div>
+</div>
+    	<div class="col-xs-12 col-md-6 no-spacing-bottom omega">
+            <div class="parsys basecomponent"><div class="parsys basecomponent contains-teaserbox">
+
+<a id="par_right_teaserbox" style="visibility:hidden"></a>
+        <div class="teaserbox basecomponent">
+
+
+
+
+
+
+
+
+            
+        
+            
+            
+                <div class="contentSubContainer contains-linklist">
+                    
+
+
+
+<div class="textList last-child">
+    <h1 class="donthyphenate">Internal News</h1>
+    <div>
+        
+            
+                
+                    
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-linklist">
+
+<a id="par_newsfeed_1121322970" style="visibility:hidden"></a>
+        <div class="newsfeed basecomponent">
+			
+		
+		
+            
+	<section class="block contentbox">
+		
+		
+			
+    <div class="newsList last-child">
+        
+            
+            
+            <div data-href="/staffnet/en/news-and-events/internal-news/archive/2024/05/snf-projekt-bewilligt-wir-helfen-beim-datenmanagementplan.html" class="newsListBox linkedarea">
+                <div class="info">
+                    <h2>
+                        
+                            <a href="/staffnet/en/news-and-events/internal-news/archive/2024/05/snf-projekt-bewilligt-wir-helfen-beim-datenmanagementplan.html">SNSF project approved? We help with the data management plan</a>
+                         
+                         
+                    </h2>
+                    
+                    <div class="contentInfo">
+                        
+                              
+                                  
+    <picture class="ResponsiveImage newsListBox__image">
+      <img alt="" title="" src="/staffnet/en/news-and-events/internal-news/archive/2024/05/snf-projekt-bewilligt-wir-helfen-beim-datenmanagementplan/_jcr_content/pageimages/imageSmall.imageformat.contentteaser.1216843340.jpg"/>
+    
+    </picture>
+
+                              
+                        
+                        
+                        	<p>Has the Swiss National Science Foundation (SNSF) accepted your project for funding? Then you now need a Data Management Plan (DMP) so that the funds can be released. ETH Library supports you.</p>
+                        
+                        <div class="dateInfo">
+                            <span class="dateInfo">
+                                <time datetime="2024-05-03T00:00:00Z">03.05.2024</time>
+                                
+                                    by&nbsp;ETH Library
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            <div data-href="/staffnet/en/news-and-events/internal-news/archive/2024/04/eth-sells-district-heating-to-city-of-zurich.html" class="newsListBox last-child linkedarea">
+                <div class="info">
+                    <h2>
+                        
+                            <a href="/staffnet/en/news-and-events/internal-news/archive/2024/04/eth-sells-district-heating-to-city-of-zurich.html">ETH Zurich sells district heating to the City of Zurich</a>
+                         
+                         
+                    </h2>
+                    
+                    <div class="contentInfo">
+                        
+                              
+                                  
+    <picture class="ResponsiveImage newsListBox__image">
+      <img alt="Das Bild zeigt die verschachtelte Technik im Fernheizkraftwerk der ETH-Fernw&auml;rmeversorgung" title="" src="/staffnet/en/news-and-events/internal-news/archive/2024/04/eth-sells-district-heating-to-city-of-zurich/_jcr_content/pageimages/imageSmall.imageformat.contentteaser.1977467500.jpg"/>
+    
+    </picture>
+
+                              
+                        
+                        
+                        	<p>The City of Zurich intends to take over ETH’s district heating system in the Zentrum area. With the sale, ETH is strengthening its focus and is drawing a line under a situation that has developed over time.</p>
+                        
+                        <div class="dateInfo">
+                            <span class="dateInfo">
+                                <time datetime="2024-04-25T00:00:00Z">25.04.2024</time>
+                                
+                                    by&nbsp;Engineering &amp; Systeme
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    
+
+		
+	</section>
+
+		
+	
+	
+</div>
+<a id="par_linklist" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper  is-last">
+      
+      
+      
+      
+         
+         
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/news-and-events/internal-news.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            More internal news</a>       
+    
+           
+          
+      
+      
+    </div>
+  
+  
+
+</div>
+</div></div>
+
+    
+
+                
+            
+            
+        
+    </div>
+</div>
+
+                </div>                        
+            
+        
+    
+    
+
+</div>
+<a id="par_right_teaserbox_70926922" style="visibility:hidden"></a>
+        <div class="teaserbox basecomponent">
+
+
+
+
+
+
+
+
+            
+        
+            
+            
+                <div class="contentSubContainer contains-linklist">
+                    
+
+
+
+<div class="textList last-child">
+    <h1 class="donthyphenate">ETH News</h1>
+    <div>
+        
+            
+                
+                    
+
+
+
+
+
+
+
+
+
+    
+    
+        <div class="par parsys basecomponent"><div class="par parsys basecomponent contains-linklist">
+
+<a id="par_newsfeed" style="visibility:hidden"></a>
+        <div class="newsfeed basecomponent">
+			
+		
+		
+            
+	<section class="block contentbox">
+		
+		
+			
+    <div class="newsList last-child">
+        
+            
+            
+            <div data-href="/en/news-and-events/eth-news/news/2024/05/blood-diagnostics-modelled-on-leeches.html" class="newsListBox linkedarea">
+                <div class="info">
+                    <h2>
+                        
+                            <a href="/en/news-and-events/eth-news/news/2024/05/blood-diagnostics-modelled-on-leeches.html">Blood diagnostics modelled on leeches</a>
+                         
+                         
+                    </h2>
+                    
+                    <div class="contentInfo">
+                        
+                        
+                        	<p>Researchers at ETH Zurich have developed a safe and inexpensive device for reliable blood measurements. It works using a suction cup and could also be employed to diagnose the tropical disease malaria – even by non-medical personnel.</p>
+                        
+                        <div class="dateInfo">
+                            <span class="dateInfo">
+                                <time datetime="2024-05-02T00:00:00Z">02.05.2024</time>
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            
+            <div data-href="/en/news-and-events/eth-news/news/2024/04/how-the-plant-world-shapes-the-climate-cycle.html" class="newsListBox last-child linkedarea">
+                <div class="info">
+                    <h2>
+                        
+                            <a href="/en/news-and-events/eth-news/news/2024/04/how-the-plant-world-shapes-the-climate-cycle.html">How the plant world shapes the climate cycle</a>
+                         
+                         
+                    </h2>
+                    
+                    <div class="contentInfo">
+                        
+                        
+                        	<p>In order to understand the Earth's resilience, researchers at ETH Zurich are modelling climate changes from times long past. And they show: Plants are not simply victims of circumstances, but have helped to shape climate conditions on Earth.</p>
+                        
+                        <div class="dateInfo">
+                            <span class="dateInfo">
+                                <time datetime="2024-04-30T00:00:00Z">30.04.2024</time>
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    
+
+		
+	</section>
+
+		
+	
+	
+</div>
+<a id="par_linklist" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper  is-last">
+      
+      
+      
+      
+         
+         
+           
+           
+             <a class="eth-link has-icon-before" href="/en/news-and-events/eth-news.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            More ETH News</a>       
+    
+           
+          
+      
+      
+    </div>
+  
+  
+
+</div>
+</div></div>
+
+    
+
+                
+            
+            
+        
+    </div>
+</div>
+
+                </div>                        
+            
+        
+    
+    
+
+</div>
+</div></div>
+</div>
+    </div>
+<div style="clear: both;"></div>
+<div class="columnsend basecomponent"></div>
+</div>
+</div></div>
+</div>
+                    
+                    <!-- contentSidebar -->
+                    <aside class="content-sidebar col-lg-3 col-xs-12" role="complementary">
+                        
+
+
+
+
+
+
+
+
+
+<h1 class="screenreader">Additional Information</h1>
+
+<div class="orgbox basecomponent"><!-- no logo and no box -->
+          </div>
+
+
+
+
+
+
+
+  
+      
+	       <div class="rightpar_top parsys"><a name="rightpar_top_contextinfo_1486222233" style="visibility:hidden"></a><div class="contextinfo parsys basecomponent section">
+
+
+ 
+
+
+
+
+
+	
+	    <div class="contentSubContainer noBorder contains-textimage contains-image">
+		   
+        
+          
+            <h2>Hungry?</h2>
+          
+          
+        
+		   
+           <div class="contextinfo parsys basecomponent section contains-textimage contains-image">
+
+<a id="contextinfo_1486222233_fullwidthimage" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="/en/campus/getting-to-know/cafes-restaurants-shops/gastronomy.html">
+			<img alt="Verschiedene Gerichte auf Tellern angerichtet." src="/staffnet/en/_jcr_content/rightpar_top/contextinfo_1486222233/fullwidthimage/image.imageformat.336.1603486720.jpg"/>
+		</a>
+	</figure>
+        </div>	
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="contextinfo_1486222233_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p><span><span><a href="/en/campus/getting-to-know/cafes-restaurants-shops/gastronomy.html" class="eth-link">Click here for today's menus.</a></span><br>
+ </span></p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	    </div>
+	
+
+</div>
+<a name="rightpar_top_contextinfo" style="visibility:hidden"></a><div class="contextinfo parsys basecomponent section">
+
+
+ 
+
+
+
+
+
+	
+	    <div class="contentSubContainer noBorder contains-textimage">
+		   
+        
+          
+            <h2>In an emergency</h2>
+          
+          
+        
+		   
+           <div class="contextinfo parsys basecomponent section contains-textimage">
+
+<a id="contextinfo_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>The Emergency Desk at ETH Zurich can be contacted around the clock:<br>
+<br>
+from external lines or mobile phones:<br>
+<b>+41 44 342 11 88</b><br>
+from internal lines<b>: 888</b></p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	    </div>
+	
+
+</div>
+<a name="rightpar_top_contextinfo_1285895403" style="visibility:hidden"></a><div class="contextinfo parsys basecomponent section">
+
+
+ 
+
+
+
+
+
+	
+	    <div class="contentSubContainer noBorder contains-textimage contains-image">
+		   
+        
+          
+            <h2>Lifelong learning at ETH</h2>
+          
+          
+        
+		   
+           <div class="contextinfo parsys basecomponent section contains-textimage contains-image">
+
+<a id="contextinfo_1285895403_image" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="https://ethz.ch/staffnet/en/employment-and-work/leadership-and-development/lifelong-learning-hub.html">
+			<img alt="A lightbulb" src="/staffnet/en/_jcr_content/rightpar_top/contextinfo_1285895403/image/image.imageformat.336.1447063471.png"/>
+		</a>
+	</figure>
+        </div>	
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="contextinfo_1285895403_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p><span>Discover professional development courses in the</span> <a href="https://ethz.ch/staffnet/en/employment-and-work/leadership-and-development/lifelong-learning-hub.html" class="eth-link">Lifelong Learning Hub</a>.</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	    </div>
+	
+
+</div>
+<a name="rightpar_top_contextinfo_218221741" style="visibility:hidden"></a><div class="contextinfo parsys basecomponent section">
+
+
+ 
+
+
+
+
+
+	
+	    <div class="contentSubContainer noBorder contains-textimage">
+		   
+        
+          
+            <h2>Bullying, harassment and discrimination</h2>
+          
+          
+        
+		   
+           <div class="contextinfo parsys basecomponent section contains-textimage">
+
+<a id="contextinfo_218221741_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-first is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>Get in touch with the <a href="/staffnet/en/employment-and-work/consulting-and-coaching/help-for-handling-inappropriate-behaviour-or-conflict.html" class="eth-link">various contact and advice services</a> for support and advice.</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	    </div>
+	
+
+</div>
+<a name="rightpar_top_contextinfo_1653816472" style="visibility:hidden"></a><div class="contextinfo parsys basecomponent section">
+
+
+ 
+
+
+
+
+
+	
+	    <div class="contentSubContainer noBorder contains-linklist contains-image">
+		   
+        
+          
+            <h2>Services for employees</h2>
+          
+          
+        
+		   
+           <div class="contextinfo parsys basecomponent section contains-linklist contains-image">
+
+<a id="contextinfo_1653816472_fullwidthimage" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <img alt="" src="/staffnet/en/_jcr_content/rightpar_top/contextinfo_1653816472/fullwidthimage/image.imageformat.336.1302971237.jpg"/>
+			</figure>
+        </div>	
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="contextinfo_1653816472_linklist_1862977507" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper ">
+      
+      
+        
+          
+          
+            <h3>Continuing education</h3>
+          
+          
+        
+      
+      
+      
+         
+         
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/service/courses-continuing-education.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Courses and continuing education</a>       
+    
+           
+          
+      
+      
+    </div>
+  
+  
+
+</div>
+<a id="contextinfo_1653816472_linklist_442237844" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper ">
+      
+      
+        
+          
+          
+            <h3>Employment and Work</h3>
+          
+          
+        
+      
+      
+        <ul class="linklist  ">
+      
+      
+         
+         
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/employment-and-work/consulting-and-coaching.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Consulting and coaching</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/employment-and-work/downloads.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Downloads and regulations</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://jobs.ethz.ch/site/index">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Job board</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/employment-and-work/employment/offers-and-benefits.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Offers and benefits</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/employment-and-work/vocational-education-and-training.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Vocational education and training</a>       
+    
+           
+             </li>
+           
+          
+      
+      
+        </ul>
+      
+    </div>
+  
+  
+
+</div>
+<a id="contextinfo_1653816472_linklist_138340247" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper ">
+      
+      
+        
+          
+          
+            <h3>Finance &amp; Controlling</h3>
+          
+          
+        
+      
+      
+        <ul class="linklist  ">
+      
+      
+         
+         
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/finance-and-controlling/Downloads.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Downloads and regulations</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/finance-and-controlling/ethis.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            ETHIS</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/finance-and-controlling/travel.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Travel</a>       
+    
+           
+             </li>
+           
+          
+      
+      
+        </ul>
+      
+    </div>
+  
+  
+
+</div>
+<a id="contextinfo_1653816472_linklist_381984338" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper ">
+      
+      
+        
+          
+          
+            <h3>IT Services</h3>
+          
+          
+        
+      
+      
+        <ul class="linklist  ">
+      
+      
+         
+         
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/it-services/service-desk/sysstat.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Current Service Notifications</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/it-services/service-desk.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            ITS Service Desk</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/it-services/service-desk/support.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Support &amp; FAQ</a>       
+    
+           
+             </li>
+           
+          
+      
+      
+        </ul>
+      
+    </div>
+  
+  
+
+</div>
+<a id="contextinfo_1653816472_linklist" style="visibility:hidden"></a>
+        <div class="linklist basecomponent">
+
+
+  
+    <div class="linklist__wrapper  is-last">
+      
+      
+        
+          
+          
+            <h3>Other services</h3>
+          
+          
+        
+      
+      
+        <ul class="linklist  ">
+      
+      
+         
+         
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://library.ethz.ch/en/">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Library</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/news-and-events/life-magazine.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            life - the magazine for the ETH community</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/service/logistics.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Logistics and transport</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/staffnet/en/service/mobility.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Mobility</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/service/office-supplies-printing-and-mailing/office-supplies.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Order office supplies</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="https://ethz.ch/services/en/service/rooms-and-buildings.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Rooms and buildings</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/en/the-eth-zurich/organisation/departments/safety-security-health-environment.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Safety, Security, Health and Environment</a>       
+    
+           
+             </li>
+           
+          
+           
+             <li>
+           
+           
+             <a class="eth-link has-icon-before" href="/en/campus/getting-to-know/learning-and-working/campusinfo/telephone-service.html">
+            <span aria-hidden="true" class="material-icons">chevron_right</span>
+            Telephone service</a>       
+    
+           
+             </li>
+           
+          
+      
+      
+        </ul>
+      
+    </div>
+  
+  
+
+</div>
+</div>
+	    </div>
+	
+
+</div>
+<a name="rightpar_top_contextinfo_1376906364" style="visibility:hidden"></a><div class="contextinfo parsys basecomponent section">
+
+
+ 
+
+
+
+
+
+	
+	    <div class="contentSubContainer noBorder contains-textimage contains-image">
+		   
+        
+          
+            <h2>For everyday working life</h2>
+          
+          
+        
+		   
+           <div class="contextinfo parsys basecomponent section contains-textimage contains-image">
+
+<a id="contextinfo_1376906364_fullwidthimage" style="visibility:hidden"></a>
+        <div class="image basecomponent">
+
+
+
+
+    
+
+
+
+
+    
+        
+            
+                <div class="fullwidthimage__wrapper  is-first">
+                    
+                        
+                        
+                            <div class="fullwidth-image cq-dd-image">
+    <figure>
+                <a href="/staffnet/en/news-and-events/internal-news/tips-and-tricks.html">
+			<img alt="Tips and Tricks" src="/staffnet/en/_jcr_content/rightpar_top/contextinfo_1376906364/fullwidthimage/image.imageformat.336.1156810789.png"/>
+		</a>
+	</figure>
+        </div>	
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+                </div>
+            
+             
+            
+        
+    
+    
+
+
+
+
+</div>
+<a id="contextinfo_1376906364_textimage" style="visibility:hidden"></a>
+        <div class="textimage basecomponent">
+
+
+    
+        <div class="textimage__wrapper  is-last ">
+            <div class="text-image  cq-dd-image">
+                
+                
+                <p>Read all the <a href="/staffnet/en/news-and-events/internal-news/tips-and-tricks.html" class="eth-link">articles from "Tips and Tricks"</a> that have appeared on Internal news so far.</p>
+
+            </div>
+        </div>
+    
+    
+
+</div>
+</div>
+	    </div>
+	
+
+</div>
+
+</div>
+
+      
+  
+  
+  
+
+
+</aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- footer -->
+    	<footer id="footer" class="site-footer">
+    <div class="footer__container">
+        <h2 class="visually-hidden">
+            Footer</h2>
+        <nav aria-labelledby="footer-highlighted-heading" class="footer__highlighted">
+        <h3 id="footer-highlighted-heading" class="visually-hidden">
+            Recommended links</h3>
+        <ul>
+            <li class="">
+                    <a href="/staffnet/en/news-and-events/academic-calendar.html" title="">Academic calendar</a>
+                </li>
+            <li class="">
+                    <a href="/en/campus/getting-to-know/learning-and-working/emergency-desk.html" title="">Emergency information</a>
+                </li>
+            </ul>
+    </nav>
+<div class="footer__row-main">
+            <div class="footer__row-main__inner footer__row">
+                <div class="footer__search-and-social">
+                    <div class="footer__search" aria-labelledby="footer-search-heading" role="search">
+                        <h3 id="footer-search-heading" class="footer__section-title">
+                            Search</h3>
+                            <div class="site-search">
+                                <form action="/staffnet/en/utils/search.html" method="GET" accept-charset="UTF-8">
+                                    <label for="searchinput" class="hidden">Keyword or person</label>
+                                    <input id="searchinput" class="searchinput" type="text" placeholder="Keyword or person" data-placeholder="Keyword or person" name="q" aria-required="false" />
+                                    <button type="submit" class="searchsubmit" aria-label="Search">
+                                        <span class="material-icons" aria-hidden="true">search</span>
+                                    </button>
+                                    <input type="hidden" name="language" value="en" />
+                                </form>
+                            </div>
+                        </div>
+                    <nav aria-labelledby="footer-social-heading" class="footer__social">
+                            <h3 id="footer-social-heading" class="footer__section-title">
+                                Follow us</h3>
+                            <ul class="social-icons">
+			                    <li>
+		                                <a href="https://www.facebook.com/eth/" class="social-icon"><img src="/etc/designs/ethz/img/icons/svg/facebook-white.svg" alt="Facebook"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://twitter.com/eth" class="social-icon"><img src="/etc/designs/ethz/img/icons/svg/twitter-white.svg" alt="Twitter"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://www.instagram.com/ethzurich/" class="social-icon"><img src="/etc/designs/ethz/img/icons/svg/instagram-white.svg" alt="Instagram"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://www.youtube.com/user/ethzurich" class="social-icon"><img src="/etc/designs/ethz/img/icons/svg/youtube-white.svg" alt="YouTube"></a>
+		                                    </li>
+			                    <li>
+		                                <a href="https://www.linkedin.com/school/eth-zurich/" class="social-icon"><img src="/etc/designs/ethz/img/icons/svg/linkedin-white.svg" alt="LinkedIn"></a>
+		                                    </li>
+			                    </ul>
+                        </nav>
+                    </div>
+
+                <nav aria-labelledby="footer-services-heading" class="footer__services">
+	                  <h3 id="footer-services-heading" class="footer__section-title">
+	                      Services</h3>
+	                  <ul>
+	    <li>
+        <a href="/students/en.html" title="">Student portal</a>
+    </li>
+<li>
+        <a href="https://www.alumni.ethz.ch/en/" title="">Alumni Association</a>
+    </li>
+<li>
+            <a href="/en.html" title="">
+                ETH main page</a>
+        </li>
+	    <li>
+	            <a class="contact" href="/staffnet/en/utils/contact" title="Open contact information">
+	                Contact</a>
+	        </li>
+	    <li>
+	        <a class="login footer__login-link" href="/login/en.html?resource=%2Fcontent%2Fassociates%2Fservices%2Fen.html" title="Login with ETH user account">
+        <span aria-hidden="true" class="material-icons">lock</span>
+        <span class="footer__login-text">Login</span>
+    </a>
+</li>
+	</ul>
+</nav>
+                </div>
+        </div>
+        
+
+
+    
+
+    <nav aria-labelledby="footer-departments-heading" class="footer__departments footer-accordion-mobile js-footer-accordion-mobile">
+        <div class="footer__section-title footer-accordion-mobile__trigger js-footer-accordion-mobile__trigger">
+            <h3 id="footer-departments-heading">
+                Departments
+            </h3>
+        </div>
+        <div class="footer__row footer-accordion-mobile__content">
+            <ul class="items">
+                
+                    
+                        
+                        
+                        <li class="item">
+                            <a href="https://arch.ethz.ch/en">
+                                <span class="item__title">D-ARCH</span>
+                                <span class="item__subtitle">Architecture</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://baug.ethz.ch/en/">
+                                <span class="item__title">D-BAUG</span>
+                                <span class="item__subtitle">Civil, Environmental and Geomatic Engineering</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://biol.ethz.ch/en/">
+                                <span class="item__title">D-BIOL</span>
+                                <span class="item__subtitle">Biology</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://bsse.ethz.ch/">
+                                <span class="item__title">D-BSSE</span>
+                                <span class="item__subtitle">Biosystems Science and Engineering</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://chab.ethz.ch/en/">
+                                <span class="item__title">D-CHAB</span>
+                                <span class="item__subtitle">Chemistry and Applied Biosciences</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://erdw.ethz.ch/en/">
+                                <span class="item__title">D-ERDW</span>
+                                <span class="item__subtitle">Earth Sciences</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://gess.ethz.ch/en/">
+                                <span class="item__title">D-GESS</span>
+                                <span class="item__subtitle">Humanities, Social and Political Sciences</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://hest.ethz.ch/en">
+                                <span class="item__title">D-HEST</span>
+                                <span class="item__subtitle">Health Sciences and Technology</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://inf.ethz.ch/">
+                                <span class="item__title">D-INFK</span>
+                                <span class="item__subtitle">Computer Science</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://ee.ethz.ch/">
+                                <span class="item__title">D-ITET</span>
+                                <span class="item__subtitle">Information Technology and Electrical Engineering</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://math.ethz.ch/">
+                                <span class="item__title">D-MATH</span>
+                                <span class="item__subtitle">Mathematics</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://mat.ethz.ch/">
+                                <span class="item__title">D-MATL</span>
+                                <span class="item__subtitle">Department of Materials</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://mavt.ethz.ch/">
+                                <span class="item__title">D-MAVT</span>
+                                <span class="item__subtitle">Mechanical and Process Engineering</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://mtec.ethz.ch/">
+                                <span class="item__title">D-MTEC</span>
+                                <span class="item__subtitle">Management, Technology and Economics</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://www.phys.ethz.ch/">
+                                <span class="item__title">D-PHYS</span>
+                                <span class="item__subtitle">Physics</span>
+                            </a>
+                        </li>
+                   
+                        
+                        
+                        <li class="item">
+                            <a href="https://usys.ethz.ch/en/">
+                                <span class="item__title">D-USYS</span>
+                                <span class="item__subtitle">Environmental Systems Science</span>
+                            </a>
+                        </li>
+                   
+                
+            </ul>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var toggleAccordion = function(e) {
+                e.preventDefault();
+                $(e.target)
+                    .closest('.js-footer-accordion-mobile')
+                    .toggleClass('is-open-mobile');
+            };
+            $('.js-footer-accordion-mobile__trigger').on('click', toggleAccordion);
+        });
+    </script>
+<nav aria-labelledby="footer-resources-heading" class="footer__row footer__resources">
+                <h3 id="footer-resources-heading" class="visually-hidden">
+                  Table of contents and legal</h3>
+                <ul>
+                    <li><a href="/staffnet/en/footer/sitemap.html" title="Sitemap"> Sitemap</a></li>
+                    <li><a href="/staffnet/en/footer/imprint.html" title="Imprint"> Imprint</a></li>
+                    <li><a href="/staffnet/en/footer/accessibility-statement.html" title="Accessibility Statement"> Accessibility Statement</a></li>
+                    <li><a href="/staffnet/en/footer/disclaimer-copyright.html" title="Disclaimer &amp; Copyright"> Disclaimer &amp; Copyright</a></li>
+                    <li><a href="/staffnet/en/footer/data-protection.html" title="Data protection"> Data protection</a></li>
+                    </ul>
+            </nav>
+        <div class="footer__copyright">
+            &copy; 2024 &nbsp;<a href="http://www.ethz.ch/">Eidgen&ouml;ssische
+                    Technische Hochschule Z&uuml;rich</a>
+        </div>
+    </div>
+</footer>
+</div>
+
+    <!-- lightbox by photoswipe -->
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- access statistics -->
+    <!-- Access statistics -->
+        
+
+
+
+<div id="info-banner">JavaScript has been disabled in your browser</div></body>
+</html>
+ contentType 9 text/html url 36 https://ethz.ch:443/staffnet/en.html responseCode 3 200 

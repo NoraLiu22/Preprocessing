@@ -1,0 +1,545 @@
+basetenohmqmwcsglegcbkngrcrefqwqsmyomohe length 5 31966 page 31966 <!DOCTYPE html>
+<html lang="en" class="top">
+<head>
+<title>Directions to Venues | PMF (Pacific Music Festival, Sapporo)</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta property="og:url" content="https://www.pmf.or.jp/en/access/">
+<meta property="og:site_name" content="PMF">
+<meta property="og:title" content="Directions to Venues | PMF">
+<meta property="og:type" content="article">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://www.pmf.or.jp/apple-touch-icon.png">
+<meta property="fb:app_id" content="230687140467733">
+<meta name="description" content="">
+<meta name="twitter:title" content="Directions to Venues | PMF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="www.pmf.or.jp">
+<meta name="twitter:image" content="https://www.pmf.or.jp/apple-touch-icon.png">
+<link rel="stylesheet" href="/themes/system/css/acms-admin.min.css?date=20230624043717">
+<link rel="stylesheet" href="/themes/system/css/acms.min.css?date=20230624043717">
+<link rel="stylesheet" href="/themes/pmf/css/acms-custom.css?date=20240325164116">
+<link rel="stylesheet" href="https://www.pmf.or.jp/css/pmf.css?v=20240426">
+<script src="/js/library/jquery/jquery-3.6.1.min.js" charset="UTF-8"></script>
+<script src="/acms.js?uaGroup=PC&amp;domains=www.pmf.or.jp&amp;jsDir=js/&amp;themesDir=/themes/&amp;bid=25&amp;bcd=en/access&amp;googleApiKey=AIzaSyAYq48UPKfVNHkYg-XQbLdywFjM7Io-T-g&amp;jQuery=3.6.1&amp;jQueryMigrate=migrate-3.0.1&amp;mediaClientResize=on&amp;fulltimeSSL=1&amp;v=bc1bad118339ce45e0f1fbc18d4d63e3&amp;umfs=400M&amp;pms=400M&amp;mfu=20&amp;lgImg=width:1400&amp;jpegQuality=85&amp;mediaLibrary=on&amp;edition=standard&amp;urlPreviewExpire=48&amp;timemachinePreviewDefaultDevice=PC&amp;scriptRoot=/" charset="UTF-8" id="acms-js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="/themes/pmf/js/lib_new.js?v=20230404"></script>
+<script src="/themes/pmf/js/base.js?v=20230605"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&language=en&key=AIzaSyAYq48UPKfVNHkYg-XQbLdywFjM7Io-T-g"></script>
+<script type="text/javascript">
+var center = new google.maps.LatLng(43.046254, 141.383719);
+var zoom = 11;
+var mapTypeId = google.maps.MapTypeId.ROADMAP
+</script>
+<script type="text/javascript">
+window.onload = initialize;
+var infoWindow = new google.maps.InfoWindow;
+var elevator = new google.maps.ElevationService();
+var elevationresult;
+function initialize() 
+{
+var myOptions = 
+{
+disableDefaultUI: false,
+navigationControl: true,
+navigationControlOptions: 
+{
+style: google.maps.NavigationControlStyle.DEFAULT,
+position: google.maps.ControlPosition.LEFT_TOP
+},
+mapTypeControl: true,
+mapTypeControlOptions: 
+{
+style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+//style: google.maps.MapTypeControlStyle.DEFAULT,
+//style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+position: google.maps.ControlPosition.TOP_RIGHT
+},
+scaleControl: true,
+scrollwheel: false,
+scaleControlOptions: 
+{
+//position: google.maps.ControlPosition.RIGHT_TOP
+//position: google.maps.ControlPosition.TOP_CENTER
+//position: google.maps.ControlPosition.BOTTOM_CENTER
+},
+center: center,
+zoom: zoom,
+mapTypeId: mapTypeId
+};
+　　　　map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+　　　　downloadUrl("./map.xml", function(data)
+{
+var xml = data.responseXML;
+var markers = xml.documentElement.getElementsByTagName("marker");
+for (var i = 0; i < markers.length; i++) 
+{
+var name = markers[i].getAttribute("name");
+var explanation = markers[i].getAttribute("explanation");
+var latlng = new google.maps.LatLng(
+parseFloat(markers[i].getAttribute("lat")),
+parseFloat(markers[i].getAttribute("lng")));
+var entryurl = markers[i].getAttribute("entryurl");
+var linkurl = markers[i].getAttribute("linkurl");
+var thumbnail = markers[i].getAttribute("thumbnail");
+var japaneseonly = markers[i].getAttribute("japaneseonly");
+if(japaneseonly){
+var html = '<div class="accessPoint"><h2>'+name+'</h2><p class="mapLink"><a href="'+linkurl+'" target="_blank">'+linkurl+'</a><span class="japaneseOnly">'+japaneseonly+'</span></p><p class="thumbnail"><img src="'+thumbnail+'" /></p><div class="text">'+explanation+'</div><p class="btnLink"><a href="'+entryurl+'">Details</a></p>';
+}else{
+var html = '<div class="accessPoint"><h2>'+name+'</h2><p class="mapLink"><a href="'+linkurl+'" target="_blank">'+linkurl+'</a></p><p class="thumbnail"><img src="'+thumbnail+'" /></p><div class="text">'+explanation+'</div><p class="btnLink"><a href="'+entryurl+'">Details</a></p>';
+}
+var marker = new google.maps.Marker(
+{
+map: map,
+position: latlng,
+locations: latlng,
+title: name
+});
+bindInfoWindow(marker, map, infoWindow, html);		}
+});
+}
+function bindInfoWindow(marker, map, infoWindow, html)
+{
+google.maps.event.addListener(marker, 'click', function() 
+{
+infoWindow.setContent(html);
+infoWindow.open(map, marker);
+});
+}
+function downloadUrl(url, callback) 
+{
+var request = window.ActiveXObject ?
+new ActiveXObject('Microsoft.XMLHTTP') :
+new XMLHttpRequest;
+request.onreadystatechange = function() 
+{
+if (request.readyState == 4) 
+{
+request.onreadystatechange = doNothing;
+callback(request, request.status);
+}
+};
+request.open('GET', url, true);
+request.send(null);
+}
+function doNothing() {}
+//]]>
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M38SNQB');</script>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '656395181166815');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=656395181166815&ev=PageView&noscript=1"
+/></noscript>
+<script type="text/javascript" src="/js/dest/vendor.chunk.js?date=20230624043717" charset="UTF-8" async defer></script>
+<script type="text/javascript" src="/js/dest/index.js?date=20230624043717" charset="UTF-8" async defer></script>
+<meta name="generator" content="a-blog cms" />
+<meta name="csrf-token" content="bed4a13913c68b568563534f21505f0576d7ac2c50017ffc8695b19aede04fe6"></head>
+<body class="access">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M38SNQB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="wrapper">
+<header id="globalHeader" class="header2022">
+<p class="headerLogo">
+<a href="https://www.pmf.or.jp/en/" class="headerLogoLink">
+<img src="/img/common/pmf_logo.svg" alt="PMF" class="headerLogoImg">
+</a>
+<span class="headerText">International educational <br>
+Pacific Music Festival Sapporo</span>
+</p>
+<div class="headerNavWrap">
+<div class="headerNavSub">
+<ul class="langSelect langSelectJp" id="headerLangSelect">
+<li id="language"><a href="https://www.pmf.or.jp/">JP</a></li>
+<li><span>EN</span></li>
+<li><a href="https://www.pmf.or.jp/en/region/"><img src="/img/common/icon_lang.svg" alt="other langage"></a></li>
+</ul>
+<script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,es,fr,it,ko,pt,ru,zh-CN,zh-TW', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, multilanguagePage: true, gaTrack: true, gaId: 'UA-8911787-1'}, 'google_translate_element');
+      }
+      </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<button class="headerSearchBtn"><img src="/img/common/icon_search.svg" alt="search"></button>
+<div class="headerSearchWrap">
+<form action="https://www.pmf.or.jp/en/search.html" method="post" name="headerSearch" class="commonSearchForm" role="search" aria-label="Search Form">
+<input type="search" placeholder="Search" id="headerSearch" name="keyword" value="" class="commonSearchInput">
+<input type="hidden" name="tpl" value="/search.html">
+<button type="submit" name="ACMS_POST_2GET" class="commonSearchBtn">Search</button>
+
+
+<input type="hidden" name="formUniqueToken" value="83b843f271e465f12b3c82b1dfc0cc5ef5b080eb2f17b16580d5019608625a16">
+<input type="hidden" name="formToken" value="bed4a13913c68b568563534f21505f0576d7ac2c50017ffc8695b19aede04fe6">
+</form>
+<div class="searchWordWrap">
+<ul class="searchWord">
+<li class="searchWordItem" >
+<a class="searchWordLink" href="https://www.pmf.or.jp/en/artist/" target="_blank">
+2024 Artists
+</a>
+</li>
+<li class="searchWordItem" >
+<a class="searchWordLink" href="https://www.pmf.or.jp/en/gallery/digital/" target="">
+PMF 2023 video
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="headerNav">
+<button class="navTrg" type="button">
+<span class="navTrgBorder"></span>
+<span class="navTrgBorder"></span>
+<span class="navTrgBorder"></span>
+<span class="navTrgText">MENU</span>
+</button>
+<div class="headerMenuWrap">
+<ul class="headerMenu">
+<li class="headerMenuParent">
+<a href="https://www.pmf.or.jp/en/about/" class="headerMenuLink">What is PMF?</a>
+</li>
+<li class="headerMenuParent">
+<span class="headerMenuTgr">Concerts</span>
+<div class="headerMenuChild">
+<div class="headerMenuChildInner">
+<ul class="headerMenuChildMain">
+<li class="headerMenuChildItem wide headerHighlights"><a href="https://www.pmf.or.jp/en/highlights/2024.html" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_highlights.webp" alt=""></figure><p class="headerHighlightsTitle"><span class="visiblePc">PMF 2024 </span>Highlights<span class="headerMenuYear visibleSm">2024</span></p></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/schedule/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_schedule.webp" alt=""></figure>Schedule<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/ticket/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_ticket.webp" alt=""></figure>Tickets</a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/artist/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_artist.webp" alt=""></figure>Artists<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/academy/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_academy.webp" alt=""></figure>PMF Academy Members<span class="headerMenuYear">2024</span></a></li>
+</ul>
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/access/" class="headerMenuChildSubLink js-viewing-indelible">Directions to Venues</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/first/" class="headerMenuChildSubLink js-viewing-indelible">New to PMF?</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/goods/" class="headerMenuChildSubLink js-viewing-indelible">Official Goods</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/connectslive/" class="headerMenuChildSubLink js-viewing-indelible">PMF Connects LIVE!</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="headerMenuParent">
+<span class="headerMenuTgr">Gallery</span>
+<div class="headerMenuChild">
+<div class="headerMenuChildInner">
+<ul class="headerMenuChildMain">
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/gallery/digital/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_digital.webp" alt=""></figure>DIGITAL CONTENTS</a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/gallery/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_gallery.webp" alt=""></figure>Photo Gallery</a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/archive/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_archive.webp" alt=""></figure>Archive</a></li>
+</ul>
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/mail/" class="headerMenuChildSubLink js-viewing-indelible">Email Newsletter</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/gallery/movie/" class="headerMenuChildSubLink js-viewing-indelible">PMF Connects</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/lisning/2023.html" class="headerMenuChildSubLink">PMF Academy Trial Listening<span class="headerMenuYear old">2023</span></a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="headerMenuParent">
+<span class="headerMenuTgr">Music Outreach</span>
+<div class="headerMenuChild">
+<div class="headerMenuChildInner">
+<ul class="headerMenuChildMain">
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/schedule/seminar/2024-linkup.html" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_linkup.webp" alt=""></figure>Link Up Concert<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/openmasterclass/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_openmasterclass.webp?v=2" alt=""></figure>Open Masterclasses<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/labo/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_labo.webp" alt=""></figure>PMF Classical LAB♪<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/rehearsal/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_rehearsal.webp" alt=""></figure>Open Rehearsals<span class="headerMenuYear">2024</span></a></li>
+</ul>
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/volconcert/" class="headerMenuChildSubLink js-viewing-indelible">Volunteer Concerts</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="headerMenuParent">
+<span class="headerMenuTgr">Auditions</span>
+<div class="headerMenuChild">
+<div class="headerMenuChildInner">
+<ul class="headerMenuChildMain">
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/audition/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_audition.webp" alt=""></figure>Audition Information<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/audition/repertoire.html" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_repertoire.webp" alt=""></figure>Audition Repertoire<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/about/academy.html" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_spend.webp" alt=""></figure>Daily life as a PMF Academy member</a></li>
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/alumni/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_alumni.webp" alt=""></figure>Alumni</a></li>
+</ul>
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/audition/questions.html" class="headerMenuChildSubLink js-viewing-indelible">Frequently Asked Questions</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/audition/result.html" class="headerMenuChildSubLink">Audition Result<span class="headerMenuYear">2024</span></a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="headerMenuParent">
+<span class="headerMenuTgr">Support</span>
+<div class="headerMenuChild">
+<div class="headerMenuChildInner">
+<ul class="headerMenuChildMain">
+<li class="headerMenuChildItem"><a href="https://www.pmf.or.jp/en/support/corporate/" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_corporate.webp" alt=""></figure>Companies/Organizations<span class="headerMenuYear old">2023</span></a></li>
+<li class="headerMenuChildItem"><a href="https://s2.g-sb.net/pmf/new/" target="_blank" class="headerMenuChildLink js-viewing-indelible"><figure class="headerMenuImgWrap"><img class="headerMenuImg" src="/img/common/photo_header_bosyu.webp" alt=""></figure>Online Donations</a></li>
+</ul>
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/support/supporting.html" class="headerMenuChildSubLink js-viewing-indelible">Supporting Organizations<span class="headerMenuYear old">2023</span></a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/support/volunteer.html" class="headerMenuChildSubLink js-viewing-indelible">Volunteers</a></li>
+</ul>
+</div>
+</div>
+</li>
+<li class="headerMenuParent">
+<span class="headerMenuTgr">Information</span>
+<div class="headerMenuChild subonly">
+<div class="headerMenuChildInner">
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/news/" class="headerMenuChildSubLink js-viewing-indelible">News</a></li>
+</ul>
+<ul class="headerMenuChildSub">
+<li class="headerMenuChildSubItem headerMenuChildSubTitle">PMF Organizing Committee</li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/about/profile.html" class="headerMenuChildSubLink js-viewing-indelible">PMFOC Structure</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/information/contact.html" class="headerMenuChildSubLink js-viewing-indelible">Inquiries</a></li>
+</ul>
+<ul class="headerMenuChildSub headerMenuChildSubCol2">
+<li class="headerMenuChildSubItem headerMenuChildSubTitle">Information</li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/download/" class="headerMenuChildSubLink js-viewing-indelible">Downloads<span class="headerMenuYear">2024</span></a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/information/sitemap.html" class="headerMenuChildSubLink js-viewing-indelible">Site Map</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/about/access.html" class="headerMenuChildSubLink js-viewing-indelible">Visit the PMF Office</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/information/" class="headerMenuChildSubLink js-viewing-indelible">Concerning Use of the Site</a></li>
+<li class="headerMenuChildSubItem"><a href="https://www.pmf.or.jp/en/information/privacy.html" class="headerMenuChildSubLink js-viewing-indelible">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+<div class="headerUtility">
+<ul class="headerSns">
+<li class="headerSnsItem"><a href="https://twitter.com/PMF_Sapporo" target="_blank"><img src="/img/common/icon_x.svg" alt="X"></a></li>
+<li class="headerSnsItem"><a href="https://www.instagram.com/pacific_music_festival/" target="_blank"><img src="/img/common/icon_ig.png" srcset="/img/common/icon_ig.png 1x, /img/common/icon_ig@2x.png 2x" alt="Instagram"></a></li>
+<li class="headerSnsItem"><a href="https://www.facebook.com/PacificMusicFestival" target="_blank"><img src="/img/common/icon_fb.svg" alt="Facebook"></a></li>
+<li class="headerSnsItem"><a href="https://www.youtube.com/user/PacificMusicFestival" target="_blank"><img src="/img/common/icon_yt.svg" alt="YouTube"></a></li>
+</ul>
+<p class="headerDonate"><a href="https://s2.g-sb.net/pmf/new/" target="_blank" class="headerDonateBtn">Donate</a></p>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<style>
+.acms-admin-btn-admin {
+overflow: hidden;
+line-height: 1;
+}
+br+.acms-admin-btn-admin{
+margin-top: 5px;
+}
+.acms-admin-btn-admin .jp,
+.acms-admin-btn-admin .en {
+display: inline-block;
+padding: 8px 4px;
+margin: -8px 6px -8px -8px;
+background-color: #000;
+color: #FFF;
+font-size: 10px;
+opacity: 0.5;
+}
+.acms-admin-btn-admin .jp {
+background-color: #CB0000;
+}
+.acms-admin-btn-admin .en {
+background-color: #3166FF;
+}
+</style>
+<p class="topicPath">
+<a href="https://www.pmf.or.jp/en/">HOME</a>
+&gt; <a href="https://www.pmf.or.jp/en/access/">Access</a>
+</p>
+<div id="container">
+<section>
+<h1>Directions to Venues</h1>
+<p class="navTrg"><a href="javascript:;"><img src="/img/sm/icon_menu_local.png" width="10" height="10" alt="Open Menu"></a></p>
+<nav class="localNav">
+<ul>
+<li><a href="/en/access/" class="selected">Directions to Venues</a></li>
+<li><a href="/en/access/airport.html">Access from the Airport</a></li>
+</ul>
+</nav>
+<section class="inner">
+<div id="accessMap">
+<div id="map_canvas" style="width:1000px;height: 540px;"></div>
+</div>
+</section>
+<section class="inner accessMapList">
+<h2 class="accessMapTitle border">Sapporo</h2>
+<ul>
+<li><a href="https://www.pmf.or.jp/en/access/kitara.html">Sapporo Concert Hall <i>Kitara</i></a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/sapporo-art-park.html">Sapporo Art Park</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/tokeidai.html">Sapporo Clock Tower Hall</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/kiyota.html">Kiyota Ward Community Center, Sapporo</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/nh.html">Sapporo Noebo Honcho Local Center</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/creative.html">Creative Studio (Sapporo Community Plaza 3F)</a>
+</li>
+</ul>
+</section>
+<section class="inner accessMapList">
+<h2 class="accessMapTitle border">In Hokkaido
+</h2>
+<ul>
+<li><a href="https://www.pmf.or.jp/en/access/tomakomai2.html">Tomakomai Shimin Kaikan</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/hakodate2.html">Hakodate Performing Arts Center</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/ebetsu.html">Ebetsu-shi Epoa Hall</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/naie.html">Naiecho Bunka Hall (Concerto Hall)</a>
+</li>
+<li><a href="https://www.pmf.or.jp/en/access/tokachi.html">Tokachi Plaza</a>
+</li>
+</ul>
+</section>
+<section class="inner accessMapList">
+<h2 class="accessMapTitle border">Outside Hokkaido</h2>
+<ul>
+<li><a href="https://www.pmf.or.jp/en/access/suntory-hall.html">Suntory Hall</a>
+</li>
+</ul>
+</section>
+</section>
+<div class="pager">
+<ul>
+<li class="right"><a href="/en/access/airport.html">Access from the Airport　＞</a></li>
+</ul>
+</div>
+</div>
+<footer id="globalFooter" class="footer2022">
+<div class="footerInnter">
+<div class="footerAbout">
+<p class="footerLogo">
+<img src="/img/common/pmf_logo_white.svg" alt="PMF" class="footerLogoImg">
+<span class="footerLogoText">International educational <br class="visibleSm">Pacific Music <br class="visibleSm">Festival Sapporo</span>
+</p>
+<ul class="footerSns">
+<li class="footerSnsItem"><a href="https://twitter.com/PMF_Sapporo" target="_blank"><img src="/img/common/icon_x_white.svg" alt="X"></a></li>
+<li class="footerSnsItem"><a href="https://www.instagram.com/pacific_music_festival/" target="_blank"><img src="/img/common/icon_ig_white.svg" alt="Instagram"></a></li>
+<li class="footerSnsItem"><a href="https://www.facebook.com/PacificMusicFestival" target="_blank"><img src="/img/common/icon_fb_white.svg" alt="Facebook"></a></li>
+<li class="footerSnsItem"><a href="https://www.youtube.com/user/PacificMusicFestival" target="_blank"><img src="/img/common/icon_yt_white.svg" alt="YouTube"></a></li>
+</ul>
+</div>
+<button class="footerNavTrg" type="button">Site Map</button>
+<nav class="footerNav">
+<ul class="footerMenu">
+<li class="footerMenuParent"><a href="https://www.pmf.or.jp/en/about/" class="footerMenuParentLink">What is PMF?</a></li>
+</ul>
+<ul class="footerMenu">
+<li class="footerMenuParent"><span class="footerMenuParentTitle">Concerts</span>
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/highlights/2024.html" class="footerMenuChildLink">Highlights</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/schedule/" class="footerMenuChildLink">Schedule</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/ticket/" class="footerMenuChildLink">Tickets</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/artist/" class="footerMenuChildLink">Artists</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/academy/" class="footerMenuChildLink">PMF Academy Members</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/access/" class="footerMenuChildLink">Directions to Venues</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/first/" class="footerMenuChildLink">New to PMF?</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/goods/" class="footerMenuChildLink">Official Goods</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/connectslive/" class="footerMenuChildLink">PMF Connects LIVE!</a></li>
+</ul>
+</li>
+</ul>
+<ul class="footerMenu">
+<li class="footerMenuParent"><span class="footerMenuParentTitle">Gallery</span>
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/gallery/digital/" class="footerMenuChildLink">DIGITAL CONTENTS</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/gallery/" class="footerMenuChildLink">Photo Gallery</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/archive/" class="footerMenuChildLink">Archive</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/mail/" class="footerMenuChildLink">Email Newsletter</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/gallery/movie/" class="footerMenuChildLink">PMF Connects</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/lisning/2023.html" class="footerMenuChildLink">PMF Academy Trial Listening</a></li>
+</ul>
+</li>
+</ul>
+<ul class="footerMenu">
+<li class="footerMenuParent"><span class="footerMenuParentTitle">Music Outreach</span>
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/schedule/seminar/2024-linkup.html" class="footerMenuChildLink">Link Up Concert</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/openmasterclass/" class="footerMenuChildLink">Open Masterclasses</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/labo/" class="footerMenuChildLink">PMF Classical LAB♪</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/rehearsal/" class="footerMenuChildLink">Open Rehearsals</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/volconcert/" class="footerMenuChildLink">Volunteer Concerts</a></li>
+</ul>
+</li>
+</ul>
+<ul class="footerMenu">
+<li class="footerMenuParent"><span class="footerMenuParentTitle">Auditions</span>
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/audition/" class="footerMenuChildLink">Audition Information</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/audition/repertoire.html" class="footerMenuChildLink">Audition Repertoire</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/about/academy.html" class="footerMenuChildLink">Daily life as a PMF Academy member</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/alumni/" class="footerMenuChildLink">Alumni</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/audition/questions.html" class="footerMenuChildLink">Frequently Asked Questions</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/audition/result.html" class="footerMenuChildLink">Audition Result</a></li>
+</ul>
+</li>
+</ul>
+<ul class="footerMenu">
+<li class="footerMenuParent"><span class="footerMenuParentTitle">Support</span>
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/support/corporate/" class="footerMenuChildLink">Companies/Organizations</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/support/bosyu/" class="footerMenuChildLink">Online Donations</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/support/supporting.html" class="footerMenuChildLink">Supporting Organizations</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/support/volunteer.html" class="footerMenuChildLink">Volunteers</a></li>
+</ul>
+</li>
+</ul>
+<ul class="footerMenu footerMenuWide">
+<li class="footerMenuParent"><span class="footerMenuParentTitle">Information</span>
+<div class="footerMenuWideCol">
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/news/" class="footerMenuChildLink">News</a></li>
+</ul>
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem footerMenuChildTitle">PMF Organizing Committee</li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/about/profile.html" class="footerMenuChildLink">PMFOC Structure</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/information/contact.html" class="footerMenuChildLink">Inquiries</a></li>
+</ul>
+</div>
+<div class="footerMenuWideCol">
+<ul class="footerMenuChild">
+<li class="footerMenuChildItem footerMenuChildTitle">Information</li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/download/" class="footerMenuChildLink">Downloads</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/information/sitemap.html" class="footerMenuChildLink">Site Map</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/about/access.html" class="footerMenuChildLink">Visit the PMF Office</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/information/" class="footerMenuChildLink">Concerning Use of the Site</a></li>
+<li class="footerMenuChildItem"><a href="https://www.pmf.or.jp/en/information/privacy.html" class="footerMenuChildLink">Privacy Policy</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</nav>
+<p class="footerCaution">Any reproduction without prior permission is strictly prohibited.</p>
+<p class="footerCopyright">© PACIFIC MUSIC FESTIVAL ORGANIZING COMMITTEE</p>
+</div>
+</footer>
+<p class="pageTop"><a href="#wrapper">Page<br>Top</a></p>
+</div>
+<script>
+$(function(){
+	$('#mailformpro input[name="formToken"]').val('');
+	$('#mailformpro input[name="formUniqueToken"]').val('');
+});
+</script>
+</body>
+</html> contentType 9 text/html url 36 https://www.pmf.or.jp:443/en/access/ responseCode 3 200 

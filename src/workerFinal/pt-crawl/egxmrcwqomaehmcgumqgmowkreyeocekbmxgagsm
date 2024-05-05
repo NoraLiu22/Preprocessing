@@ -1,0 +1,270 @@
+egxmrcwqomaehmcgumqgmowkreyeocekbmxgagsm length 5 13464 page 13464 <!doctype html><html lang="en"><head>
+
+<title>MeSH Browser</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+
+<link rel="stylesheet" href="/public/css/font-awesome.css">
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet" href="/public/css/mongoMesh.css">
+<link rel="icon" type="image/jpeg" href="/public/img/meshLogo.jpg">
+
+<base href="/">
+
+<script>
+    if (document.domain != "localhost")
+        document.domain = "nlm.nih.gov";
+    var dcmsLinks = false,
+        dcmsParam = dcmsLinks
+                    ? function (sep) { return sep + "dcmsLinks=true"; }
+                    : function (   ) { return ""                    ; };
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){
+        var _fullPath = window.location.href;
+        var urlParams = _fullPath.slice(_fullPath.indexOf('?') + 1).split('&');
+        var IsOpen = "false";
+        if (urlParams != undefined && urlParams != null && urlParams != "") {
+            IsOpen = urlParams[0].split("=")[1];
+        }
+
+        if (IsOpen == "false" || IsOpen == undefined || IsOpen != "true") {
+            w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        }
+    })(window,document,'script','dataLayer','GTM-5QZ7KJZ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe sandbox src="https://www.googletagmanager.com/ns.html?id=GTM-5QZ7KJZ"
+                  height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript> 
+<!-- End Google Tag Manager (noscript) -->
+
+<script src="/public/js/elemUtil.js"></script>
+
+<script src="/public/js/onDemand.js"></script>
+</head><body>
+
+<div>
+    <header class="NLMheader">
+        <a href="https://www.nlm.nih.gov/">
+          <img height="80" alt="NLM Logo"
+               src="https://www.nlm.nih.gov/images/NLM_White.png">
+        </a>
+        <!--<img class="starLogo"src="/public/img/NLM_Star.png" alt="NLM Star">-->
+    </header>
+<nav class="navbar navbar-default">
+
+  <div class="container-fluid">
+
+        <div class="navbar-header">
+
+          <button class="navbar-toggle collapsed" type="button"
+                  aria-expanded="false"
+                  onclick="toggleCollapse('bs-example-navbar-collapse-1')">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://www.nlm.nih.gov/mesh/">
+                <img id="meshNavbarLogo" src="/public/img/meshLogo.jpg" alt="MeSH Logo">
+            </a>
+        </div>
+
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse"
+             aria-expanded="false">
+            <ul class="nav navbar-nav">
+                
+                <li><a href="/" id="mainSearchButton">Search</a></li>
+                <li><a href="/treeView">Tree View</a></li>
+                <li><a href="/MeSHonDemand">MeSH on Demand</a> </li> <!--Delete the Span Tags after  a few months, once MeSH on Demand is no longer new-->
+                <li><a href="https://meshb-prev.nlm.nih.gov/" target="_blank">MeSH 2023</a></li>
+                <li><a href="https://www.nlm.nih.gov/mesh/mbinfo.html" target="_blank">About</a></li>
+                <li><a href="https://www.nlm.nih.gov/mesh/meshsugg.html" target="_blank">Suggestions</a> </li>
+                <li><a href="https://support.nlm.nih.gov/support/create-case/" target="_blank">Contact Us</a></li>
+            </ul>
+
+        </div>
+        </div>
+
+</nav>
+
+</div>
+
+<div class="container">
+
+
+<p class="text-center">
+    <img id="meshSearchLogo" src="/public/img/mesh_on_demand_logo.png" alt="MOD Logo">
+</p>
+<br>
+<p class="text-center">MeSH on Demand identifies MeSH&reg; terms in your submitted text (abstract or manuscript). MeSH on Demand also lists PubMed similar articles relevant to your submitted text.</p>
+
+<div id="MOD_Content" class="container">
+    <div class="row">
+        <div class="col-xs-9">
+            <div >
+                <div id="errMsg" class="alert alert-danger" role="alert" style="display: none">Sorry, there was an error</div>
+                <div id="noResultMsg" class="alert alert-warning" role="alert" style="display: none">Sorry, no results were found with that search</div>
+
+                <div class="btn-group">
+                    <button class="btn btn-default mod_cmd_btn run-btn" id="runMOD" onclick="searchMOD()">Search</button>
+                    <button class=" btn btn-default mod_cmd_btn" id="resetMOD" onclick="resetMOD()">Reset</button>
+                    
+                    <a target="_blank" href="/MoDFAQ"><button class=" btn btn-default mod_cmd_btn help-btn" id="togHelp" >Help/FAQ</button></a>
+                    <a target="_blank" href="/newFeatures"><button class=" btn btn-default mod_cmd_btn help-btn" id="togNewFeatures">Features</button></a>
+
+                </div>
+                <br>
+                <textarea aria-label="MODTextArea" autofocus placeholder="Enter text to be processed here - then click Search" oninput="checkLen(this)"  id="MODEntry" class="form-control" rows="10"></textarea>
+                <p id="MODResult" tabindex="0" style="display: none"></p>
+            </div>
+            <div id="defaultArticleSection"
+                 class="hidden-lg hidden-md hidden-sm" style="display: none">
+                <hr>
+                <h3>PubMed/MEDLINE Similar Articles</h3>
+                <p>The following articles are 10 similar PubMed Related
+                   Citations that were also used in computing these MeSH
+                   recommendations. The order is from most to least
+                   relevant. Selecting any of the titles opens a new window or
+                   tab with that related citation in PubMed's Abstract view.</p>
+                <ol id="defaultArticleList"></ol>
+            </div>
+        </div>
+        <div  class="col-xs-3">
+            <div id="resultSidebar" style="display: none">
+                    <br>
+                    <br>
+
+
+                    <button class="btn btn-default btn-sm " onclick="runPMS()" id="searchPMSTS"> Start PubMed Search</button>
+                <br>
+                <br>
+                    <button class="btn btn-default btn-sm " id="modDownload" onclick="downloadMOD()"> Export Data</button>
+                <h3>MeSH Terms</h3>
+                <div id="termListSidebar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="smallArticleSection" class="hidden-xs" style="display: none">
+    <hr>
+    <h3>PubMed/MEDLINE Similar Articles</h3>
+    <p>The following articles are 10 similar PubMed Related Citations that were
+       also used in computing these MeSH recommendations. The order is from most
+       to least relevant. Selecting any of the titles opens a new window or tab
+       with that related citation in PubMed's Abstract view.</p>
+    <ol id="smallArticleList"></ol>
+</div>
+
+<div id="loadingSpinner" class="MOD_Loading" style="display: none">
+
+    <br><br><br><br> <br><br><br><br><br><br><br><br> <br><br><br><br> <br><br><br><br>
+    <div id="loaderWhiteBg">
+        <br>
+        <i class="fa fa-spinner fa-spin fa-4x fa-fw centerIconSpinner"></i>
+        <br>
+        <h3 class="loading" style="text-align:center;">Loading</h3>
+    </div>
+</div>
+<br>
+<br>
+<b>Disclaimers:</b>
+MeSH on Demand suggested MeSH vocabulary are machine-generated by MTI and <u>DO NOT reflect any human review</u>. MTI may recommend MeSH Terms not explicitly found in the text.
+<br>
+<br>
+This tool is <u>NOT</u> intended for processing personally identifiable, sensitive or protected-health information. The system is not configured for secure communications. <u> It is your responsibility to NOT submit any personally identifiable, sensitive or protected-health information.</u>  MeSH on Demand does not retain or otherwise reuse any text submitted for processing.
+<br>
+<br>
+It is not the intention of NLM to provide specific medical advice, but rather to provide users with information to better understand their health and their diagnosed disorders. Specific medical advice will not be provided, and NLM urges you to consult with a qualified physician for diagnosis and for answers to your personal questions.
+
+</div>
+
+<footer class="footer">
+    <div class="container-fluid"><div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <p><a href="https://www.nlm.nih.gov/socialmedia/index.html">
+                    Connect with NLM
+                </a></p>
+                <ul class="list-inline">
+                    <li>
+                    <a title="External link: please review our privacy policy."
+                       href="https://twitter.com/NLM_NIH">
+                        <img src="https://www.nlm.nih.gov/images/Twitter_W.svg"
+                             alt="Twitter">
+                    </a></li>
+                    <li>
+                    <a title="External link: please review our privacy policy."
+                       href="https://www.facebook.com/nationallibraryofmedicine"
+                    ><img src="https://www.nlm.nih.gov/images/Facebook_W.svg"
+                          alt="Facebook">
+                    </a></li>
+                    <li>
+                    <a title="External link: please review our privacy policy."
+                       href="https://www.youtube.com/user/NLMNIH">
+                        <img src="https://www.nlm.nih.gov/images/YouTube_W.svg"
+                             alt="You Tube">
+                    </a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p>National Library of Medicine<br>
+                    <a href="https://www.google.com/maps/place/8600+Rockville+Pike,+Bethesda,+MD+20894/@38.9959508,-77.101021,17z/data=!3m1!4b1!4m5!3m4!1s0x89b7c95e25765ddb:0x19156f88b27635b8!8m2!3d38.9959508!4d-77.0988323">
+                        8600 Rockville Pike<br>
+                        Bethesda, MD 20894
+                    </a>
+                </p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p><a href="https://www.nlm.nih.gov/web_policies.html">
+                    Web Policies
+                </a><br>
+                <a href="https://www.nih.gov/institutes-nih/nih-office-director/office-communications-public-liaison/freedom-information-act-office">
+                    FOIA
+                </a><br>
+                <a href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html">
+                    HHS Vulnerability Disclosure
+                </a></p>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <p><a href=
+                      "https://support.nlm.nih.gov?from=https://www.nlm.nih.gov/">
+                    NLM Support Center
+                </a><br>
+                <a href="https://www.nlm.nih.gov/accessibility.html">
+                    Accessibility
+                </a><br>
+                <a href="https://www.nlm.nih.gov/careers/careers.html">
+                    Careers
+                </a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+              <p class="text-center"> <a href="https://www.nlm.nih.gov/">NLM</a> | <a href="https://www.nih.gov/">NIH</a> | <a href="https://www.hhs.gov/">HHS</a> | <a href="https://www.usa.gov/">USA.gov</a></p>
+            </div>
+        </div>
+    </div></div>
+<!--BEGIN QUALTRICS WEBSITE FEEDBACK SNIPPET-->
+<script type='text/javascript'>
+(function(){var g=function(e,h,f,g){
+this.get=function(a){for(var a=a+"=",c=document.cookie.split(";"),b=0,e=c.length;b<e;b++){for(var d=c[b];" "==d.charAt(0);)d=d.substring(1,d.length);if(0==d.indexOf(a))return d.substring(a.length,d.length)}return null};
+this.set=function(a,c){var b="",b=new Date;b.setTime(b.getTime()+6048E5);b="; expires="+b.toGMTString();document.cookie=a+"="+c+b+"; path=/; "};
+this.check=function(){var a=this.get(f);if(a)a=a.split(":");else if(100!=e)"v"==h&&(e=Math.random()>=e/100?0:100),a=[h,e,0],this.set(f,a.join(":"));else return!0;var c=a[1];if(100==c)return!0;switch(a[0]){case "v":return!1;case "r":return c=a[2]%Math.floor(100/c),a[2]++,this.set(f,a.join(":")),!c}return!0};
+this.go=function(){if(this.check()){var a=document.createElement("script");a.type="text/javascript";a.src=g;document.body&&document.body.appendChild(a)}};
+this.start=function(){var t=this;"complete"!==document.readyState?window.addEventListener?window.addEventListener("load",function(){t.go()},!1):window.attachEvent&&window.attachEvent("onload",function(){t.go()}):t.go()};};
+try{(new g(100,"r","QSI_S_ZN_cwOHfLkxRr4n4W2","https://zncwohflkxrr4n4w2-nlmenterprise.siteintercept.qualtrics.com/SIE/?Q_ZID=ZN_cwOHfLkxRr4n4W2")).start()}catch(i){}})();
+</script><div id='ZN_cwOHfLkxRr4n4W2'><!--DO NOT REMOVE-CONTENTS PLACED HERE--></div>
+<!--END WEBSITE FEEDBACK SNIPPET-->
+</footer>
+
+</body></html>
+
+ contentType 9 text/html url 42 https://meshb.nlm.nih.gov:443/MeSHonDemand responseCode 3 200 

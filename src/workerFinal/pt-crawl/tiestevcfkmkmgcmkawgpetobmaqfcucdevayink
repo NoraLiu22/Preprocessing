@@ -1,0 +1,388 @@
+tiestevcfkmkmgcmkawgpetobmaqfcucdevayink length 5 17034 page 17034 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/NeRain/Raindrop16x16.png">
+        <title>NeRain - Home</title>
+
+    <!-- CSS includes-->
+    <link href="/NeRain/Content/cssbundle?v=RW3nWBKWDeswGVONKUrJbr8iKdv_io7H0-w1qv81QCw1" rel="stylesheet"/>
+
+    <link href="/NeRain/Content/themes/base/bundle?v=EXL4XhmqdQXBUgZ2ScxZi502RRVgKMSLLnYhtNAkPU01" rel="stylesheet"/>
+
+    <link href="/NeRain/Content/DataTables/css/bundle?v=-ctig8yIfCEIFlJ4GGBg0jZ9-AAwAe6oBJDsHT5bKsU1" rel="stylesheet"/>
+
+
+    <!-- Javascript includes-->
+    <script src="/NeRain/bundles/jquery?v=Fqtyc9cNDQ1KEQigb8dtwimaIrdHC6Jijn2PFZhWPHs1"></script>
+
+    <script src="/NeRain/bundles/bootstrap?v=lU709cTBesHd9IkzQSva3ZgiQMc1-chb2m_y8YeORSs1"></script>
+
+    <script src="/NeRain/bundles/jqueryui?v=Hc1tHRt4B3rcaLmkgWQ6-ckd7Yljie8ma2UXKz2aJnY1"></script>
+
+    <script src="/NeRain/bundles/jqueryvalidate?v=_kVgRtFeIigjLq5AUGWktUjS4LCzIHN0K5SdOsSPRaU1"></script>
+
+    <script src="/NeRain/bundles/inputmask?v=clFI9pS5GKRLupgjXtjvUTc_UO642pZE34ai-g5yh8U1"></script>
+
+    <script src="/NeRain/bundles/modernizr?v="></script>
+
+    <script src="/NeRain/bundles/dataTables?v=JVQFWTPakG_AdXPY8ULI9OWtjBFvWXqD56lncoU5sO41"></script>
+
+    <script src="/NeRain/bundles/moment?v=_VgPl1AJhUXDF_S7LTBLxJszUtWSgF37YGq0_B7WCZA1"></script>
+
+
+    <!-- little script to begin focus on page to first element with autofocus class, will work on any page _layout is used -->
+<script>
+        $(function () {
+            $('.autofocus:first').focus();
+        });
+
+        //method to check if text is in a proper date format
+        //todo: update datepickers to use this and inform users of bad input when appropriate. also consider using
+        //moment.js for dates.
+        function isValidDate(datestring, format) {
+            var isValid = true;
+
+            try {
+                $.datepicker.parseDate(format, datestring, null);
+            }
+            catch (error) {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+        //apply a simple 7 or 10 digit phone mask to any input field
+        function ApplyPhoneMask(selector, characterCount) {
+            var element = $(selector);
+            element.inputmask('remove');
+            if (characterCount <= 7) {
+                element.inputmask({ mask: '999-9999[999]', placeholder: " ", autoUnmask: true, removeMaskOnSubmit: true });
+            }
+            else {
+                element.inputmask({ mask: '999-999-9999', placeholder: " ", autoUnmask: true, removeMaskOnSubmit: true });
+            }
+        }
+
+        window.addEventListener('load', function () {
+            var headerContainer = document.querySelector('.navbar-nerain');
+            var contentWrapper = document.querySelector('.content-wrapper');
+            var footerContainer = document.querySelector('.footer-container');
+
+            function adjustFooterPosition() {
+                var navbarHeight = headerContainer.clientHeight;
+                var contentHeight = contentWrapper.clientHeight;
+                var viewportHeight = window.innerHeight;
+                var footerHeight = footerContainer.clientHeight;
+
+                if (navbarHeight + contentHeight + footerHeight < viewportHeight) {
+                    footerContainer.classList.add('sticky-footer');
+                } else {
+                    footerContainer.classList.remove('sticky-footer');
+                }
+            }
+
+            // Initial adjustment
+            adjustFooterPosition();
+
+            // Re-adjust on window resize, click
+            window.addEventListener('resize', adjustFooterPosition);
+
+            // Create a ResizeObserver instance
+            var mainContent = document.getElementById("mainContent");
+            var resizeObserver = new ResizeObserver(function (entries) {
+                for (let entry of entries) {
+                    // Check if the height of mainContent has changed
+                    if (entry.target === mainContent && entry.contentRect.height !== entry.targetHeight) {
+                        adjustFooterPosition();
+                        entry.targetHeight = entry.contentRect.height; // Store the new height
+                    }
+                }
+            });
+
+            // Start observing the mainContent element
+            resizeObserver.observe(mainContent, { box: 'content-box' });
+            mainContent.targetHeight = mainContent.clientHeight; // Store the initial height
+
+        });
+        
+
+        $.ajax({
+            url: '/NeRain/Home/NavBar',
+            success: function (result) {
+                $(".loader").html(result);
+            }
+        });
+</script>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SBN1KWTJGN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SBN1KWTJGN');
+    </script>
+
+    
+    <style type="text/css">
+        .normal {
+            height: 75px; /* this causes drop down to lose color ??? */
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+            .normal .navbar-right {
+                padding-top: 12px;
+                -webkit-transition: 0.5s;
+                -moz-transition: 0.5s;
+                transition: 0.5s;
+            }
+
+        .navbar-brand {
+            padding: 0px !important;
+        }
+
+            .navbar-brand img {
+                padding: 5px;
+                max-height: 75px;
+                -webkit-transition: 0.5s;
+                -moz-transition: 0.5s;
+                transition: 0.5s;
+            }
+
+        .footer-images {
+            margin: auto;
+            display: block;
+            position: absolute;
+            bottom: 0;
+        }
+
+            .footer-images .copyright {
+                text-align: center;
+            }
+
+        .transparent {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .navbar-dark .navbar-nav > li > a {
+            color: white;
+        }
+
+        /* Apply styles to the content wrapper */
+        .content-wrapper {
+            padding-top: 50px; /* Adjust the padding value */
+            box-sizing: border-box;
+            position: relative;
+            /*overflow: hidden;*/ /* Hide content overflow */
+        }
+
+        /* Apply styles to the footer container */
+        .footer-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 100%;
+            position: relative; /* Change position to relative */
+            border-top: 1px solid white; /* Add a horizontal white line at the top */
+        }
+
+            /* Add spacing between footer links */
+            .footer-container img {
+                margin-right: 10px;
+            }
+
+            /* Adjust the footer text size and color */
+            .footer-container div {
+                color: white;
+                font-size: 14px;
+            }
+
+            /* Style the small version info */
+            .footer-container small {
+                font-size: 10px;
+            }
+
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body style="background-image:url('/NeRain/Images/bckg1920w50q.jpg'); background-size: cover; ">
+    <header class="navbar-nerain navbar navbar-expand navbar-dark bg-dark fixed-top normal" role="navigation">
+        <div class="container-fluid container">
+            <div class="" style="margin-left:0px; display: flex; flex-wrap: wrap;">
+                <button type="button" class="navbar-toggler collapse" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <a href="/NeRain/">
+                        <img style="height:62px;padding-top:2px;padding-bottom:2px;" alt="NeRain Logo" src="/NeRain/Images/NeRainLogoWhiteLetters150.png" />
+                    </a>
+                </div>
+            </div>
+            <div class="loader" data-action='/NeRain/Home/NavBar'>
+                <img src="/NeRain/Images/ajax-loader.gif" />
+            </div>
+        </div>
+    </header>
+
+    <br />
+    <br />
+    <main id="mainContent" class="container content-wrapper ">
+            <div>
+                
+    <div class="container-fluid container" style="padding-top:15px;">
+        <div> <a href="/NeRain/" style="height:25%;width:25%;display:block;"><img class="img-fluid" style="height:100%;width:100%;" src="/NeRain/Images/NeRain-Logo-jrw.png" /></a></div>
+    </div>
+
+            </div>
+
+        <div id="content" class="container-fluid container" style="margin-top:15px; padding-top:0px; ">
+            <div style="padding-bottom:5px; padding-top:5px;">
+                <ul class="nav nav-pills justify-content-end">
+
+                        <li class="nav-item" for="Login"><a class="nav-link" href="/NeRain/account/login" style="color:black;font-size:large;">Login</a></li>
+                        <li class="nav-item" for="Register"><a class="nav-link" href="/NeRain/account/register" style="color:black;font-size:large;">Register</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            
+
+
+<div>
+    <section class="col-sm-12">
+        <a id="main-content"></a>
+        <h3 class="page-header">Welcome to the Nebraska Rainfall Assessment and Information Network</h3>
+        <div class="region region-content">
+            <section id="block-views-home-page-panels-block" class="block block-views clearfix" style="display: block;">
+                <div class="view view-home-page-panels view-id-home_page_panels view-display-id-block view-dom-id-1612c85af75346389ccf106048e8f26d">
+                    <div class="view-content">
+                        <div id="views-bootstrap-thumbnail-1" class="views-bootstrap-thumbnail-plugin-style">
+                            <div class="row">
+                                <div class="col col-lg-3 col-sm-6">
+                                    <div class="img-thumbnail">
+
+                                        <div class="field-content">
+                                            <a href="/NeRain/Maps/maps">
+                                                <img typeof="foaf:Image" class="img-fluid" src="/NeRain/Images/MapsImageandIcon.jpg" width="800" height="600">
+                                            </a>
+                                        </div>
+                                        <div class="views-field views-field-field-button-link">
+                                            <div class="field-content">
+                                                <div class="caption">
+                                                    <br />
+                                                    <h3>Maps</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3 col-sm-6">
+                                    <div class="img-thumbnail">
+
+                                        <div class="field-content">
+                                            <a href="/NeRain/Report/DailyPrecipitationSummary/Statewide/0/2024">
+                                                <img typeof="foaf:Image" class="img-fluid" src="/NeRain/Images/ReportsImageWithWhiteIcon.jpg" width="800" height="600">
+                                            </a>
+                                        </div>
+                                        <div class="views-field views-field-field-button-link">
+                                            <div class="field-content">
+                                                <div class="caption">
+                                                    <br />
+                                                    <h3>Reports</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3 col-sm-6">
+                                    <div class="img-thumbnail">
+
+                                        <div class="field-content">
+                                            <a href="/NeRain/Account/Help">
+                                                <img typeof="foaf:Image" class="img-fluid" src="/NeRain/Images/InformationImageandIcon.jpg" width="800" height="600" alt="Information for Commissioners image">
+                                            </a>
+                                        </div>
+                                        <div class="views-field views-field-field-button-link">
+                                            <div class="field-content">
+                                                <div class="caption">
+                                                    <br />
+                                                    <h3>Information  &#38; help</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-3 col-sm-6">
+                                    <div class="img-thumbnail">
+                                        <div class="field-content">
+                                            <a href="/NeRain/Data/DataEntry">
+                                                <img typeof="foaf:Image" class="img-fluid" src="/NeRain/Images/DataEntryImageWithWhiteIcon.jpg" width="800" height="600">
+                                            </a>
+                                        </div>
+                                        <div class="views-field views-field-field-button-link">
+                                            <div class="field-content">
+                                                <div class="caption">
+                                                    <br />
+                                                    <h3>Data entry</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+        </div>
+
+    </main>
+    <br />
+    <footer class="footer-container bg-dark">
+        <div class="container">
+            <a href="http://www.nebraska.gov/">
+                <img align="left" style="width:386px;" alt="State of Nebraska Logo" src="/NeRain/Images/branding-header-transparent.png">
+            </a>
+            <br>
+            <br>
+
+            <a href="http://dnr.nebraska.gov/"><img src="/NeRain/Images/deptlogo.JPG" style="height:10%;width:28.5%;" /></a>
+            <a href="http://www.cocorahs.org/"><img src="/NeRain/Images/coco.png" style="height:10%;width:10%;" /></a>
+            <a href="http://www.environmentaltrust.org/"><img src="/NeRain/Images/envitr.png" style="height:10%;width:8%;" /></a>
+            <a href="http://www.nws.noaa.gov/com/weatherreadynation/"><img src="/NeRain/Images/wrn.png" style="height:10%;width:11%;" /></a>
+            <a href="https://www.nrdnet.org/"><img src="/NeRain/Images/logonew.JPG" style="height:10%;width:21%;" /></a>
+            <br>
+            <div style="color:white; ">
+                © 2024  Designed and developed by the Nebraska Department of Natural Resources
+                <small style="font-size:75%; color:white;">Version: 2.17 11/15/2023</small>
+
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+ contentType 9 text/html url 37 https://nednr.nebraska.gov:443/nerain responseCode 3 200 

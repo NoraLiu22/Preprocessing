@@ -1,0 +1,512 @@
+xksmbixeygkoomceicnojglgacamwiocvioieqxg length 5 25100 page 25100  <!--Layout of website top banner-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/lib/bootstrap2.3.2/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/site.min.css" rel="stylesheet" />
+    <script src="/lib/new-jQuery/dist/jquery.min.js"></script>
+    <script src="/Scripts/site.min.jason.js"></script>
+    <script src="/Scripts/dompurify.min.js"></script>
+
+    
+    <link href=/Content/Biblio/Biblio.css rel="stylesheet" type="text/css" />
+    <link rel="icon" href=/Content/Biblio/icons/bib-module-icon.png type="image/x-icon" />
+    <title>LDL: Bibliography</title>
+
+</head>
+
+<body>
+    <header>
+        <div class="top-banner" id="top-left"></div>
+        <div class="top-banner" id="top-right"></div>
+
+        <nav>
+            <ul>
+                <li><a class="header-nav-link" href="/Homepage/MainContent">Home</a></li>
+
+                <li><a class="header-nav-link" href="/Biblio/Main">Bibliography</a></li>
+
+                <li><a class="header-nav-link" href="/SpeciesCatalog/Main">Species</a></li>
+
+                <li>
+                    <a class="header-nav-link" href="/Faunas/Main">Faunas</a>
+
+                    <ul style="width:120px" id="second">
+                        <li style="border-bottom:1px solid white;margin-bottom:3px"><a class="header-nav-link" href="/Faunas/Main">About</a></li>
+                        
+                        <li><a class="header-nav-link" href="/Albania/Main">Albania</a></li>
+                        <li><a class="header-nav-link" href="/Ireland/Main">Ireland</a></li>
+                        <li><a class="header-nav-link" href="/Italy/Main">Italy</a></li>
+                        <li><a class="header-nav-link" href="/Slovenia/Main">Slovenia</a></li>
+                        <li><a class="header-nav-link" href="/SouthAfrica/Main">South Africa</a></li>
+                        <li><a class="header-nav-link" href="/Switzerland/Main">Switzerland</a></li>
+                    </ul>
+                </li>
+
+                <li><a class="header-nav-link" href="/NeuroDirectory/Main">Directory</a></li>
+
+                <li><a class="header-nav-link" href="/Metakey/Main">Metakey</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        
+
+
+
+
+
+<nav>
+    
+
+<div class="sub-nav" id="sub-left">
+    <a href=/HomePage/MainContent style="text-decoration: none; font-size: 12px"><img src= 'https://lacewing.tamu.edu/neuropterida/ldl_icons/LDL-Main.png'  class='standard-icon' title='Lacewing Digital Library'/> LDL</a> &gt;
+    <a href="Main" style="text-decoration: none; font-size: 12px"><img src= 'https://lacewing.tamu.edu/neuropterida/ldl_icons/BotN-Main.png' + class='standard-icon' title='Bibliography of the Neuropterida'/> Bibliography</a> &gt;
+    Advanced Search
+</div>
+
+<div class="sub-nav" id="sub-right">Bibliography of the Neuropterida (BotN &ndash; <a href='Main' target='_top'><img src="../Content/Biblio/icons/bib-module-icon.png" class="standard-icon gray-out" title='Bibliography of the Neuropterida' /></a>)</div>
+
+
+
+</nav>
+
+<div class="content">
+    <div class="text-body">
+        <h1>Advanced Search</h1>
+
+        <form method="get" action="AdvancedSearchResults" name="sengine" target="_top">
+            <table border="0" cellpadding="0" align="center" cellspacing="10">
+                <tbody>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><font color="#0000FF"><b>Search By&nbsp;</b></font></td>
+                        <td></td>
+                    </tr>
+                    <!-- ********************Author*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Author</b>:</td>
+                        <td>
+                            <select name="asauthorcriteria" style="width:120">
+                                    <option value="is">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains" selected="selected">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td><input style="height:29.5px" name="asauthor" type="text" onmouseout="this.value=removeLeadTrailSpaces(this.value);" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., Banks, Ban, ank, nks)</td>
+                    </tr>
+                    <!-- ********************Year*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Year</b>:</td>
+                        <td>
+                            <select name="asyearcriteria" style="width:120">
+                                    <option value="is" selected="selected">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input style="height:29.5px" name="asyear" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});">
+                        </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., 1948, 194, 94, 948)</td>
+                    </tr>
+                    <!-- ********************Title*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Title</b>:</td>
+                        <td>
+                            <select name="astitlecriteria" style="width:120">
+                                    <option value="is">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains" selected="selected">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td><input style="height:29.5px" name="astitle" type="text" onmouseout="this.value=removeLeadTrailSpaces(this.value);" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"> </td>
+                    </tr>
+                    <!-- ********************Journal*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row"><b>Journal</b>:</td>
+                        <td>
+                            <select name="asjournalcriteria" style="width:120">
+                                    <option value="is">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains" selected="selected">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td><input style="height:29.5px" name="asjournal" type="text" onmouseout="this.value=removeLeadTrailSpaces(this.value);" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});"></td>
+                    </tr>
+                    <!-- ********************(Ser)Vol(No):Pg-Pg*********************** -->
+                    <tr>
+                        <td align="right" class="DF1row">&nbsp;<b>(Ser)Vol(No):Pg-Pg</b>:</td>
+                        <td>
+                            <select name="asvolnumcriteria" style="width:120">
+                                    <option value="is">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains" selected="selected">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input style="height:29.5px" name="asvolnum" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});">
+                        </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., 104, 45-56, 10:34-14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><b>Reference#</b>:</td>
+                        <td>
+                            <select name="asreferencecriteria" style="width:120">
+                                    <option value="is" selected="selected">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input style="height:29.5px" name="asreference" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});">
+                        </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., 9532, 95, 53, 32)</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><font color="#0000FF"><b>Restrictions&nbsp;</b></font></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><b>Publication Type</b>:</td>
+                        <td colspan="2">
+
+                            <select name="aspublicationtype" style="width:100%">
+                                <option value="0" selected></option>
+
+                                <option value="1" > (not available) </option>
+
+                                <option value="2" > Abstract </option>
+
+                                <option value="3" > Auction catalogue </option>
+
+                                <option value="4" >
+                                    Chapter in book
+                                </option>
+
+                                <option value="5" > Dissertation/Thesis </option>
+
+                                <option value="6" > Manuscript </option>
+
+                                <option value="7" > Miscellaneous digital matter </option>
+
+                                <option value="8" > Miscellaneous printed matter </option>
+
+                                <option value="9" > Multivolume book </option>
+
+                                <option value="10" > Newsletter </option>
+
+                                <option value="11" > Newsletter article </option>
+
+                                <option value="12" > Newspaper </option>
+
+                                <option value="13" > Pamphlet </option>
+
+                                <option value="14" > Print-on-demand book </option>
+
+                                <option value="15" > Report </option>
+
+                                <option value="16" > See reference </option>
+
+                                <option value="17" > Simple book </option>
+
+                                <option value="18" > Simple serial article </option>
+
+                                <option value="19" > Unknown </option>
+
+                                <option value="20" > Website </option>
+
+                            </select>
+                        </td>
+
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., simple serial)</td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="DF1row"><b>Primary Language</b>:</td>
+                        <td colspan="2">
+                            <select name="asprimarylanguage" style="width:100%">
+                                <option value="0" selected></option>
+
+                                <option value="1" > (not available) </option>
+
+                                <option value="2" > Arabic </option>
+
+                                <option value="3" > Azerbaijani </option>
+
+                                <option value="4" > Belarusian </option>
+
+                                <option value="5" > Bulgarian </option>
+
+                                <option value="6" > Catalan </option>
+
+                                <option value="7" > Catalan and Latin </option>
+
+                                <option value="8" > Chinese </option>
+
+                                <option value="9" > Chinese (traditional) </option>
+
+                                <option value="10" > Croatian </option>
+
+                                <option value="11" > Czech </option>
+
+                                <option value="12" > Danish </option>
+
+                                <option value="13" > Dutch </option>
+
+                                <option value="14" > Dutch and French </option>
+
+                                <option value="15" > Dutch and Latin </option>
+
+                                <option value="16" > English </option>
+
+                                <option value="17" > English and Chinese </option>
+
+                                <option value="18" > English and French </option>
+
+                                <option value="19" > English and German </option>
+
+                                <option value="20" > English and Japanese </option>
+
+                                <option value="21" > English and Latin </option>
+
+                                <option value="22" > English and Norwegian </option>
+
+                                <option value="23" > English and Polish </option>
+
+                                <option value="24" > English and Portuguese </option>
+
+                                <option value="25" > English and Russian </option>
+
+                                <option value="26" > English and Spanish </option>
+
+                                <option value="27" > English and Turkish </option>
+
+                                <option value="28" > English, German and Italian </option>
+
+                                <option value="29" > Estonian </option>
+
+                                <option value="30" > Finnish </option>
+
+                                <option value="31" > French </option>
+
+                                <option value="32" > French and Latin </option>
+
+                                <option value="33" > Frisian </option>
+
+                                <option value="34" > Georgian </option>
+
+                                <option value="35" > German </option>
+
+                                <option value="36" > German and Japanese </option>
+
+                                <option value="37" > German and Latin </option>
+
+                                <option value="38" > Greek and English </option>
+
+                                <option value="39" > Hebrew </option>
+
+                                <option value="40" > Hungarian [=Magyar] </option>
+
+                                <option value="41" > Hungarian [=Magyar] and German </option>
+
+                                <option value="42" > Hungarian [=Magyar] and Latin </option>
+
+                                <option value="43" > Italian </option>
+
+                                <option value="44" > Italian and Latin </option>
+
+                                <option value="45" > Japanese </option>
+
+                                <option value="46" > Japanese and English </option>
+
+                                <option value="47" > Korean </option>
+
+                                <option value="48" > Latin </option>
+
+                                <option value="49" > Lithuanian </option>
+
+                                <option value="50" > Norwegian </option>
+
+                                <option value="51" > Persian [=Farsi] </option>
+
+                                <option value="52" > Polish </option>
+
+                                <option value="53" > Polish and Latin </option>
+
+                                <option value="54" > Portuguese </option>
+
+                                <option value="55" > Romanian </option>
+
+                                <option value="56" > Russian </option>
+
+                                <option value="57" > Serbian </option>
+
+                                <option value="58" > Serbo-Croatian </option>
+
+                                <option value="59" > Slovak </option>
+
+                                <option value="60" > Slovenian </option>
+
+                                <option value="61" > Spanish </option>
+
+                                <option value="62" > Spanish and English </option>
+
+                                <option value="63" > Spanish and Latin </option>
+
+                                <option value="64" > Swedish </option>
+
+                                <option value="65" > Swedish and Latin </option>
+
+                                <option value="66" > Turkish </option>
+
+                                <option value="67" > Ukranian </option>
+
+                                <option value="68" > Vietnamese </option>
+
+                            </select>
+                        </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., English, German)</td>
+                    </tr>
+                    <tr style="display:none">
+                        <td class="DF1row align-right"><b>Figure Taxon</b>:</td>
+                        <td>
+                            <select name="FigTaxcriteria" style="width:120">
+                                    <option value="is" selected="selected">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+
+                        </td>
+                        <td><input style="height:29.5px" name="FigTax" type="text" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});">          </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., cama, Agulla)</td>
+                    </tr>
+                    <tr style="display:none">
+                        <td class="DF1row align-right"><b>Figure Subject</b>:</td>
+                        <td>
+                            <select name="FigSubjcriteria" style="width:120">
+                                    <option value="is" selected="selected">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td><input style="height:29.5px" name="FigSubj" type="text" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});">          </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., wing, gonarcus)</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td class="DF1row align-right"><b>Taxon Citation</b>:</td>
+                        <td>
+                            <select name="TaxCitcriteria" style="width:120">
+                                    <option value="is" selected="selected">is</option>
+                                    <option value="begins with">begins with</option>
+                                    <option value="contains">contains</option>
+                                    <option value="ends with">ends with</option>
+                            </select>
+                        </td>
+                        <td><input style="height:29.5px" name="TaxCit" type="text" onblur="this.value=removeLeadTrailSpaces(this.value);" 
+                                   onchange="this.value = DOMPurify.sanitize(this.value, {PARSER_MEDIA_TYPE: 'application/xhtml+xml'});">          </td>
+                        <td class="DF1row align-left">&nbsp;&nbsp;(e.g., austral, Mallada)</td>
+                    </tr>
+                    <!-- ********************************************************** -->
+                    <tr>
+                        <td class="DF1row align-right"><b>Digital Files</b>:</td>
+                        <td colspan="3" class="align-left"> <input style="margin-bottom:7px; margin-right: 5px;" type="checkbox" name="dfiles" value="true">&nbsp;Check here to return only records with linked digital files.</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button style="width:120px;margin-right:10px;margin-top:10px" type="submit" class="btn btn-info">Search</button>
+                        </td>
+                        <td>
+                            <a style="color:white;width:100px;margin-top:10px"
+                                href="AdvancedSearch" class="btn btn-info">Reset</a>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </div>
+</div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66638549-6"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66638549-6');
+</script>
+
+<script>
+    window.onload = customFocusElement('asauthor');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66638549-10"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-66638549-10');
+</script>
+
+
+
+    </main>
+
+    <footer>
+        
+    <nav>
+        <span class="module">Bibliography: </span>
+        <a href="Main" target="_top">Main</a>
+        | <a href=/Biblio/Introduction target="_top">Introduction</a>
+        | <a href=/Biblio/SimpleSearch target="_top">Simple Search</a>
+        | <a href=/Biblio/AdvancedSearch target="_top">Advanced Search</a>
+        | <a href=/Biblio/Acknowledgments target="_top">Acknowledgments</a>
+        | <a href=/Biblio/References target="_top">References</a>
+        | <a href=/Biblio/Citation target="_top">Citation</a>
+        | <a href=/Biblio/Versions target="_top">Versions</a>
+        <!-- | <a href=/Biblio/Help?id=279 target="_top">Help</a> -->
+        |                 <a href=/Biblio/Login target="_top">Log In</a>
+
+    </nav>
+
+    </footer>
+
+    <script src="/lib/bootstrap2.3.2/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
+ contentType 9 text/html url 51 https://lacewing.tamu.edu:443/Biblio/AdvancedSearch responseCode 3 200 

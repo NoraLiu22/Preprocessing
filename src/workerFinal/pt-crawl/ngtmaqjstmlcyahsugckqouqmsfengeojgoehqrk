@@ -1,0 +1,355 @@
+ngtmaqjstmlcyahsugckqouqmsfengeojgoehqrk length 5 18215 page 18215 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<title>Handle.Net Registry</title>
+<link href="style/hnr-style.css" rel="stylesheet" type="text/css" />
+<meta name="keywords" content="HANDLE.NET Registry, CNRI, Corporation for National Research Initiatives" />
+<meta name="description" content="Handle.Net is a DONA MPA." />
+
+<style type="text/css">
+
+.topLeft	{	border-top: 1px solid #000000;
+				border-left: 1px solid #000000;
+				padding: 10px;
+				 vertical-align: text-top;			
+			}
+			
+.topLeftThick	{	border-top: 2px solid #000000;
+				border-left: 1px solid #000000;
+				 vertical-align: text-top;
+			}
+	        
+.topLeftRight	{border-top: 1px solid #000000;
+	         		  border-left: 1px solid #000000;
+	         		  border-right: 1px solid #000000;
+	         		  padding: 10px;
+	         		  vertical-align: text-top;
+			}
+
+.topLeftRightThick	{border-top:  2px solid #000000;
+	         		  border-left: 1px solid #000000;
+	         		  border-right: 1px solid #000000;
+	         		  vertical-align: text-top;
+			}
+
+.topLeftBottom	{border-top: 1px solid #000000;
+	         			  border-left: 1px solid #000000;
+	         			  border-bottom: 1px solid #000000;
+	         			  padding: 10px;
+	         			 vertical-align: text-top;
+	        			}        
+	     
+.all	{border-top: 1px solid #000000;
+	      border-left: 1px solid #000000;
+	      border-bottom: 1px solid #000000;
+	      border-right: 1px solid #000000;
+	      padding: 10px;
+	      vertical-align: text-top;
+	     }	
+
+table.plain {border-collapse: separate;
+					border-spacing: 0px;
+					margin-left: auto;
+					margin-right: auto;					
+					}
+td.plain {padding: 6px;
+			vertical-align: text-top;
+					}
+
+table.author {border-collapse: separate;
+					border-spacing: 6px;
+					}
+td.authors {padding: 6px;
+					}
+
+li:not(:last-child) {
+	margin-bottom: .5em;
+	}
+				
+div.center {margin-left: auto; margin-right: auto;
+	}
+
+.specialTd{
+	border-left: 1px dashed black;
+}
+</style>
+
+</head>
+
+<body>
+<div id="header">
+
+<div style="height:30px;background:#af2d29"><img src="images3/cnri-corp3.jpg" alt="Corporation for National Reserarch Initiatives" width="1000" height="30" align="middle" /></div>
+
+<div style="height:1px;background:#ffffff"></div>
+
+<div style="height:120px;background:#af2d29"><img src="images3/Handle.Net3.jpg" alt="Handle.Net Registry" width="1000" height="120" align="middle" /></div>
+
+<div style="height:1px;background:#fffff"></div>	
+</div>
+
+
+<!-- TABLE FOR NAVIGATION BAR -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>    
+<td height="36" width="30" bgcolor="#688bb5">&nbsp;</td> 
+<td height="36" bgcolor="#688bb5">    
+<ul id="sddm">
+	<li><a href="index.html">HOME</a></li> 
+    <li><a href="download_hnr.html">SOFTWARE</a></li>
+  	<li><a href="prefix.html">PREFIXES</a></li>
+  	<li><a href="payment.html">PAYMENT</a></li>
+    <li><a href="hnr_documentation.html">DOCUMENTATION</a></li>       
+    <li><a href="hnr_support.html">SUPPORT</a></li>
+</ul>
+<div style="clear:both"></div>
+</td>    
+</tr>
+</table>
+<!-- END TABLE FOR NAVIGATION BAR -->
+<div style="height:1px;background:#891c19"></div>
+
+<!-- END HEADER ID SECTION -->
+<!-- BEGIN CONTENT -->	
+
+<p class="HeaderDocumentation">Handle.Net<span style="vertical-align: super; font-size: 70%;">&#174;</span> Software v9.1.0 Performance Testing</p>
+
+<p>CNRI has conducted tests to benchmark the performance of the Handle.Net server software version 9.1.0 configured to use Berkeley DB JE, which is the default storage software. The testing methodology, results, and testing software details are discussed below.</p>
+
+<div class="aligncenter" style="height:0;border-top:1px dotted #000000;font-size:0;">-</div>
+<p style="font-size: 16px; color: #000000">Methodology</p>
+
+<p>The objective of CNRI's testing was to measure the throughput of the Handle.Net server software. Throughput, in this context, is the number of successful operations performed by the server each second on average. In particular, tests were conducted to discover the top limits of throughput, while staying within an acceptable latency<span style="vertical-align: super; font-size: 70%;"><a href="#f1">1</a></span> range. Latency, in this context, is the time lapse between the moment the request was sent by the client and the moment the response was received. Although tests were not conducted exhaustively to conclude our observations as true peaks, we refer to our observations as peak or peaks in this narrative given the potential proximity of our observations to the true peaks.</p>
+
+<p>In order to measure the throughput of the Handle.Net server software, CNRI developed a custom handle client application that when deployed across multiple machines creates sufficient load to determine the server performance peaks. The custom client application makes use of the Handle.Net Java client library.</p>
+
+<p>Bare metal machines can be used for deploying the server and the custom client application, although for this testing virtual machines were used purely as a matter of convenience. The actual specifications of those virtual machines are discussed in the next section. The Handle.Net server software was deployed on a separate virtual machine. All the virtual machines were provisioned with Java 8 software.</p>
+
+<p>This testing focused on handle resolution and handle administration performance as realized from various interfaces, such as UDP and TCP, provided by the Handle.Net server software. Only "create" operations were used to extract administration performance metrics, because an update operation is similar in nature to a create operation and handle delete operations are rarely used by the user community.</p>
+
+<p>Prior to running tests, the handle server underwent a brief warmup period to fully load the Java code into memory: 250 create requests and 1000 resolution requests were sent for such warmup.</p>
+
+<p>Tests were conducted with all client machines sending requests simultaneously to the Handle.Net server. Each client machine then recorded the response time as well as the response code. The response times from all clients were then aggregated to determine average latency at peak observed throughput.</p>
+
+<p>Resolution tests were performed by repeatedly resolving the same handle and recording the response times. The client application makes authoritative requests thereby ignoring the client-side caching. There is no caching option on the Handle.Net server software, although low-level (storage and disk) caching would come into the equation when the same handle record is requested repeatedly. However, this means only the latencies introduced by the Handle.Net server software are considered as opposed to also considering the performance of the underlying storage system. Tests were run against the endpoints running on TCP, UDP, and HTTP. The HTTP endpoint offers a JSON API interface as well as a native protocol tunnel; and the tests measured both varieties.</p>
+
+<p>Handle "create" tests were performed by each client machine by first establishing a secure session with the server, and then using that session to create handle records. This avoided the step to re-authenticate the client with each request. The values of each handle record used to create the record were the same, but the handles varied. Tests were run using the TCP and HTTP endpoints (again, both API and tunnel varieties were measured). UDP endpoint is not normally used for administration because special error handling is required on the client-side to distinguish between true server-side processing failures and delivery failures: non-idempotent requests, such as creates, cannot simply be re-requested without side effects. Creation tests, as such, were not performed against the UDP endpoint.</p>
+
+<p>After running a few experiments to identity settings that provide peak observed throughput and acceptable latencies, we settled on the following configuration for each test scenario:</p>
+
+<table class="plain">
+<tr>
+<td class="topLeft" style="background-color: #efefef"><b>Request Type</b></td>
+<td class="topLeft" style="background-color: #efefef"><b>Interface</b></td>
+<td class="topLeft" style="background-color: #efefef"><b>Threads per Client Machine</b></td>
+<td class="topLeftRight" style="white-space:nowrap; background-color: #efefef"><b>Number of Client Machines</b></td>
+</tr>
+
+<tr>
+<td class="topLeft" rowspan="4">Resolution</td>
+<td class="topLeft">TCP</td>
+<td class="topLeft" style="text-align: right">10</td>
+<td class="topLeftRight" style="text-align: right">200</td>
+</tr>
+
+<tr>
+<td class="topLeft">UDP</td>
+<td class="topLeft" style="text-align: right">30</td>
+<td class="topLeftRight" style="text-align: right">200</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP (native protocol)</td>
+<td class="topLeft" style="text-align: right">10</td>
+<td class="topLeftRight" style="text-align: right">200</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP JSON API</td>
+<td class="topLeft" style="text-align: right">10</td>
+<td class="topLeftRight" style="text-align: right">200</td>
+</tr>
+
+<tr>
+<td class="topLeftBottom" rowspan="3">Creation</td>
+<td class="topLeft">TCP</td>
+<td class="topLeft" style="text-align: right">20</td>
+<td class="topLeftRight" style="text-align: right">50</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP (native protocol)</td>
+<td class="topLeft" style="text-align: right">20</td>
+<td class="topLeftRight" style="text-align: right">50</td>
+</tr>
+
+<tr>
+<td class="topLeftBottom">HTTP JSON API</td>
+<td class="topLeftBottom" style="text-align: right">20</td>
+<td class="all" style="text-align: right">15</td>
+</tr>
+</table>
+
+<p>For each test, each thread sent 2000 requests, with a 10 milli-second (ms) delay between each request. Iterating 2000 times ensured the tests ran a reasonable amount of time to gather reliable averages. The delay helped to address the issue of TCP port exhaustion issues. Clients use one network port per request to connect to a server, and Operation System (OS) supplies a limited number of ports; a 10 ms delay (in combination with using a lower number of threads on TCP-based tests) was found to be reasonable to ensure that the OS reclaims the ports.</p>
+
+<p>Overall, there are many variables to consider here, and all combinations of those variables were not tested. It is possible some combination of the variables might result in a better performance compared to what was observed with the combination that was finally used.</p>
+
+<div class="aligncenter" style="height:0;border-top:1px dotted #000000;font-size:0;">-</div>
+<p style="font-size: 16px; color: #000000">System Specification</p>
+
+<p>A cloud provider, specifically, Amazon Web Services (AWS), was used for deploying the server and the client application, purely for convenience. It is likely that an on-premise, enclave, deployments would yield higher performance as network and computational resources are not shared with other customers in such cases.</p>
+
+<p>The Handle.Net server software was run on an AWS virtual machine of type m5.large and then separately on type m5.2xlarge. Virtual machine of type m5.large has 2 vCPUs and 8GB of memory, whereas m5.2xlarge has 8 vCPUs and 32GB of memory. In both cases, the Handle.Net server was configured to use 4GB of memory. The default of 200MB of memory produced inconsistent results, potentially due to Java garbage collection interruptions. Other memory values were not explored. Ubuntu 18.04 OS was installed on these virtual machines.</p>
+
+<div class="aligncenter" style="height:0;border-top:1px dotted #000000;font-size:0;">-</div>
+<p style="font-size: 16px; color: #000000">Test Results</p>
+
+<p>Results from resolution and creation tests are shown below. The results show the average latency at peak observed throughput.</p>
+
+<p><i>Resolution Test Results</i></p>
+
+<table class="plain">
+<tr>
+<td class="topLeft" style="background-color: #efefef"><b>Server</b></td>
+<td class="topLeft" style="background-color: #efefef"><b>Interface</b></td>
+<td class="topLeft" style="background-color: #efefef"><b>Peak Observed Throughput (resolutions/second)</b></td>
+<td class="topLeftRight" style="white-space:nowrap; background-color: #efefef"><b>Average Latency (ms)</b></td>
+</tr>
+
+<tr>
+<td class="topLeft" rowspan="4">m5.large</td>
+<td class="topLeft">TCP</td>
+<td class="topLeft" style="text-align: right">22,806</td>
+<td class="topLeftRight" style="text-align: right">62</td>
+</tr>
+
+<tr>
+<td class="topLeft">UDP</td>
+<td class="topLeft" style="text-align: right">58,545</td>
+<td class="topLeftRight" style="text-align: right">57</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP (native protocol)</td>
+<td class="topLeft" style="text-align: right">16,194</td>
+<td class="topLeftRight" style="text-align: right">104</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP JSON API</td>
+<td class="topLeft" style="text-align: right">18,045</td>
+<td class="topLeftRight" style="text-align: right">102</td>
+</tr>
+
+<tr>
+<td class="topLeftBottom" rowspan="4">m5.2xlarge</td>
+<td class="topLeft">TCP</td>
+<td class="topLeft" style="text-align: right">35,746</td>
+<td class="topLeftRight" style="text-align: right">31</td>
+</tr>
+
+<tr>
+<td class="topLeft"><b>UDP</b></td>
+<td class="topLeft" style="text-align: right"><b>89,602</b></td>
+<td class="topLeftRight" style="text-align: right"><b>39</b></td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP (native protocol)</td>
+<td class="topLeft" style="text-align: right">31,544</td>
+<td class="topLeftRight" style="text-align: right">41</td>
+</tr>
+
+<tr>
+<td class="topLeftBottom">HTTP JSON API</td>
+<td class="topLeftBottom" style="text-align: right">27,606</td>
+<td class="all" style="text-align: right">55</td>
+</tr>
+</table>
+
+<p>For the configurations that were put in place, the maximum throughput across all interfaces was 89,602 resolutions/second and that was with the UDP interface. The average latency was 39 ms when that maximum throughput was observed. Throughputs that were observed when other interfaces were chosen are lower compared to when UDP interface is chosen.</p>
+
+<p><i>Creation Test Results</i></p>
+
+<table class="plain">
+<tr>
+<td class="topLeft" style="background-color: #efefef"><b>Server</b></td>
+<td class="topLeft" style="background-color: #efefef"><b>Interface</b></td>
+<td class="topLeft" style="background-color: #efefef"><b>Peak Observed Throughput (creates/second)</b></td>
+<td class="topLeftRight" style="white-space:nowrap; background-color: #efefef"><b>Average Latency (ms)</b></td>
+</tr>
+
+<tr>
+<td class="topLeft" rowspan="3">m5.large</td>
+<td class="topLeft">TCP</td>
+<td class="topLeft" style="text-align: right">7,820</td>
+<td class="topLeftRight" style="text-align: right">109</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP (native protocol)</td>
+<td class="topLeft" style="text-align: right">6,324</td>
+<td class="topLeftRight" style="text-align: right">136</td>
+</tr>
+
+<tr>
+<td class="topLeft">HTTP JSON API</td>
+<td class="topLeft" style="text-align: right">4,847</td>
+<td class="topLeftRight" style="text-align: right">45</td>
+</tr>
+
+<tr>
+<td class="topLeftBottom" rowspan="3">m5.2xlarge</td>
+<td class="topLeft"><b>TCP</b></td>
+<td class="topLeft" style="text-align: right"><b>11,225</b></td>
+<td class="topLeftRight" style="text-align: right"><b>72</b></td>
+</tr>
+
+<tr>
+<td class="topLeft"><b>HTTP (native protocol)</b></td>
+<td class="topLeft" style="text-align: right"><b>11,532</b></td>
+<td class="topLeftRight" style="text-align: right"><b>70</b></td>
+</tr>
+
+<tr>
+<td class="topLeftBottom">HTTP JSON API</td>
+<td class="topLeftBottom" style="text-align: right">10,744</td>
+<td class="all" style="text-align: right">77</td>
+</tr>
+</table>
+
+<p>Throughput of TCP and HTTP is roughly equivalent on the larger machine. On a smaller machine TCP offers higher throughput. The maximum throughput of 11,532 creates/second was observed with the HTTP interface on the larger machine. The average latency was 70 ms when that maximum throughput was observed.</p>
+
+<div class="aligncenter" style="height:0;border-top:1px dotted #000000;font-size:0;">-</div>
+<p style="font-size: 16px; color: #000000">Testing Software</p>
+
+<p>CNRI's performance testing software is available for download <a href="performance_download.html">here</a>. Refer to the README for using that software for running performance tests in your environment.</p>
+
+<p>It is worth noting the following points when performance tests against the Handle.Net server software are made:</p>
+
+<ul>
+	<li>Ensure that sessions are used for administration functionality to avoid having to perform authentication for every request. </li>
+
+	<li>In a multi-threaded client application built using the Handle.Net Java client library, ensure that all the threads use the same HandleResolver Java object to leverage the session established by one of the threads in that pool. The performance testing software ensures this is the case.</li>
+
+	<li>Ensure sufficient delays are introduced between request iterations to mitigate TCP port exhaustion. Additional client machines could also be added if sufficient load is not generated with a single client machine. The performance testing software allows variables to adjust delays and to deploy it over multiple machines.</li>
+</ul>
+
+<div class="aligncenter" style="height:0;border-top:1px dotted #000000;font-size:0;">-</div>
+
+<p style="font-size: 90%"><span style="vertical-align: super; font-size: 70%;"><a id="f1">1</a></span><i>Note that latency as observed at peak observed throughput is still reported in our results. Because tests were not conducted to optimize for server-side latency, the throughput numbers were collected from observations made by remote network clients. If measurement of optimized server-side latency is the goal, network introduced delays have to be considered.</i></p>
+
+<div class="white">&nbsp;</div>
+
+<div style="height:1px;background:#b7b7b7"></div>
+<div align="center"><p class="bottom">March 1, 2019</p></div>
+
+
+<!-- END CONTENT TABLE -->
+<div style="height:1px;background:#ffffff"></div>
+
+
+</body>
+</html>
+ contentType 9 text/html url 41 http://www.handle.net:80/performance.html responseCode 3 200 

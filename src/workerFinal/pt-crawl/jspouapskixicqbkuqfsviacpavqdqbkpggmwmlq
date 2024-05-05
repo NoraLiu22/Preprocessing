@@ -1,0 +1,1362 @@
+jspouapskixicqbkuqfsviacpavqdqbkpggmwmlq length 5 66916 page 66916 
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <!-- charset must appear in the first 1024 bytes of the document -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+
+
+
+        <script type="text/javascript" src="https://cookie-cdn.cookiepro.com/consent/aa16308e-8418-4f98-934b-67ce9fe9c63b/OtAutoBlock.js" class="cookiepro-otautoblock"></script>
+        <script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="aa16308e-8418-4f98-934b-67ce9fe9c63b" class="cookiepro-otsdkstub"></script>
+    <script type="text/javascript">
+        function OptanonWrapper() {
+            // Get initial OnetrustActiveGroups ids
+            if (typeof OptanonWrapperCount == "undefined") {
+                otGetInitialGrps();
+            }
+
+            //Delete cookies
+            otDeleteCookie(otIniGrps);
+
+            // Assign OnetrustActiveGroups to custom variable
+            function otGetInitialGrps() {
+                OptanonWrapperCount = '';
+                otIniGrps = OnetrustActiveGroups;
+            }
+
+            function otDeleteCookie(iniOptGrpId) {
+                var otDomainGrps = JSON.parse(JSON.stringify(Optanon.GetDomainData().Groups));
+                var otDeletedGrpIds = otGetInactiveId(iniOptGrpId, OnetrustActiveGroups);
+                if (otDeletedGrpIds.length != 0 && otDomainGrps.length != 0) {
+                    for (var i = 0; i < otDomainGrps.length; i++) {
+                        //Check if CustomGroupId matches
+                        if (otDomainGrps[i]['CustomGroupId'] != '' && otDeletedGrpIds.includes(otDomainGrps[i]['CustomGroupId'])) {
+                            for (var j = 0; j < otDomainGrps[i]['Cookies'].length; j++) {
+                                // console.log("otDeleteCookie",otDomainGrps[i]['Cookies'][j]['Name'])
+                                //Delete cookie
+                                eraseCookie(otDomainGrps[i]['Cookies'][j]['Name']);
+                            }
+                        }
+
+                        //Check if Hostid matches
+                        if (otDomainGrps[i]['Hosts'].length != 0) {
+                            for (var j = 0; j < otDomainGrps[i]['Hosts'].length; j++) {
+                                //Check if HostId presents in the deleted list and cookie array is not blank
+                                if (otDeletedGrpIds.includes(otDomainGrps[i]['Hosts'][j]['HostId']) && otDomainGrps[i]['Hosts'][j]['Cookies'].length != 0) {
+                                    for (var k = 0; k < otDomainGrps[i]['Hosts'][j]['Cookies'].length; k++) {
+                                        //Delete cookie
+                                        eraseCookie(otDomainGrps[i]['Hosts'][j]['Cookies'][k]['Name']);
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+                otGetInitialGrps(); //Reassign new group ids
+            }
+
+            //Get inactive ids
+            function otGetInactiveId(customIniId, otActiveGrp) {
+                //Initial OnetrustActiveGroups
+                // console.log("otGetInactiveId",customIniId)
+                customIniId = customIniId.split(",");
+                customIniId = customIniId.filter(Boolean);
+
+                //After action OnetrustActiveGroups
+                otActiveGrp = otActiveGrp.split(",");
+                otActiveGrp = otActiveGrp.filter(Boolean);
+
+                var result = [];
+                for (var i = 0; i < customIniId.length; i++) {
+                    if (otActiveGrp.indexOf(customIniId[i]) <= -1) {
+                        result.push(customIniId[i]);
+                    }
+                }
+                return result;
+            }
+
+            //Delete cookie
+            function eraseCookie(name) {
+                //Delete root path cookies
+                domainName = window.location.hostname;
+                document.cookie = name + '=; Max-Age=-99999999; Path=/;Domain=' + domainName;
+                document.cookie = name + '=; Max-Age=-99999999; Path=/;';
+
+                //Delete LSO incase LSO being used, cna be commented out.
+                localStorage.removeItem(name);
+
+                //Check for the current path of the page
+                pathArray = window.location.pathname.split('/');
+                //Loop through path hierarchy and delete potential cookies at each path.
+                for (var i = 0; i < pathArray.length; i++) {
+                    if (pathArray[i]) {
+                        //Build the path string from the Path Array e.g /site/login
+                        var currentPath = pathArray.slice(0, i + 1).join('/');
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + ';Domain=' + domainName;
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + ';';
+                        //Maybe path has a trailing slash!
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + '/;Domain=' + domainName;
+                        document.cookie = name + '=; Max-Age=-99999999; Path=' + currentPath + '/;';
+
+
+                    }
+                }
+
+            }
+        }
+    </script>
+                
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="//cob.silverchair-cdn.com/Themes/Silver/app/js/jquery.3.4.1.min.js" type="text/javascript">\x3C/script>')</script>
+<script src="//cob.silverchair-cdn.com/Themes/Silver/app/vendor/v-638473440325722869/jquery-migrate-3.1.0.min.js" type="text/javascript"></script>
+
+    <script type='text/plain' src='https://platform-api.sharethis.com/js/sharethis.js#property=643701de45aa460012e1032e&amp;product=sop' async='async' class='optanon-category-C0004'></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10" />
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <!-- Turn off telephone number detection. -->
+    <meta name="format-detection" content="telephone=no" />
+
+<!-- Bookmark Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/apple-touch-icon-57837085.png">
+  <link rel="icon" type="image/png" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/favicon-32x32-1480065759.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/favicon-16x16-40868545.png" sizes="16x16">
+  <link rel="mask-icon" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/safari-pinned-tab-442975976.svg" color="#5bbad5">
+  <link rel="icon" href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/favicon-357679932.ico">
+  <meta name="theme-color" content="#002f65">
+
+
+    
+
+
+  <link rel="stylesheet" type="text/css" href="//cob.silverchair-cdn.com/Themes/Client/app/css/v-638488182842692149/site.min.css" />
+  <link rel="stylesheet" type="text/css" href="//cob.silverchair-cdn.com/Themes/Silver/app/icons/v-638473440312722733/style.css" />
+  <link rel="stylesheet" type="text/css" href="//cob.silverchair-cdn.com/Themes/Client/app/css/v-638473439426493145/bg_img.css" />
+
+<link rel="stylesheet" href="https://use.typekit.net/jkq7xuh.css">
+
+
+            <link href="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/CSS/bio/v-637529929199485750/site.css" rel="stylesheet" type="text/css" />
+
+            <script>
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.setAttribute('type', 'text/plain');
+                        j.setAttribute('class', 'optanon-category-C0002');
+                        j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-5KXMNBB');
+            </script>
+            <script>
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.setAttribute('type', 'text/plain');
+                        j.setAttribute('class', 'optanon-category-C0002');
+                        j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-T6TZKLZ');
+            </script>
+
+    
+
+        <script type="text/javascript">
+            var App = App || {};
+            App.LoginUserInfo = {
+                isInstLoggedIn: 0,
+                isIndividualLoggedIn: 0
+            };
+
+            App.CurrentSubdomain = 'bio';
+            App.SiteURL = 'journals.biologists.com/bio';
+        </script>
+    
+    
+    <title>First Person | Biology Open | The Company of Biologists | Biology Open | The Company of Biologists</title>
+        <meta name="description" content="First Person | Biology Open | The Company of Biologists | Biology Open | The Company of Biologists
+              
+First Person
+As a community journal, BiO is keen to support the next generation of biomedical scientists. Here, we present a series of interviews with the first authors of a selection of papers published in BiO, helping early-career researchers promote themselves alongside their papers. The authors talk about their work...">
+
+
+
+
+    
+
+
+
+<script type="text/plain" async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js" class="optanon-category-C0004"></script>
+
+    <script>
+        var SCM = SCM || {};
+        SCM.pubGradeAdsEnabled = false;
+    </script>
+
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+
+    googletag.cmd.push(function () {
+    googletag.pubads().disableInitialLoad();
+
+    
+    });
+</script>
+    
+
+
+
+    <script src="https://js.stripe.com/v3/"></script>
+    
+
+
+
+
+</head>
+
+<body data-sitename="biologyopen" class="off-canvas pg_SelfServePage pg_selfservepage   " theme-bio data-sitestyletemplate="Journal" >
+            <noscript>
+                <iframe  src="https://www.googletagmanager.com/ns.html?id=GTM-5KXMNBB"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <noscript>
+                <iframe  src="https://www.googletagmanager.com/ns.html?id=GTM-T6TZKLZ"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <a href="#skipNav" class="skipnav">Skip to Main Content</a>
+<input id="hdnSiteID" name="hdnSiteID" type="hidden" value="1000001" /><input id="hdnAdDelaySeconds" name="hdnAdDelaySeconds" type="hidden" value="3000" /><input id="hdnAdConfigurationTop" name="hdnAdConfigurationTop" type="hidden" value="basic" /><input id="hdnAdConfigurationRightRail" name="hdnAdConfigurationRightRail" type="hidden" value="basic" />
+    
+
+
+
+
+    <section class="master-header row vt-site-header">
+
+    <div class="ad-banner js-ad-banner">
+
+    <div class="widget-AdBlock widget-instance-HeaderAd">
+            
+
+    <input type="hidden"
+           class="hfAdBlockInfo"
+           data-divid="div-gpt-ad-1593437745328-0"
+           data-slotname="/155913954/BIO"
+           data-targetname=""
+           data-sizes="[[728, 90]]"
+           data-enabled-on-mobile="True"
+           data-adprovider-typeid="1"
+           data-accountid=""
+           data-outofpagead="False"
+           data-sticky-time="5"/>
+    <div class="adblock-wrap js-adblock-wrap " style="width:728px;">
+                <p class="adblock-advertisement-text js-adblock-advertisement-text hide">Advertisement</p>
+
+            <div id="div-gpt-ad-1593437745328-0" adslot="/155913954/BIO" class="adblock-slot-placeholder js-adblock" style="width:728px; height:90px;"></div>
+
+    </div>
+ 
+    </div>
+
+    </div>
+
+    <div class="widget-SitePageHeader widget-instance-SitePageHeader">
+            <div class="site-theme-header">
+        <div class="site-theme-header_contents global-nav-base">
+
+
+
+<div class="global-nav">
+            <a class="js-dropdown-trigger global-nav-trigger" href="javascript:;">
+            <picture>
+                <source media="(min-width: 601px)" srcset="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg">
+                <img class="logo-BiologyOpen site-theme-header-image" src="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg" alt="The Company of Biologists logo" />
+            </picture>
+                <i class="icon-general_arrow-down arrow-icon"></i>
+        </a>
+        <nav class="navbar-menu global-nav-dropdown js-dropdown">
+            <div class="site-theme-header-logo">
+                <a href="/" class="site-theme-header-image-wrap">
+                        <picture>
+                            <source media="(min-width: 601px)" srcset="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg">
+                            <img class="logo-BiologyOpen site-theme-header-image" src="//cob.silverchair-cdn.com/UI/app/svg/umbrella/logo.svg" alt="The Company of Biologists logo" />
+                        </picture>
+                </a>
+                <a href="javascript:;" class="icon-general-close menu-close js-menu-close"><span class="screenreader-text">Close</span></a>
+            </div>
+                    <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Journals " id="site-menu-item-8100">
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Journals <i class="icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Development " id="site-menu-item-8102">
+                        <a href="/dev" class="nav-link">Development </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Journal-of-Cell-Science " id="site-menu-item-8103">
+                        <a href="/jcs" class="nav-link">Journal of Cell Science </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Journal-of-Experimental-Biology " id="site-menu-item-8104">
+                        <a href="/jeb" class="nav-link">Journal of Experimental Biology </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Disease-Models-&amp;-Mechanisms " id="site-menu-item-8105">
+                        <a href="/dmm" class="nav-link">Disease Models &amp; Mechanisms </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-Biology-Open " id="site-menu-item-8106">
+                        <a href="/bio" class="nav-link">Biology Open </a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-Community-sites " id="site-menu-item-8101">
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Community sites <i class="icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-The-Node " id="site-menu-item-8107">
+                        <a href="https://thenode.biologists.com/" class="nav-link">The Node </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-preLights " id="site-menu-item-8108">
+                        <a href="https://prelights.biologists.com/" class="nav-link">preLights </a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 site-menu-item-FocalPlane " id="site-menu-item-8109">
+                        <a href="https://focalplane.biologists.com/" class="nav-link">FocalPlane </a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 site-menu-item-For-librarians " id="site-menu-item-8110">
+                        <a href="https://www.biologists.com/library-hub/" class="nav-link">For librarians </a>
+
+                    
+                </li>
+        </ul>
+
+        </nav>
+    
+</div>
+
+
+
+
+        <div class="mobile-menu-trigger_wrap mobile-search_wrap">
+            <a href="javascript:;"
+               class="mobile-search_toggle at-search-toggle"
+               role="button"
+               aria-expanded="false"
+               data-theme-dropdown-trigger="search-dropdown"><i class="icon-menu_search"><span class="screenreader-text">Search Dropdown Menu</span></i></a>
+        </div>
+    <div class="navbar-search-container mobile-dropdown search-dropdown" data-theme-dropdown="search-dropdown">
+        <div class="navbar-search">
+            <form class="microsite-search js-MicrositeSearch">
+                <fieldset class="searchbar-fieldset">
+                    <legend><span class="screenreader-text">header search</span></legend>
+                    <div class="navbar-search-input_wrap">
+                        <label for="MicrositeSearchTerm-SitePageHeader"><span class="screenreader-text">search input</span></label>
+                        
+                        <input class="navbar-search-input microsite-search-term at-microsite-search-term search-term-autosuggest"
+                               data-autosuggest-hint="micrositeSearchTermInputHint-SitePageHeader"
+                               data-autosuggest-results="micrositeAutoCompleteResults-SitePageHeader"
+                               data-autosuggest-id="MicrositeSearchTerm-SitePageHeader"
+                               data-searchfilter="search-filter-SitePageHeader"
+                               placeholder="Search..."
+                               type="text" maxlength="255"
+                                autocomplete="off"                                id="MicrositeSearchTerm-SitePageHeader"
+                               title="search input">
+                        
+                        <input type="hidden" name="hfAutoCompleteMaxResults" class="hfAutoCompleteMaxResults" value="6" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrAutoSuggestMinimumCharactersLength" class="hfSolrAutoSuggestMinimumCharactersLength" value="2" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalName" class="hfSolrJournalName" value="" aria-hidden="true" />
+                        <input type="hidden" name="hfSolrJournalID" class="hfSolrJournalID" value="" aria-hidden="true" />
+                        <label for="micrositeSearchTermInputHint-SitePageHeader">
+                            <span class="screenreader-text">Search input auto suggest</span>
+                        </label>
+                        <input type="text"
+                               id="micrositeSearchTermInputHint-SitePageHeader"
+                               data-autosuggest-id="micrositeSearchTermInputHint-SitePageHeader"
+                               class="microsite-search-term-input-hint"
+                               autocomplete="off" />
+                        <ul data-autosuggest-id="micrositeAutoCompleteResults-SitePageHeader" class="term-list hidden"></ul>
+                    </div>
+                        <div class="navbar-search-filter_wrap">
+                            <label for="navbar-search-filter-site-SitePageHeader">
+                                <span class="screenreader-text">filter your search</span>
+                            </label>
+                            <select class="navbar-search-filter navbar-search-filter-site at-navbar-search-filter" id="navbar-search-filter-site-SitePageHeader" data-autosuggest-id="search-filter-SitePageHeader">
+<option class="header-search-bar-filters-item" value="/search-results?page=1&q={searchQuery}" data-siteid="0" >All content</option><option class="header-search-bar-filters-item" value="/journals/search-results?page=1&q={searchQuery}&fl_SiteID=3&allJournals=1" data-siteid="3" >All journals</option><option class="header-search-bar-filters-item selected" value="/bio/search-results?page=1&q={searchQuery}&fl_SiteID=1000001" data-siteid="1000001" selected>Biology Open</option>                            </select>
+                        </div>
+                    <div class="navbar-search-submit_wrap">
+                        <a href="javascript:;" class="microsite-search-icon navbar-search-submit icon-menu_search"><span class="screenreader-text">Search</span></a>
+                    </div>
+                </fieldset>
+            </form><!-- /#MicrositeSearch -->
+        </div><!-- /.navbar-search -->
+<div class="navbar-search-advanced">
+    <a href="/advanced-search" class="advanced-search">Advanced Search</a>
+</div>    </div><!-- /.navbar-search-container -->
+
+    <input type="hidden" name="parentSiteName" class="hfParentSiteName" value="Journals Gateway" aria-hidden="true" />
+    <input type="hidden" class="hfSolrMaxAllowSearchChar" value="100" aria-hidden="true" />
+    <input type="hidden" class="hfJournalShortName" value="" aria-hidden="true" />
+    <input type="hidden" class="hfSearchPlaceholder" value="" aria-hidden="true" />
+    <input type="hidden" name="hfGlobalSearchSiteURL" class="hfGlobalSearchSiteURL" value="" aria-hidden="true" />
+    <input type="hidden" name="hfSearchSiteURL" id="hfSiteURL" value="journals.biologists.com/bio" aria-hidden="true" />
+    <input type="hidden" class="hfQuickSearchUrl" value="/bio/search-results?page=1&amp;q={searchQuery}&amp;fl_SiteID=1000001" aria-hidden="true" />
+    <script type="text/javascript">
+        (function () {
+            var hfSiteUrl = document.getElementById('hfSiteURL');
+            var siteUrl = hfSiteUrl.value;
+            var subdomainIndex = siteUrl.indexOf('/');
+
+            hfSiteUrl.value = location.host + (subdomainIndex >= 0 ? siteUrl.substring(subdomainIndex) : '');
+        })();
+    </script>
+
+ 
+
+    <div class="tablet-menu-trigger_wrap">
+        <!-- MOBILE SHOPPING CART ICON -->
+        <a href="javascript:;"
+           class="tablet-sign-in"
+           data-theme-dropdown-trigger="tablet-user-dropdown"
+           aria-controls="tablet-user-dropdown"
+           aria-expanded="false"><i class="icon-menu_account"><span class="screenreader-text">User Tools Dropdown</span></i></a>
+    </div>
+<div class="site-theme-header-menu-item_wrap tablet-menu" id="tablet-user-dropdown" data-theme-dropdown="tablet-user-dropdown">
+    <!-- DESKTOP SHOPPING CART ICON -->
+
+    <!-- DESKTOP REGISTRATION -->
+        <div class="site-theme-header-menu-item"><a href="/my-account/register?siteId=1000001&amp;returnUrl=%2fbio%2fpages%2finterviews" class="register at-register js-register-user-modals">Register</a></div>
+
+    <!-- DESKTOP INSTITUTIONS -->
+
+        <!-- DESKTOP SIGN IN -->
+        <div class="site-theme-header-menu-item not-authenicated">
+            <a href="javascript:;"
+                class="dropdown-toggle signin at-signin-dropdown at-signin-username"
+                id="header-account-info-user-fullname"
+                data-login-location="/SignIn/LoginForm/LoginFormPopup?returnUrl="
+                data-theme-dropdown-trigger="sign-in-dropdown"
+                aria-controls="sign-in-dropdown"
+                aria-expanded="false">
+                
+Sign in                <i class="icon-general_arrow-down arrow-icon"></i>
+            </a>
+            <div class="dropdown-panel dropdown-panel-signin dropdown-panel-form at-signin-dropdown-panel" id="sign-in-dropdown" data-theme-dropdown="sign-in-dropdown">
+                <div class="spinner"></div>
+            </div><!-- /.dropdown-panel -->
+        </div>
+
+</div>
+
+        </div><!-- /.site-theme-header_content -->
+    </div><!-- /.site-theme-header- -->
+
+    <div class="journal-header journal-bg">
+        <div class="journal-header_content ">
+
+    <div class="journal-logo_wrap">
+        <a href="https://journals.biologists.com/bio" class="journal-logo-link">
+            <picture>
+                <source media="(min-width: 601px)" srcset="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/BIO_title_cropped-1286300707.svg">
+                <img class="logo-BiologyOpen journal-logo" src="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/BIO_title_cropped-1286300707.svg" alt="Biology Open" />
+            </picture>
+        </a>
+    </div>
+
+            
+
+
+<div class="navbar-menu_wrap">
+            <a class="mobile-site-menu-toggle" data-theme-dropdown-trigger="microsite-nav-menu" aria-controls="microsite-nav-menu" aria-expanded="false" href="javascript:;"><i class="icon-menu_hamburger"><span class="screenreader-text">Toggle Menu</span></i><span class="tablet-menu-label">Menu</span></a>
+            <nav class="navbar-menu" id="microsite-nav-menu" data-theme-dropdown="microsite-nav-menu">
+                        <ul class="site-menu site-menu-lvl-0 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-9710">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Articles<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9715">
+
+                        <a href="/bio/accepted-manuscripts" class="nav-link">Accepted manuscripts</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9716">
+
+                        <a href="/bio/issue" class="nav-link">Latest complete issue</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9717">
+
+                        <a href="/bio/issue-covers" class="nav-link">Issue archive</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9718">
+
+                        <a href="/bio/pages/archive-article-type" class="nav-link">Archive by article type</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9719">
+
+                        <a href="/bio/pages/interviews" class="nav-link">Interviews</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9720">
+
+                        <a href="/bio/pages/alerts" class="nav-link">Sign up for alerts</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-9711">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">About us<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9721">
+
+                        <a href="/bio/pages/about" class="nav-link">About BiO</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9722">
+
+                        <a href="/bio/pages/edboard" class="nav-link">Editors and Board</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9723">
+
+                        <a href="/bio/pages/editor-bios" class="nav-link">Editor biographies</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9724">
+
+                        <a href="https://www.biologists.com/grants/" class="nav-link">Grants and funding</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9725">
+
+                        <a href="https://www.biologists.com/meetings/" class="nav-link">Journal Meetings</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9726">
+
+                        <a href="https://www.biologists.com/workshops/" class="nav-link">Workshops</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9727">
+
+                        <a href="https://www.biologists.com/" class="nav-link">The Company of Biologists</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9728">
+
+                        <a href="https://forest.biologists.com/" class="nav-link">The Forest of Biologists</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9729">
+
+                        <a href="/bio/pages/news" class="nav-link">Journal news</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-9712">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">For authors<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9730">
+
+                        <a href="/bio/pages/submit-manuscript" class="nav-link">Submit a manuscript</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9731">
+
+                        <a href="/bio/pages/aims" class="nav-link">Aims and scope</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9732">
+
+                        <a href="/bio/pages/presub-enquiries" class="nav-link">Presubmission enquiries</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9733">
+
+                        <a href="/bio/pages/article-types" class="nav-link">Article types</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9734">
+
+                        <a href="/bio/pages/manuscript-prep" class="nav-link">Manuscript preparation</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9735">
+
+                        <a href="/bio/pages/cover-suggestions" class="nav-link">Cover suggestions</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9736">
+
+                        <a href="/bio/pages/editorial-process" class="nav-link">Editorial process</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9737">
+
+                        <a href="/bio/pages/promoting" class="nav-link">Promoting your paper</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9738">
+
+                        <a href="/bio/pages/open-access" class="nav-link">Open Access</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-9713">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Journal info<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9739">
+
+                        <a href="/bio/pages/journal-policies" class="nav-link">Journal policies</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9740">
+
+                        <a href="/bio/pages/rights-permissions" class="nav-link">Rights and permissions</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9741">
+
+                        <a href="/bio/pages/media-policies" class="nav-link">Media policies</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9742">
+
+                        <a href="/bio/pages/reviewer-guide" class="nav-link">Reviewer guide</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9743">
+
+                        <a href="/bio/pages/alerts" class="nav-link">Sign up for alerts</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9744">
+
+                        <a href="https://www.biologists.com/library-hub/" class="nav-link">For librarians</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+                <li class="site-menu-item site-menu-lvl-0 " id="site-menu-item-9714">
+
+                        <a href="javascript:;" class="nav-link js-theme-dropdown-trigger" aria-expanded="false">Contacts<i class="nav-arrow icon-general_arrow-down arrow-icon"></i></a>
+
+                            <ul class="site-menu site-menu-lvl-1 js-theme-dropdown">
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9745">
+
+                        <a href="/bio/pages/contacts" class="nav-link">Contact BiO</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9746">
+
+                        <a href="https://www.biologists.com/sponsorships-landing-page/" class="nav-link">Advertising</a>
+
+                    
+                </li>
+                <li class="site-menu-item site-menu-lvl-1 " id="site-menu-item-9747">
+
+                        <a href="/bio/../contact-us" class="nav-link">Feedback</a>
+
+                    
+                </li>
+        </ul>
+
+                </li>
+        </ul>
+
+            </nav>
+</div><!-- /.navbar -->
+
+        </div><!-- /.center-inner-row -->
+
+    </div><!-- /.journal-header -->
+
+
+<input id="routename" name="RouteName" type="hidden" value="bio" /> 
+    </div>
+
+</section>
+
+    <div id="main" class="content-main js-main ui-base">
+        <section class="master-main row">
+            <div class="content-main_content">
+                <a href="#" id="skipNav" class="screenreader-text" tabindex="-1">Skip Nav Destination</a>
+                
+
+<div id="mainContent" class="ss-content page-column--center center-content">
+    <div class="widget-SelfServeContent widget-instance-SelfServeContent">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="interviews" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<div>
+<h1>First Person</h1>
+<p>As a community journal, BiO is keen to support the next generation of biomedical scientists. Here, we present a series of interviews with the first authors of a selection of papers published in BiO, helping early-career researchers promote themselves alongside their papers. The authors talk about their work in and out of the lab, the journeys that led them to where they are now and the issues they feel are priorities for early-career researchers. Select an author from the list below or visit our <strong><a href="../collection/13/First-Person-interviews">Interviews archive</a></strong> to read a transcript of their interview.<br />
+<br />
+Would you like to be featured? Details will be sent to the first author upon acceptance of your paper in BiO. <strong><a href="submit-manuscript" target="_blank">Submit your paper here</a>.</strong></p>
+<p>The interviews below were published as supplementary information to the Research or Resource article. We now publish <strong><a href="../collection/13/First-Person-interviews">First Person interviews</a></strong> as separate articles.</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO037044supp1_Piipponen.pdf" target="_blank">Minna Piipponen, University of Turku, Finland</a></strong><br />
+Long non-coding RNA PICSAR decreases adhesion and promotes migration of squamous carcinoma cells by downregulating α2β1 and α5β1 integrin expression. Biology Open 2018 7: bio037044 </p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO033985supp1_Matsuzaki.pdf" target="_blank">Tomoko Matsuzaki, Kyoto University, Kyoto, Japan</a></strong><br />
+The RECK tumor-suppressor protein binds and stabilizes ADAMTS10. Biology Open 2018 7: bio033985</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO034074supp1_Jakobi.pdf" target="_blank">Timothy Jakobi, RMIT University, Melbourne, Australia</a></strong><br />
+Bees with attitude: the effects of directed gusts on flight trajectories. Biology Open 2018 7: bio034074</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO035725supp1_Knorr.pdf" target="_blank">Alexander Knorr, University Hospital Großhadern, Munich, Germany and Céline Gravo, Ludwig-Maximilians-Universitat, Munich, Germany</a></strong><br />
+I spy with my little eye: a simple behavioral assay to test color sensitivity on digital displays. Biology Open 2018 7: bio035725</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO035386supp1_Yang.pdf" target="_blank">Qiang Yang, Jiangxi Agricultural University, Nanchang, China</a></strong><br />
+A model of mucopolysaccharidosis type IIIB in pigs. Biology Open 2018 7: bio035386</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO031997supp1_Nadler.pdf" target="_blank">Lauren Nadler, Norwegian University of Life Sciences, Oslo, Norway</a></strong><br />
+Role of water flow regime in the swimming behaviour and escape performance of a schooling fish. Biology Open 2018 7: bio031997</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO035964supp1_Rosa-Ferreira.pdf" target="_blank">Cláudia Rosa-Ferreira, MRC Laboratory of Molecular Biology, Cambridge, UK</a></strong><br />
+The small G protein Arl8 contributes to lysosomal function and long-range axonal transport in <em>Drosophila</em>. Biology Open 2018 7: bio035964</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO035923supp1_Rato.pdf" target="_blank">Ana Rato, Interdisciplinary Centre of Marine and Environmental Research, and Portuguese Institute for Sea and Atmosphere, Portugal</a></strong><br />
+Viability of dietary substitution of live microalgae with dry <em>Ulva rigida</em>in broodstock conditioning of the Pacific oyster (<em>Crassostrea gigas</em>). Biology Open 2018 7: bio035923</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO030510supp_Molines.pdf" target="_blank">Arthur Molines,  University of California, San Francisco, USA</a></strong><br />
+EB1 contributes to microtubule bundling and organization, along with root growth, in <em>Arabidopsis thaliana</em>. Biology Open 2018 7: bio.030510</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO034462supp_Malkemper.pdf" target="_blank">Pascal Malkemper, Research Institute of Molecular Pathology, Vienna, Austria</a></strong><br />
+Ectopic otoconial formation in the lagena of the pigeon inner ear. Biology Open 2018 7: bio.034462</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO035071supp_Nerlekar.pdf" target="_blank">Ashish Nerlekar, Pune, India</a></strong><br />
+Seasonally dependent relationship between insect herbivores and host plant density in <em>Jatropha nana</em>, a tropical perennial herb. Biology Open 2018 7: bio.035071</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO036806supp1_Galbraith.pdf" target="_blank">Catherine Green Galbraith, Oregon Health Science University, Portland, USA</a></strong><br />
+Coupling integrin dynamics to cellular adhesion behaviors. Biology Open 2018 7: bio.036806</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO034140supp_Khandagale.pdf" target="_blank">Avinash Khandagale, Uppsala University Hospital, Uppsala, Sweden</a></strong><br />
+Coagulation factor 9-deficient mice are protected against dextran sulfate sodium-induced colitis. Biology Open 2018 7: bio.034140</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO033910supp_Hoy.pdf" target="_blank">Anna Hoy, University of Edinburgh, UK</a></strong><br />
+Non-invasive assessment of liver disease in rats using multiparametric magnetic resonance imaging: a feasibility study. Biology Open 2018 7: bio.033910</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO032003supp_Brüggemeier.pdf" target="_blank">Birgit Brüggemeier, Fraunhofer-Institut für Integrierte Schaltungen, Erlangen, Germany</a></strong><br />
+Female <em>Drosophila melanogaster</em> respond to song-amplitude modulations. Biology Open 2018 7: bio032003</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO029595supp1_Oliveira.pdf" target="_blank">Matheus Salgado de Oliveira, Nature Research Center, University of Vale do Paraíba, São Paulo, Brazil</a></strong><br />
+Physiological evaluation of the behavior and epidermis of freshwater planarians (<em>Girardia tigrina</em> and <em>Girardia</em> sp.) exposed to stressors. Biology Open 2018 7: bio029595</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO032888supp_Qin.pdf" target="_blank">Geng Qin, South China Sea Institute of Oceanography, China</a></strong><br />
+Temperature-induced physiological stress and reproductive characteristics of the migratory seahorse <em>Hippocampus erectus</em> during a thermal stress simulation. Biology Open 2018 7: bio032888</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO033985supp1_Matsuzaki.pdf" target="_blank">Megumi Matsuo, Japan Women’s University, Tokyo, Japan</a></strong><br />
+A semi-automatic and quantitative method to evaluate behavioral photosensitivity in animals based on the optomotor response (OMR). Biology Open 2018 7: bio033175</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO033142supp_Urata.pdf" target="_blank">Yuko Urata, Kyoto University, Kyoto, Japan</a></strong><br />
+Spatio-temporal neural stem cell behavior leads to both perfect and imperfect structural brain regeneration in adult newts. Biology Open 2018 7: bio033142</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO033944supp1_Johnson.pdf" target="_blank">Jo-Anne Johnson, The Gurdon Institute, Cambridge, UK</a></strong><br />
+Fank1 and Jazf1 promote multiciliated cell differentiation in the mouse airway epithelium. Biology Open 2018 7: bio033944 </p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO032870supp1_Langan.pdf" target="_blank">Shaughna Langerak, Central Michigan University, USA</a></strong><br />
+The <em>Drosophila</em> TGF-beta/Activin-like ligands Dawdle and Myoglianin appear to modulate adult lifespan through regulation of 26S proteasome function in adult muscle. Biology Open 2018 7: bio029454; doi: 10.1242/bio.029454</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO033977supp1_Mitsuhashi.pdf" target="_blank">Hiroaki Mitsuhashi, Tokai University, Kanagawa, Japan</a></strong><br />
+Functional domains of the FSHD-associated DUX4 protein. Biology Open 2018 7: bio033977</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO032862supp1_Widowati.pdf" target="_blank">Esti Wahyu Widowati, RWTH Aachen University, Aachen, Germany</a></strong><br />
+Functional characterization of DYRK1A missense variants associated with a syndromic form of intellectual deficiency and autism. Biology Open 2018 7: bio032862</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO032870supp1_Langan.pdf" target="_blank">Laura Langan, School of Biological and Marine Sciences, Plymouth, UK</a></strong><br />
+Establishment and long-term maintenance of primary intestinal epithelial cells cultured from the rainbow trout, <em>Oncorhynchus mykiss</em>. Biology Open 2018 7: bio032870</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO031070supp1_Venter.pdf" target="_blank">Leonie Venter, North-West University, Potchefstroom Campus, South Africa</a></strong><br />
+The cross-tissue metabolic response of abalone (<em>Haliotis midae</em>) to functional hypoxia. Biology Open 2018 7: bio031070</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO032094supp1_Patra.pdf" target="_blank">Debabrata Patra, Washington University School of Medicine, USA</a></strong><br />
+Site-1 protease regulates skeletal stem cell population and osteogenic differentiation in mice. Biology Open 2018 7: bio032094</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO029785supp1_Dagur.pdf" target="_blank">Raghubendra Dagur, University of Nebraska Medical Center, USA</a></strong><br />
+Human hepatocyte depletion in the presence of HIV-1 infection in dual reconstituted humanized mice. Biology Open 2018 7: bio029785</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO030817supp1_Kasemeier-Kulesa.pdf" target="_blank">Jennifer Kasemeier-Kulesa, Stowers Institute for Medical Research, USA</a></strong><br />
+NGF reprograms metastatic melanoma to a bipotent glial-melanocyte neural crest-like precursor. Biology Open 2018 7: bio030817</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO030874supp1_Abdul.pdf" target="_blank">Ata ur Rahman Mohammed Abdul, Chromak Research Inc., USA</a></strong><br />
+The GSK3 kinase inhibitor lithium produces unexpected hyperphosphorylation of β-catenin, a GSK3 substrate, in human glioblastoma cells. Biology Open 2018 7: bio030874</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO031807supp1_Cairns.pdf" target="_blank">Dana Cairns, Tufts University, USA</a></strong><br />
+Niclosamide rescues microcephaly in a humanized <em>in vivo</em> model of Zika infection using human induced neural stem cells. Biology Open 2018 7: bio031807</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO027433supp1_Sagi.pdf" target="_blank">Dror Sagi, Tel Aviv University, Israel</a></strong><br />
+The addition of a developmental factor, <em>unc-62</em>, to already long-lived worms increases lifespan and healthspan. Biology Open 2017 6: 1796-1801</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO026013supp1_Banerji.pdf" target="_blank">Rajeswari Banerji, Lehigh University, USA</a></strong><br />
+Cohesin mediates Esco2-dependent transcriptional regulation in a zebrafish regenerating fin model of Roberts Syndrome. Biology Open 2017 6: 1802-1813</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO024612supp1_Feaster.pdf" target="_blank">Jeffrey Feaster, University at Buffalo, USA</a></strong><br />
+A computational study on the influence of insect wing geometry on bee flight mechanics. Biology Open 2017 6: 1784-1795</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO028548supp1_Xiao.pdf" target="_blank">Bang Xiao, The Second Military Medical University, Shanghai, China</a></strong><br />
+Transcriptome sequencing of the naked mole rat (<em>Heterocephalus glaber</em>) and identification of hypoxia tolerance genes. Biology Open 2017 6: 1904-1912</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO027300supp1_Romero.pdf" target="_blank">Fidel-Nicolás Lolo Romero, Spanish National Cardiovascular Research Centre, Madrid, Spain</a></strong><br />
+Elimination of classically-activated macrophages in tumor-conditioned medium by alternatively-activated macrophages. Biology Open 2017 6: 1897-1903</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO026930supp1_Sivakumar.pdf" target="_blank">Sushama Sivakumar, University of Texas Southwestern Medical Center, USA</a></strong><br />
+Phosphatase-regulated recruitment of the spindle- and kinetochore-associated (Ska) complex to kinetochores. Biology Open 2017 6: 1672-1679</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO027896supp1_Smith.pdf" target="_blank">Gina Smith, University of Leeds, UK</a></strong><br />
+Ubiquitination of basal VEGFR2 regulates signal transduction and endothelial function. Biology Open 2017 6: 1404-1415</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO025957supp1_Pai.pdf" target="_blank">Vaibhav Pai, Allen Discovery Center at Tufts University, USA</a></strong><br />
+HCN4 ion channel function is required for early events that regulate anatomical left-right patterning in a nodal and lefty asymmetric gene expression-independent manner. Biology Open 2017 6: 1445-1457</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO028522supp1_Vohnoutka.pdf" target="_blank">Rishel Vohnoutka, SUNY Upstate Medical University, USA</a></strong><br />
+Influence of a GSK3β phosphorylation site within the proximal C-terminus of Neurofilament-H on neurofilament dynamics. Biology Open 2017 6: 1516-1527</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO026039supp1_Bower.pdf" target="_blank">Danielle Bower, University of Bern, Switzerland</a></strong><br />
+SERCA directs cell migration and branching across species and germ layers. Biology Open 2017 6: 1458-1471</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO028571supp1_Myer.pdf" target="_blank">Nicole Myer, University of the Sciences in Philadelphia, USA</a></strong><br />
+CLASP1 regulates endothelial cell branching morphology and directed migration. Biology Open 2017 6: 1502-1515</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO027078supp1_Rajabi.pdf" target="_blank">Hamed Rajabi, Kiel University, Germany</a></strong><br />
+The probability of wing damage in the dragonfly <em>Sympetrum vulgatum</em> (Anisoptera: Libellulidae): a field study. Biology Open 2017 6: 1290-1293</p>
+<p><strong><a href="/DocumentLibrary/BiologyOpenInterviews/BIO023606supp1_Khatib.pdf" target="_blank">Amer Al Khatib, CABD, Spain</a></strong><br />
+Specific expression and function of the Six3 optix in <em>Drosophila </em>serially homologous organs. Biology Open 2017 6: 1155-1164</p>
+</div>
+
+
+
+ 
+    </div>
+</div>
+
+<div id="Sidebar" class="page-column page-column--right">
+    <div class="sidebar-widget_wrap">
+    <div class="widget-DynamicWidgetLayout widget-instance-SelfServe_RightRail">
+        <div class="widget widget-dynamic " data-count="0">
+    
+
+    <div class="widget-dynamic-inner-wrap">
+
+
+    </div>
+
+</div> 
+    </div>
+
+    </div>
+</div>
+
+
+
+
+            </div><!-- /.content-main_content -->
+        </section>
+    </div>
+    <div class="mobile-mask">
+    </div>
+    <section class="footer_wrap vt-site-footer">
+        
+
+
+<div class="ad-banner js-ad-banner ad-banner-footer">
+
+    <div class="widget-AdBlock widget-instance-FooterAd">
+            
+
+ 
+    </div>
+
+</div>
+
+<div class="sticky-footer-ad js-sticky-footer-ad">
+
+    <div class="widget-AdBlock widget-instance-StickyAd">
+            
+
+ 
+    </div>
+
+</div>
+
+
+    <div class="widget-SitePageFooter widget-instance-SitePageFooter">
+            <div class="journal-footer journal-bg">
+        <div class="journal-footer_content clearfix foot-right">
+    <div class="journal-footer-menu">
+            <ul>
+                <li class="link-0">
+                    <a href="/bio/pages/about">About BiO</a>
+                </li>
+                <li class="link-1">
+                    <a href="/bio/pages/edboard">Editors and Board</a>
+                </li>
+                <li class="link-2">
+                    <a href="/bio/pages/aims">Aims and scope</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="link-0">
+                    <a href="/bio/pages/submit-manuscript">Submit a manuscript</a>
+                </li>
+                <li class="link-1">
+                    <a href="/bio/pages/manuscript-prep">Manuscript preparation</a>
+                </li>
+                <li class="link-2">
+                    <a href="/bio/pages/journal-policies">Journal policies</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="link-0">
+                    <a href="/bio/pages/rights-permissions">Rights and permissions</a>
+                </li>
+                <li class="link-1">
+                    <a href="/bio/pages/alerts">Sign up for alerts</a>
+                </li>
+                <li class="link-2">
+                    <a href="/bio/pages/contacts">Contacts</a>
+                </li>
+            </ul>
+        
+    </div>
+    <div class="journal-footer-affiliations aff-right">
+        <!-- <h3>Affiliations</h3> -->
+            <a href="/bio" target="">
+                <img id="footer-logo-BiologyOpen" class="journal-footer-affiliations-logo" src="//cob.silverchair-cdn.com/data/SiteBuilderAssets/Live/Images/bio/BIO_footer-1706177619.svg" alt="Biology Open" />
+            </a>
+    </div>
+        </div>
+    </div>
+ 
+    </div>
+
+
+
+<div class="site-theme-footer">
+        <div class="site-theme-footer_content">
+    <div class="widget-SelfServeContent widget-instance-UmbrellaFooterSelfServe">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="GlobalFooter_Links" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<div class="theme-footer">
+<div class="flex-row">
+<div class="col-6 footer-nav">
+<div class="flex-row">
+<div class="col-2">
+<div class="footer-links-group with-header">
+<ul class="list-lvl-0 long-links">
+    <li class="list-lvl-0"><a href="/dev" target="_blank">Development</a></li>
+    <li class="list-lvl-0"><a href="/jcs" target="_blank">Journal of Cell Science</a></li>
+    <li class="list-lvl-0"><a href="/jeb" target="_blank">Journal of Experimental Biology</a></li>
+    <li class="list-lvl-0"><a href="/dmm" target="_blank">Disease Models &amp; Mechanisms</a></li>
+    <li class="list-lvl-0"><a href="/bio" target="_blank">Biology Open</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+<div class="col-2">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0"><a href="https://thenode.biologists.com/">The Node</a></li>
+    <li class="list-lvl-0"><a href="https://prelights.biologists.com/">preLights</a></li>
+    <li class="list-lvl-0"><a href="https://focalplane.biologists.com/">FocalPlane</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+<div class="col-2">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0"><a href="https://www.biologists.com/grants">Grants</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/meetings">Journal Meetings</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/workshops">Workshops</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+<div class="col-2">
+<div class="footer-links-group">
+<ul class="list-lvl-0">
+    <li class="list-lvl-0"><a href="https://www.biologists.com/library-hub">Library hub</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/subscribe">Company news</a></li>
+    <li class="list-lvl-0"><a href="https://www.biologists.com/contact">Contacts</a></li>
+</ul>
+</div>
+</div>
+<!-- close .col-2-->
+</div>
+<!-- close .footer-nav .flex-row -->
+</div>
+<!-- close .footer-nav -->
+<div class="col-3 footer-branding">
+<div class="footer-logo-wrap">
+<!-- If there are multiple logos, duplicate div.footer-logo -->
+<div class="footer-logo">
+<a href="/journals">
+<img alt="The Company of Biologists Logo" src="https://cob.silverchair-cdn.com/ImageLibrary/logo-footer.svg?versionId=6231" />
+</a>
+</div>
+</div>
+<div class="social-icons-wrap">
+<ul class="social-icons-list"><a href="#">
+    <!-- Twitter -->
+    </a>
+    <li><a href="#"></a><a class="social-link" href="https://twitter.com/Co_Biologists"><span class="icon-social-twitter"></span><span class="screenreader-text">Twitter</span></a></li>
+    <!-- LinkedIn -->
+    <li><a class="social-link" href="https://www.linkedin.com/company/the-company-of-biologists/"><span class="icon-social-linkedin"></span><span class="screenreader-text">LinkedIn</span></a></li>
+    <!--Youtube---->
+    <li><a class="social-link" href="https://www.youtube.com/user/CompanyofBiologists"><span class="icon-social-youtube"></span><span class="screenreader-text">Youtube</span></a></li>
+    <!-- WeChat-->
+    <li><a class="social-link social-link-wechat" href="/ImageLibrary/WeChat.jpg" target="_blank"><span><img alt="WeChat logo" src="https://cob.silverchair-cdn.com/ImageLibrary/wechat-white-transparent-noring.png?versionId=3065" style="height: 22px;margin-top: 9px;" />
+    <style>
+        .social-link-wechat:hover, .social-link-wechat:focus {
+        color:transparent !important;
+        }
+        .social-link-wechat:hover img, .social-link-wechat:focus img {
+        filter: invert(100);
+        }
+    </style>
+    </span></a></li>
+    <!-- Mastodon-->
+    <li><a class="social-link social-link-mastodon" href="https://biologists.social/@Co_Biologists" target="_blank"><img src="https://cob.silverchair-cdn.com/ImageLibrary/Mastodon_Social_Icon_Circle_BW_TransparencyNoBlk.png?versionId=6231" alt="Mastodon icon" style="width: 38px; height: 38px; margin-top: 0px;" /><br />
+    </a></li>
+</ul>
+</div>
+</div>
+<!-- close .footer-branding -->
+</div>
+<!-- close .flex-row -->
+</div>
+<!-- close .theme-footer -->
+<div class="legal-links-row">
+<div class="legal-links-wrap">
+<ul class="legal-links">
+    <li><a href="https://www.biologists.com/privacy-policy">Privacy policy</a></li>
+    <li><a href="https://www.biologists.com/terms-conditions">Terms &amp; conditions</a></li>
+    <li><a href="https://www.biologists.com/copyright-permissions">Copyright policy</a></li>
+    <li><a href="https://www.biologists.com/cookies/">Cookies</a></li>
+    <li class="copyright">© 2024 The Company of Biologists. All rights reserved.</li>
+</ul>
+<ul class="legal-links">
+    <li>Registered Charity 277992 | Registered in England and Wales | Company Limited by Guarantee No 514735<br />
+    Registered office: Bidder Building, Station Road, Histon, Cambridge CB24 9LF, UK</li>
+</ul>
+</div>
+<!-- close .legal-links-wrap -->
+</div>
+<!-- close .legal-links-row -->
+
+
+
+ 
+    </div>
+
+
+
+        </div><!-- /.center-inner-row -->
+</div><!-- /.site-theme-footer -->
+<div class="ss-ui-only">
+
+    <div class="widget-SelfServeContent widget-instance-SSuiOnlySelfServe">
+        
+
+
+
+    <input type="hidden" class="SelfServeContentId" value="SSuiOnly" />
+    <input type="hidden" class="SelfServeVersionId" value="0" />
+
+<style type="text/css">
+    .boxed-text .caption {
+    display: block;
+    }
+    .boxed-text .caption .title.-title {
+    float: none;
+    font-weight: bold;
+    margin-bottom: .75rem;
+    }
+    /* Start COB-414 */
+    .base-font {
+    font-size: 1rem !important;
+    }
+    .widget-SitePageFooter .journal-footer .journal-footer_content {
+    flex-wrap: nowrap !important;
+    }
+    @media (max-width: 899px) {
+    .widget-SitePageFooter .journal-footer .journal-footer_content {
+    flex-wrap: wrap !important;
+    }
+    }
+    .site-theme-footer .site-theme-footer_content .legal-links-row {
+    background: #646262;
+    padding: 1rem 0;
+    }
+    .site-theme-footer .site-theme-footer_content .legal-links-row .legal-links-wrap {
+    float: none;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    }
+    /* End COB-414 */
+    /* Start COB-415 */
+    .article-title-main {
+    font-size: 1.75rem !important;
+    }
+    .pg_article h4.section-title {
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .5px !important;
+    }
+    .pg_article .content-inner-wrap h2 {
+    font-size: 1.375rem !important;
+    }
+    .pg_article .content-inner-wrap h4 {
+    font-size: 0.875rem !important;
+    }
+    /* End COB-415 */
+    /*SCMP-26926*/
+    body.leftRailModalOpen .page-column--center.can-stick {
+    z-index: 1;
+    }
+    /*SCMP-26926*/
+    /*Self Serve overrides*/
+    .widget-SelfServeContent .homepage-panel-text h1,
+    .widget-SelfServeContent .homepage-panel-text h2,
+    .widget-SelfServeContent .homepage-panel-text h3,
+    .widget-SelfServeContent .homepage-panel-text h4 {
+    margin-top: 0;
+    }
+    .widget-SelfServeContent .homepage-panel-text h1+p,
+    .widget-SelfServeContent .homepage-panel-text h2+p,
+    .widget-SelfServeContent .homepage-panel-text h3+p,
+    .widget-SelfServeContent .homepage-panel-text h4+p {
+    margin-top: .25rem;
+    }
+    .widget-SelfServeContent h1+p,
+    .widget-SelfServeContent h2+p,
+    .widget-SelfServeContent h3+p,
+    .widget-SelfServeContent h4+p {
+    margin-top: .25rem;
+    }
+    .widget-SelfServeContent h1,
+    .widget-SelfServeContent h2,
+    .widget-SelfServeContent h3,
+    .widget-SelfServeContent h4 {
+    margin-top: 1rem;
+    }
+    .widget-SelfServeContent h1+h2,
+    .widget-SelfServeContent h2+h3,
+    .widget-SelfServeContent h3+h4 {
+    margin-top: .5rem;
+    }
+    .widget-SelfServeContent h1 {
+    font-size: 1.75rem;
+    }
+    .widget-SelfServeContent h2 {
+    font-size: 1.4rem;
+    }
+    .widget-SelfServeContent h3 {
+    font-size: 1.25rem;
+    }
+    .widget-SelfServeContent h4 {
+    font-size: 1.125rem;
+    }
+    .widget-SelfServeContent h5 {
+    font-size: 16px;
+    font-weight: bold;
+    }
+    .widget-SelfServeContent p+ul,
+    .widget-SelfServeContent p+ol {
+    margin-top: -.75rem;
+    margin-bottom: .75rem;
+    }
+    /*end self serve overrides*/
+    .pg_Collections .widget-MultiQuerySelectableContentList {
+    border: none;
+    }
+</style>
+
+
+
+ 
+    </div>
+
+</div>
+
+<div class="ad-banner js-ad-interstitial">
+
+    <div class="widget-AdBlock widget-instance-Interstitial">
+            
+
+ 
+    </div>
+
+</div>
+    </section>
+
+
+
+
+
+    
+    
+
+
+    <div class="widget-SiteWideModals widget-instance-SiteWideModals">
+        <div id="revealModal" class="reveal-modal" data-reveal>
+    <div id="revealContent"></div>
+    <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+</div>
+
+<div id="globalModalContainer" class="modal-global-container">
+    <div id="globalModalContent">
+        <div class="js-globalModalPlaceholder"></div>
+    </div>
+    <a class="close-modal js-close-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+</div>
+<div id="globalModalOverlay" class="modal-overlay js-modal-overlay"></div>
+
+    <div id="NeedSubscription" class="reveal-modal small" data-reveal>
+            <div class="subscription-needed">
+                <h5 class="modal-heading">This Feature Is Available To Subscribers Only</h5>
+                <p><a class="btn modal-sign_in-btn" href="/sign-in?returnUrl=%2fbio%2fpages%2finterviews">Sign In</a> or <a class="modal-register-link" href="/my-account/register?siteId=1000001&amp;returnUrl=%2fbio%2fpages%2finterviews">Create an Account</a></p>
+            </div>
+
+
+        <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+    </div>
+
+
+<div id="noAccessReveal" class="reveal-modal tiny" data-reveal>
+    <a class="close-reveal-modal" href="javascript:;"><i class="icon-general-close"><span class="screenreader-text">Close Modal</span></i></a>
+    <div id="noAccessForm">
+        <div class="spinner"></div>
+    </div>
+</div>
+ 
+    </div>
+
+    
+
+
+
+<script type="text/javascript">
+    MathJax = {
+        tex: {
+            inlineMath: [['|$', '$|'], ['\\(', '\\)']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+    <!-- CookiePro Default Categories -->
+    <!-- When the Cookie Compliance code loads, if cookies for the associated group have consent...
+         it will dynamically change the tag to: script type=text/JavaScript...
+         the code inside the tags will then be recognized and run as normal. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="//cob.silverchair-cdn.com/Themes/Client/app/jsdist/v-638488182993945370/site.min.js"></script>
+
+
+    
+  
+
+
+
+
+    
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            App.SearchAutoComplete.init(["Keywords"]);
+        });
+        </script>
+    
+    
+
+
+
+
+    <div class="ad-banner js-ad-riser ad-banner-riser">
+
+    <div class="widget-AdBlock widget-instance-RiserAd">
+            
+
+ 
+    </div>
+
+    </div>
+
+
+
+        
+    <div class="end-of-page-js"></div>
+</body>
+</html>
+
+ contentType 9 text/html url 56 https://journals.biologists.com:443/bio/pages/interviews responseCode 3 200 

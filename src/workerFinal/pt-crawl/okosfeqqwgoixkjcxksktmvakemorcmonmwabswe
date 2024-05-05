@@ -1,0 +1,2192 @@
+okosfeqqwgoixkjcxksktmvakemorcmonmwabswe length 5 71796 page 71796 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>Colours in HTML</TITLE>
+<meta name="keywords" content="HTML, colour, color, RGB">
+<meta name="description" content="Using colours in HTML: RGB colours and colour-names">
+<style type="text/css">
+<!--
+h2
+   {
+   color: #CC0000;
+   }
+p.backto
+   {
+   background-color: #F5FFFA;
+   border: double thin #0000FF;
+   padding: 6px;
+   width: 35%;
+   text-align: center;
+   font-size: smaller;
+   }
+-->
+</style>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFCC">
+<center style="padding: 7px"><strong><a name="doc_top">University of Botswana History Department</a></strong></center>
+<table summary="Layout" width="100%" 
+cellpadding="15" cellspacing="0"
+style="border: solid medium #FFCCFF">
+<tr>
+<td bgcolor="#FFCCFF" width="100%" valign="middle"
+style="border: double thick #CC00CC">
+<center><h1>Colour in HTML</h1></center>
+</td></tr></table>
+<center style="padding: 7px">
+<a href="html0.htm">HTML Index Page</a> || <a href="../../h-index.htm">Site Index</a>
+</center>
+<hr>
+<p><a name="contents" href="#contents">Contents</a></p>
+<ul>
+
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#hex-table">Hex values colour-table</a></li>
+<li><a href="#netscape-colour-names-table">Netscape colour names colour-table</a></li>
+
+</ul>
+<hr>
+<p class="backto"><a name="intro" href="#contents">Back to contents</a>&nbsp;||&nbsp;<a href="#doc_top">Back to top</a></p>
+<h2>Introduction</h2>
+<p>For technical reasons, the primary colours for computer screens
+are not red, yellow and blue but red, <em>green</em> and blue.
+colours are defined by the mixture of these three, that is, their
+Red-Green-Blue (RGB) values.</p>
+
+For each of the three colours, the possible values range from 
+zero to 255. This is because each is represented by one byte,
+that is, eight bits, and 2<sup>8</sup> = 256. This is why colours 
+defined to this precision is called "24-bit colour" (3 colours at
+8 bits each).
+
+<p>To complicate things just a little more, the values are written in
+base sixteen, or <em>hexadecimal</em>. 
+Why? Well, it is a computer programmer habit because
+base sixteen is much more convenient than decimal for representing
+the binary numbers used by computers. Each hexadecimal digit 
+represents a neat four bits (2<sup>4</sup> = 16), 
+which is half a byte.
+The digits in base sixteen are
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9,.A, B, C, D, E and F. ("A" is ten, 
+"B" is eleven, etc.) In this system, any number from 0 to 255 is 
+written by two hexadecimal digits. "00" = 0, of course, while
+"FF" = 255. <br>"F3" = (F x 16) + 3 = (15 x 16) + 3 = 243.</p>
+
+<p><small><strong>Note:</strong> the characters A - F are not case sensitive for this
+purpose: i.e. you can write either "FF" or "ff" (or "Ff") 
+without altering the meaning.</small></p>
+
+<p>Colours can be written, for purposes of HTML and style sheets, 
+by six hexadecimal
+digits. The first two represent red, the second two green, and 
+the last two blue. The six digits are preceded by a "#" to indicate
+a hexadecimal colour value.</p>
+
+<table summary="layout" border="0">
+<tr>
+<th>&nbsp;</th><th><small>Red</small></th>
+<th><small>|&nbsp;Green&nbsp;|</small></th>
+<th><small>Blue</small></th>
+</tr>
+<tr>
+<td>A colour value has three parts: #</td>
+<td BGCOLOR="#FFCCCC"><center>00</center></td>
+<td BGCOLOR="#CCFFCC"><center>00</center></td>
+<td BGCOLOR="#CCCCFF"><center>00</center></td>
+</tr>
+</table>
+<p>(Don't forget the 
+<big><b><font color="#CC0000">#</font></b></big> !)</p>
+
+<p>Thus, consider #FF0000. The red value is FF, 255, the maximum.
+The green and blue values are both zero. Thus, this produces bright
+red.</p>
+
+<table summary="For bgcolor" cellpadding="10" cellspacing="0" border="1"><tr>
+<td bgcolor="#FF0000"><font color="#FFFFFF">This background is #FF0000</font></td>
+</tr></table>
+
+<p>In the above example, a TABLE has been used, with only one
+call. The background colour of the cell has been defined by
+the BGCOLOR attribute. The code is<br>
+&lt;TD BGCOLOR="#FF0000"&gt;text in cell&lt;/TD&gt;</p>
+
+<p>#FFFFFF is white (all colours equally at maximum), and #000000
+is black (all colours zero). If we made the "FF" in the last
+example a little lower, say CC, we would get a darker red:</p>
+
+<table summary="For bgcolor" cellpadding="10" cellspacing="0" border="1"><tr>
+<td bgcolor="#CC0000"><font color="#FFFFFF">This background is #CC0000</font></td>
+</tr></table>
+
+<p>If we combine red and blue, with no green, we will get purple:</p>
+
+<table summary="For bgcolor" cellpadding="10" cellspacing="0" border="1"><tr>
+<td bgcolor="#FF00FF"><font color="#000000">This background is #FF00FF</font></td>
+</tr></table>
+
+<p>Obviously, there are a very large number of possible colours which
+can be defined in this system: 2<sup>24</sup> = 16,777,216. However,
+not all computers are capable of actually producing all these.
+This is less of a problem than it was in the early days of the web.
+To avoid problems, you can use so-called "browser-safe" colours.
+The colours in which the values for each colour are limited to
+00, 33, 66, 99, CC, or FF are generally safe. Also, there are a
+number of other standard colours defined.</p>
+
+<p>As an alternative to using hexadecimal values, you can use
+a list of pre-defined <em>names</em> such as "yellow". Thus:<br>
+&lt;TD BGCOLOR="yellow"&gt;text in cell&lt;/TD&gt;<br>
+Notice that there is no "#" as this is not a hex value.</p>
+
+<table summary="For bgcolor" cellpadding="10" cellspacing="0" border="1"><tr>
+<td bgcolor="yellow"><font color="#000000">This background is yellow</font></td>
+</tr></table>
+<hr>
+<p>To get an idea of how the combination of red, green and blue works, 
+consider the table below.
+This shows the possible combinations of the basic values 
+(00, 33, 66, 99, CC, &amp; FF) for red and for green. Going across the table,
+the green values go up from zero to maximum; going down the table, the
+red values go from zero to maximum. (The blue values are all zero.)</p>
+<TABLE SUMMARY="Showing RGB hex values for red against green" 
+WIDTH="100%" cellpadding="4" cellspacing="1" border="1">
+
+<tr>
+<th width="14%">&nbsp;</th>
+<th colspan="6">Green values 00&nbsp;-&nbsp;FF</th>
+</tr>
+
+<TR>
+<th rowspan="6">Red values 00&nbsp;-&nbsp;FF</th>
+<TD WIDTH="14%"BGCOLOR="#000000">
+<FONT COLOR="#000000">000000</FONT><BR>
+<FONT COLOR="#FFFFFF">000000</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#003300">
+<FONT COLOR="#000000">003300</FONT><BR>
+<FONT COLOR="#FFFFFF">003300</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#006600">
+<FONT COLOR="#000000">006600</FONT><BR>
+<FONT COLOR="#FFFFFF">006600</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#009900">
+<FONT COLOR="#000000">009900</FONT><BR>
+<FONT COLOR="#FFFFFF">009900</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#00CC00">
+<FONT COLOR="#000000">00CC00</FONT><BR>
+<FONT COLOR="#FFFFFF">00CC00</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#00FF00">
+<FONT COLOR="#000000">00FF00</FONT><BR>
+<FONT COLOR="#FFFFFF">00FF00</FONT>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH="14%"BGCOLOR="#330000">
+<FONT COLOR="#000000">330000</FONT><BR>
+<FONT COLOR="#FFFFFF">330000</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#333300">
+<FONT COLOR="#000000">333300</FONT><BR>
+<FONT COLOR="#FFFFFF">333300</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#336600">
+<FONT COLOR="#000000">336600</FONT><BR>
+<FONT COLOR="#FFFFFF">336600</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#339900">
+<FONT COLOR="#000000">339900</FONT><BR>
+<FONT COLOR="#FFFFFF">339900</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#33CC00">
+<FONT COLOR="#000000">33CC00</FONT><BR>
+<FONT COLOR="#FFFFFF">33CC00</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#33FF00">
+<FONT COLOR="#000000">33FF00</FONT><BR>
+<FONT COLOR="#FFFFFF">33FF00</FONT>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH="14%"BGCOLOR="#660000">
+<FONT COLOR="#000000">660000</FONT><BR>
+<FONT COLOR="#FFFFFF">660000</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#663300">
+<FONT COLOR="#000000">663300</FONT><BR>
+<FONT COLOR="#FFFFFF">663300</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#666600">
+<FONT COLOR="#000000">666600</FONT><BR>
+<FONT COLOR="#FFFFFF">666600</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#669900">
+<FONT COLOR="#000000">669900</FONT><BR>
+<FONT COLOR="#FFFFFF">669900</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#66CC00">
+<FONT COLOR="#000000">66CC00</FONT><BR>
+<FONT COLOR="#FFFFFF">66CC00</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#66FF00">
+<FONT COLOR="#000000">66FF00</FONT><BR>
+<FONT COLOR="#FFFFFF">66FF00</FONT>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH="14%"BGCOLOR="#990000">
+<FONT COLOR="#000000">990000</FONT><BR>
+<FONT COLOR="#FFFFFF">990000</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#993300">
+<FONT COLOR="#000000">993300</FONT><BR>
+<FONT COLOR="#FFFFFF">993300</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#996600">
+<FONT COLOR="#000000">996600</FONT><BR>
+<FONT COLOR="#FFFFFF">996600</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#999900">
+<FONT COLOR="#000000">999900</FONT><BR>
+<FONT COLOR="#FFFFFF">999900</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#99CC00">
+<FONT COLOR="#000000">99CC00</FONT><BR>
+<FONT COLOR="#FFFFFF">99CC00</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#99FF00">
+<FONT COLOR="#000000">99FF00</FONT><BR>
+<FONT COLOR="#FFFFFF">99FF00</FONT>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH="14%"BGCOLOR="#CC0000">
+<FONT COLOR="#000000">CC0000</FONT><BR>
+<FONT COLOR="#FFFFFF">CC0000</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#CC3300">
+<FONT COLOR="#000000">CC3300</FONT><BR>
+<FONT COLOR="#FFFFFF">CC3300</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#CC6600">
+<FONT COLOR="#000000">CC6600</FONT><BR>
+<FONT COLOR="#FFFFFF">CC6600</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#CC9900">
+<FONT COLOR="#000000">CC9900</FONT><BR>
+<FONT COLOR="#FFFFFF">CC9900</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#CCCC00">
+<FONT COLOR="#000000">CCCC00</FONT><BR>
+<FONT COLOR="#FFFFFF">CCCC00</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#CCFF00">
+<FONT COLOR="#000000">CCFF00</FONT><BR>
+<FONT COLOR="#FFFFFF">CCFF00</FONT>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH="14%"BGCOLOR="#FF0000">
+<FONT COLOR="#000000">FF0000</FONT><BR>
+<FONT COLOR="#FFFFFF">FF0000</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#FF3300">
+<FONT COLOR="#000000">FF3300</FONT><BR>
+<FONT COLOR="#FFFFFF">FF3300</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#FF6600">
+<FONT COLOR="#000000">FF6600</FONT><BR>
+<FONT COLOR="#FFFFFF">FF6600</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#FF9900">
+<FONT COLOR="#000000">FF9900</FONT><BR>
+<FONT COLOR="#FFFFFF">FF9900</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#FFCC00">
+<FONT COLOR="#000000">FFCC00</FONT><BR>
+<FONT COLOR="#FFFFFF">FFCC00</FONT>
+</TD>
+<TD WIDTH="14%"BGCOLOR="#FFFF00">
+<FONT COLOR="#000000">FFFF00</FONT><BR>
+<FONT COLOR="#FFFFFF">FFFF00</FONT>
+</TD>
+</TR>
+
+</TABLE>
+<hr>
+
+<p>Below you will find two tables of colours. In each cell the 
+colour value or name is written both in black and in white to
+ensure legibility. The tables show:</p>
+<ol>
+<li><a href="#hex-table">Basic hex values</a>: 
+The colours using only the values 00, 33, 66, 99, CC, and FF
+for each of red, green and blue</li>
+<li><a href="#netscape-colour-names-table">Netscape colour names</a>:
+The 140 colour names originally defined by Netscape when they
+introduced them as an "extended" (non-standard) feature.</li>
+</ol type="1">
+<p>The names appear to originate in paint-manufacturing usage.
+Recent versions of both Netscape and Internet Explorer recognize
+all these names, but earlier Internet Explorer versions only 
+recognized sixteen of them. (Act9a still had this limitation,
+but Act10 recognizes them all.) 
+We recommend using hex values, because they give 
+you complete control and the assurance that the colour will
+be recognized.</p>
+<hr>
+<h3>Using colours:</h3>
+<p>Colours can be used either for background or for text colour.
+For background colour, you can set the background of some
+elements (notably BODY, i.e. the entire document) and TD
+(table cell) using the BGCOLOR attribute. E.g.<br>
+<code>&lt;BODY BGCOLOR="#FFFF00"&gt;</code><br>
+For text, the color can be set using the FONT element with
+a COLOR attribute, e.g.<br>
+<code>&lt;FONT COLOR="#FF0000"&gt;
+<font color="#FF0000">Text to appear in colour #FF0000
+</font>&lt;/FONT&gt;</code><br>
+The general consensus now is that these methods should be phased
+out in favour of style sheets. The BGCOLOR and COLOR attributes
+are technically "deprecated" and may become obsolete in future 
+versions of HTML, although browsers should still be able to
+deal with them. In fact, the entire FONT element is deprecated.
+Unfortunately, a lot of browsers still cannot render style sheet
+formatting correctly. Even Netscape 4 has problems. Consequently
+we recommend that, for the present, you should continue to use
+BGCOLOR and FONT COLOR for all essential colour formatting.</p>
+<hr>
+<p class="backto"><a name="hex-table" href="#contents">Back to contents</a>&nbsp;||&nbsp;<a href="#doc_top">Back to top</a></p>
+<H2>Hex values colour table</H2>
+
+<TABLE width="100%" border="1" cellspacing="3" cellpadding="3" summary="Table showing possible colour values">
+<TR>
+<TD bgcolor="#000000">
+<FONT COLOR="#ffffff">#000000</FONT><BR>
+<FONT COLOR="#000000">#000000</FONT>
+</TD>
+<TD bgcolor="#000033">
+<FONT COLOR="#ffffff">#000033</FONT><BR>
+<FONT COLOR="#000000">#000033</FONT>
+</TD>
+<TD bgcolor="#000066">
+<FONT COLOR="#ffffff">#000066</FONT><BR>
+<FONT COLOR="#000000">#000066</FONT>
+</TD>
+<TD bgcolor="#000099">
+<FONT COLOR="#ffffff">#000099</FONT><BR>
+<FONT COLOR="#000000">#000099</FONT>
+</TD>
+<TD bgcolor="#0000CC">
+<FONT COLOR="#ffffff">#0000CC</FONT><BR>
+<FONT COLOR="#000000">#0000CC</FONT>
+</TD>
+<TD bgcolor="#0000FF">
+<FONT COLOR="#ffffff">#0000FF</FONT><BR>
+<FONT COLOR="#000000">#0000FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#003300">
+<FONT COLOR="#ffffff">#003300</FONT><BR>
+<FONT COLOR="#000000">#003300</FONT>
+</TD>
+<TD bgcolor="#003333">
+<FONT COLOR="#ffffff">#003333</FONT><BR>
+<FONT COLOR="#000000">#003333</FONT>
+</TD>
+<TD bgcolor="#003366">
+<FONT COLOR="#ffffff">#003366</FONT><BR>
+<FONT COLOR="#000000">#003366</FONT>
+</TD>
+<TD bgcolor="#003399">
+<FONT COLOR="#ffffff">#003399</FONT><BR>
+<FONT COLOR="#000000">#003399</FONT>
+</TD>
+<TD bgcolor="#0033CC">
+<FONT COLOR="#ffffff">#0033CC</FONT><BR>
+<FONT COLOR="#000000">#0033CC</FONT>
+</TD>
+<TD bgcolor="#0033FF">
+<FONT COLOR="#ffffff">#0033FF</FONT><BR>
+<FONT COLOR="#000000">#0033FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#006600">
+<FONT COLOR="#ffffff">#006600</FONT><BR>
+<FONT COLOR="#000000">#006600</FONT>
+</TD>
+<TD bgcolor="#006633">
+<FONT COLOR="#ffffff">#006633</FONT><BR>
+<FONT COLOR="#000000">#006633</FONT>
+</TD>
+<TD bgcolor="#006666">
+<FONT COLOR="#ffffff">#006666</FONT><BR>
+<FONT COLOR="#000000">#006666</FONT>
+</TD>
+<TD bgcolor="#006699">
+<FONT COLOR="#ffffff">#006699</FONT><BR>
+<FONT COLOR="#000000">#006699</FONT>
+</TD>
+<TD bgcolor="#0066CC">
+<FONT COLOR="#ffffff">#0066CC</FONT><BR>
+<FONT COLOR="#000000">#0066CC</FONT>
+</TD>
+<TD bgcolor="#0066FF">
+<FONT COLOR="#ffffff">#0066FF</FONT><BR>
+<FONT COLOR="#000000">#0066FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#009900">
+<FONT COLOR="#ffffff">#009900</FONT><BR>
+<FONT COLOR="#000000">#009900</FONT>
+</TD>
+<TD bgcolor="#009933">
+<FONT COLOR="#ffffff">#009933</FONT><BR>
+<FONT COLOR="#000000">#009933</FONT>
+</TD>
+<TD bgcolor="#009966">
+<FONT COLOR="#ffffff">#009966</FONT><BR>
+<FONT COLOR="#000000">#009966</FONT>
+</TD>
+<TD bgcolor="#009999">
+<FONT COLOR="#ffffff">#009999</FONT><BR>
+<FONT COLOR="#000000">#009999</FONT>
+</TD>
+<TD bgcolor="#0099CC">
+<FONT COLOR="#ffffff">#0099CC</FONT><BR>
+<FONT COLOR="#000000">#0099CC</FONT>
+</TD>
+<TD bgcolor="#0099FF">
+<FONT COLOR="#ffffff">#0099FF</FONT><BR>
+<FONT COLOR="#000000">#0099FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#00CC00">
+<FONT COLOR="#ffffff">#00CC00</FONT><BR>
+<FONT COLOR="#000000">#00CC00</FONT>
+</TD>
+<TD bgcolor="#00CC33">
+<FONT COLOR="#ffffff">#00CC33</FONT><BR>
+<FONT COLOR="#000000">#00CC33</FONT>
+</TD>
+<TD bgcolor="#00CC66">
+<FONT COLOR="#ffffff">#00CC66</FONT><BR>
+<FONT COLOR="#000000">#00CC66</FONT>
+</TD>
+<TD bgcolor="#00CC99">
+<FONT COLOR="#ffffff">#00CC99</FONT><BR>
+<FONT COLOR="#000000">#00CC99</FONT>
+</TD>
+<TD bgcolor="#00CCCC">
+<FONT COLOR="#ffffff">#00CCCC</FONT><BR>
+<FONT COLOR="#000000">#00CCCC</FONT>
+</TD>
+<TD bgcolor="#00CCFF">
+<FONT COLOR="#ffffff">#00CCFF</FONT><BR>
+<FONT COLOR="#000000">#00CCFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#00FF00">
+<FONT COLOR="#ffffff">#00FF00</FONT><BR>
+<FONT COLOR="#000000">#00FF00</FONT>
+</TD>
+<TD bgcolor="#00FF33">
+<FONT COLOR="#ffffff">#00FF33</FONT><BR>
+<FONT COLOR="#000000">#00FF33</FONT>
+</TD>
+<TD bgcolor="#00FF66">
+<FONT COLOR="#ffffff">#00FF66</FONT><BR>
+<FONT COLOR="#000000">#00FF66</FONT>
+</TD>
+<TD bgcolor="#00FF99">
+<FONT COLOR="#ffffff">#00FF99</FONT><BR>
+<FONT COLOR="#000000">#00FF99</FONT>
+</TD>
+<TD bgcolor="#00FFCC">
+<FONT COLOR="#ffffff">#00FFCC</FONT><BR>
+<FONT COLOR="#000000">#00FFCC</FONT>
+</TD>
+<TD bgcolor="#00FFFF">
+<FONT COLOR="#ffffff">#00FFFF</FONT><BR>
+<FONT COLOR="#000000">#00FFFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#330000">
+<FONT COLOR="#ffffff">#330000</FONT><BR>
+<FONT COLOR="#000000">#330000</FONT>
+</TD>
+<TD bgcolor="#330033">
+<FONT COLOR="#ffffff">#330033</FONT><BR>
+<FONT COLOR="#000000">#330033</FONT>
+</TD>
+<TD bgcolor="#330066">
+<FONT COLOR="#ffffff">#330066</FONT><BR>
+<FONT COLOR="#000000">#330066</FONT>
+</TD>
+<TD bgcolor="#330099">
+<FONT COLOR="#ffffff">#330099</FONT><BR>
+<FONT COLOR="#000000">#330099</FONT>
+</TD>
+<TD bgcolor="#3300CC">
+<FONT COLOR="#ffffff">#3300CC</FONT><BR>
+<FONT COLOR="#000000">#3300CC</FONT>
+</TD>
+<TD bgcolor="#3300FF">
+<FONT COLOR="#ffffff">#3300FF</FONT><BR>
+<FONT COLOR="#000000">#3300FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#333300">
+<FONT COLOR="#ffffff">#333300</FONT><BR>
+<FONT COLOR="#000000">#333300</FONT>
+</TD>
+<TD bgcolor="#333333">
+<FONT COLOR="#ffffff">#333333</FONT><BR>
+<FONT COLOR="#000000">#333333</FONT>
+</TD>
+<TD bgcolor="#333366">
+<FONT COLOR="#ffffff">#333366</FONT><BR>
+<FONT COLOR="#000000">#333366</FONT>
+</TD>
+<TD bgcolor="#333399">
+<FONT COLOR="#ffffff">#333399</FONT><BR>
+<FONT COLOR="#000000">#333399</FONT>
+</TD>
+<TD bgcolor="#3333CC">
+<FONT COLOR="#ffffff">#3333CC</FONT><BR>
+<FONT COLOR="#000000">#3333CC</FONT>
+</TD>
+<TD bgcolor="#3333FF">
+<FONT COLOR="#ffffff">#3333FF</FONT><BR>
+<FONT COLOR="#000000">#3333FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#336600">
+<FONT COLOR="#ffffff">#336600</FONT><BR>
+<FONT COLOR="#000000">#336600</FONT>
+</TD>
+<TD bgcolor="#336633">
+<FONT COLOR="#ffffff">#336633</FONT><BR>
+<FONT COLOR="#000000">#336633</FONT>
+</TD>
+<TD bgcolor="#336666">
+<FONT COLOR="#ffffff">#336666</FONT><BR>
+<FONT COLOR="#000000">#336666</FONT>
+</TD>
+<TD bgcolor="#336699">
+<FONT COLOR="#ffffff">#336699</FONT><BR>
+<FONT COLOR="#000000">#336699</FONT>
+</TD>
+<TD bgcolor="#3366CC">
+<FONT COLOR="#ffffff">#3366CC</FONT><BR>
+<FONT COLOR="#000000">#3366CC</FONT>
+</TD>
+<TD bgcolor="#3366FF">
+<FONT COLOR="#ffffff">#3366FF</FONT><BR>
+<FONT COLOR="#000000">#3366FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#339900">
+<FONT COLOR="#ffffff">#339900</FONT><BR>
+<FONT COLOR="#000000">#339900</FONT>
+</TD>
+<TD bgcolor="#339933">
+<FONT COLOR="#ffffff">#339933</FONT><BR>
+<FONT COLOR="#000000">#339933</FONT>
+</TD>
+<TD bgcolor="#339966">
+<FONT COLOR="#ffffff">#339966</FONT><BR>
+<FONT COLOR="#000000">#339966</FONT>
+</TD>
+<TD bgcolor="#339999">
+<FONT COLOR="#ffffff">#339999</FONT><BR>
+<FONT COLOR="#000000">#339999</FONT>
+</TD>
+<TD bgcolor="#3399CC">
+<FONT COLOR="#ffffff">#3399CC</FONT><BR>
+<FONT COLOR="#000000">#3399CC</FONT>
+</TD>
+<TD bgcolor="#3399FF">
+<FONT COLOR="#ffffff">#3399FF</FONT><BR>
+<FONT COLOR="#000000">#3399FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#33CC00">
+<FONT COLOR="#ffffff">#33CC00</FONT><BR>
+<FONT COLOR="#000000">#33CC00</FONT>
+</TD>
+<TD bgcolor="#33CC33">
+<FONT COLOR="#ffffff">#33CC33</FONT><BR>
+<FONT COLOR="#000000">#33CC33</FONT>
+</TD>
+<TD bgcolor="#33CC66">
+<FONT COLOR="#ffffff">#33CC66</FONT><BR>
+<FONT COLOR="#000000">#33CC66</FONT>
+</TD>
+<TD bgcolor="#33CC99">
+<FONT COLOR="#ffffff">#33CC99</FONT><BR>
+<FONT COLOR="#000000">#33CC99</FONT>
+</TD>
+<TD bgcolor="#33CCCC">
+<FONT COLOR="#ffffff">#33CCCC</FONT><BR>
+<FONT COLOR="#000000">#33CCCC</FONT>
+</TD>
+<TD bgcolor="#33CCFF">
+<FONT COLOR="#ffffff">#33CCFF</FONT><BR>
+<FONT COLOR="#000000">#33CCFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#33FF00">
+<FONT COLOR="#ffffff">#33FF00</FONT><BR>
+<FONT COLOR="#000000">#33FF00</FONT>
+</TD>
+<TD bgcolor="#33FF33">
+<FONT COLOR="#ffffff">#33FF33</FONT><BR>
+<FONT COLOR="#000000">#33FF33</FONT>
+</TD>
+<TD bgcolor="#33FF66">
+<FONT COLOR="#ffffff">#33FF66</FONT><BR>
+<FONT COLOR="#000000">#33FF66</FONT>
+</TD>
+<TD bgcolor="#33FF99">
+<FONT COLOR="#ffffff">#33FF99</FONT><BR>
+<FONT COLOR="#000000">#33FF99</FONT>
+</TD>
+<TD bgcolor="#33FFCC">
+<FONT COLOR="#ffffff">#33FFCC</FONT><BR>
+<FONT COLOR="#000000">#33FFCC</FONT>
+</TD>
+<TD bgcolor="#33FFFF">
+<FONT COLOR="#ffffff">#33FFFF</FONT><BR>
+<FONT COLOR="#000000">#33FFFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#660000">
+<FONT COLOR="#ffffff">#660000</FONT><BR>
+<FONT COLOR="#000000">#660000</FONT>
+</TD>
+<TD bgcolor="#660033">
+<FONT COLOR="#ffffff">#660033</FONT><BR>
+<FONT COLOR="#000000">#660033</FONT>
+</TD>
+<TD bgcolor="#660066">
+<FONT COLOR="#ffffff">#660066</FONT><BR>
+<FONT COLOR="#000000">#660066</FONT>
+</TD>
+<TD bgcolor="#660099">
+<FONT COLOR="#ffffff">#660099</FONT><BR>
+<FONT COLOR="#000000">#660099</FONT>
+</TD>
+<TD bgcolor="#6600CC">
+<FONT COLOR="#ffffff">#6600CC</FONT><BR>
+<FONT COLOR="#000000">#6600CC</FONT>
+</TD>
+<TD bgcolor="#6600FF">
+<FONT COLOR="#ffffff">#6600FF</FONT><BR>
+<FONT COLOR="#000000">#6600FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#663300">
+<FONT COLOR="#ffffff">#663300</FONT><BR>
+<FONT COLOR="#000000">#663300</FONT>
+</TD>
+<TD bgcolor="#663333">
+<FONT COLOR="#ffffff">#663333</FONT><BR>
+<FONT COLOR="#000000">#663333</FONT>
+</TD>
+<TD bgcolor="#663366">
+<FONT COLOR="#ffffff">#663366</FONT><BR>
+<FONT COLOR="#000000">#663366</FONT>
+</TD>
+<TD bgcolor="#663399">
+<FONT COLOR="#ffffff">#663399</FONT><BR>
+<FONT COLOR="#000000">#663399</FONT>
+</TD>
+<TD bgcolor="#6633CC">
+<FONT COLOR="#ffffff">#6633CC</FONT><BR>
+<FONT COLOR="#000000">#6633CC</FONT>
+</TD>
+<TD bgcolor="#6633FF">
+<FONT COLOR="#ffffff">#6633FF</FONT><BR>
+<FONT COLOR="#000000">#6633FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#666600">
+<FONT COLOR="#ffffff">#666600</FONT><BR>
+<FONT COLOR="#000000">#666600</FONT>
+</TD>
+<TD bgcolor="#666633">
+<FONT COLOR="#ffffff">#666633</FONT><BR>
+<FONT COLOR="#000000">#666633</FONT>
+</TD>
+<TD bgcolor="#666666">
+<FONT COLOR="#ffffff">#666666</FONT><BR>
+<FONT COLOR="#000000">#666666</FONT>
+</TD>
+<TD bgcolor="#666699">
+<FONT COLOR="#ffffff">#666699</FONT><BR>
+<FONT COLOR="#000000">#666699</FONT>
+</TD>
+<TD bgcolor="#6666CC">
+<FONT COLOR="#ffffff">#6666CC</FONT><BR>
+<FONT COLOR="#000000">#6666CC</FONT>
+</TD>
+<TD bgcolor="#6666FF">
+<FONT COLOR="#ffffff">#6666FF</FONT><BR>
+<FONT COLOR="#000000">#6666FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#669900">
+<FONT COLOR="#ffffff">#669900</FONT><BR>
+<FONT COLOR="#000000">#669900</FONT>
+</TD>
+<TD bgcolor="#669933">
+<FONT COLOR="#ffffff">#669933</FONT><BR>
+<FONT COLOR="#000000">#669933</FONT>
+</TD>
+<TD bgcolor="#669966">
+<FONT COLOR="#ffffff">#669966</FONT><BR>
+<FONT COLOR="#000000">#669966</FONT>
+</TD>
+<TD bgcolor="#669999">
+<FONT COLOR="#ffffff">#669999</FONT><BR>
+<FONT COLOR="#000000">#669999</FONT>
+</TD>
+<TD bgcolor="#6699CC">
+<FONT COLOR="#ffffff">#6699CC</FONT><BR>
+<FONT COLOR="#000000">#6699CC</FONT>
+</TD>
+<TD bgcolor="#6699FF">
+<FONT COLOR="#ffffff">#6699FF</FONT><BR>
+<FONT COLOR="#000000">#6699FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#66CC00">
+<FONT COLOR="#ffffff">#66CC00</FONT><BR>
+<FONT COLOR="#000000">#66CC00</FONT>
+</TD>
+<TD bgcolor="#66CC33">
+<FONT COLOR="#ffffff">#66CC33</FONT><BR>
+<FONT COLOR="#000000">#66CC33</FONT>
+</TD>
+<TD bgcolor="#66CC66">
+<FONT COLOR="#ffffff">#66CC66</FONT><BR>
+<FONT COLOR="#000000">#66CC66</FONT>
+</TD>
+<TD bgcolor="#66CC99">
+<FONT COLOR="#ffffff">#66CC99</FONT><BR>
+<FONT COLOR="#000000">#66CC99</FONT>
+</TD>
+<TD bgcolor="#66CCCC">
+<FONT COLOR="#ffffff">#66CCCC</FONT><BR>
+<FONT COLOR="#000000">#66CCCC</FONT>
+</TD>
+<TD bgcolor="#66CCFF">
+<FONT COLOR="#ffffff">#66CCFF</FONT><BR>
+<FONT COLOR="#000000">#66CCFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#66FF00">
+<FONT COLOR="#ffffff">#66FF00</FONT><BR>
+<FONT COLOR="#000000">#66FF00</FONT>
+</TD>
+<TD bgcolor="#66FF33">
+<FONT COLOR="#ffffff">#66FF33</FONT><BR>
+<FONT COLOR="#000000">#66FF33</FONT>
+</TD>
+<TD bgcolor="#66FF66">
+<FONT COLOR="#ffffff">#66FF66</FONT><BR>
+<FONT COLOR="#000000">#66FF66</FONT>
+</TD>
+<TD bgcolor="#66FF99">
+<FONT COLOR="#ffffff">#66FF99</FONT><BR>
+<FONT COLOR="#000000">#66FF99</FONT>
+</TD>
+<TD bgcolor="#66FFCC">
+<FONT COLOR="#ffffff">#66FFCC</FONT><BR>
+<FONT COLOR="#000000">#66FFCC</FONT>
+</TD>
+<TD bgcolor="#66FFFF">
+<FONT COLOR="#ffffff">#66FFFF</FONT><BR>
+<FONT COLOR="#000000">#66FFFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#990000">
+<FONT COLOR="#ffffff">#990000</FONT><BR>
+<FONT COLOR="#000000">#990000</FONT>
+</TD>
+<TD bgcolor="#990033">
+<FONT COLOR="#ffffff">#990033</FONT><BR>
+<FONT COLOR="#000000">#990033</FONT>
+</TD>
+<TD bgcolor="#990066">
+<FONT COLOR="#ffffff">#990066</FONT><BR>
+<FONT COLOR="#000000">#990066</FONT>
+</TD>
+<TD bgcolor="#990099">
+<FONT COLOR="#ffffff">#990099</FONT><BR>
+<FONT COLOR="#000000">#990099</FONT>
+</TD>
+<TD bgcolor="#9900CC">
+<FONT COLOR="#ffffff">#9900CC</FONT><BR>
+<FONT COLOR="#000000">#9900CC</FONT>
+</TD>
+<TD bgcolor="#9900FF">
+<FONT COLOR="#ffffff">#9900FF</FONT><BR>
+<FONT COLOR="#000000">#9900FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#993300">
+<FONT COLOR="#ffffff">#993300</FONT><BR>
+<FONT COLOR="#000000">#993300</FONT>
+</TD>
+<TD bgcolor="#993333">
+<FONT COLOR="#ffffff">#993333</FONT><BR>
+<FONT COLOR="#000000">#993333</FONT>
+</TD>
+<TD bgcolor="#993366">
+<FONT COLOR="#ffffff">#993366</FONT><BR>
+<FONT COLOR="#000000">#993366</FONT>
+</TD>
+<TD bgcolor="#993399">
+<FONT COLOR="#ffffff">#993399</FONT><BR>
+<FONT COLOR="#000000">#993399</FONT>
+</TD>
+<TD bgcolor="#9933CC">
+<FONT COLOR="#ffffff">#9933CC</FONT><BR>
+<FONT COLOR="#000000">#9933CC</FONT>
+</TD>
+<TD bgcolor="#9933FF">
+<FONT COLOR="#ffffff">#9933FF</FONT><BR>
+<FONT COLOR="#000000">#9933FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#996600">
+<FONT COLOR="#ffffff">#996600</FONT><BR>
+<FONT COLOR="#000000">#996600</FONT>
+</TD>
+<TD bgcolor="#996633">
+<FONT COLOR="#ffffff">#996633</FONT><BR>
+<FONT COLOR="#000000">#996633</FONT>
+</TD>
+<TD bgcolor="#996666">
+<FONT COLOR="#ffffff">#996666</FONT><BR>
+<FONT COLOR="#000000">#996666</FONT>
+</TD>
+<TD bgcolor="#996699">
+<FONT COLOR="#ffffff">#996699</FONT><BR>
+<FONT COLOR="#000000">#996699</FONT>
+</TD>
+<TD bgcolor="#9966CC">
+<FONT COLOR="#ffffff">#9966CC</FONT><BR>
+<FONT COLOR="#000000">#9966CC</FONT>
+</TD>
+<TD bgcolor="#9966FF">
+<FONT COLOR="#ffffff">#9966FF</FONT><BR>
+<FONT COLOR="#000000">#9966FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#999900">
+<FONT COLOR="#ffffff">#999900</FONT><BR>
+<FONT COLOR="#000000">#999900</FONT>
+</TD>
+<TD bgcolor="#999933">
+<FONT COLOR="#ffffff">#999933</FONT><BR>
+<FONT COLOR="#000000">#999933</FONT>
+</TD>
+<TD bgcolor="#999966">
+<FONT COLOR="#ffffff">#999966</FONT><BR>
+<FONT COLOR="#000000">#999966</FONT>
+</TD>
+<TD bgcolor="#999999">
+<FONT COLOR="#ffffff">#999999</FONT><BR>
+<FONT COLOR="#000000">#999999</FONT>
+</TD>
+<TD bgcolor="#9999CC">
+<FONT COLOR="#ffffff">#9999CC</FONT><BR>
+<FONT COLOR="#000000">#9999CC</FONT>
+</TD>
+<TD bgcolor="#9999FF">
+<FONT COLOR="#ffffff">#9999FF</FONT><BR>
+<FONT COLOR="#000000">#9999FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#99CC00">
+<FONT COLOR="#ffffff">#99CC00</FONT><BR>
+<FONT COLOR="#000000">#99CC00</FONT>
+</TD>
+<TD bgcolor="#99CC33">
+<FONT COLOR="#ffffff">#99CC33</FONT><BR>
+<FONT COLOR="#000000">#99CC33</FONT>
+</TD>
+<TD bgcolor="#99CC66">
+<FONT COLOR="#ffffff">#99CC66</FONT><BR>
+<FONT COLOR="#000000">#99CC66</FONT>
+</TD>
+<TD bgcolor="#99CC99">
+<FONT COLOR="#ffffff">#99CC99</FONT><BR>
+<FONT COLOR="#000000">#99CC99</FONT>
+</TD>
+<TD bgcolor="#99CCCC">
+<FONT COLOR="#ffffff">#99CCCC</FONT><BR>
+<FONT COLOR="#000000">#99CCCC</FONT>
+</TD>
+<TD bgcolor="#99CCFF">
+<FONT COLOR="#ffffff">#99CCFF</FONT><BR>
+<FONT COLOR="#000000">#99CCFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#99FF00">
+<FONT COLOR="#ffffff">#99FF00</FONT><BR>
+<FONT COLOR="#000000">#99FF00</FONT>
+</TD>
+<TD bgcolor="#99FF33">
+<FONT COLOR="#ffffff">#99FF33</FONT><BR>
+<FONT COLOR="#000000">#99FF33</FONT>
+</TD>
+<TD bgcolor="#99FF66">
+<FONT COLOR="#ffffff">#99FF66</FONT><BR>
+<FONT COLOR="#000000">#99FF66</FONT>
+</TD>
+<TD bgcolor="#99FF99">
+<FONT COLOR="#ffffff">#99FF99</FONT><BR>
+<FONT COLOR="#000000">#99FF99</FONT>
+</TD>
+<TD bgcolor="#99FFCC">
+<FONT COLOR="#ffffff">#99FFCC</FONT><BR>
+<FONT COLOR="#000000">#99FFCC</FONT>
+</TD>
+<TD bgcolor="#99FFFF">
+<FONT COLOR="#ffffff">#99FFFF</FONT><BR>
+<FONT COLOR="#000000">#99FFFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#CC0000">
+<FONT COLOR="#ffffff">#CC0000</FONT><BR>
+<FONT COLOR="#000000">#CC0000</FONT>
+</TD>
+<TD bgcolor="#CC0033">
+<FONT COLOR="#ffffff">#CC0033</FONT><BR>
+<FONT COLOR="#000000">#CC0033</FONT>
+</TD>
+<TD bgcolor="#CC0066">
+<FONT COLOR="#ffffff">#CC0066</FONT><BR>
+<FONT COLOR="#000000">#CC0066</FONT>
+</TD>
+<TD bgcolor="#CC0099">
+<FONT COLOR="#ffffff">#CC0099</FONT><BR>
+<FONT COLOR="#000000">#CC0099</FONT>
+</TD>
+<TD bgcolor="#CC00CC">
+<FONT COLOR="#ffffff">#CC00CC</FONT><BR>
+<FONT COLOR="#000000">#CC00CC</FONT>
+</TD>
+<TD bgcolor="#CC00FF">
+<FONT COLOR="#ffffff">#CC00FF</FONT><BR>
+<FONT COLOR="#000000">#CC00FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#CC3300">
+<FONT COLOR="#ffffff">#CC3300</FONT><BR>
+<FONT COLOR="#000000">#CC3300</FONT>
+</TD>
+<TD bgcolor="#CC3333">
+<FONT COLOR="#ffffff">#CC3333</FONT><BR>
+<FONT COLOR="#000000">#CC3333</FONT>
+</TD>
+<TD bgcolor="#CC3366">
+<FONT COLOR="#ffffff">#CC3366</FONT><BR>
+<FONT COLOR="#000000">#CC3366</FONT>
+</TD>
+<TD bgcolor="#CC3399">
+<FONT COLOR="#ffffff">#CC3399</FONT><BR>
+<FONT COLOR="#000000">#CC3399</FONT>
+</TD>
+<TD bgcolor="#CC33CC">
+<FONT COLOR="#ffffff">#CC33CC</FONT><BR>
+<FONT COLOR="#000000">#CC33CC</FONT>
+</TD>
+<TD bgcolor="#CC33FF">
+<FONT COLOR="#ffffff">#CC33FF</FONT><BR>
+<FONT COLOR="#000000">#CC33FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#CC6600">
+<FONT COLOR="#ffffff">#CC6600</FONT><BR>
+<FONT COLOR="#000000">#CC6600</FONT>
+</TD>
+<TD bgcolor="#CC6633">
+<FONT COLOR="#ffffff">#CC6633</FONT><BR>
+<FONT COLOR="#000000">#CC6633</FONT>
+</TD>
+<TD bgcolor="#CC6666">
+<FONT COLOR="#ffffff">#CC6666</FONT><BR>
+<FONT COLOR="#000000">#CC6666</FONT>
+</TD>
+<TD bgcolor="#CC6699">
+<FONT COLOR="#ffffff">#CC6699</FONT><BR>
+<FONT COLOR="#000000">#CC6699</FONT>
+</TD>
+<TD bgcolor="#CC66CC">
+<FONT COLOR="#ffffff">#CC66CC</FONT><BR>
+<FONT COLOR="#000000">#CC66CC</FONT>
+</TD>
+<TD bgcolor="#CC66FF">
+<FONT COLOR="#ffffff">#CC66FF</FONT><BR>
+<FONT COLOR="#000000">#CC66FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#CC9900">
+<FONT COLOR="#ffffff">#CC9900</FONT><BR>
+<FONT COLOR="#000000">#CC9900</FONT>
+</TD>
+<TD bgcolor="#CC9933">
+<FONT COLOR="#ffffff">#CC9933</FONT><BR>
+<FONT COLOR="#000000">#CC9933</FONT>
+</TD>
+<TD bgcolor="#CC9966">
+<FONT COLOR="#ffffff">#CC9966</FONT><BR>
+<FONT COLOR="#000000">#CC9966</FONT>
+</TD>
+<TD bgcolor="#CC9999">
+<FONT COLOR="#ffffff">#CC9999</FONT><BR>
+<FONT COLOR="#000000">#CC9999</FONT>
+</TD>
+<TD bgcolor="#CC99CC">
+<FONT COLOR="#ffffff">#CC99CC</FONT><BR>
+<FONT COLOR="#000000">#CC99CC</FONT>
+</TD>
+<TD bgcolor="#CC99FF">
+<FONT COLOR="#ffffff">#CC99FF</FONT><BR>
+<FONT COLOR="#000000">#CC99FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#CCCC00">
+<FONT COLOR="#ffffff">#CCCC00</FONT><BR>
+<FONT COLOR="#000000">#CCCC00</FONT>
+</TD>
+<TD bgcolor="#CCCC33">
+<FONT COLOR="#ffffff">#CCCC33</FONT><BR>
+<FONT COLOR="#000000">#CCCC33</FONT>
+</TD>
+<TD bgcolor="#CCCC66">
+<FONT COLOR="#ffffff">#CCCC66</FONT><BR>
+<FONT COLOR="#000000">#CCCC66</FONT>
+</TD>
+<TD bgcolor="#CCCC99">
+<FONT COLOR="#ffffff">#CCCC99</FONT><BR>
+<FONT COLOR="#000000">#CCCC99</FONT>
+</TD>
+<TD bgcolor="#CCCCCC">
+<FONT COLOR="#ffffff">#CCCCCC</FONT><BR>
+<FONT COLOR="#000000">#CCCCCC</FONT>
+</TD>
+<TD bgcolor="#CCCCFF">
+<FONT COLOR="#ffffff">#CCCCFF</FONT><BR>
+<FONT COLOR="#000000">#CCCCFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#CCFF00">
+<FONT COLOR="#ffffff">#CCFF00</FONT><BR>
+<FONT COLOR="#000000">#CCFF00</FONT>
+</TD>
+<TD bgcolor="#CCFF33">
+<FONT COLOR="#ffffff">#CCFF33</FONT><BR>
+<FONT COLOR="#000000">#CCFF33</FONT>
+</TD>
+<TD bgcolor="#CCFF66">
+<FONT COLOR="#ffffff">#CCFF66</FONT><BR>
+<FONT COLOR="#000000">#CCFF66</FONT>
+</TD>
+<TD bgcolor="#CCFF99">
+<FONT COLOR="#ffffff">#CCFF99</FONT><BR>
+<FONT COLOR="#000000">#CCFF99</FONT>
+</TD>
+<TD bgcolor="#CCFFCC">
+<FONT COLOR="#ffffff">#CCFFCC</FONT><BR>
+<FONT COLOR="#000000">#CCFFCC</FONT>
+</TD>
+<TD bgcolor="#CCFFFF">
+<FONT COLOR="#ffffff">#CCFFFF</FONT><BR>
+<FONT COLOR="#000000">#CCFFFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#FF0000">
+<FONT COLOR="#ffffff">#FF0000</FONT><BR>
+<FONT COLOR="#000000">#FF0000</FONT>
+</TD>
+<TD bgcolor="#FF0033">
+<FONT COLOR="#ffffff">#FF0033</FONT><BR>
+<FONT COLOR="#000000">#FF0033</FONT>
+</TD>
+<TD bgcolor="#FF0066">
+<FONT COLOR="#ffffff">#FF0066</FONT><BR>
+<FONT COLOR="#000000">#FF0066</FONT>
+</TD>
+<TD bgcolor="#FF0099">
+<FONT COLOR="#ffffff">#FF0099</FONT><BR>
+<FONT COLOR="#000000">#FF0099</FONT>
+</TD>
+<TD bgcolor="#FF00CC">
+<FONT COLOR="#ffffff">#FF00CC</FONT><BR>
+<FONT COLOR="#000000">#FF00CC</FONT>
+</TD>
+<TD bgcolor="#FF00FF">
+<FONT COLOR="#ffffff">#FF00FF</FONT><BR>
+<FONT COLOR="#000000">#FF00FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#FF3300">
+<FONT COLOR="#ffffff">#FF3300</FONT><BR>
+<FONT COLOR="#000000">#FF3300</FONT>
+</TD>
+<TD bgcolor="#FF3333">
+<FONT COLOR="#ffffff">#FF3333</FONT><BR>
+<FONT COLOR="#000000">#FF3333</FONT>
+</TD>
+<TD bgcolor="#FF3366">
+<FONT COLOR="#ffffff">#FF3366</FONT><BR>
+<FONT COLOR="#000000">#FF3366</FONT>
+</TD>
+<TD bgcolor="#FF3399">
+<FONT COLOR="#ffffff">#FF3399</FONT><BR>
+<FONT COLOR="#000000">#FF3399</FONT>
+</TD>
+<TD bgcolor="#FF33CC">
+<FONT COLOR="#ffffff">#FF33CC</FONT><BR>
+<FONT COLOR="#000000">#FF33CC</FONT>
+</TD>
+<TD bgcolor="#FF33FF">
+<FONT COLOR="#ffffff">#FF33FF</FONT><BR>
+<FONT COLOR="#000000">#FF33FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#FF6600">
+<FONT COLOR="#ffffff">#FF6600</FONT><BR>
+<FONT COLOR="#000000">#FF6600</FONT>
+</TD>
+<TD bgcolor="#FF6633">
+<FONT COLOR="#ffffff">#FF6633</FONT><BR>
+<FONT COLOR="#000000">#FF6633</FONT>
+</TD>
+<TD bgcolor="#FF6666">
+<FONT COLOR="#ffffff">#FF6666</FONT><BR>
+<FONT COLOR="#000000">#FF6666</FONT>
+</TD>
+<TD bgcolor="#FF6699">
+<FONT COLOR="#ffffff">#FF6699</FONT><BR>
+<FONT COLOR="#000000">#FF6699</FONT>
+</TD>
+<TD bgcolor="#FF66CC">
+<FONT COLOR="#ffffff">#FF66CC</FONT><BR>
+<FONT COLOR="#000000">#FF66CC</FONT>
+</TD>
+<TD bgcolor="#FF66FF">
+<FONT COLOR="#ffffff">#FF66FF</FONT><BR>
+<FONT COLOR="#000000">#FF66FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#FF9900">
+<FONT COLOR="#ffffff">#FF9900</FONT><BR>
+<FONT COLOR="#000000">#FF9900</FONT>
+</TD>
+<TD bgcolor="#FF9933">
+<FONT COLOR="#ffffff">#FF9933</FONT><BR>
+<FONT COLOR="#000000">#FF9933</FONT>
+</TD>
+<TD bgcolor="#FF9966">
+<FONT COLOR="#ffffff">#FF9966</FONT><BR>
+<FONT COLOR="#000000">#FF9966</FONT>
+</TD>
+<TD bgcolor="#FF9999">
+<FONT COLOR="#ffffff">#FF9999</FONT><BR>
+<FONT COLOR="#000000">#FF9999</FONT>
+</TD>
+<TD bgcolor="#FF99CC">
+<FONT COLOR="#ffffff">#FF99CC</FONT><BR>
+<FONT COLOR="#000000">#FF99CC</FONT>
+</TD>
+<TD bgcolor="#FF99FF">
+<FONT COLOR="#ffffff">#FF99FF</FONT><BR>
+<FONT COLOR="#000000">#FF99FF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#FFCC00">
+<FONT COLOR="#ffffff">#FFCC00</FONT><BR>
+<FONT COLOR="#000000">#FFCC00</FONT>
+</TD>
+<TD bgcolor="#FFCC33">
+<FONT COLOR="#ffffff">#FFCC33</FONT><BR>
+<FONT COLOR="#000000">#FFCC33</FONT>
+</TD>
+<TD bgcolor="#FFCC66">
+<FONT COLOR="#ffffff">#FFCC66</FONT><BR>
+<FONT COLOR="#000000">#FFCC66</FONT>
+</TD>
+<TD bgcolor="#FFCC99">
+<FONT COLOR="#ffffff">#FFCC99</FONT><BR>
+<FONT COLOR="#000000">#FFCC99</FONT>
+</TD>
+<TD bgcolor="#FFCCCC">
+<FONT COLOR="#ffffff">#FFCCCC</FONT><BR>
+<FONT COLOR="#000000">#FFCCCC</FONT>
+</TD>
+<TD bgcolor="#FFCCFF">
+<FONT COLOR="#ffffff">#FFCCFF</FONT><BR>
+<FONT COLOR="#000000">#FFCCFF</FONT>
+</TD>
+</TR>
+<TR>
+<TD bgcolor="#FFFF00">
+<FONT COLOR="#ffffff">#FFFF00</FONT><BR>
+<FONT COLOR="#000000">#FFFF00</FONT>
+</TD>
+<TD bgcolor="#FFFF33">
+<FONT COLOR="#ffffff">#FFFF33</FONT><BR>
+<FONT COLOR="#000000">#FFFF33</FONT>
+</TD>
+<TD bgcolor="#FFFF66">
+<FONT COLOR="#ffffff">#FFFF66</FONT><BR>
+<FONT COLOR="#000000">#FFFF66</FONT>
+</TD>
+<TD bgcolor="#FFFF99">
+<FONT COLOR="#ffffff">#FFFF99</FONT><BR>
+<FONT COLOR="#000000">#FFFF99</FONT>
+</TD>
+<TD bgcolor="#FFFFCC">
+<FONT COLOR="#ffffff">#FFFFCC</FONT><BR>
+<FONT COLOR="#000000">#FFFFCC</FONT>
+</TD>
+<TD bgcolor="#FFFFFF">
+<FONT COLOR="#ffffff">#FFFFFF</FONT><BR>
+<FONT COLOR="#000000">#FFFFFF</FONT>
+</TD>
+</TR>
+</TABLE>
+<hr>
+<p class="backto"><a name="netscape-colour-names-table"  href="#contents">Back to contents</a>&nbsp;||&nbsp;<a href="#doc_top">Back to top</a></p>
+<h2>Netcape colour names</h2>
+
+<p>In the following table, the cells on the left side have their
+background colour (BGCOLOR) defined by the colour name, e.g.
+&lt;TD BGCOLOR="aliceblue"&gt;, whereas the cells on the right
+side have the same colours defined by RGB hex values
+(e.g. &lt;TD BGCOLOR="#F0F8FF"&gt;. If you do not
+see the same colours in left and right, then your browser does not
+recognize the colour name.</p>
+
+<p><small><span style="font-family: arial, sans-serif">
+(That is: in the right-hand column the browser is being given the
+colour in RGB, such as #F0F8FF, and should display it if it can display colours at
+all. But in the left column the browser is being given a name, such
+as "aliceblue". If it knows that "aliceblue" means #F0F8FF then it will
+dipslay that colour. But if it does not recognize "aliceblue", then it will
+ignore the colour instruction and display the cell in the same colour as the
+background used for the rest of the page. Thus if the colours are different,
+then your browser does not recognize the colour name; whereas if it <em>does</em>
+show the same colour in both, then it does recognize the name.)</span></small></p>
+
+<table summary="Named colours" width="100%" border="1"
+cellpadding="10">
+<tr>
+<th bgcolor="#FFFF00" width="50%">Colour defined by name</th>
+<th bgcolor="#FFFF00" width="50%">Colour defined by RGB hex value</th>
+</tr>
+
+<TR>
+<TD BGCOLOR="aliceblue"><FONT COLOR="#000000">aliceblue</font><br>
+<FONT COLOR="#ffffff">aliceblue</font></td>
+<TD BGCOLOR="#F0F8FF"><FONT COLOR="#000000">F0F8FF</font><br>
+<FONT COLOR="#ffffff">F0F8FF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="antiquewhite"><FONT COLOR="#000000">antiquewhite</font><br>
+<FONT COLOR="#ffffff">antiquewhite</font></td>
+<TD BGCOLOR="#FAEBD7"><FONT COLOR="#000000">FAEBD7</font><br>
+<FONT COLOR="#ffffff">FAEBD7</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="aqua"><FONT COLOR="#000000">aqua</font><br>
+<FONT COLOR="#ffffff">aqua</font></td>
+<TD BGCOLOR="#00FFFF"><FONT COLOR="#000000">00FFFF</font><br>
+<FONT COLOR="#ffffff">00FFFF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="aquamarine"><FONT COLOR="#000000">aquamarine</font><br>
+<FONT COLOR="#ffffff">aquamarine</font></td>
+<TD BGCOLOR="#7FFFD4"><FONT COLOR="#000000">7FFFD4</font><br>
+<FONT COLOR="#ffffff">7FFFD4</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="azure"><FONT COLOR="#000000">azure</font><br>
+<FONT COLOR="#ffffff">azure</font></td>
+<TD BGCOLOR="#F0FFFF"><FONT COLOR="#000000">F0FFFF</font><br>
+<FONT COLOR="#ffffff">F0FFFF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="beige"><FONT COLOR="#000000">beige</font><br>
+<FONT COLOR="#ffffff">beige</font></td>
+<TD BGCOLOR="#F5F5DC"><FONT COLOR="#000000">F5F5DC</font><br>
+<FONT COLOR="#ffffff">F5F5DC</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="bisque"><FONT COLOR="#000000">bisque</font><br>
+<FONT COLOR="#ffffff">bisque</font></td>
+<TD BGCOLOR="#FFE4C4"><FONT COLOR="#000000">FFE4C4</font><br>
+<FONT COLOR="#ffffff">FFE4C4</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="black"><FONT COLOR="#000000">black</font><br>
+<FONT COLOR="#ffffff">black</font></td>
+<TD BGCOLOR="#000000"><FONT COLOR="#000000">000000</font><br>
+<FONT COLOR="#ffffff">000000</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="blanchedalmond"><FONT COLOR="#000000">blanchedalmond</font><br>
+<FONT COLOR="#ffffff">blanchedalmond</font></td>
+<TD BGCOLOR="#FFEBCD"><FONT COLOR="#000000">FFEBCD</font><br>
+<FONT COLOR="#ffffff">FFEBCD</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="blue"><FONT COLOR="#000000">blue</font><br>
+<FONT COLOR="#ffffff">blue</font></td>
+<TD BGCOLOR="#0000FF"><FONT COLOR="#000000">0000FF</font><br>
+<FONT COLOR="#ffffff">0000FF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="blueviolet"><FONT COLOR="#000000">blueviolet</font><br>
+<FONT COLOR="#ffffff">blueviolet</font></td>
+<TD BGCOLOR="#8A2BE2"><FONT COLOR="#000000">8A2BE2</font><br>
+<FONT COLOR="#ffffff">8A2BE2</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="brown"><FONT COLOR="#000000">brown</font><br>
+<FONT COLOR="#ffffff">brown</font></td>
+<TD BGCOLOR="#A52A2A"><FONT COLOR="#000000">A52A2A</font><br>
+<FONT COLOR="#ffffff">A52A2A</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="burlywood"><FONT COLOR="#000000">burlywood</font><br>
+<FONT COLOR="#ffffff">burlywood</font></td>
+<TD BGCOLOR="#DEB887"><FONT COLOR="#000000">DEB887</font><br>
+<FONT COLOR="#ffffff">DEB887</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="cadetblue"><FONT COLOR="#000000">cadetblue</font><br>
+<FONT COLOR="#ffffff">cadetblue</font></td>
+<TD BGCOLOR="#5F9EA0"><FONT COLOR="#000000">5F9EA0</font><br>
+<FONT COLOR="#ffffff">5F9EA0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="chartreuse"><FONT COLOR="#000000">chartreuse</font><br>
+<FONT COLOR="#ffffff">chartreuse</font></td>
+<TD BGCOLOR="#7FFF00"><FONT COLOR="#000000">7FFF00</font><br>
+<FONT COLOR="#ffffff">7FFF00</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="chocolate"><FONT COLOR="#000000">chocolate</font><br>
+<FONT COLOR="#ffffff">chocolate</font></td>
+<TD BGCOLOR="#D2691E"><FONT COLOR="#000000">D2691E</font><br>
+<FONT COLOR="#ffffff">D2691E</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="coral"><FONT COLOR="#000000">coral</font><br>
+<FONT COLOR="#ffffff">coral</font></td>
+<TD BGCOLOR="#FF7F50"><FONT COLOR="#000000">FF7F50</font><br>
+<FONT COLOR="#ffffff">FF7F50</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="cornflowerblue"><FONT COLOR="#000000">cornflowerblue</font><br>
+<FONT COLOR="#ffffff">cornflowerblue</font></td>
+<TD BGCOLOR="#6495ED"><FONT COLOR="#000000">6495ED</font><br>
+<FONT COLOR="#ffffff">6495ED</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="cornsilk"><FONT COLOR="#000000">cornsilk</font><br>
+<FONT COLOR="#ffffff">cornsilk</font></td>
+<TD BGCOLOR="#FFF8DC"><FONT COLOR="#000000">FFF8DC</font><br>
+<FONT COLOR="#ffffff">FFF8DC</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="crimson"><FONT COLOR="#000000">crimson</font><br>
+<FONT COLOR="#ffffff">crimson</font></td>
+<TD BGCOLOR="#DC143C"><FONT COLOR="#000000">DC143C</font><br>
+<FONT COLOR="#ffffff">DC143C</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="cyan"><FONT COLOR="#000000">cyan</font><br>
+<FONT COLOR="#ffffff">cyan</font></td>
+<TD BGCOLOR="#00FFFF"><FONT COLOR="#000000">00FFFF</font><br>
+<FONT COLOR="#ffffff">00FFFF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkblue"><FONT COLOR="#000000">darkblue</font><br>
+<FONT COLOR="#ffffff">darkblue</font></td>
+<TD BGCOLOR="#00008B"><FONT COLOR="#000000">00008B</font><br>
+<FONT COLOR="#ffffff">00008B</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkcyan"><FONT COLOR="#000000">darkcyan</font><br>
+<FONT COLOR="#ffffff">darkcyan</font></td>
+<TD BGCOLOR="#008B8B"><FONT COLOR="#000000">008B8B</font><br>
+<FONT COLOR="#ffffff">008B8B</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkgoldenrod"><FONT COLOR="#000000">darkgoldenrod</font><br>
+<FONT COLOR="#ffffff">darkgoldenrod</font></td>
+<TD BGCOLOR="#B8860B"><FONT COLOR="#000000">B8860B</font><br>
+<FONT COLOR="#ffffff">B8860B</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkgray"><FONT COLOR="#000000">darkgray</font><br>
+<FONT COLOR="#ffffff">darkgray</font></td>
+<TD BGCOLOR="#A9A9A9"><FONT COLOR="#000000">A9A9A9</font><br>
+<FONT COLOR="#ffffff">A9A9A9</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkgreen"><FONT COLOR="#000000">darkgreen</font><br>
+<FONT COLOR="#ffffff">darkgreen</font></td>
+<TD BGCOLOR="#006400"><FONT COLOR="#000000">006400</font><br>
+<FONT COLOR="#ffffff">006400</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkkhaki"><FONT COLOR="#000000">darkkhaki</font><br>
+<FONT COLOR="#ffffff">darkkhaki</font></td>
+<TD BGCOLOR="#BDB76B"><FONT COLOR="#000000">BDB76B</font><br>
+<FONT COLOR="#ffffff">BDB76B</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkmagenta"><FONT COLOR="#000000">darkmagenta</font><br>
+<FONT COLOR="#ffffff">darkmagenta</font></td>
+<TD BGCOLOR="#8B008B"><FONT COLOR="#000000">8B008B</font><br>
+<FONT COLOR="#ffffff">8B008B</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkolivegreen"><FONT COLOR="#000000">darkolivegreen</font><br>
+<FONT COLOR="#ffffff">darkolivegreen</font></td>
+<TD BGCOLOR="#556B2F"><FONT COLOR="#000000">556B2F</font><br>
+<FONT COLOR="#ffffff">556B2F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkorange"><FONT COLOR="#000000">darkorange</font><br>
+<FONT COLOR="#ffffff">darkorange</font></td>
+<TD BGCOLOR="#FF8C00"><FONT COLOR="#000000">FF8C00</font><br>
+<FONT COLOR="#ffffff">FF8C00</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkorchid"><FONT COLOR="#000000">darkorchid</font><br>
+<FONT COLOR="#ffffff">darkorchid</font></td>
+<TD BGCOLOR="#9932CC"><FONT COLOR="#000000">9932CC</font><br>
+<FONT COLOR="#ffffff">9932CC</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkred"><FONT COLOR="#000000">darkred</font><br>
+<FONT COLOR="#ffffff">darkred</font></td>
+<TD BGCOLOR="#8B0000"><FONT COLOR="#000000">8B0000</font><br>
+<FONT COLOR="#ffffff">8B0000</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darksalmon"><FONT COLOR="#000000">darksalmon</font><br>
+<FONT COLOR="#ffffff">darksalmon</font></td>
+<TD BGCOLOR="#E9967A"><FONT COLOR="#000000">E9967A</font><br>
+<FONT COLOR="#ffffff">E9967A</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkseagreen"><FONT COLOR="#000000">darkseagreen</font><br>
+<FONT COLOR="#ffffff">darkseagreen</font></td>
+<TD BGCOLOR="#8FBC8F"><FONT COLOR="#000000">8FBC8F</font><br>
+<FONT COLOR="#ffffff">8FBC8F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkslateblue"><FONT COLOR="#000000">darkslateblue</font><br>
+<FONT COLOR="#ffffff">darkslateblue</font></td>
+<TD BGCOLOR="#483D8B"><FONT COLOR="#000000">483D8B</font><br>
+<FONT COLOR="#ffffff">483D8B</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkslategray"><FONT COLOR="#000000">darkslategray</font><br>
+<FONT COLOR="#ffffff">darkslategray</font></td>
+<TD BGCOLOR="#2F4F4F"><FONT COLOR="#000000">2F4F4F</font><br>
+<FONT COLOR="#ffffff">2F4F4F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkturquoise"><FONT COLOR="#000000">darkturquoise</font><br>
+<FONT COLOR="#ffffff">darkturquoise</font></td>
+<TD BGCOLOR="#00CED1"><FONT COLOR="#000000">00CED1</font><br>
+<FONT COLOR="#ffffff">00CED1</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="darkviolet"><FONT COLOR="#000000">darkviolet</font><br>
+<FONT COLOR="#ffffff">darkviolet</font></td>
+<TD BGCOLOR="#9400D3"><FONT COLOR="#000000">9400D3</font><br>
+<FONT COLOR="#ffffff">9400D3</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="deeppink"><FONT COLOR="#000000">deeppink</font><br>
+<FONT COLOR="#ffffff">deeppink</font></td>
+<TD BGCOLOR="#FF1493"><FONT COLOR="#000000">FF1493</font><br>
+<FONT COLOR="#ffffff">FF1493</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="deepskyblue"><FONT COLOR="#000000">deepskyblue</font><br>
+<FONT COLOR="#ffffff">deepskyblue</font></td>
+<TD BGCOLOR="#00BFFF"><FONT COLOR="#000000">00BFFF</font><br>
+<FONT COLOR="#ffffff">00BFFF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="dimgray"><FONT COLOR="#000000">dimgray</font><br>
+<FONT COLOR="#ffffff">dimgray</font></td>
+<TD BGCOLOR="#696969"><FONT COLOR="#000000">696969</font><br>
+<FONT COLOR="#ffffff">696969</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="dodgerblue"><FONT COLOR="#000000">dodgerblue</font><br>
+<FONT COLOR="#ffffff">dodgerblue</font></td>
+<TD BGCOLOR="#1E90FF"><FONT COLOR="#000000">1E90FF</font><br>
+<FONT COLOR="#ffffff">1E90FF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="firebrick"><FONT COLOR="#000000">firebrick</font><br>
+<FONT COLOR="#ffffff">firebrick</font></td>
+<TD BGCOLOR="#B22222"><FONT COLOR="#000000">B22222</font><br>
+<FONT COLOR="#ffffff">B22222</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="floralwhite"><FONT COLOR="#000000">floralwhite</font><br>
+<FONT COLOR="#ffffff">floralwhite</font></td>
+<TD BGCOLOR="#FFFAF0"><FONT COLOR="#000000">FFFAF0</font><br>
+<FONT COLOR="#ffffff">FFFAF0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="forestgreen"><FONT COLOR="#000000">forestgreen</font><br>
+<FONT COLOR="#ffffff">forestgreen</font></td>
+<TD BGCOLOR="#228B22"><FONT COLOR="#000000">228B22</font><br>
+<FONT COLOR="#ffffff">228B22</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="fuchsia"><FONT COLOR="#000000">fuchsia</font><br>
+<FONT COLOR="#ffffff">fuchsia</font></td>
+<TD BGCOLOR="#FF00FF"><FONT COLOR="#000000">FF00FF</font><br>
+<FONT COLOR="#ffffff">FF00FF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="gainsboro"><FONT COLOR="#000000">gainsboro</font><br>
+<FONT COLOR="#ffffff">gainsboro</font></td>
+<TD BGCOLOR="#DCDCDC"><FONT COLOR="#000000">DCDCDC</font><br>
+<FONT COLOR="#ffffff">DCDCDC</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="ghostwhite"><FONT COLOR="#000000">ghostwhite</font><br>
+<FONT COLOR="#ffffff">ghostwhite</font></td>
+<TD BGCOLOR="#F8F8FF"><FONT COLOR="#000000">F8F8FF</font><br>
+<FONT COLOR="#ffffff">F8F8FF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="gold"><FONT COLOR="#000000">gold</font><br>
+<FONT COLOR="#ffffff">gold</font></td>
+<TD BGCOLOR="#FFD700"><FONT COLOR="#000000">FFD700</font><br>
+<FONT COLOR="#ffffff">FFD700</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="goldenrod"><FONT COLOR="#000000">goldenrod</font><br>
+<FONT COLOR="#ffffff">goldenrod</font></td>
+<TD BGCOLOR="#DAA520"><FONT COLOR="#000000">DAA520</font><br>
+<FONT COLOR="#ffffff">DAA520</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="gray"><FONT COLOR="#000000">gray</font><br>
+<FONT COLOR="#ffffff">gray</font></td>
+<TD BGCOLOR="#808080"><FONT COLOR="#000000">808080</font><br>
+<FONT COLOR="#ffffff">808080</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="green"><FONT COLOR="#000000">green</font><br>
+<FONT COLOR="#ffffff">green</font></td>
+<TD BGCOLOR="#008000"><FONT COLOR="#000000">008000</font><br>
+<FONT COLOR="#ffffff">008000</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="greenyellow"><FONT COLOR="#000000">greenyellow</font><br>
+<FONT COLOR="#ffffff">greenyellow</font></td>
+<TD BGCOLOR="#ADFF2F"><FONT COLOR="#000000">ADFF2F</font><br>
+<FONT COLOR="#ffffff">ADFF2F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="honeydew"><FONT COLOR="#000000">honeydew</font><br>
+<FONT COLOR="#ffffff">honeydew</font></td>
+<TD BGCOLOR="#F0FFF0"><FONT COLOR="#000000">F0FFF0</font><br>
+<FONT COLOR="#ffffff">F0FFF0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="hotpink"><FONT COLOR="#000000">hotpink</font><br>
+<FONT COLOR="#ffffff">hotpink</font></td>
+<TD BGCOLOR="#FF69B4"><FONT COLOR="#000000">FF69B4</font><br>
+<FONT COLOR="#ffffff">FF69B4</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="indianred"><FONT COLOR="#000000">indianred</font><br>
+<FONT COLOR="#ffffff">indianred</font></td>
+<TD BGCOLOR="#CD5C5C"><FONT COLOR="#000000">CD5C5C</font><br>
+<FONT COLOR="#ffffff">CD5C5C</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="indigo"><FONT COLOR="#000000">indigo</font><br>
+<FONT COLOR="#ffffff">indigo</font></td>
+<TD BGCOLOR="#4B0082"><FONT COLOR="#000000">4B0082</font><br>
+<FONT COLOR="#ffffff">4B0082</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="ivory"><FONT COLOR="#000000">ivory</font><br>
+<FONT COLOR="#ffffff">ivory</font></td>
+<TD BGCOLOR="#FFFFF0"><FONT COLOR="#000000">FFFFF0</font><br>
+<FONT COLOR="#ffffff">FFFFF0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="khaki"><FONT COLOR="#000000">khaki</font><br>
+<FONT COLOR="#ffffff">khaki</font></td>
+<TD BGCOLOR="#F0E68C"><FONT COLOR="#000000">F0E68C</font><br>
+<FONT COLOR="#ffffff">F0E68C</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lavender"><FONT COLOR="#000000">lavender</font><br>
+<FONT COLOR="#ffffff">lavender</font></td>
+<TD BGCOLOR="#E6E6FA"><FONT COLOR="#000000">E6E6FA</font><br>
+<FONT COLOR="#ffffff">E6E6FA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lavenderblush"><FONT COLOR="#000000">lavenderblush</font><br>
+<FONT COLOR="#ffffff">lavenderblush</font></td>
+<TD BGCOLOR="#FFF0F5"><FONT COLOR="#000000">FFF0F5</font><br>
+<FONT COLOR="#ffffff">FFF0F5</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lawngreen"><FONT COLOR="#000000">lawngreen</font><br>
+<FONT COLOR="#ffffff">lawngreen</font></td>
+<TD BGCOLOR="#7CFC00"><FONT COLOR="#000000">7CFC00</font><br>
+<FONT COLOR="#ffffff">7CFC00</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lemonchiffon"><FONT COLOR="#000000">lemonchiffon</font><br>
+<FONT COLOR="#ffffff">lemonchiffon</font></td>
+<TD BGCOLOR="#FFFACD"><FONT COLOR="#000000">FFFACD</font><br>
+<FONT COLOR="#ffffff">FFFACD</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightblue"><FONT COLOR="#000000">lightblue</font><br>
+<FONT COLOR="#ffffff">lightblue</font></td>
+<TD BGCOLOR="#ADD8E6"><FONT COLOR="#000000">ADD8E6</font><br>
+<FONT COLOR="#ffffff">ADD8E6</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightcoral"><FONT COLOR="#000000">lightcoral</font><br>
+<FONT COLOR="#ffffff">lightcoral</font></td>
+<TD BGCOLOR="#F08080"><FONT COLOR="#000000">F08080</font><br>
+<FONT COLOR="#ffffff">F08080</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightcyan"><FONT COLOR="#000000">lightcyan</font><br>
+<FONT COLOR="#ffffff">lightcyan</font></td>
+<TD BGCOLOR="#E0FFFF"><FONT COLOR="#000000">E0FFFF</font><br>
+<FONT COLOR="#ffffff">E0FFFF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightgoldenrodyellow"><FONT COLOR="#000000">lightgoldenrodyellow</font><br>
+<FONT COLOR="#ffffff">lightgoldenrodyellow</font></td>
+<TD BGCOLOR="#FAFAD2"><FONT COLOR="#000000">FAFAD2</font><br>
+<FONT COLOR="#ffffff">FAFAD2</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightgreen"><FONT COLOR="#000000">lightgreen</font><br>
+<FONT COLOR="#ffffff">lightgreen</font></td>
+<TD BGCOLOR="#90EE90"><FONT COLOR="#000000">90EE90</font><br>
+<FONT COLOR="#ffffff">90EE90</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightgrey"><FONT COLOR="#000000">lightgrey</font><br>
+<FONT COLOR="#ffffff">lightgrey</font></td>
+<TD BGCOLOR="#D3D3D3"><FONT COLOR="#000000">D3D3D3</font><br>
+<FONT COLOR="#ffffff">D3D3D3</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightpink"><FONT COLOR="#000000">lightpink</font><br>
+<FONT COLOR="#ffffff">lightpink</font></td>
+<TD BGCOLOR="#FFB6C1"><FONT COLOR="#000000">FFB6C1</font><br>
+<FONT COLOR="#ffffff">FFB6C1</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightsalmon"><FONT COLOR="#000000">lightsalmon</font><br>
+<FONT COLOR="#ffffff">lightsalmon</font></td>
+<TD BGCOLOR="#FFA07A"><FONT COLOR="#000000">FFA07A</font><br>
+<FONT COLOR="#ffffff">FFA07A</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightseagreen"><FONT COLOR="#000000">lightseagreen</font><br>
+<FONT COLOR="#ffffff">lightseagreen</font></td>
+<TD BGCOLOR="#20B2AA"><FONT COLOR="#000000">20B2AA</font><br>
+<FONT COLOR="#ffffff">20B2AA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightskyblue"><FONT COLOR="#000000">lightskyblue</font><br>
+<FONT COLOR="#ffffff">lightskyblue</font></td>
+<TD BGCOLOR="#87CEFA"><FONT COLOR="#000000">87CEFA</font><br>
+<FONT COLOR="#ffffff">87CEFA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightslategray"><FONT COLOR="#000000">lightslategray</font><br>
+<FONT COLOR="#ffffff">lightslategray</font></td>
+<TD BGCOLOR="#778899"><FONT COLOR="#000000">778899</font><br>
+<FONT COLOR="#ffffff">778899</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightsteelblue"><FONT COLOR="#000000">lightsteelblue</font><br>
+<FONT COLOR="#ffffff">lightsteelblue</font></td>
+<TD BGCOLOR="#B0C4DE"><FONT COLOR="#000000">B0C4DE</font><br>
+<FONT COLOR="#ffffff">B0C4DE</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lightyellow"><FONT COLOR="#000000">lightyellow</font><br>
+<FONT COLOR="#ffffff">lightyellow</font></td>
+<TD BGCOLOR="#FFFFE0"><FONT COLOR="#000000">FFFFE0</font><br>
+<FONT COLOR="#ffffff">FFFFE0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="lime"><FONT COLOR="#000000">lime</font><br>
+<FONT COLOR="#ffffff">lime</font></td>
+<TD BGCOLOR="#00FF00"><FONT COLOR="#000000">00FF00</font><br>
+<FONT COLOR="#ffffff">00FF00</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="limegreen"><FONT COLOR="#000000">limegreen</font><br>
+<FONT COLOR="#ffffff">limegreen</font></td>
+<TD BGCOLOR="#32CD32"><FONT COLOR="#000000">32CD32</font><br>
+<FONT COLOR="#ffffff">32CD32</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="linen"><FONT COLOR="#000000">linen</font><br>
+<FONT COLOR="#ffffff">linen</font></td>
+<TD BGCOLOR="#FAF0E6"><FONT COLOR="#000000">FAF0E6</font><br>
+<FONT COLOR="#ffffff">FAF0E6</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="magenta"><FONT COLOR="#000000">magenta</font><br>
+<FONT COLOR="#ffffff">magenta</font></td>
+<TD BGCOLOR="#FF00FF"><FONT COLOR="#000000">FF00FF</font><br>
+<FONT COLOR="#ffffff">FF00FF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="maroon"><FONT COLOR="#000000">maroon</font><br>
+<FONT COLOR="#ffffff">maroon</font></td>
+<TD BGCOLOR="#800000"><FONT COLOR="#000000">800000</font><br>
+<FONT COLOR="#ffffff">800000</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumaquamarine"><FONT COLOR="#000000">mediumaquamarine</font><br>
+<FONT COLOR="#ffffff">mediumaquamarine</font></td>
+<TD BGCOLOR="#66CDAA"><FONT COLOR="#000000">66CDAA</font><br>
+<FONT COLOR="#ffffff">66CDAA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumblue"><FONT COLOR="#000000">mediumblue</font><br>
+<FONT COLOR="#ffffff">mediumblue</font></td>
+<TD BGCOLOR="#0000CD"><FONT COLOR="#000000">0000CD</font><br>
+<FONT COLOR="#ffffff">0000CD</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumorchid"><FONT COLOR="#000000">mediumorchid</font><br>
+<FONT COLOR="#ffffff">mediumorchid</font></td>
+<TD BGCOLOR="#BA55D3"><FONT COLOR="#000000">BA55D3</font><br>
+<FONT COLOR="#ffffff">BA55D3</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumpurple"><FONT COLOR="#000000">mediumpurple</font><br>
+<FONT COLOR="#ffffff">mediumpurple</font></td>
+<TD BGCOLOR="#9370DB"><FONT COLOR="#000000">9370DB</font><br>
+<FONT COLOR="#ffffff">9370DB</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumseagreen"><FONT COLOR="#000000">mediumseagreen</font><br>
+<FONT COLOR="#ffffff">mediumseagreen</font></td>
+<TD BGCOLOR="#3CB371"><FONT COLOR="#000000">3CB371</font><br>
+<FONT COLOR="#ffffff">3CB371</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumslateblue"><FONT COLOR="#000000">mediumslateblue</font><br>
+<FONT COLOR="#ffffff">mediumslateblue</font></td>
+<TD BGCOLOR="#7B68EE"><FONT COLOR="#000000">7B68EE</font><br>
+<FONT COLOR="#ffffff">7B68EE</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumspringgreen"><FONT COLOR="#000000">mediumspringgreen</font><br>
+<FONT COLOR="#ffffff">mediumspringgreen</font></td>
+<TD BGCOLOR="#00FA9A"><FONT COLOR="#000000">00FA9A</font><br>
+<FONT COLOR="#ffffff">00FA9A</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumturquoise"><FONT COLOR="#000000">mediumturquoise</font><br>
+<FONT COLOR="#ffffff">mediumturquoise</font></td>
+<TD BGCOLOR="#48D1CC"><FONT COLOR="#000000">48D1CC</font><br>
+<FONT COLOR="#ffffff">48D1CC</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mediumvioletred"><FONT COLOR="#000000">mediumvioletred</font><br>
+<FONT COLOR="#ffffff">mediumvioletred</font></td>
+<TD BGCOLOR="#C71585"><FONT COLOR="#000000">C71585</font><br>
+<FONT COLOR="#ffffff">C71585</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="midnightblue"><FONT COLOR="#000000">midnightblue</font><br>
+<FONT COLOR="#ffffff">midnightblue</font></td>
+<TD BGCOLOR="#191970"><FONT COLOR="#000000">191970</font><br>
+<FONT COLOR="#ffffff">191970</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mintcream"><FONT COLOR="#000000">mintcream</font><br>
+<FONT COLOR="#ffffff">mintcream</font></td>
+<TD BGCOLOR="#F5FFFA"><FONT COLOR="#000000">F5FFFA</font><br>
+<FONT COLOR="#ffffff">F5FFFA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="mistyrose"><FONT COLOR="#000000">mistyrose</font><br>
+<FONT COLOR="#ffffff">mistyrose</font></td>
+<TD BGCOLOR="#FFE4E1"><FONT COLOR="#000000">FFE4E1</font><br>
+<FONT COLOR="#ffffff">FFE4E1</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="moccasin"><FONT COLOR="#000000">moccasin</font><br>
+<FONT COLOR="#ffffff">moccasin</font></td>
+<TD BGCOLOR="#FFE4B5"><FONT COLOR="#000000">FFE4B5</font><br>
+<FONT COLOR="#ffffff">FFE4B5</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="navajowhite"><FONT COLOR="#000000">navajowhite</font><br>
+<FONT COLOR="#ffffff">navajowhite</font></td>
+<TD BGCOLOR="#FFDEAD"><FONT COLOR="#000000">FFDEAD</font><br>
+<FONT COLOR="#ffffff">FFDEAD</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="navy"><FONT COLOR="#000000">navy</font><br>
+<FONT COLOR="#ffffff">navy</font></td>
+<TD BGCOLOR="#000080"><FONT COLOR="#000000">000080</font><br>
+<FONT COLOR="#ffffff">000080</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="oldlace"><FONT COLOR="#000000">oldlace</font><br>
+<FONT COLOR="#ffffff">oldlace</font></td>
+<TD BGCOLOR="#FDF5E6"><FONT COLOR="#000000">FDF5E6</font><br>
+<FONT COLOR="#ffffff">FDF5E6</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="olive"><FONT COLOR="#000000">olive</font><br>
+<FONT COLOR="#ffffff">olive</font></td>
+<TD BGCOLOR="#808000"><FONT COLOR="#000000">808000</font><br>
+<FONT COLOR="#ffffff">808000</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="olivedrab"><FONT COLOR="#000000">olivedrab</font><br>
+<FONT COLOR="#ffffff">olivedrab</font></td>
+<TD BGCOLOR="#6B8E23"><FONT COLOR="#000000">6B8E23</font><br>
+<FONT COLOR="#ffffff">6B8E23</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="orange"><FONT COLOR="#000000">orange</font><br>
+<FONT COLOR="#ffffff">orange</font></td>
+<TD BGCOLOR="#FFA500"><FONT COLOR="#000000">FFA500</font><br>
+<FONT COLOR="#ffffff">FFA500</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="orangered"><FONT COLOR="#000000">orangered</font><br>
+<FONT COLOR="#ffffff">orangered</font></td>
+<TD BGCOLOR="#FF4500"><FONT COLOR="#000000">FF4500</font><br>
+<FONT COLOR="#ffffff">FF4500</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="orchid"><FONT COLOR="#000000">orchid</font><br>
+<FONT COLOR="#ffffff">orchid</font></td>
+<TD BGCOLOR="#DA70D6"><FONT COLOR="#000000">DA70D6</font><br>
+<FONT COLOR="#ffffff">DA70D6</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="palegoldenrod"><FONT COLOR="#000000">palegoldenrod</font><br>
+<FONT COLOR="#ffffff">palegoldenrod</font></td>
+<TD BGCOLOR="#EEE8AA"><FONT COLOR="#000000">EEE8AA</font><br>
+<FONT COLOR="#ffffff">EEE8AA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="palegreen"><FONT COLOR="#000000">palegreen</font><br>
+<FONT COLOR="#ffffff">palegreen</font></td>
+<TD BGCOLOR="#98FB98"><FONT COLOR="#000000">98FB98</font><br>
+<FONT COLOR="#ffffff">98FB98</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="paleturquoise"><FONT COLOR="#000000">paleturquoise</font><br>
+<FONT COLOR="#ffffff">paleturquoise</font></td>
+<TD BGCOLOR="#AFEEEE"><FONT COLOR="#000000">AFEEEE</font><br>
+<FONT COLOR="#ffffff">AFEEEE</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="palevioletred"><FONT COLOR="#000000">palevioletred</font><br>
+<FONT COLOR="#ffffff">palevioletred</font></td>
+<TD BGCOLOR="#DB7093"><FONT COLOR="#000000">DB7093</font><br>
+<FONT COLOR="#ffffff">DB7093</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="papayawhip"><FONT COLOR="#000000">papayawhip</font><br>
+<FONT COLOR="#ffffff">papayawhip</font></td>
+<TD BGCOLOR="#FFEFD5"><FONT COLOR="#000000">FFEFD5</font><br>
+<FONT COLOR="#ffffff">FFEFD5</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="peachpuff"><FONT COLOR="#000000">peachpuff</font><br>
+<FONT COLOR="#ffffff">peachpuff</font></td>
+<TD BGCOLOR="#FFDAB9"><FONT COLOR="#000000">FFDAB9</font><br>
+<FONT COLOR="#ffffff">FFDAB9</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="peru"><FONT COLOR="#000000">peru</font><br>
+<FONT COLOR="#ffffff">peru</font></td>
+<TD BGCOLOR="#CD853F"><FONT COLOR="#000000">CD853F</font><br>
+<FONT COLOR="#ffffff">CD853F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="pink"><FONT COLOR="#000000">pink</font><br>
+<FONT COLOR="#ffffff">pink</font></td>
+<TD BGCOLOR="#FFC0CB"><FONT COLOR="#000000">FFC0CB</font><br>
+<FONT COLOR="#ffffff">FFC0CB</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="plum"><FONT COLOR="#000000">plum</font><br>
+<FONT COLOR="#ffffff">plum</font></td>
+<TD BGCOLOR="#DDA0DD"><FONT COLOR="#000000">DDA0DD</font><br>
+<FONT COLOR="#ffffff">DDA0DD</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="powderblue"><FONT COLOR="#000000">powderblue</font><br>
+<FONT COLOR="#ffffff">powderblue</font></td>
+<TD BGCOLOR="#B0E0E6"><FONT COLOR="#000000">B0E0E6</font><br>
+<FONT COLOR="#ffffff">B0E0E6</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="purple"><FONT COLOR="#000000">purple</font><br>
+<FONT COLOR="#ffffff">purple</font></td>
+<TD BGCOLOR="#800080"><FONT COLOR="#000000">800080</font><br>
+<FONT COLOR="#ffffff">800080</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="red"><FONT COLOR="#000000">red</font><br>
+<FONT COLOR="#ffffff">red</font></td>
+<TD BGCOLOR="#FF0000"><FONT COLOR="#000000">FF0000</font><br>
+<FONT COLOR="#ffffff">FF0000</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="rosybrown"><FONT COLOR="#000000">rosybrown</font><br>
+<FONT COLOR="#ffffff">rosybrown</font></td>
+<TD BGCOLOR="#BC8F8F"><FONT COLOR="#000000">BC8F8F</font><br>
+<FONT COLOR="#ffffff">BC8F8F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="royalblue"><FONT COLOR="#000000">royalblue</font><br>
+<FONT COLOR="#ffffff">royalblue</font></td>
+<TD BGCOLOR="#4169E1"><FONT COLOR="#000000">4169E1</font><br>
+<FONT COLOR="#ffffff">4169E1</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="saddlebrown"><FONT COLOR="#000000">saddlebrown</font><br>
+<FONT COLOR="#ffffff">saddlebrown</font></td>
+<TD BGCOLOR="#8B4513"><FONT COLOR="#000000">8B4513</font><br>
+<FONT COLOR="#ffffff">8B4513</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="salmon"><FONT COLOR="#000000">salmon</font><br>
+<FONT COLOR="#ffffff">salmon</font></td>
+<TD BGCOLOR="#FA8072"><FONT COLOR="#000000">FA8072</font><br>
+<FONT COLOR="#ffffff">FA8072</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="sandybrown"><FONT COLOR="#000000">sandybrown</font><br>
+<FONT COLOR="#ffffff">sandybrown</font></td>
+<TD BGCOLOR="#F4A460"><FONT COLOR="#000000">F4A460</font><br>
+<FONT COLOR="#ffffff">F4A460</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="seagreen"><FONT COLOR="#000000">seagreen</font><br>
+<FONT COLOR="#ffffff">seagreen</font></td>
+<TD BGCOLOR="#2E8B57"><FONT COLOR="#000000">2E8B57</font><br>
+<FONT COLOR="#ffffff">2E8B57</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="seashell"><FONT COLOR="#000000">seashell</font><br>
+<FONT COLOR="#ffffff">seashell</font></td>
+<TD BGCOLOR="#FFF5EE"><FONT COLOR="#000000">FFF5EE</font><br>
+<FONT COLOR="#ffffff">FFF5EE</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="sienna"><FONT COLOR="#000000">sienna</font><br>
+<FONT COLOR="#ffffff">sienna</font></td>
+<TD BGCOLOR="#A0522D"><FONT COLOR="#000000">A0522D</font><br>
+<FONT COLOR="#ffffff">A0522D</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="silver"><FONT COLOR="#000000">silver</font><br>
+<FONT COLOR="#ffffff">silver</font></td>
+<TD BGCOLOR="#C0C0C0"><FONT COLOR="#000000">C0C0C0</font><br>
+<FONT COLOR="#ffffff">C0C0C0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="skyblue"><FONT COLOR="#000000">skyblue</font><br>
+<FONT COLOR="#ffffff">skyblue</font></td>
+<TD BGCOLOR="#87CEEB"><FONT COLOR="#000000">87CEEB</font><br>
+<FONT COLOR="#ffffff">87CEEB</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="slateblue"><FONT COLOR="#000000">slateblue</font><br>
+<FONT COLOR="#ffffff">slateblue</font></td>
+<TD BGCOLOR="#6A5ACD"><FONT COLOR="#000000">6A5ACD</font><br>
+<FONT COLOR="#ffffff">6A5ACD</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="slategray"><FONT COLOR="#000000">slategray</font><br>
+<FONT COLOR="#ffffff">slategray</font></td>
+<TD BGCOLOR="#708090"><FONT COLOR="#000000">708090</font><br>
+<FONT COLOR="#ffffff">708090</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="snow"><FONT COLOR="#000000">snow</font><br>
+<FONT COLOR="#ffffff">snow</font></td>
+<TD BGCOLOR="#FFFAFA"><FONT COLOR="#000000">FFFAFA</font><br>
+<FONT COLOR="#ffffff">FFFAFA</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="springgreen"><FONT COLOR="#000000">springgreen</font><br>
+<FONT COLOR="#ffffff">springgreen</font></td>
+<TD BGCOLOR="#00FF7F"><FONT COLOR="#000000">00FF7F</font><br>
+<FONT COLOR="#ffffff">00FF7F</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="steelblue"><FONT COLOR="#000000">steelblue</font><br>
+<FONT COLOR="#ffffff">steelblue</font></td>
+<TD BGCOLOR="#4682B4"><FONT COLOR="#000000">4682B4</font><br>
+<FONT COLOR="#ffffff">4682B4</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="tan"><FONT COLOR="#000000">tan</font><br>
+<FONT COLOR="#ffffff">tan</font></td>
+<TD BGCOLOR="#D2B48C"><FONT COLOR="#000000">D2B48C</font><br>
+<FONT COLOR="#ffffff">D2B48C</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="teal"><FONT COLOR="#000000">teal</font><br>
+<FONT COLOR="#ffffff">teal</font></td>
+<TD BGCOLOR="#008080"><FONT COLOR="#000000">008080</font><br>
+<FONT COLOR="#ffffff">008080</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="thistle"><FONT COLOR="#000000">thistle</font><br>
+<FONT COLOR="#ffffff">thistle</font></td>
+<TD BGCOLOR="#D8BFD8"><FONT COLOR="#000000">D8BFD8</font><br>
+<FONT COLOR="#ffffff">D8BFD8</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="tomato"><FONT COLOR="#000000">tomato</font><br>
+<FONT COLOR="#ffffff">tomato</font></td>
+<TD BGCOLOR="#FF6347"><FONT COLOR="#000000">FF6347</font><br>
+<FONT COLOR="#ffffff">FF6347</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="turquoise"><FONT COLOR="#000000">turquoise</font><br>
+<FONT COLOR="#ffffff">turquoise</font></td>
+<TD BGCOLOR="#40E0D0"><FONT COLOR="#000000">40E0D0</font><br>
+<FONT COLOR="#ffffff">40E0D0</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="violet"><FONT COLOR="#000000">violet</font><br>
+<FONT COLOR="#ffffff">violet</font></td>
+<TD BGCOLOR="#EE82EE"><FONT COLOR="#000000">EE82EE</font><br>
+<FONT COLOR="#ffffff">EE82EE</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="wheat"><FONT COLOR="#000000">wheat</font><br>
+<FONT COLOR="#ffffff">wheat</font></td>
+<TD BGCOLOR="#F5DEB3"><FONT COLOR="#000000">F5DEB3</font><br>
+<FONT COLOR="#ffffff">F5DEB3</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="white"><FONT COLOR="#000000">white</font><br>
+<FONT COLOR="#ffffff">white</font></td>
+<TD BGCOLOR="#FFFFFF"><FONT COLOR="#000000">FFFFFF</font><br>
+<FONT COLOR="#ffffff">FFFFFF</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="whitesmoke"><FONT COLOR="#000000">whitesmoke</font><br>
+<FONT COLOR="#ffffff">whitesmoke</font></td>
+<TD BGCOLOR="#F5F5F5"><FONT COLOR="#000000">F5F5F5</font><br>
+<FONT COLOR="#ffffff">F5F5F5</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="yellow"><FONT COLOR="#000000">yellow</font><br>
+<FONT COLOR="#ffffff">yellow</font></td>
+<TD BGCOLOR="#FFFF00"><FONT COLOR="#000000">FFFF00</font><br>
+<FONT COLOR="#ffffff">FFFF00</font></td>
+</TR>
+<TR>
+<TD BGCOLOR="yellowgreen"><FONT COLOR="#000000">yellowgreen</font><br>
+<FONT COLOR="#ffffff">yellowgreen</font></td>
+<TD BGCOLOR="#9ACD32"><FONT COLOR="#000000">9ACD32</font><br>
+<FONT COLOR="#ffffff">9ACD32</font></td>
+</TR>
+
+
+</table>
+
+<hr>
+<p class="backto"><a href="#contents">Back to contents</a>&nbsp;||&nbsp;<a name="doc_end" href="#doc_top">Back to top</a></p>
+
+<p><small>Copyright &copy; 2000 University of Botswana History Department
+<BR>
+Last updated 26 February 2008</small></p>
+
+</BODY>
+</HTML>
+ contentType 9 text/html url 48 http://www.thuto.org:80/ubh/web/html/colour1.htm responseCode 3 200 

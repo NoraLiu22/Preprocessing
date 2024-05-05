@@ -1,0 +1,1764 @@
+lgmcfieaakiipalsdkvmhkciviparkbmrosolgxi length 6 135725 page 135725 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="no-js">
+    <head>
+        
+            <base href="https://consult.abs.gov.au/"/>
+        
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Find and participate in consultations run by the Australian Bureau of Statistics">
+        
+        
+        <title>
+            We Asked, You Said, We Did
+             - Australian Bureau of Statistics
+            - Citizen Space
+        </title>
+        
+        <link rel="stylesheet" href="/static_frontend/vendor/lato-2.015/fonts.css">
+        <link type="text/css" href="/static_frontend/vendor/dlb-public-ui/css/bootstrap.css" rel="stylesheet">
+        
+        <link type="text/css" href="https://consult.abs.gov.au/static_frontend/vendor/dlb-public-ui/css/dlb-public-ui-compiled.css" rel="stylesheet">
+        <link type="text/css" href="https://consult.abs.gov.au/static_frontend/css/citizenspace.css" rel="stylesheet">
+
+        
+
+        <!--Font Awesome-->
+        <link type="text/css" href="/static_frontend/vendor/dlb-public-ui/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <!--/Font Awesome-->
+
+        
+        <script type="text/javascript">
+            var tr_auto_embed = true;
+        </script>
+
+        <!--jQuery -->
+        <script type="text/javascript" src="/static_frontend/vendor/dlb-public-ui/libraries/jquery/jquery.min.js"></script>
+        <!--/jQuery -->
+        <script type="text/javascript" src="/static_frontend/js/fluid-resize.js?version=7.43.0"></script>
+        
+        <script type="text/javascript" src="/static_frontend/js/tr-safe-embed.js?version=7.43.0"></script>
+        <script type="text/javascript" src="/static_frontend/js/text-truncate.js?version=7.43.0"></script>
+        <script type="text/javascript" src="/static_frontend/js/tr-pdf.js?version=7.43.0"></script>
+        
+        
+        
+
+        <!--
+            Part of the Bootstrap 5 migration involves prefixing Bootstrap JS attributes with bs-
+            This has been done in our codebase, but copy/pasted content such as fact banks may still have old attributes.
+            Additionally, the admin UI is on Bootstrap 3 but is exposed to Bootstrap 5 when previewing pages.
+            Shim these attributes to allow these to remain working.
+        -->
+        <script>
+            const bootstrapEventShim = function() {
+                document.querySelectorAll('[data-toggle]').forEach((el) => {
+                    let attrVal = el.dataset.toggle;
+                    el.dataset.bsToggle = attrVal;
+                });
+                document.querySelectorAll('[data-target]').forEach((el) => {
+                    let attrVal = el.dataset.target;
+                    el.dataset.bsTarget = attrVal;
+                });
+            }
+            document.addEventListener("DOMContentLoaded", bootstrapEventShim);
+        </script>
+
+         <!-- Bootstrap JS Components -->
+        <script src="/static_frontend/vendor/dlb-public-ui/libraries/bootstrap-5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+        
+
+        <!-- Page-specific CSS and JS can go here -->
+        
+
+
+        <!-- Remove no-js class if scripts are enabled -->
+        <script>
+            document.documentElement.classList.remove('no-js')
+        </script>
+
+        <!-- Ensure collapsible content is displayed and misleading links are hidden if JS is disabled -->
+        <noscript>
+            <style>
+                .collapse {
+                    display: block;
+                }
+
+                .show-when-no-js {
+                    display:block;
+                }
+
+                .hide-when-no-js {
+                    display:none;
+                }
+            </style>
+        </noscript>
+
+    </head>
+
+    <body
+          data-site-root="https://consult.abs.gov.au">
+        <div id="skip">
+            <a href="https://consult.abs.gov.au/we_asked_you_said/#page-content">Skip to Main Content</a>
+        </div>
+        
+
+<script>
+
+    jQuery(document).ready(function() {
+        
+
+        var options = {};
+        // used to disable the go button when the selected page is the current page
+        var cur_page = jQuery("#preview-navigation-page-select").val()
+
+        jQuery("#preview-navigation-page-select").change(function() {
+            var page = jQuery(this).val();
+            var button = jQuery("#preview-navigation button");
+            if (page != "" && page != cur_page) {
+                button.prop('disabled',false);
+            } else {
+                button.prop('disabled','disabled');
+            }
+        });
+
+        jQuery("#preview-navigation button").click(function(event) {
+            var page = jQuery("#preview-navigation-page-select").val();
+            var consultation_root = jQuery("#preview-navigation").data("consultation-root");
+            var survey_root = jQuery("#preview-navigation").data("survey-root");
+            var cookie_path = jQuery("#preview-navigation").data("cookie-path");
+
+            function set_state(state) {
+                document.cookie="preview_state="+state+";path="+cookie_path+";";
+            }
+
+            set_state("open");
+            if (page === "_hub") {
+                window.location = survey_root;
+            } else if (page == "_overview_open") {
+                window.location = consultation_root;
+            } else if (page == "_overview_closed") {
+                set_state("closed");
+                window.location = consultation_root;
+            } else if (page == "_overview_forthcoming") {
+                set_state("forthcoming");
+                window.location = consultation_root;
+            } else if (page == "_published_responses") {
+                set_state("closed");
+                window.location = survey_root + "published_select_respondent";
+            } else if (page == "") {
+                // No-op, shouldn't get here (hah..).
+            } else {
+                window.location = survey_root + page;
+            }
+        });
+
+    });
+</script>
+
+        <div id="global-wrapper">
+
+            
+
+            <header id="global-nav" class="navbar navbar-default navbar-expand-md navbar-static-top dss-navbar">
+                <div class="container-fluid">
+                    <div class="row flex-grow-1 py-2 pb-md-0 pt-lg-1">
+                        <div class="mb-md-2 py-lg-1 col-md-8 ">
+                            <div class="navbar-header d-flex justify-content-between">
+                                <div id="global-nav-main-heading">
+                                    
+                                        <a id="global-nav-site-title" href="https://consult.abs.gov.au/">
+                                            <img src="https://consult.abs.gov.au/os-custom-logos/abs_logo_72dpi_113x100_mono.jpg-1"
+                                                alt="ABS Logo" class="global-nav-logo ms-3 ms-md-0" />
+                                        </a>
+                                    
+                                </div>
+                                <button class="navbar-toggler d-md-none align-self-center"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#global-navbar-collapse"
+                                    aria-expanded="false"
+                                    aria-controls="global-navbar-collapse">
+                                    <span class="visually-hidden">Toggle navigation</span>
+                                    <span class="fa fa-caret-down"></span>
+                                    <span>Menu</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="cs-global-search-container-md" class="global-search-container d-none d-md-block align-self-center text-right py-lg-2">
+                            <!-- Javascript puts the search form here for sm viewports -->
+                            <form id="cs-global-search" action="https://consult.abs.gov.au/consultation_finder/" method="GET">
+                                
+                                <div role="search">
+                                    
+                                    <label for="cs-global-search-input" class="visually-hidden">Search</label>
+                                    <div class="input-group">
+                                        <input class="form-control" size="27" id="cs-global-search-input" type="text" name="keyword" placeholder="Search"/>
+                                        <button class="btn btn-primary" aria-label="Search"><span class="fa fa-search"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        
+                        
+                        <div class="w-100"></div>
+                        <div>
+                            <nav class="collapse navbar-collapse navbar-left px-3 px-md-0"
+                                id="global-navbar-collapse">
+
+                                <div id="global-navbar-collapse-inner" class="py-2">
+
+                                    <div id="cs-global-search-container-xs" class="d-md-none">
+                                        <!-- Javascript puts the search form here for xs viewports -->
+                                    </div>
+                                    
+                                    <ul class="cs-navbar-nav-list">
+                                        <li class="cs-navbar-nav-list-item">
+    <a class="cs-navbar-nav-link" href="/">
+        <span class="cs-navbar-nav-link-text">Home</span>
+    </a>
+</li>
+<li class="cs-navbar-nav-list-item">
+    <a class="cs-navbar-nav-link" href="/consultation_finder/">
+        <span class="cs-navbar-nav-link-text">Find Activities</span>
+    </a>
+</li>
+<li class="cs-navbar-nav-list-item">
+    <a class="cs-navbar-nav-link" href="/we_asked_you_said/">
+        <span class="cs-navbar-nav-link-text">We Asked, You Said, We Did</span>
+    </a>
+</li>
+
+                                    </ul>
+                                    
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main id="page-content-wrapper">
+                <div id="page-content" tabindex="-1">
+                    <div id="cs-page-we_asked_you_said">
+        <div class="cs-page-component-group " style="">
+            
+                <section class="dss-rhino cs-page-component-container cs-banner-container" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-html-component">
+        <div class="row cs-html-component-one-column">
+            <div>
+                <div class="cs-banner-inner dss-easy-reading">
+                    <h1>We Asked, You Said, We Did</h1>
+                    <p>Below are some of the issues we have recently consulted on and their outcomes.</p>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+        
+    </div>
+</section>
+
+
+            
+        </div>
+        <div class="cs-page-component-group " style="">
+            
+                <section class="dss-rhino cs-page-component-container dss-rhino-2021-warm-light-grey" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-wayswd-component">
+    
+    
+
+    <div>
+        <div class="dss-card" style="margin-top:0">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/data-integration-operations/monthly-cpi-design-consultation/">
+                        <h2>Design of a complete monthly Consumer Price Index – Public Consultation </h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The Australian Bureau of Statistics (ABS) will release a complete monthly measure of the Consumer Price Index (CPI) by late 2025, as part of its transformative program called <i>Big Data, Timely Insights: Phase 2</i> (BDTI).</span></span></span></p>
+
+<p>Stakeholders were invited to provide input on key aspects of the CPI publication design during a public consultation held from 16 November to 15 December 2023. &#160;The public consultation sought formal submissions on this proposed design covering key areas such as release timing, data requirements, publication specifics, and methodologies.</p>
+
+<p><span><span><span>The public consultation was informed by a preliminary <i>Discovery Stage </i>in October 2023, where the ABS engaged directly with a selection of stakeholders to gain insights into their priorities and to lay the groundwork for the initial CPI design.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>Feedback on the design of the complete monthly CPI aligned closely with stakeholder insights gathered during the initial <i>Discovery Stage</i>. The primary requests voiced by stakeholders included:</span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><b>Prioritise accuracy and data coverage</b> of the complete monthly CPI over improved timeliness of the publication&#8217;s release after the end of the reference period, with backing for the ABS&#8217;s proposal that the CPI publication continue to be released around four-weeks after the reference period.</span></span></span></span></li>
+	<li><span><span><span><span>Support for maintaining the <b>same level of detailed commentary and analysis</b> as published in the quarterly CPI with requests for further expansion of the CPI analytical series where feasible.</span></span></span></span></li>
+	<li><span><span><span><span><b>Monthly data content consistent with the current quarterly CPI data series</b> incorporating capital city and expenditure class (EC) level data.</span></span></span></span></li>
+	<li><span><span><span><span><b>Continue a quarterly data series</b> for continuity of timeseries analysis and legislated indexation requirements. </span></span></span></span></li>
+</ul>
+
+<p><span><span><span><span>Further insights provided by stakeholders included: </span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span>Support for publishing data with more decimal places for increased precision.</span></span></span></span></li>
+	<li><span><span><span><span>Request for a monthly analytical series such as trimmed mean, weighted median, and goods and services categories.</span></span></span></span></li>
+	<li><span><span><span><span>Support for transparency regarding data collection frequency, coverage, and updates to the CPI Concepts, Sources, and Methods (CSM).</span></span></span></span></li>
+</ul>
+
+<p><span><span><span>Feedback was also received that is beyond the scope of the BDTI transformation program. This feedback will be evaluated for potential integration in future, <span>including considerations such as expanded product classifications for further international comparability<span>,</span></span> expanding the Selected Living Costs Index (SLCI) groups, and compiling Regional CPI data.</span></span></span></p>
+
+<p><span><span><span><span>A </span></span></span></span><span><span><span>complete summary of the public consultation feedback is provided in the <strong>Results</strong> section below.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>Stakeholder consultation has been pivotal in shaping the design of the complete monthly CPI. As a result, commencing late 2025, the complete monthly CPI will:</span></span></span></p>
+
+<ol>
+	<li><span><span><span><b>Be released around four weeks</b> after the reference period on a Wednesday.</span></span></span></li>
+	<li><span><span><span><b>Prioritise data accuracy </b>by implementing comprehensive data collection throughout the entirety of the reference month, rather than restricting it to only the first two or three weeks.</span></span></span></li>
+	<li><span><span><span><b>Contain the same amount of data, detailed commentary and analysis </b>that is in the current quarterly CPI.</span></span></span></li>
+	<li><span><span><span><b>Include a monthly seasonally adjusted series and analytical series</b> such as trimmed mean, weighted median, and tradables and non-tradables series.</span></span></span></li>
+</ol>
+
+<p class="paragraph"><span><span><span><span lang="EN-AU"><span>Initially, due to some of the monthly time series being shorter than the length required for standard seasonal adjustment, only a limited number of seasonally adjusted series will be published in the first two years. </span></span><span lang="EN-AU"><span>The ABS is exploring the quality of trimmed mean and weighted median measures when some expenditure classes cannot be seasonally adjusted with standard methods. We will publish further information on these methods prior to publication. </span></span></span></span></span><br>
+<br>
+<span><span><span><span lang="EN-AU"><span>The existing <b>quarterly series will be maintained</b>, including analytical measures, to ensure continuity for widely used indexation arrangements and time series analysis.&#160;</span></span>&#160;</span></span></span></p>
+
+<p><span><span><span>Additionally, the intended design will also include:</span></span></span></p>
+
+<ul>
+	<li><span><span><span><span lang="EN-AU">All groups (headline) CPI, Groups (11), Sub-groups (33), and Expenditure classes (87) for each capital city.</span></span></span></span></li>
+	<li><span><span><span><span lang="EN-AU">Contribution to annual and monthly percentage change to the All groups CPI.</span></span></span></span></li>
+	<li class="paragraph"><span><span><span><span lang="EN-AU"><span>Index numbers published to two decimal places instead of the existing one decimal place. Movements will be presented to one decimal place.</span></span>&#160;</span></span></span></li>
+	<li class="paragraph"><span><span><span><span lang="EN-AU"><span><span>No r</span></span></span><span lang="EN-AU"><span>evisions unless there is an exceptional circumstance, such as to correct a significant error, in line with the standard practice for CPI.</span></span>&#160;</span></span></span></li>
+</ul>
+
+<p>The design of the complete monthly CPI is provided in the <strong>Results</strong> section below.</p>
+
+<p><span><span><span><b>Next Steps</b></span></span></span><br>
+<span><span><span>Stakeholders will receive ongoing updates from the ABS on the progress of the complete monthly measure of the CPI, methodology, and refined design details. </span></span></span></p>
+
+<p><span><span><span>An implementation plan, along with a mock-up showcasing the complete monthly CPI comprising time series tables and metadata, will be unveiled closer to the publication date. Throughout this period, the ABS will maintain the quarterly release of the <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/dec-quarter-2023"><span lang="EN-AU">Consumer Price Index, Australia</span></a> &#160;and the <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/monthly-consumer-price-index-indicator/latest-release"><span lang="EN-AU">Monthly Consumer Price Index Indicator</span></a><span lang="EN-AU">.&#160; </span></span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/industry-statistics/review-of-australian-standard-classification-of-la/">
+                        <h2>2023 Review of Australian Standard Classification of Languages (ASCL)</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The public consultation ran for 12 weeks, from 18 September 2023 to 8<sup> </sup>December 2023. The ABS sought feedback on the preliminary scope of the review (below) and requested other issues also be identified.</span></span></span></p>
+
+<p><span><span><span>2023 Review of the Australian Standard Classification of Languages (ASCL) preliminary scope:</span></span></span></p>
+
+<ol>
+	<li><span><span><span><span><span lang="EN-AU">Investigation into the creation of new 4-digit groups (Languages) in the ASCL. </span></span></span></span></span></li>
+	<li><span><span><span><span><span lang="EN-AU">Appropriate representation of existing Languages (4-digit groups) in ASCL.</span></span></span></span></span></li>
+	<li><span><span><span><span>Investigation into how Aboriginal and Torres Strait Islander languages (Broad group 8) are represented in the ASCL.</span></span></span></span></li>
+	<li><span><span><span><span>Investigation into representation of sign languages and signed languages in the ASCL. </span></span></span></span></li>
+	<li><span><span><span><span><span lang="EN-AU">Investigation into the structure of Broad group 9, Other Languages.</span></span></span></span></span></li>
+</ol>
+
+<p><span><span><span>For more detailed information on the scope, please refer to <i>2023 ASCL Review Scope v1.0</i>, document attached.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>This public consultation generated 31 submissions from a range of individuals and organisations. </span></span></span></p>
+
+<p><span><span><span>Most of the items in the preliminary scope were broadly supported for inclusion in the review. The topics in the preliminary scope that attracted the most submissions were the identification of new 4-digit languages, the inaccurate representation of existing languages or identification of languages missing from the classification, and issues with how Aboriginal and Torres Strait Islander Languages are represented in the ASCL.</span></span></span></p>
+
+<p><span><span><span>In addition to the issues outlined in the scope, a number of other concerns were raised, including:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Feedback highlighted a lack of transparency and consistency across the framing of all language Broad groups. Many respondents asked for clarification on the labelling and naming conventions used in the ASCL, along with queries related to alternate titles, language variations or dialects.</span></span></span></li>
+	<li><span><span><span>Concerns were also raised regarding the current coding structure and lack of stated advice that clearly explains why some Aboriginal and Torres Strait Islander languages are included in the ASCL at the 4-digit level while others are not. </span></span></span></li>
+	<li><span><span><span>Feedback also suggested that the ABS should engage with experts on the topic of sign and signed languages, especially those that relate to Aboriginal and Torres Strait Islander languages. </span></span></span></li>
+</ul>
+
+<p><span><span><span>&#160;Other suggestions included:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>The need to provide further explanatory information to users regarding the classification principles applied at the 4-digit level of the classification. Some users would also benefit from further advice around the criteria that has been applied to the nec/nfd categories.</span></span></span></li>
+	<li><span><span><span>Feedback indicated that users would like more coverage of language groups and community recognized language titles.</span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The ABS is currently reviewing these submissions and is working closely with stakeholders to draft changes to the ASCL. The proposed changes to ASCL and supporting information will be presented via the ABS Consultation Hub in the second half of 2024. Stakeholders will then be able to provide further feedback before the final update is published in early 2025.</span></span></span></p>
+
+<p><span><span><span>Submissions that included relevant feedback for 2026 Census Content development and design will be provided to the 2026 Census Content team. Please note that stakeholders do not need to provide their submission again.</span></span></span></p>
+
+<p><span><span><span><b>Future consultation</b></span></span></span></p>
+
+<p><span><span><span>The next round of public consultation on the proposed changes to the ASCL is expected to be conducted in the second half of 2024. However, if you would like to provide feedback before then, please contact the ABS at <a href="/industry-statistics/review-of-australian-standard-classification-of-la/mailto:standards@abs.gov.au">standards@abs.gov.au</a><span class="MsoHyperlink"><span>.</span></span></span></span></span></p>
+
+<p><span><span><span>Further information is also available in the FAQ and Scope documents under the heading <b>Related.</b> </span></span></span></p>
+
+<p><span><span><span><b>Any questions?</b></span></span></span></p>
+
+<p><span><span><span>Please email <a href="/industry-statistics/review-of-australian-standard-classification-of-la/mailto:standars@abs.gov.au">standards@abs.gov.au</a> with any questions on this consultation or for further information.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/2022-23-review-of-the-australian-standard-classifi/">
+                        <h2>2022-23 Review of the Australian Standard Classification of Religious Groups (ASCRG)  - Consultation Round 2</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The Australian Bureau of Statistics (ABS) commenced a second round of public consultation on the Australian Standard Classification of Religious Groups (ASCRG) on 18 September 2023. The first round of public consultation, held in late 2022, sought feedback on the scope of the review. <span><span>This consultation provided an opportunity for the public to comment on the proposed changes to the </span></span>classification. </span></span></span></p>
+
+<p><span><span><span>The aim of the review is to update the ASCRG to reflect the current Australian community. These updates will ensure production of high-quality data, improving data analysis and informing decision making. <span><span>&#160;Submissions from this second round of public consultation will inform the changes made to the ASCRG in preparation for the 2026 Census.</span></span></span></span></span></p>
+
+<p><span><span><span>This round of public consultation ran for 11 weeks and submissions were sought <span><span>regarding any inaccuracies in the classification; any unintended impacts of the proposed changes, as well as any key implementation issues for users.</span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>A small number of submissions were received; these were from individuals and organisations.</span></span></span></p>
+
+<p><span><span><span>Submissions received suggested:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Consistency in the ordering of groups.</span></span></span></li>
+	<li><span><span><span>Changes to the ASCRG that had not been investigated in the current review.</span></span></span></li>
+</ul>
+
+<p><span><span><span>The ABS did not receive any submissions raising concerns about the proposed changes to the ASCRG.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The ABS is currently reviewing these submissions and finalising changes to the ASCRG. The updated version of the classification, which implements the findings from the 2022-23 review, will be published on the ABS website on 26 March, 2024.</span></span></span></p>
+
+<p><span><span><span><span lang="EN-AU"><span>The ABS thanks those who have taken the time to provide feedback during the two phases of consultation. </span></span>Any feedback that has been provided, but not investigated in the current review, will be considered in the next review of ASCRG. </span></span></span></p>
+
+<p><span><span><span>Changes to the Religious Affiliation Standard (RAS) continue to be considered through the 2026 Census topic review. The outcomes of Phase two are available <a href="https://www.abs.gov.au/statistics/research/2026-census-topic-review-phase-two-directions">here</a>. Once the review of RAS has been finalised, the outcome will be published on the ABS website.</span></span></span></p>
+
+<p><span><span><span><b>Future consultation</b></span></span></span></p>
+
+<p><span><span><span>This is the final round of public consultation on the proposed changes to the ASCRG. However, if you would like to provide feedback on the ASCRG at any time, please contact the ABS using the email address below. </span></span></span></p>
+
+<p><span><span><span><b>Any questions?</b></span></span></span></p>
+
+<p><span><span><span>Please email <a href="/standards-and-classifications/2022-23-review-of-the-australian-standard-classifi/mailto:standars@abs.gov.au">standards@abs.gov.au</a> with any questions on this consultation or for further information.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/census/2026-census-topic-consultation-phase-two/">
+                        <h2>2026 Census topic consultation - Phase two</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span lang="EN-GB"><span>From 27 July to 8 September 2023, the ABS undertook phase two of the 2026 Census topic consultation. This consultation invited feedback on proposed changes to Census topics.</span></span></span></span></span></p>
+
+<p><span><span><span><span lang="EN-GB"><span>During this consultation, the ABS specifically sought feedback on topics where further information was required to help inform our assessment and recommendation. These topics included: </span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span lang="EN-GB"><span>Ancestry and Ethnic identity</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Labour Force status</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Main language other than English used at home</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Number of children ever born</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Number of employees (employed by owner managers)</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Number of motor vehicles</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Religious affiliation</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Status in employment</span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span>Unpaid work &#8211; domestic activities</span></span></span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span lang="EN-GB"><span>The ABS received 213 submissions in this consultation. The submissions were received via the ABS Consultation Hub and email from all levels of government, businesses, community groups, advocacy groups, industry bodies/associations, academics and individuals. Twelve submissions received during the consultation window had multiple individuals and/or organisations contributing to the submission.</span></span></span></span></span></p>
+
+<p><span><span><span><span lang="EN-GB"><span>Of the topics the ABS specifically sought feedback on, the most common topic included in submissions was Religious affiliation, followed by Ancestry and Ethnic identity. While the ABS advised that feedback was not required for other shortlisted topics, there was an option in the Consultation Hub to provide feedback if desired. The most common topics included in submissions where feedback was not specifically requested were Gender, Sex, Sexual orientation, Variations of sex characteristics, and Attendance at an educational institution.&#160; &#160;</span></span></span></span></span></p>
+
+<p><span><span><span><span lang="EN-GB"><span>Some submissions suggested content that was out of scope of the phase two consultation. This included topics that were requested in the first phase of public consultation but were not shortlisted, new topics not previously requested, and submissions that were related to other ABS data collections or Census collection procedures. These submissions have been referred to the relevant areas of the ABS for further consideration where relevant.&#160;&#160; </span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <ul>
+	<li><span><span><span><span lang="EN-GB"><span><span>During phase two of the consultation, the ABS assessed 32 topics for addition, change or removal. </span></span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span><span>17 topics, including 5 new topics and 12 existing topics, have progressed to the development and testing stage. </span></span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span><span>Three topics are still under consideration for removal.</span></span></span></span></span></span></li>
+	<li><span><span><span><span lang="EN-GB"><span><span>One topic will be recommended to move back to a ten-year collection cycle and be collected again in the 2031 Census.</span></span></span></span></span></span></li>
+</ul>
+
+<p><span lang="EN-GB"><span><span><span>The ABS has published outcomes from the public consultation. The publication&#160;<a href="https://www.abs.gov.au/statistics/research/2026-census-topic-review-phase-two-directions"><span>2026 Census topic review: Phase two directions</span></a></span>&#160;</span></span></span><span lang="EN-GB"><span><span><span>is available on the ABS website.</span></span></span></span></p>
+
+<p><strong><u>Where to from here?</u></strong></p>
+
+<p><span><span><span><span lang="EN-GB"><span>The ABS will continue to refine the shortlist of potential content changes during the development and testing stage, prior to making a recommendation to Government in mid-2024. </span></span></span></span></span></p>
+
+<p><span><span><span><span lang="EN-GB"><span>The ABS will publish the final list of topics on the ABS website in late 2025.</span></span></span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/anzsco-comprehensive-review-round-2/">
+                        <h2>ANZSCO comprehensive review - consultation round 2</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span lang="EN-AU"><span><span><span>From 15 June to 11 August 2023, the ABS opened public consultation seeking views on what&#160;changes should be made to selected occupations to inform the <span>comprehensive review of&#160;the Australian and New Zealand Standard Classification of Occupations (ANZSCO).</span></span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span lang="EN-AU"><span><span><span>This second round of consultation was an opportunity for users of the classification to provide feedback on occupations that fell within the following focus areas:</span></span></span></span></span></span></span></span></p>
+
+<table class="Table cs-table">
+	<tbody>
+		<tr>
+			<td>
+			<p><span><span><span>Air and space transport</span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span><span lang="EN-AU">Allied health</span></span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span>Architectural, engineering and technical services</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span><span><span>Construction</span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span><span lang="EN-AU">Electricity, gas, water and waste services</span></span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span>Manufacturing</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span><span><span>Medical, nursing and other health care services</span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span>Mining</span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span>Property operators&#160;and real estate</span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span><span><span>Repair and maintenance</span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span>Spatial, surveying and mapping services</span></span></span></p>
+			</td>
+			<td>
+			<p><span><span><span><span lang="EN-AU">Telecommunications</span></span></span></span></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span><span><span>Tourism services</span></span></span></p>
+			</td>
+			<td>&#160;</td>
+			<td>&#160;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span><span><span><span lang="EN-AU">Organisations and individuals&#160;were invited&#160;to make submissions about <span>the accuracy of current occupation skill levels and descriptions and any occupations anticipated to emerge in the next 5 to 10 years.</span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span lang="EN-AU"><span><span>The ABS received over 200 submissions, including valuable feedback from all levels of government, businesses, industry bodies/associations, academics, and individuals.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span lang="EN-AU"><span><span>To inform the classification changes, collaborative workshops were organised for various occupation focus areas. &#160;These workshops attracted a wide range of stakeholders eager to participate and contribute their expertise, ultimately enhancing the quality of occupation information within their respective fields.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span lang="EN-AU"><span><span><span><span>Feedback received </span></span></span></span></span><span lang="EN-AU"><span><span>recommended improvements to occupation descriptions and classification structures. It also highlighted the evolution of certain occupations and the emergence of diverse fields and unique jobs that stakeholders would like to see included in the classification. An important topic that resonated with stakeholders was the evolving skill level requirements for different occupations and how these requirements have changed over time.</span></span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p class="pf0"><span><span><span><span class="cf01"><span><span lang="EN-AU"><span><span>To keep stakeholders informed of how their input is influencing changes to the classification we have published our preliminary view of proposed change from Consultation round two. These are presented in the </span></span></span></span></span><span class="cf11"><span><span><span lang="EN-AU"><span><span>Publish Results</span></span></span></span></span></span><span class="cf01"><span><span lang="EN-AU"><span><span> section below for 12 of the 13 occupation focus areas from this second round. </span></span></span></span></span><span lang="EN-AU"><span><span><span>Release of proposed changes from <b>Telecommunications</b> occupations has been deferred to the end of the third round of consultation. Release of proposed changes for selected occupations from <b>Computer system design and related services</b> from the first round have been included.</span></span></span></span><br>
+<br>
+<span lang="EN-AU"><span><span>These changes reflect the collaborative efforts and insights provided by stakeholders, ensuring that the classification remains relevant and responsive to user requirements and accurately represents the evolving landscape of the Australian labour market. </span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span lang="EN-AU"><span><span><span><span>A final consultation round in mid-2024 will allow users an opportunity to provide feedback on the complete set of proposed changes, </span></span></span></span></span><span lang="EN-AU"><span><span><span>before finalising the classification update for release by December 2024. This critical phase will also present proposed alterations to the classification structure that </span></span></span></span><span lang="EN-AU"><span><span><span>may involve reorganising or consolidating existing occupation groups, creating new groups for emerging occupations, or adapting the structure to better reflect the relationships between occupations. </span></span></span></span></span></span></span></span></p>
+
+<p><strong>Next Steps</strong></p>
+
+<p><span><span><span><span><span lang="EN-AU"><a href="/standards-and-classifications/anzsco-comprehensive-review-round-3/"><span><span><span>Consultation round three</span></span></span></a></span><span lang="EN-AU"><span><span><span> has now closed. Review of submissions from this round is now underway. </span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span lang="EN-AU"><span><span><span>Keep up to date with all the latest developments on the review at<b> </b></span></span></span></span><span lang="EN-AU"><a href="https://abs.gov.au/about/consultation-and-conferences/updating-anzsco"><span><span><span>Updating ANZSCO</span></span></span></a></span><span lang="EN-AU"><span><span><span>.</span></span></span></span></span></span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/anzsco-comprehensive-review-round-1/">
+                        <h2>ANZSCO comprehensive review - consultation round 1</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span><span><span><span>From 1 February to 28 April 2023, the ABS opened public consultation seeking views on what&#160;changes should be made to selected occupations to inform the <span>comprehensive review of&#160;the Australian and New Zealand Standard Classification of Occupations (ANZSCO).</span></span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span>This first round of consultation was an opportunity for users of the classification to provide feedback on occupations that fell within the following focus areas:</span></span></span></span></p>
+
+<table class="cs-table">
+	<tbody>
+		<tr>
+			<td>Accounting services</td>
+			<td>Administrative services</td>
+		</tr>
+		<tr>
+			<td>Aged care and disability services</td>
+			<td>Childcare services</td>
+		</tr>
+		<tr>
+			<td>Computer system design and related services</td>
+			<td>Education and training</td>
+		</tr>
+		<tr>
+			<td>Financial and insurance services</td>
+			<td>Library and other information services</td>
+		</tr>
+		<tr>
+			<td>Management and related consulting services</td>
+			<td>Market research and advertising services</td>
+		</tr>
+		<tr>
+			<td>Scientific research services</td>
+			<td>Statistical services</td>
+		</tr>
+		<tr>
+			<td>Welfare and social assistance services</td>
+			<td>&#160;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span><span><span><span>Organisations and individuals&#160;were invited&#160;to make submissions about </span><span><span>the accuracy of current occupation skill levels and descriptions and any occupations anticipated to emerge in the next 5 to 10 years.</span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span><span>The ABS received over 190 submissions, including valuable feedback from all levels of government, businesses, industry bodies/associations, academics, and individuals.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>To inform the classification changes, collaborative workshops were organised for various occupation focus areas. &#160;These workshops attracted a wide range of stakeholders eager to participate and contribute their expertise, ultimately enhancing the quality of occupation information within their respective fields.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Feedback received </span></span></span></span></span><span><span><span>recommended improvements to occupation descriptions and classification structures. It also highlighted the evolution of certain occupations and the emergence of diverse fields and unique jobs that stakeholders would like to see included in the classification. An important topic that resonated with stakeholders was the evolving skill level requirements for different occupations and how these requirements have changed over time.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p class="pf0"><span><span><span><span class="cf01"><span><span><span><span>To keep stakeholders informed of how their input is influencing changes to the classification we have published our preliminary view of proposed change from Consultation round one. These are presented in the </span></span></span></span></span><span class="cf11"><span><span><span><span><span>Publish Results</span></span></span></span></span></span><span class="cf01"><span><span><span><span> section below for 12 of the 13 occupation focus areas. </span></span></span></span></span><span><span><span><span>Release of proposed changes from <b>Computer system design and related services</b> occupations has been deferred to the end of the second round of consultation.</span></span></span></span><br>
+<br>
+<span><span><span>These changes reflect the collaborative efforts and insights provided by stakeholders, ensuring that the classification remains relevant and responsive to user requirements and accurately represents the evolving landscape of the Australian labour market. </span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span><span><span>A final consultation round in mid-2024 will allow users an opportunity to provide feedback on the complete set of proposed changes, </span></span></span></span></span><span><span><span><span>before finalising the classification update for release by December 2024. This critical phase will also present proposed alterations to the classification structure that </span></span></span></span><span><span><span><span>may involve reorganising or consolidating existing occupation groups, creating new groups for emerging occupations, or adapting the structure to better reflect the relationships between occupations. </span></span></span></span></span></span></span></span></p>
+
+<h3><span><span><span><span><span><b><span>Next Steps</span></b></span></span></span></span></span></h3>
+
+<p><span><span><span><span><span><a href="/standards-and-classifications/anzsco-comprehensive-review-round-2/"><span><span><span>Consultation round two</span></span></span></a></span><span><span><span><span> of the ANZSCO comprehensive review is currently underway with consultation closing Friday 11 August 2023.&#160; Learn more about the </span></span></span></span><span><a href="https://www.abs.gov.au/about/consultation-and-conferences/updating-anzsco/participate-anzsco-consultations/occupations-focus-area#focus-areas-consultation-round-2-15-jun-11-aug-2023"><span><span><span>occupations</span></span></span></a></span><span><span><span><span> that will be reviewed this round, </span></span></span></span><span><a href="https://www.abs.gov.au/about/consultation-and-conferences/updating-anzsco/participate-anzsco-consultations"><span><span><span>how to participate</span></span></span></a></span><span><span><span><span> and tips for </span></span></span></span><span><a href="https://www.abs.gov.au/about/consultation-and-conferences/updating-anzsco/participate-anzsco-consultations/preparing-submission"><span><span><span>preparing your submission</span></span></span></a></span><span><span><span><span>. &#160;</span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span><span>Keep up to date with all the latest developments on the review at<b> </b></span></span></span></span><span><a href="https://abs.gov.au/about/consultation-and-conferences/updating-anzsco"><span><span><span>Updating ANZSCO</span></span></span></a></span><span><span><span><span>.</span></span></span></span></span></span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/census/2026-census-topic-consultation/">
+                        <h2>2026 Census topic consultation</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span>From 28 February to 28 April 2023, the ABS opened public consultation seeking views on what </span><span>changes should be made to the 2026 Census topics.<br>
+<br>
+Organisations and individuals </span><span>were invited</span><span> to make submissions about information needs not currently collected by the ABS </span><span>and to provide evidence of:</span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><span><span><span>The topic being of current national importance.</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span><span>A need for data at the national level, and either the local level or for small population groups.</span></span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span>A likely continuing need for data on the topic following the Census.</span></span></span></span></span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span>The ABS received 260 submissions. The submissions were received via the ABS Consultation Hub, email, mail, and meetings (where explicitly requested by the stakeholder for minutes to be included as a submission).&#160; </span></span></span></span></p>
+
+<p><span><span><span><span><span>The ABS also considered more than 500 other pieces of feedback as part of the consultation, including recent ABS standards and classification reviews, recommendations from parliamentary inquiries, letters to the Australian Statistician, Members of Parliament and other correspondence received by the ABS since June 2018, and 2021 Census submissions for six shortlisted topics.</span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Submissions and feedback were received from all levels of government, businesses, community groups, advocacy groups, industry bodies/associations, academics and individuals.</span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <ul>
+	<li><span><span><span>During phase one of the consultation, the ABS identified strong public value for the inclusion of 12 new topics and to make changes to 16 existing topics.</span></span></span></li>
+	<li><span><span><span>Four existing topics have been identified for potential removal from the 2026 Census.</span></span></span></li>
+	<li><span><span><span><span>The ABS has published a shortlist of the topics being considered for the 2026 Census. </span>The publication provides a summary of the feedback received during the first phase of consultation. It outlines new topics being considered for inclusion, existing topics where change is being considered and topics being considered for removal. The publication <a href="https://www.abs.gov.au/statistics/research/2026-census-topic-review-phase-one-directions">2026 Census topic review: Phase one directions</a> is available on the ABS website.</span></span></span></li>
+</ul>
+
+<p><span><span><span><b><u>Where to from here?</u></b></span></span></span></p>
+
+<p><span><span><span>Phase two of the 2026 Census Topic consultation is open from Thursday 27 July until Friday 8 September. <span>This is the time to let us know if there will be impacts for you or your organisation if we changed or removed one of the shortlisted topics.</span></span></span></span></p>
+
+<p><span><span><span><span><span>The ABS will further assess the shortlisted topics for feasibility and to determine if the Census is the most appropriate way to provide data on the topic. This will inform the decision on which topics proceed to testing.</span></span></span></span></span></p>
+
+<p><span><span><span>In late 2023, the ABS will share the outcomes of phase two, including the topics recommended for removal and topics that have proceeded to testing.</span></span></span></p>
+
+<p><span><span><span>In 2024, the ABS will make a recommendation to the Australian Government on the topics to be included on the 2026 Census. The final list of topics to be included in the Census will be published by the ABS in late 2025.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/population-and-social-statistics/measurement-of-digital-platform-workers-1/">
+                        <h2>Measurement of Digital Platform Work and Workers</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The ABS commenced public consultation on 14 October 2022 on the measurement of Digital Platform Work and Workers.</span></span></span></p>
+
+<p><span><span><span>The public consultation ran for around 6 weeks and sought feedback on:</span></span></span></p>
+
+<ol>
+	<li><span><span><span>The conceptual framework &#8211; the conceptual understanding of digital platform work as applied to the Australian context; and</span></span></span></li>
+	<li><span><span><span>The measurement approach &#8211; the proposed survey topics to be incorporated in the digital platform work experimental survey module for 2023/24</span></span></span></li>
+</ol>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>This public consultation generated a small number of submissions from a variety of stakeholders, including government, business, and the public. This was in line with expectations, given this is a new measurement space where there aren&#8217;t many longstanding experts. We specifically sought feedback on the measurement approach the ABS was taking and the conceptual framework that had been developed. The feedback received is summarised below.</span></span></span></p>
+
+<p><span><span><span>The Conceptual framework: </span></span></span><br>
+<span><span><span>There was strong support for the framework the ABS developed, to better communicate and understand digital platform workers and work. The distinction the ABS made between labour services and other forms of digital platform work was considered appropriate, along with distinguishing between different types of tasks (e.g. personal transport and food delivery).</span></span></span></p>
+
+<p><span><span><span>The Measurement Approach:</span></span></span><br>
+There was broad support for the current&#160;<span><span><span>experimental measurement approach the ABS is using. The submissions noted that the priority information is being captured and also identified a range of additional data items that could be collected to broaden and enhance the data collected for the 2023/24 survey cycle. </span></span></span></p>
+
+<p><span><span><span>The feedback provided has been summarised below:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Reference period - expand the timeframe beyond the last four weeks, to ensure people who undertake digital platform work infrequently are included. </span></span></span></li>
+	<li><span><span><span>Task type &#8211; include further specificity in task types (e.g. type of caring tasks).</span></span></span></li>
+	<li><span><span><span>Industry &#8211; present an industry distribution of digital platform work.</span></span></span></li>
+	<li><span><span><span>Digital platform hours worked &#8211; a variety of options were suggested for collecting information on digital platform work hours worked and whether more paid hours were preferred by workers.</span></span></span></li>
+	<li><span><span><span>Reason for undertaking digital platform work &#8211; ability to select more than one reason.</span></span></span></li>
+	<li><span><span><span>Working conditions and security - level of control or influence the respondent has over digital platform work arrangements.</span></span></span></li>
+	<li><span><span><span>Platform use &#8211; Whether multiple platforms are used and how this is managed by the worker. </span></span></span></li>
+	<li><span><span><span>Safety and risk &#8211; perception of safety at work, understanding of work health and safety obligations, measures available to reduce risk. </span></span></span></li>
+	<li><span><span><span>Earnings - allowing respondents to report earnings in smaller increments (e.g. less than 10% of earnings, etc).</span></span></span></li>
+	<li><span><span><span>Other data sources - exploration of other mechanisms for collecting data, such as administrative data.</span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p>The ABS is grateful for the submissions received through this consultation process and has taken these into consideration in determining the content for inclusion in the next stage of the experimental digital platform work survey module, for the 2023/24 financial year.&#160;<span><span><span>As the module is part of a broader survey program, new content needs to be balanced with other competing priorities within the program and the need to ensure a reasonable experience for survey respondents. </span></span></span></p>
+
+<p><span><span><span>The following changes will be incorporated into the digital platform work survey module, which will be progressively collected from July 2023:</span></span></span></p>
+
+<p><span><span><span>Reference period/frequency</span></span></span></p>
+
+<ul>
+	<li><span><span><span>the reference period has been expanded to include; any digital platform work tasks undertaken in the past 12&#160;months, detailed questions are asked about work undertaken in the previous 4 weeks, and whether tasks have been undertaken within the Labour Force Survey Reference Week; and </span></span></span></li>
+	<li><span><span><span>frequency that DPW tasks are undertaken (e.g. weekly, monthly etc) is requested to understand how regularly digital platform work is undertaken. </span></span></span></li>
+</ul>
+
+<p><span><span><span>DPW task type</span></span></span></p>
+
+<ul>
+	<li><span><span><span>further questions added to determine more task information, including-the type of delivery work undertaken (e.g. food, grocery or parcels) and the type of caring tasks performed (e.g. disability care, aged care, childcare etc).</span></span></span></li>
+</ul>
+
+<p><span><span><span>Working conditions/hours</span></span></span></p>
+
+<ul>
+	<li><span><span><span>whether the respondent has a preference for more hours of digital platform work; and </span></span></span></li>
+	<li><span><span><span>how work is allocated and how hours and price are set. </span></span></span></li>
+</ul>
+
+<p><span><span><span>Work safety</span></span></span></p>
+
+<ul>
+	<li><span><span><span>whether a workplace accident has occurred undertaking digital platform work </span></span></span></li>
+	<li><span><span><span>perception of safety at work; and </span></span></span></li>
+	<li><span><span><span>whether covered for personal accident insurance in case of a work-related accident. </span></span></span></li>
+</ul>
+
+<p><span><span><span>The ABS will continue to inform the evolutionary approach to measuring digital platform work and workers. Any additional feedback is welcome at <a href="/population-and-social-statistics/measurement-of-digital-platform-workers-1/mailto:measuring.employment.consultation@abs.gov.au">measuring.employment.consultation@abs.gov.au</a>. </span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/help-shape-the-future-classification-on-industries/">
+                        <h2>Help Shape the Future of Classification on Industries in Australia</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The Australian Bureau of Statistics (ABS) commenced public consultation &#8216;Help Shape the Future of Classification on Industries&#8217; on 26 September 2022. </span></span></span></p>
+
+<p><span><span><span>The consultation&#8217;s purpose was to collect information on how the industry classification is currently used by businesses or organisations, understand the issues with the current Australia and New Zealand Standard Industrial Classification (ANZSIC) and whether the revised International Standard Industrial Classification of All Economic Activities (ISIC) could meet these needs. The consultation also sought to understand any barriers to implementing a revised ANZSIC or alternate industry classification. This information is to be used in the development of a roadmap to review Australia&#8217;s Standard industrial classification.</span></span></span></p>
+
+<p><span><span><span>Public consultation ran for 9 weeks, 26 September 2022 till 25 November 2022, and specifically sought feedback on:</span></span></span></p>
+
+<ol>
+	<li><span><span><span>The use of industry classifications and the purpose of that use.</span></span></span></li>
+	<li><span><span><span><span>The business characteristics of most importance when classifying a business. </span></span></span></span></li>
+	<li><span><span><span><span>The revised ISIC and if it would be a suitable alternative for ANZSIC 2006.</span></span></span></span></li>
+	<li><span><span><span><span>The current issues with ANZSIC 2006 and what users would like to see covered in a future industrial classification.</span></span></span></span></li>
+	<li><span><span><span><span>The barriers for their organisation to implement a new classification, including an estimate of the amount of time it would take to implement changes.</span></span></span></span></li>
+</ol>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The public consultation generated 62 submissions from a wide range of federal government, state government and private industry stakeholders. </span></span></span></p>
+
+<p><span><span><span>The majority of submissions we received highlighted the use of industry classifications for industry specific research, analysis of the Australian economy or for policy development. Users identified that goods and services produced by a business are key characteristics of importance when classifying a business to an industry classification, along with the type of customer a business sells to and how a business produces its output. Other topics of interest were innovation and environmental impact.</span></span></span></p>
+
+<p><span><span><span>Stakeholders were asked to give feedback on the suitability of ISIC as an alternative to ANZSIC. Respondents felt that while ISIC is likely to meet Australia&#8217;s classification requirements at a higher level, it doesn&#8217;t meet more detailed industry classification requirements and that ISIC would need to be expanded to suit Australia&#8217;s classificatory needs. Feedback identified that ISIC focuses heavily on the international economy, with a broad range of industries grouped together and in some circumstances does not have enough detail to reflect Australian industrial activity. &#160;</span></span></span></p>
+
+<p><span><span><span>We received comprehensive feedback on issues associated with ANZSIC 2006 and what stakeholders would like to see included in a future industrial classification. There was widespread acknowledgement from respondents that ANZSIC 2006 hasn&#8217;t kept pace with Australia&#8217;s changing industry structure over the last 15 years and improvements need to be made to the classification. Feedback recommended improvements to classification structure and industry coverage. It also highlighted that users have a diverse range of topics that they would like the industry classification to cover. </span></span></span></p>
+
+<p><span><span><span>Also, feedback was received on issues not directly related to the industry classification, rather information on different business characteristics that users would find valuable and how this information could be linked to industry information to better meet policy objectives.&#160; </span></span></span></p>
+
+<p><span><span><span>Feedback indicated that the benefit of having an updated classification outweighed the initial barriers to implementing a new classification, however, the ABS acknowledges that implementation concerns raised by some respondents will require further exploration and consultation.&#160; We also recognise that not all users&#8217; requirements may be met with an updated classification and that alternate views of that classification may be required. &#160;</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>Based on the feedback provided, the ABS is considering the choice between updating ANZSIC and adopting a localised version of ISIC. A localised version of ISIC could share the structure at a high level, but have further lower level detail to better meet Australian needs. </span></span></span></p>
+
+<p><span><span><span>The ABS needs to do further work to understand the development and implementation costs for the ABS and other stakeholders of an updated industrial classification. </span></span></span></p>
+
+<p><span><span><span>The new ISIC rev 5 structure was endorsed by the United Nations Statistical Commission in their March 2023 meeting.&#160; Work is underway to produce the explanatory information to support the revised international classification.</span></span></span></p>
+
+<p><span><span><span>If you would like more information, please email standards@abs.gov.au with any questions on this consultation or for further information.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/2022-australian-standard-classification-of-religio/">
+                        <h2>2022 Review of the Australian Standard Classification of Religious Groups (ASCRG) and the Religious Affiliation Standard (RAS)</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The Australian Bureau of Statistics (ABS) commenced public consultation on 29 August 2022. The consultation requested feedback on the Australian Standard Classification of Religious Groups (ASCRG) and the Religious Affiliation Standard (RAS), the way the religion question is asked in the Census of Population and Housing. </span></span></span></p>
+
+<p><span><span><span>The aim of the review is to update the ASCRG to reflect the modern Australian community; and ensure the RAS is inclusive. These updates will ensure collection and production of high quality data, improving data analysis and decision making. The public consultation was to confirm the scope of the review and invite feedback to identify any other high priority considerations for the review.</span></span></span></p>
+
+<p><span><span><span>Public consultation ran for 12 weeks, 29 August 2022 till 18 November 2022. The ABS sought feedback on the preliminary scope of the review (below) and requested other issues also be identified.</span></span></span></p>
+
+<p><span><span><span>2022 Review of ASCRG and RAS, preliminary scope:</span></span></span></p>
+
+<ol>
+	<li><span><span><span><span>Investigation of the RAS &#8211; question wording and pick list<br>
+	a. Can the response options be changed to be more inclusive?</span></span></span></span><br>
+	<span><span><span><span>b. Consistency between the question wording (refers to a person&#8217;s religion) and the pick list options (a combination of religions and Christian denominations).</span></span></span></span></li>
+	<li><span><span><span><span><span>Investigation into Islam, Buddhism, Hinduism, and Judaism; and whether it is possible to identify additional religious groups.</span></span></span></span></span></li>
+	<li><span><span><span><span>Investigation into how Christian Orthodox groups appear in the ASCRG and the RAS. </span></span></span></span></li>
+	<li><span><span><span><span><span>Investigation into a possible restructure of the classification codes.</span></span></span></span></span></li>
+	<li><span><span><span><span><span>Investigation into the structure of Broad Group 7, Secular Beliefs and Other Spiritual Beliefs and No Religious Affiliation. Should secular beliefs continue to be included in a classification of religious groups?</span></span></span></span></span></li>
+</ol>
+
+<p><span><span><span>For more detailed information on the scope, please refer to <i>2022 ASCRG and RAS Review Scope v1.0</i>, attached below.</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>This public consultation generated 193 submissions from a range of individuals and organisations.</span></span></span></p>
+
+<p><span><span><span>Most of the items in the preliminary scope were broadly supported for inclusion in the review. The topics in the preliminary scope that attracted the most submissions were the pick list (content and order of the list) and question wording (scope items 1a and 1b).</span></span></span></p>
+
+<p><span><span><span>In addition to the issues outlined in the scope, a number of other concerns were raised, including:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Concerns around data quality, due to the limited number of options in the pick list.</span></span></span></li>
+	<li><span><span><span>Concerns about potential bias in the question wording because it assumes a person is affiliated with a religion.</span></span></span></li>
+	<li><span><span><span>The importance of including the concepts underpinning the classification (e.g. &#8216;affiliation&#8217;) in the review.</span></span></span></li>
+	<li><span><span><span>Some confusion regarding the 2021 census advertising campaign, as it related to religion.</span></span></span></li>
+</ul>
+
+<p><span><span><span>Other suggestions included:</span></span></span></p>
+
+<ul>
+	<li><span><span><span>Recommendations for groups to be added to the pick list in the question, or the classification (ASCRG) itself.</span></span></span></li>
+	<li><span><span><span>Suggestions for how religion data could be better presented in the future.</span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>The ABS is currently reviewing these submissions and working closely with stakeholders to draft changes to the RAS and ASCRG. The proposed changes to ASCRG and supporting information will be presented via the ABS Consultation Hub in mid-2023. Stakeholders can again provide feedback before the final update is published in December 2023.</span></span></span></p>
+
+<p><span><span><span>Any changes for the RAS, that come from this review, will require further testing. Testing will be undertaken during the 2026 Census design process in the lead up to the 2026 Census. However, proposed RAS changes will be available for comment in mid-2023 through the planned ASCRG public consultation but the final outcome will be published after 2026 Census testing is completed.</span></span></span></p>
+
+<p><span><span><span>Submissions that included relevant feedback for 2026 Census Content development and design will be provided to the 2026 Census Content team, stakeholders do not need to provide their submission again.</span></span></span></p>
+
+<p><span><span><span><b>Future consultation</b></span></span></span></p>
+
+<p><span><span><span>The next round of public consultation on the proposed changes to the ASCRG and RAS is expected to be conducted in mid-2023. However if you would like to provide feedback before then, please contact the ABS at <a href="/standards-and-classifications/2022-australian-standard-classification-of-religio/mailto:standards@abs.gov.au">standards@abs.gov.au</a></span></span></span></p>
+
+<p><span><span><span>2026 Census Content consultation is planned for the first half of 2023. &#160;If your submission to this scope of the ASCRG and RAS review is relevant to the Census Content consultation too, it will be provided to the 2026 Census Content team - stakeholders do not need to provide their submission again.</span></span></span></p>
+
+<p><span><span><span>Further information is also available in the FAQ and Scope documents under the heading <b>Related</b> below.</span></span></span></p>
+
+<p><span><span><span><b>Any questions?</b></span></span></span></p>
+
+<p><span><span><span>Please email <a href="/standards-and-classifications/2022-australian-standard-classification-of-religio/mailto:standars@abs.gov.au">standards@abs.gov.au</a> with any questions on this consultation or for further information.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/anzsco-proposed-changes/">
+                        <h2>2022 Targeted Update of ANZSCO Proposed Changes</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span><span>The Australian Bureau of Statistics (ABS) commenced public consultation on September 1 2022 on proposed changes to ANZSCO as a targeted update.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>Public consultation ran for four weeks, seeking feedback on:</span></span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><span><span><span>Construction-Related Trades Occupations</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span>Emerging Occupations identified by the (previous) National Skills Commission that were unable to be included in the&#160;ANZSCO 2021, Australian Update<span class="MsoHyperlink"><span><span>.</span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+
+<p><span><span><span><span><span><span><span>The 24 construction related trades occupations were developed in consultation with the (previous) Department of Education, Skills and Employment (DESE), based on the following criteria:</span></span></span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><span><span><span>occupations in ANZSCO Major Group 3 Technicians and Trades Workers at skill level 3</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span>occupations with significant Australian Apprenticeships commencements</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span>occupations traditionally associated with an apprenticeship pathway, that were not included in the 2021 update</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span>the number of persons employed in the occupation in the 2016 Census of Population and Housing are significant.</span></span></span></span></span></span></span></li>
+</ul>
+
+<p><span><span><span><span><span><span><span>Also included were a small number of occupations that were engineering-related rather than construction, but which also satisfied the above criteria.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span>For the remaining Emerging Occupations, these included Data analyst, Data scientist, Data engineer, Data architect, Logistics analyst, Fundraiser, Hazardous materials labourer, Patient liaison, Regulatory affairs specialist and Risk analyst. </span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span>This public consultation generated 23 submissions from a wide range of stakeholder groups and sectors of the user community.</span></span></span></span></span></p>
+
+<p><span><span><span><b><span><span>Construction-Related Trades Occupations</span></span></b></span></span></span></p>
+
+<p><span><span><span><span><span>Continuing the review work that commenced in 2021, the ABS sought feedback on the proposed changes to be made to 24 Construction-Related Trades Occupations identified for review in 2022.</span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>The ABS received one submission relating to the changes proposed suggesting additional changes.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><b><span><span>Emerging Occupations</span></span></b></span></span></span></p>
+
+<p><span><span><span><span><span>The ABS received 12 submissions during public consultation from a variety of organisations. Targeted consultation was undertaken with several stakeholders to discuss their submission in greater detail. &#160;</span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Feedback on the proposed changes indicated strong support for the creation of new occupations in ANZSCO. Several submissions contained requests for minor changes to lead statements. </span></span></span></span></span></p>
+
+<p><span><span><span>Ten submissions were received for occupations out of scope of this consultation round, however these will be considered as part of the upcoming Comprehensive Review of ANZSCO. </span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><b><span><span>2022 Targeted Update</span></span></b></span></span></span></p>
+
+<p><span><span><span><span><span>The feedback from stakeholders has been considered and incorporated into the updated descriptions for the 32 in-scope occupations targeted for review in 2022. <span>The resulting </span><a href="https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/latest-release"><span>ANZSCO 2022, Australian Update</span></a><span> was released on the ABS website on 22 November 2022, along with a complete list of classification changes made for this update.</span></span></span></span></span></span></p>
+
+<p><span><span><span><b><span><span>Construction-Related Trades Occupations</span></span></b></span></span></span></p>
+
+<p><span><span><span><span><span>Two new occupations were added &#8211; Fire protection plumber, and Furniture maker.</span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Concerns were raised about the potential overlap between Formworker and Concreter and whether these are two distinct occupations. Consequently, these occupations will be further reviewed during the Comprehensive Review to identify the most suitable placement within the classification. Similarly, Shopfitter was not seen as a natural fit with carpenters and joiners due to the difference in materials with which they predominantly work and will be further considered during the Comprehensive Review. </span></span></span></span></span></p>
+
+<p><span><span><span><b><span><span>Emerging Occupations</span></span></b></span></span></span></p>
+
+<p><span><span><span><span><span>Based on feedback received through public consultation and stakeholder engagement, the ABS implemented changes to the lead statements for Data analyst, Data scientist and Regulatory affairs manager. </span></span></span></span></span></p>
+
+<p><span><span><span><span><span>As a result of this review, the ABS created four new occupations for Data analyst, Data scientist, Supply chain analyst (Logistics analyst included as an alternative title) and Regulatory affairs manager. Proposed changes to Hazardous materials labourer and Fundraiser will be implemented during the Comprehensive Review as they require changes to the structure of ANZSCO.</span></span></span></span></span></p>
+
+<p><span><span><span><span><span>The following occupations will be reviewed during the Comprehensive Review of ANZSCO &#8211; Data engineer, Data architect, Risk analyst and Patient liaison. </span></span></span></span></span></p>
+
+<p><span><span><span><b><span><span>Future ANZSCO updates</span></span></b></span></span></span></p>
+
+<p><span><span><span><span><span>Submissions related to occupations that fell outside the scope of the 2022 targeted update were not reviewed this round. These submissions, along with recommendations held over, will be considered as part of the forthcoming Comprehensive Review of ANZSCO. The Comprehensive Review is due for completion by December 2024.</span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Further details on <a href="https://www.abs.gov.au/articles/participate-anzsco-consultations">how to participate</a> in the Comprehensive Review were published 7 November 2022 on the ABS website. </span></span></span></span></span></p>
+
+<p><span><span><span><span><span>If you would like more information, please email <a href="/standards-and-classifications/anzsco-proposed-changes/mailto:updating.anzsco@abs.gov.au"><span>updating.anzsco@abs.gov.au</span></a></span></span></span></span></span></p>
+
+<p>&#160;</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/review-of-anzsco/">
+                        <h2>Review of the Australian and New Zealand Standard Classification of Occupations</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span><span>The Australian Bureau of Statistics (ABS) commenced public consultation on June 29 2022 on two topics related to the Australian and New Zealand Standard Classification of Occupations (ANZSCO).</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>Public consultation ran for four weeks, seeking feedback on:</span></span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><span><span><span>how skills are reflected </span></span></span><span><span><span>in ANZSCO, and</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span><span><span>a new approach to maintaining ANZSCO.</span></span></span></span></span></span></span></span></span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span>This public consultation generated 105 submissions from a wide range of stakeholder groups and sectors of the user community.</span></span></span></span></span></p>
+
+<p><strong><span><span><span><span class="Heading3Char"><span><span><span><span>Skills in ANZSCO</span></span></span></span></span></span></span></span></strong></p>
+
+<p><span><span><span><span><span>The ABS published a &#8216;Skills Options Paper&#8217; in late June in response to feedback received from the skills problem statement. The paper outlined six proposals that address the key areas of concern identified by users and stakeholders. The ABS received 63 submissions through public consultation. </span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Feedback in the submissions indicated support for most of the proposals with a very strong preference for proposals one and two. These proposals were flagged as the highest priority and, if implemented, would ensure ANZSCO is better aligned with the current labour market. </span></span></span></span></span></p>
+
+<p><span><span><span><span><span>The ABS also asked for suggestions on how to include micro-credentials in ANZSCO. A variety of suggestions were received and are now being considered. As responses were varied, further discussions with users and stakeholders are required to determine how best to reflect micro-credentials in the classification. </span></span></span></span></span></p>
+
+<p><strong><span><span><span><span class="Heading3Char"><span><span><span><span>Maintaining ANZSCO</span></span></span></span></span></span></span></span></strong></p>
+
+<p><span><span><span><span><span><span><span>The ABS received 42 submissions from users on the ANZSCO Maintenance Strategy. There was unanimous agreement that the classification no longer accurately reflects the labour market and that major updates are urgently required.</span></span></span></span></span></span></span></p>
+
+<p class="AAA"><span><span><span><span><span><span><span>We specifically sought feedback on the timing, frequency and process for reviewing areas of the classification. While our proposed solution of a targeted, annual maintenance model received widespread support, several concerns were raised. These include: </span></span></span></span></span></span></span></p>
+
+<ul>
+	<li class="AAA"><span><span><span><span><span><span><span>the gap of 5 years between major updates may be too large to capture important changes in the labour market</span></span></span></span></span></span></span></li>
+	<li class="AAA"><span><span><span><span><span><span><span>without an immediate comprehensive update, maintenance will be ineffective</span></span></span></span></span></span></span></li>
+	<li class="AAA"><span><span><span><span><span><span><span>proposed prioritisation factors miss important considerations around the economic impacts and specific impacts on affected sectors (especially where they are small)</span></span></span></span></span></span></span></li>
+	<li class="AAA"><span><span><span><span><span><span><span>users do not have a way to raise issues outside of the consultation rounds</span></span></span></span></span></span></span></li>
+	<li class="AAA"><span><span><span><span><span><span><span>level of engagement by ABS will be insufficient if not consulting with industry, and education and training authorities. </span></span></span></span></span></span></span></li>
+</ul>
+
+<p class="AAA"><span><span><span><span><span><span><span>We also asked users whether there would be any negative impacts that could arise from the implementation of the model, especially around the timing of updates. No issues were identified, and there was strong support for the timing of the releases. There were additional comments around the importance of aligning implementation around broader government measures to address skills shortages.</span></span></span></span></span></span></span></p>
+
+<p class="AAA"><span><span><span><span><span><span><span>We also received a number of considerable change requests for specific areas of the classification, ranging from paramedics to professional organisers. These will be addressed separately as part of the comprehensive review and update by December 2024 in time for the 2026 Census.</span></span></span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><strong><span><span><span><span class="Heading3Char"><span><span><span><span>Skills in ANZSC</span></span></span></span></span><span class="Heading3Char"><span><span><span>O</span></span></span></span></span></span></span></strong></p>
+
+<p><span><span><span><span><span>The ABS is currently reviewing these submissions and working closely with stakeholders to develop a Skills Position Paper, for release in November 2022. This paper will outline the position of the ABS and the changes that will be made to better reflect skills in ANZSCO. </span></span></span></span></span></p>
+
+<p><span><span><span><span><span>A proposed intended timeline for implementation will also be included. </span></span></span></span></span></p>
+
+<p><strong><span><span><span><span class="Heading3Char"><span><span><span><span>Maintaining ANZSCO</span></span></span></span></span></span></span></span></strong></p>
+
+<p class="AAA"><span><span><span><span><span><span><span>Based on the feedback provided through this consultation process, the ABS has reviewed elements of the ANZSCO Maintenance Strategy. Several adjustments have been made, particularly with the prioritisation framework. These will be published in a revised version of the ANZSCO Maintenance Strategy in November 2022.</span></span></span></span></span></span></span></p>
+
+<p class="AAA"><span><span><span><span><span><span><span>Other concerns raised will require further exploration, for example, the need for updates outside the outlined consultation periods. These will be considered further across the next two years, ahead of finalisation of the strategy in early 2025.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>If you have an interest in changes to ANZSCO and would like to subscribe to receive communication regarding future updates please provide contact details via </span></span></span><a href="/standards-and-classifications/review-of-anzsco/mailto:anzsco.maintenance@abs.gov.au"><span><span>anzsco.maintenance@abs.gov.au</span></span></a> </span></span></span></span></p>
+
+<p>&#160;</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/standards-and-classifications/updating-the-australian-and-new-zealand-standard-c/">
+                        <h2>Updating the Australian and New Zealand Standard Classification of Occupations</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span><span>The Australian Bureau of Statistics (ABS) commenced public consultation on March 1 2022 on three topics related to the Australian and New Zealand Standard Classification of Occupations (ANZSCO) to inform the next and future updates of the classification.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>Public consultation ran for 6 weeks, seeking feedback on:</span></span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><span><span><span>construction-related trades occupations<i> </i></span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span><span>how skills are reflected in ANZSCO, and</span></span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span>other areas of ANZSCO requiring future update</span></span></span></span></span></span><span>.</span></li>
+</ul>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span><span><span>This public consultation generated 137 submissions from a wide range of stakeholder groups and sectors of the user community.</span></span></span></span></span></p>
+
+<p><strong>2022 targeted update</strong></p>
+
+<p><span><span><span><span><span><span><span>Continuing the review work that commenced in 2021, the </span></span></span></span><span><span>ABS sought feedback on <span><span>a</span></span><span><span> proposed list </span></span><span>of 24 construction-related trades occupations to be a focus for 2022.</span><br>
+<br>
+<span>The list was developed in consultation with the Department of Education, Skills and Employment (DESE), based on the following criteria:</span></span></span></span></span></span></p>
+
+<ul>
+	<li><span><span><span><span><span><span>occupations in ANZSCO Major Group 3 Technicians and Trades Workers at skill level 3,</span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span>occupations with significant Australian Apprenticeships commencements,</span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span>occupations traditionally associated with an apprenticeship pathway, that were not included in the 2021 update, and</span></span></span></span></span></span></li>
+	<li><span><span><span><span><span><span>the number of persons employed in the occupation in the 2016 Census of Population and Housing are significant.</span></span></span></span></span></span></li>
+</ul>
+
+<p><span><span><span><span><span><span>Also included were a small number of occupations that were engineering-related rather than construction, but which also satisfied the above criteria.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span><span><span>The ABS received nine submissions from users on these 24 </span>construction-related trades occupations<span>. A common theme across feedback indicated that civil (infrastructure) construction occupations described in ANZSCO no longer accurately reflect the modern workforce and in some instances lack visibility within the classification.&#160;Changes to skill in the modern labour market has meant that some of these occupations described in ANZSCO appear to lack sufficient detail, and no longer reflect the range of skills and competencies required to undertake these occupations.</span></span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>However, feedback reflected broad support for the current definition of residential and commercial occupations in ANZSCO, with some suggested additional occupation categories and minor definitional changes to reflect contemporary practice.</span></span></span></span></span></span></span></p>
+
+<p><strong><span><span><span><span><span><span><span>Skills&#160;</span></span></span></span></span></span></span></strong></p>
+
+<p><span><span><span><span><span><span><span>T</span></span></span></span></span></span></span><span><span><span><span><span><span>he ABS recognises that there is demand for a review of how skills are reflected in the classification. An initial set of k</span></span></span><span><span><span><span>ey issues were defined with our partners and a skills problem statement drafted for consideration by users.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>The ABS received thirteen submissions from users supportive of work to improve how skills are reflected in the classification. These submissions provided feedback on the five key issues that were highlighted in the skills problem statement and provided some further suggestions based on other international frameworks for ABS to consider.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span><span><strong>Other areas of ANZSCO </strong></span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span><span>The ABS received a further 115 submissions identifying areas of the classification users would like updated to </span></span></span><span><span><span>reflect the occupations of a contemporary Australian workforce. Feedback was received from a wide range of industries including health and community services, professional services, manufacturing, technology, and the arts. <span>Feedback will be assessed to assist with planning future updates.</span></span></span></span></span></span></span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><strong>2022 targeted update</strong></span></span></p>
+
+<p><span><span>Based on user feedback the following 24 construction-related trades occupations are within scope for the 2022 targeted update. The ABS is now in the process of assessing the submissions on these to develop a set of proposed changes for further consultation in September 2022.&#160;</span></span></p>
+
+<p><span><span><span><span><span><span>322211 Sheetmetal Trades Worker&#160; &#160;332211 Painting Trades Worker</span></span></span></span><br>
+<span><span><span><span><span><span><span><span><span>322311 Metal Fabricator &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 333111 Glazier</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>322313 Welder (First Class) &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 333211 Fibrous Plasterer</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>323211 Fitter (General) &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 333212 Solid Plasterer</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>323212 Fitter and Turner &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;333311 Roof Tiler</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>323313 Locksmith &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;333411 Wall and Floor Tiler</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>331111 Bricklayer &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &#160;&#160;334111 Plumber (General)</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>331112 Stonemason &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 334112 Airconditioning &amp; Mechanical Services Plumber</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>331211 Carpenter and Joiner &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160; 334113 Drainer/Drainlayer</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>331212 Carpenter &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;334114 Gasfitter</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>331213 Joiner &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 334115 Roof Plumber</span></span></span></span></span></span><br>
+<span><span><span><span><span><span>332111 Floor Finisher&#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;394111 Cabinetmaker</span></span></span></span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span>The remaining Emerging Occupations identified by the National Skills Commission (NSC) that were unable to be included in the <a href="https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/latest-release">ANZSCO 2021, Australian Update</a> will&#160; be reviewed as part of the 2022 targeted update. These <a href="https://www.nationalskillscommission.gov.au/reports/emerging-occupations">Emerging Occupations</a> comprise of new, frequently advertised jobs which are substantially different to occupations already defined in the ANZSCO. The following Emerging Occupations are within scope for the 2022 targeted update:</span></span></span></span></p>
+
+<p class="Default"><span><span><span><span>Data Analyst&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Fundraiser&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Hazardous Materials Labourer</span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>Data Architect &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Risk Analyst&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Patient Liaison</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>Data Engineer &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Logistics Analyst</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>Data Scientist&#160; &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Regulatory Affairs Specialist</span></span></span></span></span></span></span><br>
+&#160;</p>
+
+<p><span><span><span><span><span><span><span><span>The ABS will also </span></span></span><span><span><span><span>assess these occupations and develop a set of proposed classification changes for further consultation in September 2022.</span></span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span><span>The ANZSCO 2022, Australian Update will be released on the ABS website in November 2022, along with a complete list of classification changes.</span></span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><strong>Skills</strong> </span></span></span></span></span></p>
+
+<p><span><span><span><span><span>Issues </span></span><span><span>identified by users with the way in which skills are currently reflected in ANZSCO will inform a paper for public consultation in late June 2022.&#160; This will outline the position the ABS has reached with stakeholders regarding how skills should be reflected in the future. Details will be provided on how any changes would be applied, and feedback will be sought on whether the position the ABS has reached has any unintended impacts for the broader user community. </span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>The agreed position on how skills should be reflected in ANZSCO will inform the comprehensive update of ANZSCO and its ongoing maintenance. Agreed recommendations will be implemented over time.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><strong>Other areas of ANZSCO</strong> </span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>The ABS is committed to continuing the work with our stakeholders to deliver a targeted update of the occupations within scope for 2022 as described above.</span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>Additionally, the Australian government recently announced $23.7million of new funding over 4 years for the ABS to undertake a comprehensive update of ANZSCO (for delivery by December 2024) and commence an ongoing maintenance program in 2025. This measure will enable the ABS to commence </span></span></span><span><span><span>review of the remaining areas of the classification yet to be updated from July 2022. This will be the first major update to the classification since 2006.&#160; It will include some structural and classification-wide changes, in time for use by the Census 2026 program.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span>A <span>prioritisation framework will be used to assess submissions against a range of factors to determine the relative priority for the schedule of future review work.</span> Submissions received by the ABS to date, including from this consultation process, will be taken into account. </span></span></span></span></span></span></p>
+
+<p><span><span><span><span><span><span><span>The ABS is working on a delivery plan for this extensive program of work and will release further information on the schedule of review work and when stakeholder input will be sought.</span></span></span></span></span></span></span></p>
+
+<p><span><span><span><span>If you have an interest in changes to ANZSCO and would like to subscribe to receive communication regarding future updates please provide contact details via </span></span></span></span><span><span><span><a href="/standards-and-classifications/updating-the-australian-and-new-zealand-standard-c/mailto:anzsco.maintenance@abs.gov.au"><span><span>anzsco.maintenance@abs.gov.au</span></span></a></span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/macroeconomic-statistics/2021-enhancing-australias-international-trade-stat/">
+                        <h2>2021 Enhancing the quality of Australia's international trade statistics</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>In October 2021, the ABS consulted with users of international trade statistics on priorities for enhancing the quality and breadth of data on &#160;international services statistics, and on changes to content and timing of the monthly international trade publication.&#8217;<a href="https://www.abs.gov.au/statistics/research/enhancing-quality-australias-international-trade-statistics">Enhancing the quality of Australia&#8217;s international trade statistics</a>&#8217;, outlined the planned and proposed changes to the international merchandise trade publication and the planned and proposed enhancements to services statistics. &#160;</span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>10 submissions were received, these came from across federal government, state government and industry. A summary of the feedback can be seen below.</span></span></span></p>
+
+<p><span><span><span><b>Monthly merchandise trade publication options</b></span></span></span></p>
+
+<p><span><span><span>Respondents were asked to comment on two publication options. See consultation papers&#160;for more information on the options.</span></span></span></p>
+
+<p><span><span><span>Option 2 was the preferred publication, with over 80% of respondents choosing this preference. The main reason cited for option 2 as the preference was the inclusion of seasonally adjusted data. </span></span></span></p>
+
+<p><span><span><span><b>Services enhancement projects</b></span></span></span></p>
+
+<p><span><span><span>Respondents were asked to prioritise the projects (1 through to 4) which were aimed at enhancing the quality and breadth of international trade in services statistics. Those projects were: </span></span></span></p>
+
+<ul>
+	<li><span><span><span>More frequent detailed services statistics;</span></span></span></li>
+	<li><span><span><span>Statistics on characteristics of service traders;</span></span></span></li>
+	<li><span><span><span>Monthly indicator statistics; and</span></span></span></li>
+	<li><span><span><span>Other (to be specified).</span></span></span></li>
+</ul>
+
+<p><span><span><span>More frequent detailed services statistics were rated as the highest priority. Respondents also noted a strong interest in more detailed multi-dimensional cross classified data. The second highest priority was statistics on characteristics of service traders, closely followed by monthly indicator statistics. </span></span></span></p>
+
+<p><span><span><span><b>Additional feedback</b></span></span></span></p>
+
+<p><span><span><span>In addition, while respondents recognised the need to change and create opportunities for enhancing the international trade in services statistics, they acknowledged that with the imminent reopening of international borders, access to the full suite of monthly international trade data was critical in the short term for informing policy and insights around the COVID-19 recovery. </span></span></span></p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p><span><span><span>Given the additional feedback on changes to the monthly trade publication, The ABS has decided, that in the short term, we will continue to produce the <a href="https://www.abs.gov.au/statistics/economy/international-trade/international-trade-goods-and-services-australia/latest-release">International Trade in Goods and Services, Australia</a> publication in its current form, with no changes to timing or content. The ABS will look to revisit discussions with users on the original options proposed as part of this consultation through 2022.&#160;The feedback received on the publication options and services enhancement projects will be used to help inform these discussions. &#160;</span></span></span></p>
+
+<p><span><span><span>Of the services enhancements, the immediate focus will be to enhance the quarterly Survey of International Trade in Services, with a particular focus on moving the survey collection timing in line with the reference period. The priority and timing of other services enhancement projects (as outlined in the paper), is still being discussed, noting further enhancements may not be possible in the short term while the extended set of international trade data continue to be produced. More information on the service enhancement projects will be made available in 2022.</span></span></span></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/geospatial-solutions/review-of-the-asgs-for-2021/">
+                        <h2>Review of the ASGS for 2021</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p>In preparation for the 2021 edition of the Australian Statistical Geography Standard (ASGS) the ABS has been consulting with stakeholders to ensure this framework is still meeting user needs. Between May and July 2019, we invited all stakeholders to contribute their views and provide feedback on the ASGS.</p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p>A total of 75 submissions were received with major representations from Commonwealth Government Departments (22%), State Government Departments (18%) and Businesses (18%).</p>
+
+<p>A summary of feedback is presented below:</p>
+
+<p><b>Urban Centres and Localities </b></p>
+
+<ul>
+	<li>67% of respondents were positive about using Mesh Blocks as the building blocks of Urban Centres and Localities. They noted that urban areas would be more accurately defined using Mesh Blocks, especially on the fringe of urban centres. 5% of respondents were negative about the proposed changes, with the main concerns being: less data available at the Mesh Block level and less stability over time.</li>
+	<li>Regarding allowing non-contiguous Urban Centres, 37% of respondents did not foresee any issues, noting that it would provide a more accurate definition of urban and rural areas. However, 19% of respondents did raise issues such as; difficulties in spatial analysis, difficulties in mapping Urban Centres, and non-contiguous Urban Centres crossing other boundaries (such as Local Government Areas).</li>
+	<li>76% of submissions supported the inclusion of a Rural Residential category, with no oppositions to the inclusion. Respondents commented on the increasing need for a definition of this type of settlement to enable consistent statistical analysis.</li>
+	<li>The density criteria proposed for identifying Rural Residential Mesh Blocks received a wide range of responses. 47% or respondents supported the proposed criteria and 5% did not. Supportive respondents agreed that the proposed density criteria of &gt;25 psns per sqkm would accurately reflect areas of rural residential character. However, there was concern from other respondents that this density threshold would be too low and capture some rural areas as a result.</li>
+</ul>
+
+<p><b>Commonwealth and State Electoral Divisions </b></p>
+
+<p>63% of respondents were positive and 5% were negative about building CEDs and SEDs from Mesh Blocks rather than SA1s. Respondents who were positive said that this change will result in more accurate electoral boundary approximations and allow for more precise data analysis. However, there was also concern around having less data available at the Mesh Block level.</p>
+
+<p><b>Environmental Boundaries </b></p>
+
+<p>65% of respondents said that they do not use Natural Resource Management Regions (NRMRs) and Australian Drainage Divisions, and only 9% of respondents find them to be useful.</p>
+
+<p>A number of other environmental boundaries were suggested for inclusion in the ASGS, these included:</p>
+
+<ul>
+	<li>Flood maps</li>
+	<li>Water and sewerage distribution areas</li>
+	<li>Climate classifications</li>
+	<li>Weather districts</li>
+</ul>
+
+<p><b>Coding Structure </b></p>
+
+<p>On the removal of short codes for SA1s and SA2s, 43% were positive and 12% were negative. Many see the use of two different codes confusing, and consider that long codes are preferable as they are clear and hierarchical. The main reasons why respondents were not supportive of this change were that; short codes are easier to display, they are easier to reference, and it is difficult to change systems that have already integrated short codes.</p>
+
+<p><b>Improving the ASGS and Design Principles </b></p>
+
+<p>Overall, respondents were supportive of the ASGS design principles and thought they were comprehensive. Coherence was commonly recognised as being the most important principle, especially as it contributes to stability and consistency across the statistical boundaries. Consistency around growth areas was identified as an issue, along with ASGS boundaries needing to be consistently named across ABS products. Additionally, several comments were made in relation to the Interpretability principle, particularly that more effort should be placed on the alignment of boundaries to significant and stable boundaries.</p>
+
+<p>A total of 49 specific boundary change requests were received, ranging from SA4 down to SA1 level. Each of these detailed boundary suggestions will be considered in 2021 design.</p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p dir="LTR">The ABS has analysed these submissions in detail and incorporated the input into our decision making process for design of ASGS Edition 3. An <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1216.0.55.005?OpenDocument">information paper</a> outlining the broad changes to the ASGS as a result of this consultation and routine review was published in September 2020. &#12288;</p>
+
+<p>ASGS Edition 3 will be published from mid-2021. Please see the <a href="https://www.abs.gov.au/websitedbs/D3310114.nsf/home/geography">ABS Geography homepage</a> for further details and updates.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dss-card">
+            <div class="row">
+                <div>
+                    <a class="cs-no-underline" href="/census/census-topics/">
+                        <h2>Review of 2021 Census Topics</h2>
+                        
+                    </a>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We asked</h4>
+                </div>
+                <div class="col-md-9">
+                    <p>In late 2017, the ABS began consulting with key users of Census data to determine whether there should be changes or additions to the topics to be included in the 2021 Census. Between April and June 2018, a formal consultation process invited all interested parties to contribute their views on the topics that are important to be collected in the next Census. Emerging data needs and details of the consultation were outlined in a publication released on 3 Apr 2018 (<a href="http://abs.gov.au/ausstats/abs@.nsf/mf/2007.0?OpenDocument">cat. no. 2007.0 - Census of Population and Housing: Consultation on Topics, 2021</a>).</p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>You said</h4>
+                </div>
+                <div class="col-md-9">
+                    <p>In total, 450 submissions were received, with 315 published with consent on the ABS Consultation Hub. A summary of results and topic directions being explored by the ABS were published on 14 Nov 2018 in <a href="http://www.abs.gov.au/ausstats/abs@.nsf/Lookup/by%20Subject/2007.0.55.001~2021~Main%20Features~Preface~1">cat. no. 2007.0.55.001 - Census of Population and Housing: Topic Directions, 2021</a>.</p>
+
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="col-12 col-lg-2">
+                    <h4>We did</h4>
+                </div>
+                <div class="col-md-9">
+                    <p>Recommendations will be presented to Government in mid-2019 for decision on the 2021 Census topics. The final list of topics to be included in the Census will be published by the ABS in an information paper (cat. no. 2008.0) expected to be released in late 2020.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+    </div>
+</section>
+
+
+            
+        </div>
+
+        
+    </div>
+                </div>
+            </main>
+        </div>
+        <footer id="configurable-footer-wrapper">
+            <div class="cs-page-component-group">
+                
+                    <section class="dss-rhino cs-page-component-container dss-rhino-footer" style="">
+    <div class="container-fluid">
+        <div class="cs-page-component cs-page-component-contrast">
+    <div class="row" id="global-footer">
+            <div id="citizen-space-footer-nav" class="col-12 col-md-8 order-1 order-md-2">
+                <ul class="list-inline">
+                    
+                        <li id="nav-item-accessibility_policy" class="list-inline-item"><a href="https://consult.abs.gov.au/accessibility_policy/">Accessibility</a></li>
+                    
+                        <li id="nav-item-terms_and_conditions" class="list-inline-item"><a href="https://consult.abs.gov.au/terms_and_conditions/">Terms of Use</a></li>
+                    
+                        <li id="nav-item-cookie_policy" class="list-inline-item"><a href="https://consult.abs.gov.au/cookie_policy/">Cookies</a></li>
+                    
+                        <li id="nav-item-privacy_policy" class="list-inline-item"><a href="https://consult.abs.gov.au/privacy_policy/">Privacy</a></li>
+                    
+                        <li id="nav-item-support" class="list-inline-item"><a href="https://consult.abs.gov.au/support/">Help / feedback</a></li>
+                    
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 order-2 order-md-1">
+                <span id="citizen-space-footer-logo">
+                <a href="https://www.delib.net/citizen_space">Citizen Space</a>
+                <span>from</span> 
+                <a href="https://www.delib.net">Delib</a>
+                </span>
+            </div>
+    </div>
+
+</div>
+
+        
+    </div>
+</section>
+
+
+                
+            </div>
+        </footer>
+
+        
+        
+        
+
+        <script type="text/javascript">
+            $(function() {
+                // Skip to content workaround for absolute skip links
+                jQuery('#skip a').bind("click", function(event) {
+                    var target = jQuery(this).attr('href').split('#')[1];
+                    jQuery("#"+target+"").focus();
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(function() {
+                // Global search
+                var search_form = $("#cs-global-search");
+                var search_form_input = $("#cs-global-search-input");
+
+                // Scroll to search results on submit of global search form
+                search_form.submit(function() {
+                    if (search_form_input.attr('placeholder') == search_form_input.val()) {
+                        search_form_input.val('');
+                    }
+                    sessionStorage.setItem('saved-scrollTop', '500');
+                });
+
+                // Move the global search form into the appropriate container depending on viewport size
+                function move_global_search_form() {
+                    // if global nav (and global search) are turned off, bail
+                    if(!search_form.length) {
+                        return;
+                    }
+
+                    var md_container = $("#cs-global-search-container-md");
+                    var xs_container = $("#cs-global-search-container-xs");
+
+                    // btw we can't test if xs_container is visible because it's hidden inside the burger menu
+
+                    if (md_container.is(":visible")) {
+                        if(!md_container.find("#cs-global-search").length) {
+                            md_container.append(search_form);
+                        }
+                    }
+                    else {
+                        if(!xs_container.find("#cs-global-search").length) {
+                            xs_container.append(search_form);
+                        }
+                    }
+                }
+                move_global_search_form();
+                $(window).resize(move_global_search_form);
+
+                // Function to update the query string
+                function updateQueryStringParameter(uri, key, value) {
+                    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+                    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+                    if (uri.match(re)) {
+                        return uri.replace(re, '$1' + key + "=" + value + '$2');
+                    } else {
+                        return uri + separator + key + "=" + value;
+                    }
+                }
+
+                // Event listener to detect changes in the large viewport language `select`
+                var languageSelect = document.getElementById('language-picker-select');
+                if (languageSelect) {
+                    languageSelect.addEventListener('change', function() {
+                        var form = document.getElementById('global-language-picker');
+                        form.submit();
+                    });
+                }
+
+            });
+
+            // a11y hax. There are some elements generated by the ol libraries that need some extra attributes for a11y.
+            // Putting them here was preferable to overriding masses of ol code.
+            $(window).on("load", function() {
+              var zoomins = document.getElementsByClassName('ol-zoom-in');
+              for (let i=0; i<zoomins.length; i++) {
+                zoomins[i].setAttribute('aria-label', 'Zoom in');
+              }
+              var zoomouts = document.getElementsByClassName('ol-zoom-out');
+              for (let j=0; j<zoomouts.length; j++) {
+                zoomouts[j].setAttribute('aria-label', 'Zoom out');
+              }
+              var attributions = document.getElementsByClassName('ol-attribution');
+              for (let k=0; k<attributions.length; k++) {
+                attributions[k].getElementsByTagName('button')[0].setAttribute('aria-label', 'Attribution');
+              }
+              var recentre = document.getElementsByClassName('cs-zoom-to-extent');
+              for (let m=0; m<recentre.length; m++) {
+                recentre[m].getElementsByTagName('button')[0].setAttribute('aria-label', 'Recentre map');
+              }
+              var search = document.getElementsByClassName('cs-map-postcode-popup');
+              for (let m=0; m<search.length; m++) {
+                search[m].getElementsByTagName('button')[0].setAttribute('aria-label', 'Go to a postcode');
+              }
+            }
+            );
+        </script>
+
+        
+          
+          
+        
+    </body>
+</html>
+
+ contentType 9 text/html url 49 https://consult.abs.gov.au:443/we_asked_you_said/ responseCode 3 200 

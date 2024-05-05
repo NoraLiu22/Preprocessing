@@ -1,0 +1,751 @@
+tgxmraskrcucwksifanekcjgrmjozktilcnolqnc length 5 41991 page 41991 <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie6 no-js"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 no-js"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>    <html class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Movie Theaters Previously Operated by Hoyts Theatres - Cinema Treasures</title>
+    <meta content="List of movie theaters previously operated by Hoyts Theatres" name="description">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  
+    <script src="//use.typekit.com/voa4cfk.js" type="text/javascript"></script>
+    <script>
+      //<![CDATA[
+        try{Typekit.load();}catch(e){}
+      //]]>
+    </script>
+    <script async="" src="//www.googletagmanager.com/gtag/js?id=UA-2710707-1"></script>
+    <script>
+      //<![CDATA[
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-2710707-1');
+      //]]>
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdn.apple-mapkit.com/mk/5.x.x/mapkit.js" type="text/javascript"></script>
+    <script src="/assets/common.js?1714499759" type="text/javascript"></script>
+    <script>
+        //<![CDATA[
+          $(document).ready(function () {
+        
+            if ($('#child_region_select').length) {
+              $('#child_region_select').change(function () {
+                document.location = $(this).val();
+              });
+            }
+        
+            if ($('.list').length) {
+              // Load MapKit JS
+              mapkit.init({
+            authorizationCallback: function(done) {
+              done("eyJraWQiOiJVNDNTMjk3RExMIiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiI5OVhYUDJXRjM4IiwiaWF0IjoxNzE0NDk5MzkzLCJleHAiOjE3NDYwMzUzOTN9.ye7O5dcS06vkNBBp7I_83JweieHxwesOUvpWJBuNE2J2gFUC7rEI8Y13HEnFZeZGfea51RgKgsU2h_WmCZvsdg");
+            }
+          });
+        
+              // Grab theater locations
+              var locations = []
+              $( ".list tbody tr.location" ).each(function(index) {
+                var location = {
+                  id: $(this).data("id"),
+                  name: $(this).data("name"),
+                  lat: $(this).data("lat"),
+                  lng: $(this).data("lng"),
+                  category: $(this).data("category"),
+                  address: $(this).data("address"),
+                  photo: $(this).data("photo")
+                };
+                locations.push(location);
+              });
+        
+              // Show map with multiple markers
+              if (locations.length > 1) {
+        
+                // Set region size to contain all map markers
+                var latitudes = []
+                var longitudes = []
+                for (var i = 0; i < locations.length; i++) {
+                  latitudes[i] = locations[i].lat;
+                  longitudes[i] = locations[i].lng;
+                }
+                maxLatitude = Math.max(...latitudes);
+                minLatitude = Math.min(...latitudes);
+                maxLongitude = Math.max(...longitudes);
+                minLongitude = Math.min(...longitudes);
+                var region = new mapkit.BoundingRegion (maxLatitude, maxLongitude, minLatitude, minLongitude).toCoordinateRegion();
+        
+                // Create map
+                var map = new mapkit.Map("map", {
+                  region: region,
+                });
+        
+                var list = [];
+                for (i = 0; i < locations.length; i++) {
+        
+                  // Generate popup window for each map marker
+                  var popup = {
+                    calloutContentForAnnotation: function(annotation) {
+                      var element = document.createElement("div");
+                      element.className = "popup";
+        
+                      var photo = element.appendChild(document.createElement("a"));
+                      photo.href = annotation.data.link;
+                      photo.innerHTML = "<img src='" + annotation.data.photo + "' width='48' height='48' alt='thumb' />"
+        
+                      var link = element.appendChild(document.createElement("a"));
+                      link.href = annotation.data.link;
+                      link.textContent = annotation.data.name;
+        
+                      var address = element.appendChild(document.createElement("p"));
+                      address.innerHTML = annotation.data.address.replace(/^\s*(<br\s*\/?\s*>)+|(<br\s*\/?\s*>)+\s*$/ig, '');
+        
+                      return element;
+                    }
+                  };
+        
+                  // Create map marker
+                  var coordinates = new mapkit.Coordinate(locations[i].lat, locations[i].lng)
+                  var annotation = new mapkit.MarkerAnnotation(coordinates, {
+                    color: (locations[i].category == 'open' ? "#38B257" : "#A3121B"),
+                    title: locations[i].name,
+                    callout: popup,
+                    data: {
+                      link: "/theaters/" + locations[i].id,
+                      name: locations[i].name,
+                      address: locations[i].address,
+                      photo: (locations[i].photo == 'photos/missing.png' ? '/images/photos/missing.png' : locations[i].photo)
+                    },
+                    glyphImage: {
+                      1: "/apple-touch-icon.png"
+                    }
+                  })
+        
+                  list.push(annotation);
+                }
+        
+                // Add map markers to map
+                map.addAnnotations(list);
+        
+                // Force map markers into map window
+                map.showItems(list);
+        
+              // Show map with single marker
+              } else {
+        
+                // Set region size
+                var region = new mapkit.CoordinateRegion(
+                  new mapkit.Coordinate(locations[0].lat, locations[0].lng),
+                  new mapkit.CoordinateSpan(0.004, 0.004)
+                );
+        
+                // Create map
+                var map = new mapkit.Map("map", {
+                  center: new mapkit.Coordinate(locations[0].lat, locations[0].lng),
+                  region: region
+                });
+        
+                // Create map marker
+                var coordinates = new mapkit.Coordinate(locations[0].lat, locations[0].lng)
+                var annotation = new mapkit.MarkerAnnotation(coordinates, {
+                  color: (locations[0].category == 'open' ? "#38B257" : "#A3121B"),
+                  title: locations[0].name,
+                  glyphImage: {
+                    1: "/apple-touch-icon.png"
+                  }
+                })
+        
+                // Add map marker to map
+                map.addAnnotation(annotation);
+              }
+        
+            }
+          });
+        //]]>
+      </script>
+    <link href="/stylesheets/app.css?1714499759" media="all" rel="stylesheet" type="text/css" />
+  
+  </head>
+  <body class="chains show" lang="en">
+    <div id="wrap">
+      <div id="header">
+        <div id="stars"></div>
+        <div id="primary">
+          <a href="/"><img alt="Cinema Treasures" height="88" id="logo" src="/images/app/logo.png?1714499759" width="218" /></a>
+          <div id="links">
+            <a href="/login?return_to=https%3A%2F%2Fcinematreasures.org%2Fchains%2F70%2Fprevious">Login</a> or
+            <a href="/signup">Sign up</a>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/theaters">Theaters</a></li>
+              <li><a href="/photos">Photos</a></li>
+              <li><a href="/video">Video</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/about">About</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div id="secondary">
+          <span>
+            <div id="slogan">Your guide to movie theaters</div>
+            <div id="search_bar">
+              <form action="/theaters" method="get">
+                <input id="query" name="q" placeholder="Search by Theater, Location, or Zipcode" type="text" />
+                <input name="" type="submit" value="Search" />
+              </form>
+            </div>
+          </span>
+        </div>
+      </div>
+      <div id="page">
+        <div id="content">
+          <div id="leaderboard">
+            <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle" data-ad-client="ca-pub-4430601922741422" data-ad-slot="6230392620" style="display:inline-block;width:970px;height:90px"></ins>
+            <script>
+              //<![CDATA[
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              //]]>
+            </script>
+          </div>
+          <div id="breadcrumb">
+            <ul>
+              <li><a href="/theaters">Movie Theaters</a></li>
+              <li><a href="/chains">Chains</a></li>
+              <li><a href="/chains/70">Hoyts Theatres</a></li>
+            </ul>
+          </div>
+          <h1>Movie Theaters Previously Operated by Hoyts Theatres</h1>
+          <form action="/chains/70/previous" id="search" method="get">
+            <input id="q" name="q" type="text" />
+            <input name="" type="submit" value="Search" />
+          </form>
+          <div id="showing">
+            Showing <strong>1&nbsp;-&nbsp;30</strong> of <strong>31</strong> open movie theaters
+          </div>
+          <div id="map_holder">
+            <div id="map"></div>
+          </div>
+          <div id="facets">
+            <a href="/chains/70/previous?status=all" class="all">All Theaters <span>(216)</span></a><a href="/chains/70/previous?status=open" class="active open">Open <span>(31)</span></a><a href="/chains/70/previous?status=showing_movies" class="showing_movies">Showing Movies <span>(23)</span></a><a href="/chains/70/previous?status=closed" class="closed">Closed <span>(185)</span></a><a href="/chains/70/previous?status=demolished" class="demolished">Demolished <span>(94)</span></a><a href="/chains/70/previous?status=restoring" class="restoring">Restoring <span>(1)</span></a><a href="/chains/70/previous?status=renovating" class="renovating">Renovating <span>(1)</span></a>
+          </div>
+          <table class="list">
+            <thead>
+              <tr>
+                <th id="theater_name"><a href="/chains/70/previous?sort=name&amp;order=desc">&uarr; Name</a></th>
+                <th id="theater_location"><a href="/chains/70/previous?sort=location&amp;order=asc">Location</a></th>
+                <th id="theater_status"><a href="/chains/70/previous?sort=open&amp;order=desc">Status</a></th>
+                <th id="theater_screens"><a href="/chains/70/previous?sort=screens&amp;order=asc">Screens</a></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tr class="even location theater" data-address="188 Collins Street&lt;br&gt;Melbourne, VIC 3000&lt;br&gt;Australia&lt;br&gt;+61-03-9650-1500&lt;br&gt;" data-category="open" data-id="32327" data-lat="-37.814832" data-lng="144.967261" data-name="Athenaeum Theatre" data-photo="https://photos.cinematreasures.org/production/photos/53980/1346339853/thumb.JPG?1346339853">
+              <td class="name">
+                <a href="/theaters/32327" class="map-link"><img alt="Athenaeum Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/53980/1346339853/thumb.JPG?1346339853" width="48" /></a>
+                <a href="/theaters/32327">Athenaeum Theatre</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="113 Swanston Street&lt;br&gt;Melbourne, VIC 3000&lt;br&gt;Australia&lt;br&gt;+61(0)3-9650-4017&lt;br&gt;" data-category="open" data-id="863" data-lat="-37.815032" data-lng="144.966022" data-name="Capitol Theatre" data-photo="https://photos.cinematreasures.org/production/photos/16906/1311375218/thumb.jpg?1311375218">
+              <td class="name">
+                <a href="/theaters/863" class="map-link"><img alt="Capitol Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/16906/1311375218/thumb.jpg?1311375218" width="48" /></a>
+                <a href="/theaters/863">Capitol Theatre</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="375 Hunter Street&lt;br&gt;Newcastle, NSW 2300&lt;br&gt;Australia&lt;br&gt;+61-02-4929-1977&lt;br&gt;" data-category="open" data-id="32257" data-lat="-32.9270115" data-lng="151.7721079" data-name="Civic Theatre" data-photo="https://photos.cinematreasures.org/production/photos/75311/1372182459/thumb.jpg?1372182459">
+              <td class="name">
+                <a href="/theaters/32257" class="map-link"><img alt="Civic Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/75311/1372182459/thumb.jpg?1372182459" width="48" /></a>
+                <a href="/theaters/32257">Civic Theatre</a>
+              </td>
+              <td class="location">
+                Newcastle, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="267 Queen Street&lt;br&gt;Auckland 1010&lt;br&gt;New Zealand&lt;br&gt;+6409-8176001&lt;br&gt;" data-category="open" data-id="842" data-lat="-36.8511851" data-lng="174.7642663" data-name="Civic Theatre" data-photo="https://photos.cinematreasures.org/production/photos/34709/1327881295/thumb.jpg?1327881295">
+              <td class="name">
+                <a href="/theaters/842" class="map-link"><img alt="Civic Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/34709/1327881295/thumb.jpg?1327881295" width="48" /></a>
+                <a href="/theaters/842">Civic Theatre</a>
+              </td>
+              <td class="location">
+                Auckland, New Zealand
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="130 Enmore Road&lt;br&gt;Sydney, NSW 2042&lt;br&gt;Australia&lt;br&gt;+61-02-9550-3666&lt;br&gt;" data-category="open" data-id="32315" data-lat="-33.898808" data-lng="151.1740225" data-name="Enmore Theatre" data-photo="https://photos.cinematreasures.org/production/photos/3829/1307815519/thumb.jpg?1307815519">
+              <td class="name">
+                <a href="/theaters/32315" class="map-link"><img alt="Enmore Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/3829/1307815519/thumb.jpg?1307815519" width="48" /></a>
+                <a href="/theaters/32315">Enmore Theatre</a>
+              </td>
+              <td class="location">
+                Sydney, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="447-453 King Georges Road&lt;br&gt;Sydney, NSW 2209&lt;br&gt;Australia&lt;br&gt;+61-02-9580-5400&lt;br&gt;" data-category="open" data-id="35270" data-lat="-33.9508511" data-lng="151.081847" data-name="Event Cinemas GU Film House Sydney" data-photo="https://photos.cinematreasures.org/production/photos/46721/1339606630/thumb.JPG?1339606630">
+              <td class="name">
+                <a href="/theaters/35270" class="map-link"><img alt="Event Cinemas GU Film House Sydney" height="48" src="https://photos.cinematreasures.org/production/photos/46721/1339606630/thumb.JPG?1339606630" width="48" /></a>
+                <a href="/theaters/35270">Event Cinemas GU Film House Sydney</a>
+              </td>
+              <td class="location">
+                Sydney, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                6
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="206 Route 1&lt;br&gt;Falmouth, ME 04105&lt;br&gt;United States&lt;br&gt;" data-category="open" data-id="42301" data-lat="43.720877" data-lng="-70.2351179" data-name="Flagship Premium Cinemas Falmouth" data-photo="https://photos.cinematreasures.org/production/photos/173355/1468422435/thumb.jpg?1468422435">
+              <td class="name">
+                <a href="/theaters/42301" class="map-link"><img alt="Flagship Premium Cinemas Falmouth" height="48" src="https://photos.cinematreasures.org/production/photos/173355/1468422435/thumb.jpg?1468422435" width="48" /></a>
+                <a href="/theaters/42301">Flagship Premium Cinemas Falmouth</a>
+              </td>
+              <td class="location">
+                Falmouth, ME, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                10
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="Averys Lane&lt;br&gt;Heddon Greta, NSW 2321&lt;br&gt;Australia&lt;br&gt;+61-2-4936-2800&lt;br&gt;" data-category="open" data-id="51978" data-lat="-32.8089015" data-lng="151.5150071" data-name="Heddon Greta Drive-In" data-photo="https://photos.cinematreasures.org/production/photos/256257/1537685282/thumb.jpg?1537685282">
+              <td class="name">
+                <a href="/theaters/51978" class="map-link"><img alt="Heddon Greta Drive-In" height="48" src="https://photos.cinematreasures.org/production/photos/256257/1537685282/thumb.jpg?1537685282" width="48" /></a>
+                <a href="/theaters/51978">Heddon Greta Drive-In</a>
+              </td>
+              <td class="location">
+                Heddon Greta, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even theater">
+              <td class="name">
+                <a href="/theaters/58708" class="map-link"><img alt="Her Majesty's Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/421389/1695800059/thumb.jpeg?1695800059" width="48" /></a>
+                <a href="/theaters/58708">Her Majesty's Theatre</a>
+              </td>
+              <td class="location">
+                Adelaide, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="427 Manukau Road&lt;br&gt;Epsom&lt;br&gt;Auckland &lt;br&gt;New Zealand&lt;br&gt;" data-category="open" data-id="5840" data-lat="-36.8928633" data-lng="174.7744468" data-name="Lido Cinema" data-photo="https://photos.cinematreasures.org/production/photos/166984/1462663423/thumb.jpg?1462663423">
+              <td class="name">
+                <a href="/theaters/5840" class="map-link"><img alt="Lido Cinema" height="48" src="https://photos.cinematreasures.org/production/photos/166984/1462663423/thumb.jpg?1462663423" width="48" /></a>
+                <a href="/theaters/5840">Lido Cinema</a>
+              </td>
+              <td class="location">
+                Auckland, New Zealand
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                2
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="771 Boston Post Road&lt;br&gt;Madison, CT 06443&lt;br&gt;United States&lt;br&gt;203.245.3456&lt;br&gt;" data-category="open" data-id="8112" data-lat="41.2796827" data-lng="-72.5950645" data-name="Madison Cinemas" data-photo="https://photos.cinematreasures.org/production/photos/118475/1424549568/thumb.jpg?1424549568">
+              <td class="name">
+                <a href="/theaters/8112" class="map-link"><img alt="Madison Cinemas" height="48" src="https://photos.cinematreasures.org/production/photos/118475/1424549568/thumb.jpg?1424549568" width="48" /></a>
+                <a href="/theaters/8112">Madison Cinemas</a>
+              </td>
+              <td class="location">
+                Madison, CT, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                2
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="220 College Street&lt;br&gt;Burlington, VT 05401&lt;br&gt;United States&lt;br&gt;" data-category="open" data-id="6374" data-lat="44.4771847" data-lng="-73.2109026" data-name="Merrill&#39;s Roxy Cinemas" data-photo="https://photos.cinematreasures.org/production/photos/177956/1472239216/thumb.jpg?1472239216">
+              <td class="name">
+                <a href="/theaters/6374" class="map-link"><img alt="Merrill's Roxy Cinemas" height="48" src="https://photos.cinematreasures.org/production/photos/177956/1472239216/thumb.jpg?1472239216" width="48" /></a>
+                <a href="/theaters/6374">Merrill's Roxy Cinemas</a>
+              </td>
+              <td class="location">
+                Burlington, VT, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                6
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="20 Carlisle Street&lt;br&gt;Melbourne, VIC 3182&lt;br&gt;Australia&lt;br&gt;+61(0)3-9534-0221&lt;br&gt;" data-category="open" data-id="1848" data-lat="-37.8670996" data-lng="144.9808183" data-name="National Theatre" data-photo="https://photos.cinematreasures.org/production/photos/47645/1340616561/thumb.jpg?1340616561">
+              <td class="name">
+                <a href="/theaters/1848" class="map-link"><img alt="National Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/47645/1340616561/thumb.jpg?1340616561" width="48" /></a>
+                <a href="/theaters/1848">National Theatre</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="odd theater">
+              <td class="name">
+                <a href="/theaters/36441" class="map-link"><img alt="Palace Brighton Bay" height="48" src="http://photos.cinematreasures.org/production/photos/132182/1438871105/thumb.JPG?1438871105" width="48" /></a>
+                <a href="/theaters/36441">Palace Brighton Bay</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                4
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="1 Temple Street&lt;br&gt;Portland, ME 04101&lt;br&gt;United States&lt;br&gt;207.772.9751&lt;br&gt;" data-category="open" data-id="11858" data-lat="43.6570178" data-lng="-70.256167" data-name="Patriot Cinemas Nickelodeon Cinemas 1-6" data-photo="https://photos.cinematreasures.org/production/photos/213880/1500076537/thumb.jpg?1500076537">
+              <td class="name">
+                <a href="/theaters/11858" class="map-link"><img alt="Patriot Cinemas Nickelodeon Cinemas 1-6" height="48" src="https://photos.cinematreasures.org/production/photos/213880/1500076537/thumb.jpg?1500076537" width="48" /></a>
+                <a href="/theaters/11858">Patriot Cinemas Nickelodeon Cine...</a>
+              </td>
+              <td class="location">
+                Portland, ME, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                6
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="2121 N. Monroe Street&lt;br&gt;Monroe, MI 48162&lt;br&gt;United States&lt;br&gt;734.457.9080&lt;br&gt;" data-category="open" data-id="13136" data-lat="41.945199" data-lng="-83.384676" data-name="Phoenix Theatres The Mall of Monroe" data-photo="https://photos.cinematreasures.org/production/photos/116963/1422555009/thumb.jpg?1422555009">
+              <td class="name">
+                <a href="/theaters/13136" class="map-link"><img alt="Phoenix Theatres The Mall of Monroe" height="48" src="https://photos.cinematreasures.org/production/photos/116963/1422555009/thumb.jpg?1422555009" width="48" /></a>
+                <a href="/theaters/13136">Phoenix Theatres The Mall of Monroe</a>
+              </td>
+              <td class="location">
+                Monroe, MI, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                8
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="191 Collins Street&lt;br&gt;Melbourne, VIC 3000&lt;br&gt;Australia&lt;br&gt;" data-category="open" data-id="4507" data-lat="-37.815387" data-lng="144.967496" data-name="Plaza Ballroom" data-photo="https://photos.cinematreasures.org/production/photos/322/1306499614/thumb.JPG?1306499614">
+              <td class="name">
+                <a href="/theaters/4507" class="map-link"><img alt="Plaza Ballroom" height="48" src="https://photos.cinematreasures.org/production/photos/322/1306499614/thumb.JPG?1306499614" width="48" /></a>
+                <a href="/theaters/4507">Plaza Ballroom</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="57 Brisbane Street&lt;br&gt;Launceston, TAS 7250&lt;br&gt;Australia&lt;br&gt;+61(0)3-6323-3666&lt;br&gt;" data-category="open" data-id="53674" data-lat="-41.4361794" data-lng="147.1413537" data-name="Princess Theatre" data-photo="http://photos.cinematreasures.org/production/photos/183226/1475158844/thumb.gif?1475158844">
+              <td class="name">
+                <a href="/theaters/53674" class="map-link"><img alt="Princess Theatre" height="48" src="http://photos.cinematreasures.org/production/photos/183226/1475158844/thumb.gif?1475158844" width="48" /></a>
+                <a href="/theaters/53674">Princess Theatre</a>
+              </td>
+              <td class="location">
+                Launceston, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="400 N. Center Street&lt;br&gt;Westminster, MD 21157&lt;br&gt;United States&lt;br&gt;410.857.1422&lt;br&gt;" data-category="open" data-id="39874" data-lat="39.5782359" data-lng="-76.9833877" data-name="R/C Theatres Westminster Cinemas 9" data-photo="http://photos.cinematreasures.org/production/photos/77200/1374859315/thumb.jpg?1374859315">
+              <td class="name">
+                <a href="/theaters/39874" class="map-link"><img alt="R/C Theatres Westminster Cinemas 9" height="48" src="http://photos.cinematreasures.org/production/photos/77200/1374859315/thumb.jpg?1374859315" width="48" /></a>
+                <a href="/theaters/39874">R/C Theatres Westminster Cinemas 9</a>
+              </td>
+              <td class="location">
+                Westminster, MD, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                9
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="3300 Chambers Road&lt;br&gt;Horseheads, NY 14845&lt;br&gt;United States&lt;br&gt;607.739.3533&lt;br&gt;" data-category="open" data-id="57386" data-lat="42.1601337" data-lng="-76.8731771" data-name="Regal Arnot Mall 10" data-photo="http://photos.cinematreasures.org/production/photos/237392/1521492349/thumb.jpg?1521492349">
+              <td class="name">
+                <a href="/theaters/57386" class="map-link"><img alt="Regal Arnot Mall 10" height="48" src="http://photos.cinematreasures.org/production/photos/237392/1521492349/thumb.jpg?1521492349" width="48" /></a>
+                <a href="/theaters/57386">Regal Arnot Mall 10</a>
+              </td>
+              <td class="location">
+                Horseheads, NY, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                10
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="279 Troy Road&lt;br&gt;Rensselaer, NY 12144&lt;br&gt;United States&lt;br&gt;844.462.7342&lt;br&gt;" data-category="open" data-id="57387" data-lat="42.6418923" data-lng="-73.7009872" data-name="Regal East Greenbush 8" data-photo="https://photos.cinematreasures.org/production/photos/420859/1695373138/thumb.jpeg?1695373138">
+              <td class="name">
+                <a href="/theaters/57387" class="map-link"><img alt="Regal East Greenbush 8" height="48" src="https://photos.cinematreasures.org/production/photos/420859/1695373138/thumb.jpeg?1695373138" width="48" /></a>
+                <a href="/theaters/57387">Regal East Greenbush 8</a>
+              </td>
+              <td class="location">
+                Rensselaer, NY, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                8
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="20000 Century Boulevard&lt;br&gt;Germantown, MD 20874&lt;br&gt;United States&lt;br&gt;301.916.9235&lt;br&gt;" data-category="open" data-id="37651" data-lat="39.183952" data-lng="-77.261703" data-name="Regal Germantown Stadium 14" data-photo="http://photos.cinematreasures.org/production/photos/50279/1343406493/thumb.jpg?1343406493">
+              <td class="name">
+                <a href="/theaters/37651" class="map-link"><img alt="Regal Germantown Stadium 14" height="48" src="http://photos.cinematreasures.org/production/photos/50279/1343406493/thumb.jpg?1343406493" width="48" /></a>
+                <a href="/theaters/37651">Regal Germantown Stadium 14</a>
+              </td>
+              <td class="location">
+                Germantown, MD, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                14
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="275 Kensington Road&lt;br&gt;Adelaide, SA 5068&lt;br&gt;Australia&lt;br&gt;+61-(0)8-431-4838&lt;br&gt;" data-category="open" data-id="11367" data-lat="-34.926354" data-lng="138.651474" data-name="Regal Marrayatville" data-photo="https://photos.cinematreasures.org/production/photos/38322/1331392670/thumb.jpg?1331392670">
+              <td class="name">
+                <a href="/theaters/11367" class="map-link"><img alt="Regal Marrayatville" height="48" src="https://photos.cinematreasures.org/production/photos/38322/1331392670/thumb.jpg?1331392670" width="48" /></a>
+                <a href="/theaters/11367">Regal Marrayatville</a>
+              </td>
+              <td class="location">
+                Adelaide, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="456 Dean Street&lt;br&gt;Albury, NSW 2640&lt;br&gt;Australia&lt;br&gt;+61-02-6021-3044&lt;br&gt;" data-category="open" data-id="26994" data-lat="-36.081069" data-lng="146.921182" data-name="Regent Cinemas" data-photo="http://photos.cinematreasures.org/production/photos/197017/1483764931/thumb.JPG?1483764931">
+              <td class="name">
+                <a href="/theaters/26994" class="map-link"><img alt="Regent Cinemas" height="48" src="http://photos.cinematreasures.org/production/photos/197017/1483764931/thumb.JPG?1483764931" width="48" /></a>
+                <a href="/theaters/26994">Regent Cinemas</a>
+              </td>
+              <td class="location">
+                Albury, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                9
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="49 Lydiard Street North&lt;br&gt;Ballarat, VIC 3350&lt;br&gt;Australia&lt;br&gt;+61-03-5330-5555&lt;br&gt;" data-category="open" data-id="36448" data-lat="-37.5602553" data-lng="143.8578093" data-name="Regent Cinemas" data-photo="https://photos.cinematreasures.org/production/photos/44570/1337075997/thumb.jpg?1337075997">
+              <td class="name">
+                <a href="/theaters/36448" class="map-link"><img alt="Regent Cinemas" height="48" src="https://photos.cinematreasures.org/production/photos/44570/1337075997/thumb.jpg?1337075997" width="48" /></a>
+                <a href="/theaters/36448">Regent Cinemas</a>
+              </td>
+              <td class="location">
+                Ballarat, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                8
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="191 Collins Street&lt;br&gt;Melbourne, VIC 3000&lt;br&gt;Australia&lt;br&gt;+61(0)3-9299-9500&lt;br&gt;" data-category="open" data-id="1287" data-lat="-37.815387" data-lng="144.967496" data-name="Regent Theatre" data-photo="https://photos.cinematreasures.org/production/photos/306679/1590464310/thumb.jpg?1590464310">
+              <td class="name">
+                <a href="/theaters/1287" class="map-link"><img alt="Regent Theatre" height="48" src="https://photos.cinematreasures.org/production/photos/306679/1590464310/thumb.jpg?1590464310" width="48" /></a>
+                <a href="/theaters/1287">Regent Theatre</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="18 Alma Road&lt;br&gt;New Lambton&lt;br&gt;Newcastle, NSW 2305&lt;br&gt;Australia&lt;br&gt;" data-category="open" data-id="41691" data-lat="-32.9223347" data-lng="151.7143533" data-name="Savoy Theatre" data-photo="http://photos.cinematreasures.org/production/photos/75474/1372359971/thumb.jpg?1372359971">
+              <td class="name">
+                <a href="/theaters/41691" class="map-link"><img alt="Savoy Theatre" height="48" src="http://photos.cinematreasures.org/production/photos/75474/1372359971/thumb.jpg?1372359971" width="48" /></a>
+                <a href="/theaters/41691">Savoy Theatre</a>
+              </td>
+              <td class="location">
+                Newcastle, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="1420 NY-300&lt;br&gt;Newburgh, NY 12550&lt;br&gt;United States&lt;br&gt;845)566.8800&lt;br&gt;" data-category="open" data-id="60140" data-lat="41.5230072" data-lng="-74.068107" data-name="Showtime Cinemas 10" data-photo="https://photos.cinematreasures.org/production/photos/420862/1695373316/thumb.jpeg?1695373316">
+              <td class="name">
+                <a href="/theaters/60140" class="map-link"><img alt="Showtime Cinemas 10" height="48" src="https://photos.cinematreasures.org/production/photos/420862/1695373316/thumb.jpeg?1695373316" width="48" /></a>
+                <a href="/theaters/60140">Showtime Cinemas 10</a>
+              </td>
+              <td class="location">
+                Newburgh, NY, United States
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                10
+              </td>
+            </tr>
+            <tr class="even location theater" data-address="853 High Street&lt;br&gt;Melbourne, VIC 3071&lt;br&gt;Australia&lt;br&gt;" data-category="open" data-id="22333" data-lat="-37.754848" data-lng="145.001032" data-name="Thornbury Theatre" data-photo="http://photos.cinematreasures.org/production/photos/174397/1469466744/thumb.jpg?1469466744">
+              <td class="name">
+                <a href="/theaters/22333" class="map-link"><img alt="Thornbury Theatre" height="48" src="http://photos.cinematreasures.org/production/photos/174397/1469466744/thumb.jpg?1469466744" width="48" /></a>
+                <a href="/theaters/22333">Thornbury Theatre</a>
+              </td>
+              <td class="location">
+                Melbourne, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                1
+              </td>
+            </tr>
+            <tr class="location odd theater" data-address="37-41 Ocean Street&lt;br&gt;Victor Harbor, SA 5211&lt;br&gt;Australia&lt;br&gt;+61-08.8552.1325&lt;br&gt;" data-category="open" data-id="28902" data-lat="-35.5542085" data-lng="138.6229172" data-name="Victa Cinema" data-photo="https://photos.cinematreasures.org/production/photos/41323/1333672245/thumb.jpg?1333672245">
+              <td class="name">
+                <a href="/theaters/28902" class="map-link"><img alt="Victa Cinema" height="48" src="https://photos.cinematreasures.org/production/photos/41323/1333672245/thumb.jpg?1333672245" width="48" /></a>
+                <a href="/theaters/28902">Victa Cinema</a>
+              </td>
+              <td class="location">
+                Victor Harbor, Australia
+              </td>
+              <td class="status">
+                Open
+              </td>
+              <td class="screens">
+                2
+              </td>
+            </tr>
+          </table>
+          <div class="pagination">
+            <div class="pagination"><span class="disabled prev_page">&laquo; Previous</span> <span class="current">1</span> <a href="/chains/70/previous?page=2" rel="next">2</a> <a href="/chains/70/previous?page=2" class="next_page" rel="next">Next &raquo;</a></div>
+          </div>
+          <p>
+            Also:
+            <a href="/chains/70">View theaters currently in this chain</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <span>
+        <div id="social">
+          <div class="service"><a href="http://www.facebook.com/pages/Cinema-Treasures/206217392742703"><img alt="Facebook" src="/images/icons/facebook.png?1714499759" /></a></div>
+          <div class="service"><a href="http://twitter.com/movie_theaters"><img alt="Twitter" src="/images/icons/twitter.png?1714499759" /></a></div>
+          <div class="service"><a href="http://feeds.feedburner.com/cinematreasures"><img alt="Feed" src="/images/icons/feed.png?1714499759" /></a></div>
+        </div>
+        <div id="sitemap">
+          <h3>Roger Ebert on Cinema Treasures:</h3>
+          <p>&ldquo;The ultimate web site about movie theaters&rdquo;</p>
+        </div>
+        <div id="credits">
+          <a href="/"><img alt="Cinema Treasures" height="68" src="/images/app/logo_footer.png?1714499759" width="200" /></a>
+        </div>
+        <div id="terms">
+          Cinema Treasures, LLC
+          &copy; 2000 -
+          2024.
+          Cinema Treasures is a registered trademark of Cinema Treasures, LLC.
+          <a href="/privacy">Privacy Policy</a>.
+          <a href="/terms">Terms of Use</a>.
+        </div>
+      </span>
+    </footer>
+    <script>
+      //<![CDATA[
+        try {
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-2710707-1']);
+          _gaq.push(['_trackPageview']);
+      
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        } catch(err) {
+        }
+      //]]>
+    </script>
+  </body>
+</html>
+ contentType 9 text/html url 50 https://cinematreasures.org:443/chains/70/previous responseCode 3 200 

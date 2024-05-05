@@ -1,0 +1,1163 @@
+uingqcemxguceocabguoxmbouceacowmqejioakc length 5 71772 page 71772 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>History of the Convention</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="History of the Convention" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2024-04-19T00:00:00Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl26_BSignUp" href="javascript:__doPostBack(&#39;ctl26$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl26_BSignIn" href="javascript:__doPostBack(&#39;ctl26$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl25_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl25$BLocale', 'ar');" id="ctl25_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl25_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl25$BLocale', 'es');" id="ctl25_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl25_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl25$BLocale', 'fr');" id="ctl25_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl25_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl25$BLocale', 'ru');" id="ctl25_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl25_CLanguage" class="language-option">Русский</div>
+                    </a><a href="javascript:__doPostBack('ctl25$BLocale', 'zh');" id="ctl25_CLink" class="dropdown-item" hreflang="zh">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl25_CLanguage" class="language-option">中文</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./history/" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBSIvdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZoaXN0b3J5Hglpbm5lcmh0bWwFFlNpZ24gdXAgZm9yIGFuIGFjY291bnRkAgMPFgQfAAUiL3VzZXIvc2lnbmluLz9yZXR1cm51cmw9JTJmaGlzdG9yeR8BBQdTaWduIEluZAIDDxYCHgdWaXNpYmxlaBYEAgEPFgQfAAUjL3VzZXIvcHJvZmlsZS8/cmV0dXJudXJsPSUyZmhpc3RvcnkeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIIDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCemhkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC0zNjc1LmpwZykWAgIBDxYCHwEFJlRoZSBDb252ZW50aW9uIG9uIEJpb2xvZ2ljYWwgRGl2ZXJzaXR5ZAIBD2QWBAIBDxYEHwAFGS9jb252ZW50aW9uL2RlZmF1bHQuc2h0bWwfAQUKQ29udmVudGlvbmQCAw9kFgJmD2QWAmYPFgIeBWNsYXNzBRpuYXZiYXItbmF2IG1yLWF1dG8gbGV2ZWwtMBYCAgkPFgYfBgUIbmF2LWl0ZW0eB3BhZ2UtaWQFBDM2OTkfAmgWAmYPFgIfAGRkAgMPZBYCAgEPZBYCZg9kFgJmD2QWAgIBDxYEHwYFFWxpc3QtdW5zdHlsZWQgbGV2ZWwtMB8CaBYCAgEPFgYfBgUHbGV2ZWwtMB8HBQQzNjk5HwJoFgICAQ8WAh8AZGQCBQ8WAh8GBThjb2wtMTIgcGwtbWQtNCBwci1tZC00IHBsLWxnLTUgcHItbGctNSBjb2wtbGctNyBjb2wteGwtOBYEAgMPFgIfAQUTRnJpZGF5IC8vIDQuMTkuMjAyNGQCBw9kFgICAw9kFgICAg9kFgICAw9kFgICAw9kFgJmD2QWBAIBDxYCHwJoFiACAQ8WAh8BBQ9TZWFyY2ggQ3JpdGVyaWFkAgMPFgIfAmhkAgUPFgIfAmhkAgcPFgIfAmgWAmYPFgIfAQUIQ291bnRyeTpkAgkPFgIfAmhkAgsPFgIfAmgWBGYPFgIfAQUFWWVhcjpkAgIPFgIfAQUGTW9udGg6ZAINDxYCHwJoFgRmDxYCHwEFD1RpdGxlIENvbnRhaW5zOmQCAQ9kFgICAQ8WAh4FdmFsdWVkZAIPD2QWBGYPFgIfAQUVRGVzY3JpcHRpb24gQ29udGFpbnM6ZAIBD2QWAgIBDxYCHwhkZAITDxYCHwgFB1BSRS1DQkRkAhUPFgIfCGRkAhcPFgIfCGRkAhkPFgIfCGRkAhsPFgIfCAUBMGQCHQ8WAh8IBQEwZAIfDxYCHwhkZAIhDxYCHwhkZAIJDxQrAAsPFgweEEN1cnJlbnRQYWdlSW5kZXhmHghEYXRhS2V5cxYAHhBWaXJ0dWFsSXRlbUNvdW50Ag0eC18hSXRlbUNvdW50Ag0eFV8hRGF0YVNvdXJjZUl0ZW1Db3VudAINHglQYWdlQ291bnQCAWQUKwACPCsABAEAFgIeCkhlYWRlclRleHQFD0RhdGVzIGFuZCBWZW51ZTwrAAQBABYCHw8FB01lZXRpbmcWBB4MUGFnZXJWaXNpYmxlaB4EXyFTQgKAgIAIZGRkZGRkZGQWAmYPZBYeAgIPZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgQPDxYEHghDc3NDbGFzcwUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIFDw8WBB8SBQlkZ0FsdEl0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgcPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCCQ8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAILDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAg0PDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCDg8PFgQfEgUJZGdBbHRJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIQDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAhIPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCEw8PFgQfEgUJZGdBbHRJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIVDw8WBB8SBQZkZ0l0ZW0fEQICZBYEZg8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIBDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAhcPDxYEHxIFBmRnSXRlbR8RAgJkFgRmDw9kFgIfBgUORXZlbnRUeXBlT3RoZXJkAgEPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCGQ8PFgQfEgUGZGdJdGVtHxECAmQWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIaD2QWBGYPD2QWAh8GBQ5FdmVudFR5cGVPdGhlcmQCAQ8PZBYCHwYFDkV2ZW50VHlwZU90aGVyZAIHDxYCHwYFNmNvbC0xMiAgcGwtbWQtNCBwbC1sZy0wIHB0LTAgcHQtbGctMyBjb2wtbGctNSBjb2wteGwtNGRkJ0AE2aNfTvCmeKVbIshF59Pb1oCuoxCVTI087lKPkWM=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl19_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-3675.jpg)">
+    <h1 id="ctl19_ctl00_CCarouselTitle">The Convention on Biological Diversity</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/convention/default.shtml" id="ctl20_CPortal" class="navbar-brand">Convention</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl20_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="10623">
+        <a href="/gbf" id="ctl20_ctl00_CMenuRowLink" class="nav-link">GBF</a>
+    </li><li id="ctl20_ctl00_CMenuRow" class="nav-item " page-id="3697"><a id="ctl20_ctl00_CMenuRowLink" class="nav-link">About the Convention</a><ul id="ctl20_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7824">
+        <a href="/intro/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">Introduction</a>
+    </li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3569"><a href="/convention/text/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">Text of the Convention</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item  active" page-id="5413"><a href="/history/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">History</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3574"><a href="/convention/guide/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">Sustaining Life on Earth</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7825"><a href="/sp" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">Strategic Plan</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="7838"><a href="/2011-2020/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">UN Decade for Biodiversity</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="5052"><a href="/ibd/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">International Day for Biological Diversity</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3709"><a href="/decisions/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">Decisions</a></li><li id="ctl20_ctl00_ctl00_CMenuRow" class="nav-item" page-id="3749"><a href="/programmes/" id="ctl20_ctl00_ctl00_CMenuRowLink" class="nav-link">Programmes &amp; Issues</a></li>
+</ul>
+</li><li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="3702"><a id="ctl20_ctl00_CMenuRowLink" class="nav-link">Parties</a><ul id="ctl20_ctl00_ctl01_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl20_ctl00_ctl01_CMenuRow" class="nav-item" page-id="7408">
+        <a href="/convention/parties/list/" id="ctl20_ctl00_ctl01_CMenuRowLink" class="nav-link">List of Parties</a>
+    </li><li id="ctl20_ctl00_ctl01_CMenuRow" class="nav-item" page-id="3750"><a href="/information/nfp.shtml" id="ctl20_ctl00_ctl01_CMenuRowLink" class="nav-link">National Focal Points</a></li><li id="ctl20_ctl00_ctl01_CMenuRow" class="nav-item" page-id="5082"><a href="/contributions/" id="ctl20_ctl00_ctl01_CMenuRowLink" class="nav-link">Status of Contributions</a></li><li id="ctl20_ctl00_ctl01_CMenuRow" class="nav-item" page-id="3754"><a href="/countries" id="ctl20_ctl00_ctl01_CMenuRowLink" class="nav-link">Country Profiles</a></li>
+</ul>
+</li><li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="3359"><a id="ctl20_ctl00_CMenuRowLink" class="nav-link">Convention Bodies</a><ul id="ctl20_ctl00_ctl02_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl20_ctl00_ctl02_CMenuRow" class="nav-item" page-id="7827">
+        <a href="/convention/bodies/intro.shtml" id="ctl20_ctl00_ctl02_CMenuRowLink" class="nav-link">Introduction</a>
+    </li><li id="ctl20_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3587"><a href="/cop/" id="ctl20_ctl00_ctl02_CMenuRowLink" class="nav-link">Conference of the Parties (COP)</a></li><li id="ctl20_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3626"><a href="/sbstta/" id="ctl20_ctl00_ctl02_CMenuRowLink" class="nav-link">Scientific Body (SBSTTA)</a></li><li id="ctl20_ctl00_ctl02_CMenuRow" class="nav-item" page-id="9031"><a href="/sbi" id="ctl20_ctl00_ctl02_CMenuRowLink" class="nav-link">Subsidiary Body on Implementation (SBI)</a></li><li id="ctl20_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3760"><a href="/convention/wg8j.shtml" id="ctl20_ctl00_ctl02_CMenuRowLink" class="nav-link">Working Group on Article 8(j)</a></li><li id="ctl20_ctl00_ctl02_CMenuRow" class="nav-item" page-id="3761"><a href="/convention/wgpa.shtml" id="ctl20_ctl00_ctl02_CMenuRowLink" class="nav-link">Working Group on Protected Areas</a></li>
+</ul>
+</li><li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="7829"><a href="/convention/protocols" id="ctl20_ctl00_CMenuRowLink" class="nav-link">Convention Protocols</a><ul id="ctl20_ctl00_ctl03_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl20_ctl00_ctl03_CMenuRow" class="nav-item" page-id="7830">
+        <a href="http://bch.cbd.int/protocol/" id="ctl20_ctl00_ctl03_CMenuRowLink" class="nav-link">Cartagena Protocol</a>
+    </li><li id="ctl20_ctl00_ctl03_CMenuRow" class="nav-item" page-id="7831"><a href="/abs" id="ctl20_ctl00_ctl03_CMenuRowLink" class="nav-link">Nagoya Protocol</a></li>
+</ul>
+</li><li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="3685"><a href="/mechanisms/" id="ctl20_ctl00_CMenuRowLink" class="nav-link">Mechanisms for Implementation</a></li><li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="7046"><a href="/sp/" id="ctl20_ctl00_CMenuRowLink" class="nav-link">Strategic Plan for Biodiversity 2011-2020</a></li><li id="ctl20_ctl00_CMenuRow" class="nav-item" page-id="3699"><a id="ctl20_ctl00_CMenuRowLink" class="nav-link">Further Resources</a><ul id="ctl20_ctl00_ctl04_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl20_ctl00_ctl04_CMenuRow" class="nav-item" page-id="2994">
+        <a href="/gbo/" id="ctl20_ctl00_ctl04_CMenuRowLink" class="nav-link">Global Biodiversity Outlook</a>
+    </li><li id="ctl20_ctl00_ctl04_CMenuRow" class="nav-item" page-id="3756"><a href="/convention/refrhandbook.shtml" id="ctl20_ctl00_ctl04_CMenuRowLink" class="nav-link">CBD Handbook</a></li><li id="ctl20_ctl00_ctl04_CMenuRow" class="nav-item" page-id="4709"><a href="/information/" id="ctl20_ctl00_ctl04_CMenuRowLink" class="nav-link">Information Center</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl29_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl29_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl29_TMenuItem" class="level-0" page-id="3675">
+            <a href="/convention" id="ctl29_TMenuItemLink">Convention</a>
+        </li><li id="ctl29_TMenuItem" class="level-0" page-id="10623">
+            <a href="/gbf" id="ctl29_TMenuItemLink">GBF</a>
+        </li><li id="ctl29_TMenuItem" class="level-0 active" page-id="3697">
+            <a id="ctl29_TMenuItemLink">About the Convention</a>
+        <ul id="ctl29_TMenu" class="list-unstyled level-1 active">
+        
+    <li id="ctl29_TMenuItem" class="level-1" page-id="7824">
+            <a href="/intro" id="ctl29_TMenuItemLink">Introduction</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3569">
+            <a href="/convention/text" id="ctl29_TMenuItemLink">Text of the Convention</a>
+        </li><li id="ctl29_TMenuItem" class="level-1 selected" page-id="5413">
+            <a href="/history" id="ctl29_TMenuItemLink">History</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3574">
+            <a href="/convention/guide" id="ctl29_TMenuItemLink">Sustaining Life on Earth</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="7825">
+            <a href="/sp" id="ctl29_TMenuItemLink">Strategic Plan</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="7838">
+            <a href="/2011-2020/" id="ctl29_TMenuItemLink">UN Decade for Biodiversity</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="5052">
+            <a href="/ibd/" id="ctl29_TMenuItemLink">International Day for Biological Diversity</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3709">
+            <a href="/decisions" id="ctl29_TMenuItemLink">Decisions</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3749">
+            <a href="/programmes/" id="ctl29_TMenuItemLink">Programmes &amp; Issues</a>
+        </li></ul></li><li id="ctl29_TMenuItem" class="level-0" page-id="3702">
+            <a id="ctl29_TMenuItemLink">Parties</a>
+        <ul id="ctl29_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl29_TMenuItem" class="level-1" page-id="7408">
+            <a href="/convention/parties/list" id="ctl29_TMenuItemLink">List of Parties</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3750">
+            <a href="/information/nfp.shtml" id="ctl29_TMenuItemLink">National Focal Points</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="5082">
+            <a href="/contributions/" id="ctl29_TMenuItemLink">Status of Contributions</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3754">
+            <a href="/countries" id="ctl29_TMenuItemLink">Country Profiles</a>
+        </li></ul></li><li id="ctl29_TMenuItem" class="level-0" page-id="3359">
+            <a id="ctl29_TMenuItemLink">Convention Bodies</a>
+        <ul id="ctl29_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl29_TMenuItem" class="level-1" page-id="7827">
+            <a href="/convention/bodies/intro.shtml" id="ctl29_TMenuItemLink">Introduction</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3587">
+            <a href="/cop" id="ctl29_TMenuItemLink">Conference of the Parties (COP)</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3626">
+            <a href="/sbstta" id="ctl29_TMenuItemLink">Scientific Body (SBSTTA)</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="9031">
+            <a href="/sbi" id="ctl29_TMenuItemLink">Subsidiary Body on Implementation (SBI)</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3760">
+            <a href="/convention/wg8j.shtml" id="ctl29_TMenuItemLink">Working Group on Article 8(j)</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3761">
+            <a href="/convention/wgpa.shtml" id="ctl29_TMenuItemLink">Working Group on Protected Areas</a>
+        </li></ul></li><li id="ctl29_TMenuItem" class="level-0" page-id="7829">
+            <a href="/convention/protocols" id="ctl29_TMenuItemLink">Convention Protocols</a>
+        <ul id="ctl29_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl29_TMenuItem" class="level-1" page-id="7830">
+            <a href="http://bch.cbd.int/protocol/" id="ctl29_TMenuItemLink">Cartagena Protocol</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="7831">
+            <a href="/abs" id="ctl29_TMenuItemLink">Nagoya Protocol</a>
+        </li></ul></li><li id="ctl29_TMenuItem" class="level-0" page-id="3685">
+            <a href="/mechanisms" id="ctl29_TMenuItemLink">Mechanisms for Implementation</a>
+        </li><li id="ctl29_TMenuItem" class="level-0" page-id="7046">
+            <a href="/sp" id="ctl29_TMenuItemLink">Strategic Plan for Biodiversity 2011-2020</a>
+        </li><li id="ctl29_TMenuItem" class="level-0" page-id="3699">
+            <a id="ctl29_TMenuItemLink">Further Resources</a>
+        <ul id="ctl29_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl29_TMenuItem" class="level-1" page-id="2994">
+            <a href="/gbo" id="ctl29_TMenuItemLink">Global Biodiversity Outlook</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="3756">
+            <a href="/convention/refrhandbook.shtml" id="ctl29_TMenuItemLink">CBD Handbook</a>
+        </li><li id="ctl29_TMenuItem" class="level-1" page-id="4709">
+            <a href="/information" id="ctl29_TMenuItemLink">Information Center</a>
+        </li></ul></li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 col-lg-7 col-xl-8" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl24_CItems"><a href="/convention/default.shtml">Convention</a><span> // History</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Friday // 4.19.2024</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              <h1 class="cmsH1">History of the Convention</h1>
+<div id="ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl15_CSkin2">
+        <div class="hlite"><a name="Introduction"></a><h2>Introduction</h2>
+<p></p>
+The Earth&#39;s biological resources are vital to humanity&#39;s economic and social development. As a result, there is a growing recognition that biological diversity is a global asset of tremendous value to present and future generations. At the same time, the threat to species and ecosystems has never been so great as it is today. Species extinction caused by human activities continues at an alarming rate.
+<p></p>
+In response, the United Nations Environment Programme (UNEP) convened the Ad Hoc Working Group of Experts on Biological Diversity in November 1988 to explore the need for an. international convention on biological diversity. Soon after, in May 1989, it established the Ad Hoc Working Group of Technical and Legal Experts to prepare an international legal instrument for the conservation and sustainable use of biological diversity. The experts were to take into account &quot;the need to share costs and benefits between developed and developing countries&quot; as well as &quot;ways and means to support innovation by local people&quot;.
+<p></p>
+By February 1991, the Ad Hoc Working Group had become known as the Intergovernmental Negotiating Committee. Its work culminated on 22 May 1992 with the Nairobi Conference for the Adoption of the Agreed Text of the Convention on Biological Diversity.
+<p></p>
+The Convention was opened for signature on 5 June 1992 at the United Nations Conference on Environment and Development (the Rio &quot;Earth Summit&quot;). It remained open for signature until 4 June 1993, by which time it had received 168 signatures. The Convention entered into force on 29 December 1993, which was 90 days after the 30th ratification. The first session of the Conference of the Parties was scheduled for 28 November – 9 December 1994 in the Bahamas.
+<p></p>
+The Convention on Biological Diversity was inspired by the world community&#39;s growing commitment to sustainable development. It represents a dramatic step forward in the conservation of biological diversity, the sustainable use of its components, and the fair and equitable sharing of benefits arising from the use of genetic resources.</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        
+
+<style>
+.EventTypeSCBD  {background-color:#FAF8CC; }
+.EventTypeOther { }
+
+tr[id$="CCriteriaCalendar"] td:nth-child(2),
+tr[id$="CCriteriaTheme"] td:nth-child(2), tr[id$="CCriteriaCountry"] td:nth-child(2),
+tr[id$="CCriteriaYear"] td:nth-child(2), tr[id$="CCriteriaOrganization"] td:nth-child(2), 
+tr[id$="CCriteriaText"] td:nth-child(2),tr[id$="CCriteriaDescriptionText"] td:nth-child(2){ width: 400px;}
+tr[id$="CCriteriaYear"] td:nth-child(4) { text-align: right; }
+
+select[id$="tlCalendar_ddlList"]   { width: 400px; }
+select[id$="tlThm_ddlList"]        { width: 400px; }
+select[id$="clCtr_ddlCountryList"] { width: 400px; }
+select[id$="ddlOrganization"]      { width: 400px; }
+select[id$="ddlYear"]              { width: 160px; }
+input[id$="tbText"]                { width: 395px; }
+
+.article-container div[id$="CContent"] table, div[id$="CSearchForm"] table  { width: unset; }
+.article-container select[id$="tlThm_ddlList"], .article-container select[id$="clCtr_ddlCountryList"]{ width: 460px;}
+.article-container select[id$="ddlYear"]  { width: 200px; }
+.article-container select[id$="ddlMonth"] { width: 168px; text-align:right;}
+.article-container  input[id$="tbText"]   { width: 460px; }
+.article-container tr[id$="_CCriteriaText"] td:nth-child(2) {width:460px; padding:2px 0px;}
+
+/* OLD template */
+
+tr.dgItem > td,
+tr.dgAltItem > td {
+    border-style: none;
+}
+
+tr.dgItem,
+tr.dgAltItem {
+    border-bottom: dotted 1px #c0c0c0;
+}
+
+tr.dgItem    > td div.links a,
+tr.dgAltItem > td div.links a {
+    display: block;
+}
+/* NEW template */
+body.phoenix tr.dgMainGroup > td {
+    font-size: 125%;
+}
+
+body.phoenix tr.dgHeader {
+    display:none;
+}
+
+body.phoenix tr.dgSep > td {
+    padding-top:20px
+}
+
+body.phoenix tr.dgItem    > td,
+body.phoenix tr.dgAltItem > td {
+      padding:5px
+}
+
+body.phoenix tr.dgItem,
+body.phoenix tr.dgAltItem {
+      border-bottom: dotted 1px rgba(0,0,0,.05);
+}
+
+body.phoenix tr.dgPager,
+body.phoenix tr.dgItem {
+    background-color: rgba(0,0,0,.05);
+}
+
+
+body.phoenix tr.dgItem    > td div.links a,
+body.phoenix tr.dgAltItem > td div.links a {
+    background-color: #0c9d4d;
+    display: inline-block;
+    padding: 5px 7px;
+    border-radius: 3px;
+    color: white;
+    margin-left:3px;
+    margin-right:3px;}
+</style>
+
+
+<span id="ctl16_W9223_spanDebug"></span>
+
+<!-- Info -->
+<p id="ctl16_W9223_pInfo" align="center"></p>
+<!-- Debug -->
+
+
+<!-- Datagrid -->
+<table class="dgGrid" cellspacing="0" cellpadding="0" id="ctl16_W9223_dg" style="border-collapse:collapse;" ><tr class="dgMainGroup"><td colspan="2"><h2>Pre-CBD Meetings</h2></td></tr><tr class="dgHeader"><td class="EventTypeOther">Dates and Venue</td><td class="EventTypeOther">Meeting</td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>May 1992</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_0" style="margin:2 2 2 2">20 - 21 May 1992<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_0" style="margin:2 2 2 2"> <div>Conference for the Adoption of the Convention on Biological Diversity</div><div class="links"><a href='/meetings/BDCONF'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_1" style="margin:2 2 2 2">11 - 19 May 1992<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_1" style="margin:2 2 2 2"> <div>Seventh Negotiating Session / Fifth Meeting of the Intergovernmental Negociating Committee for a Convention on Biological Diversity</div><div class="links"><a href='/meetings/BDN-07-INC-05'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>February 1992</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_2" style="margin:2 2 2 2">6 - 15 February 1992<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_2" style="margin:2 2 2 2"> <div>Sixth Negotiating Session / Fourth Meeting of the Intergovernmental Negotiating Committee for a Convention on Biological Diversity</div><div class="links"><a href='/meetings/BDN-06-INC-04'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 1991</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_3" style="margin:2 2 2 2">25 November - 4 December 1991<br />Geneva, Switzerland<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_3" style="margin:2 2 2 2"> <div>Fifth Negotiating Session / Third Meeting of the Intergovernmental Negotiating Committee for a Convention on Biological Diversity</div><div class="links"><a href='/meetings/BDN-05-INC-03'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>September 1991</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_4" style="margin:2 2 2 2">23 September - 3 October 1991<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_4" style="margin:2 2 2 2"> <div>Fourth Negotiating Session / Second Meeting of the Intergovernmental Negociating Committee for a Convention on Biological Diversity</div><div class="links"><a href='/meetings/BDN-04-INC-02'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>June 1991</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_5" style="margin:2 2 2 2">24 June - 3 July 1991<br />Madrid, Spain<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_5" style="margin:2 2 2 2"> <div>Third Negotiating Session / First Meeting of the Intergovernmental Negociating Committee for a Convention on Biological Diversity</div><div class="links"><a href='/meetings/BDN-03-INC-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_6" style="margin:2 2 2 2">24 June - 3 July 1991<br />Madrid, Spain<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_6" style="margin:2 2 2 2"> <div>Ad Hoc Working Group of Legal and Technical Experts on Biological Diversity</div><div class="links"><a href='/meetings/BDN-03-AWG-03'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>February 1991</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_7" style="margin:2 2 2 2">25 February - 6 March 1991<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_7" style="margin:2 2 2 2"> <div>Ad Hoc Working Group of Legal and Technical Experts on Biological Diversity</div><div class="links"><a href='/meetings/BDN-02-AWG-02'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 1990</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_8" style="margin:2 2 2 2">19 - 23 November 1990<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_8" style="margin:2 2 2 2"> <div>First Session of the Ad Hoc Working Group of Legal and Technical Experts on Biological Diversity</div><div class="links"><a href='/meetings/BDN-01-AWG-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgAltItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_9" style="margin:2 2 2 2">14 - 17 November 1990<br />Nairobi, Kenya<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_9" style="margin:2 2 2 2"> <div>Sub-Working Group on Biotechnology</div><div class="links"><a href='/meetings/SWGB-01'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>July 1990</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_10" style="margin:2 2 2 2">9 - 13 July 1990<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_10" style="margin:2 2 2 2"> <div>Third Session of the Ad Hoc Working Group of Experts on Biological Diversity</div><div class="links"><a href='/meetings/BDEWG-03'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>February 1990</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_11" style="margin:2 2 2 2">19 - 23 February 1990<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_11" style="margin:2 2 2 2"> <div>Second Session of the Ad Hoc Working Group of Experts on Biological Diversity</div><div class="links"><a href='/meetings/BDEWG-02'>Documents &#187;</a></div></div>
+            </td></tr><tr class="dgSep"><td valign="top" colspan="2" style="width:25%;" ><h3>November 1988</h3></td></tr><tr class="dgItem"><td valign="top" class="EventTypeOther" style="width:25%;" >
+            
+                
+                <div id="ctl16_W9223_dg_spanDates_12" style="margin:2 2 2 2">16 - 18 November 1988<br />Geneva, Switzerland<br /><i><b>Confirmed</b></i></div>
+            </td><td valign="top" class="EventTypeOther">
+                <div id="ctl16_W9223_dg_spanMeeting_12" style="margin:2 2 2 2"> <div>First session of Ad Hoc Working Group of Experts on Biological Diversity</div><div class="links"><a href='/meetings/BDEWG-01'>Documents &#187;</a></div></div>
+            </td></tr><tr><td class="EventTypeOther">&nbsp;</td><td class="EventTypeOther">&nbsp;</td></tr></table>
+
+<table class='dgGrid' cellpadding='0' cellspacing='0' border='0'><tr class="dgPager">
+ 
+</tr></table>
+
+	
+
+	
+	
+    
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           <aside id="CArticleAside" class="col-12  pl-md-4 pl-lg-0 pt-0 pt-lg-3 col-lg-5 col-xl-4" class-x="col-lg-5 col-xl-4">
+                                              <div id="ctl17_CSkin">
+    
+
+    
+    
+    <div id="ctl17_CSkin2">
+        <div class="hlite"><div class="card"><div class="card-body"><div class="card-text"><a href="/doc/publications/CBD-10th-anniversary.pdf"><img src="/images/cbd-news-special.gif"/></a> </div></div></div></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+<div id="ctl18_CSkin">
+    
+
+    
+    
+    <div id="ctl18_CSkin2">
+        <div class="hlite"><div class="card"><div class="card-body"><div class="card-text"><a name="CBDGraphicTimeline"></a><h2>CBD Graphic Timeline</h2> <a href="/doc/publications/CBD-the-first-years.pdf"><img src="/images/cbd-timeline.jpg?width=160"/></a> </div></div></div></div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+                                           </aside>
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 31 https://www.cbd.int:443/history responseCode 3 200 

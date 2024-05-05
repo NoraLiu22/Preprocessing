@@ -1,0 +1,219 @@
+modeaqbcusmiyiykqgrskacsxiaexctirmeczefs length 5 10893 page 10893 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="generator" content="/bin/vi" />
+	<title>Dual-Head operation on vintage PCs</title>
+        <link href="http://www.seasip.info/index.html" rel="start" />
+        <link href="index.html" rel="up" />
+        <link rel="stylesheet" href="../main.css" type="text/css" />
+        <link rel="stylesheet" href="vpc.css" type="text/css" />
+</head>
+<body bgcolor="#FFFFFF">
+<div class="fixedbanner"><img src="../Images/5150.png" alt=""
+align="middle" width="32" height="32" /> Vintage PC pages
+<br /> <a href="http://www.seasip.info/index.html">Home</a> -&gt;
+<a href="index.html">Vintage PCs</a> -&gt;
+Dual-Head Operation
+</div>
+<div class="main">
+<h1>Dual-Head Operation on a Vintage PC</h1>
+
+<p>This document is aimed at PCs too old to have a PCI bus. I don't cover
+getting a dual monitor system by use of multiple PCI/AGP cards. If you do 
+have multiple PCI video cards, there's a utility 
+at <a href="http://www.asm32.com">asm32.com</a> (in the 'Legacy' section)
+which allows a PCI card to emulate a secondary MDA card under DOS.</p>
+
+<h2>In the Beginning</h2>
+<p>The original IBM PC was supplied with a choice of Monochrome (MDA) or 
+Colour (CGA) graphics cards. These cards use the following system resources:</p>
+<table border="1">
+<tr><th>Card</th><th>Memory usage</th><th>I/O Ports</th></tr>
+<tr><td>MDA</td><td>B0000 to B0FFF</td><td>3B0 to 3BB</td></tr>
+<tr><td>CGA</td><td>B8000 to BBFFF</td><td>3D0 to 3DF</td><tr>
+</table>
+<p>Since these areas don't overlap, the two cards can both be put in the
+same system. The DIP switches on the motherboard select which display will
+be used as the primary display (the one used at system startup).</p>
+
+<h2>Later Cards</h2>
+
+<h3>Plantronics</h3>
+<p>For the purposes of this discussion, Plantronics cards should be 
+treated just like CGA.</p>
+
+<h3>Hercules</h3>
+<p>Hercules cards are a superset of MDA, and can usually be treated the same 
+way. The card will need to be switched into 'half graphics' mode, which 
+stops it trying to use memory above B8000h. Some Herc cards don't have 
+this mode; they are unsuitable for use in a dual-head system.</p>
+<p>For the purposes of dual-head operation, a Hercules InColor card can be
+treated just like a mono Hercules card.</p>
+
+<h3>EGA</h3>
+<p>When IBM invented the EGA, they gave it a setting which allowed it to
+change which I/O addresses it uses. The EGA BIOS associates the two settings
+with monochrome and colour modes:</p>
+<table border="1">
+<tr><th>Mode</th><th>Memory usage</th><th>I/O Ports</th></tr>
+<tr><td>Mono text</td><td>B0000 to B7FFF</td><td>3B0 to 3BB, 3C0 to 3CF</td></tr>
+<tr><td>Mono graphics</td><td>A0000 to AFFFF</td><td>3B0 to 3BB, 3C0 to 3CF</td></tr>
+<tr><td>Colour text</td><td>B8000 to BFFFF</td><td>3C0 to 3CF, 3D0 to 3DF</td></tr>
+<tr><td>Colour graphics</td><td>A0000 to AFFFF 
+			     or B8000 to BFFFF</td><td>3C0 to 3CF, 3D0 to 3DF</td></tr>
+</table>
+<p>In practice, this means that while an EGA is in a monochrome mode, it
+allows a CGA card to be present; similarly, when it's in a colour mode, an
+MDA can be present. Depending on the EGA type, it may need configuring with
+switches, jumpers or a firmware utility so that it starts up in the correct
+mode.</p>
+<p>Maybe you could get an EGA 16-colour graphics mode to coexist with
+a CGA card by manually programming the registers. I haven't tried.</p>
+<p>Note that you can't have two EGA cards in a system, even if one is 
+colour and one is mono, because they both use the I/O range 3C0 to 3CF,
+and they both have BIOS ROMs at 0C000h.</p>
+
+<h3>VGA</h3>
+<p>VGA is pretty much a superset of EGA, and has the same ability to use
+different memory ranges for mono/colour displays. The 
+<a href="#links">ATI appnote</a> (below) suggests that if a VGA card is
+present, it must be the primary display. I have managed to get a Paradise
+VGA card working as the second head of a system with CGA on the motherboard,
+but it can't (or won't) do 640x480 mono mode, only 640x350.</p>
+
+
+<h3>IBM Professional Graphics Controller</h3>
+<p>The PGC is a rather unusual colour card (or, strictly speaking, trio of 
+cards). There are two possible ways it can be used - either with CGA 
+emulation turned on, or off.</p>
+<p>With CGA emulation on, the PGC can be used in tandem with a mono card in
+the usual way. With CGA emulation off, you can have a <em>triple</em>-head 
+system - mono, colour and PGC. Note, however, that any VGA or EGA card sharing 
+with a PGC cannot have a ROM larger than 24k - the PGC uses memory at 0C6000h.</p>
+
+<h3>IBM 5271 (3270 PC)</h3>
+<p>The display card in this PC (I've never seen its name abbreviated, but it
+would be a 3270PCDA) occupies both CGA and MDA address space (plus bits of 
+the VGA framebuffer). The only possible dualhead configuration would be to 
+have a PGC with its CGA emulation turned off. You could end up with a PC 
+containing 5 full-length display cards!</p>
+
+<h3>IBM 8514/A</h3>
+<p>The IBM 8514/A card (8514 is the monitor; 8514/A is the card) can coexist 
+with a VGA. This isn't quite the same as the other dual-head configurations 
+because of the very different design of the 8514/A. In normal use the VGA acts 
+as a slave of the 8514/A, and a special driver is needed to 
+use them separately.</p>
+
+<h3>Texas Instruments Graphics Architecture (TIGA)</h3>
+<p>I can find almost no information on how these work, but some sources say
+that they can coexist with other cards in a similar way to the 8514/A.</p>
+
+<h2>In general</h2>
+<p>To have a dual-head system, you therefore use one colour card and one
+mono (or Hercules InColor, or 8514/A) card. If your PC has video hardware on its 
+motherboard, that will usually count as one of the cards; if it can't 
+be disabled then it certainly will.</p> 
+<p>If both cards are on the ISA bus, then they need to be both 8-bit or 
+both 16-bit; since all known CGA, MDA and Hercules cards are 8-bit this
+means that both cards must be 8-bit. The ATI appnote explains why. This 
+restriction may not apply if the VGA card uses MCA, VESA, PCI or AGP; I haven't 
+tried.</p>
+<p>IBM's manual warns that on an original PC with both MDA and CGA, the MDA 
+card must be set as the primary display (so that the BIOS initialises it) or 
+the mono monitor may be damaged. How much of this applies to non-IBM BIOSes,
+non-IBM mono cards and non-IBM monitors, I don't know.</p>
+
+<h2>How to use a Dual-Head system</h2>
+<p>The main uses for having a dual-head vintage PC (other than 'because I can')
+are:</p>
+<ol>
+	<li>Debugging programs. The debugger runs on one display and the
+	(usuall graphical) program being debugged is shown on the other.</li>
+	<li>Using a high-quality mono monitor for text-processing tasks,
+	and switching to a low-quality colour display or television for 
+	playing games.</li>
+</ol>
+
+<h3>DOS</h3>
+<p>If you are using an extended memory manager such as EMM386, you need 
+to make sure that it isn't using the video RAM for its own purposes. Check
+for options such as "INCLUDE=B000-B7FF" in the EMM386 line in CONFIG.SYS,
+and remove them if they are present.</p>
+<p>Switch between the two monitors using MODE commands (MODE CO80 for the CGA, 
+MODE MONO for the MDA). Under DOS Plus, you can also use DEVICE CONOUT:=CO80
+or DEVICE CONOUT:=MONO.</p>
+<p>Borland's Turbo Debugger can use two monitors. See this 
+<a href="http://groups.google.com/groups?hl=la&lr=&ie=UTF-8&oe=UTF-8&selm=26190%40darkstar.ucsc.edu">USENET posting</a>
+for setup instructions.</p>
+<p><a href="www.rhide.com">RHIDE</a> supports dual-monitor debugging.</p>
+
+<h3>GEM</h3>
+<p>GEMSID can be used to debug a GEM program on a dual-head system. To do 
+this:</p>
+<ol>
+<li>If only one of your cards can do graphics, set it as the secondary 
+display. For example, if your system has MDA and CGA, then set CGA as 
+secondary and MDA as primary.</li>
+<li>Set up GEM to use the correct driver for the secondary display.</li>
+<li>Run GEM and start GEMSID. Type <kbd>YME</kbd>. The application will be
+shown on the secondary monitor; the debugger will display on the primary.</li>
+</ol>
+<p>GEM/1 and GEM/2 (but not later versions) can load multiple display drivers.
+If both your cards can do graphics (eg: CGA and EGA mono, or VGA and Hercules)
+then you could add entries for both drivers to ASSIGN.SYS. The entry for the
+primary screen should start 01; for the secondary, it should be 02. This isn't
+much use unless you can find a program which supports both screens.</p>
+<p>Alternatively, set up the second driver as number 11 or 21 (ie, as a
+plotter or printer driver) and use OUTPUT.APP to print to it.</p>
+
+<h3>Windows</h3>
+<p>In version 3.x in 386 enhanced mode, there is a 'DualDisplay' option
+in the [386Enh] section of SYSTEM.INI. The documentation is not clear about 
+what it should be set to if there are actually two video cards in the system;
+the consensus is that it should be 'DualDisplay=on'.</p> 
+<p>The CodeView debugger supports dual-monitor operation. Set up your system
+so that the secondary display is the monochrome one. Then start CodeView with
+the /2 option. (On a system with a VGA and an 8514/A, use /8).</p>
+<p>The SoftICE/W debugger also supports these configurations. To use it 
+with a secondary monochrome monitor, add the string
+<blockquote>
+	INIT "ALTSCR ON; X;"
+</blockquote>
+to the WINICE.DAT file. If you have a VGA+8514/A setup, SoftICE will handle this
+automatically.
+</p>
+
+<h3>Linux</h3>
+<p>There are at least two kernel patches for dual-display support under Linux.
+One (mda) allows a secondary MDA display as a separate device (/dev/mono)
+to which system logs (for instance) could be sent. The other (multimon)
+supports either monitor being used as the system console.</p>
+
+<p>If the secondary display card is a Hercules, David Given's site (below)
+describes how you can get X to work on it.</p>
+
+
+<h2><a name="links">Links</a></h2>
+<ul>
+<li><a href="http://web.archive.org/web/20040419214006/http://www.peteweb.com/ftp/mirrors/ati/notes-info/tn044.txt">ATI Technical Note 044</a> describes 
+possible valid combinations of video cards.
+</li>
+<li>ATI describe how to set up 
+their <a href="http://www.ati.com/support/products/pc/mach8/8514ultrasetup.html">8514/A card</a>.
+<li><a href="http://www.uni-bonn.de/~uzs180/prox-eng.html">DUALMON</a>
+(scroll down to find it) allows DOS to direct output to both displays in a 
+dual-head system.</li>
+<li>The <a href="http://www.ibiblio.org/pub/Linux/kernel/patches/console/!INDEX.html">
+Linux console patches</a> include a multiple-monitor patch for Linux 2.0.36.
+<li><a href="http://www.cowlark.com/multihead.html">David Given</a> describes
+how to run X on a secondary Hercules display under Linux.</li>
+</ul>
+<hr />
+<p><a href="mailto:seasip.webmaster@gmail.com">John Elliott</a>
+24 April 2011</p>
+</div>
+</body>
+</html>
+ contentType 9 text/html url 49 http://www.seasip.info:80/VintagePC/dualhead.html responseCode 3 200 

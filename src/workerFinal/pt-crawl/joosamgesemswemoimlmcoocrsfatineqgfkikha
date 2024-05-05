@@ -1,0 +1,603 @@
+joosamgesemswemoimlmcoocrsfatineqgfkikha length 5 20842 page 20842 
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en"><head>
+
+<meta charset="utf-8">
+<title>National Geographic - Customer Service</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../images/eCare/css/ecare_login_bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../images/eCare/css/main.css" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="../images/eCare/img/favicon-ngs.ico" />
+<style>
+body {
+  padding-left: 0;
+  padding-right: 0;
+}
+#mobl {
+  display: none !important; 
+}
+  
+.alert-danger, .alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.banner_image {
+  margin-left: 67px;
+  margin-top: 37px;
+  padding: 0; 
+}
+.hide {
+ display: none; 
+}
+.lucie-auth-container {
+  margin: 0 auto 50px auto;
+  text-align: center;
+}
+.lucie-auth-container .logo {
+  display: block;
+  margin: 0 auto 50px auto;
+}
+.lucie-auth-container h1 {
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.lucie-auth-container p {
+  font-size: 18px;
+}
+.row-fluid {
+  overflow: hidden;
+}
+.footer-container {
+  overflow: hidden;
+}
+  
+@media (max-width: 979px) {  
+  .lucie-auth-container {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .banner_image {
+    margin-left: 30px;
+    margin-top: 24px;
+  }
+}
+  
+@media (max-width: 570px) {
+	.lucie-auth-container {
+		width: 100%;
+	}
+}
+</style>
+  
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="../images/eCare/js/html5shiv.js"></script>
+    <![endif]-->
+<style type="text/css">
+    p.footmouse {
+        margin-bottom: 1rem;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> 
+<script>   
+// make footer api call that returns country
+$(document).ready(function(){
+    $.ajax({
+    url: 'https://www.nationalgeographic.com/proxy/footer',
+    async: false,
+    type: 'GET',
+    dataType: "json",
+    }).done(function (data) {
+    var paFootCountry = data.country;
+    //set country cookie for bootstrap.js to read and configure OneTrust geo
+    document.cookie = 'country=' + data.country + '; path=/;';
+    //make dynamic footer call based on country returned
+    $.ajax({
+    url: 'https://assets-cdn.nationalgeographic.com/natgeo/static/geofooterconfigs/' + paFootCountry + '.json',
+    async: false,
+    type: 'GET',
+    dataType: "json",
+    }).done(function (footer) {
+    var footerHTML='';
+    if(footer && footer.length){
+    footer.forEach(function(link, i){
+    var styleAttr = '';
+    if(link.style){ 
+    styleAttr='class="'+link.style+'" ';
+    }
+        footerHTML+=`<p class="footmouse">`;
+        footerHTML+=`<a `;
+        footerHTML+=styleAttr;
+        footerHTML+=`href="`;
+        footerHTML+=link.url;
+        footerHTML+=`">`;
+        footerHTML+=link.title;
+        footerHTML+=`</a>`;
+        footerHTML+=`</p>`;
+    });
+    }
+    console.log(footerHTML)
+    //not sure what the real footer is on the page, but here is an example
+    document.getElementById('paDynFooter').innerHTML = footerHTML;
+    //after this footer is dynamically injected, you can now load bootstrap.js and all other vendor code
+    });
+    });
+
+    
+    // DATALAYER CONFIGURATION
+
+    // search the URL for specific variables
+    var url = window.location.href
+    var queryParams = new URLSearchParams(window.location.search);
+    var pageid = queryParams.get('cds_page_id');
+    var marketing = queryParams.get('cmpid');
+    console.log("Referring URL: " + url);
+    console.log("Paramters: " + queryParams);
+    console.log("Page ID: " + pageid);
+    console.log("Marketing: " + marketing);
+    
+    
+    if(pageid == "226717") { // eCare login page ID
+        var logstatus = "logged out";
+    } else {
+        var logstatus = "logged in";
+    }
+    
+    console.log("Login Status: " + logstatus);
+    
+    if(marketing != null) { // grab marketing tags from URL
+        var mktg = marketing;
+    } else {
+        var mktg = 'not applicable'
+    }
+    // search the URL for page ID
+    
+    var language = navigator.languages && navigator.languages[0] || // Chrome / Firefox
+                   navigator.language || // All browsers
+                   navigator.userLanguage; // IE <= 10
+    
+    var pgname = window.location.pathname.split("/").slice(-1);
+    var newpgname = pgname.toString().slice(6);
+    var nwpgname = newpgname.toString().slice(0, -4);
+    
+    console.log("Language: " + language);
+    console.log("Page Name: " + nwpgname);
+
+    switch (nwpgname) {
+        case 'Login':
+            nwpgname = 'login';
+            break;
+        case 'Acct':
+            nwpgname = 'account summary';
+            break;
+        case 'Error':
+            nwpgname = 'error';
+            break;    
+        case 'Renew':
+            nwpgname = 'renew';
+            break;
+        case 'Renew_Conf':
+            nwpgname = 'renewal confirmation';
+            break;
+        case 'ViewOrder':
+            nwpgname = 'recent order';
+            break;
+        case 'ViewPayments':
+            nwpgname = 'recent payments';
+            break;
+        case 'View_Gift_Details':
+            nwpgname = 'recent gifts';
+            break;
+        case 'Cofe':
+            nwpgname = 'update email';
+            break;    
+        case 'Cofe_Conf':
+            nwpgname = 'update email confirmation';
+            break;     
+        case 'Cofa':
+            nwpgname = 'change address';
+            break;    
+        case 'Cofa_Conf':
+            nwpgname = 'change address confirmation';
+            break; 
+        case 'Payment':
+            nwpgname = 'payment';
+            break;    
+        case 'Payemnt_Conf':
+            nwpgname = 'payment confirmation';
+            break;
+        case 'MI_back_issues':
+            nwpgname = 'back issues';
+            break;    
+        case 'MI_back_issues_conf':
+            nwpgname = 'back issues confirmation';
+            break;
+        case 'MI_back_extend':
+            nwpgname = 'extend';
+            break;    
+        case 'MI_extend_conf':
+            nwpgname = 'extend confirmation';
+            break;
+        case 'MI_suspend_resume':
+            nwpgname = 'suspend/resume';
+            break;    
+        case 'MI_suspend_resume_conf':
+            nwpgname = 'suspend/resume confirmation';
+            break;
+        case 'MI_bad_address':
+            nwpgname = 'denied for bad address';
+            break;    
+        case 'MI_cancelled':
+            nwpgname = 'denied for cancelled';
+            break;    
+        case 'MI_fraud':
+            nwpgname = 'denied for fraud';
+            break;    
+        case 'MI_no_inventory':
+            nwpgname = 'denied for no inventory';
+            break; 
+        case 'MI_pending':
+            nwpgname = 'denied for pending';
+            break;    
+        case 'MI_too_much_activity':
+            nwpgname = 'denied for too much activity';
+            break; 
+        case 'MI_available_issues':
+            nwpgname = 'available issues';
+            break;   
+        case 'external_Contact':
+            nwpgname = 'contact us external';
+            break;    
+        case 'Contact':
+            nwpgname = 'contact us';
+            break;    
+        case 'InvalidAccess':
+            nwpgname = 'invalid access';
+            break; 
+        case 'email_acquire':
+            nwpgname = 'acquire email';
+            break;    
+        case 'change_cc':
+            nwpgname = 'change credit card';
+            break; 
+        case 'cancel':
+            nwpgname = 'cancel';
+            break; 
+        case 'cancel_conf':
+            nwpgname = 'cancel confirmation';
+            break;
+        case 'cofar':
+            nwpgname = 'change of autorenewal';
+            break; 
+        case 'cofar_conf':
+            nwpgname = 'change of autorenewal confirmation';
+            break;
+        case 'cancel_monthly':
+            nwpgname = 'cancel monthly';
+            break; 
+        case 'cofar_conf':
+            nwpgname = 'cancel monthly confirmation';
+            break;
+        case 'FAQs':
+            nwpgname = 'faqs';
+            break; 
+        case 'External_FAQs':
+            nwpgname = 'faqs';
+            break;
+        default:
+            nwpgname;
+    }
+    
+    console.log("Page Name Post Switch statement: " + nwpgname);
+    
+    if(pageid == "226717") {
+        var pagename = "natgeo:care:login";
+    } else {
+        var pagename = "natgeo:care:portal:" + nwpgname;
+    }
+    
+    console.log("Page Name reconstructed: " + pagename);
+    
+    var orientation = "portrait";
+    let portrait = window.matchMedia("(orientation: portrait)");
+    portrait.addEventListener("change", function(e) {
+        if(e.matches) {
+            orientation = "portrait";
+        } else {
+            orientation = "landscape";
+        }
+    });
+    
+    if($(location).attr('hostname') == "ngmdomsubs.nationalgeographic.com") {
+        var env = "prod";
+    } else if($(location).attr('hostname') == "w1.buysub.com") {
+        var env = "prod";
+    } else {
+        var env = "qa";
+    }
+    
+    console.log("Page Name: " + pagename);
+    console.log("Page Title: " + document.title);
+    console.log("Environment: " + env);
+    console.log("Login Status: " + logstatus);
+    console.log("Orientation: " + orientation);
+    console.log("Language: " + language);
+    const _dl = {
+        "site": {
+            "site": "natgeo",
+            "portal": "natgeo",
+            "language": language,
+            "orientation": orientation
+        },
+        "page": {
+            "content_type": "care",
+            "page_url": window.location.href,
+            "page_name": pagename,
+            "mktg_campaign": mktg,
+            "page": window.location.pathname.replace(/\//g, ":").replace(/^\:|\:$/,"") || "homepage",
+            "page_title": document.title,
+            "platform": "web"
+        },
+        "visitor": {
+            "swid": ""
+        },
+        "pzn": {
+            "login_status": logstatus
+        },
+        "pageViewed": true,
+        "envName": env
+    };
+    // END OF DATA LAYER CONFIGURATION
+    console.log("Datalayer pre call: " + _dl);
+    
+    
+    
+    // SUBSCRIBE AND PUBLISH METHODS
+    _dl.subscribe = function(eventName, callback) {
+        document.addEventListener("__dataLayer." + eventName, function(e) {
+            if(e && e.detail) {
+                callback.apply(__dataLayer, e.detail);
+            };
+        });
+    };
+      
+    _dl.publish = function(eventName) {
+        var args = Array.prototype.splice.apply(arguments, [1, arguments.length]),
+            event = new CustomEvent("__dataLayer." + eventName, {
+                detail: args || []
+            });
+        document.dispatchEvent(event);
+    };
+    
+    // HELPERS FOR PAGE VIEWS AND CMP BANNER 
+    _dl.trackPage = function() {
+        window.__dataLayer.pageViewed = true;
+        window.__dataLayer.publish('pageView');
+    };
+    
+    _dl.OneTrustDialog = function(t) {
+        var n = window.OneTrust;
+        n && n.loaded && (t.preventDefault(), n.ToggleInfoDisplay());
+    };
+    
+    // MAKE DATA LAYER GLOBAL
+    window.__dataLayer = window.__dataLayer || {};
+    Object.assign(window.__dataLayer, _dl);
+    
+    // KICK OFF DCF PROCESS
+    document.dispatchEvent(new Event("dataLayerReady"));
+    __dataLayer.trackPage();
+    
+    
+    if($(location).attr('hostname') == "ngmdomsubs.nationalgeographic.com") {
+        $('head').append('<script src="https://dcf.espn.com/TWDC-DTCI/prod/Bootstrap.js"><\/script>');
+        var env = "prod";
+        console.log("Environment: prod");
+    } else if($(location).attr('hostname') == "w1.busyub.com") {
+        $('head').append('<script src="https://dcf.espn.com/TWDC-DTCI/prod/Bootstrap.js"><\/script>');
+        var env = "prod";
+        console.log("Environment: prod");
+    } else {
+        $('head').append('<script src="https://dcf.espn.com/TWDC-DTCI/stage/Bootstrap.js"><\/script>');
+        var env = "qa";
+        console.log("Environment: qa");
+    }
+    
+});
+</script>
+<!-- dynamic footer code -->
+
+
+
+</head>
+<body>
+        
+<div class="wrapper">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="hide">
+  <defs>
+    <symbol id="loginInfoIcon" viewBox="0 0 30 30">
+      <title>How to locate your account number</title>
+      <path d="M15,27.84A12.75,12.75,0,1,1,27.75,15.09,12.76,12.76,0,0,1,15,27.84Zm0-24A11.25,11.25,0,1,0,26.25,15.09,11.26,11.26,0,0,0,15,3.84Z"/>
+      <path d="M16.46,9.54A1.42,1.42,0,0,1,15,11h0a1.43,1.43,0,1,1,0-2.86h0A1.43,1.43,0,0,1,16.46,9.54Zm-.21,2.94v9.63H13.77V12.48Z"/>
+    </symbol>
+    <symbol id="infoIcon" viewBox="0 0 30 30">
+      <path d="M15,27.84A12.75,12.75,0,1,1,27.75,15.09,12.76,12.76,0,0,1,15,27.84Zm0-24A11.25,11.25,0,1,0,26.25,15.09,11.26,11.26,0,0,0,15,3.84Z"/>
+      <path d="M16.46,9.54A1.42,1.42,0,0,1,15,11h0a1.43,1.43,0,1,1,0-2.86h0A1.43,1.43,0,0,1,16.46,9.54Zm-.21,2.94v9.63H13.77V12.48Z"/>
+    </symbol>
+    <symbol id="checkIcon" viewBox="0 0 30 30">
+      <path d="M13.28,24.34a.76.76,0,0,1-.55-.24L5.55,16.18l1.11-1,6.55,7.23L24.39,6.55l1.22.86L13.89,24a.75.75,0,0,1-.56.31Z"/>
+    </symbol>
+    <symbol id="cartIcon" viewBox="0 0 30 30">
+      <path d="M8.94,17.3a2.4,2.4,0,0,0,2.34,1.87H23.83a2.4,2.4,0,0,0,2.31-1.73L28.86,7H8.11L6.82,1.76a.74.74,0,0,0-.73-.57H.82v1.5H5.5L6.77,7.81Zm18-8.81L24.69,17a.89.89,0,0,1-.86.65H11.28a.9.9,0,0,1-.88-.7L8.53,8.78h0l-.07-.28Z"/>
+      <path d="M11.57,22.83a3,3,0,1,0,3,3A3,3,0,0,0,11.57,22.83Zm0,4.5a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,11.57,27.33Z"/>
+      <path d="M23.51,22.83a3,3,0,1,0,3,3A3,3,0,0,0,23.51,22.83Zm0,4.5a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,23.51,27.33Z"/>
+    </symbol>
+    <symbol id="eventIcon" viewBox="0 0 30 30">
+      <path d="M25.59,4.53H21.34V2.33h-1.5v2.2h-9.5V2.33H8.84v2.2H4.59a2,2,0,0,0-2,2V25.87a2,2,0,0,0,2,2h21a2,2,0,0,0,2-2V6.53A2,2,0,0,0,25.59,4.53ZM4.59,6H8.84V9.21h1.5V6h9.5V9.21h1.5V6h4.25a.5.5,0,0,1,.5.5v4.36h-22V6.53A.5.5,0,0,1,4.59,6Zm21,20.34h-21a.5.5,0,0,1-.5-.5V12.39h22V25.87A.5.5,0,0,1,25.59,26.37Z"/>
+    </symbol>
+    <symbol id="emailIcon" viewBox="0 0 30 30">
+      <path d="M26.59,4.5H3.41A1.27,1.27,0,0,0,2.17,5.8V24.2a1.27,1.27,0,0,0,1.24,1.3H26.59a1.27,1.27,0,0,0,1.24-1.3V5.8A1.27,1.27,0,0,0,26.59,4.5ZM25.4,6,15,14.93,4.6,6ZM3.67,24V7.17L15,16.91,26.33,7.17V24Z"/>
+    </symbol>
+    <symbol id="tiltIcon" viewBox="0 0 30 30">
+      <path d="M18.66,27.2H11.57a2.75,2.75,0,0,1-2.75-2.75V6.07a2.75,2.75,0,0,1,2.75-2.75h7.08A2.75,2.75,0,0,1,21.4,6.07V24.45A2.75,2.75,0,0,1,18.66,27.2ZM12,4.82h-.4a1.25,1.25,0,0,0-1.24,1.25V24.45a1.24,1.24,0,0,0,1.24,1.25h7.08a1.25,1.25,0,0,0,1.25-1.25V6.07a1.26,1.26,0,0,0-1.24-1.25h-.4v.81H12ZM25.42,17.15c1.28-.57,1.78-1.14,1.78-1.54s-1.32-1.71-4.94-2.47l.31-1.42c4,.83,6.13,2.23,6.13,3.94,0,.77-.48,1.8-2.39,2.73l.49.67-3.95.42,1.62-3.65ZM3.92,18.39c-1.9-.93-2.35-2-2.35-2.73,0-1.71,2.18-3.11,6.13-3.94L8,13.19c-3.63.76-4.94,1.9-4.94,2.47s.47,1,1.73,1.52l1-1.35,1.62,3.65-3.95-.42Z"/>
+    </symbol>
+    <symbol id="phoneIcon" viewBox="0 0 30 30">
+      <path d="M13.43,11.38a7.36,7.36,0,0,1-.75.63,6.89,6.89,0,0,1-.8.49,6.71,6.71,0,0,1-.74.34,3,3,0,0,0,.43.86,15.89,15.89,0,0,0,1,1.39q.6.79,1.38,1.68c.52.59,1.06,1.14,1.62,1.67a15.27,15.27,0,0,0,1.73,1.39,5.81,5.81,0,0,0,1.69.82,5.93,5.93,0,0,1,.33-.75,5.73,5.73,0,0,1,.48-.81,6.61,6.61,0,0,1,.63-.77,1.62,1.62,0,0,1,1.7-.26,7.35,7.35,0,0,1,1.13.6c.39.22.78.47,1.18.75s.76.53,1.1.79l.37.3a2.14,2.14,0,0,1,.7,2.42l0,0a7,7,0,0,1-1,1.6A7.93,7.93,0,0,1,24,26.09c-2.49,1.8-5.62-.24-5.62-.24a25.79,25.79,0,0,1-3.22-2,31.57,31.57,0,0,1-2.88-2.4A33.66,33.66,0,0,1,9.8,18.85C9,18,8.34,17.08,7.72,16.2s-1.15-1.71-1.6-2.49c-2-3.35-.49-5.82-.49-5.82A9.51,9.51,0,0,1,7.14,6.31a7.87,7.87,0,0,1,1.59-1h0a2.33,2.33,0,0,1,2.46.33,7.93,7.93,0,0,1,1.66,1.83A7.13,7.13,0,0,1,14,10.14,1.5,1.5,0,0,1,13.43,11.38Z"/>
+    </symbol>
+    <symbol id="commentIcon" viewBox="0 0 30 30">
+      <path d="M25,4.62V19.47H14.89l-.42.36L10,23.63V19.47H5V4.62H25m1.5-1.5h-23V21h5v5.91L15.44,21h11V3.12Z"/>
+      <rect x="9.55" y="8.92" width="10.96" height="1.5"/>
+      <rect x="9.55" y="13.54" width="10.96" height="1.5"/>
+    </symbol>
+    <symbol id="closeIcon" viewBox="0 0 30 30">
+      <polygon points="28.03 2.95 26.97 1.89 15 13.86 3.03 1.89 1.97 2.95 13.94 14.92 1.97 26.89 3.03 27.95 15 15.98 26.97 27.95 28.03 26.89 16.06 14.92 28.03 2.95"/>
+    </symbol>
+    <symbol id="chevronDown" viewBox="0 0 30 30">
+      <path d="M15.57,24.55a.74.74,0,0,1-.53-.22L2.67,12,3.73,10.9,15.57,22.74,27.42,10.9,28.48,12,16.1,24.33A.73.73,0,0,1,15.57,24.55Z"/>
+    </symbol>
+    <symbol id="chevronRight" viewBox="0 0 30 30">
+      <path d="M11.73,28.33l-1.06-1.06L22.51,15.43,10.67,3.58l1.06-1.06L24.1,14.9a.74.74,0,0,1,0,1.06Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="header-all">
+  <img class="banner_image" src="../images/eCare/img/ng_2flush_whiteyellow_rgb.png" alt="National Geographic Magazine" />
+</div>
+<div class="header-handle"></div>
+
+
+
+  
+  <div class="container login-main">
+    
+    <div class="row-fluid">
+      <div class="lucie-auth-container">
+        <img class="logo" src="../images/ng_2flush_blackyellow_logo.gif" alt="National Geographic" />
+        <div class="row-fluid">
+          <h1>Error</h1>
+          
+          <p>An error occurred while processing your request.</p>
+          
+          <div class="alert alert-error">An error occurred while processing your request.  We apologize for any inconvenience.</div>
+          
+          <p>Please contact Customer Service at 1-800-647-5463 or <a href="mailto:natgeomagazine@cdsfulfillment.com">natgeomagazine@cdsfulfillment.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /container -->
+  <div class="login-footer">
+    <footer>
+  <div class="container">
+    <div class="footer-container">
+      <div class="footerLinks">
+        <ul class="pub-links">
+          <li class="footer-faqs-link"><a href="../NGM/eCare_FAQs.jsp?lsid=&vid=&cds_mag_code=NGM" target="_blank">FAQ</a></li>
+          <li class="footer-emailus-link"><a href="../NGM/eCare_external_Contact.jsp?lsid=&vid=&cds_mag_code=NGM&cslogin=N" target="_blank">Email Us</a></li>
+		  <li class="footer-important-link"><a style="color: red;" href="https://ngmintlsubs.nationalgeographic.co.uk/solo/ContentPage?pagename=Important-customer-alerts" target="_blank">Important Customer Alerts</a></li>
+          <li class="footer-phone">1-800-647-5463</li>
+          <li class="footer-custserv-link"><a href="https://help.nationalgeographic.com/s" target="_blank">Customer Service</a></li>
+          <li class="footer-sub-link"><a href="http://www.nationalgeographic.com/magazines/l/multisubs/navH.html" target="_blank">Subscribe Or Give a Gift</a></li>
+          <!--<li class="footer-gift-link"><a href="http://www.nationalgeographic.com/magazines/l/multisubs/navH.html" target="_blank">Give a Gift</a></li>-->
+          <li class="footer-home-link"><a href="http://www.nationalgeographic.com" target="_blank">Home</a></li>
+        </ul>
+      </div>
+      <div class="footerCopyright">
+        <p class="footmouse">Copyright &copy; 1996-2015 National Geographic Society.</p>
+        <p class="footmouse">Copyright &copy; 2015-2024 National Geographic Partners, LLC. All rights reserved</p>
+        <!--<p class="footmouse"><a href="https://privacy.thewaltdisneycompany.com/en/current-privacy-policy/your-california-privacy-rights/" target="_blank">Your California Privacy Rights</a>.</p>
+        <p class="footmouse"><a href="https://disneytermsofuse.com/" target="_blank">Terms of Use</a></p>
+        <p class="footmouse"><a href="https://privacy.thewaltdisneycompany.com/en/" target="_blank">Privacy Policy</a></p>
+        <p class="footmouse"><a href="https://privacyportal-de.onetrust.com/webform/64f077b5-2f93-429f-a005-c0206ec0738e/0a4f1f0b-7130-421f-971d-ef578c0bce6d" target="_blank">Do Not Sell My Personal Information</a></p>
+        <p class="footmouse"><a href="http://preferences-mgr.trustarc.com/?pid=disney01&aid=natgeo01&type=natgeo" target="_blank">Interest-Based Ads</a></p>
+        <p class="footmouse"><a href="https://www.nielsen.com/us/en/legal/privacy-statement/digital-measurement/" target="_blank">About Nielson Measurement</a></p>
+        <p class="footmouse"><a href="https://privacy.thewaltdisneycompany.com/en/for-parents/childrens-online-privacy-policy/" target="_blank">Children's Online Privacy Policy</a></p>-->
+        <!-- dynamic footer append into paDynFooter -->
+        <p id="paDynFooter"></p>  
+        <!-- dynamic footer append into paDynFooter end -->  
+        <!--</ul>-->
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </div>
+</div>
+<!-- /wrapper -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ contentType 9 text/html url 101 https://ngmdomsubs.nationalgeographic.com:443/pubs/NG/NGM/Error.jsp?cds_mag_code=NGM&id=1714883472992 responseCode 3 200 

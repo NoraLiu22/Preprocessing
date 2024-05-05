@@ -1,0 +1,739 @@
+bkhqeiwkagnkmiwqfawcbmzqlqxogetcskdcjeya length 5 50837 page 50837 <!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Article">
+<head> 
+<script type="text/javascript" src="/js/ga.js"></script>
+<style type="text/css">
+
+.topLeft	{	border-top: 1px solid #000000;
+				border-left: 1px solid #000000;
+				padding: 10px;
+				 vertical-align: text-top;			
+			}
+			
+.topLeftThick	{	border-top: 2px solid #000000;
+				border-left: 1px solid #000000;
+				 vertical-align: text-top;
+			}
+	        
+.topLeftRight	{border-top: 1px solid #000000;
+	         		  border-left: 1px solid #000000;
+	         		  border-right: 1px solid #000000;
+	         		  padding: 10px;
+	         		  vertical-align: text-top;
+			}
+
+.topLeftRightThick	{border-top:  2px solid #000000;
+	         		  border-left: 1px solid #000000;
+	         		  border-right: 1px solid #000000;
+	         		  vertical-align: text-top;
+			}
+
+.topLeftBottom	{border-top: 1px solid #000000;
+	         			  border-left: 1px solid #000000;
+	         			  border-bottom: 1px solid #000000;
+	         			  padding: 10px;
+	         			 vertical-align: text-top;
+	        			}        
+	     
+.all	{border-top: 1px solid #000000;
+	      border-left: 1px solid #000000;
+	      border-bottom: 1px solid #000000;
+	      border-right: 1px solid #000000;
+	      padding: 10px;
+	      vertical-align: text-top;
+	     }	
+
+table.plain {border-collapse: separate;
+					border-spacing: 0px;
+					margin-left: auto;
+					margin-right: auto;					
+					}
+					
+td.plain {padding: 6px;
+			vertical-align: text-top;
+					}
+
+table.author {border-collapse: separate;
+					border-spacing: 6px;
+					}
+td.authors {padding: 6px;
+					}
+
+li:not(:last-child) {
+	margin-bottom: .5em;
+	}
+				
+div.center {margin-left: auto; margin-right: auto;
+	}
+	
+.codeBold {font-family: Courier, Courier-New, sans-serif;
+				font-size: 14px;
+				line-height: 18px;
+		 		color: #000000;
+		 		font-weight: bold;
+	}
+
+</style>
+<meta charset="utf-8" />
+<meta id="DOI" content="10.1045/july2017-witkowski" />
+<meta itemprop="datePublished" content="2017-07-17" />
+<meta id="description" content="D-Lib Magazine Article" /> 
+<meta id="keywords" content="Utah Digital Newspapers, Migrating Digital Content, Solphal, Bash Scripting, CONTENTdm" />
+<link href="../../../style/style1.css" rel="stylesheet" type="text/css" />
+
+<title>Massive Newspaper Migration -- Moving 22 Million Records from CONTENTdm to Solphal</title>
+</head>
+
+<body>
+<form action="/cgi-bin/search.cgi" method="get">
+
+<div style="height:2px;background:#2b538e"></div>
+<div style="height:4px;background:#4078b1"></div>
+
+<div style="height:30px;background:#4078b1">
+
+<span style="color: #ffffff; font-size: 12px; float: right; margin-right: 10px;">Search D-Lib:
+<input type="text" id="words" value="" size="25" />
+<input type="submit" id="search" value="Go!" />
+<input type="hidden" id="config" value="htdig" />
+<input type="hidden" id="restrict" value="" />
+<input type="hidden" id="exclude" value="" />
+</span>
+</div>
+
+<div style="height:1px;background:#e04c1e"></div>
+<div style="height:1px;background:#4078b1"></div>
+<div style="height:1px;background:#abc0d6"></div>
+<div style="height:2px;background:#4078b1"></div>
+<div style="height:1px;background:#abc0d6"></div>
+<div style="height:1px;background:#2b538e"></div>
+<div style="height:92px;background:#4078b1"><img width="450" height="90" alt="D-Lib-blocks5" src="../../../img2/D-Lib-blocks5.gif">
+</div>
+<div style="height:1px;background:#abc0d6"></div>
+<div style="height:2px;background:#4078b1"></div>
+<div style="height:1px;background:#abc0d6"></div>
+<div style="height:2px;background:#e04c1e"></div>
+<div style="height:24px;background:#eda443"><img src="../../../img2/magazine5.gif" alt="The Magazine of Digital Library Research" width="830" height="24" /></div>
+<div style="height:1px;background:#e04c1e"></div>
+<div style="height:28px;background:#2b538e">
+<div id="navtable">
+<table>
+<tr><td class="navtext"><img src="../../../img2/transparent.gif" alt="" width="20" height="20" /><a href="../../../dlib.html">HOME</a>&nbsp;|&nbsp;<a href="../../../about.html">ABOUT D-LIB</a>&nbsp;|&nbsp;<a href="../../../contents.html" class="navtext">CURRENT ISSUE</a>&nbsp;|&nbsp;<a href="../../../back.html">ARCHIVE</a>&nbsp;|&nbsp;<a href="../../../author-index.html">INDEXES</a>&nbsp;|&nbsp;<a href="http://www.dlib.org/groups.html">CALENDAR</a>&nbsp;|&nbsp;<a href="../../author-guidelines.html">AUTHOR GUIDELINES</a>&nbsp;|&nbsp;<a href="http://www.dlib.org/mailman/listinfo/dlib-subscribers">SUBSCRIBE</a>&nbsp;|&nbsp;<a href="../../letters.html">CONTACT D-LIB</a></td></tr></table></div></div>
+<div style="height:4px;background:#2b538e"></div>
+<div style="height:1px;background:#e04c1e"></div>
+
+<div style="padding-left: 2.5em; padding-top: 1em;">
+
+<h3 class="blue-space">D-Lib Magazine</h3>
+<p class="blue">July/August 2017<br />
+Volume 23, Number 7/8<br />
+<a href="../07contents.html">Table of Contents</a>
+</p> 
+
+<div class="divider-full">&nbsp;</div>
+
+<h3 class="blue-space">Massive Newspaper Migration &#151; Moving 22 Million Records from CONTENTdm to Solphal</h3>
+
+<p class="blue">
+Alan Witkowski, Anna Neatrour, Jeremy Myntti and Brian McBride<br />
+J. Willard Marriott Library, University of Utah<br />
+{alan.witkowski, anna.neatrour, jeremy.myntti, brian.mcbride} [at] utah.edu</p>
+
+<div class="divider-dot">&nbsp;</div>
+
+<p><a href="https://doi.org/10.1045/july2017-witkowski" class="nolinka">https://doi.org/10.1045/july2017-witkowski</a></p>
+
+<div class="divider-full">&nbsp;</div>
+ <!-- Abstract or TOC goes here --> 
+
+<h3 class="blue">Abstract</h3>
+
+<p class="blue">Utah Digital Newspapers is a pioneering digital newspapers program at the University of Utah J. Willard Marriott Library. Recently, a small project team completed a successful migration away from CONTENTdm onto a home-grown system called Solphal, built using open-source applications. The migration process is detailed along with examples of scripts used to prepare and enhance metadata. Transitioning away from a limiting vendor-based solution to a home-grown system has enabled the Utah Digital Newspapers program to be more responsive to user requests as well as realizing greater efficiencies in hardware and software. The platform has opened up new possibilities for the future as the collection continues to grow.</p>
+
+<p class="blue">Keywords: Utah Digital Newspapers, Migrating Digital Content, Solphal, Bash Scripting, CONTENTdm</p>
+
+<!-- Article goes next --> 
+
+<div class="divider-full">&nbsp;</div>
+<h3>1 History of Digital Newspapers at the J. Willard Marriott Library</h3>
+
+<p>The Utah Digital Newspapers (<a href="https://digitalnewspapers.org">UDN</a>) program is one of the largest and longest running statewide programs for making newspapers publically available online. The digital asset management system that made UDN content available was originally CONTENTdm. Due to the large amount of content being made available in UDN, it was determined that CONTENTdm no longer met the needs of the program and a migration to a new system was necessary. This article will briefly discuss the history of the UDN program, along with the process and issues of migrating the content to a home-grown system built off of open-source tools. The new repository system, called Solphal, is built on the high-performance PHP framework <a href="https://phalconphp.com/en/">Phalcon</a>, <a href="http://lucene.apache.org/solr">Solr</a> for indexing and metadata storage, and the web server <a href="https://nginx.org">NGINX</a>. While many of the processes that were used in this migration and detailed in the article are unique to how CONTENTdm handled newspaper repository data and the necessary improvements undertaken to migrate to a new system, the information and processes detailed can be translated to other systems to help other libraries in their own migrations.</p>
+
+<p>The UDN program was launched in 2001 with the receipt of a Library Services and Technology (LSTA) grant to digitize three newspapers (Arlitsch, Yapp, &amp; Edge, <a href="#1">2003</a>). Subsequent participation in the National Digital Newspaper Program (NDNP) and National Endowment for the Humanities (NEH) grants raised the total number of articles in UDN to over 20 million in 2016. Early on in the history of the newspapers program at the University of Utah, article level metadata was identified as an essential part of the architecture for the newspaper program, allowing users to browse and search for advertisements, births, weddings, and obituaries (Herbert &amp; Arlitsch, <a href="#2">2004</a>). This was accomplished by using a custom indexing program written for the J. Willard Marriott Library by <a href="http://www.iarchives.com/">iArchives</a>, where NDNP batches were then split at either the article or page level and prepared for CONTENTdm ingest.</p>
+
+<p>Newspaper digitization continues to be a popular project for LSTA, Utah State Historical Records Advisory Board (USHRAB), and privately funded grants, with recent projects including the Daily Herald, Park Record, American Fork Citizen, and Vernal Express. In addition to grant projects, several cities or counties in Utah have committed funds towards newspaper digitization as well as the processing of current born digital newspaper content for inclusion in UDN. As of June 15, 2017, there were 141 newspaper titles, 191,599 issues, 2,116,565 pages, and 20,475,912 articles available in UDN.</p>
+
+<div class="divider-full">&nbsp;</div>
+<h3>2 Scalability Issues, Configuration Issues, and Customizations Required to Host Newspapers Content on CONTENTdm</h3>
+
+<p>Large newspaper collections on the UDN CONTENTdm server needed to be split into multiple sub collections for better performance. For example, the Salt Lake Tribune was split into over thirty different sub collections. Custom queries for users were created on the front page of UDN in order to allow users to browse across multiple collections for a single paper by year. In addition, custom search forms were developed for each newspaper title. Another important issue affecting patrons was slow page response times. It was quite common for page load times to reach or exceed ten seconds, and this issue adversely affected user experience. In addition, lack of control over the image viewer in CONTENTdm often caused UDN users to experience frustration when they wanted to download or save snippets of news articles. Maintaining the CONTENTdm servers required approximately .75 FTE staff, covering both systems and application support and maintenance. Additional work beyond this was required whenever there was a new CONTENTdm software update.</p>
+
+<p>The J. Willard Marriott Library went through a Digital Asset Management Systems Review beginning in 2013 when it was clear that there were scalability, performance, reliability, and user interface issues with CONTENTdm, both for UDN and other digital collections (Masood &amp; Neatrour, <a href="#3">2014</a>). As part of this process, various digital asset management systems were reviewed, including <a href="https://github.com/LibraryOfCongress/chronam">ChronAm</a> for newspapers. After the systems review, ChronAm proved not to be a viable option for newspapers content for our digital library program. The primary reason was that implementing ChronAm locally would have required further customization and development work to accommodate the article level display of UDN newspapers. With a limited amount of staff to devote to custom programming for both a newspaper and a digital repository, the library also made the strategic decision to support one single digital library system for both newspapers and cultural heritage content such as images, videos, and other multimedia files in addition to newspapers. In the migration timeline to Solphal, Utah Digital Newspapers was migrated first because the metadata for newspapers and formatting was relatively standardized compared to our digital collections data. The newspapers content was easily made static, as newspaper collections are generally digitized in bulk, without the need for ongoing metadata correction and clean-up.</p>
+
+<div class="divider-full">&nbsp;</div>
+<h3>3 Preparing UDN for Migration</h3>
+
+<p>Prior to migration, the existing metadata in UDN needed to be reviewed and standardized before moving to Solphal. Even though digitization for UDN was completed by vendors and NDNP batches are standardized, there were still variations in both the file types, formats, and metadata in UDN, since the newspapers program had been running for such a long time. </p>
+
+<p>Project management for the UDN migration was handled by the lead application developer who developed scripts to handle data assessment, remediation, and enhancement. When additional manual work was necessary for data clean-up, metadata librarians and staff were consulted. E-mail updates on the status of the project were sent frequently, ensuring that all team members were on the same page. The core team for the migration consisted of the lead developer, the supervisor for the Digital Library Services Department, the supervisor for Digital Infrastructure Development, a metadata librarian, and the assistant head of digital operations for the J. Willard Marriott Library. The relatively small size of the team contributed to the migration process functioning in a lightweight, quasi-agile way, with the majority of the work for the project being completed in a six month timeframe. </p>
+
+<p>Metadata preparation for migration followed the general practices of assessment, remediation, and enhancement which are often required for any digital library systems migration. Custom scripts developed to handle the migration are detailed throughout this article, illustrating the different aspects of the migration process. <a href="https://www.gnu.org/software/bash">Bash</a> scripting was particularly useful, as it allowed us to target particular aspects of metadata that needed to be cleaned up in CONTENTdm first prior to the migration.</p>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>3.1 Metadata template assessment and standardization</h4>
+
+<p>Before work on fixing metadata began, we needed to normalize the schema for all 361 UDN collections. The command in Figure 1 was used to get field counts across all collections to assist with this step of metadata assessment. Field counts were used to get a sense of the varying metadata templates that were used in defining the fields for each newspaper collection. While the metadata was standardized, there were still some newspaper collections that had empty or non-standardized fields.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain"style="background-color: #efefef;">
+<pre>
+find -iname "config.txt" -exec sh -c 'echo {}; cat {} | wc -l' \;
+</pre>
+</td></tr></table>
+</div>
+
+<p style="margin-left: 15em; margin-right: 15em; text-align: justify;"><i>Figure 1: A bash command to show field counts for each collection. This finds every file called "config.txt", which contains the CONTENTdm schema for a collection, and outputs the full path to the file with a line count.</i></p>
+
+<p>Based on the field counts, a subsequent review based on this data set a standardized newspapers schema across all collections, making sure that all the fields had no name variants. Core fields in UDN included title, type, date, year, month, day, rights, publisher, creator, and page. Empty fields in CONTENTdm were noted and not migrated into Solphal.</p>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>3.2 CONTENTdm metadata overview</h4>
+
+<p>The metadata for a CONTENTdm collection is stored in a flat file format named desc.all (Figure 2) and was approximately a total of 65GB in size pre-migration. The digital library programming staff had developed a variety of processes over the years that took advantage of the ability to script against a CONTENTdm desc.all file for large scale metadata enhancement. For example an enhancement project to add additional geographic values in a CONTENTdm digital collection was accomplished through adding latitude and longitude values via scripting and reindexing the desc.all file (Neatrour, Morrow, Rockwell, &amp; Witkowski, <a href="#4">2011</a>). This type of scripting and reindexing of the desc.all file is possible for institutions who self-host CONTENTdm. In preparing metadata for migration, the metadata in the desc.all file was corrected and enhanced through an iterative process.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain" style="background-color: #efefef;">
+<pre>
+&lt;dmcreated&gt;2004-02-27&lt;/dmcreated&gt;
+&lt;dmmodified&gt;2004-02-27&lt;/dmmodified&gt;
+&lt;dmrecord&gt;0&lt;/dmrecord&gt;
+<span style="background-color: #cccccc;">&lt;title&gt;American Eagle, 1897-05-08 Page 1&lt;/title&gt;
+&lt;subjec&gt;&lt;/subjec&gt;
+&lt;descri&gt;&lt;/descri&gt;
+&lt;creato&gt;American Eagle Publishing Co.&lt;/creato&gt;
+&lt;publis&gt;Digitized by: Univ. of Utah&lt;/publis&gt;
+&lt;contri&gt;&lt;/contri&gt;
+&lt;dateor&gt;1897-05-08&lt;/dateor&gt;
+&lt;date&gt;&lt;/date&gt;
+&lt;type&gt;page&lt;/type&gt;
+&lt;format&gt;text/PDF&lt;/format&gt;
+&lt;identi&gt;&lt;/identi&gt;
+&lt;source&gt;&lt;/source&gt;
+&lt;langua&gt;eng&lt;/langua&gt;
+&lt;relati&gt;&lt;/relati&gt;
+&lt;covera&gt;&lt;/covera&gt;
+&lt;rights&gt;Material in the public domain. No restrictions on use.&lt;/rights&gt;
+&lt;itemye&gt;1897&lt;/itemye&gt;
+&lt;itemmo&gt;May&lt;/itemmo&gt;
+&lt;itemda&gt;08&lt;/itemda&gt;
+&lt;itempa&gt;Page 1&lt;/itempa&gt;
+&lt;itemtr&gt;&lt;/itemtr&gt;
+&lt;genre&gt;newspaper&lt;/genre&gt;
+&lt;fullrs&gt;&lt;/fullrs&gt;
+&lt;find&gt;2.pdf&lt;/find&gt;
+&lt;dmaccess&gt;&lt;/dmaccess&gt;
+&lt;dmimage&gt;&lt;/dmimage&gt;
+&lt;dmad1&gt;&lt;/dmad1&gt;
+&lt;dmad2&gt;&lt;/dmad2&gt;
+&lt;dmoclcno&gt;&lt;/dmoclcno&gt;
+&lt;dmcreated&gt;2004-02-27&lt;/dmcreated&gt;
+&lt;dmmodified&gt;2004-02-27&lt;/dmmodified&gt;
+&lt;dmrecord&gt;1&lt;/dmrecord&gt;</span>
+&lt;title&gt;American Eagle, 1897-05-08 Page 2&lt;/title&gt;
+&lt;subjec&gt;&lt;/subjec&gt;
+&lt;descri&gt;&lt;/descri&gt;
+</pre>
+</td></tr></table>
+</div>
+<p style="margin-left: 5em; margin-right: 5em; text-align: center;"><i>Figure 2: An excerpt from the desc.all metadata file. The highlighted area is one record in UDN.</i></p>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>3.3 Metadata enhancement</h4>
+
+<p>One of the priorities for metadata enhancement in Solphal was developing new fields to improve search functionality that had previously been accomplished through workarounds in CONTENTdm. For example in Solphal, it was desirable to be able to browse by paper name.  Previously, this type of functionality was accomplished through custom queries developed to compensate for the split newspapers collections required by the architecture needed to support such large collections on a single CONTENTdm server. This previous architecture was not going to be present in Solphal, and needed to be taken into account in ensuring the same type of functionality post-migration. Since there was no dedicated metadata field for the name of the newspaper without using the existing title field which had additional metadata, such as issue, date, page, or article information, the paper name for each record had to be extracted from the title and inserted into a new field. The format for each title depends on the type of record. The new paper name field needed to be added to each level of newspaper record type, at the issue, page, and article level across the entire newspaper repository. Most of the records followed the following format.</p>
+
+<table class="plain">
+<tr>
+<td class="topLeft" style="text-align: left; background-color: #d3d3d3;"><b>Record Type</b></td>
+<td class="topLeftRight" style="text-align: left; background-color: #d3d3d3;"><b>Title Format</b></td>
+</tr>
+<tr>
+<td class="topLeft">Issue</td>
+<td class="topLeftRight" style="text-align: left;"><i>Paper_Name, Issue_Date</i></td>
+</tr>
+<tr>
+<td class="topLeft">Page</td>
+<td class="topLeftRight" style="text-align: left;"><i>Paper_Name, Issue_Date, Page_Number</i></td>
+</tr>
+<tr>
+<td class="topLeftBottom">Article</td>
+<td class="all" style="text-align: left;"><i>Paper_Name, Issue_Date, Article_Title</i></td>
+</tr>
+</table>
+
+<p>To evaluate the state of each paper name in UDN, the bash command in Figure 3 was used to build a list of names. Sometimes there wasn't a comma directly after the paper name, so a more complicated regular expression had to be built to handle all cases, with "Mt. Pleasant Pyramid" as a special case.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain"style="background-color: #efefef;">
+<pre>
+find -iname "desc.all" -exec grep -P "(?&lt;=&lt;title&gt;)(Mt. Pleasant Pyramid|.+?)(?=[.,:(])" {} -o \; | sed 's/ *$//' | sort | uniq
+</pre>
+</td></tr></table>
+</div>
+
+<p style="margin-left: 5em; margin-right: 5em; text-align: justify;"><i>Figure 3: A bash command to build a list of paper names by searching every title. The <b>find</b> program searches for files called desc.all, then executes <b>grep</b> on each one. grep searches the title field for all characters leading up to a period, comma, colon, or opening parenthesis, then returns the match. The <b>sed</b> program is used to trim trailing whitespace in the match. <b>sort</b> and <b>uniq</b> are used to sort the output and return only unique lines.</i></p>
+
+<div class="divider-white">&nbsp;</div>
+<div class="divider-dot">&nbsp;</div>
+<h4>3.4 Metadata assessment and manual enhancement</h4>
+
+<p>In some cases, record titles didn't contain a paper name or date. These had to be fixed manually. By assessing the desc.all file, the following commands were used to build reports to make the manual editing process easier and more efficient. Reports like the one in Figure 4 were used for directing manual work, where digital library metadata staff were able to get context for missing data by seeing the paper name, date, and title alongside articles that were missing this information. These targeted manual edits were then added back into the desc.all file so all articles across the repository had consistent paper names and dates. </p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain"style="background-color: #efefef;">
+<pre>
+gawk 'BEGIN {FS=OFS="\t"} NR > 1 { print $1, $2 }' desc.all.tsv | egrep -v $'\t'"(Utah Enquirer|Provo Daily 
+Enquirer|Territorial Enquirer)" -C 2
+
+------
+
+5637    Provo Daily Enquirer, 1892-11-16, The World Enriched
+5638    Provo Daily Enquirer, 1892-11-16, Mission Notes
+5639    The Prizes of Literary Work
+5640    Provo Daily Enquirer, 1892-11-16, The India Rubber Worm
+5641    Provo Daily Enquirer, 1892-11-16, Too Powerful
+--
+108185  Provo Daily Enquirer, 1896-02-06, Masthead
+108187  Provo Daily Enquirer, 1896-02-06, Age of Consent
+108189  A Happy New Year
+108190  Provo Daily Enquirer, 1896-02-06, Notice
+108191  Provo Daily Enquirer, 1896-02-06, Foreign Gatherings
+--
+111431  Provo Daily Enquirer, 1896-04-24, Combative Congressmen
+111432  Provo Daily Enquirer, 1896-04-24, Utah Public Buildings
+111433  Again in Public
+111434  Provo Daily Enquirer, 1896-04-24, Utah Men Get Positions
+111435  Provo Daily Enquirer, 1896-04-24, Gets a Third Term
+</pre>
+
+</td></tr></table>
+</div>
+
+<p style="margin-left: 5em; margin-right: 5em; text-align: justify;"><i>Figure 4: A bash command to generate bad titles with surrounding record titles for context. The <b>gawk</b> program is used to parse the desc.all.tsv file and print the first two columns, which is piped into grep to only display titles that start with Utah Enquirer, Provo Daily Enquirer, or Territorial Enquirer.</i></p>
+
+<p>Another method of dealing with manual fixes in a shared work environment was exporting reports and placing them in Google Sheets, along with links for manual editing. The report of bad titles listed below illustrates a piece of that process. </p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain" style="background-color: #efefef;">
+<pre>
+gawk 'BEGIN {FS=OFS="\t"} NR &gt; 1 { print $1, $2 }' desc.all.tsv | egrep -v $'\t'"(Utah Enquirer|Provo Daily 
+Enquirer|Territorial Enquirer)" | sed 's|^|http://udn6.lib.utah.edu:81/cgi-
+bin/admin/edittxt.exe\?CISOROOT=/de2\&amp;CISOPTR=|g'
+
+------
+
+http://udn6.lib.utah.edu:81/cgi-bin/admin/edittxt.exe?CISOROOT=/de2&amp;CISOPTR=5639    The Prizes of Literary Work
+http://udn6.lib.utah.edu:81/cgi-bin/admin/edittxt.exe?CISOROOT=/de2&amp;CISOPTR=108189  A Happy New Year
+http://udn6.lib.utah.edu:81/cgi-bin/admin/edittxt.exe?CISOROOT=/de2&amp;CISOPTR=111433  Again in Public
+</pre>
+</td></tr></table>
+</div>
+
+<p style="margin-left: 5em; margin-right: 5em; text-align: justify;"><i>Figure 5: Bash command to generate a list of bad titles with links to the metadata editor in CONTENTdm. This command works similar to the one in Figure 4. The main difference is each line is prepended with a URL. Below it is the output that can be copied into a spreadsheet program.</i></p>
+
+<div class="divider-white">&nbsp;</div>
+<div class="divider-dot">&nbsp;</div>
+<h4>3.5 Scripting metadata enhancements</h4>
+
+<p>Multiple passes through the desc.all file were needed as part of the clean-up process prior to migration. While some tasks were completed through manual editing, many cleanup processes were automated through a series of scripts. For example, some records had titles that had the page number or article title listed in front of paper title. Variations of the following command was used to handle the various cases in which this occurred.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain" style="background-color: #efefef;">
+<pre>
+cat desc.all | perl -pe 's|&lt;title&gt;(?!Page)(.+) (Provo Daily Enquirer), ([0-9]{4}-[0-9]{2}-[0-9]{2})&lt;/title&gt;|&lt;title&gt;\2, \3,
+ \1&lt;/title&gt;|g' &gt; desc.all.fixed
+</pre>
+</td></tr></table>
+</div>
+
+<p style="margin-left: 5em; margin-right: 5em; text-align: justify;"><i>Figure 6: A bash command to change title from [<b>Page# Paper</b>, <b>Date</b>] to [<b>Paper</b>, <b>Date</b>, <b>Page#</b>] and generate a fixed desc.all file. Perl is used to run a regular expression on the title line with pattern groups, then each pattern group is rearranged in the substitution.</i></p>
+
+
+<div class="divider-white">&nbsp;</div>
+<div class="divider-dot">&nbsp;</div>
+<h4>3.6 Fixing title/date inconsistencies</h4>
+
+<p>Once all the titles were in the correct format, other metadata fields were looked at more closely. For example, many records had different dates in the Title field versus the Date field. The following command lists date mismatches for each collection. Using this report, the desc.all file could be manually edited and re-uploaded.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain"style="background-color: #efefef;">
+<pre>
+find -iname "desc.all" -exec sh -c 'echo {}; egrep "(&lt;title&gt;|&lt;dateor&gt;)" {} | egrep "[0-9]{4}-[0-9]{2}-[0-9]{2}" -o | sed "N;s/\n/\t/g"
+ | gawk "BEGIN{FS=\"\t\"} { if(\$1 != \$2) { print \$0 } }" ' \;
+</pre>
+</td></tr></table>
+</div>
+<p style="margin-left: 5em; margin-right: 5em; text-align: justify;"><i>Figure 7: A command to print out inconsistent dates in title and date fields. The command works by running <b>grep</b> on each desc.all file to find the title or date line. Another regular expression finds dates in the format YYYY-MM-DD within those lines. <b>sed</b> converts each title-date pair into a tabs-delimited line, then <b>gawk</b> is used to print only date values that are different.</i></p>
+
+<div class="divider-white">&nbsp;</div>
+<div class="divider-dot">&nbsp;</div>
+<h4>3.7 Fixing miscellaneous fields</h4>
+
+<p>Before migration there were around 1500 different values for the Type field (Figure 8). This was condensed down to exactly nine. The Type field in UDN isn't an example of the standard usage that someone might expect from the Dublin Core Type Vocabulary, instead in the context of this repository, the Type field was drawn from the article level metadata associated with newspapers content, and allowed users to do more advanced searches for types of newspapers content such as advertisement, article, birth, death, issue, masthead, page, wedding, and articles that were unclassified. Variants in the Type field, with a sample listed below, were condensed for better faceting in the new UDN.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain" style="background-color: #efefef;">
+<pre>
+article; local performances; technology
+article; local performances; theater
+article; local performances; theater; music
+article; loca news
+article; Logan Leader
+article; logging; accidents, injuries
+article; logging
+article; logging; local businesses
+article; logging;local businesses
+article; logging; mining; colonization and settlement
+article;l technology
+article;l theater
+...
+</pre>
+</td></tr></table>
+</div>
+
+<p style="margin-left: 5em; margin-right: 5em; text-align: center;"><i>Figure 8: Examples of bad Type values</i></p>
+
+<div class="divider-white">&nbsp;</div>
+<div class="divider-full">&nbsp;</div>
+<h3>4 Migrating to Solphal</h3>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>4.1 Build desc.all.tsv and determine parent record</h4>
+
+<p>Compound objects are records which have a parent record that contains the bulk of the metadata, with multiple children records. In CONTENTdm, this relationship is not stored in the desc.all file. Instead there is a <b>supp</b> directory stored alongside the images directory which contains a subdirectory for every record, each of which contains a single XML file which stores the parent record id. For UDN's massive size, this lead to a large amount of inodes, which are data structures that describe a filesystem object, being used in the ext4 filesystem. This hinders scalability if the filesystem runs out of inodes, which cannot be adjusted after the filesystem has been created.</p>
+
+<p>To keep the compound record structure from CONTENTdm intact, a special parent field which contains the id of the parent record had to be created. Issue records have a parent value of 0, indicating no parent. The script in <a href="#appendix">Appendix A</a> builds a tsv file that contains the parent record value.</p>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>4.2 File storage architecture</h4>
+
+<p>CONTENTdm stores files inside directories named after the collection alias, with all pdfs and thumbnails in a single subdirectory named <b>image</b>. Storing files this way can slow down performance, as reading directories with a large number of files is slow. The largest collection in UDN pre-migration, slherald19, contained 529,837 files in a single directory.</p>
+
+<p>In Solphal, files were hashed using the sha1sum program, then renamed to [<i>sha1sum_hash</i>].[<i>file_extension</i>]. Each file is stored in buckets by taking the first two characters of the hash as the first bucket, and the next two characters as the second bucket. For example <b>afde05e975201511a29a511819eed3fc453764ae.pdf</b> would be stored as  <b>/dlstorage/udn_files/af/de/afde05e975201511a29a511819eed3fc453764ae.pdf</b> on the server. Thumbnails are stored in a separate directory with the same naming convention. With each bucket having 256 subdirectories, there are a total of 65,536 subdirectories. With around 22 million files, this gives about 330 files per subdirectory and allows for balanced growth without human intervention. Another benefit to this system is that duplicate files aren't stored twice and are easily detectable by faceting the filename field in Solr.</p>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>4.3 Converting metadata into Solr format</h4>
+
+<p>To reduce the amount of indexing and duplication of data, Solr is used as the primary data store for UDN. Metadata is backed up two times a day, and metadata that is in the process of being ingested is also backed up in a workflow management tool. In order to get data into Solr, ingest docs using XML (Figure 9) were created from the desc.all metadata files using a python script. Instead of defining a static schema, we use Solr dynamic fields to determine the field type based on the ending suffix, shown in the table below.</p>
+
+<table class="plain">
+<tr>
+<td class="topLeft" style="text-align: left; background-color: #d3d3d3;"><b>Suffix</b></td>
+<td class="topLeftRight" style="text-align: left; background-color: #d3d3d3;"><b>Field Type</b></td>
+</tr>
+<tr>
+<td class="topLeft">_t</td>
+<td class="topLeftRight" style="text-align: left;">General text fields that are tokenized by spaces and other characters in the index.</td>
+</tr>
+<tr>
+<td class="topLeft">_s</td>
+<td class="topLeftRight" style="text-align: left;">String fields that aren't tokenized at all in the index.</td>
+</tr>
+<tr>
+<td class="topLeft">_tdt</td>
+<td class="topLeftRight" style="text-align: left;">Date fields that can be compared and used in ranged searches.</td>
+</tr>
+<tr>
+<td class="topLeftBottom">_i</td>
+<td class="all" style="text-align: left;">Integer fields.</td>
+</tr>
+</table>
+
+<p>This lets us add any arbitrary field in a Solr doc without having to define it first in a schema file.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain" style="background-color: #efefef;">
+<pre>
+&lt;field name="id"&gt;1&lt;/field&gt;
+&lt;field name="thumb_s"&gt;/28/35/283593ad79aebad753f81b700f46bff7179b5d7d.jpg&lt;/field&gt;
+&lt;field name="file_s"&gt;&lt;/field&gt;
+&lt;field name="parent_i"&gt;0&lt;/field&gt;
+&lt;/doc&gt;
+<span style="background-color: #cccccc;">&lt;doc&gt;
+&lt;field name="paper_t"&gt;American Eagle&lt;/field&gt;
+&lt;field name="title_t"&gt;American Eagle, 1897-05-08 Page 1&lt;/field&gt;
+&lt;field name="creator_t"&gt;American Eagle Publishing Co.&lt;/field&gt;
+&lt;field name="publisher_t"&gt;Digitized by: Univ. of Utah&lt;/field&gt;
+&lt;field name="year_t"&gt;1897&lt;/field&gt;
+&lt;field name="month_t"&gt;May&lt;/field&gt;
+&lt;field name="day_t"&gt;08&lt;/field&gt;
+&lt;field name="date_tdt"&gt;1897-05-08T00:00:00Z&lt;/field&gt;
+&lt;field name="type_t"&gt;page&lt;/field&gt;
+&lt;field name="rights_t"&gt;Material in the public domain. No restrictions on use.&lt;/field&gt;
+&lt;field name="page_t"&gt;Page 1&lt;/field&gt;
+&lt;field name="oldid_t"&gt;americaneagle 1&lt;/field&gt;  
+&lt;field name="id"&gt;2&lt;/field&gt;
+&lt;field name="thumb_s"&gt;/28/35/283593ad79aebad753f81b700f46bff7179b5d7d.jpg&lt;/field&gt;
+&lt;field name="file_s"&gt;/6a/59/6a59096aa1b9d06b821625e030bec919a3be43c0.pdf&lt;/field&gt;
+&lt;field name="parent_i"&gt;1&lt;/field&gt;
+&lt;/doc&gt;</span>
+&lt;doc&gt;
+&lt;field name="paper_t"&gt;American Eagle&lt;/field&gt;
+&lt;field name="title_t"&gt;American Eagle, 1897-05-08 Page 2&lt;/field&gt;
+&lt;field name="creator_t"&gt;American Eagle Publishing Co.&lt;/field&gt;
+</pre>
+</td></tr></table>
+</div>
+
+<p style="text-align: center;"><i>Figure 9:  Solr XML ingest file. Highlighted is one record.</i></p>
+
+<p>The <i>paper_t</i> field is created in the script using the regular expression from Figure 3. The field <i>oldid_t</i> was created to handle redirects from old CONTENTdm urls, to ensure that cached links from the old repository would still resolve successfully. It contains the original collection alias and CONTENTdm record number, which gets extracted from old CONTENTdm reference urls by NGINX and translated to Solphal's details page handler.</p>
+
+<p>Once all of the Solr XML docs are created, Solr's DataImportHandler module is used to ingest the data. Indexing UDN's 55GB of metadata takes around 2.75 hours.</p>
+
+<div class="divider-dot">&nbsp;</div>
+<h4>4.4 Page caching with NGINX</h4>
+
+<p>Since newspaper content doesn't change often, UDN utilizes NGINX's fastcgi cache module to speed up page requests (Figure 10). When a URL is visited for the first time, NGINX generates a static html version of the page. Subsequent requests to the same URL pull from the same static file, reducing the processing time associated with generating html code from PHP, performing Solr queries, and database calls. This reduces pages requests from up to 700 milliseconds down to 5-10 milliseconds.</p>
+
+<div style="margin-left: 2em; margin-right: 2em;">
+<table class="plain"><tr><td class="plain" style="background-color: #efefef;">
+<pre>
+fastcgi_cache_path /var/cache/NGINX levels=1:2 keys_zone=DEFAULT:1000m inactive=5000m;
+fastcgi_cache_key "$scheme$request_method$host$request_uri";
+
+server {
+
+	...
+	
+	set $fastcgi_skipcache 0;
+	if ($uri ~ "^/login") {
+		set $fastcgi_skipcache 1;
+	}
+
+	location ~ \.php$ {
+		
+		...
+		
+		fastcgi_cache DEFAULT;
+		fastcgi_cache_valid 200 24h;
+		fastcgi_cache_bypass $cookie_PHPSESSID $arg_nocache $fastcgi_skipcache;
+		fastcgi_no_cache $cookie_PHPSESSID $fastcgi_skipcache;
+	}
+
+	add_header X-Cache $upstream_cache_status;
+}
+
+</pre>
+</td></tr></table>
+</div>
+
+<p style="text-align: center;"><i>Figure 10: Relevant parts of the NGINX config to enable page caching.</i></p>
+
+<div class="divider-full">&nbsp;</div>
+<h3>5 Performance</h3>
+
+<p>Slow performance, scalability, and sustainability concerns were the main factors in choosing to migrate from CONTENTdm to Solphal. In CONTENTdm, a full reindex of the repository would take approximately 1,440 hours with the site online and 240 hours with the site offline. In contrast the equivalent index in Solphal would take 2.75 hours to index all 55 GB of Newspapers metadata, with incremental indexing taking milliseconds. Page load times significantly affected user experience on CONTENTdm, with wait times sometimes reaching up to 10 seconds. In Solphal average page load times are 150 milliseconds for cached content and 1 second for uncached. Another user experience issue that was problematic in the previous version of UDN was the inconsistency in the CONTENTdm PDF viewer for newspapers content across different browsers and operating systems. Solphal uses <a href="https://mozilla.github.io/pdf.js/">PDF.js</a>, an open-source library that uses javascript to render PDFs for a consistent look and feature set across all browsers. User requests for support in accessing image files were frequent when UDN was on CONTENTdm, but have diminished significantly since moving to the new system. User feedback on Solphal for UDN has been positive, with people commenting on the ease and speed of searching the site for genealogical information. By far, the most common request from users is that more content be added to UDN. Another benefit of moving to a home-grown system is the ability to act directly on user support and feature requests. User feedback is discussed and incorporated into monthly enhancements and updates in Solphal.</p>
+
+<p>The UDN migration had a variety of benefits for the digital library program at the J. Willard Marriott Library that went beyond providing a better experience for UDN users. The licensing, hardware, and personnel costs decreased. The server footprint for the system previously needed to run CONTENTdm decreased and resulted in a significant savings after migrating to Solphal. UDN alone previously required a server with dual processors containing 8 cores and 96 gigabytes of memory, the new system is run on two virtualized servers. The indexing server, which is also used for other digital library collections, utilizes 10Gb of memory and eight cores. The front-end web server uses 4Gb of memory and four cores. In addition, the UDN migration was used as a test case in preparing to migrate the library's digital collections to Solphal as well, which are now available at <a href="https://collections.lib.utah.edu">https://collections.lib.utah.edu</a>.</p>
+
+<div class="divider-full">&nbsp;</div>
+<h3>6 Future Directions</h3>
+
+<p>With the change in infrastructure for UDN, we are now able to pursue more large newspaper projects to continue making historical newspaper content from Utah freely available online.</p>
+
+<p>For the majority of content that has been ingested into UDN, the newspapers have been segmented at the article level. After conducting several tests and reviewing the user benefits of article level vs. page level newspaper content, it was decided that while article level newspapers were preferred, this wasn’t always possible due to the high costs related to article segmentation. The page level content still allows the user to search the full text of the newspaper; they are taken to the page where the search terms are located rather than the individual article. By choosing to ingest page level content, it is now possible for many of our smaller partners to add more of their newspaper content to UDN if they don’t have enough money to fund the article segmentation.</p>
+
+<p>One new area that we have started to explore is ingesting born digital newspapers. In a project with the Park City Historical Society, we were able to take twelve years of born digital PDF pages from the Park Record (<a href="http://bit.ly/2saJhwL">http://bit.ly/2saJhwL</a>) and successfully ingest them into UDN. With the success of this project, we are investigating how we can obtain more born digital newspaper content to ingest and make available. At the same time, we want to explore ways of harmonizing the blended content of both article level and page level newspapers.</p>
+
+<div class="divider-full">&nbsp;</div>
+<h3>7 Conclusion</h3>
+
+<p>In retrospect, there are a few things that could have been done differently during migration. In UDN, the title field contained information already found in the metadata, such as paper name and date. The article title could have been pulled from the title field into a separate field, then the title field could be deleted entirely. This saves space in the index, and makes metadata remediation easier because metadata isn't being duplicated.</p>
+
+<p>Prior to the migration it would have been beneficial if extraneous metadata had been removed earlier, such as duplicate rights and publisher metadata at the article level. After the experience of needing to perform metadata enhancements to compensate for workarounds that relied on software functionality as opposed to well-structured metadata, prioritizing well-structured metadata first is going to be a core value for the digital library team moving forward. In newspaper projects, exploring better ways to model the data for related titles is also a good project to pursue, for example ensuring a consistent user experience for people reading papers that have morning, midday, and evening editions.</p>
+
+<p>By transitioning to an open-source framework, UDN is well positioned to continue to build on previous success in making Utah Digital Newspapers freely available to the public. With Solphal, the newspapers program is no longer encumbered by slow page load times and inefficient system architecture. The transition to using virtual machines and cloud-based architecture as opposed to a dedicated server with a large amount of memory has also freed up resources that can be better spent elsewhere in service of the digital library program at the J. Willard Marriott Library. Using bash scripting and a lightweight, iterative approach to newspapers metadata remediation and preparation, this large scale migration was completed in a timely fashion. The migration of UDN also informed subsequent work with digital library migration as both CONTENTdm repositories were migrated to Solphal. After seeing the significant gains in systems architecture, staffing needs, and the ability of UDN to be more responsive to patron feature development, the only regret about migrating away from a vendor-based solution is that we didn’t pursue it sooner.</p>
+
+<div class="divider-full">&nbsp;</div>
+<h3>Bibliography</h3>
+
+<table style="width:90%">
+<tr>
+<td style="padding-bottom: 12px; vertical-align: top;"><a id="1">[1]</a></td>
+<td style="padding-bottom: 12px; vertical-align: top;">Arlitsch, K., Yapp, L., Edge, K. (2003). The Utah Digital Newspapers Project. <i>D-Lib Magazine</i>, 9 (3). <a href="https://doi.org/10.1045/march2003-arlitsch">https://doi.org/10.1045/march2003-arlitsch</a></td>
+</tr>
+<tr>
+<td style="padding-bottom: 12px; vertical-align: top;"><a id="2">[2]</a></td>
+<td style="padding-bottom: 12px; vertical-align: top;">Herbert, J., and Arlitsch, K. digitalnewspapers.org. (2004) The Serials Librarian, 47 (1-2). 99-115. <a href="https://doi.org/10.1300/J123v47n01_07">https://doi.org/10.1300/J123v47n01_07</a></td>
+</tr>
+<tr>
+<td style="padding-bottom: 12px; vertical-align: top;"><a id="3">[3]</a></td>
+<td style="padding-bottom: 12px; vertical-align: top;">Masood, K. and Neatrour, A. (2014). <a href="http://mwdl.org/events/DAMS_options.php">Digital Asset Management Systems Options: Report of the University of Utah Libraries Dam Review Task Force</a>. Mountain West Digital Library Webinar.</td>
+</tr>
+<tr>
+<td style="padding-bottom: 12px; vertical-align: top;"><a id="4">[4]</a></td>
+<td style="padding-bottom: 12px; vertical-align: top;">Neatrour, A., Morrow, A., Rockwell, K., Witkowski, A. (2011). Automating the Production of Map Interfaces for Digital Collections Using Google APIs. <i>D-Lib Magazine</i>, 17 (9/10). <a href="https://doi.org/10.1045/september2011-neatrour">https://doi.org/10.1045/september2011-neatrour</a></td>
+</tr>
+</table>
+
+<div class="divider-full"><a id="appendix">&nbsp;</a></div>
+<h3>Appendix A</h3>
+
+<p>Appendix A shows the desc2table.py python script. This converts a few key fields from desc.all into a tabs delimited file and determines the parent id number for each record.</p>
+
+
+<div style="margin-left: 5em;">
+<pre>
+#!/usr/bin/env python3
+import re
+import glob
+import csv
+import sys
+import os
+
+# list of fields to use
+fields = ['dmrecord', 'title', 'find', 'identi', 'fullrs', 'ark']
+
+# parse index.xml or newsindex.xml in supp directory and grab node value
+def get_field(path, field):
+    for line in open(path, 'r'):
+        match = re.search("&lt;" + field + "&gt;([^&gt;]*)&lt;/" + field + "&gt;", line)
+        if match:
+            return match.group(1)
+            
+    return "-1"
+
+# check for supp record and return parent dmrecord
+def get_parent(dmrecord):
+    global cache_path
+    for supp_bucket in supp_buckets:
+        index_path = cache_path + "supp/" + supp_bucket + dmrecord + "/index.xml"
+        if os.path.exists(index_path):
+            return get_field(index_path, "parent")
+
+        # check for newsindex.xml
+        newsindex_path = cache_path + "supp/" + supp_bucket + dmrecord + "/newsindex.xml"
+        if os.path.exists(newsindex_path):
+
+            # Check type
+            if get_field(newsindex_path, "itemtype") == "Page":
+                return get_field(newsindex_path, "issue")
+            elif get_field(newsindex_path, "itemtype") == "Article":
+                page = get_field(newsindex_path, "page")
+                pageindex_path = cache_path + "supp/" + supp_bucket + page + "/newsindex.xml"
+                if os.path.exists(pageindex_path):
+                    return get_field(pageindex_path, "issue")
+    
+    return "-1"
+
+def write_buffer():
+    global record_buffer, file_out, line_count
+    column = 0
+
+    # get field data
+    field_data = {}
+    for field in fields:
+        match = re.search("&gt;" + field +"&lt;([^&gt;]*)&lt;/" + field + "&gt;", record_buffer)
+        
+        if match:
+            data = re.sub('[\r\n\t]', '', match.group(1))
+            field_data[field] = data
+        else:
+            field_data[field] = ""
+            
+        column += 1
+
+    # check for a dmrecord
+    if field_data['dmrecord'] == "":
+        record_buffer = ""
+        return
+        
+    # write out line
+    column = 0
+    for field in fields:
+        if column > 0:
+            file_out.write("\t")
+        file_out.write(field_data[field])
+            
+        column += 1
+
+    # try to find the parent object
+    find_data = field_data['find']
+    find_match = re.search("\.cpd$", find_data)
+    
+    # make sure it's not a cpd record
+    has_parent = "-1"
+    if not find_match:
+        has_parent = get_parent(field_data['dmrecord'])
+    file_out.write("\t" + has_parent)
+    
+    # end line
+    file_out.write("\n")
+    
+    record_buffer = ""
+
+# check arguments
+if len(sys.argv) &lt; 2:
+    print("Usage: ./desc2table.py col_path [extra_fields]")
+    exit(1)
+
+# get filenames
+col_path = sys.argv[1]
+cache_path = "col" + col_path + "/"
+file_xml = cache_path + "desc.all"
+file_xml_new = cache_path + "desc.all.new"
+if os.path.isfile(file_xml_new):
+    file_xml = file_xml_new
+
+# add extra fields
+if len(sys.argv) > 2:
+    for field in sys.argv[2 :]:
+        fields.append(field)
+
+# open files for read/write
+file_in = open(file_xml, 'r', encoding='utf-8')
+file_out = open(file_xml + '.tsv', 'w', encoding='utf-8')
+
+# write header
+column = 0
+for field in fields:
+    if column > 0:
+        file_out.write("\t")
+    file_out.write(field)
+    column += 1
+</pre>
+</div>
+
+
+<div class="divider-full">&nbsp;</div>
+<h3>About the Authors</h3>
+
+<p class="blue"><b>Alan Witkowski</b> graduated from the University of Utah in 2006 with a degree in Computer Science. He has been at the J. Willard Marriott Library's digital infrastructure department for eight years.</p>
+
+<div class="divider-dot">&nbsp;</div>
+
+<p class="blue"><b>Anna Neatrour</b> is the Digital Initiatives Librarian at the University of Utah J. Willard Marriott Library. She previously was a metadata librarian at the Marriott Library and at the Mountain West Digital Library. She received her MLIS from the University of Illinois at Urbana-Champaign.</p>
+
+<div class="divider-dot">&nbsp;</div>
+
+<p class="blue"><b>Jeremy Myntti</b> is Head of Digital Library Services at the University of Utah J. Willard Marriott Library. This position allows him the opportunity to work closely with faculty and staff who are digitizing, creating metadata, and digitally preserving library and partner content. He received his MLIS from the University of Alabama.</p>
+
+<div class="divider-dot">&nbsp;</div>
+
+<p class="blue"><b>Brian McBride</b> is Head of Digital Infrastructure Development at the University of Utah J. Willard Marriott Library. This position is responsible for managing a team of developers and helping creating the tools and systems to support the digital library at the University of Utah. He received his degree in Economics from the University of Utah.</p>
+
+<div class="divider-full">&nbsp;</div>
+
+ <!-- Standard Copyright line here  -->
+
+<div class="center">
+<p class="footer">Copyright &reg; 2017 Alan Witkowski, Anna Neatrour, Jeremy Myntti and Brian McBride</p>  
+</div>
+
+<div style="height:1px;background:#2b538e"></div>
+
+</div>
+</form>
+</body>
+</html> contentType 9 text/html url 61 http://www.dlib.org:80/dlib/july17/witkowski/07witkowski.html responseCode 3 200 

@@ -1,0 +1,1212 @@
+pcxkqadkhkdavcliqiqokqzeqiyczesiripsxkeo length 5 76603 page 76603 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Master1_Head1"><link href="../../css/lightwindow.css" rel="stylesheet" type="text/css" media="screen" /><link href="../../css/layout_a.css" rel="stylesheet" type="text/css" /><link href="../../css/gallery.css" rel="stylesheet" type="text/css" />
+     <style type="text/css">
+        .modalBackground {
+	        background-color:Gray;
+	        filter:alpha(opacity=70);
+	        opacity:0.7;
+        } 
+    </style>
+    <!--[if IE 6]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.arrowlistmenu .headerbar {margin:0px;}
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]-->
+ 
+  
+    <script type="text/javascript" src="../../js/prototype.js"></script>  
+	<script type="text/javascript" src="../../js/scriptaculous.js?load=effects"></script>	
+
+        <script type="text/javascript" src="../../js/Original_lightwindow.js"></script> 
+    <script type="text/javascript" src="../../js/skinnytip.js"></script>
+    
+   <script type="text/javascript">
+    document.oncontextmenu=new Function("return false")
+    function SetPopup()
+    {  
+        var w = screen.width;
+        var h = screen.height;
+        var popW = 200, popH = 100;
+        var leftPos = (w-popW)/2;
+        var topPos = (h-popH)/2;                    
+        document.getElementById('MessageDiv').style.top = topPos + 'px'; 
+        document.getElementById('MessageDiv').style.left = leftPos + 'px'; 
+    }     
+    
+        function KeyCheck(btn,e)
+        {         
+              var code = (window.event) ? event.keyCode : e.keyCode;
+              if(code == '13')
+              {                    
+                    document.getElementById(btn).click(); 
+                     return false;  
+              }
+        }
+    
+    function ResetGlobalSearchText()
+    {
+        var txtSearch = document.getElementById('Master1_txtSearch');
+        if (txtSearch.value == '')
+        {
+            txtSearch.value = 'بحث في كل الأقسام';
+        }
+    }
+    
+    function ClearGlobalSearchText()
+    {
+        var txtSearch = document.getElementById('Master1_txtSearch');
+        if (txtSearch.value == 'بحث في كل الأقسام')
+        {
+            txtSearch.value = '';
+        }
+    }
+     function Hide(obj)
+        {        
+            if( obj.className == "dimmed") return;
+            if(obj.disabled!=true ) 
+                document.getElementById('hidepage').style.display = 'block';
+        }
+        
+        
+        function opacity(id, opacStart, opacEnd, millisec) {
+	        //speed for each frame
+	        var speed = Math.round(millisec / 100);
+	        var timer = 0;
+
+	        //determine the direction for the blending, if start and end are the same nothing happens
+	        if(opacStart > opacEnd) {
+		        for(i = opacStart; i >= opacEnd; i--) {
+			        setTimeout("changeOpac(" + i + ",'" + id + "')",(timer * speed));
+			        timer++;
+		        }
+		        setTimeout("document.getElementById('" + id + "').style.display = 'none';", (timer * speed));
+	        } else if(opacStart < opacEnd) {
+		        for(i = opacStart; i <= opacEnd; i++)
+			        {
+			        setTimeout("changeOpac(" + i + ",'" + id + "')",(timer * speed));
+			        timer++;
+		        }
+		        document.getElementById(id).style.display = 'block';
+	        }
+        }
+
+        //change the opacity for different browsers
+        function changeOpac(opacity, id) {
+	        var object = document.getElementById(id).style; 
+	        object.opacity = (opacity / 100);
+	        object.MozOpacity = (opacity / 100);
+	        object.KhtmlOpacity = (opacity / 100);
+	        object.filter = "alpha(opacity=" + opacity + ")";
+        }
+        
+        function showTip(abbr)
+        {
+            var countElement;
+            var title;
+            var content;
+            var width;
+            
+            switch (abbr)
+            {
+                case 'IM':
+                    countElement = document.getElementById('Master1_lblCntIM');
+                    title = 'صور';
+                    content = 'العدد: ' + countElement.innerHTML + ' صورة';
+                    break;
+                case 'DC':
+                    countElement = document.getElementById('Master1_lblCntDC');
+                    title = 'وثائق';
+                    content = 'العدد: ' + countElement.innerHTML + ' وثيقة';
+                    break;
+                case 'VI':
+                    countElement = document.getElementById('Master1_lblCntVI');
+                    title = 'أفلام';
+                    content = 'العدد: ' + countElement.innerHTML + ' فيلم';
+                    break;
+                case 'AU':
+                    countElement = document.getElementById('Master1_lblCntAU');
+                    title = 'صوتيات';
+                    content = 'العدد: ' + countElement.innerHTML + ' صوتية';
+                    break;
+                case 'SP':
+                    countElement = document.getElementById('Master1_lblCntSP');
+                    title = 'خطب';
+                    content = 'العدد: ' + countElement.innerHTML + ' خطبة';
+                    break;
+                case 'PS':
+                    countElement = document.getElementById('Master1_lblCntPS');
+                    title = 'صحافة';
+                    content = 'العدد: ' + countElement.innerHTML + ' صحيفة';
+                    break;
+                case 'AR':
+                    countElement = document.getElementById('Master1_lblCntAR');
+                    title = 'مقدمات و أبحاث';
+                    content = 'العدد: ' + countElement.innerHTML + ' مقدمة';
+                    break;
+                case 'MP':
+                    countElement = document.getElementById('Master1_lblCntMP');
+                    title = 'خرائط';
+                    content = 'العدد: ' + countElement.innerHTML + ' خريطة';
+                    break;
+                case 'MN':
+                    countElement = document.getElementById('Master1_lblCntMN');
+                    title = 'نقود';
+                    content = 'العدد: ' + countElement.innerHTML + ' عملة';
+                    break;
+                case 'ST':
+                    countElement = document.getElementById('Master1_lblCntST');
+                    title = 'طوابع';
+                    content = 'العدد: ' + countElement.innerHTML + ' طابع';
+                    break;
+                case 'MD':
+                    countElement = document.getElementById('Master1_lblCntMD');
+                    title = 'أوسمة';
+                    content = 'العدد: ' + countElement.innerHTML + ' وسام';
+                    break;
+                case 'BK':
+                    countElement = document.getElementById('Master1_lblCntBK');
+                    title = 'كتب';
+                    content = 'العدد: ' + countElement.innerHTML + ' كتاب';
+                    break;
+                case 'CV':
+                    countElement = document.getElementById('Master1_lblCntCV');
+                    title = 'أغلفة';
+                    content = 'العدد: ' + countElement.innerHTML + ' غلاف';
+                    break;
+                case 'AD':
+                    countElement = document.getElementById('Master1_lblCntAD');
+                    title = 'إعلانات';
+                    content = 'العدد: ' + countElement.innerHTML + ' إعلان';
+                    break;
+            }
+            
+            if (countElement.innerHTML == '')
+            {
+                content = '';
+                width = 60;
+             }
+             else
+                 width = 110;
+           
+            return tooltip(content, title, 'width:'+width+',backcolor:#aa9669,xoffset:-30,yoffset:20');
+        }
+        
+        window.onresize = function()
+        {
+            var w = document.body.offsetWidth;
+            var h = document.body.offsetHeight;
+            document.getElementById('hidepage').style.width = w + 'px';
+            document.getElementById('hidepage').style.height = h + 'px';
+            document.getElementById('tdAlignment').style.height = parseInt(h / 2 - 25) + 'px';
+
+            document.getElementById('tdMessageBoxAlignment').style.width = w + 'px';
+            document.getElementById('tdMessageBoxAlignment').style.height = h + 'px';
+            SetPopup();
+        }
+    </script>
+    
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22853348-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<title>
+	ÐÇßÑÉ ãÕÑ ÇáãÚÇÕÑÉ - ÇáãÑÇÌÚ
+</title></head>
+<body id="Master1_MasterBody">
+   
+    <form name="aspnetForm" method="post" action="./Bibliography.aspx" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/ScriptResource.axd?d=mqJdD8dMUB7XW6j0M-rseMPIx3OMT3JGYSsSVtD3aVJEQ00uffSzzu0CeCH2VsLHABBis_mh43iTX92YpLrCCxnwt3D5z9i2TiUpo-PuloB_qPbl8M5zR5b03KpPfzzxkL53MEZMPQXkVX_IFuvkkn6uybVFzWs1M0gRtb5oNwI1&amp;t=363be08" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B325E" />
+<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="m5OckLyrzAccozQNf2cRsFXFlv3ziQEb1-zP4bUwocvOWjlFPFDf-gKid9sfq4ZJ-iPpbB52J6ShrmXb1hp9581CoZwxHXi-iYQwKX2UXcG4xzU20B0o5ylwnO-dZjXl0" />
+        
+       
+        <div id="hidepage" style="display:none; top:0; right:0; position:absolute; z-index:500; background-color:black; filter:alpha(opacity=70); opacity:0.7;">
+            <table align="center">
+                <tr>
+                    <td id="tdAlignment">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <img src='../../images/loading.gif' align="middle"/>
+                    </td>                
+                </tr>
+            </table>
+        </div>
+        <div id="divMessageBox"  style="display:none;">
+            <div id="tdMessageBoxAlignment"  style="top:0; right:0; position:absolute; z-index:500; background-color:black; filter:alpha(opacity=70); opacity:0.7;">
+            </div>
+             <div id='MessageDiv' style=" position:absolute; z-index:600; height:100px; width:200px; ">
+                <div id="Master1_updatePanelMessageBox">
+	
+                        <div id="Master1_pnlMessage" style="background-color:#ece4be; border-width:3px; border-style:solid; border-color:#3d1501; padding:3px; width:250px;">
+		
+                            <br />
+                            <p>
+                                <span id="Master1_lblMessage"></span><br />
+                            </p>        
+                            <p style="text-align: center;">            
+                                <input type="submit" name="Master1$OkButton" value="موافق" id="Master1_OkButton" />
+                            </p>    
+                        
+	</div>
+                    
+</div>
+                </div>
+    </div>
+    
+    <div id="page">
+        <div id="banner">
+            <div id="title"><a id="Master1_LinkButton1" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;Master1$LinkButton1&quot;, &quot;&quot;, false, &quot;&quot;, &quot;Default.aspx&quot;, false, true))"></a></div>
+            <div id="globalsearch">
+                 <input name="Master1$txtSearch" type="text" id="Master1_txtSearch" class="globalsearch" onfocus="ClearGlobalSearchText();" onblur="ResetGlobalSearchText();" onkeydown="javascript:KeyCheck(&#39;Master1_btnSearch&#39;,event )" value="بحث في كل الأقسام" />               
+                <input onclick="this.disabled='disabled'; __doPostBack('Master1$btnSearch','')" name="Master1$btnSearch" type="button" id="Master1_btnSearch" class="go" style="cursor:pointer" />
+                <center>
+                    <a href="../../collections/AdvancedSearch/ChooseType.aspx" class="lightwindow"><img class="master_adv_srch_btn" src="../../images/adv_srch.gif" alt=""/></a>
+                </center>
+            </div>
+        </div>
+    <div id="layout_a">
+        <div id="Master1_UP_Categories">
+	
+                <div id="categories_left" align=left>
+                    <div id="Master1_tblCategories">
+                        <li id="Master1_tdIM" class="dimmed">
+                            <a id="Master1_ancrIM">
+                                <span id="Master1_lblCntIM"></span>
+                                <img src="../../images/images.jpg" id="Master1_imgIM" border="0" onmouseover="showTip(&#39;IM&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathIM" style="display:none">../Collections/Images/ImagesLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdDC" class="dimmed">
+                            <a id="Master1_ancrDC">
+                                <span id="Master1_lblCntDC"></span>
+                                <img src="../../images/documents.jpg" id="Master1_imgDC" border="0" onmouseover="showTip(&#39;DC&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathDC" style="display:none">../Collections/Documents/DocumentsLucene.aspx</label>
+                        </li>              
+                        <li id="Master1_tdVI" class="dimmed">
+                            <a id="Master1_ancrVI">
+                                <span id="Master1_lblCntVI"></span>
+                                <img src="../../images/films.jpg" id="Master1_imgVI" border="0" onmouseover="showTip(&#39;VI&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathVI" style="display:none">../Collections/DocumentaryVideos/DocumentaryVideosLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdAU" class="dimmed">
+                            <a id="Master1_ancrAU">
+                                <span id="Master1_lblCntAU"></span>
+                                <img src="../../images/sounds.jpg" id="Master1_imgAU" border="0" onmouseover="showTip(&#39;AU&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathAU" style="display:none">../Collections/DocumentaryAudios/DocumentaryAudiosLucene.aspx</label>
+                        </li>              
+                        <li id="Master1_tdSP" class="dimmed">
+                            <a id="Master1_ancrSP">
+                                <span id="Master1_lblCntSP"></span>
+                                <img src="../../images/speeches.jpg" id="Master1_imgSP" border="0" onmouseover="showTip(&#39;SP&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathSP" style="display:none">../Collections/Speeches/SpeechesLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdPS" class="dimmed">
+                            <a id="Master1_ancrPS">
+                                <span id="Master1_lblCntPS"></span>
+                                <img src="../../images/press.jpg" id="Master1_imgPS" border="0" onmouseover="showTip(&#39;PS&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathPS" style="display:none">../Collections/Press/PressLucene.aspx</label>
+                        </li>                
+                        <li id="Master1_tdAR" class="dimmed">
+                            <a id="Master1_ancrAR">
+                                <span id="Master1_lblCntAR"></span>
+                                <img src="../../images/articles.jpg" id="Master1_imgAR" border="0" onmouseover="showTip(&#39;AR&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathAR" style="display:none"></label>
+                        </li>
+                        <li id="Master1_tdBK" class="dimmed">
+                            <a id="Master1_ancrBK">
+                                <span id="Master1_lblCntBK"></span>
+                                <img src="../../images/books.jpg" id="Master1_imgBK" border="0" onmouseover="showTip(&#39;BK&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathBK" style="display:none">../Collections/Books/BooksLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdMP" class="dimmed">
+                            <a id="Master1_ancrMP">
+                                <span id="Master1_lblCntMP"></span>
+                                <img src="../../images/maps.jpg" id="Master1_imgMP" border="0" onmouseover="showTip(&#39;MP&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathMP" style="display:none">../Collections/Maps/MapsLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdMD" class="dimmed">
+                            <a id="Master1_ancrMD">
+                                <span id="Master1_lblCntMD"></span>
+                                <img src="../../images/medals.jpg" id="Master1_imgMD" border="0" onmouseover="showTip(&#39;MD&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathMD" style="display:none">../Collections/Medals/MedalsLucene.aspx</label>
+                        </li>               
+                        <li id="Master1_tdMN" class="dimmed">
+                            <a id="Master1_ancrMN">
+                                <span id="Master1_lblCntMN"></span>
+                                <img src="../../images/money.jpg" id="Master1_imgMN" border="0" onmouseover="showTip(&#39;MN&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathMN" style="display:none">../Collections/Money/MoneysLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdST" class="dimmed">
+                            <a id="Master1_ancrST">
+                                <span id="Master1_lblCntST"></span>
+                                <img src="../../images/stamps.jpg" id="Master1_imgST" border="0" onmouseover="showTip(&#39;ST&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathST" style="display:none">../Collections/Stamps/StampsLucene.aspx</label>
+                        </li>
+                      <li id="Master1_tdCV" class="dimmed">
+                            <a id="Master1_ancrCV">
+                                <span id="Master1_lblCntCV"></span>
+                                <img src="../../images/covers.jpg" id="Master1_imgCV" border="0" onmouseover="showTip(&#39;CV&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathCV" style="display:none">../Collections/Covers/CoversLucene.aspx</label>
+                        </li>
+                        <li id="Master1_tdAD" class="dimmed">
+                            <a id="Master1_ancrAD">
+                                <span id="Master1_lblCntAD"></span>
+                                <img src="../../images/adv.jpg" id="Master1_imgAD" border="0" onmouseover="showTip(&#39;AD&#39;)" onmouseout="return hideTip();" />
+                            </a>
+                            <label id="Master1_lblPathAD" style="display:none">../Collections/Advertise/AdvertiseLucene.aspx</label>
+                        </li>
+                   </div>        
+               </div>
+            
+</div>
+      <div id="sidebar">
+      
+
+
+ <div id="sidebar">     
+        <div id="Master1_ContentPlaceHolder2_updatePanelResults">
+	
+                <div id="Master1_ContentPlaceHolder2_divRulersDetails" class="details">
+                     <div class="title">
+                        <a id="Master1_ContentPlaceHolder2_ancrCloseRulers" style="cursor:pointer" class="close" onclick="hideRulers();">
+                            <img src="../../images/close2.gif" alt="Close" />
+                        </a>
+                        <a href="../../Types/Rulers/List.aspx">ÍßÇã</a>
+                     </div>
+                     <ul>
+                        
+                    </ul>   
+                     
+                </div>
+           
+                <div id="Master1_ContentPlaceHolder2_divPrimeMinistersDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrClosePrimeMinisters" style="cursor:pointer" class="close" onclick="hidePrimeMinisters();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Ministers/List.aspx">ÑÄÓÇÁ ÇáæÒÑÇÁ</a></div>
+                    <ul>
+                           
+                    </ul>                
+                </div>
+            
+                <div id="Master1_ContentPlaceHolder2_divEventsDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrCloseEvents" style="cursor:pointer" class="close" onclick="hideEvents();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Events/List.aspx">ÃÍÏÇË</a></div>
+                    <ul>
+                             
+                     </ul>                
+                </div>
+                
+                 <div id="Master1_ContentPlaceHolder2_divSubjectsDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrCloseSubjects" style="cursor:pointer" class="close" onclick="hideSubjects();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Subject/List.aspx">ãæÖæÚÇÊ</a></div>
+                    <ul>
+                                                
+                    </ul>
+                </div>
+            
+              <div id="Master1_ContentPlaceHolder2_divGeneralPersonsDetails" class="details">
+                    <div class="title"><a id="Master1_ContentPlaceHolder2_ancrCloseGeneralPersons" style="cursor:pointer" class="close" onclick="hideGeneralPersons();"><img src="../../images/close2.gif" alt="Close" /></a><a href="../../Types/Persons/List.aspx">ÔÎÕíÇÊ ÚÇãÉ</a></div>
+                     <ul>
+                                                
+                    </ul>                    
+                </div>        
+                       
+                <div class="arrowlistmenu">                 
+                    <div class="headerbar"><a href="../Home/default.aspx">ÇáÑÆíÓíÉ</a>
+                </div>
+                <div class="headerbar">
+                    <a href="../../Types/Rulers/List.aspx"><span id="Master1_ContentPlaceHolder2_lblRulers">ÍßÇã</span></a>
+                </div>
+                <div id="Master1_ContentPlaceHolder2_divRulers" style="display:block;">
+                    <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstRulers_ctl00_test" title="إبراهيم باشا (٧٠)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstRulers$ctl00$test&#39;,&#39;&#39;)">إبراهيم باشا (٧٠)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstRulers_ctl01_test" title="محمد علي باشا (٩٤)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstRulers$ctl01$test&#39;,&#39;&#39;)">محمد علي باشا (٩٤)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstRulers_ctl02_test" title="عباس حلمي الأول (٧١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstRulers$ctl02$test&#39;,&#39;&#39;)">عباس حلمي الأول (٧١)</a>                                
+                                </li>
+                                                    
+                    </ul>                          
+                </div>
+                <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreRulers" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreRulers&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="ÇáãÒíÏ" width="20" height="8" border="0"  />
+                    </a> 
+                </div>
+               <div class="headerbar">
+                    <a href="../../Types/Ministers/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblPrimeMinisters">ÑÄÓÇÁ ÇáæÒÑÇÁ</span>
+                    </a>
+               </div>
+               <div id="Master1_ContentPlaceHolder2_divPrimeMinisters" style="display:block;">
+                     <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstPrimeMinisters_ctl00_test" title="محمد توفيق (٨٤)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstPrimeMinisters$ctl00$test&#39;,&#39;&#39;)">محمد توفيق (٨٤)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstPrimeMinisters_ctl01_test" title="محمد نجيب (٥٨)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstPrimeMinisters$ctl01$test&#39;,&#39;&#39;)">محمد نجيب (٥٨)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstPrimeMinisters_ctl02_test" title="جمال عبد الناصر (١٠٧)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstPrimeMinisters$ctl02$test&#39;,&#39;&#39;)">جمال عبد الناصر (١٠٧)</a>                                
+                                </li>
+                                                    
+                    </ul>       
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMorePrimeMinisters" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMorePrimeMinisters&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="ÇáãÒíÏ" width="20" height="8" border="0"  />
+                    </a> 
+               </div>                   
+               <div class="headerbar">
+                    <a href="../../Types/Events/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblEvents">ÃÍÏÇË</span>
+                    </a>
+               </div>
+               
+               <div id="Master1_ContentPlaceHolder2_divEvents" style="display:block;">
+                   <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstEvents_ctl00_test" title="الحملة الفرنسية على مصر (٨)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstEvents$ctl00$test&#39;,&#39;&#39;)">الحملة الفرنسية على مصر (٨)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstEvents_ctl01_test" title="تولي محمد علي باشا حكم مصر  (٩)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstEvents$ctl01$test&#39;,&#39;&#39;)">تولي محمد علي باشا حكم...(٩)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstEvents_ctl02_test" title="حملة فريزر على مصر (٦)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstEvents$ctl02$test&#39;,&#39;&#39;)">حملة فريزر على مصر (٦)</a>                                
+                                </li>
+                                                    
+                    </ul>                       
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreEvents" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreEvents&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="ÇáãÒíÏ" width="20" height="8" border="0"  />
+                    </a> 
+               </div>
+             
+                <div class="headerbar">
+                    <a href="../../Types/Subject/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblSubjects">ãæÖæÚÇÊ</span>
+                    </a>
+               </div>
+             
+               <div id="Master1_ContentPlaceHolder2_divSubjects" style="display:block;">
+                    <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstSubjects_ctl00_test" title="الدساتير المصرية (١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstSubjects$ctl00$test&#39;,&#39;&#39;)">الدساتير المصرية (١)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstSubjects_ctl01_test" title="المجالس النيابية (٥)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstSubjects$ctl01$test&#39;,&#39;&#39;)">المجالس النيابية (٥)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstSubjects_ctl02_test" title="الدواوين والنظارات والوزارات  (١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstSubjects$ctl02$test&#39;,&#39;&#39;)">الدواوين والنظارات...(١)</a>                                
+                                </li>
+                                                    
+                    </ul>                               
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreSubjects" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreSubjects&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="ÇáãÒíÏ" width="20" height="8" border="0"  />
+                    </a> 
+               </div>
+               
+             <div class="headerbar">
+                    <a href="../../Types/Persons/List.aspx">
+                        <span id="Master1_ContentPlaceHolder2_lblGeneralPersons">ÔÎÕíÇÊ ÚÇãÉ</span>
+                    </a>
+               </div>
+               <div id="Master1_ContentPlaceHolder2_divGeneralPersons" style="display:block;">
+                    <ul>
+                        
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstGeneralPersons_ctl00_test" title="عمر مكرم (٢)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstGeneralPersons$ctl00$test&#39;,&#39;&#39;)">عمر مكرم (٢)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstGeneralPersons_ctl01_test" title="رفاعة رافع الطهطاوي (١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstGeneralPersons$ctl01$test&#39;,&#39;&#39;)">رفاعة رافع الطهطاوي (١)</a>                                
+                                </li>
+                            
+                                <li>                               
+                                   <a onclick="Hide(this);" id="Master1_ContentPlaceHolder2_lstGeneralPersons_ctl02_test" title="علي باشا مبارك (١)" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$lstGeneralPersons$ctl02$test&#39;,&#39;&#39;)">علي باشا مبارك (١)</a>                                
+                                </li>
+                                                    
+                    </ul>                        
+               </div>
+               <div class="more">
+                    <a id="Master1_ContentPlaceHolder2_ancrMoreGeneralPersons" style="cursor:pointer;display:block;" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder2$ancrMoreGeneralPersons&#39;,&#39;&#39;)">
+                        <img src="../../images/spacer.gif" alt="ÇáãÒíÏ" width="20" height="8" border="0"  />
+                    </a> 
+               </div>
+                          
+
+                
+            
+            </div>
+        
+</div>
+    
+    <div class="footer"> </div>
+    </div>
+    
+  
+      </div>
+       <div>
+      
+
+ <script type="text/javascript">
+ 
+  function RemoveRuler(iRulerID , strRulerName)
+    {
+   
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iRulerID;
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedName').value = strRulerName;
+        document.getElementById('Master1_ContentPlaceHolder1_Button5').click();
+        
+    }
+        
+    function RemovePrimeMinister(iPrimeMinisterID,strPrimeMinisterName)
+    {
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iPrimeMinisterID;
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedName').value = strPrimeMinisterName;
+        document.getElementById('Master1_ContentPlaceHolder1_Button6').click();
+    }
+    
+    function RemoveEvent(iEventID , strEventName)
+    {
+         document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iEventID;
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedName').value = strEventName;
+        document.getElementById('Master1_ContentPlaceHolder1_Button2').click();
+    }
+     function RemoveSubject(iSubjectID , strSubjectName)
+    {
+         document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iSubjectID;
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedName').value = strSubjectName;
+        document.getElementById('Master1_ContentPlaceHolder1_Button3').click();
+    }    
+    
+    function RemoveGeneralPerson(iGeneralPersonID,strGeneralPersonName)
+    {
+         document.getElementById('Master1_ContentPlaceHolder1_txtRemovedID').value = iGeneralPersonID;
+        document.getElementById('Master1_ContentPlaceHolder1_txtRemovedName').value = strGeneralPersonName;
+        document.getElementById('Master1_ContentPlaceHolder1_Button1').click();
+    }   
+    function showRulers()
+    {
+        opacity('Master1_ContentPlaceHolder2_divRulersDetails', 0, 95, 2000);
+    }
+    function hideRulers()
+    {
+        opacity('Master1_ContentPlaceHolder2_divRulersDetails', 95, 0, 2000);
+    }
+    
+    function showPrimeMinisters()
+    {
+        opacity('Master1_ContentPlaceHolder2_divPrimeMinistersDetails', 0, 95, 2000);
+    }
+    
+    function hidePrimeMinisters()
+    {
+        opacity('Master1_ContentPlaceHolder2_divPrimeMinistersDetails', 95, 0, 2000);
+    }
+     
+    function showEvents()
+    {
+        opacity('Master1_ContentPlaceHolder2_divEventsDetails', 0, 95, 2000);
+    }
+    
+    function hideEvents()
+    {
+        opacity('Master1_ContentPlaceHolder2_divEventsDetails', 95, 0, 2000);
+    } 
+    
+    function showSubjects()
+    {
+        opacity('Master1_ContentPlaceHolder2_divSubjectsDetails', 0, 95, 2000);
+    }
+    
+    function hideSubjects()
+    {
+        opacity('Master1_ContentPlaceHolder2_divSubjectsDetails', 95, 0, 2000);
+    }  
+    function showGeneralPersons()
+    {
+        opacity('Master1_ContentPlaceHolder2_divGeneralPersonsDetails', 0, 95, 2000);
+    }
+    
+    function hideGeneralPersons()
+    {
+        opacity('Master1_ContentPlaceHolder2_divGeneralPersonsDetails', 95, 0, 2000);
+    }
+ </script>
+ 
+ <div>
+ 
+  <div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;" dir='rtl'></div>
+       <div id="Master1_ContentPlaceHolder1_updatePanelPath">
+	
+                <div id="path">
+                   <div>
+                        <div id="Master1_ContentPlaceHolder1_Div1" class="tabs">
+                            <ul id="Master1_ContentPlaceHolder1_ulTabs">
+                                 <div>
+                                    <li>
+                                        <span class="bg">
+                                            <span >
+                                                <div class='pathtitle'>ÇáãÑÇÌÚ</div>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </div>
+                            <div dir="rtl">
+		<div><li><span class="bg"><a id="Master1_ContentPlaceHolder1_D"></a><span>١٧٩٩ - ١٩٨١</span></span></li></div>
+	</div></ul>
+                            <div style="display:none">
+                                <input name="Master1$ContentPlaceHolder1$txtRemovedID" type="text" id="Master1_ContentPlaceHolder1_txtRemovedID" />
+                                <input name="Master1$ContentPlaceHolder1$txtRemovedName" type="text" id="Master1_ContentPlaceHolder1_txtRemovedName" />
+                                <input name="Master1$ContentPlaceHolder1$txtLinkID" type="text" id="Master1_ContentPlaceHolder1_txtLinkID" />
+                                
+                                <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$ContentPlaceHolder1$Button5','')" id="Master1_ContentPlaceHolder1_Button5" type="button"></button>
+                                <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$ContentPlaceHolder1$Button6','')" id="Master1_ContentPlaceHolder1_Button6" type="button"></button>
+                                <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$ContentPlaceHolder1$Button2','')" id="Master1_ContentPlaceHolder1_Button2" type="button"></button>
+                                <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$ContentPlaceHolder1$Button3','')" id="Master1_ContentPlaceHolder1_Button3" type="button"></button>
+                                <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$ContentPlaceHolder1$Button1','')" id="Master1_ContentPlaceHolder1_Button1" type="button"></button>    
+                               
+                                
+                                <input name="Master1$ContentPlaceHolder1$txtOriginalFromYear" type="text" id="Master1_ContentPlaceHolder1_txtOriginalFromYear" />
+                                <input name="Master1$ContentPlaceHolder1$txtOriginalToYear" type="text" id="Master1_ContentPlaceHolder1_txtOriginalToYear" />           
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            
+</div>
+        <comment><br style="white-space:inherit"/></comment>
+        
+ 
+ 
+  <div id="content">
+            <div id="innercontent">
+                <div id="top"></div>
+                <div >
+                
+                <div id="Master1_ContentPlaceHolder1_updatePanelBibliography">
+	
+
+ 
+
+ 
+
+ <div id="list_view">
+ 
+ <div id="Master1_ContentPlaceHolder1_divList" style="display:block;">
+                                <div class="paging">
+                                    <div id="Master1_ContentPlaceHolder1_updatePanelCount">
+		
+                                           
+                                             <div class="paging_nav" style="display:block">
+                                                <div class="left_nav">
+                                                    <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnNext" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$lbtnNext&#39;,&#39;&#39;)"><img src="../../images/next.png" id="Master1_ContentPlaceHolder1_imgNext" class="" /></a>
+                                                    <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnLast" href="javascript:__doPostBack(&#39;Master1$ContentPlaceHolder1$lbtnLast&#39;,&#39;&#39;)"><img src="../../images/last.png" id="Master1_ContentPlaceHolder1_imgLast" class="" /></a>
+                                                </div>
+                                                <div class="middle_page">
+                                                    <span><span id="Master1_ContentPlaceHolder1_lblCount">١٨</span>
+                                                    <span id="Master1_ContentPlaceHolder1_lblSeparator">/</span></span>
+                                                    <input name="Master1$ContentPlaceHolder1$txtCurrent" type="text" id="Master1_ContentPlaceHolder1_txtCurrent" style="width:23px" value="١" />
+                                                    <input type="submit" name="Master1$ContentPlaceHolder1$btnShowPage" value="" onclick="Hide(this);" id="Master1_ContentPlaceHolder1_btnShowPage" class="go" /> 
+                                                </div>
+                                                <div class="right_nav">
+                                                    <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnFirst" disabled="disabled"><img src="../../images/first.png" id="Master1_ContentPlaceHolder1_imgFirst" class="dimmed" /></a>
+                                                    <a onclick="Hide(this);" id="Master1_ContentPlaceHolder1_lbtnPrev" disabled="disabled"><img src="../../images/prev.png" id="Master1_ContentPlaceHolder1_imgPrev" class="dimmed" /></a>
+                                                </div>
+                                            </div>
+                                            
+	</div>
+                                </div>
+                                
+                            </div>
+
+     <div>
+		<table cellspacing="0" border="0" id="ctl00_ContentPlaceHolder1_grdBibliography" width="100%">
+			<tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl02_lblBibID">20</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl02_lblBibliography" class="biblio">طوسون,عمر.صفحة من تاريخ مصر فى عهد محمد على: الجيش المصرى البرى و البحرى.القاهرة:مطبعة دار الكتب المصرية,1940</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl03_lblBibID">21</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl03_lblBibliography" class="biblio">طوسون,عمر.الجيش المصرى البرى والبحرى فى عهد محمد على باشا.الاسكندرية:مطبعة المستقبل,1935</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl04_lblBibID">22</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl04_lblBibliography" class="biblio">طوسون,عمر.بطولة الاورطى السودانية المصرية فى حرب المكسيك.الاسكندرية:مطبعة صلاح الدين,1933</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl05_lblBibID">23</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl05_lblBibliography" class="biblio">طوسون,عمر.الصنائع والمدارس الحربية فى عهد محمد على.القاهرة:مطبعة العدل,1935</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl06_lblBibID">24</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl06_lblBibliography" class="biblio">طوسون,عمر.التاريخ الحربى لعصر محمد على الكبير : خرائط بعض المعارك الحربية حمص-بيلان-قونية.القاهرة:الجمعية الملكية للدراسات التاريخية,1949</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl07_lblBibID">27</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl07_lblBibliography" class="biblio">طوسون,عمر.الصنائع و المدارس الحربية فى عهد محمد على.القاهرة:مطبعة العدل,1935</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl08_lblBibID">28</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl08_lblBibliography" class="biblio">زكى,عبد الرحمن.التاريخ الحربى لعصر محمد على الكبير.القاهرة:دار المعارف,1950</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl09_lblBibID">35</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl09_lblBibliography" class="biblio">خانكى,جميل.امراء البحار فى الاسطول المصرى فى النصف الاول من القرن التاسع عشر.غير معروف:غير معروف,1947</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl10_lblBibID">36</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl10_lblBibliography" class="biblio">خانكى,جميل.تاريخ البحرية المصرية.القاهرة:دار الكتب المصرية,1948</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl11_lblBibID">38</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl11_lblBibliography" class="biblio">الكنيسى,حمدى.الساعة 2.05 بدأ الطوفان.القاهرة:دار المعارف,1976</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl12_lblBibID">54</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl12_lblBibliography" class="biblio">صابات,خليل.مطبعة بولاق فى عهدها الاول 1819-1840.غير معروف:غير معروف,1965</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl13_lblBibID">55</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl13_lblBibliography" class="biblio">صابات,خليل.الطباعة فى مصر خلال الحملة الفرنسية 1798-1801.غير معروف:غير معروف,1963</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl14_lblBibID">56</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl14_lblBibliography" class="biblio">صابات,خليل.موقف الصحافة المصرية من العمامة و الطربوش.القاهرة:مكتبة الهلال,1961</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl15_lblBibID">57</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl15_lblBibliography" class="biblio">صابات,خليل.ليجبت : صحيفة المصريين المقيمين بباريس ، 1924-1935.القاهرة:دار مطابع الشعب,1962</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr><tr>
+				<td>
+                             <ul>
+                                <li>
+                                <div style="display:none" > <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl16_lblBibID">69</span></div>
+                                        
+                                <span id="Master1_ContentPlaceHolder1_grdBibliography_ctl16_lblBibliography" class="biblio">حسنى عمر,محمد.مذكراتى عن بعثتى فى اسبانيا 1950-1952.القاهرة:دار المعارف,1956</span>
+                                </li>
+                               </ul>
+                        </td>
+			</tr>
+		</table>
+	</div>
+     
+      
+</div>
+                                
+
+
+
+
+
+                           
+
+
+</div>
+
+</div>
+            </div>
+            
+            
+        </div>
+
+
+</div>
+
+      </div>
+       <div id="Master1_UP_TimeLine">
+	  
+              <div style="display:none">                                 
+                    <input name="Master1$TB_FromYear" type="text" value="1" id="Master1_TB_FromYear" />
+                    <input name="Master1$TB_ToYear" type="text" value="1" id="Master1_TB_ToYear" />
+                    <button onclick="document.getElementById('hidepage').style.display = 'block'; __doPostBack('Master1$btnApplyTimeLine','')" id="Master1_btnApplyTimeLine" type="button"></button>                                                     
+              </div>                              
+          
+</div>  
+          
+        <div style="clear:both;"></div>  
+    </div>
+   <div align=center>
+            
+ 
+ <script type="text/javascript">
+   
+    var Active=false;
+    var START_YEAR = 1799;
+    var END_YEAR = 1981;
+    var STEP = 5; //every 5 pixels = 1 year
+    
+    //You can change this value for left and right adjustments
+    var ADJ_LEFT = 6;//adjustment years from left
+    var ADJ_RIGHT = 7;//adjustment years from right
+    
+    window.onload = function() 
+    {   
+        positionRightSlider(document.getElementById('Master1_TB_FromYear').value);
+        positionLeftSlider(document.getElementById('Master1_TB_ToYear').value);
+        
+        if(Active==false)
+        {
+            document.getElementById("tdRight").style.display = 'none';
+            document.getElementById("tdLeft").style.display = 'none';
+            document.getElementById("tdMiddle").style.display = 'none';
+            return;
+        }
+        else
+        {              
+            //document.getElementById("tdLeft").onmousedown = mdownL;
+            document.getElementById("DivLeft").onmousedown = mdownL;
+           // document.getElementById("tdRight").onmousedown = mdownR;
+            document.getElementById("DivRight").onmousedown = mdownR;
+            document.getElementById("LeftYear").onmousedown = mdownL;
+            document.getElementById("RightYear").onmousedown = mdownR;                    
+            document.getElementById("timeline").onmousemove = mmove;  
+            
+            if(document.getElementById("LeftYear").innerHTML == '')
+            {                    
+                document.getElementById("tdLeft").style.width = (ADJ_LEFT*STEP) + "px"; //this width to write the current year number inside
+                document.getElementById("tdRight").style.width = (ADJ_RIGHT*STEP) + "px";//this width to write the current year number inside                       
+                
+                document.getElementById("LeftYear").innerHTML = NumToAr(END_YEAR);
+                document.getElementById("RightYear").innerHTML = NumToAr(START_YEAR);
+            }
+        }
+        disableSelection(document.getElementById('DivLeft')) ;
+        disableSelection(document.getElementById('DivRight')) ;
+    }
+    
+    
+     //dragging mode
+    var dragging = false;   
+    var ds = [];
+    var pos = [];  
+    var type='';
+ 
+        
+    function mdownL(e) {                      
+        if (!e) e = window.event; //IE
+        ds[0] = e.clientX;
+        ds[1] = e.clientY;
+        type = 'left';                    
+        if(document.getElementById("tdLeft").style.width)
+            pos[0] = parseInt(document.getElementById("tdLeft").style.width);               
+        else
+            pos[0] = 100;// 100 is just a lucky value
+        dragging = true;  
+        document.onmouseup =  mup; //to stop dragging if mouse up inside or outside the time line                               
+     }
+     
+     function mdownR(e) {                      
+        if (!e) e = window.event; //IE
+        ds[0] = e.clientX;
+        ds[1] = e.clientY;
+        type = 'right';
+        if(document.getElementById("tdRight").style.width)
+            pos[0] = parseInt(document.getElementById("tdRight").style.width);               
+        else
+            pos[0] = 100;// 100 is just a lucky value
+        dragging = true;   
+        document.onmouseup =  mup; //to stop dragging if mouse up inside or outside the time line   
+     }     
+      
+     function mmove(e) {
+        if (!e) e = window.event; // IE                      
+        if(dragging==false) return;
+                      
+        leftYear =  parseInt(NumToEn(document.getElementById("LeftYear").innerHTML));         
+        rightYear = parseInt(NumToEn(document.getElementById("RightYear").innerHTML));
+         
+        if(type=='left')      
+        {       
+            wid = pos[0] + (e.clientX - ds[0]);
+            newleft = END_YEAR - parseInt((wid)/STEP) + ADJ_LEFT;    
+            if((wid> ADJ_LEFT*STEP) && (newleft-rightYear >1) )          
+            {                   
+                document.getElementById("LeftYear").innerHTML = NumToAr(newleft);
+                document.getElementById("tdLeft").style.width =  wid+"px";                                                                                
+            }
+        }
+        else if(type=='right')
+        {
+            wid = pos[0] - (e.clientX - ds[0]);
+            newright = START_YEAR + parseInt((wid)/STEP) - ADJ_RIGHT;   //7 years for adjustments , 5pixels = 1 year and there is 35px extra width in the first               
+            if((wid> ADJ_RIGHT*STEP) && (leftYear-newright >1)) 
+            {                
+               document.getElementById("RightYear").innerHTML = NumToAr(newright);
+               document.getElementById("tdRight").style.width =  wid+"px";                                                                                
+            }
+        }   
+     }        
+               
+     function mup() {
+        if(dragging == true)
+        {       
+            document.getElementById('Master1_TimeLine1_hiddenFromDate').value = NumToEn(document.getElementById("RightYear").innerHTML);        
+            document.getElementById('Master1_TimeLine1_hiddenToDate').value = NumToEn(document.getElementById("LeftYear").innerHTML);        
+            document.getElementById('Master1_btnApplyTimeLine').click();  
+        }
+        dragging = false;              
+     }
+    
+    function positionRightSlider(year)
+    {   
+        if(year=='')return;
+        if(year==1) year = START_YEAR;
+        document.getElementById('Master1_TimeLine1_hiddenFromDate').value = year;      
+        document.getElementById("RightYear").innerHTML = NumToAr(year);
+        document.getElementById("tdRight").style.width = STEP *((year - START_YEAR) + ADJ_RIGHT) +"px";   
+        Active = true;          
+    }
+    
+    function positionLeftSlider(year)
+    {
+        if(year=='')return;
+        if(year==1) year = END_YEAR;
+        document.getElementById('Master1_TimeLine1_hiddenToDate').value = year;   
+        document.getElementById("LeftYear").innerHTML = NumToAr(year);
+        document.getElementById("tdLeft").style.width = STEP *((END_YEAR - year) + ADJ_LEFT) +"px"; 
+        Active = true;          
+        document.getElementById("tdLeft").style.visibility = "visible";
+        document.getElementById("tdMiddle").style.visibility= "visible";
+        document.getElementById("tdRight").style.visibility = "visible";
+        document.getElementById("LeftYear").style.visibility = "visible";
+        document.getElementById("RightYear").style.visibility = "visible";
+    }
+    
+    //Convert English Numbers to Arabic  
+   function NumToAr(str)
+   {
+        var myOldString = str+'';
+        var myNewString = myOldString.replace(/0/g, "٠").replace(/1/g, "١").replace(/2/g, "٢").replace(/3/g, "٣").replace(/4/g, "٤").replace(/5/g, "٥").replace(/6/g, "٦").replace(/7/g, "٧").replace(/8/g, "٨").replace(/9/g, "٩");
+        return myNewString;
+   }
+   //Convert Arabic Numbers to English 
+   function NumToEn(str)
+   {
+        var myOldString = str+'';
+        var myNewString = myOldString.replace(/٠/g, "0").replace(/١/g, "1").replace(/٢/g, "2").replace(/٣/g, "3").replace(/٤/g, "4").replace(/٥/g, "5").replace(/٦/g, "6").replace(/٧/g, "7").replace(/٨/g, "8").replace(/٩/g, "9");
+        return myNewString;
+   }
+
+    function disableSelection(target)
+    {  
+        if (typeof target.onselectstart!="undefined") //IE route
+        {
+            target.onselectstart=function(){return false;}
+        }
+        else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+        {
+            target.style.MozUserSelect="none";
+        }
+    }
+    
+   
+ </script>
+
+ 
+ <style>
+     #tdLeft{
+         background-color:#5d4e2f; filter:alpha(opacity=30);-moz-opacity:0.30; opacity: 0.30; visibility:hidden; 
+     }
+     #tdRight{
+        background-color:#5d4e2f; filter:alpha(opacity=30);-moz-opacity:0.30; opacity: 0.30; visibility:hidden;
+     }
+     #tblTimeLine{
+        width: 986px; background-image: url(../../images/TimeLine.gif); background-repeat: no-repeat;  background-position-y:top; 
+     }
+     #DivLeft{
+        background-image: url(../../images/Arrow_left.gif); position:relative; margin:0px 0px 0px -25px;
+                                background-repeat: no-repeat; background-position: right center;  cursor:pointer; width:20px;height:30px;
+     }
+     #DivRight{
+        background-image: url(../../images/Arrow_right.gif);position:relative;  margin:0px -25px 0px 0px;
+                             background-repeat: no-repeat; background-position: left center;  cursor:pointer; width:20px;height:30px;
+     }
+     .Tyear{ color:#F7F1DA; background-color:#A85A22; width:30px; visibility:hidden;}
+     
+ </style>
+ <div id="timeline" dir="ltr" >
+     <table id="tblTimeLine" border="0" >
+        <tr style="height:36px" > 
+            <td id="tdLeft"  align="right">
+            </td>            
+            <td id="tdMiddle" style="visibility:hidden;" >
+                <table  width=100% border=0 >
+                    <tr>
+                        <td align=left><div  id="DivLeft" style="z-index:500"><img src='../../images/spacer.gif'/></div> 
+                        </td>
+                        <td align=right><div id="DivRight" style="z-index:500"><img src='../../images/spacer.gif'/></div>
+                        </td>
+                    </tr>
+                </table>                        
+            </td>
+             <td id="tdRight" align="left">
+            </td>
+       </tr>
+       <tr  style="height:33px">
+            <td  style="color:black; font-size:small; cursor:pointer;" align="right">
+                <div class="Tyear" id="LeftYear"> </div>
+            </td>
+            <td>
+            </td>
+             <td  style="font-size:small; cursor:pointer;" align="left">
+             <div  class="Tyear" id="RightYear"> </div>
+            </td>
+        </tr>
+     </table>
+ </div>
+ <input name="Master1$TimeLine1$hiddenFromDate" type="text" id="Master1_TimeLine1_hiddenFromDate" style="display: none" value="1799" />
+ <input name="Master1$TimeLine1$hiddenToDate" type="text" id="Master1_TimeLine1_hiddenToDate" style="display: none" value="1981" />
+       
+       
+    
+                       
+        </div>     
+	<div id="footer" align="center">
+    <a href="http://www.bibalex.org/isis" target="_blank"><img src="../../images/spacer.gif"  width="74" height="35" hspace="20" alt="ISIS" border="0" align="left" /></a>
+       <a href="http://www.bibalex.org" target="_blank"><img src="../../images/spacer.gif" width="47" height="35" hspace="5" alt="Bibliotheca Alexandrina" border="0" align="left" /></a>
+       <div id="about"> <a href="../../Collections/Home/Sitemap.aspx" target="_blank">خريطة الموقع</a> | <a href="../../Collections/Home/Aboutus.aspx" target="_blank">عن المشروع </a> | <a href="../../Collections/Home/Thanks.aspx" target="_blank">شكر </a> | <a href="../../Collections/Home/Contactus.aspx" target="_blank">اتصل بنا</a> | <a href="../../Collections/Home/FAQ.aspx" target="_blank">أسئلة متكررة</a> | <a href="../../Collections/Home/Bibliography.aspx" target="_blank">المراجع</a></div>
+      </div>
+ </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+document.getElementById('hidepage').style.display = "none";var w = document.body.offsetWidth; var h = document.body.offsetHeight; document.getElementById('hidepage').style.width = w + 'px'; document.getElementById('hidepage').style.height = h + 'px';document.getElementById('tdAlignment').style.height = parseInt(h / 2 - 25) + 'px';var w = document.body.offsetWidth; var h = document.body.offsetHeight; document.getElementById('tdMessageBoxAlignment').style.width = w + 'px'; document.getElementById('tdMessageBoxAlignment').style.height = h + 'px';SetPopup();//]]>
+</script>
+</form>
+</body>
+</html>
+ contentType 9 text/html url 68 http://modernegypt.bibalex.org:80/Collections/Home/Bibliography.aspx responseCode 3 200 

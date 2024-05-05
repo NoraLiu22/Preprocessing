@@ -1,0 +1,467 @@
+aglaiswmqgoqnscgvevcdqboqsuqtkpifakknmzc length 5 14993 page 14993 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-type">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script type="text/javascript" src="/js/calphotos.js"></script>
+<title>
+
+       Using the Photos in CalPhotos
+
+</title>
+
+
+<style type="text/css">
+   p, td, th, body {font-family: arial, verdana, helvetica, sans-serif;}
+   p, td, th, body {font-size: 14px;}
+   p { line-height: 1.5; }
+   a.nounderline {
+       text-decoration: none;
+       color:  white;
+       outline: none;
+    }
+    img {
+        -webkit-transform: translateZ(0);
+    }
+
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BGCZ4BQBR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1BGCZ4BQBR');
+</script>
+
+
+<!-- jquery-3.3.1.min.js used for sessions, ajax, figuring out if someone is logged in or not -->
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript" language="JavaScript">
+function checkLogin() {
+    var x = getCookie('CGISESSID');
+
+    $.ajax({
+        cache: 'false',
+        url: 'https://calphotos.berkeley.edu/cgi/check_login?cgisessid=' + x, 
+        <!-- url: 'http://calphotos.berkeley.edu:8000/cgi/check_login?cgisessid=' + x, -->
+        type: 'post',
+        dataType: 'html',
+        contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+        success: function(response) {
+            $('#contributors').html(response);
+
+        },
+        error: function(xhr) {
+            $('#contributors').html('response error login');
+        }
+    });
+}
+</script>
+
+
+<script type="text/javascript" language="JavaScript">
+function getPageContents() {
+    var x = getCookie('CGISESSID');
+
+    $.ajax({
+        cache: 'false',
+        url: 'https://calphotos.berkeley.edu/cgi/contributor_page?cgisessid=' + x,
+        <!-- url: 'http://calphotos.berkeley.edu:8000/cgi/contributor_page?cgisessid=' + x, -->
+        type: 'post',
+        dataType: 'html',
+        contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+        success: function(response) {
+            $('#links').html(response);
+        },
+        error: function(xhr) {
+            $('#links').html('response error');
+        }
+    });
+}
+</script>
+
+
+</head>
+<body bgcolor=#FFFFFF onload='checkLogin();'>
+
+<!-- colors: silver=#E6E8FA navyblu=#23238E ltblue=DFE5FA  -->
+
+<table align=center border=0 width=90% cellspacing=0 cellpadding=0>
+<!-- logo (optional) on lt. blue background -->
+<tr>
+<td width=5% bgcolor=DFE5FA>
+<!-- uncomment the following line to add a logo ----->
+<!-- img align = left border=0 height=130 src = "/calflora/icon.gif" alt = "CalFlora"-->
+<br>
+</td>
+<td align=left valign=bottom>
+    <table border=0 cellpadding=5>
+    <tr>
+    <td align=left valign=bottom>
+    <font face="Helvetica,Arial,Verdana" color=23238E>
+    <big><big><big>
+
+       Using the Photos in CalPhotos
+
+    </big></big></big>
+    </font>
+    &nbsp;&nbsp;
+    <font face="Helvetica,Arial,Verdana" color=000000>
+    <b>
+    <!-- insert a smaller heading comment here -->
+    </b>
+    </font>
+    </td>
+    </table>
+</td>
+</tr>
+
+<!-- navy blue bar -->
+<tr>
+<td width=100% colspan=2 bgcolor=23238E align=right>
+
+<div id="contributors"></div>
+
+</td></tr>
+<!-- left side lt. blue bar with links -->
+<tr>
+<td width=10%  bgcolor=DFE5FA align=center valign=top>
+&nbsp;<p>
+<font face="Helvetica,Arial,Verdana">
+<p>
+<small>
+
+       <!-- insert side bar links here -->
+See also:
+<p>
+<a href=/faq.html>Frequently Asked Questions</a>
+<p>
+<a href=/about.shtml>about CalPhotos</a>
+<p>
+<a href=/>All CalPhotos</a>
+<p>
+<a href=/fauna/>Animals</a>
+<p>
+<a href=/flora/>Plants</a>
+<p>
+<a href=/landscape/>Landscapes</a>
+<p>
+
+</small>
+</font>
+</td>
+<!-- main menu -->
+<td valign=top>
+    <table cellpadding=5 width=100%>
+    <tr>
+    <td valign=top>
+    <font face="Helvetica,Arial,Verdana">
+
+
+
+<table width=100%>
+<tr><td>
+<small>
+<li><a href=#who>Whose photos are they?</a>
+<li><a href=#thumb>Using the thumbnails</a>
+<li><a href=#larger>Using the larger images</a>
+<li><a href=#data>Using the data</a>
+<li><a href=#fairuse>What is "Fair Use"?</a>
+<li><a href=#download>Downloading multiple images or data</a>
+<li><a href=#linking>Linking to the images</a>
+<li><a href=#citing>Citing CalPhotos</a>
+</small>
+</td></tr>
+</table>
+<p><hr>
+
+
+<h4>
+<a name=who>Whose photos are they?</a>
+</h4>
+
+A variety of organizations and individuals have
+contributed photographs to CalPhotos. Please be aware that these
+various contributors maintain copyright and also dictate usage of
+their own images.  Usage information is provided with each image
+and can be found on each photo's "detail" page. (See <a href=faq.html#contact><i>
+How can I contact the photographer who took this photo?</i></a> for
+more information.) 
+<p>
+On this page we provide general
+usage guidelines for all the CalPhotos images.
+
+<hr>
+<h4>
+<a name=thumb>Using the thumbnails</a>
+</h4>
+The thumbnail photos are the small photos that appear 
+in the "browse" pages
+when you do a search, and at the top of each photo's "detail" page. 
+For our purposes, a thumbnail is an image that is 194x130 pixels in size or smaller.
+Thumbnails
+can be used without prior permission under the Fair Use provisions of the
+<a href=https://www.copyright.gov/title17/>Copyright Law of the
+United States</a> as long as you include the proper credit for the photo
+(check the photo's detail page for wording). Please see below for an
+explanation of what constitutes Fair Use. Briefly, it applies to
+personal, academic, and other educational uses. If your use is not within
+the provisions of Fair Use, you may still be able to use the thumbnails,
+but you may need to request permission from the person or organization
+that contributed the photo. 
+ See <a href=faq.html#contact><i>
+How can I contact the photographer who took this photo?</i></a>) for
+more information about obtaining usage and contact information.
+
+
+<hr>
+<h4>
+<a name=larger>Using the larger images</a>
+</h4>
+
+Fair Use does not cover the images that are larger than the
+thumbnail size, i.e. larger than 194x130 pixels. 
+To use any of those photos, you will need to
+ request permission first from the person or organization
+that contributed the photo. Some contributors allow some
+kinds of uses without advanced permission but you must verify
+this first.
+
+ To find out whether you need
+permission, check the usage information at the top of the 
+enlargement for the photo you are
+interested in.  You can also find
+usage information on the photographer's "bio" page (click on the
+photographer's name on the detail page.)
+<p>
+ This applies to downloading and saving
+the image on your own computer, as well as including a link on your web page that results in 
+the image being displayed on your page.
+<p>
+If you wish to use the photo for a publication or some other commercial
+use, you can find contact information either on the photo's "detail" page,
+or on the photographer's "bio" page.
+In some cases you may need to pay a licensing fee or reproduction
+expenses to use the image. Or, you may be able to order a slide or a higher resolution
+version of the photo. 
+
+
+</p>
+
+<hr>
+<h4>
+<a name=data>Using the data</a>
+</h4>
+The data associated with the photos in CalPhotos is not covered under the
+provisions of Fair Use and you must request permission from the
+copyright holder before using it. "Data" includes scientific and 
+common names for the plant or animal in the photo, locations, 
+dates, and any notes or other text about the photo
+that were provided when the photo was contributed.
+<p>
+This means that you may not collect text information from the CalPhotos
+database in order to make text or photos available on your own website, or to use it
+for other purposes such as generating links to CalPhotos from your
+website, without permission.  However, it is OK to use summary information
+to generate links such as "Click here to see all photos of Bufo canorus in CalPhotos".
+ See  <a href=#linking>Linking to the images</a>
+for instructions on how to do this.
+<p>
+Some summary information is available on our website.  For example,
+you can download a list of all the plant names we have photos for
+here: <a href=https://calphotos.berkeley.edu/select_lists/plant_taxon_list.txt>https://calphotos.berkeley.edu/select_lists/plant_taxon_list.txt</a>.
+
+However,
+ if you need other text information about multiple photos, you will
+need to request it from the people or organizations that
+contributed the photos you are interested in. Please note
+that <a href=https://bnhm.berkeley.edu>the Berkeley Natural History Museums</a> cannot provide this without
+permission, and we do not permit crawlers or other programs
+to harvest this data from our website.  For more information
+about this, see <a href=#download>Downloading multiple images or data</a>.
+
+
+<hr>
+<h4>
+<a name=fairuse>What is "Fair Use"?</a>
+</h4>
+As of this writing, many aspects of Fair Use are still being sorted out
+in the courts, but in general, Fair Use means that a small thumbnail
+photo that you find on a website 
+can be downloaded and saved for personal or educational
+use without asking permission first or paying a licensing fee.
+The exact size of the thumbnail has not been described in the
+law as far as we know, but for our purposes, a thumbnail is an image that is 194x130 pixels in size or smaller.
+
+Fair Use does not apply to images that are larger than a thumbnail or to any
+text information that goes with the photo. Fair Use also does not apply
+to commercial use or to any use that might affect the value of or
+the market for the original photo. If you are in doubt as to whether
+your use would be considered Fair Use, please check with the person or
+organization that contributed the photo.
+
+
+<hr>
+<h4>
+<a name=download>Downloading multiple images or data</a>
+</h4>
+Multiple and repeated connections to CalPhotos put a strain on
+our web and database servers and can hamper access for other users. 
+Therefore, the Berkeley Natural History Museums maintains a <a href=/robots.txt>"robots.txt"</a>
+ file that disallows access to certain parts of our website by robots.  Robots are  
+computer programs that download web pages; they are also known as spiders or crawlers. 
+Robots may not run queries to CalPhotos or directly
+access the image directories. 
+
+We monitor repeated connections to the images from the
+same host, and we may
+deny access to hosts that appear to be running a program to download images
+or data from our web server.
+<p>
+
+We also ask that users not download multiple
+images and data from CalPhotos without permission.
+ It is not in our interest or that of our contributors to have uncontrolled
+                      subsets of these holdings available elsewhere on the
+                      Internet. We make corrections, add text, add images,
+                      etc. on a continual basis, and we want the most current
+                      set of images and text to be the only one generally 
+		      available to all Internet                       users.  
+<p>
+If you would like to link to multiple images in CalPhotos, please see the next section for
+instructions.
+<p>
+If you need multiple images or data for some other purpose, you will need
+permission from the person or organization that provided the photos you are
+interested in. Please see the information above about using thumbnails, 
+larger images, and text data.
+<p>
+
+
+<hr>
+<h4>
+<a name=linking>Linking to the images</a>
+</h4>
+
+There are two types of links you can create on your own web page to display photos
+from CalPhotos: 1) linking to groups of photos, or 2) linking to a specific photo.
+ Instructions for creating both types of links can be found on this page:
+ <a href=/vlurl.html>How to Link to the Photos</a>.
+<p>
+Creating links to a group of photos does not usually require permission in
+advance.
+ However, creating a link to a specific photo may require permission
+from the copyright holder of the photo. See below for details.
+<p>
+1) Linking to groups of photos
+<br>
+You can create a link on your web page that users can click 
+on to see groups of photos that match a particular query.
+Some examples: "Photos of Bufo canorus" or "Trees in Monterey County".
+These links will generate a query to CalPhotos and bring up a page
+of thumbnail 
+images that match the query.  See <a href=/vlurl.html>How to Link to the Photos</a>
+for instructions.
+For plants, we provide a list of scientific names that we have photos for here:
+<a href=https://calphotos.berkeley.edu/select_lists/plant_taxon_list.txt>https://calphotos.berkeley.edu/select_lists/plant_taxon_list.txt</a>.
+
+This list is updated daily, and can be used to create links to photos
+from websites that provide information
+about plant species, such as the <a href=https://plants.usda.gov>Plants Database</a>.
+
+<p>
+2) Linking to a specific photo
+<br>
+You can create a link to a specific photo in CalPhotos without first
+asking permission as long as the photo is displayed on the CalPhotos
+website when a user clicks on your link. 
+If you create a link to a specific CalPhotos photo that results in
+the photo being displayed on your web page (in html terms, using the
+tag "IMG SRC="), then you must follow the usage
+guidelines above to determine whether your use is "Fair Use" or if it requires
+permission. See <a href=#thumb>Using the thumbnails</a>,
+<a href=#larger>Using the larger images</a>, and <a href=#data>Using the data</a>.
+  Even though you have not actually downloaded the image
+and saved it to your own computer, displaying it on a page other than 
+a CalPhotos page may require permission from the copyright holder
+depending on whether your use falls under the Fair Use provisions
+of the U.S. Copyright Law.
+
+<p>
+<hr>
+<h4>
+<a name=citing>How to cite CalPhotos</a>
+</h4>
+
+For citing CalPhotos, we recommend this format:
+<blockquote>
+CalPhotos. 2012. Regents of the University of California, Berkeley. 
+Accessed on April 4, 2012. Available online at: 
+<a href=https://calphotos.berkeley.edu/>https://calphotos.berkeley.edu/</a>.
+</blockquote>
+
+<p>
+Replace the date (month, day, year) in this example with the date you accessed the site.
+
+<p>
+
+    </td>
+    </tr>
+    </table>
+
+
+<!-- bottom lt. blue section -->
+
+<tr>
+<td colspan=2 bgcolor=DFE5FA>
+    <table cellpadding=15 align=center>
+    <tr>
+    <td>
+    <br>
+    </font>
+    </td>
+    </tr>
+    </table>
+</td>
+</tr>
+</table>
+
+<!--- bottom section -->
+<p>
+<center>
+<table cellpadding=5 cellspacing=5>
+<tr>
+<td>
+<center>
+<a href=/>CalPhotos</a>
+ is a project of <a href=http://bnhm.berkeley.edu>BNHM</a>&nbsp;&nbsp;
+University of California, Berkeley
+<p>
+<a href=/cgi/dlpmail?step=form&subject=CalPhotos>Questions and Comments</a>
+<br>
+<small>
+
+<i>
+this page last updated: May 28, 2021
+<br>
+</i>
+</small>
+
+
+</table>
+</center>
+<p>
+</small>
+</font>
+</body>
+</html>
+
+
+ contentType 9 text/html url 43 https://calphotos.berkeley.edu:443/use.html responseCode 3 200 

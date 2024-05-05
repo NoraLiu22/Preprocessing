@@ -1,0 +1,186 @@
+msrepotokshsmiugjitmnsreqgmalaikqctgdmvi length 4 7679 page 7679 
+<!DOCTYPE html>
+<html>
+<head><meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>
+	Registration
+</title><meta http-equiv="Status" content="410 Gone" /><meta name="robots" content="noindex,nofollow" /><link type="text/css" rel="stylesheet" href="/static/css/farlex.css?19" />
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/js/m.js?12"></script>
+	<script type="text/javascript">var userId = -1;var GENERIC_ERROR = "An error occurred. Please try again."</script>
+	<meta property="og:site_name" content="TheFreeDictionary.com" />
+	<meta name="Description" content="The Free Dictionary">
+</head>
+<body>
+
+<div class="menu">
+	<span class="img A logo" onclick="location.href='https://www.thefreedictionary.com'">The Free Dictionary</span>
+	
+		<select id="ddLang" name="lang" onchange="setLang(this.value)">
+			
+			<option selected="selected" value="en">English</option>
+			
+			<option  value="zh">Chinese Simplified (中文简体)</option>
+			
+			<option  value="nl">Dutch (Nederlands)</option>
+			
+			<option  value="fr">French (Français)</option>
+			
+			<option  value="de">German (Deutsch)</option>
+			
+			<option  value="el">Greek (Ελληνική)</option>
+			
+			<option  value="it">Italian (Italiano)</option>
+			
+			<option  value="pl">Polish (Polski)</option>
+			
+			<option  value="pt">Portuguese (Português)</option>
+			
+			<option  value="ru">Russian (Русский)</option>
+			
+			<option  value="es">Spanish (Español)</option>
+			
+			<option  value="tr">Turkish (Türkçe)</option>
+			
+			<option  value="ar">Arabic (العربية)</option>
+			
+			<option  value="no">Norwegian (Norsk)</option>
+			
+		</select>
+	<div class="my3"><a class="tab" href="https://www.thefreedictionary.com">Return to <span itemprop="title">The Free Dictionary</span></a></div>
+	<div class="my2"> 
+		<ul class="my">
+			<li><a class="tab" href="/Login.aspx">Log in</a></li><li class="sel"><a class="tab" href="/Registration.aspx">Register</a></li>
+		</ul>
+	</div>
+</div>
+<div class="nfobox">
+	
+    <fieldset>
+        <legend>Register</legend>
+        <div>
+			
+            <div style="float:left;padding-bottom:10px"><span title="Your brain level indicates your current learning level. Maintain a high level by reading, playing, and learning new words. " class="fcBrain br0"></span></div>
+            <div style="float:left;color:green;font-weight:bold;padding-bottom:10px;width:120px">Your brain level is 0%. Don't lose your results! Register now! </div>
+			
+            <div style="clear:both"></div>
+			<div class="ppNote">By clicking Submit or registering via any of the available options, you indicate that you have read and agree to the terms of our <a href="https://www.thefreedictionary.com/privacy-policy.htm">Privacy Policy</a> and our <a href="https://www.thefreedictionary.com/about.htm">Terms of Use</a>.</div>
+            
+<div id="SocialLogin">
+    <a href="/ExtLogin/FacebookLogin.aspx?"><span class="fcImg lgFacebook"></span></a>
+    <a href="/ExtLogin/GoogleSignIn.ashx"><span class="fcImg lgGoogle"></span></a>
+    <a href="?twitter&"><span class="fcImg lgTwitter"></span></a>
+    <a href="/ExtLogin/VkLogin.aspx?"><span class="fcImg lgVkontakte"></span></a>
+</div>
+<div style="clear:both"></div>
+
+            <form id="reg_form" name="reg_form" method="POST" action="/Registration.aspx"
+                onsubmit="return RegSubmit()">
+
+<table id="regForm">
+	<tr>
+		<td>
+			<b>Display name</b>
+		</td>
+		<td>
+			<input id="Name" name="Name" autocomplete="nickname" type="text" maxlength="80" value="">
+			<span id="errName" class="error_txt"></span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>E-mail</b>
+		</td>
+		<td>
+			<input id="Email" name="Email" type="text" autocomplete="email" maxlength="96" value="">
+			<span id="errEmail" class="error_txt"></span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Password</b>
+		</td>
+		<td>
+			<input id="Pwd1" name="Pwd1" type="password" autocomplete="new-password" maxlength="32" value="">
+			<span id="errPwd1" class="error_txt"></span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Confirm password</b>
+		</td>
+		<td>
+			<input id="Pwd2" name="Pwd2" type="password" autocomplete="new-password" maxlength="32" value="">
+			<span id="errPwd2" class="error_txt"></span>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="checkbox" checked="checked" id="wod" name="wod" /><label for="wod">Subscribe to the Word of the Day email</label>
+		</td>
+	</tr>
+</table>
+
+<div id="err_captcha" class="error_txt" style="margin:10px 0"></div>
+<div style="margin:10px 0">
+	<div style="display:inline-block" class="g-recaptcha" data-sitekey="6LeG0QIiAAAAACBnofzxLTgadL7iLdMmgqfdGurC" data-callback="Captcha" data-expired-callback="Captcha"></div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<input type="hidden" name="captcha" value="" id="captcha"/>
+
+
+<script>
+	var captcha_validated = false;
+	function Captcha(k) {
+		console.log('k=', k)
+		document.getElementById('captcha').value = k;
+		captcha_validated = k > '';
+	}
+	function checkCAPTCHA() {
+		if (!captcha_validated) ById('err_captcha').innerHTML = "Please validate yourself as a human.";
+		return captcha_validated;
+	}
+</script>
+
+
+
+
+<input style="margin-top:8px" type="submit" value="Submit">
+
+
+            </form>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        function RegSubmit() {
+        	var ok = true;
+        	if ('checkCAPTCHA' in window && !checkCAPTCHA()) ok = false;
+            if (ById('Name').value.length == 0) { ById('errName').innerHTML = "Display name for your profile is required."; ok = false }
+            else if (ById('Name').value.length < 2 || ById('Name').value.length > 32) { ById('errName').innerHTML = "The name must be between 2 and 32 characters."; ok = false }
+			else ById('errName').innerHTML = '';
+        	if (ById('Pwd1').value.length == 0) { ById('errPwd1').innerHTML = "Password is required."; ok = false } else
+        	{
+        		ById('errPwd1').innerHTML = '';
+        		if (ById('Pwd1').value != ById('Pwd2').value) { ById('errPwd2').innerHTML = "Passwords do not match."; ok = false }
+        		else ById('errPwd2').innerHTML = '';
+                if (ById('Pwd1').value.trim().length < 5) { ById('errPwd1').innerHTML = "New password must be at least 5 characters."; ok = false }
+            }
+        	if (ById('Email').value.length == 0) { ById('errEmail').innerHTML = "E-mail address is required."; ok = false }
+        	else if (ById('Email').value.indexOf('@') == -1 || ById('Email').value.indexOf('.') == -1) { ById('errEmail').innerHTML = "E-mail address is not in the correct format."; ok = false }
+        	else { ById('errEmail').innerHTML = '' }
+            return ok;
+        }
+    </script>
+
+</div>
+<div class="footer">
+	<a id="feedChild" href="/FeedChildProgram.aspx">Feed your brain, feed a hungry child</a>
+	<a id="feedback" target="feedback" href="http://app.thefreedictionary.com/feedback.aspx" onclick="open('http://app.thefreedictionary.com/feedback.aspx?url='+escape(document.location)+'&amp;ref='+escape(document.referrer), 'feedback','width=630,height=370,resizable=1');return false">Feedback</a>
+	
+	<p class="copyright">
+		Copyright &copy; 2024 Farlex, Inc.
+	</p>
+</div>
+</body>
+</html>
+ contentType 9 text/html url 129 https://secure.thefreedictionary.com:443/Registration.aspx?returnTo=https%3a%2f%2fwww.thefreedictionary.com%2fcomputer%2bkeyboard responseCode 3 200 

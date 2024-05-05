@@ -1,0 +1,482 @@
+mqpoymwiicqsgkqqhebkoangrazowkaknotclkwm length 5 30947 page 30947 <!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Neo4j as an Additional Index &#8212; Cordra  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/minimal-fixes.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Partial Replication/Aggregation" href="partial-replication-aggregation.html" />
+    <link rel="prev" title="Collab Prototype Software" href="collab-prototype.html" />
+    <link rel="shortcut icon" href="../_static/img/favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:300,400,700,800' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Rasa:400,700%7COpen+Sans:300,400,700,800' rel='stylesheet' />
+    <link rel="stylesheet" href="../_static/libs/font-awesome/css/font-awesome.min.css"></link>
+    <link rel="stylesheet" href="../_static/libs/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../_static/icons/nucleo.css"></link>
+    <link rel="stylesheet" href="../_static/libs/animate.css/animate.min.css"></link>
+    <link rel="stylesheet" href="../_static/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../_static/css/blog.css"></link>
+    <link rel="stylesheet" href="../_static/css/buttons.css"></link>
+    <link rel="stylesheet" href="../_static/css/colors.css"></link>
+    <link rel="stylesheet" href="../_static/css/footers.css"></link>
+    <link rel="stylesheet" href="../_static/css/widgets.css"></link>
+    <link rel="stylesheet" href="../_static/css/nav.css"></link>
+    <link rel="stylesheet" href="../_static/css/preloader.css"></link>
+    <link rel="stylesheet" href="../_static/css/custom.css"></link>
+    <link rel="stylesheet" href="../_static/css/ui.css"></link>
+
+  </head><body>
+<!-- BEGIN LATERAL NAVIGATION -->
+<aside id="aside-nav">
+    <div id="main-aside-navigation">
+        <div class="main-nav-wrapper">
+            <div class="close-aside-nav">
+                <i class="nc-icon-outline ui-1_simple-remove"></i>
+            </div>
+            <div id="aside-logo">
+                    <a href="/index.html" data-logo-light="../_static/img/cordra-light.png" data-logo-dark="../_static/img/cordra-primary-blue.png">
+                    <img width="170" height="166" src="../_static/img/cordra-primary-blue.png" alt="logo">
+                </a>
+            </div>
+            <nav id="main-aside-menu">
+                <ul>
+                    <li class="submenu">
+                        <a href="/cordra.html">What's Cordra?</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/getstarted.html">Get Started</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/download.html">Download</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/documentation/introduction/introduction.html">Developer Resources</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="/standards.html">Standards</a>
+                    </li>
+                    <li class="submenu">
+                        <a href="../search.html">Search</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</aside>
+<!-- END LATERAL NAVIGATION -->
+
+<!-- BEGIN MAIN NAVIGATION -->
+<header id="header">
+    <div id="main-navigation">
+        <div class="main-nav-wrapper">
+            <div class="container-fluid">
+                <div class="nav-left">
+                    <div id="logo">
+                        <a href="/index.html" data-logo-light="../_static/img/cordra-light.png" data-logo-dark="../_static/img/cordra-primary-blue.png">
+                        <img width="145" height="36" src="../_static/img/cordra-primary-blue.png" alt="logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <nav id="main-menu">
+                        <ul>
+                            <li class="mega-menu menu-layouts">
+                                <a href="/cordra.html">What's Cordra?</a>
+                            </li>
+                            <li class="mega-menu menu-layouts">
+                                <a href="/getstarted.html">Get Started</a>
+                            </li>
+                            <li>
+                                <a href="/download.html">Download</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="/documentation/introduction/introduction.html">Developer Resources</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="/standards.html">Standards</a>
+                            </li>
+                            <li class="mega-menu">
+                                <a href="../search.html">Search</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="nav-tools">
+                        <li class="mobile-menu-btn">
+                            <button class="toggle-menu" data-toggle="mobile-menu" data-effect="hover">
+                                <span class="menu-label label-left">Menu</span>
+                                <i class="nc-icon-outline ui-2_menu-35"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- END MAIN NAVIGATION -->
+
+
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://hdl.handle.net/20.1000/129">Developer Resources (in PDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Cordra Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">Introduction to Cordra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/release-notes.html">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/system-requirements.html">System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Application Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../design/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/identifiers.html">Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/schemas.html">Schemas/Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/design-object.html">Design Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/payloads.html">Payloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/authentication-and-access-controls.html">Authentication and Access Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/javascript-lifecycle-hooks.html">Lifecycle Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/type-methods.html">Type Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/java-hooks-and-methods.html">Java Hooks and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/handle-integration.html">Handle Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/object-versioning.html">Digital Object Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/object-hashing.html">Digital Object Hashing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/doip.html">DOIP and Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/doip-api-for-http-clients.html">DOIP API for HTTP Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/rest-api.html">HTTP REST API and Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/search.html">Query Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Clients</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../client/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/rest-java.html">REST - Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/javascript.html">REST - JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/doip-java.html">DOIP - Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../client/third-party.html">Third Party Clients</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/single-instance-deployment.html">Deploying Single-Instance Cordra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/single-instance-production.html">Production Single Instance Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/distributed-deployment.html">Deploying Cordra as a Distributed System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/reindexing.html">Reindexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/logs-management.html">Managing Cordra Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/storage-backends.html">Configuring Storage Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/indexing-backends.html">Configuring Indexing Backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/sessions-manager.html">Distributed Sessions Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/user-management.html">Managing Users and Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/admin-user-interface.html">Administrative UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/enabling-tls.html">Enabling TLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/https.html">Configuring HTTPS Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/migration.html">Migration across Cordra Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Extensions and Applications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calling-java-from-javascript.html">Calling Java from JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document-repository.html">Document Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical-records-application.html">Medical Records Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="person-registry.html">Person Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-registration.html">User Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object-linking.html">Digital Object Linking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oai-pmh.html">OAI-PMH in Cordra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sending-emails.html">Sending Emails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external-authentication-provider.html">External Authentication Provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collab-prototype.html">Collab Prototype Software</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Neo4j as an Additional Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partial-replication-aggregation.html">Partial Replication/Aggregation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tools/import-export.html">Import and Export Tools</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="neo4j-as-an-additional-index">
+<span id="id1"></span><h1>Neo4j as an Additional Index<a class="headerlink" href="#neo4j-as-an-additional-index" title="Permalink to this heading">¶</a></h1>
+<p>The type of index used by a system dictates the sorts of queries that can be run. Cordra’s default index can be configured
+with a selection of Lucene-based indexes, however there are circumstances that requires something else. In such a situation
+an additional index can be added to Cordra by inserting items into that index in response to Cordra’s lifecycle
+hooks.</p>
+<p>This example shows how to install an extension that allows Cordra to insert data into the graph-based index Neo4j. A
+graph-based index allows for certain types of queries over highly connected data that are not possible in a single pass
+with other indexing systems.</p>
+<p>This project contains lifecycle hooks written in Java that will create nodes and relationships in a Neo4j graph database.
+The nodes created correspond to Cordra objects and the relationships are determined by properties on the Cordra objects
+that are defined as handleReference in the JSON Schema for that type of object.</p>
+<section id="installation-instructions">
+<h2>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this heading">¶</a></h2>
+<p>You can download a desktop installation for Neo4j here:
+<a class="reference external" href="https://neo4j.com/download/">https://neo4j.com/download/</a></p>
+<p>On the version of the Neo4j desktop app we tested it was necessary to reset its DBMS password before it would allow
+clients to connect. To do this run the neo4j desktop app. Then select “Movie DBMS” from the “Example Project”.
+This will show information about the DBMS in the right panel. In that right panel click the “Details” tab. In the
+“Details” tab enter a new admin password in the “Reset DBMS password” section.</p>
+<p>Ensure the sample database is empty using:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATCH (n) DETACH DELETE n
+</pre></div>
+</div>
+<p>Obtain the file <code class="docutils literal notranslate"><span class="pre">cordra-neo4j-test-1.0.0.jar</span></code> from the Cordra download distribution in the <code class="docutils literal notranslate"><span class="pre">extensions/neo4j-test</span></code> directory.
+Then add it as a payload with the payload name “java” to the design object in Cordra. You can see the design object by
+signing in to Cordra as admin and then from the menu select Admin-&gt;Design Object… Edit the design object and scroll all
+the way down to add payloads.</p>
+<p>Also add a payload containing a config.json file named “neo4jConfig” to the design object. An example config.json is
+below (and also in the <code class="docutils literal notranslate"><span class="pre">extensions/neo4j-test</span></code> directory):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;user&quot;: &quot;neo4j&quot;,
+    &quot;password&quot;: &quot;password&quot;,
+    &quot;uri&quot;: &quot;bolt://localhost:7687&quot;,
+    &quot;databaseName&quot;: &quot;neo4j&quot;,
+    &quot;propertyNameMode&quot;: &quot;topLevel&quot;,
+    &quot;excludeTypes&quot;: [&quot;User&quot;, &quot;Group&quot;, &quot;CordraDesign&quot;, &quot;Schema&quot;],
+    &quot;includeTypes&quot;: [&quot;Person&quot;, &quot;Movie&quot;]
+}
+</pre></div>
+</div>
+<p>The properties “user”, “password” and “uri” are required.</p>
+<p>The property “databaseName” is optional and will default to the value “neo4j” if missing.</p>
+<p>The property “propertyNameMode” configures the method used to generate the node properties from the cordra object
+properties. It may take the string values “topLevel” or “jsonPointer”. The value “topLevel” is default if missing.</p>
+<p>“topLevel” takes the top level properties of the Cordra object content that have primitive values and sets those as the
+Neo4j node property names.</p>
+<p>“jsonPointer” will create a JSON Pointer for each of the properties of the cordra objects content and set those
+JSON Pointers as the Neo4j node property names.</p>
+<p>Note that in both cases the created node will be given the properties “_type” and “_id”.</p>
+<p>The properties “excludeTypes” and “includeTypes” can be used independently or together to control objects of
+which Cordra types are created as nodes in Neo4j.</p>
+<p>“excludeTypes” can be used to specify types that should not be created in Neo4j. If missing no types will be explicitly
+excluded.</p>
+<p>“includeTypes” can be used to specify types that should be created in Neo4j. If missing all types not listed in
+“excludeTypes” will be created.</p>
+<p>“verbose” optional boolean with default value <code class="docutils literal notranslate"><span class="pre">false</span></code>. When set to true queries sent to Neo4j will be logged to standard
+out.</p>
+<p>To demonstrate the functionality of this project create the types “Movie” and “Person” in Cordra. The JSON Schemas for those
+types are in the <code class="docutils literal notranslate"><span class="pre">extensions/neo4j-test</span></code> directory.  You could then create a Movie instance “Top Gun” and then create a
+Person instance “Tom Cruise”, on that person object add the “Top Gun” movie to the “ACTED_IN” array.</p>
+<p>The example comes with a class MoviesImporter which will import many actors and movies into Cordra.  Run the script
+<code class="docutils literal notranslate"><span class="pre">import-movies</span></code> in the <code class="docutils literal notranslate"><span class="pre">extensions/neo4j-test</span></code> directory with the base URI, username, and password for your running Cordra
+instance, for example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./import-movies -b https://localhost:8443 -u admin -p password
+</pre></div>
+</div>
+<p>Some sample Neo4j queries to try are in the file <code class="docutils literal notranslate"><span class="pre">sample-queries.txt</span></code> in the <code class="docutils literal notranslate"><span class="pre">extensions/neo4j-test</span></code> directory.</p>
+</section>
+<section id="neo4j-browser-styling">
+<h2>Neo4j Browser Styling<a class="headerlink" href="#neo4j-browser-styling" title="Permalink to this heading">¶</a></h2>
+<p>In order to get the Neo4j Browser to display Movie and Person objects with useful captions,
+you can create a file “style.grass” and drag it onto the Neo4j Browser window; an example is below
+and also in the <code class="docutils literal notranslate"><span class="pre">extensions/neo4j-test</span></code> directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node {
+  diameter: 50px;
+  color: #A5ABB6;
+  border-color: #9AA1AC;
+  border-width: 2px;
+  text-color-internal: #FFFFFF;
+  font-size: 10px;
+}
+relationship {
+  color: #A5ABB6;
+  shaft-width: 1px;
+  font-size: 8px;
+  padding: 3px;
+  text-color-external: #000000;
+  text-color-internal: #FFFFFF;
+  caption: &quot;&lt;type&gt;&quot;;
+}
+node.CordraObject {
+  color: #F79767;
+  border-color: #f36924;
+  text-color-internal: #FFFFFF;
+  defaultCaption: &quot;&lt;id&gt;&quot;;
+  caption: &quot;{title}&quot;;
+}
+node.Person {
+  color: #57C7E3;
+  border-color: #23b3d7;
+  text-color-internal: #2A2C34;
+  defaultCaption: &quot;&lt;id&gt;&quot;;
+  caption: &quot;{name}&quot;;
+}
+node.Movie {
+  color: #F16667;
+  border-color: #eb2728;
+  text-color-internal: #FFFFFF;
+  defaultCaption: &quot;&lt;id&gt;&quot;;
+  caption: &quot;{title}&quot;;
+}
+</pre></div>
+</div>
+</section>
+<section id="node-labels">
+<h2>Node Labels<a class="headerlink" href="#node-labels" title="Permalink to this heading">¶</a></h2>
+<p>All Neo4j nodes will be given the labels “CordraObject” and a label that corresponds to its type.</p>
+</section>
+<section id="relationships">
+<h2>Relationships<a class="headerlink" href="#relationships" title="Permalink to this heading">¶</a></h2>
+<p>This project will automatically create the relationships between nodes in Neo4j. It does this by inspecting the
+JSON Schema of the Cordra object that is being created or updated. Any properties on the content of the Cordra object
+that have a corresponding JsonSchema property <cite>cordra.type.handleReference</cite> will be treated as a relationship in neo4j.</p>
+<p>The name of the relationship will come from the name of the property on the Cordra object. If the property is deep in a
+nested JSON structure the JSON Pointer is processed from right to left taking the first non-numeric part as the
+relationship name. e.g. if you had a JSON object:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{
+    &quot;ACTED_IN&quot;: [
+        &quot;test/123&quot;
+    ]
+}
+</pre></div>
+</div>
+<p>The string value “test/123” is a pointer to another Cordra object. The jsonPointer to this value is “/ACTED_IN/0” so the
+resulting relationship name used in Neo4j will be “ACTED_IN”.</p>
+<p>The Cordra Neo4j indexer gives all nodes in Neo4j the label “CordraObject”. As a result of this you can see the graph of
+all CordraObjects with the Neo4j query:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MATCH (n:CordraObject) RETURN n;
+</pre></div>
+</div>
+</section>
+<section id="custom-operations">
+<h2>Custom Operations<a class="headerlink" href="#custom-operations" title="Permalink to this heading">¶</a></h2>
+<p>When you add the jar as a “java” payload to the design object a number of static operations (aka static type methods)
+will be added to the design object. You can see these in the Cordra UI by going to the design object by selecting
+Admin-&gt;Design Object… then click the “Methods” tab:</p>
+<p>“reloadNeo4jConfig”: If you invoke this method the “neo4jConfig” JSON payload will be read and the connection to Neo4j
+will be reinitialized using that configuration. This allows you to change the configuration payload without needing to
+restart Cordra.</p>
+<p>“deleteInNeo4j”: Accepts an “id” attribute for the single object that should be deleted from the Neo4j index. Note
+that the delete operation will fail if there are other nodes that have relationships pointing at the node being deleted.</p>
+<p>“deleteAllInNeo4j”: Removes all Cordra object nodes and relationships from the Neo4j index.</p>
+<p>“searchNeo4j”: Accepts a “query” attribute that is expected to contain a query in the Cypher query syntax. This query is
+passed to the Neo4j index and the full response is returned as JSON.</p>
+</section>
+<section id="reindexing-objects-in-neo4j">
+<h2>Reindexing Objects in Neo4j<a class="headerlink" href="#reindexing-objects-in-neo4j" title="Permalink to this heading">¶</a></h2>
+<p>Neo4j does not permit creating relationships if the nodes on both sides of the relationship do not exist.
+For example if you have A-&gt;B and you try and index A before indexing B the operation will fail. The same is true if you
+have A-&gt;B and B-&gt;A. The solution to this is to index objects in two passes, first to create the nodes in the index and
+then a second pass to create the relationship.</p>
+<p>This project provides a number of custom operations that allow you to instruct Cordra to reindex its objects in Neo4j.
+These operations will either perform the reindex in two passes, indicated by the name of the operation, or they will
+accept a boolean attribute “includeRelationships” which defaults to true. If you are using on of the operations that
+accepts “includeRelationships” you will need to invoke the operation twice, first with “includeRelationships”:false and
+then again with “includeRelationships”:true.</p>
+<p>“reindexAllInNeo4jTwoPass”: Reindexes all Cordra objects into Neo4j in two passes, first just the nodes and then the nodes
+with relationships.</p>
+<p>“reindexAllInNeo4j”: Reindexes all Cordra objects into Neo4j in a single pass. Accepts a boolean attribute
+“includeRelationships” which defaults to true.</p>
+<p>“reindexQueryResultsInNeo4jTwoPass”: Accepts a “query” attribute. This is a Lucene query that is applied to Cordra index.
+The results are indexed into Neo4j in two passes, first just the nodes and then the nodes with relationships.</p>
+<p>“reindexQueryResultsInNeo4jTwoPass”: Accepts a “query” attribute. This is a Lucene query that is applied to Cordra index.
+The results are indexed into Neo4j in a single pass. Accepts a boolean attribute “includeRelationships” which defaults
+to true.</p>
+<p>“reindexOneInNeo4j”: Accepts an “id” attribute and boolean attribute “includeRelationships”. This operation will reindex
+the object specified in the “id” attribute.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+
+<!-- BEGIN FOOTER -->
+<footer id="footer">
+    <div id="footer-main" class="container-large">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="widget widget-text">
+                    <h3 class="widget-title">Who are we?</h3>
+                    <!-- <img width="200" height="50" class="footer-logo" src="_static/img/logo/cordra-light.png" alt="logo"> -->
+                    <p>CNRI is a not-for-profit organization formed in 1986 to undertake, foster, and promote research on information infrastructure in the public interest.</p>
+                    <p><i class="nc-icon-outline ui-1_home-minimal"></i> Corporation for National Research Initiatives</p>
+                    <p><i class="nc-icon-outline location_position-marker"></i> 1895 Preston White Drive, Suite 100, Reston, Virginia 20191, USA</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs-down">
+                <div class="widget widget-links">
+                    <div class="widget-title">
+                        <h3 class="widget-title">Quick Links</h3>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="/cordra.html">What's Cordra</a>
+                        </li>
+                        <li>
+                            <a href="/download.html">Download</a>
+                        </li>
+                        <li>
+                            <a href="/documentation/introduction/introduction.html">Developer Resources</a>
+                        </li>
+                        <li>
+                            <a href="/download.html#section-licenses">Licenses</a>
+                        </li>
+                        <li>
+                            <a href="/privacypolicy.html">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 hidden-md-down">
+                <div class="widget">
+                    <h3 class="widget-title">Contact Us</h3>
+                    <p>Drop us an
+                        <span class="f-18 c-white w-700 font-handwriting">
+                            <a href="#" onclick="document.getElementById('emailAddress').style.display = 'block'; return false;" class="c-white">email.</a>
+                            <span id="emailAddress" style="display: none;" class="c-white text-sm w-100">support@cordra.org</span>
+                        </span>
+                    </p>
+                    <p>Join us on <a href="https://hdl.handle.net/20.5000/cordra-slack" target="_blank"><img width="100px" height="100px" src="../_static/img/slack_white.png" alt="Slack" class="m-l--10" /></a><span
+                            class="f-18 c-white w-700 font-handwriting m-l--10">.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer-bottom">
+        <div class="container-large">
+            <div class="row">
+                <div class="col-sm-12 t-center">
+                    <p class="copyright">Copyright&copy; 2020. Corporation for National Resesarch Initiatives. Cordra&reg; is a trademark of Corporation for National Research Initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER -->
+
+  </body>
+</html> contentType 9 text/html url 85 https://www.cordra.org:443/documentation/extensions/neo4j-as-an-additional-index.html responseCode 3 200 

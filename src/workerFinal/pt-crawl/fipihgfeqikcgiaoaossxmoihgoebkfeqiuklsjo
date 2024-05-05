@@ -1,0 +1,1550 @@
+fipihgfeqikcgiaoaossxmoihgoebkfeqiuklsjo length 5 90123 page 90123 
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head id="Head1"><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/animate.css@3.5.2/animate.min.css" /><link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/combine/npm/@scbd/www-css@1.0.2/dist/style.min.css" /><meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7S1TPRE7F5"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments) }; gtag("js", new Date()); gtag("set", "developer_id.dMDhkMT", true); gtag("config", "G-7S1TPRE7F5", { "groups": "default", "page_placeholder": "PLACEHOLDER_page_location", "allow_ad_personalization_signals": false });</script>
+
+<meta name="MobileOptimized" content="width" /><meta name="HandheldFriendly" content="true" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /><meta http-equiv="x-ua-compatible" content="ie=edge" /><link rel="shortcut icon" href="/themes/custom/bootstrap_sass/favicon.ico" type="image/vnd.microsoft.icon" /><title>Find National Targets</title><link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css?family=BenchNine:300,400,600,900" /><link rel="preload" href="/themes/custom/bootstrap_sass/fonts/benchnine-v9-latin-regular.woff2" as="font" type="font/woff2" />
+
+<script src="//use.fontawesome.com/releases/v6.1.0/js/all.js" defer crossorigin="anonymous"></script>
+<script src="//use.fontawesome.com/releases/v6.1.0/js/v4-shims.js" defer crossorigin="anonymous"></script>
+    
+    <!--[if IE 9]>
+    <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet" /><link href="/themes/custom/bootstrap_sass/css/ie-9-fix.css" rel="stylesheet" />
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <style type="text/css">
+      #page-wrapper {
+        display: none;
+      }
+    </style>
+    <![endif]-->
+      
+  <meta name="dc.title" content="Find National Targets" />
+<meta name="dc.publisher" content="Secretariat of the Convention on Biological Diversity" />
+<meta name="dc.creator" content="Biosafety Unit" />
+<meta name="dc.date" content="2022-10-15T18:09:44Z" />
+<meta name="dc.language" content="en" />
+<meta name="dc.rights" content="Copyright 2001-2011, Secretariat of the Convention on Biological Diversity" />
+
+<!-- SCRIPT FILES -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/cms/scripts/base-4.1.8886.26337.js" type="text/javascript"></script>
+
+<!-- STYLESHEETS -->
+<link href="/cms/styles/base-4.1.8886.26337.css" rel="stylesheet" type="text/css" />
+<link href="https://prod.drupal.www.infra.cbd.int/modules/custom/cbd_carousel/css/carousel.css?pyapem" rel="stylesheet" type="text/css" />
+<link href="/styles/ui/templates/phoenix/cms-overrides.css" rel="stylesheet" type="text/css" />
+</head>
+ 
+   <body id="CBody" class="layout-no-sidebars page-node-769 path-node node--type-article phoenix bootstrap4">
+
+<script>
+    (function(window, document) { "use strict";
+
+    var ACCOUNTS_URL         = 'https://accounts.cbd.int';
+    var authenticationFrame  = null;
+    var onAuthorizeCallbacks = [];
+
+	//==============================
+	//
+	//
+	//==============================
+	function authenticate(token) {
+
+        $.ajax({
+            url: '/cms/modules/sso/refresh-token.aspx',
+            headers: {
+                'Authorization':'Bearer '+(token||''),
+                'Content-Type':'application/json'
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: {},
+            success: function(result){
+                if(result.refresh) {
+
+                    if(token && !result.isAuthenticated)
+                        clearToken();
+                    else
+                        window.location.reload();
+                }
+                else {
+                    onAuthorizeCallbacks.forEach(function(callback){
+                        callback(result);
+                    });
+                }
+            }
+        });
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function loadToken(){
+        var msg = {
+            type: "getAuthenticationToken",
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function clearToken(){
+        var msg = {
+            type: "setAuthenticationToken",
+            authenticationToken: null,
+            expiration         : null
+        };
+
+        authenticationFrame.contentWindow.postMessage(JSON.stringify(msg), ACCOUNTS_URL);
+	}
+
+	//==============================
+	//
+	//
+	//==============================
+	function onAuthorize(callback){
+		onAuthorizeCallbacks.push(callback);
+	}
+        
+	//==============================
+	//
+	//
+	//==============================
+	window.addEventListener('message', function(event) {
+
+		if(event.origin!=ACCOUNTS_URL)
+			return;
+
+		var message = JSON.parse(event.data);
+
+		if(message.type=='authenticationToken') {
+
+            var token = message.authenticationToken;
+
+            if(message.sessionexpired) {
+                token = null;
+                clearToken();
+            }
+
+            authenticate(token || '');
+        }
+
+		if(message.type=='authenticationTokenUpdated') {
+            window.location.reload();
+        }
+	});
+        
+	//==============================
+	//
+	//
+	//==============================
+	function initialize(frame){
+        authenticationFrame = frame;
+        loadToken();
+	}
+
+    //==============================
+	//
+	// EXPORTS
+	//
+	//==============================
+	window._account = {
+		initialize : initialize,
+        onAuthorize: onAuthorize
+	}
+
+
+})(window, document);
+</script>
+
+<iframe src="https://accounts.cbd.int/app/authorize.html" style="display:none" onload="_account.initialize(event.target || event.srcElement)"></iframe>
+
+      <script>
+          if (screen.width < 375) {
+              var viewportMetaTag = document.querySelector('meta[name="viewport"]');
+              viewportMetaTag.setAttribute('content', 'user-scalable=no,width=375');
+          }
+      </script>
+      <!--[if lt IE 9]>
+      The site doesn’t support this version of the browser.<br>
+      Please download the latest version of Internet Explorer
+      <a href="https://www.microsoft.com/en-us/download/internet-explorer-9-details.aspx" style="font-family: inherit; font-weight:400;">
+      here
+      </a>
+      <![endif]-->
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+      </a>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+         <div id="page-wrapper">
+            <div id="page">
+               <header id="header" class="header" role="banner" aria-label="Site header">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                     <a class="navbar-brand" href="/" title="Convention on Biological Diversity">
+                     <img src="https://www.cbd.int/themes/custom/bootstrap_sass/images/CBD_logo_green.png" alt="Convention on Biological Diversity">
+                     </a>
+                     <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="line line-1"></span>
+                     <span class="line line-2"></span>
+                     <span class="line line-3"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-wrapper">
+                           <div class="nav-top">
+                              <ul class="navbar-nav mr-auto">
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Information">
+                                    Information
+                                    </a>
+                                    <div class="Information dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/contact" title="Contact us" class="dropdown-item">                    <span class="dropdown-item-label">Contact us</span>
+                                          </a>
+                                          <a href="/terms" title="Terms of Use" class="dropdown-item">                    <span class="dropdown-item-label">Terms of Use</span>
+                                          </a>
+                                          <a href="/privacy" title="Privacy Policy" class="dropdown-item">                    <span class="dropdown-item-label">Privacy Policy</span>
+                                          </a>
+                                          <a href="/credits" title="Credits" class="dropdown-item">                    <span class="dropdown-item-label">Credits</span>
+                                          </a>
+                                          <a href="/copyright" title="© CBD Secretariat" class="dropdown-item">                    <span class="dropdown-item-label">© CBD Secretariat</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li class="topmenu nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="About the Secretariat">
+                                    About the Secretariat
+                                    </a>
+                                    <div class="About the Secretariat dropdown-menu">
+                                       <div class="dropdown-item-container">
+                                          <a href="/staff" title="Staff" class="dropdown-item">                    <span class="dropdown-item-label">Staff</span>
+                                          </a>
+                                          <a href="/secretariat/executive-secretary/" title="Executive Secretary" class="dropdown-item">                    <span class="dropdown-item-label">Executive Secretary</span>
+                                          </a>
+                                          <a href="/museum" title="Museum of Nature and Culture" class="dropdown-item">                    <span class="dropdown-item-label">Museum of Nature and Culture</span>
+                                          </a>
+                                          <a href="/secretariat/initiatives.shtml" title="Initiatives" class="dropdown-item">                    <span class="dropdown-item-label">Initiatives</span>
+                                          </a>
+                                          <a href="/secretariat/documents.shtml" title="Secretariat Documents" class="dropdown-item">                    <span class="dropdown-item-label">Secretariat Documents</span>
+                                          </a>
+                                          <a href="/employment" title="Employment Opportunities" class="dropdown-item">                    <span class="dropdown-item-label">Employment Opportunities</span>
+                                          </a>
+                                          <a href="/secretariat/business" title="Doing Business with the CBD" class="dropdown-item">                    <span class="dropdown-item-label">Doing Business with the CBD</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+
+                              
+
+<table id="signInBarXXX" cellspacing="0" cellpadding="0">
+<tr>
+    
+        <td><a id="ctl24_BSignUp" href="javascript:__doPostBack(&#39;ctl24$BSignUp&#39;,&#39;&#39;)">Sign up for an account</a></td>
+        <td><span>&#0160;|&#0160;</span></td>
+        <td><a id="ctl24_BSignIn" href="javascript:__doPostBack(&#39;ctl24$BSignIn&#39;,&#39;&#39;)">Sign In</a></td>
+    
+
+    
+</tr>
+</table>
+
+
+
+
+<script>
+    window._account.onAuthorize(function () {
+    });
+</script>
+
+                              
+
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="ctl23_CCurrentLanguage">English</span> <span class="flag-icon"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
+            <div class="dropdown-item-container">
+
+                <a href="javascript:__doPostBack('ctl23$BLocale', 'ar');" id="ctl23_CLink" class="dropdown-item" hreflang="ar">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">العربية</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'es');" id="ctl23_CLink" class="dropdown-item" hreflang="es">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Espa&#241;ol</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'fr');" id="ctl23_CLink" class="dropdown-item" hreflang="fr">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Fran&#231;ais</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'ru');" id="ctl23_CLink" class="dropdown-item" hreflang="ru">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">Русский</div>
+                    </a><a href="javascript:__doPostBack('ctl23$BLocale', 'zh');" id="ctl23_CLink" class="dropdown-item" hreflang="zh">              
+                        <span class="flag-icon"></span>
+                        <div id="ctl23_CLanguage" class="language-option">中文</div>
+                    </a>
+            </div>
+        </div>
+    </div>
+
+
+
+                              <div id="block-topsearchblock" class="settings-tray-editable block block-cbd-utility block-top-search-block" data-drupal-settingstray="editable">
+                                 <form class="views-exposed-form" data-drupal-selector="views-exposed-form-search-search" action="/search" method="get" id="views-exposed-form-search-search" accept-charset="UTF-8">
+                                    <div class="form-row">
+                                       <div data-drupal-selector="edit-actions" class="form-actions" id="edit-actions"><input data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Submit" class="button js-form-submit form-submit btn btn-primary form-control"></div>
+                                       <fieldset class="js-form-item js-form-type-textfield form-type-textfield js-form-item-query form-item-query form-group">
+                                          <label for="edit-query">Search</label>
+                                          <input data-drupal-selector="edit-query" placeholder="Search" type="text" id="edit-query" name="q" value="" size="30" maxlength="128" class="form-text form-control">
+                                       </fieldset>
+                                    </div>
+                                 </form>
+                              </div>
+
+
+                           </div>
+                           <div class="nav-main">
+                              <ul class="navbar-nav main-nav">
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/convention/" role="button" title="Biodiversity Convention">
+                                    BIODIVERSITY CONVENTION
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="http://bch.cbd.int/protocol" role="button" title="Cartagena Protocol">
+                                    CARTAGENA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/abs" role="button" title="Nagoya Protocol">
+                                    NAGOYA PROTOCOL
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/countries" role="button" title="Countries">
+                                    COUNTRIES
+                                    </a>
+                                 </li>
+                                 <li class="nav-item  main-menu-item">
+                                    <a class="nav-link " href="/programmes/" role="button" title="Programmes">
+                                    PROGRAMMES
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </nav>
+               </header>
+               <a id="main-content" tabindex="-1"></a>    
+               <div class="page-content">
+                  <div data-drupal-messages-fallback="" class="hidden"></div>
+                     <form method="post" action="./targets/?aichi=19" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTM2MTcxNzAwMA9kFgICAw9kFgYCAg9kFgJmD2QWBAIBD2QWBAIBDxYEHgRocmVmBTcvdXNlci9zaWdudXAvP3JldHVybnVybD0lMmZuYnNhcCUyZnRhcmdldHMlM2ZhaWNoaSUzZDE5Hglpbm5lcmh0bWwFFlNpZ24gdXAgZm9yIGFuIGFjY291bnRkAgMPFgQfAAU3L3VzZXIvc2lnbmluLz9yZXR1cm51cmw9JTJmbmJzYXAlMmZ0YXJnZXRzJTNmYWljaGklM2QxOR8BBQdTaWduIEluZAIDDxYCHgdWaXNpYmxlaBYEAgEPFgQfAAU4L3VzZXIvcHJvZmlsZS8/cmV0dXJudXJsPSUyZm5ic2FwJTJmdGFyZ2V0cyUzZmFpY2hpJTNkMTkeBXRpdGxlBQpNeSBQcm9maWxlFgICAQ8WAh8BBQlBbm9ueW1vdXNkAgMPFgQfAAUOL3VzZXIvc2lnbm91dC8fAQUIU2lnbiBPdXRkAgQPZBYCZg9kFgQCAQ8WAh8BBQdFbmdsaXNoZAIIDxYCHwJoFgJmDxYCHghocmVmbGFuZwUCemhkAgYPZBYIAgEPZBYEZg9kFgJmD2QWAgIBDxYCHgVzdHlsZQVEYmFja2dyb3VuZC1pbWFnZTp1cmwoLy93d3cuY2JkLmludC9pbWFnZXMvYmFubmVycy9iYW5uZXItMC0zOTIzLmpwZykWAgIBDxYCHwEFOk5hdGlvbmFsIEJpb2RpdmVyc2l0eSBTdHJhdGVnaWVzIGFuZCBBY3Rpb24gUGxhbnMgKE5CU0FQcylkAgEPZBYEAgEPFgQfAAUUL25ic2FwL2RlZmF1bHQuc2h0bWwfAQU6TmF0aW9uYWwgQmlvZGl2ZXJzaXR5IFN0cmF0ZWdpZXMgYW5kIEFjdGlvbiBQbGFucyAoTkJTQVBzKWQCAw9kFgJmD2QWAmYPFgIeBWNsYXNzBRpuYXZiYXItbmF2IG1yLWF1dG8gbGV2ZWwtMBYCAhYPFgYfBgUIbmF2LWl0ZW0eB3BhZ2UtaWQFBDk4MTQfAmhkAgMPZBYCAgEPZBYCZg9kFgJmD2QWAgIBDxYEHwYFFWxpc3QtdW5zdHlsZWQgbGV2ZWwtMB8CaBYCAgEPFgYfBgUHbGV2ZWwtMB8HBQQ5ODE0HwJoZAIFDxYCHwYFL2NvbC0xMiBwbC1tZC00IHByLW1kLTQgcGwtbGctNSBwci1sZy01IG5vLWFzaWRlFgQCAw8WAh8BBRZTYXR1cmRheSAvLyAxMC4xNS4yMDIyZAIHD2QWAgIDD2QWAgICD2QWAgIDD2QWAgIDD2QWAmYPZBYEAgQPZBYGAgEPFgIfAQUPU2VhcmNoIENyaXRlcmlhZAILDxYCHwEFDlRpdGxlIGNvbnRhaW5zZAIPDxYCHgV2YWx1ZQUGU2VhcmNoZAIKD2QWAmYPZBYCZg8WAh8BBTJSZXN1bHRzIDxiPjE8L2I+IHRvIDxiPjUwPC9iPiBvZiAyMjkgcmVzdWx0cyBmb3VuZGQCBw8WAh8CaGRk2RwSoWPUhKgvaK85ZiPOkXIZ2QCblFb4rUFc4/ESuns=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81599AD" /></div>
+                        <article role="article" about="/article/asp_net_template" typeof="schema:Article" class="node node--type-article node--view-mode-full clearfix">
+                           <header>
+                              <span property="schema:name" content="ASP.Net Template Page" class="rdf-meta hidden"></span>
+                              
+
+<style>
+
+.portal-banner {
+    display: block;
+    min-height: 100px;
+    padding:2rem;
+    text-align:center;
+    background-size:cover;
+}
+
+.portal-banner > h1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 4px rgb(32 32 32 / 50%);
+}
+
+@media (max-width: 992px)  {
+
+    .portal-banner {
+		min-height:initial;
+        padding:1rem;
+        min-height: 75px;
+
+	}
+
+    .portal-banner > h1 {
+        font-size: 2rem;
+    }
+
+}
+
+@media (min-width: 993px)  {
+}
+
+</style>
+
+<section id="ctl17_ctl00_CPortalBanner" class="portal-banner" style="background-image:url(//www.cbd.int/images/banners/banner-0-3923.jpg)">
+    <h1 id="ctl17_ctl00_CCarouselTitle">National Biodiversity Strategies and Action Plans (NBSAPs)</h1>
+</section>
+
+
+
+<style>
+    .mobile-menu.navbar
+    {
+        border-bottom:solid 1px #c0c0c0;
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+    .mobile-menu.navbar > .navbar-brand
+    {
+        font-size: 24px;
+    }
+    
+
+    .mobile-menu.navbar .navbar-nav .nav-item
+    {
+        border-top:solid 1px #c0c0c0;
+    }
+
+    .mobile-menu.navbar .navbar-nav .nav-item.active
+    {
+        border-left:5px solid #009b48;
+    }
+
+    .mobile-menu.navbar .navbar-nav.level-1 > .nav-item > .nav-link { padding-left: 2.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-2 > .nav-item > .nav-link { padding-left: 3.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-3 > .nav-item > .nav-link { padding-left: 4.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-4 > .nav-item > .nav-link { padding-left: 5.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-5 > .nav-item > .nav-link { padding-left: 6.0rem; }
+    .mobile-menu.navbar .navbar-nav.level-6 > .nav-item > .nav-link { padding-left: 7.0rem; }
+    
+
+
+
+</style>
+
+<nav class="mobile-menu d-lg-none navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <a href="/nbsap/default.shtml" id="ctl18_CPortal" class="navbar-brand">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+
+  <!-- Collapse button -->
+
+    <button class="navbar-toggler hamburger-icon collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+      <ul id="ctl18_ctl00_CMenu" class="navbar-nav mr-auto level-0">
+    <li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="8402">
+        <a href="/nbsap/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Home</a>
+    </li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="4634"><a href="/nbsap/introduction.shtml" id="ctl18_ctl00_CMenuRowLink" class="nav-link">What is an NBSAP?</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="10487"><a href="/nbsap/post-cop15.shtml" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Post-COP15 NBSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7497"><a href="/nbsap/about/latest/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Post-COP10 NBSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="5895"><a href="/nbsap/search/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Find an NBSAP or National Report</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item  active" page-id="8113"><a href="/nbsap/targets/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Find National Targets</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="5891"><a href="/nbsap/guidance.shtml" id="ctl18_ctl00_CMenuRowLink" class="nav-link">COP Guidance on NBSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="4780"><a href="/nbsap/guidance-tools/guidelines.shtml" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Other Guidance on NBSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7932"><a href="/nbsap/guidance-tools/other/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Other useful resources</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="8311"><a href="http://www.nbsapforum.net" id="ctl18_ctl00_CMenuRowLink" class="nav-link">NBSAP Forum</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="5235"><a href="/nbsap/training/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">NBSAP Capacity Building Modules</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="4776"><a href="/nbsap/workshops/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">NBSAP Capacity Building Workshops</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="9638"><a href="/nbsap/vpr/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Voluntary Peer Review of NBSAP Revision and Implementation</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="10240"><a href="https://www.cbd.int/gbf/related/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Monitoring Framework for the Kunming-Montreal Global Biodiversity Framework</a><ul id="ctl18_ctl00_ctl00_CMenu" class="navbar-nav mr-auto level-1">
+    <li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="10534">
+        <a href="https://www.cbd.int/gbf/monitoring/ind/" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">Ad Hoc Technical Expert Group on Indicators</a>
+    </li><li id="ctl18_ctl00_ctl00_CMenuRow" class="nav-item" page-id="10533"><a href="/nbsap/monitoring/development.shtml" id="ctl18_ctl00_ctl00_CMenuRowLink" class="nav-link">Development (overview)</a></li>
+</ul>
+</li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="10679"><a href="https://www.cbd.int/convention/mechanisms/trial-phase.shtml" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Trial Phase of an Open-ended Forum on Implementation Review</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7534"><a href="/nbsap/notifications/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Notifications on NBSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7782"><a href="/sp/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Strategic Plan 2011-2020, including the Aichi Biodiversity Targets</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="4787"><a href="https://www.cbd.int/reports/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">National Reports</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7794"><a href="/nbsap/related-info/sbsap/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Subnational and Local BSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="7796"><a href="/nbsap/related-info/region-bsap/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Regional BSAPs</a></li><li id="ctl18_ctl00_CMenuRow" class="nav-item" page-id="9814"><a href="https://www.cbd.int/ecolex/" id="ctl18_ctl00_CMenuRowLink" class="nav-link">Biodiversity-related Law (ECOLEX)</a></li>
+</ul>
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+                           </header>
+                           <div class="node__content clearfix container-fluid">
+                              <section class="article-wrapper row">
+                                    <aside id="CMenuColumn" class="layout__region layout__region--left left-article-menu-container col-0 col-lg-3">
+                                        <div data-layout-content-preview-placeholder-label="&quot;Navigation block&quot; block" class="block block-cbd-article block-navigation-block">
+                                            <div class="content"><nav id="ctl27_TNav" class="sidebar-menu navbar-collapse" role="navigation">
+    
+<ul id="ctl27_TMenu" class="list-unstyled level-0">
+        
+    <li id="ctl27_TMenuItem" class="level-0" page-id="3923">
+            <a href="/nbsap" id="ctl27_TMenuItemLink">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="8402">
+            <a href="/nbsap" id="ctl27_TMenuItemLink">Home</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="4634">
+            <a href="/nbsap/introduction.shtml" id="ctl27_TMenuItemLink">What is an NBSAP?</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="10487">
+            <a href="/nbsap/post-cop15.shtml" id="ctl27_TMenuItemLink">Post-COP15 NBSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7497">
+            <a href="/nbsap/about/latest" id="ctl27_TMenuItemLink">Post-COP10 NBSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="5895">
+            <a href="/nbsap/search" id="ctl27_TMenuItemLink">Find an NBSAP or National Report</a>
+        </li><li id="ctl27_TMenuItem" class="level-0 selected" page-id="8113">
+            <a href="/nbsap/targets" id="ctl27_TMenuItemLink">Find National Targets</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="5891">
+            <a href="/nbsap/guidance.shtml" id="ctl27_TMenuItemLink">COP Guidance on NBSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="4780">
+            <a href="/nbsap/guidance-tools/guidelines.shtml" id="ctl27_TMenuItemLink">Other Guidance on NBSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7932">
+            <a href="/nbsap/guidance-tools/other" id="ctl27_TMenuItemLink">Other useful resources</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="8311">
+            <a href="http://www.nbsapforum.net" id="ctl27_TMenuItemLink">NBSAP Forum</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="5235">
+            <a href="/nbsap/training" id="ctl27_TMenuItemLink">NBSAP Capacity Building Modules</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="4776">
+            <a href="/nbsap/workshops" id="ctl27_TMenuItemLink">NBSAP Capacity Building Workshops</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="9638">
+            <a href="/nbsap/vpr" id="ctl27_TMenuItemLink">Voluntary Peer Review of NBSAP Revision and Implementation</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="10240">
+            <a href="https://www.cbd.int/gbf/related/" id="ctl27_TMenuItemLink">Monitoring Framework for the Kunming-Montreal Global Biodiversity Framework</a>
+        <ul id="ctl27_TMenu" class="list-unstyled level-1">
+        
+    <li id="ctl27_TMenuItem" class="level-1" page-id="10534">
+            <a href="https://www.cbd.int/gbf/monitoring/ind/" id="ctl27_TMenuItemLink">Ad Hoc Technical Expert Group on Indicators</a>
+        </li><li id="ctl27_TMenuItem" class="level-1" page-id="10533">
+            <a href="/nbsap/monitoring/development.shtml" id="ctl27_TMenuItemLink">Development (overview)</a>
+        </li></ul></li><li id="ctl27_TMenuItem" class="level-0" page-id="10679">
+            <a href="https://www.cbd.int/convention/mechanisms/trial-phase.shtml" id="ctl27_TMenuItemLink">Trial Phase of an Open-ended Forum on Implementation Review</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7534">
+            <a href="/nbsap/notifications" id="ctl27_TMenuItemLink">Notifications on NBSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7782">
+            <a href="/sp/" id="ctl27_TMenuItemLink">Strategic Plan 2011-2020, including the Aichi Biodiversity Targets</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="4787">
+            <a href="https://www.cbd.int/reports/" id="ctl27_TMenuItemLink">National Reports</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7794">
+            <a href="/nbsap/related-info/sbsap" id="ctl27_TMenuItemLink">Subnational and Local BSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="7796">
+            <a href="/nbsap/related-info/region-bsap" id="ctl27_TMenuItemLink">Regional BSAPs</a>
+        </li><li id="ctl27_TMenuItem" class="level-0" page-id="9814">
+            <a href="https://www.cbd.int/ecolex/" id="ctl27_TMenuItemLink">Biodiversity-related Law (ECOLEX)</a>
+        </li></ul></nav>
+
+
+<style>
+   .sidebar-menu {
+      color: white;
+      margin-left: 30px;
+    }
+
+	.sidebar-menu > ul.level-0:first-child > li:first-child > a
+    {
+        font-size:120%;
+    }
+	.sidebar-menu ul.active
+    {
+        overflow: hidden;
+        padding-left: 10px;
+    }
+    .sidebar-menu > ul > li
+    {
+        padding-left: 10px;
+    }
+    .sidebar-menu .level-0 > a {
+      color: white;
+      text-transform: uppercase;
+    }
+    .sidebar-menu .level-1 > a
+    {
+      color: white;
+    }
+    .sidebar-menu .level-2 > a
+    {
+      color: white;
+      margin-left: 20px;
+    }
+    .sidebar-menu li.active.level-0
+    {
+	  background: #137B4B;
+	  padding: 10px 30px;
+	  margin-right: 20px;
+      margin-left: -20px
+    }
+    .sidebar-menu li.active > ul.active
+    {
+	  background: #009B48;
+      margin-right: -50px;
+      margin-left: -15px;
+      padding-left: 15px;
+    }
+    .sidebar-menu li.selected > a 
+    {
+        color: #265a4f;
+        display: block;
+        background-color: white;
+    }
+    .sidebar-menu li.selected.level-0 > a 
+    {
+        margin-right: -50px;
+        margin-left: -15px;
+        padding-left: 15px;
+
+    }
+    .sidebar-menu li:not(.level-0) a::before
+    {
+        content: "\00a0 >\00a0";
+    }
+    .sidebar-menu ul.active
+    {
+        background: #009B48;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+    .sidebar-menu ul > p
+    {
+        padding-left: 10px;
+        margin-bottom: 0.2rem;
+        /*background: #009B48;*/
+    }
+    .sidebar-menu ul > p > a{
+      color: white;
+      font-size: 1.5em;
+    }
+
+    nav[id$=sidebar] ul li.no-levels {
+        background: #009B48;
+    }
+
+    nav.sidebar-menu > ul > li.selected {
+      background: white;
+    }
+</style>
+</div>
+                                        </div>
+                                    </aside>
+                                 <div class="article-section col-12 col-lg-9">
+                                    <div class="article-container container-fluid">
+                                        <div class="row">
+                                           <article id="CArticle" class="col-12 pl-md-4 pr-md-4 pl-lg-5 pr-lg-5 no-aside" class-x="col-lg-7 col-xl-8">
+                                    <div class="article-info pt-4 mb-2">
+                                       <div class="block block-cbd-article block-social-block">
+                                          <div class="content">
+                                             <div class="article-share-btns">
+                                                <a href="http://www.youtube.com/user/chmcbd" title="YouTube" target="_blank"><span class="grey-youtube-icon"></span></a>
+                                                <a href="http://www.facebook.com/UNBiodiversity" title="Facebook" target="_blank"><span class="grey-facebook-icon"></span></a>
+                                                <a href="https://twitter.com/unbiodiversity" title="Twitter" target="_blank"><span class="grey-twitter-icon"></span></a>
+                                                <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn" target="_blank"><span class="grey-linkedin-icon"></span></a>
+                                                <a href="https://instagram.com/unbiodiversity" title="Instagram" target="_blank"><span class="grey-instagram-icon"></span></a>
+                                                <a href="/rss" title="RSS" target="_blank"><span class="grey-feed-icon"></span></a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="block block-cbd-article block-byline-block">
+                                          <div class="content">
+                                            <div id="CBreadcrumbs" class="article-category text-uppercase"><span id="ctl22_CItems"><a href="/nbsap/default.shtml">NBSAPs</a><span> // Search National Targets</span></span>
+</div>
+                                            <div id="CLastUpdateDate" class="article-date">Saturday // 10.15.2022</div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                              <h1 class="cmsH1">Find National Targets</h1>
+<div id="ctl15_CSkin">
+    
+
+    
+    
+    <div id="ctl15_CSkin2">
+        <div class="hlite"><div class="alert alert-secondary">The national targets (or equivalent) presented in this database are taken from the <a href="https://www.cbd.int/nbsap/about/latest/default.shtml">NBSAPs received since COP-10</a>, fifth national reports or separate submissions and provide examples of national targets established by Parties that contribute to the implementation of the Aichi Biodiversity Targets. The mapping of national targets to the Aichi Biodiversity Targets <i>by the Party concerned</i> is indicated in the last column “Related Aichi Target(s)”. All Parties are encouraged to undertake this mapping exercise and to submit this information to SCBD for incorporation in this database.</div> <br />In addition, national biodiversity targets (primarily quantitative), and other relevant targets, for 2010 and beyond 2010, based on the information provided in the fourth national reports and other related information published by countries, are available <a href="/doc/nbsap/2010-and-post-2010-national-targets.pdf">here</a>. Although these targets have not been specifically established within the framework of the Aichi Biodiversity Targets, certain national targets can nevertheless be linked to the Aichi Biodiversity Targets and the 2020 implementation framework.</div>
+    </div>
+</div>
+<p></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="ctl16_CSkin">
+    
+
+    <div id="ctl16_CSkin2">
+        
+        <style id="ctl16_W13726_styCss" type="text/css">
+table.search            { table-layout: fixed; border-collapse: collapse; }
+table.search td         { vertical-align: top; white-space: nowrap; padding: 2px; }
+table.search td.label   { width: 200px; text-align: right; }
+table.search td.value   { width: 450px; text-align: left; }
+
+table.target            { table-layout: fixed; border-collapse: collapse; margin-top: 10px; }
+table.target td         { vertical-align: top; padding: 3px 5px; border-bottom: 1px dotted grey; }
+table.target td.sep     { background-color: #E0E0E0; font-weight: bold; }
+table.target td.sep a   { font-weight: bold; }
+table.target td.td1     { width: 150px;  text-align: center; }
+table.target td.td2     { width: 500px; text-align: left; }
+table.target td.td3     { width: 100px;  text-align: center; }
+</style>
+
+
+
+<div id="ctl16_W13726_divSearch">
+  <div id="ctl16_W13726_LSearchCriteria" class="dgSearch">Search Criteria</div>
+   <table class='search'>
+   <tr>
+   <td class='label'>
+    <span id="ctl16_W13726_txCountry_spanText">Country:</span>
+
+    </td>
+    <td class='value'>
+        <select name="ctl16$W13726$listCountry$ddlCountryList" id="ctl16_W13726_listCountry_ddlCountryList" style="width:400px;"><option selected="selected" value="">&lt;Any Country&gt;</option>
+<option value="af">Afghanistan</option>
+<option value="al">Albania</option>
+<option value="dz">Algeria</option>
+<option value="ad">Andorra</option>
+<option value="ao">Angola</option>
+<option value="ag">Antigua and Barbuda</option>
+<option value="ar">Argentina</option>
+<option value="am">Armenia</option>
+<option value="au">Australia</option>
+<option value="at">Austria</option>
+<option value="az">Azerbaijan</option>
+<option value="bh">Bahrain</option>
+<option value="bd">Bangladesh</option>
+<option value="bb">Barbados</option>
+<option value="by">Belarus</option>
+<option value="be">Belgium</option>
+<option value="bz">Belize</option>
+<option value="bj">Benin</option>
+<option value="bt">Bhutan</option>
+<option value="bo">Bolivia (Plurinational State of)</option>
+<option value="ba">Bosnia and Herzegovina</option>
+<option value="bw">Botswana</option>
+<option value="br">Brazil</option>
+<option value="bn">Brunei Darussalam</option>
+<option value="bi">Burundi</option>
+<option value="cv">Cabo Verde</option>
+<option value="kh">Cambodia</option>
+<option value="cm">Cameroon</option>
+<option value="ca">Canada</option>
+<option value="td">Chad</option>
+<option value="cl">Chile</option>
+<option value="cn">China</option>
+<option value="co">Colombia</option>
+<option value="km">Comoros</option>
+<option value="cg">Congo</option>
+<option value="ck">Cook Islands</option>
+<option value="cr">Costa Rica</option>
+<option value="ci">C&#244;te d&#39;Ivoire</option>
+<option value="hr">Croatia</option>
+<option value="cu">Cuba</option>
+<option value="cz">Czechia</option>
+<option value="kp">Democratic People&#39;s Republic of Korea</option>
+<option value="cd">Democratic Republic of the Congo</option>
+<option value="dk">Denmark</option>
+<option value="dj">Djibouti</option>
+<option value="dm">Dominica</option>
+<option value="do">Dominican Republic</option>
+<option value="ec">Ecuador</option>
+<option value="eg">Egypt</option>
+<option value="sv">El Salvador</option>
+<option value="gq">Equatorial Guinea</option>
+<option value="er">Eritrea</option>
+<option value="ee">Estonia</option>
+<option value="sz">Eswatini</option>
+<option value="et">Ethiopia</option>
+<option value="eur">European Union</option>
+<option value="fj">Fiji</option>
+<option value="fi">Finland</option>
+<option value="fr">France</option>
+<option value="gm">Gambia</option>
+<option value="ge">Georgia</option>
+<option value="de">Germany</option>
+<option value="gh">Ghana</option>
+<option value="gr">Greece</option>
+<option value="gd">Grenada</option>
+<option value="gt">Guatemala</option>
+<option value="gn">Guinea</option>
+<option value="gw">Guinea-Bissau</option>
+<option value="gy">Guyana</option>
+<option value="ht">Haiti</option>
+<option value="hn">Honduras</option>
+<option value="hu">Hungary</option>
+<option value="in">India</option>
+<option value="id">Indonesia</option>
+<option value="ir">Iran (Islamic Republic of)</option>
+<option value="iq">Iraq</option>
+<option value="ie">Ireland</option>
+<option value="it">Italy</option>
+<option value="jm">Jamaica</option>
+<option value="jp">Japan</option>
+<option value="jo">Jordan</option>
+<option value="ki">Kiribati</option>
+<option value="kw">Kuwait</option>
+<option value="kg">Kyrgyzstan</option>
+<option value="la">Lao People&#39;s Democratic Republic</option>
+<option value="lb">Lebanon</option>
+<option value="lr">Liberia</option>
+<option value="lt">Lithuania</option>
+<option value="lu">Luxembourg</option>
+<option value="mg">Madagascar</option>
+<option value="mw">Malawi</option>
+<option value="my">Malaysia</option>
+<option value="mv">Maldives</option>
+<option value="ml">Mali</option>
+<option value="mt">Malta</option>
+<option value="mr">Mauritania</option>
+<option value="mu">Mauritius</option>
+<option value="mx">Mexico</option>
+<option value="fm">Micronesia (Federated States of)</option>
+<option value="mc">Monaco</option>
+<option value="mn">Mongolia</option>
+<option value="me">Montenegro</option>
+<option value="ma">Morocco</option>
+<option value="mz">Mozambique</option>
+<option value="mm">Myanmar</option>
+<option value="na">Namibia</option>
+<option value="np">Nepal</option>
+<option value="nz">New Zealand</option>
+<option value="ni">Nicaragua</option>
+<option value="ne">Niger</option>
+<option value="ng">Nigeria</option>
+<option value="nu">Niue</option>
+<option value="mk">North Macedonia</option>
+<option value="no">Norway</option>
+<option value="om">Oman</option>
+<option value="pk">Pakistan</option>
+<option value="pw">Palau</option>
+<option value="pa">Panama</option>
+<option value="pg">Papua New Guinea</option>
+<option value="py">Paraguay</option>
+<option value="pe">Peru</option>
+<option value="ph">Philippines</option>
+<option value="pl">Poland</option>
+<option value="pt">Portugal</option>
+<option value="qa">Qatar</option>
+<option value="kr">Republic of Korea</option>
+<option value="md">Republic of Moldova</option>
+<option value="ro">Romania</option>
+<option value="ru">Russian Federation</option>
+<option value="rw">Rwanda</option>
+<option value="kn">Saint Kitts and Nevis</option>
+<option value="lc">Saint Lucia</option>
+<option value="vc">Saint Vincent and the Grenadines</option>
+<option value="ws">Samoa</option>
+<option value="sm">San Marino</option>
+<option value="st">Sao Tome and Principe</option>
+<option value="sn">Senegal</option>
+<option value="rs">Serbia</option>
+<option value="sc">Seychelles</option>
+<option value="sl">Sierra Leone</option>
+<option value="sg">Singapore</option>
+<option value="sk">Slovakia</option>
+<option value="si">Slovenia</option>
+<option value="sb">Solomon Islands</option>
+<option value="so">Somalia</option>
+<option value="za">South Africa</option>
+<option value="ss">South Sudan</option>
+<option value="es">Spain</option>
+<option value="lk">Sri Lanka</option>
+<option value="sd">Sudan</option>
+<option value="sr">Suriname</option>
+<option value="se">Sweden</option>
+<option value="ch">Switzerland</option>
+<option value="tj">Tajikistan</option>
+<option value="th">Thailand</option>
+<option value="tl">Timor-Leste</option>
+<option value="tg">Togo</option>
+<option value="tt">Trinidad and Tobago</option>
+<option value="tn">Tunisia</option>
+<option value="tr">Türkiye</option>
+<option value="tm">Turkmenistan</option>
+<option value="tv">Tuvalu</option>
+<option value="ug">Uganda</option>
+<option value="ua">Ukraine</option>
+<option value="ae">United Arab Emirates</option>
+<option value="gb">United Kingdom of Great Britain and Northern Ireland</option>
+<option value="tz">United Republic of Tanzania</option>
+<option value="uy">Uruguay</option>
+<option value="uz">Uzbekistan</option>
+<option value="vu">Vanuatu</option>
+<option value="ve">Venezuela (Bolivarian Republic of)</option>
+<option value="vn">Viet Nam</option>
+<option value="ye">Yemen</option>
+<option value="zm">Zambia</option>
+<option value="zw">Zimbabwe</option>
+</select>
+
+
+
+
+
+
+    </td>
+    </tr>
+    <tr>
+    <td class='label'>
+        <span id="ctl16_W13726_txAichiTarget_spanText">Related Strategic Goals/Aichi Targets:</span>
+
+    </td>
+    <td class='value'>                         
+        <select name="ctl16$W13726$listAichiTarget$ddlList" id="ctl16_W13726_listAichiTarget_ddlList" style="width:400px;"><option value="">&lt;Any&gt;</option>
+<option value="ABT-A">Strategic Goal A - Causes &amp; Mainstreaming</option>
+<option value="ABT-01">Target 1 - Public awareness</option>
+<option value="ABT-02">Target 2 - Socio-economic integration</option>
+<option value="ABT-03">Target 3 - Appropriate incentives</option>
+<option value="ABT-04">Target 4 - Sustainable production and consumption</option>
+<option value="ABT-B">Strategic Goal B - Pressures &amp; Sustainable Use</option>
+<option value="ABT-05">Target 5 - Reduced rate of habitat loss</option>
+<option value="ABT-06">Target 6 - Sustainable fishing</option>
+<option value="ABT-07">Target 7 - Sustainable agriculture &amp; forestry</option>
+<option value="ABT-08">Target 8 - Pollution reduction</option>
+<option value="ABT-09">Target 9 - Invasive alien species</option>
+<option value="ABT-10">Target 10 - Coral reefs</option>
+<option value="ABT-C">Strategic Goal C - Safeguarding</option>
+<option value="ABT-11">Target 11 - Conserved areas</option>
+<option value="ABT-12">Target 12 - Threatened species</option>
+<option value="ABT-13">Target 13 - Agricultural biodiversity</option>
+<option value="ABT-D">Strategic Goal D - Biodiversity Benefits</option>
+<option value="ABT-14">Target 14 - Ecosystem services</option>
+<option value="ABT-15">Target 15 - Ecosystem resilience</option>
+<option value="ABT-16">Target 16 - Access and benefit-sharing</option>
+<option value="ABT-E">Strategic Goal E - Implementation</option>
+<option value="ABT-17">Target 17 - NBSAP</option>
+<option value="ABT-18">Target 18 - Traditional knowledge</option>
+<option selected="selected" value="ABT-19">Target 19 - Knowledge, science &amp; technologies</option>
+<option value="ABT-20">Target 20 - Resources</option>
+</select>
+
+
+    </td>
+    </tr>
+    <tr>
+    <td id="ctl16_W13726_LTextTitleContains" class="label">Title contains</td>
+
+    <td class='value'>
+        <input name="ctl16$W13726$txtText" type="text" id="ctl16_W13726_txtText" style="width:300px" />
+    </td>
+    </tr>
+    <tr>
+    <td class='label'>
+        &nbsp;
+    </td>
+    <td class='value'>
+        <input onclick="__doPostBack('ctl16$W13726$BSearch','')" name="ctl16$W13726$BSearch" type="Button" id="ctl16_W13726_BSearch" value="Search" />
+    </td>
+    </tr>
+    </table>
+</div>
+<!-- UI=v1 <span id="ctl16_W13726_spanTest">Not OK</span> -->
+
+
+<table id="ctl16_W13726_tablePager1" width="100%" cellspacing="0">
+<tr class="dgPager">
+<td id="ctl16_W13726_tdResults" style="text-align:left;">Results <b>1</b> to <b>50</b> of 229 results found</td>
+<td id="ctl16_W13726_tdPager1" style="text-align:right;"><div><a style="white-space:nowrap;" disabled="disabled">&lt; Previous</a> | <a></a><b>1</b> <a href="javascript:__doPostBack('ctl16$W13726$ctl02$BPageLink','1');">2</a> <a href="javascript:__doPostBack('ctl16$W13726$ctl02$BPageLink','2');">3</a> <a href="javascript:__doPostBack('ctl16$W13726$ctl02$BPageLink','3');">4</a> <a href="javascript:__doPostBack('ctl16$W13726$ctl02$BPageLink','4');">5</a>  | <a href="javascript:__doPostBack('ctl16$W13726$ctl02$BPageLink','1');" style="white-space:nowrap;">Next &gt;</a><input name="ctl16$W13726$ctl02$CCurrentPage" type="hidden" id="ctl16_W13726_ctl02_CCurrentPage" /><input onclick="__doPostBack('ctl16$W13726$ctl02$BPageLink','')" name="ctl16$W13726$ctl02$BPageLink" type="button" id="ctl16_W13726_ctl02_BPageLink" style="display:none;" /></div></td>
+</tr>
+</table>
+
+
+<table  id="tableTargets" class='target' >
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1" style="font-weight:bold; background-color: #FFFFFF; text-align: center; vertical-align: bottom;">Reference</td>
+	<td id="ctl16_W13726_td2" class="td2" style="font-weight:bold; background-color: #FFFFFF; text-align: center; vertical-align: bottom;">Target</td>
+	<td id="ctl16_W13726_td3" class="td3" style="font-weight:bold; background-color: #FFFFFF; text-align: center; vertical-align: bottom;">Related Strategic Goals/Aichi Targets</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=dz'>Algeria</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif 7</td>
+	<td id="ctl16_W13726_td2" class="td2">D&#233;velopper la capitalisation, la recherche et la formation pour am&#233;liorer la connaissance sur la biodiversit&#233;, notamment en mati&#232;re d’inventaire de la biodiversit&#233; et des bonnes pratiques pour la conservation, la restauration et la valorisation de la biodiversit&#233;.</td>
+	<td id="ctl16_W13726_td3" class="td3">18, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif 9</td>
+	<td id="ctl16_W13726_td2" class="td2">Renforcer la prise de d&#233;cision en s’appuyant sur toutes les connaissances, notamment par le d&#233;veloppement et la mise &#224; disposition aupr&#232;s des d&#233;cideurs de syst&#232;mes de suivi-&#233;valuation, r&#233;seaux de surveillance, &#233;valuation d’impacts et analyses &#233;conomiques.</td>
+	<td id="ctl16_W13726_td3" class="td3"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif 16</td>
+	<td id="ctl16_W13726_td2" class="td2">Assurer le suivi et l’&#233;valuation des programmes et projets relatifs &#224; la biodiversit&#233;, notamment &#224; travers un syst&#232;me d’information g&#233;ographique partag&#233; pour la conservation, la restauration et la sauvegarde des &#233;cosyst&#232;mes qui fournissent des services &#233;cosyst&#233;miques essentiels.</td>
+	<td id="ctl16_W13726_td3" class="td3">14, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=ad'>Andorra</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objetivo 1</td>
+	<td id="ctl16_W13726_td2" class="td2">Inventariar y mejorar el conocimiento de la biodiversidad de Andorra y de su tendencia</td>
+	<td id="ctl16_W13726_td3" class="td3">5, 10, 12, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objetivo 4</td>
+	<td id="ctl16_W13726_td2" class="td2">Educaci&#243;n, comunicaci&#243;n y formaci&#243;n en materia de biodiversidad</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objetivo 5</td>
+	<td id="ctl16_W13726_td2" class="td2">Gobernanza y cooperaci&#243;n</td>
+	<td id="ctl16_W13726_td3" class="td3">2, 3, 4, 11, 17, 18, 19, 20</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=ag'>Antigua and Barbuda</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 19</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, implementation of a knowledge management system for biodiversity within Antigua and Barbuda.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=au'>Australia</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objective</td>
+	<td id="ctl16_W13726_td2" class="td2">Increase knowledge about nature to make better decisions</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objective</td>
+	<td id="ctl16_W13726_td2" class="td2">Share and use information effectively</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objective</td>
+	<td id="ctl16_W13726_td2" class="td2">Measure collective efforts to demonstrate our progress</td>
+	<td id="ctl16_W13726_td3" class="td3">2, 14, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=bh'>Bahrain</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 1</td>
+	<td id="ctl16_W13726_td2" class="td2">Protect an additional 10% of Bahrain&#39;s territorial maine and coastal areas</td>
+	<td id="ctl16_W13726_td3" class="td3">4, 5, 8, 9, 11, 12, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 2</td>
+	<td id="ctl16_W13726_td2" class="td2">To reduce the number of bycatch from fishing by 10%</td>
+	<td id="ctl16_W13726_td3" class="td3">4, 6, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 4</td>
+	<td id="ctl16_W13726_td2" class="td2">Protect no less than 25% of remaining unprotected coral reefs</td>
+	<td id="ctl16_W13726_td3" class="td3">2, 4, 10, 15, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 6</td>
+	<td id="ctl16_W13726_td2" class="td2">Rehabilitate mangroves by 25% and increase migratory bird species by 10%</td>
+	<td id="ctl16_W13726_td3" class="td3">3, 7, 8, 10, 12, 15, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 7</td>
+	<td id="ctl16_W13726_td2" class="td2">To protect at least 60% of remaining desert ecosystems and wildlife</td>
+	<td id="ctl16_W13726_td3" class="td3">12, 13, 16, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 9</td>
+	<td id="ctl16_W13726_td2" class="td2">Revive agricultural land systems including Palm groves by 25%</td>
+	<td id="ctl16_W13726_td3" class="td3">7, 9, 13, 15, 16, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 11</td>
+	<td id="ctl16_W13726_td2" class="td2">Protect no less than 100% of healthy freshwater spring</td>
+	<td id="ctl16_W13726_td3" class="td3">11, 14, 15, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=by'>Belarus</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 12</td>
+	<td id="ctl16_W13726_td2" class="td2">To improve the scientific knowledge about the modern state of biological diversity; to define trends and causes of the state dynamics of species and biotopes; to elaborate effective measures of sustainable use and monitoring of biological diversity and to create a platform for the exchange of information and
+knowledge.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=be'>Belgium</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Obj. 7</td>
+	<td id="ctl16_W13726_td2" class="td2">Improve and communicate scientific knowledge on biodiversity and ecosystem services (all operational
+objectives under obj.7)</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=bz'>Belize</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">TARGET E2</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, accurate and current data on Belize&#39;s natural resources and environmental services informs relevant national development decisions.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">TARGET E3</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, Belize&#39;s NBSAP is being implemented effectively, monitored and evaluated, and achieving desired outcomes.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=bt'>Bhutan</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target 19</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, science-based knowledge and technologies related to biodiversity are generated, improved, made accessible and applied, where appropriate.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=bw'>Botswana</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target 19</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2025, information and techniques relating to the biodiversity and its value in all Botswana’s ecoregions are efficiently documented, stored, shared, disseminated and used by all sectors and levels of society.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=br'>Brazil</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target 19</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, the science base and technologies necessary for enhancing knowledge on biodiversity, its values, functioning and trends, and the consequences of its loss, are improved and shared, and the sustainable use of biodiversity, as well as the generation of biodiversity-based technology and innovation are supported, duly transferred and applied. By 2017, the complete compilation of existing records on aquatic and terrestrial fauna, flora and microbiota is finalized and made available through permanent and open access databases, with specificities safeguarded, with a view to identify knowledge gaps related to biomes and taxonomic groups.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=cv'>Cabo Verde</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target 14</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2025, scientific and empirical knowledge will contribute to the conservation of Biodiversity in Cabo Verde.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=kh'>Cambodia</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 19</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, an interoperable and user-friendly information system containing data and information on biodiversity (including its associated ecosystem services) values, functions, status and trends, and threats, and the consequences of its loss has been established and maintained in the responsible institutions for wide sharing among stakeholders;</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=cm'>Cameroon</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 2</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, significant increase in the contribution of scientifically-based information into biodiversity decision making processes and management interventions.</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 19</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, the capacity of key actors should be built and gender mainstreaming carried out for the
+effective implementation of the biodiversity targets.</td>
+	<td id="ctl16_W13726_td3" class="td3">2, 14, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=ca'>Canada</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 5</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, the ability of Canadian ecological systems to adapt to climate change is better understood, and priority adaptation measures are underway.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 14</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, the science base for biodiversity is enhanced and knowledge of biodiversity is better integrated and more accessible.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Target 16</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, Canada has a comprehensive inventory of protected spaces that includes private conservation areas.</td>
+	<td id="ctl16_W13726_td3" class="td3">11, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=cl'>Chile</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Meta nacional</td>
+	<td id="ctl16_W13726_td2" class="td2">Al 2030 el 60% de la poblaci&#243;n nacional estar&#225; consciente del valor de la biodiversidad nacional y los problemas ecol&#243;gicos y ambientales que genera su p&#233;rdida, y el deterioro de sus servicios ecosist&#233;micos para los sistemas naturales, para la calidad de vida de las personas y para el desarrollo sustentable del pa&#237;s.</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 18, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=cn'>China</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target</td>
+	<td id="ctl16_W13726_td2" class="td2">By 2020, the percentage of investment in research and development activities will exceed 2.5% of national GDP, with contributions from science and technology to GDP reaching 60%, and the number of annual patent grants to the Chinese individuals and groups and of citations of academic papers by international journals ranking top five in the world.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target</td>
+	<td id="ctl16_W13726_td2" class="td2">Environmental education will be undertaken to popularize environmental knowledge and increase public environmental awareness.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=km'>Comoros</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif A2</td>
+	<td id="ctl16_W13726_td2" class="td2">D’ici &#224; 2030, d&#233;velopper l’information scientifique pour favoriser la prise en compte de la gestion durable de la biodiversit&#233; dans la planification &#233;conommique des secteurs cl&#233;s de production.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=ci'>C&#244;te d&#39;Ivoire</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif 7</td>
+	<td id="ctl16_W13726_td2" class="td2">D’ici &#224; 2020, l’&#233;tat de la diversit&#233; g&#233;n&#233;tique est connu et des mesures de conservation durable sont prises.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif 18</td>
+	<td id="ctl16_W13726_td2" class="td2">D’ici &#224; 2020, les actions de communication, de sensibilisation et d’&#233;ducation en faveur de la diversit&#233; biologique atteignent 70 % des cibles.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Objectif 19</td>
+	<td id="ctl16_W13726_td2" class="td2">D’ici &#224; 2020 des &#233;quipes op&#233;rationnelles de chercheurs sont mobilis&#233;es pour la diversit&#233; biologique.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=hr'>Croatia</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 1.1</td>
+	<td id="ctl16_W13726_td2" class="td2">Ensure a clear, harmonized and feasible legislative and institutional framework for the implementation of nature conservation mechanisms</td>
+	<td id="ctl16_W13726_td3" class="td3">4, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 1.2</td>
+	<td id="ctl16_W13726_td2" class="td2">Design and establish a representative and functional network of areas significant for nature conservation</td>
+	<td id="ctl16_W13726_td3" class="td3">5, 11, 12, 13, 15, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 2.3</td>
+	<td id="ctl16_W13726_td2" class="td2">Ensure sustainable use of native wild species where their use is not regulated by special regulations</td>
+	<td id="ctl16_W13726_td3" class="td3">4, 6, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 2.6</td>
+	<td id="ctl16_W13726_td2" class="td2">Establish management system for alien species, and implement measures for the prevention of introduction, spread and control of Invasive Alien Species</td>
+	<td id="ctl16_W13726_td3" class="td3">4, 9, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 4.1</td>
+	<td id="ctl16_W13726_td2" class="td2">Increase the knowledge on the state of nature</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 12, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 4.2</td>
+	<td id="ctl16_W13726_td2" class="td2">Increase the availability of data on the state of nature</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 5.1</td>
+	<td id="ctl16_W13726_td2" class="td2">Improve understanding and representation of nature-related topics and nature protection in the educational system and strengthen cooperation with the education sector</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Specific objective 5.2</td>
+	<td id="ctl16_W13726_td2" class="td2">Promote and implement informal education on nature protection</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=cu'>Cuba</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Meta 18</td>
+	<td id="ctl16_W13726_td2" class="td2">Se ha avanzado, compartido, transferido y aplicado el conocimiento, la base cient&#237;fica y las tecnolog&#237;as en apoyo al PNDB.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=cz'>Czechia</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">National Target 4.1</td>
+	<td id="ctl16_W13726_td2" class="td2">Safeguarding of relevant and present information</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=dk'>Denmark</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Initiative 1</td>
+	<td id="ctl16_W13726_td2" class="td2">A new biodiversity map will ensure better nature conservation planning</td>
+	<td id="ctl16_W13726_td3" class="td3">1, 5, 11, 12, 15, 19</td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1 sep"></td>
+	<td id="ctl16_W13726_td2" class="td2 sep"><a href='/countries/targets/?country=ec'>Ecuador</a></td>
+	<td id="ctl16_W13726_td3" class="td3 sep"></td>
+</tr>
+<tr id="ctl16_W13726_trTarget">
+	<td id="ctl16_W13726_td1" class="td1">Meta 19.1</td>
+	<td id="ctl16_W13726_td2" class="td2">Para el 2021, el Ecuador implementa la agenda nacional de investigaciones, con el involucramiento de la academia, sector p&#250;blico, privado, pueblos y nacionalidades.</td>
+	<td id="ctl16_W13726_td3" class="td3">19</td>
+</tr>
+
+</table>
+
+
+<table id="ctl16_W13726_tablePager2" cellspacing="0" width="100%">
+<tr class="dgPager">
+<td id="ctl16_W13726_tdPager2" style="text-align:right;"><div><a style="white-space:nowrap;" disabled="disabled">&lt; Previous</a> | <a></a><b>1</b> <a href="javascript:__doPostBack('ctl16$W13726$ctl03$BPageLink','1');">2</a> <a href="javascript:__doPostBack('ctl16$W13726$ctl03$BPageLink','2');">3</a> <a href="javascript:__doPostBack('ctl16$W13726$ctl03$BPageLink','3');">4</a> <a href="javascript:__doPostBack('ctl16$W13726$ctl03$BPageLink','4');">5</a>  | <a href="javascript:__doPostBack('ctl16$W13726$ctl03$BPageLink','1');" style="white-space:nowrap;">Next &gt;</a><input name="ctl16$W13726$ctl03$CCurrentPage" type="hidden" id="ctl16_W13726_ctl03_CCurrentPage" /><input onclick="__doPostBack('ctl16$W13726$ctl03$BPageLink','')" name="ctl16$W13726$ctl03$BPageLink" type="button" id="ctl16_W13726_ctl03_BPageLink" style="display:none;" /></div></td>
+</tr>
+</table>
+
+
+    </div>
+</div>
+<p></p>
+
+                                           </article>
+                                           
+                                         </div>
+                                    </div>
+                                 </div>
+                              </section>
+                              <div class="layout layout--onecol">
+                                 <div class="layout__region layout__region--content">
+                                    <div class="block block-cbd-utility block-photo-swipe-block">
+                                       <!-- Root element of PhotoSwipe. Must have class pswp. -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </article>
+                     
+<!-- Dynamic Menu -->
+<table id="DynamicMenu"
+    style="display:none;position:absolute;border:1px solid #b0b0b0;background-color:#e0e0e0;z-index:99">
+<tr>
+<td valign="top">
+    <table id="DynamicMenu1" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td><td valign="top">
+    <table id="DynamicMenu2" style="width:200px" class='menuDyn'>
+    <tr><td></td></tr>
+    </table>
+</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">$(document).ready(function(){});</script></form>
+                     
+
+<div id="__loading" class="cmsDialog" style="display: none; z-index: 200">
+    <table>
+        <tr>
+            <td>
+                <img id="__loadingIcon" src="/cms/resources/icons/loading-32.gif" style="display: none"></td>
+        </tr>
+    </table>
+</div>
+
+<form id="__axstateform" action="" style="display: none;">
+    <input type="text" id="__axstate" value="[]" style="display: none;" />
+</form>
+
+                     
+                  <a href="#" class="go-to-top-btn"><span class="hidden">To Top</span></a>
+               </div>
+               <footer class="footer">
+                  <div id="block-followblock" class="follow-us settings-tray-editable block block-cbd-utility block-follow-block" data-drupal-settingstray="editable">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-12 col-lg-3 d-flex align-items-center">
+                              <div class="h2 text-white text-uppercase m-0">Follow us</div>
+                           </div>
+                           <div class="col-12 col-lg-9">
+                              <div class="nav flex-follow-us">
+                                 <a href="http://www.youtube.com/user/chmcbd" title="YouTube">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_youtube_neg.svg" alt="YouTube" loading="lazy">
+                                 </a>
+                                 <a href="http://www.facebook.com/UNBiodiversity" title="Facebook">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_facebook_neg.svg" alt="Facebook" loading="lazy">
+                                 </a>
+                                 <a href="https://twitter.com/unbiodiversity" title="Twitter">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_twitter_neg.svg" alt="Twitter" loading="lazy">
+                                 </a>
+                                 <a href="https://www.linkedin.com/company/unbiodiversity" title="LinkedIn">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_linkedin_neg.svg" alt="LinkedIn" loading="lazy">
+                                 </a>
+                                 <a href="https://instagram.com/unbiodiversity" title="Instagram">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_instagram_neg.svg" alt="Instagram" loading="lazy">
+                                 </a>
+                                 <a href="/rss" title="RSS">
+                                 <img src="/themes/custom/bootstrap_sass/images/someround_feed_neg.svg" alt="RSS" loading="lazy">
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="cbd-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div id="block-quicklinksblock" class="footer-block footer-margin col-12 col-lg-5 settings-tray-editable block block-cbd-utility block-quick-links-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">quick links</h5>
+                              <hr>
+                              <div class="footer-links two-column">
+                                 <a href="https://absch.cbd.int/" title="Access and Benefit-Sharing Clearing-House">Access and Benefit-Sharing Clearing-House</a>
+                                 <a href="https://bch.cbd.int/" title="Biosafety Clearing-House">Biosafety Clearing-House</a>
+                                 <a href="https://chm.cbd.int/" title="Clearing-House Mechanism">Clearing-House Mechanism</a>
+                                 <a href="/contributions" title="Contributions">Contributions</a>
+                                 <a href="https://www.cbd.int/countries/" title="Country Profiles">Country Profiles</a>
+                                 <a href="/meetings/" title="Meetings and Events">Meetings and Events</a>
+                                 <a href="/nbsap" title="National Biodiversity Strategies and Action Plans (NBSAPs)">National Biodiversity Strategies and Action Plans (NBSAPs)</a>
+                                 <a href="/nfp" title="National Focal Points">National Focal Points</a>
+                                 <a href="/reports" title="National Reports">National Reports</a>
+                                 <a href="/news/" title="News Headlines">News Headlines</a>
+                                 <a href="/notifications/" title="Notifications">Notifications</a>
+                                 <a href="/parties" title="Parties">Parties</a>
+                                 <a href="/publications" title="Publications">Publications</a>
+                              </div>
+                           </div>
+                           <div id="block-topicsfooterblock" class="footer-block footer-margin col-12 col-lg-3 settings-tray-editable block block-cbd-utility block-topics-footer-block" data-drupal-settingstray="editable">
+                              <h5 class="h4 text-uppercase">Topics</h5>
+                              <hr>
+                              <div class="footer-links">
+                                 <a href="/topic/business-women-youth-and-other-stakeholders" title="Business, Women, Youth and other Stakeholders">Business, Women, Youth and other Stakeholders</a>
+                                 <a href="/topic/climate-change" title="Climate Change">Climate Change</a>
+                                 <a href="/topic/poverty-reduction" title="Poverty Reduction">Poverty Reduction</a>
+                                 <a href="/topic/food" title="Food">Food</a>
+                                 <a href="/topic/water" title="Water">Water</a>
+                                 <a href="/topic/indigenous-peoples-and-local-communities" title="Indigenous Peoples and Local Communities">Indigenous Peoples and Local Communities</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">Information</h5>
+                              <hr>
+                              <div class="flex-one-column">
+                                 <a href="/contact" title="Contact us">Contact us</a>
+                                 <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                 <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                 <a href="/credits" title="Credits">Credits</a>
+                                 <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                              </div>
+                           </div>
+                           <div class="desktop-only footer-block footer-margin col-6 col-lg-2">
+                              <h5 class="h4 text-uppercase">A part of</h5>
+                              <hr>
+                              <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                              <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                           </div>
+                           <div class="mobile-only footer-block footer-margin col-12">
+                              <div class="row">
+                                 <div class="col-6">
+                                    <div class="footer-headline">INFORMATION</div>
+                                 </div>
+                                 <div class="col-6">
+                                    <div class="footer-headline">A PART OF</div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class=" col-12">
+                                    <hr>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="footer-block col-6 ">
+                                    <div class="flex-one-column">
+                                       <a href="/contact" title="Contact us">Contact us</a>
+                                       <a href="/terms" title="Terms of Use">Terms of Use</a>
+                                       <a href="/privacy" title="Privacy Policy">Privacy Policy</a>
+                                       <a href="/credits" title="Credits">Credits</a>
+                                       <a href="/copyright" title="© CBD Secretariat">© CBD Secretariat</a>
+                                    </div>
+                                 </div>
+                                 <div class="footer-block col-6 ">
+                                    <img class="uno-brand" src="/themes/custom/bootstrap_sass/images/UN_brand_neg.svg" alt="UN logo" loading="lazy">
+                                    <img class="uno-environment" src="/themes/custom/bootstrap_sass/images/UNEP_2019_brand_white.svg" alt="UN Environment Programme logo" loading="lazy">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+ 
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/769","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"lazy":{"lazysizes":{"lazyClass":"lazyload","loadedClass":"lazyloaded","loadingClass":"lazyloading","preloadClass":"lazypreload","errorClass":"lazyerror","autosizesClass":"lazyautosizes","srcAttr":"data-src","srcsetAttr":"data-srcset","sizesAttr":"data-sizes","minSize":40,"customMedia":[],"init":true,"expFactor":1.5,"hFac":0.8,"loadMode":2,"loadHidden":true,"ricTimeout":0,"throttleDelay":125,"plugins":[]},"placeholderSrc":"","preferNative":false,"minified":true,"libraryPath":"\/libraries\/lazysizes"},"ajaxTrustedUrl":{"\/search":true},"user":{"uid":0,"permissionsHash":"18916e772d3fa700ca68b4fd28a2786232dfeedd79b6b05e5d78a3a9a2b309c3"}}</script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-1.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-2.js"></script>
+    <script src="/Styles/UI/Templates/phoenix/resources/js-drupal-3.js"></script>
+  </body>
+</html>
+ contentType 9 text/html url 47 https://www.cbd.int:443/nbsap/targets/?aichi=19 responseCode 3 200 

@@ -1,0 +1,142 @@
+xkfsgccokqlccszmhgmmhotqzqrslqsossnijeii length 4 4885 page 4885 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="3D Warehouse is a website of searchable, pre-made 3D models that works seamlessly with SketchUp."
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <!-- TODO: figure out how to programatically load these otherwise we're getting errors -->
+    <!-- <link rel="preload" href="/images/hero-img.webp" as="image" />
+    <link rel="preload" href="/images/hero-img-dark.webp" as="image" /> -->
+    <link rel="preload" href="/assets/open-sans-300.ef1afe72.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/open-sans-regular.03e25445.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/open-sans-italic.89be507c.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/open-sans-600.51f0bacf.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/assets/open-sans-700-normal-228e563b3.d9a97b67.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/assets/open-sans-700-italic-7b3897ce8.323013de.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Warehouse</title>
+    <style>
+      @keyframes app-loading-spinner {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <style>
+      .hide-spinner {
+        display: none;
+      }
+
+      .show-spinner {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .animation {
+        height: 33vh;
+        width: 28.6vh;
+        animation: app-loading-spinner 6s linear infinite;
+      }
+    </style>
+    <script>
+      if (window.location.pathname === '/index.html') {
+        // The client may be trying to reach /index.html, which doesn't exist.  Keep any query params intact.
+        let redirect = window.location.href.replace('/index.html', '/');
+        window.location.href = redirect;
+      }
+    </script>
+    <script>
+      const LAST_DEPRECATED_VERSION = 21;
+      if (isSketchupClient(navigator.userAgent)) {
+        const clientVersion = parseSketchUpVersion(navigator.userAgent);
+        if (clientVersion.major <= LAST_DEPRECATED_VERSION) {
+          const redirect = window.location.origin + '/deprecated-client';
+          window.location.href = redirect;
+        }
+      }
+
+      function isSketchupClient(userAgent) {
+        let agent = userAgent.toLowerCase();
+        return agent.indexOf('sketchup') >= 0 && !(agent.indexOf('mxr mobile sketchup') >= 0);
+      }
+
+      function parseSketchUpVersion(userAgent) {
+        let version = {
+          major: undefined,
+          minor: undefined,
+        };
+
+        // Before 2017, the version string looked like 'SketchUp/14.0'. 2017 and
+        // later use 'SketchUp Pro/17.0' on Windows. We added a 'Pro' or 'Make'
+        // string after SketchUp. NOTE: The Mac might use the old or the new
+        // style.
+        let pattern = /SketchUp (Pro|Make)\/\d+\.\d+/i;
+        let matches = userAgent.match(pattern);
+
+        if (!matches || matches.length === 0) {
+          pattern = /SketchUp\/\d+\.\d+/i;
+          matches = userAgent.match(pattern);
+        }
+        if (matches && matches.length > 0) {
+          const suString = matches[0];
+          const versionString = suString.substring(suString.indexOf('/') + 1);
+          const versionParts = versionString.split('.');
+          let value = parseInt(versionParts[0], 10);
+          version.major = isNaN(value) ? undefined : value;
+          value = parseInt(versionParts[1], 10);
+          version.minor = isNaN(value) ? undefined : value;
+        }
+
+        return version;
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index.e4bea026.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/group-home.5c029510.js">
+    <link rel="stylesheet" href="/assets/group-home.b5785897.css">
+    <link rel="stylesheet" href="/assets/index.ab16e9aa.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Everything inside #app is replaced when Vue loads.
+           Logo size is 100x115.42, so height is 1.1542xwidth.
+       -->
+      <div id="spinner" class="hide-spinner">
+        <div class="animation">
+          <img src="/images/3dw-logo.svg" />
+        </div>
+      </div>
+    </div>
+
+    <noscript>3DWarehouse requires Javascript to be enabled.</noscript>
+  </body>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+      document.getElementById('spinner').className = 'show-spinner';
+    });
+  </script>
+
+  
+</html>
+ contentType 9 text/html url 99 https://3dwarehouse.sketchup.com:443/model/5ffeb4c3bfa689a228a2fdd5758eb002/Parking-Lot-Garden-Dome responseCode 3 200 
