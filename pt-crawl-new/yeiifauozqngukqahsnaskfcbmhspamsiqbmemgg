@@ -1,0 +1,52 @@
+yeiifauozqngukqahsnaskfcbmhspamsiqbmemgg length 4 3296 page 3296 <!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      function getBaseHref() {
+        const configPath = '/api/GetConfig';
+        const origin = document.location.origin;
+        var pathSegments = document.location.pathname.split('/');
+
+        var basePath = '';
+        var partialBasePathArray = [];
+        var baseHref = '';
+        window['_dynamic_secure_href'] = '';
+        for (var i = 0; i < pathSegments.length; i++) {
+          var segment = pathSegments[i];
+          if (segment.length > 0) {
+            basePath += '/' + segment;
+          }
+          var fullPath = origin + basePath + configPath;
+          try {
+            var req = new XMLHttpRequest();
+            req.open('GET', fullPath, /* async: */ false); //calling synchronously because order matters here.
+            req.send();
+            var config = JSON.parse(req.responseText);
+            if (config && config.opCo) {
+              baseHref = basePath;
+              console.log(
+                'found config for ' + basePath + ' for opco ' + config.opCo
+              );
+              if (config.baseUrl) {
+                window['_dynamic_secure_href'] = config.baseUrl;
+              }
+            }
+          } catch (ex) {
+            // Errors are expected here, as long as at least one GetConfig is found in the path structure. This isn't a failure.
+          }
+        }
+        return baseHref;
+      }
+
+      var appBaseHref = getBaseHref() + '/';
+      console.log("setting base href to '" + appBaseHref + "'");
+      document.write("<base href='" + appBaseHref + "' />");
+      window['_dynamic_app_base_href'] = appBaseHref;
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>:root{--color-brand-phi:#170d67;--color-brand-ace:#170d67;--color-brand-dpl:#170d67;--color-brand-pepco:#170d67;--color-brand-bge:#170d67;--color-brand-comed:#170d67;--color-brand-peco:#170d67}:root{--base-unit:16px;--link-line-bottom:2px;--default-fill-color:none;--default-stroke-color:#0f1a2a;--default-hover-fill-color:none;--default-hover-stroke-color:#0059a4}html{box-sizing:border-box;font-size:var(--base-unit)}*,*:before,*:after{box-sizing:border-box}body{font-family:Open Sans Regular;font-size:1rem;line-height:1.5rem;--link-line-bottom:2px;--tooltip-position:0rem;color:#5a626d;margin:0}@font-face{font-family:Open Sans Regular;font-style:normal;font-weight:400;src:local("Open Sans Regular"),url(open-sans-v18-latin-regular.c40573de9ca1be01.woff2) format("woff2"),url(open-sans-v18-latin-regular.6480002549e9d554.woff) format("woff"),url(open-sans-v18-latin-regular.0050e88e3b3ddb14.ttf) format("truetype"),url(open-sans-v18-latin-regular.4ca995bccdb2be80.svg#OpenSans) format("svg");font-display:swap}</style><link rel="stylesheet" href="styles.99896e5be30f0204.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.99896e5be30f0204.css"></noscript></head>
+  <body>
+    <app-root></app-root>
+  <script src="runtime.c40eb925309d5986.js" type="module"></script><script src="polyfills.a361d2007c6b8e0b.js" type="module"></script><script src="main.525b67ba39985885.js" type="module"></script>
+
+</body></html> contentType 9 text/html url 123 https://www.peco.com:443/MyAccount/MyProfile/Pages/PECOAlerts.aspx?_ga=2.27896124.182920083.1639406196-755354142.1630076453 responseCode 3 200 

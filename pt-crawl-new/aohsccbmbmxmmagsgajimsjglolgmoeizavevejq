@@ -1,0 +1,178 @@
+aohsccbmbmxmmagsgajimsjglolgmoeizavevejq length 5 10336 page 10336 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
+This manual is for GNU tar (version
+1.35, 22 August 2023), which creates and extracts files
+from archives.
+
+Copyright (C) 1992, 1994-1997, 1999-2001, 2003-2017,
+2021-2023 Free Software Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "GNU General Public License", with the
+Front-Cover Texts being "A GNU Manual", and with the Back-Cover Texts
+as in (a) below.  A copy of the license is included in the section
+entitled "GNU Free Documentation License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to
+copy and modify this GNU manual."
+
+ -->
+<!-- Created on August 23, 2023 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>GNU tar 1.35: 7 Date input formats</title>
+
+<meta name="description" content="GNU tar 1.35: 7 Date input formats">
+<meta name="keywords" content="GNU tar 1.35: 7 Date input formats">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="/software/gnulib/manual.css">
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Date-input-formats"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Choosing.html#Choosing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="absolute.html#absolute" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="General-date-syntax.html#General-date-syntax" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Formats.html#Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="tar_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index-of-Command-Line-Options.html#Index-of-Command-Line-Options" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="tar_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<hr>
+<a name="Date-input-formats-1"></a>
+<h1 class="chapter">7 Date input formats</h1>
+
+<a name="index-date-input-formats"></a>
+<a name="index-parse_005fdatetime"></a>
+
+<p>First, a quote:
+</p>
+<blockquote>
+<p>Our units of temporal measurement, from seconds on up to months, are so
+complicated, asymmetrical and disjunctive so as to make coherent mental
+reckoning in time all but impossible.  Indeed, had some tyrannical god
+contrived to enslave our minds to time, to make it all but impossible
+for us to escape subjection to sodden routines and unpleasant surprises,
+he could hardly have done better than handing down our present system.
+It is like a set of trapezoidal building blocks, with no vertical or
+horizontal surfaces, like a language in which the simplest thought
+demands ornate constructions, useless particles and lengthy
+circumlocutions.  Unlike the more successful patterns of language and
+science, which enable us to face experience boldly or at least
+level-headedly, our system of temporal calculation silently and
+persistently encourages our terror of time.
+</p>
+<p>&hellip;  It is as though architects had to measure length in feet, width
+in meters and height in ells; as though basic instruction manuals
+demanded a knowledge of five different languages.  It is no wonder then
+that we often look into our own immediate past or future, last Tuesday
+or a week from Sunday, with feelings of helpless confusion.  &hellip;
+</p>
+<p>&mdash;Robert Grudin, <cite>Time and the Art of Living</cite>.
+</p></blockquote>
+
+<p>This section describes the textual date representations that GNU
+programs accept.  These are the strings you, as a user, can supply as
+arguments to the various programs.  The C interface (via the
+<code>parse_datetime</code> function) is not described here.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="General-date-syntax.html#General-date-syntax">7.1 General date syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          Common rules
+</td></tr>
+<tr><td align="left" valign="top"><a href="Calendar-date-items.html#Calendar-date-items">7.2 Calendar date items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">          &lsquo;<samp>14 Nov 2022</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Time-of-day-items.html#Time-of-day-items">7.3 Time of day items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &lsquo;<samp>9:02pm</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Time-zone-items.html#Time-zone-items">7.4 Time zone items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">              &lsquo;<samp>UTC</samp>&rsquo;, &lsquo;<samp>-0700</samp>&rsquo;, &lsquo;<samp>+0900</samp>&rsquo;, &hellip;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Combined-date-and-time-of-day-items.html#Combined-date-and-time-of-day-items">7.5 Combined date and time of day items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> &lsquo;<samp>2022-11-14T21:02:42,000000-0500</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Day-of-week-items.html#Day-of-week-items">7.6 Day of week items</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            &lsquo;<samp>Monday</samp>&rsquo; and others
+</td></tr>
+<tr><td align="left" valign="top"><a href="Relative-items-in-date-strings.html#Relative-items-in-date-strings">7.7 Relative items in date strings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> &lsquo;<samp>next tuesday, 2 years ago</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Pure-numbers-in-date-strings.html#Pure-numbers-in-date-strings">7.8 Pure numbers in date strings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"> &lsquo;<samp>20221114</samp>&rsquo;, &lsquo;<samp>2102</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Seconds-since-the-Epoch.html#Seconds-since-the-Epoch">7.9 Seconds since the Epoch</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">      &lsquo;<samp>@1668477762</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Specifying-time-zone-rules.html#Specifying-time-zone-rules">7.10 Specifying time zone rules</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">   &lsquo;<samp>TZ=&quot;America/New_York&quot;</samp>&rsquo;, &lsquo;<samp>TZ=&quot;UTC0&quot;</samp>&rsquo;
+</td></tr>
+<tr><td align="left" valign="top"><a href="Authors-of-parse_005fdatetime.html#Authors-of-parse_005fdatetime">7.11 Authors of <code>parse_datetime</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">    Bellovin, Eggert, Salz, Berets, et al.
+</td></tr>
+</table>
+
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="Choosing.html#Choosing" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="absolute.html#absolute" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="General-date-syntax.html#General-date-syntax" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="Formats.html#Formats" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="index.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="tar_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="Index-of-Command-Line-Options.html#Index-of-Command-Line-Options" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="tar_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>August 23, 2023</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
+ contentType 9 text/html url 75 http://www.gnu.org:80/software/tar/manual/html_node/Date-input-formats.html responseCode 3 200 

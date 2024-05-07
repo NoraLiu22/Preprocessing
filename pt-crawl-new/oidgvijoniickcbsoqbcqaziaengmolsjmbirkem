@@ -1,0 +1,295 @@
+oidgvijoniickcbsoqbcqaziaengmolsjmbirkem length 5 41405 page 41405 <!DOCTYPE html>
+<html lang="en" class="n2appshell n2-appshell-styles">
+<head>
+<script type="text/javascript">document.write('<base href="/contenders/">');</script>
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0">
+
+  <!-- script that generates the base href tag at runtime -->
+  <script>
+    var hostname = document.location.hostname;
+var ipRegex  = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/g;
+var protocol = document.location.protocol;
+
+var baseElement = document.querySelector('base');
+
+if (protocol === 'file:') {
+  // Replace base for offline use (no html5push state)
+  window.html5Mode = false; // disable html5 mode in Adobe app
+  baseElement.remove();
+} else if (hostname.indexOf(atob('YWRvYmUuY29t')) !== -1) {
+  // Remove base tag in Adobe Publish web viewer and local Apps
+  baseElement.remove();
+} else if (((window.location.href.indexOf(atob('L2F1dG9zL2Fib3V0')) !== -1) || (window.location.href.indexOf(atob('L3JvYWRzaG93L2Fib3V0')) !== -1)) && (navigator.userAgent.indexOf('Prerender') === -1)) {
+  baseElement.remove();
+  document.write(atob('PGJhc2UgaHJlZj0iLy93d3cuY25ldC5jb20vcm9hZHNob3cvIi8+'));
+} else if (hostname === 'localhost' || ipRegex.test(hostname) || hostname.indexOf('.local') === (hostname.length - 6)) {
+  window.localhost = true;
+  document.write('<base href="/"/>');
+} else {
+  // Base url will be relative: app-name/
+  // Custom domain: http://custom-domain.com/some-folder-for-seo/app-name => base url needs to change to this
+  // Internal publish link: http://demo.stage.storied.co/app-name         => base url can change to this url
+  var baseUrl = baseElement.getAttribute('href');
+  // Only change the base url for previewed apps or apps that have a sub folder custom domain. eg:
+  //   http://stage.storied.co/projects/a8bd1d22b98ad422b308dfa0d3ca7446/
+  //   http://custom-domain.com/some-folder-for-seo/app-name
+  // Regular custom domains should not be rewritten. eg:
+  //   http://custom-domain.com/app-name
+  if (baseUrl !== "/") {
+    baseElement.href = window.location.pathname.substring(0, window.location.pathname.indexOf(baseUrl) + baseUrl.length); // http://cnet.com/app-name/
+  }
+}
+// This string gets replaced by Grunt if there is an override in cfg.json.
+var baseOverride = '%base_override%'; // Only the first instance will get replaced
+// config.json override has priority over every other base href, except prerender.
+if (baseOverride !== ('%base_override%') && navigator.userAgent.indexOf('Prerender') === -1) {
+  var baseTagElement = document.querySelector('base');
+  var headElement    = document.querySelector('head');
+  if (baseTagElement) {
+    headElement.removeChild(baseTagElement);
+  }
+  var newBaseElement = document.createElement('base');
+  newBaseElement.href = baseOverride;
+  headElement.appendChild(newBaseElement);
+}
+
+      window.prerenderReady = false;
+  </script>
+
+  <!-- Sentry and New Relic trackers -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title ng-bind="seo.title"></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="generator" content="storied.co" />
+
+  <!-- General meta tags -->
+  <meta name="application-name" ng-attr-content="{{seo.title}}" />
+  <meta name="description" ng-attr-content="{{seo.description}}" ng-if="seo.description" />
+  <meta name="keywords" ng-attr-content="{{seo.keywords}}" ng-if="seo.keywords" />
+  <meta name="news_keywords" ng-attr-content="{{seo.keywords}}" ng-if="seo.keywords" />
+  <meta name="publish-date" ng-attr-content="{{seo.publishDate}}" />
+  <meta property="article:published_time" ng-attr-content="{{seo.publishDate}}" />
+  <meta property="article:modified_time" ng-attr-content="{{seo.modifyDate}}" />
+  <meta property="article:author" ng-attr-content="{{seo.facebookAuthor}}" ng-if="seo.facebookAuthor" />
+
+  <meta name="generator" content="storied.co" />
+  <meta name="apple-mobile-web-app-title" ng-attr-content="{{::seo.title}}" />
+
+  <!-- OpenGraph sharing tags -->
+  <meta property="og:site_name" ng-attr-content="{{share.title}}" />
+  <meta property="og:title" ng-attr-content="{{share.title}}" />
+  <meta property="og:description" ng-attr-content="{{share.description}}" />
+  <meta property="og:url" ng-attr-content="{{seo.url}}" />
+  <meta property="og:image" ng-attr-content="{{share.image}}" ng-if="share.image" />
+  <meta property="og:image:type" content="image/jpeg" ng-if="share.image" />
+  <meta property="og:image:width" content="630" ng-if="share.image" />
+  <meta property="og:image:height" content="315" ng-if="share.image" />
+  <meta property="og:description" ng-attr-content="{{share.description}}" ng-if="share.description" />
+  <meta property="fb:app_id" ng-attr-content="{{share.facebookAppId}}" ng-if="share.facebookAppId" />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter specific tags -->
+  <meta name="twitter:title" content="{{share.title}}" />
+  <meta name="twitter:description" content="{{share.description}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" ng-attr-content="{{seo.author}}" />
+  <meta name="twitter:site" ng-attr-content="{{share.twitterSiteName}}" />
+  <meta name="twitter:image" ng-attr-content="{{share.image}}" ng-if="share.image">
+  </meta>
+
+  <!-- iOS optimizations -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!-- Android optimizations -->
+  <meta name="format-detection" content="address=no;email=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href='https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/images/a178d752e2538ba74ca3ad2b707631db_favicon.png'>
+  <link rel="icon" type="image/png" sizes="32x32" href='https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/images/a178d752e2538ba74ca3ad2b707631db_favicon.png'>
+  <link rel="icon" type="image/png" sizes="16x16" href='https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/images/a178d752e2538ba74ca3ad2b707631db_favicon.png'>
+
+  <!-- DNS prefetch for faster load times -->
+  <link rel="dns-prefetch" href="https://0gv2ds5jh3.execute-api.us-east-1.amazonaws.com">
+  <link rel="dns-prefetch" href="https://cheeuzmud5.execute-api.us-east-1.amazonaws.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://feeds.storied.co">
+  <link rel="dns-prefetch" href="https://n2.storied.co">
+  <link rel="dns-prefetch" href="https://cloud.storied.co">
+  <link rel="dns-prefetch" href="https://s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://s3.us-east-1.amazonaws.com">
+  <link rel="dns-prefetch" href="https://static.storied.co">
+  <link rel="dns-prefetch" href="https://static-dev.storied.co">
+
+  <!-- Mobile device optimizations -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+
+  <!-- Stylesheets -->
+  
+    <link rel="stylesheet" href="https://n2.storied.co/88b559bce0e4d3c1bb51f6ce87adfab9e36ec1a1/css/n2.min.css">
+    
+      <link id="fonts-css" type="text/css" rel="stylesheet" href="content/styles/fonts.css">
+      <link rel="stylesheet" href="https://cloud.storied.co/master-stylesheet/2.77/style.min.css">
+  <link rel="stylesheet" href="content/styles/custom.css">
+      <script type="text/javascript">
+        window.n2 = window.n2 || {};
+        window.n2.analytics = window.n2.analytics || {};
+        window.n2.analytics.startTime = new Date().getTime();
+      </script>
+<script src="https://iabusprivacy.pmc.com/geo-info.js"></script>
+
+<!-- OneTrust Cookies Consent Notice start for insider.deadline.com --> 
+
+  
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="018de627-ea36-775b-af6e-f7465407aa1e" ></script> 
+
+<script type="text/javascript"> 
+
+function OptanonWrapper() { } 
+
+</script> 
+
+<!-- OneTrust Cookies Consent Notice end for insider.deadline.com -->
+
+</head>
+
+<body>
+  <div class="hidden-seo-elements"></div>
+
+  <!-- App Container: the application or loader view will render here -->
+  <div class="app-container" ui-view></div>
+
+  <!-- Scripts: -->
+  <script>
+    window.n2 = window.n2 || {};
+    window.n2.analytics = window.n2.analytics || {};
+    window.n2.hub = window.n2.hub || [];
+    window.n2.embeddedContent = window.n2.embeddedContent || {};
+    window.n2.config = {"collection":false,"embedded_content":false,"categoryTags":[],"url":"http://video.deadline.com/contenders/","publishDate":1610037377,"id":19590,"env":"prod","seo_id":"contenders","app_id":"kV3Gz28pqp2rbnE4","account_id":"7qZVn42GpwxkboeY","account_type":"site","sharing":{"image":null,"video":""},"behavior":{"loader":{"logo":"https://static.storied.co/r8bYANxwv92L0lGX/projects/kV3Gz28pqp2rbnE4/assets/preloader/c4f4df3df742682f63efdd47c0e3e20b.n2optimized.png","backgroundImage":null,"progressBarColor":"rgb(255, 255, 255)","backgroundColor":"rgb(0, 0, 0)"},"globalui":{"layout":"none"},"toc":{"enable_toc":"none","enable_search":true,"enable_source_file_link":{"enable":true,"url":""}},"commenting":false,"rotation_message_enabled":false,"scale_mode":{"mode":"auto_detect"},"sharing":false,"trackers":{"impression":"","click":{"prefix":"","suffix":""}},"transitions":{"horizontal":"none","vertical":"none"}},"title":"Contenders","author":"Ramin Hedayatpour","publisher_id":1075,"createdDate":1609965059,"changedDate":1714384483,"description":"","icons":{"logo":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/images/a178d752e2538ba74ca3ad2b707631db_favicon.png"},"content":{"transitionType":"pagegallery","panes":[{"id":"home","page_id":"Rmdl42eD3RRPeZ9V","type":"short-article","link":"home","itemOrder":-1,"content":{"html":"content/views/pages/home.html"},"sectionName":null,"thumbnail":null,"thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_ae011230824898df50d045c86da090e9-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"Home"},{"id":"television-2022","page_id":"9VdWaxgOdRqxeg6b","type":"long-article","link":"television-2022","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bb95230e7da9a3429a294b969935b3d2.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bb95230e7da9a3429a294b969935b3d2-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bb95230e7da9a3429a294b969935b3d2-content-highres.jpg","thumbnailTitle":"Television-2022","sections":[{"id":"television-2022","page_id":"9VdWaxgOdRqxeg6b","html":"content/views/pages/television-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bb95230e7da9a3429a294b969935b3d2.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bb95230e7da9a3429a294b969935b3d2-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bb95230e7da9a3429a294b969935b3d2-content-highres.jpg","thumbnailTitle":"Television-2022"},{"id":"television-2023","page_id":"aKbq05nDMWz2O3MQ","html":"content/views/pages/television-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_75e514bcfa3380f040223071c2ce4823.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_75e514bcfa3380f040223071c2ce4823-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_75e514bcfa3380f040223071c2ce4823-content-highres.jpg","thumbnailTitle":"Television-2023"},{"id":"television-2024","page_id":"1dENv5lR8zr2XBGL","html":"content/views/pages/television-2024.html","thumbnail":null,"thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_ee5fcddc2bb778df3008bb5d3d9522b2-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"Television-2024"}]},{"id":"documentary-2021","page_id":"DNzqV5zzJDk5M7je","type":"long-article","link":"documentary-2021","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_613194634589803ef7018a66060b3f37.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_613194634589803ef7018a66060b3f37-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"Documentary-2021","sections":[{"id":"documentary-2021","page_id":"DNzqV5zzJDk5M7je","html":"content/views/pages/documentary-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_613194634589803ef7018a66060b3f37.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_613194634589803ef7018a66060b3f37-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"Documentary-2021"},{"id":"documentary-2022","page_id":"JGYenP9JEmO2w4Z6","html":"content/views/pages/documentary-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_74d5e894effcf5473a12a386059e8918.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_74d5e894effcf5473a12a386059e8918-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_74d5e894effcf5473a12a386059e8918-content-highres.jpg","thumbnailTitle":"Documentary-2022"},{"id":"documentary-2023","page_id":"Ql670PRynZV5WKNk","html":"content/views/pages/documentary-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_79adf3cadbaf6cba025a8ec75f2d842f.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_79adf3cadbaf6cba025a8ec75f2d842f-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_79adf3cadbaf6cba025a8ec75f2d842f-content-highres.jpg","thumbnailTitle":"Documentary-2023"},{"id":"documentary-2024","page_id":"w1Z975BXg8O2nOBq","html":"content/views/pages/documentary-2024.html","thumbnail":null,"thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b8872eee1ce196729faf29cc234e486d-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"Documentary-2024"}]},{"id":"london-2023","page_id":"GBYJKxX6BMjPQL3n","type":"long-article","link":"london-2023","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_d09c4b310252b500a39407b900f02fd3.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_d09c4b310252b500a39407b900f02fd3-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_d09c4b310252b500a39407b900f02fd3-content-highres.jpg","thumbnailTitle":"London-2023","sections":[{"id":"london-2023","page_id":"GBYJKxX6BMjPQL3n","html":"content/views/pages/london-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_d09c4b310252b500a39407b900f02fd3.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_d09c4b310252b500a39407b900f02fd3-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_d09c4b310252b500a39407b900f02fd3-content-highres.jpg","thumbnailTitle":"London-2023"},{"id":"london-2021","page_id":"GBYJKxXMOZY5QL3n","html":"content/views/pages/london-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_a114bf439e86526c30ce00c51dfb43a9.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_a114bf439e86526c30ce00c51dfb43a9-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_a114bf439e86526c30ce00c51dfb43a9-content-highres.jpg","thumbnailTitle":"London-2021"}]},{"id":"international-2021","page_id":"qp7DG5brQ1E5BRM3","type":"long-article","link":"international-2021","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_e982280aff984da944932dcbd2427c29.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_e982280aff984da944932dcbd2427c29-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"International-2021","sections":[{"id":"international-2021","page_id":"qp7DG5brQ1E5BRM3","html":"content/views/pages/international-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_e982280aff984da944932dcbd2427c29.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_e982280aff984da944932dcbd2427c29-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"International-2021"},{"id":"international-2022","page_id":"QEkrnxvanL820awe","html":"content/views/pages/international-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3e80e13842c2cdd939e3654bb3366878.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3e80e13842c2cdd939e3654bb3366878-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3e80e13842c2cdd939e3654bb3366878-content-highres.jpg","thumbnailTitle":"International-2022"},{"id":"international-2023","page_id":"KE0vj2oWKqw2eRJD","html":"content/views/pages/international-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_dd5b0b98a6614a4041f541742781c20f.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_dd5b0b98a6614a4041f541742781c20f-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"International-2023"}]},{"id":"film-2021","page_id":"YGkBV5mKkeO2dD8y","type":"short-article","link":"film-2021","itemOrder":-1,"content":{"html":"content/views/pages/film-2021.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_aaed94535b180a225e4f6bea44ae8c24.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_aaed94535b180a225e4f6bea44ae8c24-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_aaed94535b180a225e4f6bea44ae8c24-content-highres.jpg","thumbnailTitle":"Film-2021"},{"id":"film-the-nominees-2021","page_id":"Yg4A6xO9XWEPvQw0","type":"long-article","link":"film-the-nominees-2021","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b645dd67f3d12d8771e88dd989428270.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b645dd67f3d12d8771e88dd989428270-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b645dd67f3d12d8771e88dd989428270-content-highres.jpg","thumbnailTitle":"Film - The Nominees-2021","sections":[{"id":"film-the-nominees-2021","page_id":"Yg4A6xO9XWEPvQw0","html":"content/views/pages/film-the-nominees-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b645dd67f3d12d8771e88dd989428270.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b645dd67f3d12d8771e88dd989428270-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_b645dd67f3d12d8771e88dd989428270-content-highres.jpg","thumbnailTitle":"Film - The Nominees-2021"},{"id":"film-the-nominees-2023","page_id":"zwNX42Wq8vV5jJQ6","html":"content/views/pages/film-the-nominees-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_9269adffb1d3bfb0b78068c0f7084b90.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_9269adffb1d3bfb0b78068c0f7084b90-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_9269adffb1d3bfb0b78068c0f7084b90-content-highres.jpg","thumbnailTitle":"Film - The Nominees-2023"},{"id":"film-the-nominees-2024","page_id":"awA4l5E89dYxdKRo","html":"content/views/pages/film-the-nominees-2024.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_8c7d2dd2a6a56d62d8c76aae42a4d7de.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_8c7d2dd2a6a56d62d8c76aae42a4d7de-content.jpg","thumbnailContentHighRes":null,"thumbnailTitle":"film-the-nominees-2024"}]},{"id":"television-documentary-unscripted-2022","page_id":"qpWJrxN9ava2jKgN","type":"long-article","link":"television-documentary-unscripted-2022","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bae3a6b91eb2c0960a50b84512927003.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bae3a6b91eb2c0960a50b84512927003-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bae3a6b91eb2c0960a50b84512927003-content-highres.jpg","thumbnailTitle":"television-documentary-unscripted-2022","sections":[{"id":"television-documentary-unscripted-2022","page_id":"qpWJrxN9ava2jKgN","html":"content/views/pages/television-documentary-unscripted-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bae3a6b91eb2c0960a50b84512927003.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bae3a6b91eb2c0960a50b84512927003-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_bae3a6b91eb2c0960a50b84512927003-content-highres.jpg","thumbnailTitle":"television-documentary-unscripted-2022"},{"id":"television-documentary-unscripted-2023","page_id":"aKbq05nDBGQ2O3MQ","html":"content/views/pages/television-documentary-unscripted-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_356150a570686480614a3d180b92cd0a.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_356150a570686480614a3d180b92cd0a-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_356150a570686480614a3d180b92cd0a-content-highres.jpg","thumbnailTitle":"television-documentary-unscripted-2023"},{"id":"n2-television-documentary-unscripted-2021","page_id":"WMmEAPKdAOk2Zgj6","html":"content/views/pages/n2-television-documentary-unscripted-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_6d1269c1776a8b5c8b7f8c701a2d718f.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_6d1269c1776a8b5c8b7f8c701a2d718f-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_6d1269c1776a8b5c8b7f8c701a2d718f-content-highres.jpg","thumbnailTitle":"Television Documentary - Unscripted-2021"}]},{"id":"television-2021","page_id":"qpWJrxN7yQd5jKgN","type":"short-article","link":"television-2021","itemOrder":-1,"content":{"html":"content/views/pages/television-2021.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3d9aafdb465b56a0b6006b1118f5a09f.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3d9aafdb465b56a0b6006b1118f5a09f-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3d9aafdb465b56a0b6006b1118f5a09f-content-highres.jpg","thumbnailTitle":"Television-2021"},{"id":"television-the-nominees-2021","page_id":"7nzlj2rBKag2vKkW","type":"long-article","link":"television-the-nominees-2021","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3a757f3735bb8266cb07b9eed408e427.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3a757f3735bb8266cb07b9eed408e427-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3a757f3735bb8266cb07b9eed408e427-content-highres.jpg","thumbnailTitle":"Television-The-Nominees-2021","sections":[{"id":"television-the-nominees-2021","page_id":"7nzlj2rBKag2vKkW","html":"content/views/pages/television-the-nominees-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3a757f3735bb8266cb07b9eed408e427.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3a757f3735bb8266cb07b9eed408e427-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_3a757f3735bb8266cb07b9eed408e427-content-highres.jpg","thumbnailTitle":"Television-The-Nominees-2021"},{"id":"television-the-nominees-2022","page_id":"awA4l5EzaanPdKRo","html":"content/views/pages/television-the-nominees-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_f66abdc2b07689a7a4b8894e21b96c2a.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_f66abdc2b07689a7a4b8894e21b96c2a-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_f66abdc2b07689a7a4b8894e21b96c2a-content-highres.jpg","thumbnailTitle":"Television The Nominees 2022"},{"id":"television-the-nominees-2023","page_id":"LRj3a53RZ6mxMYX7","html":"content/views/pages/television-the-nominees-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_a3f21de6adf93c816c97d674239f5b7f.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_a3f21de6adf93c816c97d674239f5b7f-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_a3f21de6adf93c816c97d674239f5b7f-content-highres.jpg","thumbnailTitle":"television-the-nominees-2023"}]},{"id":"losangeles-2021","page_id":"8bYANxwYRNkPL0lG","type":"long-article","link":"losangeles-2021","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_4944c4b7233e70f042c81dae351a7ab7.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_4944c4b7233e70f042c81dae351a7ab7-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_4944c4b7233e70f042c81dae351a7ab7-content-highres.jpg","thumbnailTitle":"Losangeles-2021","sections":[{"id":"losangeles-2021","page_id":"8bYANxwYRNkPL0lG","html":"content/views/pages/losangeles-2021.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_4944c4b7233e70f042c81dae351a7ab7.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_4944c4b7233e70f042c81dae351a7ab7-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_4944c4b7233e70f042c81dae351a7ab7-content-highres.jpg","thumbnailTitle":"Losangeles-2021"},{"id":"losangeles-2022","page_id":"JYX3m27Mnrz59BW4","html":"content/views/pages/losangeles-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_ee62b0ee2e27e0332e97f05e407ad10c.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_ee62b0ee2e27e0332e97f05e407ad10c-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_ee62b0ee2e27e0332e97f05e407ad10c-content-highres.jpg","thumbnailTitle":"Losangeles-2022"},{"id":"losangeles-2023","page_id":"DNzqV5zmjw6xM7je","html":"content/views/pages/losangeles-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_af532ed83d3c47d46714974985bc003a.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_af532ed83d3c47d46714974985bc003a-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_af532ed83d3c47d46714974985bc003a-content-highres.jpg","thumbnailTitle":"Losangeles-2023"}]},{"id":"international-november-2021","page_id":"ZXy86xdRWwAPErjL","type":"short-article","link":"international-november-2021","itemOrder":-1,"content":{"html":"content/views/pages/international-november-2021.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_276b34520ab85f205bff7df9174142d0.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_276b34520ab85f205bff7df9174142d0-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_276b34520ab85f205bff7df9174142d0-content-highres.jpg","thumbnailTitle":"international-november-2021"},{"id":"documentary-november-2021","page_id":"zwNX42Wq7YN5jJQ6","type":"short-article","link":"documentary-november-2021","itemOrder":-1,"content":{"html":"content/views/pages/documentary-november-2021.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_2eea7fa0066676968f9cbd4617f370cb.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_2eea7fa0066676968f9cbd4617f370cb-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_2eea7fa0066676968f9cbd4617f370cb-content-highres.jpg","thumbnailTitle":"documentary-november-2021"},{"id":"newyork-2021","page_id":"KE0vj2oRjGdPeRJD","type":"short-article","link":"newyork-2021","itemOrder":-1,"content":{"html":"content/views/pages/newyork-2021.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_cd5a86604713f923c0cca82689fbc349.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_cd5a86604713f923c0cca82689fbc349-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_cd5a86604713f923c0cca82689fbc349-content-highres.jpg","thumbnailTitle":"newyork-2021"},{"id":"film-the-nominees-2022","page_id":"LN8EpxjO4w65nGBg","type":"short-article","link":"film-the-nominees-2022","itemOrder":-1,"content":{"html":"content/views/pages/film-the-nominees-2022.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_dc55832629e58032e87cd957ae4ce3f4.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_dc55832629e58032e87cd957ae4ce3f4-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_dc55832629e58032e87cd957ae4ce3f4-content-highres.jpg","thumbnailTitle":"Film - The Nominees-2022"},{"id":"newyork-2022","page_id":"8bYANxwYnJ9PL0lG","type":"short-article","link":"newyork-2022","itemOrder":-1,"content":{"html":"content/views/pages/newyork-2022.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_c867d2e08584a5a1aa3946e6fe056d27.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_c867d2e08584a5a1aa3946e6fe056d27-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_c867d2e08584a5a1aa3946e6fe056d27-content-highres.jpg","thumbnailTitle":"newyork-2022"},{"id":"la3c-conversations-2022","page_id":"ZXy86xdRnlrPErjL","type":"short-article","link":"la3c-conversations-2022","itemOrder":-1,"content":{"html":"content/views/pages/la3c-conversations-2022.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_85742ffa903829fbad9ec337741291e8.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_85742ffa903829fbad9ec337741291e8-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/kV3Gz28pqp2rbnE4/assets/published/screenshots/thmb_85742ffa903829fbad9ec337741291e8-content-highres.jpg","thumbnailTitle":"La3c-conversations-2022"}]},"publish":{"title":"The Contenders","protected":false,"masterStylesheet":{"path":"master-stylesheet/2.77/style.min.css"}},"data":[],"cookie_policy":{"enabled":false},"integrations":{"oneTrust":true,"disable_analytics":false,"anonymous_analytics":false},"cdnPath":"https://static.storied.co/7qZVn42GpwxkboeY/published_projects/contenders/"};
+    let startTime = new Date().getTime();
+    window.n2.analytics.startTime = startTime;
+    function getLambdaAnalyticsUrl() {
+      if (window.n2.config.env === 'stage') {
+        return 'https://pi4dftunh4.execute-api.us-east-1.amazonaws.com/stage/pix-trk/?event_timestamp=';
+      } else {
+        return 'https://0gv2ds5jh3.execute-api.us-east-1.amazonaws.com/prod/pix-trk/?event_timestamp=';
+      }
+    }
+    function getCookie(cname) {
+      if (navigator.cookieEnabled) {
+        let name = cname + '=';
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+      } else {
+        console.warn('Storied: cookies not enabled: session id cannot be retrieved');
+      }
+      return null;
+    }
+    function setCookie(cname, cvalue, exms, path) {
+      if (navigator.cookieEnabled) {
+        let d = new Date();
+        d.setTime(d.getTime() + exms);
+        let expires = 'expires=' + d.toUTCString();
+        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=' + path;
+      } else {
+        console.warn('Storied: cookies not enabled: session id cannot be saved');
+      }
+    }
+    const generateSessionID = function () {
+      if (getCookie('n2_session_id')) {
+        return getCookie('n2_session_id');
+      } else {
+        let sid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          let r = Math.random() * 16 | 0, v = c === 'x' ? r : r & 0x3 | 0x8;
+          return v.toString(16);
+        });
+        try {
+          setCookie('n2_session_id', sid, 1800000, '/');
+        } catch (err) {
+          console.warn('Not able to set session id on cookies', err);
+        }
+      }
+    };
+    const GenerateSession = function () {
+      try {
+        if (!window.n2.session_id) {
+          window.n2.session_id = generateSessionID();
+        }
+        if (!window.n2.device_category) {
+          window.n2.device_category = 481 <= window.innerWidth && 1024 > window.innerWidth ? 'tablet' : 480 > window.innerWidth ? 'phone' : 'desktop';
+        }
+      } catch (err) {
+        console.error('Storied: Failed to generate session');
+      }
+    };
+    const generateProjectSession = function () {
+      const getLocalStorage = (n) => { return window.localStorage.getItem(n); }
+      const setLocalStorage = (n, v) => { return window.localStorage.setItem(n, v); }
+      var u = window.location.href; var p = false; var s = ['cloud.storied.co', 'n2ps.storied.co', 'stage.storied.co', 'fedev.storied.co', 'dev.storied.co'];
+      for (let i = 0; i < s.length; i++) { if ((u.indexOf(s[i]) === -1) && /projects/g.test(u)) { p = true; } }
+      if (!p && (u.indexOf('localhost') === -1)) {
+        var a = 'n2_app_session_' + window.n2.config.app_id; var l = getLocalStorage(a); var c = new Date().getTime(); var n = false;
+        if (!l || new Date(parseInt(l)).getTime() + 1800000 <= c) { n = true }
+        if (n) { window.n2.analytics.new_session = true; setLocalStorage(a, c); }
+      }
+    }
+  </script>
+  <script>
+    if (!window.n2.isPrerender && !window.n2.isScreenshot) {
+      GenerateSession();
+      generateProjectSession();
+    }
+  </script>
+
+  <script>
+    let img3 = document.createElement('img');
+    img3.addEventListener('error', function () {
+      console.warn('Storied: ad Blocking Enabled');
+    });
+    img3.src = 'https://s3.amazonaws.com/storied-analytics/ads.png';
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+    integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+    <script src="https://n2.storied.co/88b559bce0e4d3c1bb51f6ce87adfab9e36ec1a1/js/n2.js"></script>
+    
+      <script>
+        try {
+      /*Custom JS Code*/
+    } catch (e) {
+          console.error('Exception inside custom.js: ', e);
+        }
+      </script>
+      <script>
+        window.n2.buildinfo = {
+          'revision': '88b559bce0e4d3c1bb51f6ce87adfab9e36ec1a1',
+          'branch_name': 'master',
+          'build_number': '8784',
+          'compiled_at': new Date(parseInt('1713461448991')),
+          'version': '1.34.163'
+        };
+      </script>
+
+
+</body>
+
+</html>
+ contentType 9 text/html url 53 https://video.deadline.com:443/contenders/london-2023 responseCode 3 200 

@@ -1,0 +1,1469 @@
+ascekahcyixmlifggsxebmkqoesgsitcgcpqpmeg length 5 75141 page 75141 <!DOCTYPE html>
+<!--[if IE 8 ]> <html lang="en" class="ie8 lte8 lte9 lte10">    <![endif]-->
+<!--[if IE 9 ]> <html lang="en" class="ie9 lte9 lte10">    <![endif]-->
+<!--[if (gt IE 9)]><!--><html lang="en"><!--<![endif]-->
+<!--[if !IE]><!--><html lang="en"><!--<![endif]-->
+  <head>
+    <title>The FADER</title>
+
+    
+
+    <link rel="preload" href="/assets/v4/fonts/WF-026510-009147-001369-72bfbb4d7f1c28b438ff5b8dc078cb9f02e5c71319a3527d3e1613cf5b01f239.woff" as="font" type="woff">
+
+    <link rel="preload" href="/assets/v4/fonts/WF-026510-009147-001253-92cefcf9f8425db3674eebf29535da3cf73f87dc6b7439938ad4294948f67e79.woff" as="font" type="woff">
+
+    <link rel="preload" href="/assets/v4/fonts/WF-026510-009147-001251-120b5b64b0a75ece4fc07a97e9428b5ca6966de319ece24962ab503fe110b1d7.woff" as="font" type="woff">
+
+    <link rel="preload" href="/assets/v4/fonts/WF-026510-009147-001255-a8b63253d5e7e8012e025435f7b546f7600bc376c3f5d279b6b71e52d0eaaa52.woff" as="font" type="woff">
+
+
+  <link rel="stylesheet" media="all" href="/assets/application-9daeb4fa50eaee227eb9b5c1ff874c76fea55d49c6e9da707cdfb59078d39837.css" />
+  <!-- <style> -->
+  <!-- </style> -->
+
+
+    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+
+    <script>
+ var oVa = {};
+ var oDv = ["44"];
+
+ window.rtkGPTSlotsTargeting = [];
+ window.rtkGPTSlotsTargeting.push([]);
+
+ window.rtkGPTSlotsTargeting.push({});
+
+
+ var optimeratag = optimeratag || {};
+ optimeratag.cmd = optimeratag.cmd || [];
+
+ /* optimeratag.cmd.push(function() { alert("test"); });
+  * optimeratag.cmd.push(function() { alert("test2"); }); */
+
+ function onOptimeraOpsLoaded() {
+   console.log("onOptimeraOpsLoaded");
+   window.optimeraOpsLoaded = true;
+   window.executeOptimeraOpsCmd();
+ }
+
+ function executeOptimeraOpsCmd() {
+   for (k=0; k < optimeratag.cmd.length;k++){
+     optimeratag.cmd[k]();
+   }
+   optimeratag.cmd.length = 0;
+ }
+
+ optimeratag.cmd.push = function(e) {
+   Array.prototype.push.apply(this,arguments);
+   if (window.optimeraOpsLoaded) {
+     window.executeOptimeraOpsCmd();
+   }
+ }
+
+ /* optimeratag.cmd.push(function() { alert("test3"); }); */
+
+</script>
+
+
+    <script>
+     function createCookie(name, value, days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    var expires = "; expires=" + date.toGMTString();
+  } else var expires = "";
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function eraseCookie(name) {
+  createCookie(name, "", -1);
+}
+
+function refreshInitalGPTAds() {
+  console.debug("CONSENT DEBUG: refreshInitalGPTAds");
+  timeoutID = window.setTimeout(function() {
+    for (var key in window.ad_slots) {
+      value = window.ad_slots[key];
+      console.log("refreshing slot: ", value);
+      googletag.pubads().refresh([value]);
+    }
+  }, 100);
+}
+
+function setGPTNonPersonalizedAds() {
+  console.log("CONSENT DEBUG: setGPTNonPersonalizedAds");
+  googletag.pubads().setPrivacySettings({
+    restrictDataProcessing: true
+  });
+  googletag.pubads().setRequestNonPersonalizedAds(1);
+}
+
+function setGPTPersonalizedAds() {
+  console.log("CONSENT DEBUG: setGPTPersonalizedAds");
+  googletag.pubads().setPrivacySettings({
+    restrictDataProcessing: false
+  });
+  googletag.pubads().setRequestNonPersonalizedAds(0);
+}
+
+function setJITANonPersonalizedAds() {
+  console.debug("CONSENT DEBUG: setJITANonPersonalizedAds");
+  if (window.JITA) {
+    jitaJS.que.push(function() {
+      JITA.setRequestNonPersonalizedAds(1);
+    });
+  }
+}
+
+function setJITAPersonalizedAds() {
+  console.debug("CONSENT DEBUG: setJITAPersonalizedAds");
+  if (window.JITA) {
+    jitaJS.que.push(function() {
+      JITA.setRequestNonPersonalizedAds(0);
+    });
+  }
+}
+
+function setEUConsentCookie() {
+  window.__cmp("getConsentData", null, function(result) {
+    document.cookie = "EUCONSENT=" + result.consentData;
+  });
+}
+
+window.addEventListener(
+  "CookiebotOnDialogDisplay",
+  function(e) {
+    console.debug("CONSENT DEBUG: onLoad");
+    window.cookieConsent = window.CookieConsent;
+  },
+  false
+);
+
+window.addEventListener(
+  "CookiebotOnAccept",
+  function(e) {
+    console.debug("CONSENT DEBUG: onAccept");
+    setEUConsentCookie();
+
+    if (Cookiebot.consent.marketing) {
+      //Execute code that sets marketing cookies
+      console.debug("CONSENT DEBUG: marketing accepted");
+      if (window.consent_region == "EU") {
+        // refreshInitalGPTAds();
+        setGPTPersonalizedAds();
+        setJITAPersonalizedAds();
+      }
+    } else {
+      console.debug("CONSENT DEBUG: marketing not accepted");
+      // refreshInitalGPTAds();
+      setGPTNonPersonalizedAds();
+      setJITANonPersonalizedAds();
+    }
+  },
+  false
+);
+
+//
+window.addEventListener(
+  "CookiebotOnDecline",
+  function(e) {
+    console.debug("CONSENT DEBUG: declined");
+
+    if (window.consent_region == "US-CA") {
+      setGPTNonPersonalizedAds();
+      setJITANonPersonalizedAds();
+    } else if (window.consent_region == "EU") {
+      console.debug("CONSENT DEBUG: EU Allow Preferences");
+      setEUConsentCookie();
+
+      if (Cookiebot.consent.marketing) {
+        console.debug("CONSENT DEBUG: Allow Personalized Ads");
+        setGPTPersonalizedAds();
+        setJITAPersonalizedAds();
+      }
+    }
+  },
+  false
+);
+// console.log("running ads.js");
+
+window.ad_slot_positions = {};
+window.ad_slots = {};
+window.ad_slots_queue = {};
+
+window.rtk_ad_ids_to_setup = [];
+window.rtk_ad_ids = [];
+window.rtk_timer_ad_ids = [];
+window.rtk_is_serving_ad = {};
+window.rtk_is_lazy_ad = {};
+window.rtk_first_render = {};
+
+window.enable_optimera = false;
+window.ad_slot_to_div_map = {};
+window.ad_div_to_rtk_id_map = {};
+
+function getDivID(divName, track_multiple) {
+  // console.log("getDivID: ", divName, track_multiple);
+
+  if (window.ad_slot_positions[divName] == undefined) {
+    window.ad_slot_positions[divName] = 1;
+  }
+
+  if (track_multiple) {
+    divID = divName + window.ad_slot_positions[divName];
+    document.getElementById(divName).id = divID;
+  } else {
+    divID = divName;
+  }
+
+  window.ad_slot_positions[divName] += 1;
+
+  return divID;
+}
+
+function displayAdSlot(divName, slotName, size, track_multiple) {
+  console.debug("AD DEBUG: displaying slot: " + slotName + " " + divName);
+
+  var divID = getDivID(divName, track_multiple);
+
+  if (window.enable_optimera) {
+    window.oDv.push(divID);
+    window.oVa[divID] = ["NULL"];
+  }
+
+  // Define the slot itself, call display() to
+  // register the div and refresh() to fetch ad.
+  googletag.cmd.push(function () {
+    // console.debug("AD DEBUG: about to defineSlot: ", divID);
+
+    // debugger;
+
+    var slot = googletag
+      .defineSlot("/1081121/" + slotName, size, divID)
+      .addService(googletag.pubads());
+
+    if (window.enable_optimera) {
+      slot.setTargeting("optimera", oVa[divID]);
+    }
+
+    window.ad_slots[divName] = slot;
+
+    // Display has to be called before
+    // refresh and after the slot div is in the page.
+    googletag.display(divID);
+    googletag.pubads().refresh([slot]);
+
+    // if (window.enable_optimera) {
+    //   window.oPageUnload(divID);
+    // }
+
+    // if (typeof(window.ga) == "undefined") {
+    // window.ga('impressionTracker:observeElements', window.ad_ids);
+    // }
+  });
+
+  // console.debug("AD DEBUG: finished displaying slot: "+slotName);
+
+  return divID;
+}
+
+function pushAdSlot(divName, slotName, size) {
+  var now = new Date().getTime();
+  var divID = divName + "-" + now;
+  // console.debug("AD DEBUG: pushing slot with timestamp: "+divID);
+
+  document.getElementById(divName).attr = divID;
+
+  window.ad_slots_queue[divID] = slotName;
+
+  // Define the slot itself
+  googletag.cmd.push(function () {
+    var slot = googletag
+      .defineSlot("/1081121/" + slotName, size, divID)
+      .addService(googletag.pubads());
+    window.ad_slots_queue[divID] = slot;
+  });
+
+  // console.debug("AD DEBUG: finished pushing slot: " + slotName);
+}
+
+function setupRtkAdObserver(rtk_ad_id) {
+  // console.debug("AD DEBUG: adding observer for: ", rtk_ad_id);
+
+  if (!window.rtk_ad_ids_to_setup.includes(rtk_ad_id)) {
+    window.rtk_ad_ids_to_setup.push(rtk_ad_id);
+  }
+}
+
+function setupRtkTimerAd(rtk_ad_id) {
+  // console.debug("AD DEBUG: adding timer ad for: ", rtk_ad_id);
+
+  if (!window.rtk_timer_ad_ids.includes(rtk_ad_id)) {
+    window.rtk_timer_ad_ids.push(rtk_ad_id);
+  }
+
+  window.rtk_is_serving_ad[rtk_ad_id] = false;
+  window.rtk_first_render[rtk_ad_id] = true;
+}
+
+function setupRtkGPTSlotsTargeting(slot_name, divID) {
+  if (window.enable_optimera) {
+    // console.log("setupRtkGPTSlotsTargeting");
+    window.oDv.push(divID);
+    // window.oVa[divID] = ["NULL"];
+    var obj = {};
+    // obj[divID] = [["Optimera", oVa[divID]]];
+    obj[divID] = [];
+    console.log(obj);
+    window.rtkGPTSlotsTargeting.push(obj);
+    console.log(window.rtkGPTSlotsTargeting);
+  }
+}
+
+function setupRtkOptimera() {
+  console.log("setupRtkOptimera");
+
+  // if (Object.keys(window.oVa).length == 0) {
+  window.oVa = {
+    "div-above-latest-ad": ["A6"],
+    "div-above-latest-ad9": ["A6"],
+    "div-below-fold-latest-ad": ["A6"],
+    "div-full_width-ad": ["D4"],
+    "div-leaderboard-ad": ["D4"],
+    t: 1568146740,
+  };
+  // }
+
+  // var obj = {};
+  // obj["RTK_9u3J"] = [["Optimera", "A6"]];
+  // obj["div-leaderboard-ad"] = [["Optimera", "A6"]];
+  // oVa["/1081121/fader_v3_home_top_728_90"] = [["Optimera", "A6"]];
+
+  // for (var prop in window.oVa) {
+  //   console.log("setting up prop", prop);
+
+  //   var slotName = window.ad_slot_to_div_map[prop];
+
+  //   // debugger;
+  //   if (slotName) {
+  //     window.rtkGPTSlotsTargeting[1][slotName] = [
+  //       ["Optimera", window.oVa[prop]]
+  //     ];
+  //   }
+  // }
+}
+
+function setupRtkAdSlotForOptimera(divName, slotName) {
+  console.log("setupAdSlotForOptimera", divName, slotName);
+
+  var divID = divName;
+  window.ad_slot_to_div_map[divID] = slotName;
+
+  if (window.enable_optimera) {
+    window.oDv.push(divID);
+
+    // window.oVa[divID] = ["NULL"];
+
+    var slot_path = "/1081121/" + slotName;
+
+    window.rtkGPTSlotsTargeting[1][slot_path] = [
+      ["Optimera", window.oVa[divID]],
+    ];
+
+    // var obj = window.rtkGPTSlotsTargeting[1];
+    // obj[slotName] = [["Optimera", null]];
+
+    // optimeratag.cmd.push(function() {
+    //   window.oPageUnload(divName);
+    // });
+  }
+}
+
+function displayRtkAdSlot(rtkID, divName, slotName, track_multiple, lazy) {
+  console.log(
+    "displayRtkAdSlot",
+    rtkID,
+    divName,
+    slotName,
+    track_multiple,
+    lazy
+  );
+
+  var divID = getDivID(divName, track_multiple);
+
+  // $(divName).attr({ id: divID });
+
+  console.log("divID: ", divID);
+
+  window.ad_slot_to_div_map[divID] = slotName;
+  window.ad_div_to_rtk_id_map[divID] = rtkID;
+
+  if (window.enable_optimera) {
+    window.oDv.push(divID);
+    // window.oVa[divID] = ["NULL"];
+  }
+
+  jitaJS.que.push(function () {
+    var slot_path = "/1081121/" + slotName;
+
+    if (window.enable_optimera) {
+      window.rtkGPTSlotsTargeting[1][slot_path] = [
+        ["Optimera", window.oVa[divID]],
+      ];
+    }
+
+    var obj = {};
+    obj[rtkID] = divID;
+    // lazy = false;
+
+    if (lazy) {
+      window.rtk_is_lazy_ad[divID] = true;
+    } else {
+      window.rtk_is_lazy_ad[divID] = false;
+      jitaJS.rtk.refreshAdUnits([rtkID], false, obj);
+    }
+
+    if (window.enable_optimera) {
+      window.oPageUnload(divID);
+    }
+
+    // optimeratag.cmd.push(function() {
+    //   window.
+    // });
+  });
+
+  return divID;
+}
+;
+
+
+
+    </script>
+
+      <script src="/assets/application-13db1d6f62779dafd87606c60a0e528f3f568e5f7c2c0b7e4cb348c239ff97e1.js" defer="defer"></script>
+
+    <script src="/packs/application-5312d9fe6ecefc819abd.js" defer="defer"></script>
+
+
+    
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5CR3HGK1G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S5CR3HGK1G');
+</script>
+
+<!--
+<script>
+ window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+ console.log("GA: command queue initialized.");
+</script>
+
+  <script>
+
+   ga("create", "UA-272695-2", "auto", { useAmpClientId: true });
+   ga("set", "anonymizeIp", true);
+   ga("set", "transport", "beacon");
+
+   if (window.location.pathname === "home") {
+     ga("set", "page", "/");
+   }
+
+   console.log("GA: tracker setup.");
+
+   
+
+  </script>
+
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+-->
+
+
+<script defer data-domain="thefader.com" src="https://plausible.io/js/script.js"></script>
+<script defer data-domain="thefader.com" src="https://plausible.io/js/script.outbound-links.js"></script>
+
+<!-- 
+<script type='text/javascript'>
+ googletag = googletag || {};
+ var googletag = googletag;
+ googletag.cmd = googletag.cmd || [];
+
+ (function() {
+   var gads = document.createElement('script');
+   gads.async = true;
+   gads.type = 'text/javascript';
+   var useSSL = 'https:' == document.location.protocol;
+   gads.src = (useSSL ? 'https:' : 'http:') + 
+              '//www.googletagservices.com/tag/js/gpt.js';
+   var node = document.getElementsByTagName('script')[0];
+   node.parentNode.insertBefore(gads, node);
+ })();
+</script>
+-->
+<script type='text/javascript'>
+  window.googletag = window.googletag || {cmd: []};
+</script>
+
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+
+<script type='text/javascript'>
+
+   googletag.cmd.push(function() {
+
+     // Infinite scroll requires SRA
+     googletag.pubads().enableSingleRequest();
+
+     // Disable initial load, we will use refresh() to fetch ads.
+     // Calling this function means that display() calls just
+     // register the slot as ready, but do not fetch ads for it.
+     googletag.pubads().disableInitialLoad();
+
+     var params={};
+     window.location.search
+           .replace(/[?&]+([^=&]+)=([^&]*)/gi,
+                    function(str,key,value) {
+                      params[key.toLowerCase()] = value;
+                    }
+           );
+
+     for (var k in params){
+       if(k.indexOf("utm") === 0)
+       {
+         googletag.pubads().setTargeting(k,params[k]);
+       }
+     }
+
+     /* googletag.pubads().enableLazyLoad({
+      *   fetchMarginPercent: 0,  // Fetch slots within 1 viewports.
+      *   renderMarginPercent: 0,  // Render slots within 1 viewports.
+      *   mobileScaling: 1.0
+      * });*/
+
+       googletag.enableServices();
+
+     if (window.consent_region == "EU") {
+       if (readCookie("forbid_personalized_ads") == "0") {
+         setGPTPersonalizedAds();
+       } else {
+         setGPTNonPersonalizedAds();
+       }
+     }
+
+     if (window.consent_region == "US-CA") {
+       if (readCookie("forbid_personalized_ads") == "1") {
+         setGPTNonPersonalizedAds();
+       }
+     }
+
+   });
+
+  </script>
+
+<script type="text/javascript">
+ //declare this in the head before jita
+ var jitaJS = window.jitaJS || {};
+ jitaJS.que = jitaJS.que || [];
+</script>
+
+
+
+
+
+
+  <!-- Begin comScore Tag -->
+<script>
+ var _comscore = _comscore || [];
+ _comscore.push({ c1: "2", c2: "16442793" });
+ (function() {
+   var s = document.createElement("script"), el = document.getElementsByTagName("script")[0];
+   s.async = true;
+   /* s.defer = true; */
+   s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+   el.parentNode.insertBefore(s, el);
+ })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=16442793&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+
+  <!-- Quantcast Tag, part 1 -->
+<script type="text/javascript">
+ var _qevents = _qevents || [];
+ (function() {
+   var elem = document.createElement('script');
+   elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge")
+            + ".quantserve.com/quant.js";
+   /* elem.async = true; */
+   elem.defer = true;
+   elem.type = "text/javascript";
+   var scpt = document.getElementsByTagName('script')[0];
+   scpt.parentNode.insertBefore(elem, scpt);  
+ })();
+</script>
+
+  <script>window.twttr = (function(d, s, id) {
+   var js, fjs = d.getElementsByTagName(s)[0],
+       t = window.twttr || {};
+   if (d.getElementById(id)) return t;
+   js = d.createElement(s);
+   js.id = id;
+   js.src = "https://platform.twitter.com/widgets.js";
+   fjs.parentNode.insertBefore(js, fjs);
+
+   t._e = [];
+   t.ready = function(f) {
+     t._e.push(f);
+   };
+
+   return t;
+ }(document, "script", "twitter-wjs"));</script>
+
+  <!-- <script async="" defer="" src="//platform.instagram.com/en_US/embeds.js"></script> -->
+
+<script async src="//platform.instagram.com/en_US/embeds.js"></script>
+
+  <!-- Facebook Pixel Code -->
+<meta name="facebook-domain-verification" content="8hp7106emaf67czjp03ks61b6zky1h" />
+
+    <script>
+
+ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                                                             n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
+   t.async=!0;
+   /* t.defer=!0; */
+   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                                                                          document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+ fbq('init', '974085915995561');
+ fbq('track', "PageView");
+ fbq('track', 'ViewContent');
+
+</script>
+
+<!-- End Facebook Pixel Code -->
+
+  <!-- Snap Pixel Code -->
+
+    <script>
+
+ (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+ {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+   a.queue=[];var s='script';r=t.createElement(s);
+   r.async=!0;
+   /* r.defer=!0; */
+   r.src=n;var u=t.getElementsByTagName(s)[0];
+   u.parentNode.insertBefore(r,u);})(window,document,
+                                     'https://sc-static.net/scevent.min.js');
+
+ snaptr('init', '878796fa-7274-4329-a6c6-814d66a40ae9', {
+   'user_email': '__INSERT_USER_EMAIL__'
+ });
+
+ snaptr('track', 'PAGE_VIEW');
+
+</script>
+<!-- End Snap Pixel Code -->
+
+<script>
+  // Load the SDK asynchronously
+  (function (d, s, id) {
+  var js, sjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://sdk.snapkit.com/js/v1/create.js";
+  sjs.parentNode.insertBefore(js, sjs);
+  }(document, 'script', 'snapkit-creative-kit-sdk'));
+
+  window.snapKitInit = function () {
+  snap.creativekit.initalizeShareButtons(
+  document.getElementsByClassName('snapchat-share-button')
+  );
+  };
+</script>
+
+  
+
+  <script>!function(n){if(!window.cnxps){window.cnxps={},window.cnxps.cmd=[];var t=n.createElement('iframe');t.display='none',t.onload=function(){var n=t.contentWindow.document,c=n.createElement('script');c.src='//cd.connatix.com/connatix.playspace.js',c.setAttribute('async','1'),c.setAttribute('type','text/javascript'),n.body.appendChild(c)},n.head.appendChild(t)}}(document);</script>
+
+
+
+
+
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="27XKmYbvegbecWkdK8QusYV8Xpr0NlGkk4fFPeP4CCiM0xYQOIQg6odWnKXu4g1BShZ/cnhJvZD6IHIFvCrjGA==" />
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="msvalidate.01" content="CFDCCD68D11A9B3C2CE7EE854D821682" />
+
+<meta itemprop="name" content="The FADER">
+
+
+    <link rel="canonical" href="https://www.thefader.com/privacy-policy" />
+
+
+    <meta name="description" content="The FADER is the definitive voice of music and the lifestyle that surrounds it."/>
+
+    <meta itemprop="description" content="The FADER is the definitive voice of music and the lifestyle that surrounds it."/>
+
+    <meta property="image" content="https://www.thefader.com/assets/Fader-New-Black-FB-d2aaa59a0df7666f2ffae62bf70a70896fa5d60656f2c33d97f9ce70d98a2209.png" />
+
+    <meta property="og:title" content="The FADER" />
+    <meta property="og:description" content="The FADER is the definitive voice of music and the lifestyle that surrounds it." />
+    <meta property="og:url" content="https://www.thefader.com" />
+    <meta property="og:image" content="https://www.thefader.com/assets/Fader-New-Black-FB-d2aaa59a0df7666f2ffae62bf70a70896fa5d60656f2c33d97f9ce70d98a2209.png" />
+    <meta property="og:image:width" content="708" />
+    <meta property="og:image:height" content="500" />
+
+<meta property="fb:app_id" content="958226167632202" />
+<meta property="fb:pages" content="6815651902" />
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-iphone6.png"/>
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-ipad2_mini.png"/>
+<link rel="apple-touch-startup-image" href="/apple-touch-icon.png"/>
+
+<meta content="https://www.thefader.com/Fader-1000x1000-red.png" property="snapchat:sticker" />
+<meta name="monetization" content="$ilp.uphold.com/ZQxzb4Ew4FxP" />
+
+
+  </head>
+
+  <body class="united_states">
+
+
+    <div class="main_wrapper" id='main_wrapper'>
+      <!-- HEADER -->
+
+  <!-- NEED TO CHECK IF WE ARE ON THE HOMEPAGE, if not, no war story -->
+<nav class="">
+
+  <!-- only include war story/expanded nav if it is NOT a mobile device -->
+
+
+      <div class="expanded">
+        <div class="ad top-ad banner_ad">
+  
+  <div class="ad-container">
+    <div id='div-leaderboard-ad' >
+
+  <!-- <div id='div-leaderboard-ad' class="ad-fixed-"> -->
+
+
+    <script type='text/javascript'>
+
+     displayAdSlot('div-leaderboard-ad', 'fader_v3_article_top_728_90', [[970, 250], [728, 90]]);
+
+    </script>
+</div>
+
+  </div>
+
+      </div>
+
+
+
+    <div class="header_wrap gutter_left">
+      <a data-ga-event-category="Logo Nav" data-ga-event-action="click" data-ga-on="click" href="/home" class="logo_wrap">
+        <div class="logo "></div>
+      </a>
+      <form action='/search' method='GET' name='search_form' id='search_form' class="gutter_left" autocomplete="off" data-search='true'>
+  <input type='text' name='query' value='' placeholder="" id=''>
+</form>
+
+      <span class="icon_wrap search_wrap">
+        <div class="icon search_icon"></div>
+      </span>
+    </div>
+      </div>
+
+
+  <div class="main_nav ">
+    <div data-ga-event-category="Logo Nav" data-ga-event-action="click" data-ga-on="click" class="small_logo_wrap">
+      <a href="/home"><div class="small_logo"></div></a>
+    </div>
+    <div class="nav_inner_wrap">
+
+      <div id="verticals_nav" class="verticals_wrap" style="">
+        <ul class="verticals_links">
+
+            <li class="music " data-ga-event-category="Music Nav" data-ga-event-action="click" data-ga-on="click"><a id="music_nav_link" href="/music"><span>Music</span></a></li>
+            <li class="style " data-ga-event-category="Style Nav" data-ga-event-action="click" data-ga-on="click"><a id="style_nav_link" href="/style"><span>Style</span></a></li>
+            <li class="culture " data-ga-event-category="Culture Nav" data-ga-event-action="click" data-ga-on="click"><a id="culture_nav_link" href="/culture"><span>Culture</span></a></li>
+            <li class="culture " data-ga-event-category="Video Nav" data-ga-event-action="click" data-ga-on="click"><a id="video_nav_link" href="/fader-tv"><span>Video</span></a></li>
+        </ul>
+      </div>
+
+      
+      <div class="links_wrap ui_control_element" ui-toggle="Menu">
+        <div class="search_wrap">
+          <form action='/search' method='GET' name='search_form_small' id='search_form_small' class="gutter_left" autocomplete="off" data-search='true'>
+  <input type='text' name='query' value='' placeholder="" id=''>
+</form>
+
+          <div class="icon search_icon_sm"></div>
+        </div>
+        <div class="hamburger_wrap ui_control" ui-toggle="Menu" ui-toggle-el=".links_wrap">
+          <div class="hamburger"></div>
+        </div>
+        <ul class="links">
+          <li class="mobile_only accordion"><a class="gutter_left" href="#"><span>Feed</span><span class="mobile_only icon_arrow"></span></a>
+            <ul class="mobile_only mobile_filter">
+              <li><a class="active" href="?">All Posts</a></li>
+              <li><a href="/posts/featured">Featured Posts</a></li>
+              <li><a class="" href="/trending">Trending Posts</a></li>
+            </ul>
+          </li>
+
+          <li class="li_magazine " data-ga-event-category="Magazine Nav" data-ga-event-action="click" data-ga-on="click"><a id="magazine_nav_link" class="gutter_left" href="/magazine"><span>Magazine</span></a></li>
+          <li class="li_events " data-ga-event-category="Events Nav" data-ga-event-action="click" data-ga-on="click"><a id="events_nav_link" class="gutter_left" href="/events"><span>Events</span></a></li>
+          <li class="li_shop" data-ga-event-category="Shop Nav" data-ga-event-action="click" data-ga-on="click"><a class="gutter_left" target="_blank" id="shop_nav_link" href="https://shop.thefader.com/"><span>Shop</span></a></li>
+
+          <li class="li_socials">
+
+            <div class="social_links_wrap">
+              <a target="new" class="twitter" href="https://twitter.com/thefader" data-ga-event-category="Twitter Nav" data-ga-event-action="click" data-ga-on="click">Twitter</a>
+              <a target="new" class="facebook" href="https://www.facebook.com/thefader" data-ga-event-category="Facebook Nav" data-ga-event-action="click" data-ga-on="click">facebook</a>
+              <a target="new" class="youtube" href="https://www.youtube.com/user/TheFaderTeam?sub_confirmation=1" data-ga-event-category="Youtube Nav" data-ga-event-action="click" data-ga-on="click">youtube</a>
+              <a target="new" class="instagram" href="https://www.instagram.com/thefader/" data-ga-event-category="Instagram Nav" data-ga-event-action="click" data-ga-on="click">instagram</a>
+            </div>
+
+          </li>
+
+          <li>
+            <a href="http://www.thefader.com/home">
+              US Edition
+            </a>
+          </li>
+          
+          <li>
+            <a href="http://www.thefader.com/uk">
+              UK Edition
+            </a>
+          </li>
+
+            <li>
+              <a href="http://www.thefader.com/ca">
+                Canada Edition
+              </a>
+            </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class='nav_radio_wrap' style="display: none;">
+      <div class='nav_radio_controls'>
+        <ul><li class='prev'><span></span></li><li class='toggle'><span></span></li><li class='next'><span></span></li></ul>
+      </div>
+      <div class="icon_wrap radio_wrap ui_control ui_control_element" ui-toggle="faderRadio">
+        <div class="icon radio_icon"></div>
+        <div class="icon radio_icon_close"></div>
+      </div>
+    </div>
+
+    
+    
+
+    <div class="icon_wrap search_wrap ui_control " ui-toggle="collapsedSearch" ui-toggle-el=".collapsed_search">
+      <div class="icon search_icon_sm "></div>
+    </div>
+    
+  </div>
+  <!-- FOLLOW OVERLAY desktop -->
+  <div class="follow_overlay ui_control_element gutter_left gutter_right" ui-toggle="followOverlay">
+    <div class="icon_close"></div>
+    <h2 class="mono_heading size_28">Follow the Fader</h2>
+    <ul class="follow_links">
+      <li class="social twitter"><a class="twitter" target="_blank" href="https://twitter.com/thefader"></a></li>
+      <li class="social facebook"><a class="facebook" target="_blank" href="https://www.facebook.com/thefader"></a></li>
+      <li class="social youtube"><a class="youtube" target="_blank" href="http://www.youtube.com/user/TheFaderTeam?sub_confirmation=1"></a></li>
+      <li class="social pinterest"><a class="pinterest" target="_blank" href="https://www.pinterest.com/thefader/"></a></li>
+      <li class="social tumblr"><a class="tumblr" target="_blank" href="http://thefader.tumblr.com/"></a></li>
+      <li class="social instagram"><a class="instagram" target="_blank" href="http://instagram.com/thefader"></a></li>
+      <li class="social soundcloud"><a class="soundcloud" target="_blank" href="http://soundcloud.com/fadermedia"></a></li>
+      <li class="social spotify"><a class="spotify" target="_blank" href="http://open.spotify.com/app/thefader"></a></li>
+      <li class="social vsco"><a class="vsco" target="_blank" href="http://thefader.vsco.co/grid/1"></a></li>
+      <li class="social google"><a class="google" target="_blank" href="http://plus.google.com/+TheFADER"></a></li>
+      <li class="social RSS"><a class="rss" target="_blank" href="http://feeds.feedburner.com/TheFaderMagazine/"></a></li>
+    </ul>
+  </div>
+  <div class="collapsed_search ui_control_element gutter_left " ui-toggle="collapsedSearch" >
+    <div class="icon search_icon"></div>
+    <form action='/search' method='GET' name='search_form_small' id='search_form_small' class="gutter_left" autocomplete="off" data-search='true'>
+  <input type='text' name='query' value='' placeholder="" id=''>
+</form>
+
+    <div class='right_text'>
+      <span class='enter_to_search'>Press Enter to Search</span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile_nav_wrapper">
+  <div class="links_wrapper">
+    <ul class="links">
+      <li><a class="gutter_left music " href="/music">Music</a></li>
+      <li><a class="gutter_left style " href="/style">Style</a></li>
+      <li><a class="gutter_left culture " href="/culture">Culture</a></li>
+      <li ><a class="gutter_left" href="/fader-tv"><span>Video</span></a></li>
+      <li  ><a class="gutter_left" href="/magazine"><span>Magazine</span></a></li>
+      <li ><a class="gutter_left" href="/events"><span>Events</span></a></li>
+      <li><a class="gutter_left" target="_blank" href="https://shop.thefader.com/"><span>Shop</span></a></li>
+      <li>
+        <a class="gutter_left" href="http://www.thefader.com/home">
+          US Edition
+        </a>
+      </li>
+      <li>
+        <a class="gutter_left" href="http://www.thefader.com/uk">
+          UK Edition
+        </a>
+      </li>
+
+        <li>
+          <a class="gutter_left" href="http://www.thefader.com/ca">
+            Canada Edition
+          </a>
+        </li>
+      
+      <!-- <li class="mobile_only ui_control" ui-toggle="faderRadio"><a class="gutter_left" href="#"><span>Fader Radio</span></a></li> -->
+      <!-- <li class="follow_mobile accordion mobile_only"><span class="gutter_left"><span>Follow the Fader</span><span class="mobile_only icon_arrow"></span></span> -->
+      <!--   <\!-- FOLLOW LINKS LIST MOBILE -\-> -->
+      <!--   <ul class="mobile_only mobile_follow"> -->
+      <!--     <li><a target="_blank" href="https://twitter.com/thefader">Twitter</a></li> -->
+      <!--     <li><a target="_blank" href="https://www.facebook.com/thefader">Facebook</a></li> -->
+      <!--     <li><a target="_blank" href="http://www.youtube.com/user/TheFaderTeam">Youtube</a></li> -->
+      <!--     <li><a target="_blank" href="https://www.pinterest.com/thefader/">Pinterest</a></li> -->
+      <!--     <li><a target="_blank" href="http://thefader.tumblr.com/">Tumblr</a></li> -->
+      <!--     <li><a target="_blank" href="http://instagram.com/thefader">Instagram</a></li> -->
+      <!--     <li><a target="_blank" href="http://soundcloud.com/fadermedia">Soundcloud</a></li> -->
+      <!--     <li><a target="_blank" href="http://open.spotify.com/app/thefader">Spotify</a></li> -->
+      <!--     <li><a target="_blank" href="http://thefader.vsco.co/grid/1">VSCO</a></li> -->
+      <!--     <li><a target="_blank" href="http://plus.google.com/+TheFADER">Google+</a></li> -->
+      <!--     <li><a target="_blank" href="http://feeds.feedburner.com/TheFaderMagazine/">RSS</a></li> -->
+      <!-- </ul> -->
+
+      <!-- </li> -->
+
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<div class="main_content">
+  <div class="main_content_top">
+    <style>
+  .main_content {
+    background: #fff;
+    padding: 40px;
+  }
+
+ .general_page h1 {
+   font-size: 2em;
+   margin-top: 35px;
+ }
+
+ h2 {
+   font-size: 1.5em;
+ }
+
+ .general_page p a {
+   text-decoration: underline;
+ }
+ 
+</style>
+
+<section class="main general_page privacy" data-page-type="privacy">
+  <section class="two_thirds flex">
+
+    <h1>Privacy Policy</h1>
+
+    <section>
+      <p>Last updated: April 14, 2020</p>
+
+<p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+
+<p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+<h1>Interpretation and Definitions</h1>
+<h2>Interpretation</h2>
+<p>The words of which the initial letter is capitalized have meanings defined under the following conditions.</p>
+<p>The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+<h2>Definitions</h2>
+<p>For the purposes of this Privacy Policy:</p>
+<ul>
+    <li>
+        <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
+        <p>Under GDPR (General Data Protection Regulation), You can be referred to as the Data Subject or as the User as you are the individual using the Service.</p>    </li>
+    <li>
+        <p><strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Agreement) refers to The FADER, Inc., 71 West 23rd Street, Floor 13, New York, NY 10010.</p>
+        <p>For the purpose of the GDPR, the Company is the Data Controller.</p>    </li>
+        <li><strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where &ldquo;control&rdquo; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
+    <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+    <li><strong>Website</strong> refers to The FADER, accessible from https://www.thefader.com</li>        <li><strong>Service</strong> refers to the Website.</li>
+        <li><strong>Country</strong> refers to: New York, United States</li>
+    <li>
+        <p><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, to provide the Service on behalf of the Company, to perform services related to the Service or to assist the Company in analyzing how the Service is used.</p>
+        <p>For the purpose of the GDPR, Service Providers are considered Data Processors.</p>    </li>
+    <li><strong>Third-party Social Media Service</strong> refers to any website or any social network website through which a User can log in or create an account to use the Service.</li>
+    <li><strong>Facebook Fan Page</strong> is a public profile named The FADER specifically created by the Company on the Facebook social network, accessible from https://www.facebook.com/thefader</li>    <li>
+        <p><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</p>
+        <p>For the purposes for GDPR, Personal Data means any information relating to You such as a name, an identification number, location data, online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity.</p>        <p>For the purposes of the CCPA, Personal Data means any information that identifies, relates to, describes or is capable of being associated with, or could reasonably be linked, directly or indirectly, with You.</p>    </li>
+    <li><strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.</li>        <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</li>
+    <li><strong>Data Controller</strong>, for the purposes of the GDPR (General Data Protection Regulation), refers to the Company as the legal person which alone or jointly with others determines the purposes and means of the processing of Personal Data.</li>            <li><strong>Business</strong>, for the purpose of the CCPA (California Consumer Privacy Act), refers to the Company as the legal entity that collects Consumers&rsquo; personal information and determines the purposes and means of the processing of Consumers&rsquo; personal information, or on behalf of which such information is collected and that alone, or jointly with others, determines the purposes and means of the processing of consumers&rsquo; personal information, that does business in the State of California.</li>
+    <li><strong>Consumer</strong>, for the purpose of the CCPA (California Consumer Privacy Act), means a natural person who is a California resident. A resident, as defined in the law, includes (1) every individual who is in the USA for other than a temporary or transitory purpose, and (2) every individual who is domiciled in the USA who is outside the USA for a temporary or transitory purpose.</li>
+    <li><strong>Sale</strong>, for the purpose of the CCPA (California Consumer Privacy Act), means selling, renting, releasing, disclosing, disseminating, making available, transferring, or otherwise communicating orally, in writing, or by electronic or other means, a Consumer’s Personal information to another business or a third party for monetary or other valuable consideration.</li>
+    </ul>
+
+<h1>Collecting and Using Your Personal Data</h1>
+<h2>Types of Data Collected</h2>
+
+<h3>Personal Data</h3>
+<p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+<ul>
+    <li>Email address</li>    <li>First name and last name</li>    <li>Phone number</li>    <li>Address, State, Province, ZIP/Postal code, City</li>        <li>Usage Data</li>
+</ul>
+
+
+<h3>Usage Data</h3>
+<p>Usage Data is collected automatically when using the Service.</p>
+<p>Usage Data may include information such as Your Device&rsquo;s Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+<p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
+<p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
+
+
+
+<h3>Tracking Technologies and Cookies</h3>
+<p>We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service.</p>
+<p>You can instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You do not accept Cookies, You may not be able to use some parts of our Service.</p>
+<p>Cookies can be &ldquo;Persistent&rdquo; or &ldquo;Session&rdquo; Cookies. Persistent Cookies remain on your personal computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close your web browser.</p>
+<p>We use both session and persistent Cookies for the purposes set out below:</p>
+<ul>
+    <li>
+        <p><strong>Necessary / Essential Cookies</strong>
+        <p>Type: Session Cookies</p>
+        <p>Administered by: Us</p>
+        <p>Purpose: These Cookies are essential to provide You with services available through the Website and to enable You to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts. Without these Cookies, the services that You have asked for cannot be provided, and We only use these Cookies to provide You with those services.</p>
+    </li>
+      <li>
+          <p><strong>Cookies Policy / Notice Acceptance Cookies</strong></p>
+          <p>Type: Persistent Cookies</p>
+          <p>Administered by: Us</p>
+          <p>Purpose: These Cookies identify if users have accepted the use of cookies on the Website.</p>
+      </li>
+    <li>
+        <p><strong>Functionality Cookies</strong></p>
+        <p>Type: Persistent Cookies</p>
+        <p>Administered by: Us</p>
+        <p>Purpose: These Cookies allow us to remember choices You make when You use the Website, such as remembering your login details or language preference. The purpose of these Cookies is to provide You with a more personal experience and to avoid You having to re-enter your preferences every time You use the Website.</p>
+    </li>
+        <li>
+          <p><strong>Tracking and Performance Cookies</strong></p>
+          <p>Type: Persistent Cookies</p>
+          <p>Administered by: Third-Parties</p>
+          <p>Purpose: These Cookies are used to track information about traffic to the Website and how users use the Website. The information gathered via these Cookies may directly or indirectly identify you as an individual visitor. This is because the information collected is typically linked to a pseudonymous identifier associated with the device you use to access the Website. We may also use these Cookies to test new advertisements, pages, features or new functionality of the Website to see how our users react to them.</p>
+      </li>
+          <li>
+          <p><strong>Targeting and Advertising Cookies</strong></p>
+          <p>Type: Persistent Cookies</p>
+          <p>Administered by: Third-Parties</p>
+          <p>Purpose: These Cookies track your browsing habits to enable Us to show advertising which is more likely to be of interest to You. These Cookies use information about your browsing history to group You with other users who have similar interests. Based on that information, and with Our permission, third party advertisers can place Cookies to enable them to show adverts which We think will be relevant to your interests while You are on third party websites.</p>
+      </li>
+  </ul>
+<p>For more information about the cookies we use and your choices regarding cookies, please visit our Cookies Policy.</p>
+
+<h2>Use of Your Personal Data</h2>
+<p>The Company may use Personal Data for the following purposes:</p>
+<ul>
+    <li><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</li>
+    <li><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.</li>
+    <li><strong>For the performance of a contract:</strong> the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.</li>
+    <li><strong>To contact You:</strong> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application&rsquo;s push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.</li>
+    <li><strong>To provide You</strong> with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.</li>
+    <li><strong>To manage Your requests:</strong> To attend and manage Your requests to Us.</li>
+</ul>
+<br>
+<p>We may share your personal information in the following situations:</p>
+
+<ul>
+    <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to show advertisements to You to help support and maintain Our Service, to contact You, to advertise on third party websites to You after You visited our Service or for payment processing.</li>
+    <li><strong>For Business transfers:</strong> We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of our business to another company.</li>
+    <li><strong>With Affiliates:</strong> We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.</li>
+    <li><strong>With Business partners:</strong> We may share Your information with Our business partners to offer You certain products, services or promotions.</li>
+    <li><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside. If You interact with other users or register through a Third-Party Social Media Service, Your contacts on the Third-Party Social Media Service may see You name, profile, pictures and description of Your activity. Similarly, other users will be able to view descriptions of Your activity, communicate with You and view Your profile.</li>
+</ul>
+
+<h2>Retention of Your Personal Data</h2>
+<p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
+<p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
+
+<h2>Transfer of Your Personal Data</h2>
+<p>Your information, including Personal Data, is processed at the Company&rsquo;s operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>
+<p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>
+<p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>
+
+<h2>Disclosure of Your Personal Data</h2>
+<h3>Business Transactions</h3>
+<p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
+<h3>Law enforcement</h3>
+<p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
+<h3>Other legal requirements</h3>
+<p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
+<ul>
+    <li>Comply with a legal obligation</li>
+    <li>Protect and defend the rights or property of the Company</li>
+    <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
+    <li>Protect the personal safety of Users of the Service or the public</li>
+    <li>Protect against legal liability</li>
+</ul>
+
+<h2>Security of Your Personal Data</h2>
+<p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
+
+<h1>Detailed Information on the Processing of Your Personal Data</h1>
+<p>Service Providers have access to Your Personal Data only to perform their tasks on Our behalf and are obligated not to disclose or use it for any other purpose.</p>
+
+<h2>Analytics</h2>
+<p>We may use third-party Service providers to monitor and analyze the use of our Service.</p>
+<ul>
+        <li>
+        <p><strong>Google Analytics</strong></p>
+        <p>Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualise and personalise the ads of its own advertising network.</p>
+        <p>You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js and dc.js) from sharing information with Google Analytics about visits activity.</p>                <p>For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page: <a href=&ldquo;https://policies.google.com/privacy?hl=en&rdquo;>https://policies.google.com/privacy?hl=en</a></p>
+    </li>
+</ul>
+
+<h2>Advertising</h2>
+<p>We may use Service providers to show advertisements to You to help support and maintain Our Service.</p>
+<ul>
+          <li>
+          <p><strong>Google Ad Exchange</strong></p>
+          <p>Google Ad Exchange is provided by Google Inc.</p>
+          <p>You can opt-out from the Google Ad Exchange service by following the instructions described by Google: <a href=&ldquo;https://support.google.com/ads/answer/2662922?hl=en&rdquo;>https://support.google.com/ads/answer/2662922?hl=en</a></p>
+          <p>For more information on how Google uses the collected information, please visit the &ldquo;How Google uses data when you use our partners&rsquo; sites or app&rdquo; page: <a href=&ldquo;https://policies.google.com/technologies/partner-sites&rdquo;>https://policies.google.com/technologies/partner-sites</a> or visit the Privacy Policy of Google: <a href=&ldquo;https://policies.google.com/privacy&rdquo;>https://policies.google.com/privacy</a></p>
+      </li>
+                      </ul>
+
+<h2>Email Marketing</h2>
+<p>We may use Your Personal Data to contact You with newsletters, marketing or promotional materials and other information that may be of interest to You. You may opt-out of receiving any, or all, of these communications from Us by following the unsubscribe link or instructions provided in any email We send or by contacting Us.</p>
+<p>We may use Email Marketing Service Providers to manage and send emails to You.</p>
+    <ul>
+        <li>
+        <p><strong>Mailchimp</strong></p>
+        <p>Mailchimp is an email marketing sending service provided by The Rocket Science Group LLC.</p>
+        <p>For more information on the privacy practices of Mailchimp, please visit their Privacy policy: <a href=&ldquo;https://mailchimp.com/legal/privacy/&rdquo;>https://mailchimp.com/legal/privacy/</a></p>
+    </li>
+            </ul>
+
+<h2>Behavioral Remarketing</h2>
+<p>The Company uses remarketing services to advertise on third party websites to You after You visited our Service. We and Our third-party vendors use cookies to inform, optimize and serve ads based on Your past visits to our Service.</p>
+<ul>
+              <li>
+            <p><strong>Twitter</strong></p>
+            <p>Twitter remarketing service is provided by Twitter Inc.</p>
+            <p>You can opt-out from Twitter&rsquo;s interest-based ads by following their instructions: <a href=&ldquo;https://support.twitter.com/articles/20170405&rdquo;>https://support.twitter.com/articles/20170405</a></p>
+            <p>You can learn more about the privacy practices and policies of Twitter by visiting their Privacy Policy page: <a href=&ldquo;https://twitter.com/privacy&rdquo;>https://twitter.com/privacy</a></p>
+        </li>
+            <li>
+            <p><strong>Facebook</strong></p>
+            <p>Facebook remarketing service is provided by Facebook Inc.</p>
+            <p>You can learn more about interest-based advertising from Facebook by visiting this page: <a href=&ldquo;https://www.facebook.com/help/164968693837950&rdquo;>https://www.facebook.com/help/164968693837950</a></p>
+            <p>To opt-out from Facebook&rsquo;s interest-based ads, follow these instructions from Facebook:  <a href=&ldquo;https://www.facebook.com/help/568137493302217&rdquo;>https://www.facebook.com/help/568137493302217</a><p>
+            <p>Facebook adheres to the Self-Regulatory Principles for Online Behavioural Advertising established by the Digital Advertising Alliance. You can also opt-out from Facebook and other participating companies through the Digital Advertising Alliance in the USA <a href=&ldquo;http://www.aboutads.info/choices/&rdquo;>http://www.aboutads.info/choices/</a>, the Digital Advertising Alliance of Canada in Canada <a href=&ldquo;http://youradchoices.ca/&rdquo;>http://youradchoices.ca/</a> or the European Interactive Digital Advertising Alliance in Europe <a href=&ldquo;http://www.youronlinechoices.eu/&rdquo;>http://www.youronlinechoices.eu/</a>, or opt-out using your mobile device settings.</p>
+            <p>For more information on the privacy practices of Facebook, please visit Facebook&rsquo;s Data Policy: <a href=&ldquo;https://www.facebook.com/privacy/explanation&rdquo;>https://www.facebook.com/privacy/explanation</a></p>
+        </li>
+          </ul>
+
+<h2>Payments</h2>
+<p>We may provide paid products and/or services within the Service. In that case, we may use third-party services for payment processing (e.g. payment processors).</p>
+<p>We will not store or collect Your payment card details. That information is provided directly to Our third-party payment processors whose use of Your personal information is governed by their Privacy Policy. These payment processors adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, Mastercard, American Express and Discover. PCI-DSS requirements help ensure the secure handling of payment information.</p>
+<ul>
+                    <li>
+          <p><strong>PayPal</strong></p>
+          <p>Their Privacy Policy can be viewed at <a href=&ldquo;https://www.paypal.com/webapps/mpp/ua/privacy-full&rdquo;>https://www.paypal.com/webapps/mpp/ua/privacy-full</a></p>
+      </li>
+                          </ul>
+
+
+
+<h1>GDPR Privacy</h1>
+<h2>Legal Basis for Processing Personal Data under GDPR</h2>
+<p>We may process Personal Data under the following conditions:</p>
+
+<ul>
+    <li><strong>Consent:</strong> You have given Your consent for processing Personal Data for one or more specific purposes.</li>
+    <li><strong>Performance of a contract:</strong> Provision of Personal Data is necessary for the performance of an agreement with You and/or for any pre-contractual obligations thereof.</li>
+    <li><strong>Legal obligations:</strong> Processing Personal Data is necessary for compliance with a legal obligation to which the Company is subject.</li>
+    <li><strong>Vital interests:</strong> Processing Personal Data is necessary in order to protect Your vital interests or of another natural person.</li>
+    <li><strong>Public interests:</strong> Processing Personal Data is related to a task that is carried out in the public interest or in the exercise of official authority vested in the Company.</li>
+    <li><strong>Legitimate interests:</strong> Processing Personal Data is necessary for the purposes of the legitimate interests pursued by the Company.</li>
+</ul>
+<p>In any case, the Company will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.</p>
+
+<h2>Your Rights under the GDPR</h2>
+<p>The Company undertakes to respect the confidentiality of Your Personal Data and to guarantee You can exercise Your rights.</p>
+<p>You have the right under this Privacy Policy, and by law if You are within the EU, to:</p>
+
+<ul>
+    <li><strong>Request access to Your Personal Data.</strong> The right to access, update or delete the information We have on You. Whenever made possible, you can access, update or request deletion of Your Personal Data directly within Your account settings section. If you are unable to perform these actions yourself, please contact Us to assist You. This also enables You to receive a copy of the Personal Data We hold about You.</li>
+    <li><strong>Request correction of the Personal Data that We hold about You.</strong> You have the right to to have any incomplete or inaccurate information We hold about You corrected.</li>
+    <li><strong>Object to processing of Your Personal Data.</strong> This right exists where We are relying on a legitimate interest as the legal basis for Our processing and there is something about Your particular situation, which makes You want to object to our processing of Your Personal Data on this ground. You also have the right to object where We are processing Your Personal Data for direct marketing purposes.</li>
+    <li><strong>Request erasure of Your Personal Data.</strong> You have the right to ask Us to delete or remove Personal Data when there is no good reason for Us to continue processing it.</li>
+    <li><strong>Request the transfer of Your Personal Data.</strong> We will provide to You, or to a third-party You have chosen, Your Personal Data in a structured, commonly used, machine-readable format. Please note that this right only applies to automated information which You initially provided consent for Us to use or where We used the information to perform a contract with You.</li>
+    <li><strong>Withdraw Your consent.</strong> You have the right to withdraw Your consent on using your Personal Data. If You withdraw Your consent, We may not be able to provide You with access to certain specific functionalities of the Service.</li>
+</ul>
+
+<h2>Exercising of Your GDPR Data Protection Rights</h2>
+<p>You may exercise Your rights of access, rectification, cancellation and opposition by contacting Us. Please note that we may ask You to verify Your identity before responding to such requests. If You make a request, We will try our best to respond to You as soon as possible.</p>
+<p>You have the right to complain to a Data Protection Authority about Our collection and use of Your Personal Data. For more information, if You are in the European Economic Area (EEA), please contact Your local data protection authority in the EEA.</p>
+
+<h1>Facebook Fan Page</h1>
+<h2>Data Controller for the Facebook Fan Page</h2>
+<p>The Company is the Data Controller of Your Personal Data collected while using the Service. As operator of the Facebook Fan Page (https://www.facebook.com/thefader), the Company and the operator of the social network Facebook are Joint Controllers.</p>
+<p>The Company has entered into agreements with Facebook that define the terms for use of the Facebook Fan Page, among other things. These terms are mostly based on the Facebook Terms of Service: <a href=&ldquo;https://www.facebook.com/terms.php&rdquo;>https://www.facebook.com/terms.php</a></p>
+<p>Visit the Facebook Privacy Policy <a href=&ldquo;https://www.facebook.com/policy.php&rdquo;>https://www.facebook.com/policy.php</a> for more information about how Facebook manages Personal data or contact Facebook online, or by mail: Facebook, Inc. ATTN, Privacy Operations, 1601 Willow Road, Menlo Park, CA 94025, United States.</p>
+
+<h2>Facebook Insights</h2>
+<p>We use the Facebook Insights function in connection with the operation of the Facebook Fan Page and on the basis of the GDPR, in order to obtain anonymized statistical data about Our users.</p>
+<p>For this purpose, Facebook places a Cookie on the device of the user visiting Our Facebook Fan Page. Each Cookie contains a unique identifier code and remains active for a period of two years, except when it is deleted before the end of this period.</p>
+<p>Facebook receives, records and processes the information stored in the Cookie, especially when the user visits the Facebook services, services that are provided by other members of the Facebook Fan Page and services by other companies that use Facebook services.</p>
+<p>For more information on the privacy practices of Facebook, please visit Facebook Privacy Policy here: <a href=&ldquo;https://www.facebook.com/full_data_use_policy&rdquo;>https://www.facebook.com/full_data_use_policy</a></p>
+
+<h1>CCPA Privacy</h1>
+<h2>Your Rights under the CCPA</h2>
+<p>Under this Privacy Policy, and by law if You are a resident of California, You have the following rights:</p>
+<ul>
+    <li><strong>The right to notice.</strong> You must be properly notified which categories of Personal Data are being collected and the purposes for which the Personal Data is being used.</li>
+    <li><strong>The right to access / the right to request.</strong> The CCPA permits You to request and obtain from the Company information regarding the disclosure of Your Personal Data that has been collected in the past 12 months by the Company or its subsidiaries to a third-party for the third party’s direct marketing purposes.</li>
+    <li><strong>The right to say no to the sale of Personal Data.</strong> You also have the right to ask the Company not to sell Your Personal Data to third parties. You can submit such a request by visiting our &ldquo;Do Not Sell My Personal Information&rdquo; section or web page.</li>
+    <li>
+        <p><strong>The right to know about Your Personal Data.</strong> You have the right to request and obtain from the Company information regarding the disclosure of the following:</p>
+        <ul>
+            <li>The categories of Personal Data collected</li>
+            <li>The sources from which the Personal Data was collected</li>
+            <li>The business or commercial purpose for collecting or selling the Personal Data</li>
+            <li>Categories of third parties with whom We share Personal Data</li>
+            <li>The specific pieces of Personal Data we collected about You</li>
+        </ul>
+    </li>
+    <li><strong>The right to delete Personal Data.</strong> You also have the right to request the deletion of Your Personal Data that have been collected in the past 12 months.</li>
+    <li>
+        <p><strong>The right not to be discriminated against.</strong> You have the right not to be discriminated against for exercising any of Your Consumer&rsquo;s rights, including by:</p>
+        <ul>
+            <li>Denying goods or services to You</li>
+            <li>Charging different prices or rates for goods or services, including the use of discounts or other benefits or imposing penalties</li>
+            <li>Providing a different level or quality of goods or services to You</li>
+            <li>Suggesting that You will receive a different price or rate for goods or services or a different level or quality of goods or services.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Exercising Your CCPA Data Protection Rights</h2>
+<p>In order to exercise any of Your rights under the CCPA, and if you are a California resident, You can email or call us or visit our &ldquo;Do Not Sell My Personal Information&rdquo; section or web page.</p>
+<p>The Company will disclose and deliver the required information free of charge within 45 days of receiving Your verifiable request. The time period to provide the required information may be extended once by an additional 45 days when reasonable necessary and with prior notice.</p>
+
+<h2>Do Not Sell My Personal Information</h2>
+<p>We do not sell personal information. However, the Service Providers we partner with (for example, our advertising partners) may use technology on the Service that &ldquo;sells&rdquo; personal information as defined by the CCPA law.</p>
+<p>If you wish to opt out of the use of your personal information for interest-based advertising purposes and these potential sales as defined under CCPA law, you may do so by following the instructions below.</p>
+<p>Please note that any opt out is specific to the browser You use. You may need to opt out on every browser that you use.</p>
+
+<h3>Website</h3>
+<p>You can opt out of receiving ads that are personalized as served by our Service Providers by following our instructions presented on the Service:</p>
+<ul>
+  <li>From Our &ldquo;Cookie Consent&rdquo; notice banner</li>
+  <li>Or from Our &ldquo;Do Not Sell My Personal Information&rdquo; notice banner</li>
+</ul>
+<p>The opt out will place a cookie on Your computer that is unique to the browser You use to opt out. If you change browsers or delete the cookies saved by your browser, you will need to opt out again.</p>
+
+<h3>Mobile Devices</h3>
+<p>Your mobile device may give you the ability to opt out of the use of information about the apps you use in order to serve you ads that are targeted to your interests:</p>
+<ul>
+  <li>&ldquo;Opt out of Interest-Based Ads&rdquo; or &ldquo;Opt out of Ads Personalization&rdquo; on Android devices</li>
+  <li>&ldquo;Limit Ad Tracking&rdquo; on iOS devices</li>
+</ul>
+<p>You can also stop the collection of location information from Your mobile device by changing the preferences on your mobile device.</p>
+
+
+<h1>Children&rsquo;s Privacy</h1>
+<p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
+<p>We also may limit how We collect, use, and store some of the information of Users between 13 and 18 years old. In some cases, this means We will be unable to provide certain functionality of the Service to these users.</p>
+<p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent&rsquo;s consent before We collect and use that information.</p>
+
+<h1>Your California Privacy Rights (California Business and Professions Code Section 22581)</h1>
+<p>California Business and Professions Code section 22581 allow California residents under the age of 18 who are registered users of online sites, services or applications to request and obtain removal of content or information they have publicly posted.</p>
+<p>To request removal of such data, and if you are a California resident, You can contact Us using the contact information provided below, and include the email address associated with Your account.</p>
+<p>Be aware that Your request does not guarantee complete or comprehensive removal of content or information posted online and that the law may not permit or require removal in certain circumstances.</p>
+
+<h1>Links to Other Websites</h1>
+<p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party&rsquo;s site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
+<p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+
+<h1>Public Information</h1>
+<p>If you choose to post any information on or to Website that is meant to be publically available (e.g., comments to columns, posts to message boards, etc.), you are authorizing us to display and share such information to the general public, without any liability or notice to you.</p>
+
+<h1>Changes to this Privacy Policy</h1>
+<p>We may update our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
+<p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &ldquo;Last updated&rdquo; date at the top of this Privacy Policy.</p>
+<p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+
+<h1>Contact Us</h1>
+<p>If you have any questions about this Privacy Policy, You can contact us:</p>
+<p>The FADER</br>
+Attn: Privacy Policy / Legal Department</br>
+71 West 23rd Street, Floor 13</br>
+New York, NY 10010</p>
+
+<p>privacyconcern@thefader.com</p>
+    </section>
+  </div>
+</div>
+
+  </div>
+    <section class="ad banner_ad row footer_ad ">
+  <div class="ad_outer_wrapper">
+    <div class="ad_inner_wrapper">
+      <div id='div-footer-ad' >
+
+
+    <!-- <script type='text/javascript'>
+         displayAdSlot('div-footer-ad', 'fader_v3_article_footer_728_90', [728, 90]);
+         /* setupGptAdObserver('div-footer-ad');*/
+         </script> -->
+
+</div>
+
+    </div>
+  </div>
+</section>
+
+  <footer class="gutter_right gutter_left ">
+  <div class="footer_top_row">
+    <a class="logo_wrapper" href="/home"> <div class="footer_logo"></div></a>
+    <div class="footer_links gutter_left">
+      <ul class="footer_page_links">
+        <li><a href="/contact">Contact</a></li>
+        <li><a target="_blank" href="http://advertising.thefader.com/">Advertising</a></li>
+        <li><a href="/terms-of-use">Terms of Use</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li>
+        <li><a target="_blank" href="http://www.faderlabel.com">Fader Label</a></li>
+        <li><a target="_blank" href="http://www.faderfilms.com">Fader Films</a></li>
+      </ul>
+      <ul class="footer_social_links">
+        <li><a target="_blank" href="https://twitter.com/thefader">Twitter</a></li>
+        <li><a target="_blank" href="https://www.facebook.com/thefader">Facebook</a></li>
+        <li><a target="_blank" href="https://www.youtube.com/user/TheFaderTeam?sub_confirmation=1">Youtube</a></li>
+        <li><a target="_blank" href="https://www.instagram.com/thefader/">Instagram</a></li>
+        <li><a target="_blank" href="https://itunes.apple.com/us/curator/the-fader/id999961432">Apple Music</a></li>
+        <li><a target="_blank" href="http://soundcloud.com/fadermedia">Soundcloud</a></li>
+        <li><a target="_blank" href="https://open.spotify.com/user/thefader">Spotify</a></li>
+        <li><a target="_blank" href="/feed.rss">RSS</a></li>
+        
+      </ul>
+    </div>
+  </div>
+
+    <div class="footer_content">
+
+    <div class="updates_form">
+  <form id="updates">
+    <div class="footer_header mono_heading size_21">
+      Click me. Read me. The FADER newsletter.
+    </div>
+    <div class="signup">
+      <input type="text" class="email" placeholder="Email address" name="email" />
+      <input type="hidden" id="signup_location" name="signup_location" value="email_footer_form">
+      <input type="submit" class="submit border_btn white" value="Sign Up" >
+    </div>
+  </form>
+</div>
+
+
+  </div>
+  
+  
+  <div class="credits">
+    <div class="fader_copyright">©2024  The Fader, Inc. All rights reserved.</div>
+</footer>
+
+  <div class="overlay"></div>
+</div>
+
+
+
+
+<!-- Quantcast Tag, part 2 -->
+<script type="text/javascript">
+ _qevents.push( { qacct:"p-579gYVoxaB70s"} );
+</script>
+<noscript>
+  <div style="display: none;">
+    <img src="https://pixel.quantserve.com/pixel/p-test123.gif" height="1" width="1" alt="Quantcast"/>
+  </div>
+</noscript>
+
+<!-- Twitter -->
+
+    <script>
+
+ !function(e,n,u,a){e.twq||(a=e.twq=function(){a.exe?a.exe.apply(a,arguments):
+                                               a.queue.push(arguments);},a.version='1',a.queue=[],t=n.createElement(u),
+                            t.async=!0,t.src='//static.ads-twitter.com/uwt.js',s=n.getElementsByTagName(u)[0],
+                            s.parentNode.insertBefore(t,s))}(window,document,'script');
+ // Insert Twitter Pixel ID and Standard Event data below
+ twq('init','nv3j0');
+ twq('track','PageView');
+
+ twq('init','o5uzs');
+ twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+
+  <script 
+      src="//dc8xl0ndzn2cb.cloudfront.net/js/thefader/v0/keywee.min.js" type="text/javascript" defer>
+  </script>
+
+  <!-- TODO: async re-enable? -->
+  <script  type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us3.list-manage.com","uuid":"47e24c510ba5e583e081e747e","lid":"58ecd52b41","uniqueMethods":true}) })</script>
+
+
+
+
+
+
+    </div>
+
+
+    <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  </body>
+</html>
+ contentType 9 text/html url 41 http://www.thefader.com:80/privacy-policy responseCode 3 200 

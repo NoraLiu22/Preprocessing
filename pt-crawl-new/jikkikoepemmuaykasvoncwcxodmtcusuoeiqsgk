@@ -1,0 +1,280 @@
+jikkikoepemmuaykasvoncwcxodmtcusuoeiqsgk length 5 18170 page 18170 <!DOCTYPE html>
+<html lang="en" class="n2appshell n2-appshell-styles">
+<head>
+<script type="text/javascript">document.write('<base href="/sound-screen/">');</script>
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0">
+
+  <!-- script that generates the base href tag at runtime -->
+  <script>
+    var hostname = document.location.hostname;
+var ipRegex  = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/g;
+var protocol = document.location.protocol;
+
+var baseElement = document.querySelector('base');
+
+if (protocol === 'file:') {
+  // Replace base for offline use (no html5push state)
+  window.html5Mode = false; // disable html5 mode in Adobe app
+  baseElement.remove();
+} else if (hostname.indexOf(atob('YWRvYmUuY29t')) !== -1) {
+  // Remove base tag in Adobe Publish web viewer and local Apps
+  baseElement.remove();
+} else if (((window.location.href.indexOf(atob('L2F1dG9zL2Fib3V0')) !== -1) || (window.location.href.indexOf(atob('L3JvYWRzaG93L2Fib3V0')) !== -1)) && (navigator.userAgent.indexOf('Prerender') === -1)) {
+  baseElement.remove();
+  document.write(atob('PGJhc2UgaHJlZj0iLy93d3cuY25ldC5jb20vcm9hZHNob3cvIi8+'));
+} else if (hostname === 'localhost' || ipRegex.test(hostname) || hostname.indexOf('.local') === (hostname.length - 6)) {
+  window.localhost = true;
+  document.write('<base href="/"/>');
+} else {
+  // Base url will be relative: app-name/
+  // Custom domain: http://custom-domain.com/some-folder-for-seo/app-name => base url needs to change to this
+  // Internal publish link: http://demo.stage.storied.co/app-name         => base url can change to this url
+  var baseUrl = baseElement.getAttribute('href');
+  // Only change the base url for previewed apps or apps that have a sub folder custom domain. eg:
+  //   http://stage.storied.co/projects/a8bd1d22b98ad422b308dfa0d3ca7446/
+  //   http://custom-domain.com/some-folder-for-seo/app-name
+  // Regular custom domains should not be rewritten. eg:
+  //   http://custom-domain.com/app-name
+  if (baseUrl !== "/") {
+    baseElement.href = window.location.pathname.substring(0, window.location.pathname.indexOf(baseUrl) + baseUrl.length); // http://cnet.com/app-name/
+  }
+}
+// This string gets replaced by Grunt if there is an override in cfg.json.
+var baseOverride = '%base_override%'; // Only the first instance will get replaced
+// config.json override has priority over every other base href, except prerender.
+if (baseOverride !== ('%base_override%') && navigator.userAgent.indexOf('Prerender') === -1) {
+  var baseTagElement = document.querySelector('base');
+  var headElement    = document.querySelector('head');
+  if (baseTagElement) {
+    headElement.removeChild(baseTagElement);
+  }
+  var newBaseElement = document.createElement('base');
+  newBaseElement.href = baseOverride;
+  headElement.appendChild(newBaseElement);
+}
+
+      window.prerenderReady = false;
+  </script>
+
+  <!-- Sentry and New Relic trackers -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title ng-bind="seo.title"></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="generator" content="storied.co" />
+
+  <!-- General meta tags -->
+  <meta name="application-name" ng-attr-content="{{seo.title}}" />
+  <meta name="description" ng-attr-content="{{seo.description}}" ng-if="seo.description" />
+  <meta name="keywords" ng-attr-content="{{seo.keywords}}" ng-if="seo.keywords" />
+  <meta name="news_keywords" ng-attr-content="{{seo.keywords}}" ng-if="seo.keywords" />
+  <meta name="publish-date" ng-attr-content="{{seo.publishDate}}" />
+  <meta property="article:published_time" ng-attr-content="{{seo.publishDate}}" />
+  <meta property="article:modified_time" ng-attr-content="{{seo.modifyDate}}" />
+  <meta property="article:author" ng-attr-content="{{seo.facebookAuthor}}" ng-if="seo.facebookAuthor" />
+
+  <meta name="generator" content="storied.co" />
+  <meta name="apple-mobile-web-app-title" ng-attr-content="{{::seo.title}}" />
+
+  <!-- OpenGraph sharing tags -->
+  <meta property="og:site_name" ng-attr-content="{{share.title}}" />
+  <meta property="og:title" ng-attr-content="{{share.title}}" />
+  <meta property="og:description" ng-attr-content="{{share.description}}" />
+  <meta property="og:url" ng-attr-content="{{seo.url}}" />
+  <meta property="og:image" ng-attr-content="{{share.image}}" ng-if="share.image" />
+  <meta property="og:image:type" content="image/jpeg" ng-if="share.image" />
+  <meta property="og:image:width" content="630" ng-if="share.image" />
+  <meta property="og:image:height" content="315" ng-if="share.image" />
+  <meta property="og:description" ng-attr-content="{{share.description}}" ng-if="share.description" />
+  <meta property="fb:app_id" ng-attr-content="{{share.facebookAppId}}" ng-if="share.facebookAppId" />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter specific tags -->
+  <meta name="twitter:title" content="{{share.title}}" />
+  <meta name="twitter:description" content="{{share.description}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" ng-attr-content="{{seo.author}}" />
+  <meta name="twitter:site" ng-attr-content="{{share.twitterSiteName}}" />
+  <meta name="twitter:image" ng-attr-content="{{share.image}}" ng-if="share.image">
+  </meta>
+
+  <!-- iOS optimizations -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!-- Android optimizations -->
+  <meta name="format-detection" content="address=no;email=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href='https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/images/71b5bdc29db06ef70c138522a8487064_favicon.png'>
+  <link rel="icon" type="image/png" sizes="32x32" href='https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/images/71b5bdc29db06ef70c138522a8487064_favicon.png'>
+  <link rel="icon" type="image/png" sizes="16x16" href='https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/images/71b5bdc29db06ef70c138522a8487064_favicon.png'>
+
+  <!-- DNS prefetch for faster load times -->
+  <link rel="dns-prefetch" href="https://0gv2ds5jh3.execute-api.us-east-1.amazonaws.com">
+  <link rel="dns-prefetch" href="https://cheeuzmud5.execute-api.us-east-1.amazonaws.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://feeds.storied.co">
+  <link rel="dns-prefetch" href="https://n2.storied.co">
+  <link rel="dns-prefetch" href="https://cloud.storied.co">
+  <link rel="dns-prefetch" href="https://s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://s3.us-east-1.amazonaws.com">
+  <link rel="dns-prefetch" href="https://static.storied.co">
+  <link rel="dns-prefetch" href="https://static-dev.storied.co">
+
+  <!-- Mobile device optimizations -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+
+  <!-- Stylesheets -->
+  
+    <link rel="stylesheet" href="https://n2.storied.co/05f67347aaf894a0bf82a264d2c2ad3b0f9ad373/css/n2.min.css">
+    
+      <link id="fonts-css" type="text/css" rel="stylesheet" href="content/styles/fonts.css">
+      <link rel="stylesheet" href="https://cloud.storied.co/master-stylesheet/2.70.1/style.min.css">
+  <link rel="stylesheet" href="content/styles/custom.css">
+      <script type="text/javascript">
+        window.n2 = window.n2 || {};
+        window.n2.analytics = window.n2.analytics || {};
+        window.n2.analytics.startTime = new Date().getTime();
+      </script>
+
+
+</head>
+
+<body>
+  <div class="hidden-seo-elements"></div>
+
+  <!-- App Container: the application or loader view will render here -->
+  <div class="app-container" ui-view></div>
+
+  <!-- Scripts: -->
+  <script>
+    window.n2 = window.n2 || {};
+    window.n2.analytics = window.n2.analytics || {};
+    window.n2.hub = window.n2.hub || [];
+    window.n2.config = {"collection":false,"categoryTags":[],"url":"http://video.deadline.com/sound-screen/","publishDate":1680727066,"id":33140,"env":"prod","seo_id":"sound-screen","app_id":"dX6rp5D3abx1DV4g","account_id":"7qZVn42GpwxkboeY","account_type":"site","sharing":{"image":null,"video":""},"behavior":{"loader":{"logo":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/preloader/46ea6a79886dd55782e968cded1b6ece.n2optimized.png","backgroundImage":null,"progressBarColor":"rgb(255, 255, 255)","backgroundColor":"rgb(0, 0, 0)"},"globalui":{"layout":"none"},"toc":{"enable_toc":"none","enable_search":true,"enable_source_file_link":{"enable":true,"url":""}},"rotation_message_enabled":false,"scale_mode":{"mode":"auto_detect"},"sharing":false,"transitions":{"horizontal":"none","vertical":"none"}},"title":"Sound & Screen","author":"Ramin Hedayatpour","publisher_id":1075,"createdDate":1680725049,"changedDate":1699877653,"description":"","icons":{"logo":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/images/71b5bdc29db06ef70c138522a8487064_favicon.png"},"content":{"transitionType":"pagegallery","panes":[{"id":"home-sound-screen","type":"short-article","link":"home-sound-screen","itemOrder":-1,"content":{"html":"content/views/pages/home-sound-screen.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7a81512043b55225f13fd8d023a6c719.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7a81512043b55225f13fd8d023a6c719-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7a81512043b55225f13fd8d023a6c719-content-highres.jpg","thumbnailTitle":"Home - Sound & Screen"},{"id":"sound-and-screen-film-2022","type":"long-article","link":"sound-and-screen-film-2022","itemOrder":-1,"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7cb165fb2f38321d51a0e3cdc11f0f73.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7cb165fb2f38321d51a0e3cdc11f0f73-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7cb165fb2f38321d51a0e3cdc11f0f73-content-highres.jpg","thumbnailTitle":"Sound and Screen Film 2022","sections":[{"id":"sound-and-screen-film-2022","html":"content/views/pages/sound-and-screen-film-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7cb165fb2f38321d51a0e3cdc11f0f73.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7cb165fb2f38321d51a0e3cdc11f0f73-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_7cb165fb2f38321d51a0e3cdc11f0f73-content-highres.jpg","thumbnailTitle":"Sound and Screen Film 2022"},{"id":"sound-and-screen-television-2022","html":"content/views/pages/sound-and-screen-television-2022.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_d973081f000fdf820e68d14e95c340b7.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_d973081f000fdf820e68d14e95c340b7-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_d973081f000fdf820e68d14e95c340b7-content-highres.jpg","thumbnailTitle":"Sound and Screen Television 2022"},{"id":"sound-and-screen-television-2023","html":"content/views/pages/sound-and-screen-television-2023.html","thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_185452f8c29109167fb64ecdd5ba1536.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_185452f8c29109167fb64ecdd5ba1536-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_185452f8c29109167fb64ecdd5ba1536-content-highres.jpg","thumbnailTitle":"Sound and Screen Television 2023"}]},{"id":"sound-and-screen-film-2023","type":"short-article","link":"sound-and-screen-film-2023","itemOrder":-1,"content":{"html":"content/views/pages/sound-and-screen-film-2023.html"},"sectionName":null,"thumbnail":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_ac6494b71d0e70c244bf0da24da2331c.jpg","thumbnailContent":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_ac6494b71d0e70c244bf0da24da2331c-content.jpg","thumbnailContentHighRes":"https://static.storied.co/7qZVn42GpwxkboeY/projects/dX6rp5D3abx1DV4g/assets/screenshots/thmb_ac6494b71d0e70c244bf0da24da2331c-content-highres.jpg","thumbnailTitle":"Sound and Screen Film 2023"}]},"publish":{"title":"Sound & Screen","protected":false,"masterStylesheet":{"path":"master-stylesheet/2.70.1/style.min.css"}},"data":[],"cookie_policy":{"enabled":false},"cdnPath":"https://static.storied.co/7qZVn42GpwxkboeY/published_projects/sound-screen/"};
+    let startTime = new Date().getTime();
+    window.n2.analytics.startTime = startTime;
+    function getLambdaAnalyticsUrl() {
+      if (window.n2.config.env === 'stage') {
+        return 'https://pi4dftunh4.execute-api.us-east-1.amazonaws.com/stage/pix-trk/?event_timestamp=';
+      } else {
+        return 'https://0gv2ds5jh3.execute-api.us-east-1.amazonaws.com/prod/pix-trk/?event_timestamp=';
+      }
+    }
+    function getCookie(cname) {
+      if (navigator.cookieEnabled) {
+        let name = cname + '=';
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+      } else {
+        console.warn('Storied: cookies not enabled: session id cannot be retrieved');
+      }
+      return null;
+    }
+    function setCookie(cname, cvalue, exms, path) {
+      if (navigator.cookieEnabled) {
+        let d = new Date();
+        d.setTime(d.getTime() + exms);
+        let expires = 'expires=' + d.toUTCString();
+        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=' + path;
+      } else {
+        console.warn('Storied: cookies not enabled: session id cannot be saved');
+      }
+    }
+    const generateSessionID = function () {
+      if (getCookie('n2_session_id')) {
+        return getCookie('n2_session_id');
+      } else {
+        let sid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          let r = Math.random() * 16 | 0, v = c === 'x' ? r : r & 0x3 | 0x8;
+          return v.toString(16);
+        });
+        try {
+          setCookie('n2_session_id', sid, 1800000, '/');
+        } catch (err) {
+          console.warn('Not able to set session id on cookies', err);
+        }
+      }
+    };
+    const GenerateSession = function () {
+      try {
+        if (!window.n2.session_id) {
+          window.n2.session_id = generateSessionID();
+        }
+        if (!window.n2.device_category) {
+          window.n2.device_category = 481 <= window.innerWidth && 1024 > window.innerWidth ? 'tablet' : 480 > window.innerWidth ? 'phone' : 'desktop';
+        }
+      } catch (err) {
+        console.error('Storied: Failed to generate session');
+      }
+    };
+    const generateProjectSession = function () {
+      const getLocalStorage = (n) => { return window.localStorage.getItem(n); }
+      const setLocalStorage = (n, v) => { return window.localStorage.setItem(n, v); }
+      var u = window.location.href; var p = false; var s = ['cloud.storied.co', 'n2ps.storied.co', 'stage.storied.co', 'fedev.storied.co', 'dev.storied.co'];
+      for (let i = 0; i < s.length; i++) { if ((u.indexOf(s[i]) === -1) && /projects/g.test(u)) { p = true; } }
+      if (!p && (u.indexOf('localhost') === -1)) {
+        var a = 'n2_app_session_' + window.n2.config.app_id; var l = getLocalStorage(a); var c = new Date().getTime(); var n = false;
+        if (!l || new Date(parseInt(l)).getTime() + 1800000 <= c) { n = true }
+        if (n) { window.n2.analytics.new_session = true; setLocalStorage(a, c); }
+      }
+    }
+  </script>
+  <script>
+    if (!window.n2.isPrerender && !window.n2.isScreenshot) {
+      GenerateSession();
+      generateProjectSession();
+    }
+  </script>
+
+  <script>
+    let img3 = document.createElement('img');
+    img3.addEventListener('error', function () {
+      console.warn('Storied: ad Blocking Enabled');
+    });
+    img3.src = 'https://s3.amazonaws.com/storied-analytics/ads.png';
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+    integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+    <script src="https://n2.storied.co/05f67347aaf894a0bf82a264d2c2ad3b0f9ad373/js/n2.js"></script>
+    
+      <script>
+        try {
+      /*Custom JS Code*/
+    } catch (e) {
+          console.error('Exception inside custom.js: ', e);
+        }
+      </script>
+      <script>
+        window.n2.buildinfo = {
+          'revision': '05f67347aaf894a0bf82a264d2c2ad3b0f9ad373',
+          'branch_name': 'master',
+          'build_number': '8051',
+          'compiled_at': new Date(parseInt('1699568701804')),
+          'version': '1.34.122'
+        };
+      </script>
+
+
+</body>
+
+</html>
+ contentType 9 text/html url 70 https://video.deadline.com:443/sound-screen/sound-and-screen-film-2023 responseCode 3 200 

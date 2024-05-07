@@ -1,0 +1,588 @@
+zabgoibmckfooawayabcgcpgcizqgquizcmsfgxe length 5 24311 page 24311 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap" rel="stylesheet">
+<title>NFL Draft Day Predictor - ESPN Analytics</title>
+<meta property="og:title" content="NFL Draft Day Predictor - ESPN Analytics"/>
+<meta property="og:site_name" content="NFL Draft Day Predictor - ESPN Analytics" />
+<meta property="og:url" content="https://www.espnanalytics.com/draft-predictor" />
+<meta name="twitter:url" content="https://www.espnanalytics.com/draft-predictor" />
+<meta name="twitter:title" content="NFL Draft Day Predictor - ESPN Analytics"/>
+<meta name="title" content="NFL Draft Day Predictor - ESPN Analytics"/>
+<meta name="description" content="Models and data visualization from ESPN Analytics. NFL Draft, March Madness, receiver tracking metrics and more." />
+<meta property="og:description" content="Models and data visualization from ESPN Analytics. NFL Draft, March Madness, receiver tracking metrics and more." />
+<meta property="og:image" content="https://ea-images-hosting.s3.amazonaws.com/black_475.png"/>
+<meta property="og:image:alt" content="ESPN Analytics"/>
+<meta property="og:image:secure_url" content="https://ea-images-hosting.s3.amazonaws.com/black_475.png"/>
+<meta name="twitter:image" content="https://ea-images-hosting.s3.amazonaws.com/black_475.png"/>
+<meta property="og:type" content="website" />
+<meta name="twitter:description" content="Models and data visualization from ESPN Analytics. NFL Draft, March Madness, receiver tracking metrics and more." />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:creator" content="@sportsdada" />
+<meta name="medium" content="index" />
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0Q1L3P863"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W0Q1L3P863');
+</script>
+</head>
+<body>
+
+<header id="navbar">
+  <nav class="navbar-container container">
+    <a href="/" class="home-link">
+        <img class="ea3-img" src="ea3_new.png" >
+    </a>
+    <div class="menu-title">
+      <h1 class="draft-title">Draft Day Predictor</h1>
+    </div>
+    <div class="right-navbar">
+      <!--<ul class="desktop-items">
+        <li class="desktop-item"><a class="desktop-link" href="./">By Player</a></li>
+          <li class="desktop-item"><a class="desktop-link" href="./draft_predictor_by_pick.html">By Pick</a></li>
+          <li class="desktop-item"><a class="desktop-link" href="./about.html">About</a></li>
+      </ul>-->
+      
+      <div>
+        <button type="button" id="navbar-toggle" class="navbar-toggle-class" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+          <div class="selected-page">
+            <h2>Player &#9660</h2>
+          </div>
+        </button>
+        <div id="navbar-menu" aria-labelledby="navbar-toggle">
+          <ul class="navbar-links">
+            <!--<h4 style="padding-bottom: 5px; margin: 0px">See Breakdown By:</h4>-->
+            <li class="navbar-item"><a class="navbar-link first-link" href="./">By Player</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./draft_predictor_by_pick.html">By Pick</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./positions_over_under.html">By Position</a></li>
+		        <li class="navbar-item"><a class="navbar-link" href="./positions_first_taken.html">First at Pos</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./conference_over_under.html">By Conference</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/mock-draft">Mock Draft</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/draft-sim">Simulator</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../similarity_plots/similarity.html">Similarity Plots</a></li>
+            <li class="navbar-item"><a class="navbar-link last-link" href="./about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<!--<br><br>-->
+
+<div style='font-family:"News Cycle"' class="page-display">
+  <div class="title-title">
+    <h2 id="title-id">Breakdown By Player</h2>
+  </div>
+  <div class="mock-draft" id="draft-link-cont"></div>
+ 
+  <FORM id="inputForm"  name="inputForm" action="" method=GET>
+    <fieldset class="player-field-set">
+      <div class="player-cont1">
+        <legend style='float: left; padding: 5px 10px 5px 5px'>Choose a Player:</legend> 
+      
+        <!--<label style='padding-bottom: 100px' for="playerSelect">Choose a player:</label>-->
+        <select style='margin-top: 5px; padding: 5px 5px 5px 10px; border-radius: 5px' id="playerSelect" name="playerSelect" onchange="updateBoth();">
+          <!-- <option value="Marvin Harrison Jr." selected="selected">Marvin Harrison Jr.</option> -->
+        <!--  <option value="Kyle Hamilton">Kyle Hamilton</option>
+          <option value="Evan Neal">Evan Neal</option>
+          <option value="Ikem Ekwonu">Ikem Ekwonu</option>
+          <option value="Ahmad Gardner">Ahmad Gardner</option>
+          <option value="Garrett Wilson">Garrett Wilson</option>
+          <option value="Kayvon Thibodeaux">Kayvon Thibodeaux</option>
+          <option value="Travon Walker">Travon Walker</option>
+          <option value="Devonte Wyatt">Devonte Wyatt</option>
+          <option value="Jermaine Johnson II">Jermaine Johnson II</option>
+          <option value="Nakobe Dean">Nakobe Dean</option>
+          <option value="Devin Lloyd">Devin Lloyd</option>
+          <option value="Derek Stingley Jr.">Derek Stingley Jr.</option>
+          <option value="Drake London">Drake London</option>
+          <option value="Charles Cross">Charles Cross</option>
+          <option value="Trent McDuffie">Trent McDuffie</option>-->
+        </select>
+      </div>
+      <div class="player-cont2">
+      <label for="posSelect" style="padding-left: 10px">Positions:</label>
+        <select style='margin-top: 5px; padding: 5px 5px 5px 10px; border-radius: 5px' id="posSelect" name="posSelect" onchange="updateThree();">
+          <option value="ALL" selected="selected">All</option>
+          <option value="QB">QB</option>
+          <option value="RB">RB</option>
+          <option value="WR">WR</option>
+          <option value="TE">TE</option>
+          <option value="OT">OT</option>
+          <option value="C/G">C/G</option>
+          <option value="EDGE">EDGE</option>
+          <option value="DT">DT</option>
+          <!-- <option value="OLB">OLB</option> -->
+          <option value="LB">LB</option>
+          <option value="CB">CB</option>
+          <option value="S">S</option>
+        </select>
+      </div>
+    </fieldset>
+  </FORM>
+ 
+</div>
+ 
+ <!-- Create a div where the graph will take place -->
+<div class="page-container">
+  <div class="bio-container">
+    <div id="bio">
+    </div>
+  </div>
+  <div class="full-graphs">
+    <div class="graph">
+      <div id="title1" class="title">
+        
+      </div>
+      <div id="taken"></div>
+    </div>
+    <div class="graph">
+      <div id="title2" class="title">
+        
+      </div>
+      <div id="available"></div>
+    </div>
+  </div>
+</div>
+  
+<br><br>
+<span style = 'font-size: 0.8em; margin-left: 10px; display: flex; flex-direction: column;'><div>Model updated 4/25/24.</div><div>Discover more NFL Draft analysis at <a href='https://www.espn.com/nfl/draft/projections'>ESPN.com</a>.</div>
+</span> 
+
+<div id="popup" class="popup" ></div>
+<!-- <a onclick="showPopup('popup');"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a> -->
+
+<div class="img-cont" id="img-cont">
+  <img src="predictor_explainer_by_player.png" class="img-explainer"/>
+  <div class="red-x">X</div>
+</div>
+
+</body>
+
+
+<script type = "text/javascript">
+const imgClose = document.querySelector('#img-cont');
+var deviceIdDDPlayer = localStorage.getItem('deviceIdDDPlayer');
+if (!(deviceIdDDPlayer)) {
+  deviceIdDDPlayer = uuidv4() + Date.now();
+  localStorage.setItem('deviceIdDDPlayer', deviceIdDDPlayer);
+} else {
+  imgClose.style.display = 'none';
+}
+const navbarToggle = navbar.querySelector("#navbar-toggle");
+const navbarMenu = document.querySelector("#navbar-menu");
+const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
+let isNavbarExpanded = navbarToggle.getAttribute("aria-expanded") === "true";
+
+const toggleNavbarVisibility = () => {
+  isNavbarExpanded = !isNavbarExpanded;
+  navbarToggle.setAttribute("aria-expanded", isNavbarExpanded);
+};
+const closePopup = () => {
+  imgClose.style.display = 'none';
+}
+
+imgClose.addEventListener('click', closePopup);
+navbarToggle.addEventListener("click", toggleNavbarVisibility);
+
+navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
+navbarMenu.addEventListener("click", toggleNavbarVisibility);
+
+// set the dimensions and margins of the graph
+var margin = {},
+  width,
+  height;
+var mediaPhone = window.matchMedia('(max-width: 699px)')
+var mediaTablet = window.matchMedia('(min-width: 700px) and (max-width: 859px)');
+if (mediaTablet.matches) {
+  margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 650 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+} else if (mediaPhone.matches) {
+  margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = (window.innerWidth) - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+} else {
+  margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 860 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+}
+
+// append the svg object to the body of the page
+var svg = d3.select("#taken")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+		  
+var svg2 = d3.select("#available")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Initialize the X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .padding(0.2);
+  
+var xAxis = svg.append("g")
+  .attr("class", "myXaxis")
+  .attr("transform", "translate(0," + height + ")");
+  
+var xAxis2 = svg2.append("g")
+  .attr("class", "myXaxis2")
+  .attr("transform", "translate(0," + height + ")");
+
+// Initialize the Y axis
+var y = d3.scaleLinear()
+  .range([ height, 0]);
+  
+var yAxis = svg.append("g")
+  .attr("class", "myYaxis");
+  
+var yAxis2 = svg2.append("g")
+  .attr("class", "myYaxis2");
+  
+   
+// Define the div for the tooltip, initialize as invisible
+var tooltip = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);  
+
+//this can be used to round the probability labels/tooltips
+const f = d3.format(".3f");
+  
+// Define the div for the tooltip, initialize as invisible
+var tooltip = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);  
+	
+//x axis label for taken chart
+svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + 40)
+	.attr("font-family", "News Cycle")
+    .text("Pick Number");
+svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", -50)
+    .attr("dy", "1.0em")
+    .attr("transform", "rotate(-90)")
+	.attr("font-family", "News Cycle")
+    .text("Chance taken (%)");
+	
+//x axis label for availability chart
+svg2.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + 40)
+	.attr("font-family", "News Cycle")
+    .text("Pick Number");
+svg2.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", -50)
+    .attr("dy", "1.0em")
+    .attr("transform", "rotate(-90)")
+	.attr("font-family", "News Cycle")
+    .text("Chance available (%)");
+    
+var newPick;
+// A function that create / update the plot for a given variable:
+function update(type, prevPos) {
+	  
+  var player_height = "0";
+  var player_weight = "0";
+  
+  //retrieve the table of player names and positions to populate the drop down 
+  d3.csv("draft_viz_player_positions.csv", function(rows) {
+    rows.sort(function(a, b) {
+      return d3.ascending(+a.OVR_RANK, +b.OVR_RANK);
+    })
+	//populate the menu
+    if (prevPos) {   
+      if (document.getElementById('posSelect').value == "ALL") { //if "ALL" positions is selected
+        rows.forEach(function(d) {
+          option = document.createElement('option');
+          option.value = d.NAME;
+          option.text = d.NAME;
+          document.getElementById('playerSelect').appendChild(option);
+        })  
+        document.getElementById('playerSelect').value = "Rome Odunze";  //<----set the default player selection here for post-draft viz
+      } else {
+        rows.forEach(function(d) {  //if a position filter is selected
+          if (document.getElementById('posSelect').value == d.POS) {
+            option = document.createElement('option');
+            option.value = d.NAME;
+            option.text = d.NAME;
+            document.getElementById('playerSelect').appendChild(option);
+          }
+        })  
+      }
+    }
+    
+	//retrieve the selected player's height and weight
+    rows.forEach(function(d) {
+      if (d.NAME == document.getElementById('playerSelect').value) {
+        var leftover = d.HT % 12;
+        if (leftover >= 11.5) {
+          player_height = Math.ceil(d.HT / 12).toString() + "'" + "0" + '"';
+        } 
+        else {
+          player_height = Math.floor(d.HT / 12).toString() + "'" + leftover.toFixed(0).toString() + '"'; 
+        }
+        player_weight = d.WT;
+      }
+    })	
+  
+	//retreive the selected player from the input
+	var playerValue=encodeURIComponent(document.getElementById('playerSelect').value);
+	/*console.log(playerValue);*/
+	
+	//create the url to download the necessary data (playerUpdate.php is for local csv; dataUpdate.php is for S3 query on server)
+	//var newFilename = "playerUpdate.php?player=" + playerValue + "&type=" + type + "&pick=0&pos=ALL";
+	var newFilename = "dataUpdate.php?player=" + playerValue + "&type=" + type + "&pick=0&pos=ALL";
+	//console.log(newFilename);
+
+  // Parse the Data
+  d3.csv(newFilename, function(data) {
+
+    //determine the domain/range for the x and y axes
+    x.domain(data.map(function(d) { return d.pick; }));
+	y.domain([0, d3.max(data, function(d) { return +d.p * 100 }) ]);
+	
+	//select the appropriate chart (final='taken-at' chart, else 'available' chart), also set respective bar color
+	if (type == 'final') {
+		var thisXaxis = xAxis;
+		var thisYaxis = yAxis;
+		var thisSvg = svg;					//"svg" is the top chart (taken at or 'final')
+		var priColor = "#c41e32";			//this is for post-pick we can have primary and alternate colors to 
+		var secColor = "#01aeef";			// highlight the actual pick selected via the 'taken' variable
+	} else {
+		var thisXaxis = xAxis2;
+		var thisYaxis = yAxis2;
+		var thisSvg = svg2;					//"svg2" is the bottom chart (available)
+		var priColor = "#01aeef";
+		var secColor = "#c41e32";
+	}
+	
+	//add & transition x axis value labels
+	//determine whether or not to skip some labels when there are too many
+	if (data.map(function(d) { return d.pick; }).length > 40) {
+	  if (data.map(function(d) { return d.pick; }).length > 80) {  //every 3rd pick number
+	    thisXaxis.transition().duration(1000).call(d3.axisBottom(x).tickValues(x.domain().filter(function(d,i){ return !(i%3)})));
+	  }
+	  else {  //every other pick number
+	    thisXaxis.transition().duration(1000).call(d3.axisBottom(x).tickValues(x.domain().filter(function(d,i){ return !(i%2)})));  
+	  }
+	}
+	else {  //default to using all picknumbers
+	  thisXaxis.transition().duration(1000).call(d3.axisBottom(x));
+	}
+	thisYaxis.transition().duration(1000).call(d3.axisLeft(y));
+
+    // variable u: map data to existing data bars
+    var u = thisSvg.selectAll("rect")
+		  .data(data);
+		  
+
+    // update bars with new data
+    u.enter() 			//brings in any new bars needed
+	.append("rect")   	//makes them rect objects
+      .attr("y", function(d) {	//this block makes the bars introduce from bottom up rather than top down
+        return y(0);
+      })
+      .attr("height", 0)  
+      .merge(u)
+      .transition()		//smooth animation when updating 
+      .duration(1000)	//transition duration 1 sec (1k ms) 
+        .attr("x", function(d) { return x(d.pick); })	 //assigns the x data (pick number)
+        .attr("y", function(d) { return y(d.p * 100); }) //assigns the y data (prob *100 = % chance)	
+        .attr("width", x.bandwidth())     				//sets the width of each bar
+        .attr("height", function(d) { return height - y(d.p * 100); })	//sets the height of each bar (y value is the top of the bar and this tells it to go all the way to the x axis)
+        .attr("fill", function(d){ return ~~d.taken < .5 ? priColor : secColor});  //determines if bar gets highlighted with alt color if we know exactly where player was taken (post-selection only)
+        
+		
+	//remove excess bars (especially important so the tooltips don't activate over old hidden bars)
+	u.exit().remove();	
+	
+	//add tooltips   	
+	thisSvg.selectAll("rect").data(data)
+		.on("mouseover", function(d) {		
+            tooltip.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            tooltip.html("Pick #" + d.pick + " - " + d.team + '<br>Needs: ' + d.needs 
+            /*+ "<br>" + d.pos + " - " + d.school + "<br/>Best Player Rk " + d.rank 
+					  + "<br/>Kiper mock " + d.kiper + "<br/>McShay mock " + d.mcshay*/
+					  	)
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");
+            /*d3.select(this).style("cursor", "pointer");*/
+            })				
+        .on("mouseout", function(d) {		
+            tooltip.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+            d3.select(this).style("cursor", "default");
+		 })
+	  
+	  //builds player bio block (name, position, school, ranks, ht, wt)
+	  const bio = document.getElementById("bio");
+	  bio.innerHTML = "<p class='index-p'>" + document.getElementById('playerSelect').value + "<br>" + data.map(function(d) { return d.pos; })[0] + 
+	    " - " + data.map(function(d) { return d.school; })[0] + "<br>" + 
+	    "Ht: " + player_height + " &nbsp;&nbsp;&nbsp;Wt: " + player_weight + 
+	    "</p><table><tr><th>Source</th><th>Rank</th></tr><tr><td>Best Player Rank</td><td>" + data.map(function(d) { return d.rank; })[0] + 
+	    "</td></tr><tr><td>Kiper Mock</td><td>" + data.map(function(d) { return d.kiper; })[0] + "</td></tr><tr><td>Reid Mock</td><td>" + 
+	    data.map(function(d) { return d.mcshay; })[0] + "</td></tr></table>";
+	  
+	  //set both player bio info divs to have updated data
+    document.getElementById("title1").innerHTML = "<p class='index-p'>Chance " + document.getElementById('playerSelect').value + " is taken at:</p>";
+	  document.getElementById("title2").innerHTML = "<p class='index-p'>Chance " + document.getElementById('playerSelect').value + " is available at:</p>";
+    if (document.querySelector("#exit-draft")) {
+      document.getElementById('draft-link-cont').innerHTML = "<h4 id='draft-link'>See where " + document.getElementById('playerSelect').value + " gets taken in <a href='/draft-sim'>your own draft simulation!</a><sup id='exit-draft'> x</sup></h4>";
+    }
+  })
+})
+}
+
+//intialize prevPos; this tracks whether the user has changed the position filter
+var prevPos = true;
+
+//updates both top and bottom chart and resets prevPos 
+function updateBoth () {
+  prevPos = false;
+  //console.log('player' + prevPos);
+	update('final', prevPos);
+	update('available', prevPos);
+}
+
+//updates both charts and the dropdown
+function updateThree () {
+  prevPos = true;
+  //console.log('pos' + prevPos);
+	update('final', prevPos);
+	while(document.getElementById('playerSelect').length>0){document.getElementById('playerSelect').remove(0);}
+	prevPos = false;
+	update('available', prevPos);
+}
+
+//live draft alert that tells user about the pick
+async function showPopup(id) {
+console.log('showing popup');
+    var popup = document.getElementById(id);
+	//random string helps bust cache I think
+	//alertUpdate.php will contain the new pick info text
+		//console.log('fetching alert text');
+    await   fetch("alertUpdate.php?rndstr=<%= getRandomStr() %>")  //await means don't do anything else until this command completes (important, otherwise it shows the previous pick info)
+                .then(response => response.text())
+                .then(data => { newPick = data; });
+	  document.getElementById("popup").innerHTML = newPick;  //replaces the text in the alert popup div
+	  document.getElementById("popup").dispatchEvent(new Event('change'));
+
+    popup.style.display = 'block';  //makes the div appear
+	  new Audio('nfl-draft-chime.mp3').play()  //plays ESPN draft chime
+	  // close popup after 10 seconds
+	  setTimeout(function () {
+        popup.style.display = 'none';
+    }, 10000);
+}
+
+// Initialize plot -- this draws both charts on initial page load
+update('final', prevPos);
+prevPos = false;
+update('available', prevPos);
+
+document.getElementById('draft-link-cont').innerHTML = "<h4 id='draft-link'>See where " + document.getElementById('playerSelect').value + " gets taken in <a href='/draft-sim'>your own draft simulation!</a><sup id='exit-draft'> x</sup></h4>";
+const exitDraft = document.querySelector("#draft-link-cont");
+function exitMockDraftLink(event) {
+  if (event.target.id == 'exit-draft') {
+    document.querySelector('#draft-link-cont').style.display = 'none';
+  }
+};
+exitDraft.addEventListener("click", exitMockDraftLink);
+
+//instantiates vars needed to track if a new data update has occurred in top level environment so they persist outside functions
+var old_time;    //time of last data file update
+var myEvent;
+var checker;     //boolean if a new file update has occurred
+
+//sets initial old_time (time of last update)
+
+(async () => {
+  await $.get('checkData.php', function(data) {
+               old_time = data;
+             });
+})();
+
+// 10 second interval to check for update
+// Commented out so that update functions aren't running outside of live draft. Un-comment for live!!!
+// setInterval(checkUpdate, 10000);
+
+// check if file has changed
+async function checkData () {
+//checkData.php retrieves the modified time from the data files
+  //console.log('checking for update');
+  await $.get("checkData.php?rndstr=<%= getRandomStr() %>", function(data) {
+      file_time = data;
+  });
+   console.log(old_time);
+   console.log(file_time);
+   if (file_time == old_time) {		//don't do anything if there's no difference in update times
+     checker = false;
+   } else {							//otherwise, trigger an update via 'checker' and update the old_time to the most recent
+     checker = true;
+	 old_time = file_time;
+   }
+   console.log(checker);
+
+   return checker;
+}
+
+// if file update time has changed, update the page with new data. this is called on the interval
+async function checkUpdate () {
+  // check for updated data file time		
+  let check_change = await checkData();
+  //console.log(check_change);
+  //if new file modified time exists, trigger update of charts and trigger pick alert
+  if (check_change) {
+    prevPos = false;
+    console.log('updating charts and showing popup');
+    update('final', prevPos);
+  	await update('available', prevPos);
+  	showPopup('popup');
+	console.log(newPick);
+  }
+}
+
+</script>
+
+
+
+    
+
+</html>
+  contentType 9 text/html url 46 https://espnanalytics.com:443/draft-predictor/ responseCode 3 200 

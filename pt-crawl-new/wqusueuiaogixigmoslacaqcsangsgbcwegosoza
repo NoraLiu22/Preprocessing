@@ -1,0 +1,1954 @@
+wqusueuiaogixigmoslacaqcsangsgbcwegosoza length 6 113883 page 113883 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head><meta http-equiv="X-UA-Compatible" content="IE=9" /><title>
+
+</title><link href="../Styles/Site.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" href="../scripts/jqtransformplugin/jqtransform.css" type="text/css" media="all" /><link rel="stylesheet" type="text/css" href="../Styles/StaticHeader.css" /><link rel="stylesheet" type="text/css" href="../Styles/jquery-jvert-tabs-1.0.css" /><link rel="stylesheet" type="text/css" href="../Styles/contentslider.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-jvert-tabs-1.0.js"></script>
+    <script type="text/javascript" src="../scripts/jqtransformplugin/jquery.jqtransform.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.ui.datepicker.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $('form').jqTransform({ imgPath: '../scripts/jqtransformplugin/img/' });
+        });
+    </script>
+    <script language="javascript" type="text/javascript">
+        function RunSearch() {
+            var queryString = document.getElementById("q").value;
+            var baseUrl = "http://www.google.com/cse?oe=utf8&ie=utf8&source=uds&start=0&cx=012281970149422056935%3Ae3col_wgefa&hl=en&";
+            document.location = baseUrl + "q=" + queryString;
+            return 0;
+        }
+    </script>
+    
+    <script type="text/javascript" language="JavaScript">
+//        function GetSelectedRadio() {
+//            var selectedvalue = $('#rblSearchType input:checked').val();
+//            if (selectedvalue == "Registration") {
+//                $("#trRegistrationMoreOptions").show();
+//                $("#trExpesesMoreOptions").hide();
+//                $("#trAffirmationMoreOptions").hide();
+//                $("#trExpenseYear").hide();
+//                $("#trRegPeriod").show();
+//                $("#lblLobbyingDates").show();
+//                $("#txtLobbyingDates").show();
+
+//            }
+//            else if (selectedvalue == "Expenses") {
+//                $("#trRegistrationMoreOptions").hide();
+//                $("#trExpesesMoreOptions").show();
+//                $("#trAffirmationMoreOptions").hide();
+//                $("#trExpenseYear").show();
+//                $("#trRegPeriod").hide();
+//                $("#lblLobbyingDates").hide();
+//                $("#txtLobbyingDates").hide();
+
+
+//            }
+//            else if (selectedvalue == "Affirmations") {
+//                $("#trRegistrationMoreOptions").hide();
+//                $("#trExpesesMoreOptions").hide();
+//                $("#trAffirmationMoreOptions").show();
+//                $("#trExpenseYear").show();
+//                $("#trRegPeriod").hide();
+//                $("#lblLobbyingDates").hide();
+//                $("#txtLobbyingDates").hide();
+
+//            }
+
+//            return false;
+//        }
+
+        function DisplayPanel(rbl, clr) {
+            var selectedvalue = $("#" + rbl.id + " input:radio:checked").val();
+            var searchtype = document.getElementById("rblSearchType").id;
+            var ifregonly = $("#" + searchtype + " input:radio:checked").val();
+
+            if (clr == 1) { clearall() } //clearing first textboxes on button change 
+
+            if (ifregonly == "Registration") {
+                if (selectedvalue == "P") {
+                    $("#trPrinciple").show();
+                    $("#trLobbyingFirm").hide();
+                    $("#trLobbyist").hide();
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'block';
+                    $("#trFirmSpcfCrit").hide();
+                    $("#trLobbyistSpcfCrit").hide();
+                }
+                else if (selectedvalue == "F") {
+                    $("#trPrinciple").hide();
+                    $("#trLobbyingFirm").show();
+                    $("#trLobbyist").hide();
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                    $("#trFirmSpcfCrit").show();
+                    $("#trLobbyistSpcfCrit").hide();
+                }
+                else if (selectedvalue == "L") {
+                    $("#trPrinciple").hide();
+                    $("#trLobbyingFirm").hide();
+                    $("#trLobbyist").show();
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                    $("#trFirmSpcfCrit").hide();
+                    $("#trLobbyistSpcfCrit").show();
+                }
+                else if (selectedvalue == "All") {
+                    $("#trPrinciple").show();
+                    $("#trLobbyingFirm").show();
+                    $("#trLobbyist").show();
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'block';
+                    $("#trFirmSpcfCrit").show();
+                    $("#trLobbyistSpcfCrit").show();
+                }
+            }
+            else {
+
+                document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                $("#trFirmSpcfCrit").hide();
+                $("#trLobbyistSpcfCrit").hide();
+
+                if (selectedvalue == "P") {
+                    $("#trPrinciple").show();
+                    $("#trLobbyingFirm").hide();
+                    $("#trLobbyist").hide();
+                }
+                else if (selectedvalue == "F") {
+                    $("#trPrinciple").hide();
+                    $("#trLobbyingFirm").show();
+                    $("#trLobbyist").hide();
+                }
+                else if (selectedvalue == "L") {
+                    $("#trPrinciple").hide();
+                    $("#trLobbyingFirm").hide();
+                    $("#trLobbyist").show();
+                }
+                else if (selectedvalue == "All") {
+                    $("#trPrinciple").show();
+                    $("#trLobbyingFirm").show();
+                    $("#trLobbyist").show();
+                }
+            }
+
+
+            return false;
+        }
+
+        function DisplayMoreOptions(rbl, clr) {
+            var selectedvalue = $("#" + rbl.id + " input:radio:checked").val();
+            var regtype = document.getElementById("rblRegistrationType").id;
+            var selectedtype = $("#" + regtype + " input:radio:checked").val();
+
+            if (clr == 1) { clearall() } //clearing first textboxes on button change 
+
+            if (selectedvalue == "Registration") {
+
+                $("#trRegistrationMoreOptions1").show();
+                $("#trRegistrationMoreOptions2").show();
+                $("#trExpesesMoreOptions").hide();
+                $("#trAffirmationMoreOptions").hide();
+                $("#trAffirmationsWithKnwldg").hide();
+                $("#trAffirmationsRefusal").hide();
+                $("#trExpenseYear").hide();
+                $("#trRegPeriod").show();
+                $("#lblLobbyingDates").show();
+                $("#txtLobbyingDates").show();
+                $("#trAddress").show();
+                $("#lblAddress").show();
+                $("#trExpLobbyingSubject").hide();
+                $("#trRegistrationPACOptions").show();
+                $("#trPACTextFields").hide();
+                // DisplayPACText(cblRegistrationPACOptions)
+                DisplayPACText();
+
+                if (selectedtype == "P") {
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'block';
+                    $("#trFirmSpcfCrit").hide();
+                    $("#trLobbyistSpcfCrit").hide();
+                }
+                else if (selectedtype == "F") {
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                    $("#trFirmSpcfCrit").show();
+                    $("#trLobbyistSpcfCrit").hide();
+                }
+                else if (selectedtype == "L") {
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                    $("#trFirmSpcfCrit").hide();
+                    $("#trLobbyistSpcfCrit").show();
+                }
+                else if (selectedtype == "All") {
+                    document.getElementById("trPrincipalSpcfCrit").style.display = 'block';
+                    $("#trFirmSpcfCrit").show();
+                    $("#trLobbyistSpcfCrit").show();
+                }
+
+
+
+            }
+            else if (selectedvalue == "Expenses") {
+                $("#trRegistrationMoreOptions1").hide();
+                $("#trRegistrationMoreOptions2").hide();
+                $("#trExpesesMoreOptions").show();
+                $("#trAffirmationMoreOptions").hide();
+                $("#trAffirmationsWithKnwldg").hide();
+                $("#trAffirmationsRefusal").hide();
+                $("#trExpenseYear").show();
+                $("#trRegPeriod").hide();
+                $("#lblLobbyingDates").hide();
+                $("#txtLobbyingDates").hide();
+                document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                $("#trFirmSpcfCrit").hide();
+                $("#trLobbyistSpcfCrit").hide();
+                $("#trAddress").hide();
+                $("#lblAddress").hide();
+                $("#trExpLobbyingSubject").show();
+                $("#trRegistrationPACOptions").hide();
+                $("#trPACTextFields").hide();
+            }
+            else if (selectedvalue == "Affirmations") {
+                $("#trRegistrationMoreOptions1").hide();
+                $("#trRegistrationMoreOptions2").hide();
+                $("#trExpesesMoreOptions").hide();
+                $("#trAffirmationMoreOptions").show();
+                $("#trAffirmationsWithKnwldg").hide();
+                $("#trAffirmationsRefusal").hide();
+                $("#trExpenseYear").show();
+                $("#trRegPeriod").hide();
+                $("#lblLobbyingDates").hide();
+                $("#txtLobbyingDates").hide();
+                document.getElementById("trPrincipalSpcfCrit").style.display = 'none';
+                $("#trFirmSpcfCrit").hide();
+                $("#trLobbyistSpcfCrit").hide();
+                $("#trAddress").hide();
+                $("#lblAddress").hide();
+                $("#trExpLobbyingSubject").hide();
+                $("#trRegistrationPACOptions").hide();
+                $("#trPACTextFields").hide();
+                // DisplayAffirmationFields(cblAffirmationsMoreOptions)
+                DisplayAffirmationFields();
+
+            }
+            return false;
+        }
+
+
+        //clearing first textboxes on button change 
+        function clearall() {
+            document.getElementById('txtRegNumber').value = "";
+            document.getElementById('txtPrincipalName').value = "";
+            document.getElementById('txtFirmName').value = "";
+            document.getElementById('txtLFirstName').value = "";
+            document.getElementById('txtLLastName').value = "";
+            return false;
+        }
+    </script>
+<link href="/WebResource.axd?d=teTWbWZoC8jViD-SSFpbW1AtYUdPd28DSXPWkrhx_5dqA3vCCIxOyHlVHgxT0wl0WlMUDKEMKcDtC_M-K9G-40u8appm4Y8Dye3SjHFeJIEBNTa0DkS91zk1rP0L6ctfIwrZWy0RsEfcCIriM-q6gA2&amp;t=638225217240000000" type="text/css" rel="stylesheet" /></head>
+<body>
+    <script language="javascript" type="text/javascript">
+        function OpenRegHelp(value) {
+            var ddlREG = document.getElementById('ddlRegHelp');
+            var lbl2;
+            lbl = ddlREG.options[ddlREG.selectedIndex].value;
+            window.open(lbl);
+        }
+        function OpenHelpddl(value) {
+            var ddlHelp = document.getElementById('ddlTakeTour');
+            var lbl2;
+            lbl2 = ddlHelp.options[ddlHelp.selectedIndex].value;
+            window.open(lbl2);
+        }
+    </script>
+    <form method="post" action="./wfSearch.aspx" id="siteform" style="background-color: #DCE1E6">
+<input type="hidden" name="ToolkitScriptManager1_HiddenField" id="ToolkitScriptManager1_HiddenField" value="" />
+<input type="hidden" name="MainContent_tcSearch_ClientState" id="MainContent_tcSearch_ClientState" value="{&quot;ActiveTabIndex&quot;:0,&quot;TabState&quot;:[true,true,true]}" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+
+<script src="/ScriptResource.axd?d=8JcKZS0HeOt6JigVZWOeBDpRdDG4Rk2IG0oLZ-HlBfLJnHKeHhV_Pwo6IBt8ZUpvBkSUae2GP32050bgFAXO24bBIQPfArg-CRlxtyWZn10NkHlkATMwbtADQpm3EonXZAZjOo6_tTxmzVHMsFVnOg2&amp;t=fffffffff37b5a97" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=3ppvr6I3nhgB1uieP4H74ZoqECpIbaDnby5mL4kVKzat3fJznzO-6sG3tXF2f7wMsH0aAYM6yLHrbRbvWdYxuq7FVGfMz-pipAMG8Wjek_wDyR5pD7U61VT_VQAzjz9D0&amp;t=ffffffffec54f2d7" type="text/javascript"></script>
+<script src="/Public/wfSearch.aspx?_TSM_HiddenField_=ToolkitScriptManager1_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.5.40412.0%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a1547e793-5b7e-48fe-8490-03a375b13a33%3a475a4ef5%3aeffe2a26%3a8e94f951%3a1d3ed089%3a5546a2b%3ad2e10b12%3af9e9a939" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="D469389A" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="Tvvh9bcOL1cJ1X5vUKE8iYl5gXkhzC3le13_lsKyq8Exyn3hohTYrr31kfO2Glc3TU4bZhTKDdBVcxtcOX2Fg8RHmoRraIxDLWWxPxJdGoI1" />
+    <div id="wrapper" style="background-color: #DCE1E6">
+        <!-- Top Banner Starts -->
+        <div id="banner" style="background-color: #DCE1E6">
+            <div class="preheader">
+                <div class="contentCentered">
+                    <ul>
+                        <li class="CoP"><a href="http://www.phila.gov/" class="active">
+                            City of Philadelphia</a></li>
+                        <li class="separator"></li>
+                        <li><a href="http://www.phila.gov/mayor">Mayor's Office</a></li>
+                        <li class="separator"></li>
+                        <li><a href="http://www.phila.gov/cityCouncil">City Council</a></li>
+                        <li class="separator"></li>
+                        <li><a href="http://www.courts.phila.gov/">Courts</a></li>
+                        <li class="separator"></li>
+                        <li><a href="http://www.phila.gov/districtattorney/index.html">District Attorney</a></li>
+                        <li class="separator"></li>
+                        <li><a href="http://www.officeofphiladelphiasheriff.com/" target="_blank">Sheriff</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="z-index: 1000; position: absolute; top: 30px; width: 1000px;">
+                <div class="header">
+                    
+                    <div style="margin-right: 6px; margin-left: 6px; float: left; display: inline; position: relative;">
+                        <a href="http://www.phila.gov/ethicsboard/Pages/default.aspx">
+                            <img src="../Images/cityLogo.png" title="City of Philadelphia" alt="City of Philadelphia"
+                                class="cityLogo" />
+                        </a>
+                    </div>
+                    <div style="margin-right: 6px; margin-left: 6px; float: left; display: inline; position: relative;">
+                        <h1>
+                            <a href="http://www.phila.gov/ethicsboard/Pages/default.aspx">
+                                <img src="../Images/cityLogoMark-210x45.png" title="City of Philadelphia" alt="City of Philadelphia" />
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="globalNavigation" style="padding: 0px; line-height: normal; font-size: 13px;
+                        float: left;">
+                        <ul>
+                            <li class="first home"><a href="http://www.phila.gov" title="Phila.Gov Home Page">
+                                <img src="../Images/icon_HOME.png" title="Visit the City's Homepage" alt="Visit the City's Homepage"
+                                    name="Home Icon" id="Home Icon" /></a></li>
+                            <li class="first"><a href="http://www.phila.gov/topics" title="Topics" class="topLevelNav">Topics</a></li>
+                            <li><a title="PeopleWeServe" class="topLevelNav">People We Serve</a></li>
+                            <li><a href="http://www.phila.gov/agencies" title="Government" class="topLevelNav">
+                                Government</a></li>
+                            <li><a href="http://www.phila.gov/311" title="Contact" class="topLevelNav">
+                                Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="globalSearch" style="margin-right: 30px; float: right; display: inline;
+                        position: relative; margin-top: 20px;">
+                        <div class="search">
+                            <input name="q" type="text" class="searchField" id="q" />
+                            <a id="searchBTN" title="Go Search" href="javascript:RunSearch()" class="searchBTN">
+                                <img title="Go Search" onmouseover="this.src='../Images/searchBTN.png'" onmouseout="this.src='../Images/searchBTN.png'"
+                                    alt="Go Search" src="../Images/searchBTN.png" /></a>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div id="Select-Navigation" style="float: right;">
+                    <table>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <select name="ctl00$ddlRegHelp" id="ddlRegHelp" class="dropdown" onchange="OpenRegHelp()">
+	<option value="">Lobbying Information</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Philadelphia%20Lobbying%20Code.pdf">Philadelphia Lobbying Code</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Philadelphia%20Lobbying%20Law%20Guide.pdf">Philadelphia Lobbying Law Guide</option>
+
+</select>
+                            </td>
+                            <td>
+                                <select name="ctl00$ddlTakeTour" id="ddlTakeTour" class="dropdown" onchange="OpenHelpddl()">
+	<option value="">Help</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Creating%20a%20New%20Registration.pdf">Creating a New Registration</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Amending%20an%20Existing%20Registration.pdf">Amending an Existing Registration</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Terminating%20a%20Registration.pdf">Terminating a Registration</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Assigning%20Registration%20Permissions%20to%20Another%20PLIS%20User.pdf">Assigning Filing Permissions</option>
+	<option value="http://plis.cloudapp.net/HelpPdf/Submitting%20an%20Expense%20Report%20or%20Expense%20Report%20Amendment.pdf">Creating or Amending an Expense Report</option>
+	<option value="http://plis.cloudapp.net/HelpPdf/Submitting%20an%20Expense%20Report%20Affirmation.pdf">Affirming a Principal Expense Report</option>
+	<option value="http://plis.cloudapp.net/HelpPDF/Creating%20a%20New%20User%20Account.pdf">Creating a New User Account</option>
+
+</select>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <img src="../Images/bodyBG.jpg" width="1000" height="96" alt="" />
+        </div>
+        <!-- Top Banner Ends -->
+        
+        
+        <div id="container-top" style="background-color: #DCE1E6">
+            <div id="container-bot">
+                <div id="container">
+                    <div id="sidebar">
+                        <!-- Sidebar Starts -->
+                        
+
+<table>
+    <tr>
+        <td style="vertical-align: top;">
+            <div style="text-align: right;">
+                <a href="#ucLeftNav_NavigationMenu_SkipLink"><img alt="Skip Navigation Links" src="/WebResource.axd?d=gP-okFYiFSL32RGuvmYSoIwUJ8DuDAjYuTwO9GdaqvVjG6PLfq9NF3dYJ9vJKOW0ASecp9aqRvpHk9zQL4d-Ii6w0uyO7eyfXxZniNCM4Tc1&amp;t=638368886615952268" width="0" height="0" border="0" /></a><div class="Navigation" id="ucLeftNav_NavigationMenu">
+	<ul class="level1">
+		<li><a class="level1" href="wfSearch.aspx"><img src="../images/mnuSearch.gif" alt="" title="" class="icon" /></a></li><li><a class="level1" href="../Reports/EthicsReports.aspx?ReportType=8"><img src="../images/mnuLobbying.gif" alt="" title="" class="icon" /></a></li><li><a class="level1" href="../wfDefault.aspx"><img src="../images/PLIS-Home.gif" alt="" title="" class="icon" /></a></li>
+	</ul>
+</div><a id="ucLeftNav_NavigationMenu_SkipLink"></a>
+                <input type="hidden" name="ctl00$ucLeftNav$hdnLastTab" id="ucLeftNav_hdnLastTab" value="0" />
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+</table>
+<div id="ucLeftNav_trLogin">
+    
+<table>
+    <tr>
+        <td width="30%">
+            <strong>User Id:</strong>
+        </td>
+        <td align="left">
+            <input name="ctl00$ucLeftNav$ucLoginControl$txtUserID" type="text" id="ucLeftNav_ucLoginControl_txtUserID" size="9" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Password:</strong>
+        </td>
+        <td align="left">
+            <input name="ctl00$ucLeftNav$ucLoginControl$txtPassword" type="password" id="ucLeftNav_ucLoginControl_txtPassword" size="9" autocomplete="off" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+        <td style="text-align: left">
+            
+            <input type="image" name="ctl00$ucLeftNav$ucLoginControl$btnLogin" id="ucLeftNav_ucLoginControl_btnLogin" src="../Images/btn-login.png" />
+        </td>
+    </tr>
+    
+    <tr>
+        <td colspan="2" class="logintext" style="text-align: center">
+            
+            <a id="ucLeftNav_ucLoginControl_lnkNewUser" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ucLeftNav$ucLoginControl$lnkNewUser&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">New User? Click here to Register</a>
+            <br />
+            <a id="ucLeftNav_ucLoginControl_lnkForgotPass" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ucLeftNav$ucLoginControl$lnkForgotPass&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Forgot Your Password?</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            &nbsp;
+        </td>
+    </tr>
+</table>
+
+</div>
+
+                        <!-- Sidebar Ends -->
+                    </div>
+                    <div id="content-top">
+                        <!-- content starts-->
+                        <br />
+                        
+                        
+                        
+    <h1>
+        <img src="../images/headSearch.gif" alt="" />
+    </h1>
+    <div id="content-bot">
+        <div id="content">
+            <div>
+                <div id="MainContent_tcSearch" class="MyTabStyle">
+	<div id="MainContent_tcSearch_header">
+		<span id="MainContent_tcSearch_tpQuickSearch_tab"><span class="ajax__tab_outer"><span class="ajax__tab_inner"><span class="ajax__tab_tab" id="__tab_MainContent_tcSearch_tpQuickSearch">Quick Search</span></span></span></span><span id="MainContent_tcSearch_tpPublicReport_tab"><span class="ajax__tab_outer"><span class="ajax__tab_inner"><span class="ajax__tab_tab" id="__tab_MainContent_tcSearch_tpPublicReport">Public Reports</span></span></span></span><span id="MainContent_tcSearch_tpDirectory_tab"><span class="ajax__tab_outer"><span class="ajax__tab_inner"><span class="ajax__tab_tab" id="__tab_MainContent_tcSearch_tpDirectory">Directory</span></span></span></span>
+	</div><div id="MainContent_tcSearch_body">
+		<div id="MainContent_tcSearch_tpQuickSearch" class="ajax__tab_panel">
+			
+                            
+<script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+        prm.add_endRequest(EndRequest);
+
+        function EndRequest(sender, args) {
+            $('div').jqTransform();
+
+        }
+    });
+    $('input[type="text"]').live('keydown', function (e) { // checking if enter key press hit search button event 
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13) {
+
+            var objExtender = $find("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_CollapsiblePanelExtender1"); // getting id for advanced panel
+            var lblshow = document.getElementById("lblZipJavaScript"); // zip code id for validation
+
+            if (objExtender.get_Collapsed()) { // choose search click event base on panel extender 
+                var clickButton1 = document.getElementById("btnQSearch");
+                clickButton1.click();
+            }
+            else {
+                //first check zip code validation then search 
+                var zip = document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtZipCode").value + document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtPlus4").value;
+                var isValid = /^\d{5}$|^\d{5}\d{4}$/.test(zip);
+                if (isValid) {
+                    lblshow.style.display = 'none';
+                    var clickButton2 = document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_btnASearch");
+                    clickButton2.click();
+                }
+                else {
+                    lblshow.style.display = 'block';
+                }
+            }
+            return false;
+        }
+    });
+      
+</script>
+<script type="text/javascript" language="javascript">
+    /// hide unhide search button for quick search
+    var objExtender;
+    var trshow;
+    var thide;
+    function pageLoad(sender, args) {
+        objExtender = $find("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_CollapsiblePanelExtender1");
+        objExtender.add_expandComplete(getCollapsibleState);
+        objExtender.add_collapseComplete(getCollapsibleState);
+    }
+    function getCollapsibleState() {
+        if (objExtender.get_Collapsed()) {
+            trshow = document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_trQuickSearchbuttons");
+            trshow.style.display = 'block';
+            document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_hdtext").value = "collapse";
+        }
+        else {
+            trhide = document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_trQuickSearchbuttons");
+            trhide.style.display = 'none';
+            document.getElementById("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_hdtext").value = "expand";
+        }
+    }
+
+    function DisplayAffirmationFields() {
+        //   var selectedvalue = $("#" + cbl.id + " input:checked").val();
+        var searchtype = document.getElementById("rblSearchType").id;
+        var ifaffonly = $("#" + searchtype + " input:radio:checked").val();
+        //var selectedItems = "";
+        //        $("[id*=" + cbl.id + "] input:checked").each(function () {
+
+        //            selectedItems += $(this).val() + "\r\n";
+        //        });
+
+        if (ifaffonly == "Affirmations") {
+
+            var chkAffWithKnwldg = document.getElementById("chkAffWithKnwldg");
+            // alert(chkAffWithKnwldg);
+            if (chkAffWithKnwldg.checked)
+                $("#trAffirmationsWithKnwldg").show();
+            else
+                $("#trAffirmationsWithKnwldg").hide();
+
+            var chkAffRefusal = document.getElementById("chkAffRefusal");
+            if (chkAffRefusal.checked)
+                $("#trAffirmationsRefusal").show();
+            else
+                $("#trAffirmationsRefusal").hide();
+        }
+
+        else {
+            $("#trAffirmationMoreOptions").hide();
+            $("#trAffirmationsWithKnwldg").hide();
+            $("#trAffirmationsRefusal").hide();
+        }
+
+        return false;
+    }
+
+    function DisplayPACText() {
+
+        var searchtype = document.getElementById("rblSearchType").id;
+        var ifregonly = $("#" + searchtype + " input:radio:checked").val();
+        //        var checkBoxList = cbl.getElementsByTagName("input");
+        var show = 'false';
+        var chkRegPAC = document.getElementById("chkRegPAC");
+        var chkRegCPC = document.getElementById("chkRegCPC");
+
+        if (ifregonly == "Registration") {
+
+            if (chkRegPAC.checked || chkRegCPC.checked)
+                show = 'true';
+            else
+                show = 'false';
+
+            if (show == 'true') {
+                $("#trRegistrationPACOptions").show();
+                $("#trPACTextFields").show();
+            }
+            if (show == 'false') {
+                $("#trRegistrationPACOptions").show();
+                $("#trPACTextFields").hide();
+            }
+        }
+        else {
+            $("#trRegistrationPACOptions").hide();
+            $("#trPACTextFields").hide();
+        }
+
+        return false;
+    }
+</script>
+<table style="width: 100%">
+    <tr>
+        <td>
+            <strong>Search Type :</strong>
+        </td>
+        <td>
+            <span id="rblSearchType" OnClick="DisplayMoreOptions(this,1)"><input id="rblSearchType_0" type="radio" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$rblSearchType" value="Registration" checked="checked" /><label for="rblSearchType_0">Registration</label><input id="rblSearchType_1" type="radio" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$rblSearchType" value="Expenses" /><label for="rblSearchType_1">Expenses</label></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Registration Type :</strong>
+        </td>
+        <td>
+            <span id="rblRegistrationType" OnClick="DisplayPanel(this,1)"><input id="rblRegistrationType_0" type="radio" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$rblRegistrationType" value="All" checked="checked" /><label for="rblRegistrationType_0">All</label><input id="rblRegistrationType_1" type="radio" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$rblRegistrationType" value="P" /><label for="rblRegistrationType_1">Principal</label><input id="rblRegistrationType_2" type="radio" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$rblRegistrationType" value="F" /><label for="rblRegistrationType_2">Lobbying Firm</label><input id="rblRegistrationType_3" type="radio" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$rblRegistrationType" value="L" /><label for="rblRegistrationType_3">Lobbyist</label></span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div class="bgAlphabets">
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkA" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkA&#39;,&#39;&#39;)">A</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkB" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkB&#39;,&#39;&#39;)">B</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkC" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkC&#39;,&#39;&#39;)">C</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkD" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkD&#39;,&#39;&#39;)">D</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkE" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkE&#39;,&#39;&#39;)">E</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkF" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkF&#39;,&#39;&#39;)">F</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkG" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkG&#39;,&#39;&#39;)">G</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkH" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkH&#39;,&#39;&#39;)">H</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkI" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkI&#39;,&#39;&#39;)">I</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkJ" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkJ&#39;,&#39;&#39;)">J</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkK" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkK&#39;,&#39;&#39;)">K</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkL" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkL&#39;,&#39;&#39;)">L</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkM" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkM&#39;,&#39;&#39;)">M</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkN" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkN&#39;,&#39;&#39;)">N</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkO" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkO&#39;,&#39;&#39;)">O</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkP" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkP&#39;,&#39;&#39;)">P</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkQ" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkQ&#39;,&#39;&#39;)">Q</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkR" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkR&#39;,&#39;&#39;)">R</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkS" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkS&#39;,&#39;&#39;)">S</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkT" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkT&#39;,&#39;&#39;)">T</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkU" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkU&#39;,&#39;&#39;)">U</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkV" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkV&#39;,&#39;&#39;)">V</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkW" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkW&#39;,&#39;&#39;)">W</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkX" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkX&#39;,&#39;&#39;)">X</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkY" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkY&#39;,&#39;&#39;)">Y</a>
+                |
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnkZ" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnkZ&#39;,&#39;&#39;)">Z</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="showhide">
+    <input type="hidden" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$hdtext" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_hdtext" />
+</div>
+<div class="divQuickOptions" id="divQuickOptions" lang="Eng" title="Quick Search">
+    <div id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_pnlQuickOptions">
+				
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td colspan="4">
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%;">
+                                Registration # :
+                            </td>
+                            <td style="width: 25%;">
+                                <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtRegNumber" type="text" id="txtRegNumber" />
+                            </td>
+                            <td colspan="2">
+                            </td>
+                        </tr>
+                        <tr id="trPrinciple">
+                            <td style="width: 20%;">
+                                Principal Name :
+                            </td>
+                            <td style="width: 25%;">
+                                <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtPrincipalName" type="text" id="txtPrincipalName" />
+                            </td>
+                            <td colspan="2">
+                            </td>
+                        </tr>
+                        <tr id="trLobbyingFirm">
+                            <td style="width: 20%;">
+                                Firm Name :
+                            </td>
+                            <td style="width: 25%;">
+                                <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtFirmName" type="text" id="txtFirmName" />
+                            </td>
+                            <td colspan="2">
+                            </td>
+                        </tr>
+                        <tr id="trLobbyist">
+                            <td style="width: 20%;">
+                                Lobbyist First Name :
+                            </td>
+                            <td style="width: 25%;">
+                                <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtLFirstName" type="text" id="txtLFirstName" />
+                            </td>
+                            <td style="width: 20%;">
+                                Lobbyist Last Name :
+                            </td>
+                            <td style="width: 25%;">
+                                <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtLLastName" type="text" id="txtLLastName" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_trQuickSearchbuttons" style="text-align: center">
+					<td style="text-align: center; width: 890px;">
+                    <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnbExportWOSearch" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnbExportWOSearch&#39;,&#39;&#39;)">Export All</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="image" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$btnQSearch" id="btnQSearch" src="../images/btn-Search.png" />&nbsp;&nbsp;&nbsp;
+                    <input type="image" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$btnQClear" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_btnQClear" src="../images/btn-Clear.png" />
+                </td>
+				</tr>
+				
+        </table>
+    
+			</div>
+</div>
+<br />
+<div id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_pnlClick">
+				
+    <div style="background-color: Gray; height: 30px; vertical-align: middle">
+        <div style="background: #e9e7e7 url(~/Images/arrow-down.gif) no-repeat right -51px;
+            padding: 7px 15px; margin: 0; font-weight: bold; border: solid 1px #c4c4c4; cursor: pointer;">
+            Advanced Search
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+
+			</div>
+<div id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_pnlCollapsable" style="padding: 2px 15px;
+    border: solid 1px #c4c4c4;">
+				
+    <table style="width: 100%" id="__designer:mapid=&quot;386&quot;">
+        <tr>
+            <td colspan="3">
+                <h3>
+                    <strong>More Options</strong></h3>
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left;" colspan="3">
+                <table style="width: 100%">
+                    <tr id="trRegistrationMoreOptions1">
+                        <td>
+                            <span>
+                                <input id="chkRegArc" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkRegArc" />Search Archives(May
+                                result in duplicate information being displayed.)</span>
+                            
+                        </td>
+                        <td>
+                            <span>
+                                <input id="chkRegRelPrin" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkRegRelPrin" />Related
+                                Principals</span>
+                        </td>
+                    </tr>
+                    <tr id="trRegistrationMoreOptions2">
+                        <td>
+                            <span>
+                                <input id="chkRegRelFirm" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkRegRelFirm" />Related
+                                Firms</span>
+                        </td>
+                        <td>
+                            <span>
+                                <input id="chkRegRelInd" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkRegRelInd" />Related Individuals</span>
+                        </td>
+                    </tr>
+                    <tr id="trRegistrationPACOptions">
+                        <td>
+                            <span>
+                                <input id="chkRegPAC" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkRegPAC" onclick="DisplayPACText();" />Political
+                                Action Committees</span>
+                            
+                        </td>
+                        <td>
+                            <span>
+                                <input id="chkRegCPC" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkRegCPC" onclick="DisplayPACText();" />Candidate
+                                Political Committees(Lobbyist Only)</span>
+                        </td>
+                    </tr>
+                    <tr id="trPACTextFields">
+                        <td colspan="2">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 20%">
+                                        Name :
+                                    </td>
+                                    <td>
+                                        <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtPACName" type="text" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtPACName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">
+                                        Acronym BCEL :
+                                    </td>
+                                    <td>
+                                        <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtPACAcronym" type="text" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtPACAcronym" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">
+                                        Registration Number :
+                                    </td>
+                                    <td>
+                                        <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtPACRegNo" type="text" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtPACRegNo" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trPrincipalSpcfCrit">
+                        <td colspan="2">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <strong>Principal Specific Criteria</strong>
+                                        <hr />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">
+                                        Primary Nature of Business :
+                                    </td>
+                                    <td>
+                                        <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlBusinessNature" id="ddlBusinessNature">
+					<option selected="selected" value="ALL">All</option>
+					<option value="-1"></option>
+					<option value="ACTG">Accounting</option>
+					<option value="AGRC">Agriculture</option>
+					<option value="ARCH">Architecture</option>
+					<option value="AENT">Arts &amp; Entertainment</option>
+					<option value="BFIN">Banking/Finance</option>
+					<option value="BVGS">Beverages</option>
+					<option value="BIOT">Biotechnology</option>
+					<option value="CMRC">Commerce</option>
+					<option value="CNST">Construction</option>
+					<option value="EDCN">Education </option>
+					<option value="ENRG">Energy</option>
+					<option value="ENGG">Engineering</option>
+					<option value="ENVR">Environment</option>
+					<option value="FINC">Finance</option>
+					<option value="FRAR">Firearms/Guns</option>
+					<option value="FPSL">Food Processing/Sales</option>
+					<option value="GOVT">Government</option>
+					<option value="GBUG">Government, Budget</option>
+					<option value="HLTC">Health Care/Medical/Hospitals</option>
+					<option value="HEDU">Higher Education</option>
+					<option value="HPRE">Historic Preservation</option>
+					<option value="HRES">Hospitality/Restaurant</option>
+					<option value="HOUS">Housing</option>
+					<option value="HSRV">Human Services</option>
+					<option value="MNFT">Industry/Manufacturing</option>
+					<option value="INFT">Information Technology</option>
+					<option value="INSU">Insurance</option>
+					<option value="LBRU">Labor</option>
+					<option value="LGAL">Legal</option>
+					<option value="MKSL">Marketing/Sales</option>
+					<option value="MDIA">Media</option>
+					<option value="MNTL">Mental Health</option>
+					<option value="MTRV">Motor Vehicles</option>
+					<option value="MUSM">Museums</option>
+					<option value="PKNG">Parking</option>
+					<option value="PREC">Parks/Recreation</option>
+					<option value="PHRM">Pharmaceuticals</option>
+					<option value="PINT">Public Interest</option>
+					<option value="PRAD">Public Relations/Advertising</option>
+					<option value="PSAF">Public Safety</option>
+					<option value="REST">Real Estate</option>
+					<option value="RLGS">Religious</option>
+					<option value="RETS">Retail Sales</option>
+					<option value="TECH">Technology</option>
+					<option value="COMM">Telecommunications</option>
+					<option value="TBCO">Tobacco</option>
+					<option value="TRSM">Tourism/Travel</option>
+					<option value="TRAD">Trade or Professional Assoc.</option>
+					<option value="TRAN">Transportation</option>
+					<option value="UTLT">Utilities</option>
+					<option value="GAME">Wagering/Gaming</option>
+					<option value="WMGT">Waste Management</option>
+					<option value="ZONE">Zoning</option>
+					<option value="OTHR">Other </option>
+
+				</select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <span>
+                                            <input id="chkPrincipalSpcfCrit" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkPrincipalSpcfCrit" />Is
+                                            Association or Organization?</span>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="trFirmSpcfCrit">
+                        <td colspan="2">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <strong>Firm Specific Criteria</strong>
+                                        <hr />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 20%">
+                                        Primary Nature of Business :
+                                    </td>
+                                    <td>
+                                        <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlBusinessNatureFirm" id="ddlBusinessNatureFirm">
+					<option selected="selected" value="ALL">All</option>
+					<option value="-1"></option>
+					<option value="ACTG">Accounting</option>
+					<option value="AGRC">Agriculture</option>
+					<option value="ARCH">Architecture</option>
+					<option value="AENT">Arts &amp; Entertainment</option>
+					<option value="BFIN">Banking/Finance</option>
+					<option value="BVGS">Beverages</option>
+					<option value="BIOT">Biotechnology</option>
+					<option value="CMRC">Commerce</option>
+					<option value="CNST">Construction</option>
+					<option value="EDCN">Education </option>
+					<option value="ENRG">Energy</option>
+					<option value="ENGG">Engineering</option>
+					<option value="ENVR">Environment</option>
+					<option value="FINC">Finance</option>
+					<option value="FRAR">Firearms/Guns</option>
+					<option value="FPSL">Food Processing/Sales</option>
+					<option value="GOVT">Government</option>
+					<option value="GBUG">Government, Budget</option>
+					<option value="HLTC">Health Care/Medical/Hospitals</option>
+					<option value="HEDU">Higher Education</option>
+					<option value="HPRE">Historic Preservation</option>
+					<option value="HRES">Hospitality/Restaurant</option>
+					<option value="HOUS">Housing</option>
+					<option value="HSRV">Human Services</option>
+					<option value="MNFT">Industry/Manufacturing</option>
+					<option value="INFT">Information Technology</option>
+					<option value="INSU">Insurance</option>
+					<option value="LBRU">Labor</option>
+					<option value="LGAL">Legal</option>
+					<option value="MKSL">Marketing/Sales</option>
+					<option value="MDIA">Media</option>
+					<option value="MNTL">Mental Health</option>
+					<option value="MTRV">Motor Vehicles</option>
+					<option value="MUSM">Museums</option>
+					<option value="PKNG">Parking</option>
+					<option value="PREC">Parks/Recreation</option>
+					<option value="PHRM">Pharmaceuticals</option>
+					<option value="PINT">Public Interest</option>
+					<option value="PRAD">Public Relations/Advertising</option>
+					<option value="PSAF">Public Safety</option>
+					<option value="REST">Real Estate</option>
+					<option value="RLGS">Religious</option>
+					<option value="RETS">Retail Sales</option>
+					<option value="TECH">Technology</option>
+					<option value="COMM">Telecommunications</option>
+					<option value="TBCO">Tobacco</option>
+					<option value="TRSM">Tourism/Travel</option>
+					<option value="TRAD">Trade or Professional Assoc.</option>
+					<option value="TRAN">Transportation</option>
+					<option value="UTLT">Utilities</option>
+					<option value="GAME">Wagering/Gaming</option>
+					<option value="WMGT">Waste Management</option>
+					<option value="ZONE">Zoning</option>
+					<option value="OTHR">Other </option>
+
+				</select>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                    </tr>
+                    <tr id="trLobbyistSpcfCrit">
+                        <td colspan="2">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <strong>Lobbyist Specific Criteria</strong>
+                                        <hr />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <input id="chkAtt" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAtt" />Licensed Attorney</span>
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr id="trExpesesMoreOptions">
+            <td colspan="3">
+                <span>
+                    <input id="chkExpensesMoreOptions" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkExpensesMoreOptions" />Search
+                    Archives (May result in duplicate information being displayed.)</span>
+                
+            </td>
+        </tr>
+        <tr id="trExpLobbyingSubject">
+            <td colspan="3">
+                <table>
+                    <tr valign="top">
+                        <td style="width: 20%">
+                            Subject of Lobbying :
+                        </td>
+                        <td>
+                            <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlSearchLobbyingSubject" id="ddlSearchLobbyingSubject">
+					<option selected="selected" value="ALL">All</option>
+					<option value="ACCS">Accessibility</option>
+					<option value="ALCO">Alcoholic Beverages</option>
+					<option value="ARTC">Arts &amp; Culture</option>
+					<option value="AVTN">Aviation</option>
+					<option value="BTEC">Biotechnology</option>
+					<option value="BGFN">Budget &amp; Finance</option>
+					<option value="BSNS">Business</option>
+					<option value="CLRN">Children</option>
+					<option value="CVLR">Civil Rights</option>
+					<option value="CVLS">Civil Service</option>
+					<option value="CMRC">Commerce</option>
+					<option value="COMM">Communications</option>
+					<option value="CDEV">Community Development</option>
+					<option value="CNST">Construction</option>
+					<option value="CONA">Consumer Affairs</option>
+					<option value="CONP">Contracts/Procurement</option>
+					<option value="CORR">Corrections &amp; Prisons </option>
+					<option value="ECON">Economic Development</option>
+					<option value="EDUC">Education</option>
+					<option value="EDUH">Education, Higher</option>
+					<option value="ELEC">Elections</option>
+					<option value="ENER">Energy</option>
+					<option value="ENVT">Environment</option>
+					<option value="ETCS">Ethics</option>
+					<option value="FDBV">Food &amp; Beverages</option>
+					<option value="GMCS">Gaming - Casinos</option>
+					<option value="HLTH">Health &amp; Health Care</option>
+					<option value="HIST">Historic Preservation</option>
+					<option value="HSRS">Hospitality/Restaurants</option>
+					<option value="HSNG">Housing</option>
+					<option value="HREL">Human Relations</option>
+					<option value="HSER">Human Services</option>
+					<option value="INMN">Industry/Manufacturing</option>
+					<option value="ITEC">Information Technology</option>
+					<option value="INSR">Insurance</option>
+					<option value="JVJS">Juvenile Justice</option>
+					<option value="LBOR">Labor</option>
+					<option value="LBRR">Libraries</option>
+					<option value="LBYG">Lobbying</option>
+					<option value="LCOF">Local Officials </option>
+					<option value="PARK">Parking</option>
+					<option value="PKRC">Parks &amp; Recreation</option>
+					<option value="PSON">Pensions</option>
+					<option value="PLAN">Planning</option>
+					<option value="PROP">Property</option>
+					<option value="PUBC">Public Contracts </option>
+					<option value="PUBE">Public Employees</option>
+					<option value="PUBS">Public Safety-Police-Fire</option>
+					<option value="REAL">Real Estate</option>
+					<option value="SCIT">Senior Citizens</option>
+					<option value="SMTB">Smoking &amp; Tobacco</option>
+					<option value="SPRT">Sports</option>
+					<option value="STRT">Streets</option>
+					<option value="SUST">Sustainability</option>
+					<option value="TXTN">Taxation</option>
+					<option value="TRSM">Tourism</option>
+					<option value="TRNP">Transportation</option>
+					<option value="UTLT">Utilities</option>
+					<option value="VTRN">Veterans </option>
+					<option value="WATR">Water</option>
+					<option value="ZONE">Zoning</option>
+					<option value="OTHR">Other</option>
+
+				</select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr id="trAffirmationMoreOptions">
+            <td>
+                <span>
+                    <input id="chkAffWithoutKnwldg" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffWithoutKnwldg" onclick="DisplayAffirmationFields();" />Affirmed
+                    Without Limited Knowledge</span>
+            </td>
+            <td>
+                <span>
+                    <input id="chkAffWithKnwldg" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffWithKnwldg" onclick="DisplayAffirmationFields();" />Affirmed
+                    With Limited Knowledge</span>
+            </td>
+            <td>
+                <span>
+                    <input id="chkAffRefusal" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffRefusal" onclick="DisplayAffirmationFields();" />Inability
+                    or Refusal to Sign</span>
+            </td>
+            
+        </tr>
+        <tr id="trAffirmationsWithKnwldg">
+            <td colspan="3">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <strong>Affirmed With Limited Knowledge Due To</strong>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsTotalCost" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsTotalCost" />Total
+                                cost of all lobbying for the period</span>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsExpenditure" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsExpenditure" />Total
+                                expenditure</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsDirect" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsDirect" />Total cost
+                                for direct communication</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsIndirect" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsIndirect" />Total
+                                cost for indirect communication</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsGift" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsGift" />Gifts over
+                                $250</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsPayment" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsPayment" />Payments
+                                over $650</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsResource" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsResource" />Source
+                                of contribution over 10% of principal resources</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr id="trAffirmationsRefusal">
+            <td colspan="3">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <strong>Inability or Refusal to Sign</strong><hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsDead" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsDead" />Death of
+                                lobbyist</span>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsHospitalized" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsHospitalized" />Hospitalization
+                                or incapacitation of lobbyist/lobbying firm</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsFamily" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsFamily" />Death,
+                                hospitalization or incapacitation of family member of lobbyist/lobbying firm</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsUnknown" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsUnknown" />Present
+                                whereabouts of lobbyist/lobbying firm are unknown</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsRefused" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsRefused" />Lobbyist/lobbying
+                                firm has refused to sign the report</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffIsUnresponsive" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffIsUnresponsive" />Lobbyist/lobbying
+                                firm has failed to respond to attempts to contact her/him/it</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>
+                                <input id="chkAffOtherInability" type="checkbox" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$chkAffOtherInability" />Other
+                                reason</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;" colspan="3">
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h3>
+                    <strong>Period</strong></h3>
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr id="lblLobbyingDates">
+                        <td colspan="4">
+                            <strong>Lobbying Commenced Dates</strong>
+                        </td>
+                    </tr>
+                    <tr id="txtLobbyingDates">
+                        <td style="text-align: left; width: 17%">
+                            From :
+                        </td>
+                        <td style="width: 10%">
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtDateFrom" type="text" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtDateFrom" size="7" />
+                        </td>
+                        <td style="text-align: left; width: 8%">
+                            To :
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtDateTo" type="text" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtDateTo" size="7" />
+                        </td>
+                    </tr>
+                    <tr id="trRegPeriod">
+                        <td style="text-align: left; width: 17%">
+                            <strong>Registration Period :</strong>
+                        </td>
+                        <td colspan="3">
+                            <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlregPeriodID" id="ddlregPeriodID">
+					<option value="11">01/01/2024 - 12/31/2024</option>
+					<option value="10">01/01/2023 - 12/31/2023</option>
+					<option value="9">01/01/2022 - 12/31/2022</option>
+					<option value="8">01/01/2021 - 12/31/2021</option>
+					<option value="7">01/01/2020 - 12/31/2020</option>
+					<option value="6">01/01/2019 - 12/31/2019</option>
+					<option value="5">01/01/2018 - 12/31/2018</option>
+					<option value="4">01/01/2017 - 12/31/2017</option>
+					<option value="3">01/01/2016 - 12/31/2016</option>
+					<option value="2">01/01/2015 - 12/31/2015</option>
+					<option value="1">01/01/2014 - 12/31/2014</option>
+
+				</select>
+                        </td>
+                    </tr>
+                    <tr id="trExpenseYear">
+                        <td style="text-align: left; width: 17%">
+                            <table>
+                                <tr valign="top">
+                                    <td>
+                                        Year :
+                                    </td>
+                                    <td>
+                                        <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlSearchYear" id="ddlSearchYear">
+					<option value="0">All</option>
+					<option value="2024">2024</option>
+					<option value="2023">2023</option>
+					<option value="2022">2022</option>
+					<option value="2021">2021</option>
+					<option value="2020">2020</option>
+					<option value="2019">2019</option>
+					<option value="2018">2018</option>
+					<option value="2017">2017</option>
+					<option value="2016">2016</option>
+					<option value="2015">2015</option>
+					<option value="2014">2014</option>
+
+				</select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td colspan="3">
+                            <table>
+                                <tr valign="top">
+                                    <td>
+                                        &nbsp;&nbsp;Quarter :
+                                    </td>
+                                    <td>
+                                        <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlSearchQuarter" id="ddlSearchQuarter">
+					<option value="0">All</option>
+					<option value="1">Jan - Mar</option>
+					<option value="2">Apr - Jun</option>
+					<option value="3">Jul - Sep</option>
+					<option value="4">Oct - Dec</option>
+
+				</select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr id="lblAddress">
+            <td colspan="3">
+                <h3>
+                    <strong>Location</strong>
+                </h3>
+                <hr />
+            </td>
+        </tr>
+        <tr id="trAddress">
+            <td colspan="3">
+                <strong>Address : </strong>
+                <br />
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 20%">
+                            <span id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lblLine1">Line 1: </span>
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtLine1" type="text" maxlength="50" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtLine1" /><br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            <span id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lblline2">Line 2: </span>
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtLine2" type="text" maxlength="50" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtLine2" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            <span id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lbcity">City: </span>
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtCity" type="text" maxlength="50" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtCity" /><br />
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td style="width: 20%" valign="top">
+                            <span id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lblState">State: </span>
+                        </td>
+                        <td valign="top">
+                            <select name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$ddlSearchState" id="ddlSearchState">
+					<option value="AL">AL</option>
+					<option value="AK">AK</option>
+					<option value="AS">AS</option>
+					<option value="AZ">AZ</option>
+					<option value="AR">AR</option>
+					<option value="CA">CA</option>
+					<option value="BC">BC</option>
+					<option value="CO">CO</option>
+					<option value="CT">CT</option>
+					<option value="DE">DE</option>
+					<option value="DC">DC</option>
+					<option value="FL">FL</option>
+					<option value="GA">GA</option>
+					<option value="GU">GU</option>
+					<option value="HI">HI</option>
+					<option value="ID">ID</option>
+					<option value="IL">IL</option>
+					<option value="IN">IN</option>
+					<option value="IA">IA</option>
+					<option value="KS">KS</option>
+					<option value="KY">KY</option>
+					<option value="LA">LA</option>
+					<option value="ME">ME</option>
+					<option value="MD">MD</option>
+					<option value="MA">MA</option>
+					<option value="MI">MI</option>
+					<option value="MN">MN</option>
+					<option value="MS">MS</option>
+					<option value="MO">MO</option>
+					<option value="MT">MT</option>
+					<option value="NE">NE</option>
+					<option value="NV">NV</option>
+					<option value="NH">NH</option>
+					<option value="NJ">NJ</option>
+					<option value="NM">NM</option>
+					<option value="NY">NY</option>
+					<option value="NC">NC</option>
+					<option value="ND">ND</option>
+					<option value="MP">MP</option>
+					<option value="OH">OH</option>
+					<option value="OK">OK</option>
+					<option value="OR">OR</option>
+					<option selected="selected" value="PA">PA</option>
+					<option value="PR">PR</option>
+					<option value="RI">RI</option>
+					<option value="SC">SC</option>
+					<option value="SD">SD</option>
+					<option value="TN">TN</option>
+					<option value="TX">TX</option>
+					<option value="VI">VI</option>
+					<option value="UT">UT</option>
+					<option value="VT">VT</option>
+					<option value="VA">VA</option>
+					<option value="WA">WA</option>
+					<option value="WV">WV</option>
+					<option value="WI">WI</option>
+					<option value="WY">WY</option>
+
+				</select>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2">
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                            <span id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lblZip">Zip Code: </span>
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtZipCode" type="text" maxlength="5" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtZipCode" size="5" autocomplete="off" />
+                            <input name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$txtPlus4" type="text" maxlength="4" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_txtPlus4" size="4" autocomplete="off" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%">
+                        </td>
+                        <td>
+                            
+                            
+                            <span id="lblZipJavaScript" style="display: none"><font color="Red">Please enter a valid Zip Code</font></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;" colspan="3">
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+                <a id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_lnbExportWOSearch1" href="javascript:__doPostBack(&#39;ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$lnbExportWOSearch1&#39;,&#39;&#39;)">Export All</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="image" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$btnASearch" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_btnASearch" class="btnASearch" src="../images/btn-Search.png" />&nbsp;&nbsp;&nbsp;
+                <input type="image" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$btnAClear" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_btnAClear" src="../images/btn-Clear.png" />
+            </td>
+        </tr>
+    </table>
+
+			</div>
+<input type="hidden" name="ctl00$MainContent$tcSearch$tpQuickSearch$ucQuickSearch$CollapsiblePanelExtender1_ClientState" id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_CollapsiblePanelExtender1_ClientState" />
+<br />
+<div id="MainContent_tcSearch_tpQuickSearch_ucQuickSearch_UpdatePanel1">
+				
+        <div id="divPaging">
+            
+        </div>
+        <div id="divRegistraionSearchResult">
+            <table style="width: 100%">
+                <tr>
+                    <td align="center">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="divSearchResult">
+            <table style="width: 100%">
+                <tr>
+                    <td align="center">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    
+			</div>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        var rblSearchType = document.getElementById("rblSearchType");
+        var rblRegistrationType = document.getElementById("rblRegistrationType");
+        DisplayMoreOptions(rblSearchType, 0);
+        DisplayPanel(rblRegistrationType, 0);
+    });
+    $(".btnASearch").click(function (e) {
+        $("#divQuickOptions").show();
+    });
+    $(".btnAClear").click(function (e) {
+        $("#divQuickOptions").show();
+    });
+</script>
+
+
+                        
+
+		</div><div id="MainContent_tcSearch_tpPublicReport" class="ajax__tab_panel" style="display:none;">
+			
+                            <div>
+                                
+<style type="text/css">
+    .style9
+    {
+        width: 1%;
+    }
+    .style11
+    {
+        width: 2%;
+    }
+</style>
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+        prm.add_endRequest(EndRequest);
+
+        function EndRequest(sender, args) {
+            $('div').jqTransform();
+        }
+    });
+</script>
+
+<div>
+    <table width="100%">
+        <tr>
+            <td class="style11">
+                Report:
+            </td>
+            <td class="style9">
+                 <select name="ctl00$MainContent$tcSearch$tpPublicReport$ucPublicReports$ddlReportList" id="ddlReportList" style="margin-left: 1px">
+				<option selected="selected" value="Please Select">Please Select</option>
+				<option value="19">Expense Report Summary</option>
+				<option value="20">Direct Communications Contacts</option>
+				<option value="14">Gift Recipient Details </option>
+				<option value="6">Gift Details Reported By Source</option>
+				<option value="18">Registrations by Lobbying Subject</option>
+				<option value="5">All Gifts</option>
+
+			</select>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            </tr>
+         
+  
+        <tr>
+            
+            <td class="style11">
+                
+            </td>
+            <td class="style9">
+                
+            </td>
+        </tr>
+        <tr>
+            <td class="style9">
+                    
+            </td>
+            <td class="style9">
+                
+            </td>
+          
+        </tr>
+        <tr>
+        <td class="style9">
+                    
+            </td>
+            <td class="style9">
+                
+            </td>
+            </tr>
+
+             <tr>
+        <td class="style9">
+                    
+            </td>
+            <td class="style9">
+                
+            </td>
+            </tr>
+
+       
+               <tr>
+         <td class="style9">
+                    
+            </td>
+            <td class="style9">
+                
+            </td>
+            </tr>
+
+        <tr>
+        <td class="style11">
+        
+        </td>
+        </tr>
+        <tr>
+        
+        <td class="style11">
+        
+        </td>
+        </tr>
+
+
+    </table>
+</div>
+
+
+
+                            </div>
+                        
+
+		</div><div id="MainContent_tcSearch_tpDirectory" class="ajax__tab_panel" style="display:none;">
+			
+                            
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_endRequest(EndRequest);
+        function EndRequest(sender, args) {
+            $('div').jqTransform();
+        }
+    });
+</script>
+
+<div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td valign="top" width="59%">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td colspan="2" class="bdrHead">
+                            <strong>Main Criteria</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Firm Name / Lobbyist Last Name:
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$txtLastName" type="text" id="MainContent_tcSearch_tpDirectory_ucDirectory_txtLastName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            First Name (Lobbyist Only):
+                        </td>
+                        <td>
+                            <input name="ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$txtFirstName" type="text" id="MainContent_tcSearch_tpDirectory_ucDirectory_txtFirstName" class="InputTextBox" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: right;">
+                            <input type="image" name="ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$btnSearch" id="MainContent_tcSearch_tpDirectory_ucDirectory_btnSearch" src="../images/btn-Search.png" />
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="image" name="ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$btnClear" id="MainContent_tcSearch_tpDirectory_ucDirectory_btnClear" src="../images/btn-Clear.png" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="2%">
+                &nbsp;
+            </td>
+            <td valign="top" width="39%">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="bdrHead">
+                            <strong>Search Over</strong>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="MainContent_tcSearch_tpDirectory_ucDirectory_chkBoxLobby" type="checkbox" name="ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$chkBoxLobby" />
+                            Lobbyists
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="MainContent_tcSearch_tpDirectory_ucDirectory_chkBoxFirm" type="checkbox" name="ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$chkBoxFirm" />
+                            Firms
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<br />
+
+<br />
+<a id="MainContent_tcSearch_tpDirectory_ucDirectory_lbGenReportPdf" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$MainContent$tcSearch$tpDirectory$ucDirectory$lbGenReportPdf&quot;, &quot;&quot;, false, &quot;&quot;, &quot;../Reports/EthicsReports.aspx?ReportType=8&quot;, false, true))">Click here to generate Full Lobbyist Directory</a>
+
+                        
+
+		</div>
+	</div>
+</div>
+            </div>
+        </div>
+    </div>
+
+                        <input type="hidden" name="ctl00$hdnSelectedTab" id="hdnSelectedTab" value="0" />
+                        <!-- content ends-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" style="background-color: #DCE1E6">
+            <div align="center">
+                <div>
+                    To contact the Board of Ethics click
+                    <a id="hypBoardEthics" href="mailto:Lobbying@phila.gov"><u><font color="Black">here</font></u></a>
+                    or call
+                    <span id="lblPhoneBoardEthics"><font color="Black">215-686-9450</font></span>.
+                    To contact the PLIS Support Desk click
+                    <a id="hypPLISSupport" href="mailto:plis_helpdesk@acclaimsystems.com"><u><font color="Black">here</font></u></a>
+                    or call
+                    <span id="lblPhonePLISSupport"><font color="Black">717-441-7440</font></span>.
+                </div>
+            </div>
+            <div class="footer">
+                <div class="page">
+                    <div class="siteMapArea">
+                        <div class="localMap grid_4 alpha">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td valign="top">
+                                        <div webpartid="00000000-0000-0000-0000-000000000000" haspers="true" id="WebPartWPQ1"
+                                            width="100%" class="ms-WPBody" onlyformepart="true" allowminimize="false" allowremove="false"
+                                            allowdelete="false" style="">
+                                            <?xml version="1.0" encoding="utf-8" ?>
+                                            <!--agencyBottomNav-->
+                                            <ul class="grid_4">
+                                                <li class="sectionTitle"><a href="http://www.phila.gov/ethicsboard/Pages/default.aspx" style="font-weight: bold; font-size: 16px">Board of Ethics</a></li>
+                                                <li><a href="http://www.phila.gov/ethicsboard/campaignfinance/Pages/default.aspx">Campaign Finance</a></li>
+                                                <li><a href="http://www.phila.gov/ethicsboard/lobbying/Pages/default.aspx">Lobbying</a></li>
+                                                <li><a href="http://www.phila.gov/ethicsboard/disclosure/Pages/default.aspx">Financial Disclosure</a></li>
+                                                <li><a href="http://www.phila.gov/ethicsboard/advisory/Pages/default.aspx">Advice and Opinions</a></li>
+                                                <li><a href="http://www.phila.gov/ethicsboard/aboutus/Pages/default.aspx">About Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="domainMap grid_16 omega">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td valign="top">
+                                        <div webpartid="00000000-0000-0000-0000-000000000000" haspers="true" id="WebPartWPQ2"
+                                            width="100%" class="ms-WPBody" onlyformepart="true" allowminimize="false" allowremove="false"
+                                            allowdelete="false" style="">
+                                            <?xml version="1.0" encoding="utf-8" ?>
+                                            <!--DomainBottomNav-->
+                                            <ul class="grid_4 omega" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"
+                                                xmlns:ddwrt2="urn:frontpage:internal">
+                                                <li class="sectionTitle">Topics</li>
+                                                <li><a href="http://www.phila.gov/topics/artsCulture">Arts &amp; Culture</a></li>
+                                                <li><a href="http://www.phila.gov/topics/education">Education</a></li>
+                                                <li><a href="http://www.phila.gov/topics/employment">Employment</a></li>
+                                                <li><a href="http://www.phila.gov/topics/environment">Environment</a></li>
+                                                <li><a href="http://www.phila.gov/topics/health">Health</a></li>
+                                                <li><a href="http://www.phila.gov/topics/housing">Housing</a></li>
+                                                <li><a href="http://www.phila.gov/topics/neighborhoods">Neighborhoods</a></li>
+                                                <li><a href="http://www.phila.gov/topics/publicSafety">Public Safety</a></li>
+                                                <li><a href="http://www.phila.gov/topics/recreation">Recreation</a></li>
+                                                <li><a href="http://www.phila.gov/topics/transportationUtilities">Transportation &amp; Utilities</a></li>
+                                                <li><a href="http://www.phila.gov/topics/urbanDevelopment">Urban Development</a></li>
+                                            </ul>
+                                            <ul class="grid_4 omega" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"
+                                                xmlns:ddwrt2="urn:frontpage:internal">
+                                                <li class="sectionTitle">People We Serve</li>
+                                                <li><a href="http://www.phila.gov/business">Businesses</a></li>
+                                                <li><a href="http://www.phila.gov/Residents">Residents</a></li>
+                                                <li><a href="http://www.phila.gov/visitors">Visitors</a></li>
+                                            </ul>
+                                            <ul class="grid_4 omega" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"
+                                                xmlns:ddwrt2="urn:frontpage:internal">
+                                                <li class="sectionTitle">Government</li>
+                                                <li><a href="http://www.phila.gov/mayor">Mayor's Office</a></li>
+                                                <li><a href="http://www.phila.gov/cityCouncil">City Council</a></li>
+                                                <li><a href="http://www.courts.phila.gov/">Courts</a></li>
+                                                <li><a href="http://www.phila.gov/districtattorney/index.html">District Attorney</a></li>
+                                                <li><a href="http://www.officeofphiladelphiasheriff.com/">Sheriff</a></li>
+                                            </ul>
+                                            <ul class="grid_4 omega" xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"
+                                                xmlns:ddwrt2="urn:frontpage:internal">
+                                                <li class="sectionTitle">Contact</li>
+                                                <li><a href="http://www.phila.gov/311">311</a></li>
+                                                <li><a>Phone Directory</a></li>
+                                                <li><a href="http://www.phila.gov/globalPhiladelphia/">Language Assistance</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="copyright" align="center">
+                    <div class="page">
+                        <span id="copyright">Technical Problems: <a href="mailto:webissues@phila.gov">webissues@phila.gov</a>
+                            | <a href="http://www.phila.gov/privacy/index.html">HIPAA</a> | <a href="http://www.phila.gov/privacy/index.html">
+                                Privacy Policy</a> | <a href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">
+                                    Right to Know Policy</a> | <a href="http://www.phila.gov/tos/index.html">Terms of Use</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("ToolkitScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();//]]>
+</script>
+<script type='text/javascript'>new Sys.WebForms.Menu({ element: 'ucLeftNav_NavigationMenu', disappearAfter: 500, orientation: 'vertical', tabIndex: 0, disabled: false });</script>
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.CollapsiblePanelBehavior, {"ClientStateFieldID":"MainContent_tcSearch_tpQuickSearch_ucQuickSearch_CollapsiblePanelExtender1_ClientState","CollapseControlID":"MainContent_tcSearch_tpQuickSearch_ucQuickSearch_pnlClick","Collapsed":true,"ExpandControlID":"MainContent_tcSearch_tpQuickSearch_ucQuickSearch_pnlClick","ExpandedImage":"../Images/arrow-down.gif","ImageControlID":"imgArrows","TextLabelID":"lblMessage","id":"MainContent_tcSearch_tpQuickSearch_ucQuickSearch_CollapsiblePanelExtender1"}, null, null, $get("MainContent_tcSearch_tpQuickSearch_ucQuickSearch_pnlCollapsable"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TabPanel, {"headerTab":$get("__tab_MainContent_tcSearch_tpQuickSearch"),"ownerID":"MainContent_tcSearch"}, null, {"owner":"MainContent_tcSearch"}, $get("MainContent_tcSearch_tpQuickSearch"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TabPanel, {"headerTab":$get("__tab_MainContent_tcSearch_tpPublicReport"),"ownerID":"MainContent_tcSearch"}, null, {"owner":"MainContent_tcSearch"}, $get("MainContent_tcSearch_tpPublicReport"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TabPanel, {"headerTab":$get("__tab_MainContent_tcSearch_tpDirectory"),"ownerID":"MainContent_tcSearch"}, null, {"owner":"MainContent_tcSearch"}, $get("MainContent_tcSearch_tpDirectory"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.TabContainer, {"activeTabIndex":0,"clientStateField":$get("MainContent_tcSearch_ClientState")}, null, null, $get("MainContent_tcSearch"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>
+ contentType 9 text/html url 48 http://plis.cloudapp.net:80/Public/wfSearch.aspx responseCode 3 200 

@@ -1,0 +1,456 @@
+ccrgaeoejqhopacizeycvoxaockcdoaonclsfkym length 5 16584 page 16584 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap" rel="stylesheet">
+<title>NFL Draft Day Betting Tool by Conference - ESPN Analytics</title>
+<meta property="og:title" content="NFL Draft Day Betting Tool by Conference - ESPN Analytics"/>
+<meta property="og:site_name" content="NFL Draft Day Betting Tool by Conference - ESPN Analytics" />
+<meta property="og:url" content="https://www.espnanalytics.com/draft-predictor/conference_over_under.html" />
+<meta name="twitter:url" content="https://www.espnanalytics.com/draft-predictor/conference_over_under.html" />
+<meta name="twitter:title" content="NFL Draft Day Betting Tool by Conference - ESPN Analytics"/>
+<meta name="title" content="NFL Draft Day Betting Tool by Conference - ESPN Analytics"/>
+<meta name="description" content="Models and data visualization from ESPN Analytics. NFL Draft, March Madness, receiver tracking metrics and more." />
+<meta property="og:description" content="Models and data visualization from ESPN Analytics. NFL Draft, March Madness, receiver tracking metrics and more." />
+<meta property="og:image" content="https://ea-images-hosting.s3.amazonaws.com/black_475.png"/>
+<meta property="og:image:alt" content="ESPN Analytics"/>
+<meta property="og:image:secure_url" content="https://ea-images-hosting.s3.amazonaws.com/black_475.png"/>
+<meta name="twitter:image" content="https://ea-images-hosting.s3.amazonaws.com/black_475.png"/>
+<meta property="og:type" content="website" />
+<meta name="twitter:description" content="Models and data visualization from ESPN Analytics. NFL Draft, March Madness, receiver tracking metrics and more." />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:creator" content="@sportsdada" />
+<meta name="medium" content="index" />
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0Q1L3P863"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W0Q1L3P863');
+</script>
+
+</head>
+<body>
+
+<header id="navbar">
+  <nav class="navbar-container container">
+    <a href="/" class="home-link">
+		<img class="ea3-img" src="ea3_new.png" >	
+    </a>
+    <div class="menu-title">
+        <h1 class="draft-title">Draft Day Betting Tool</h1>
+      </div>
+      <div class="right-navbar">
+        <!--<ul class="desktop-items">
+          <li class="desktop-item"><a class="desktop-link" href="./">By Player</a></li>
+            <li class="desktop-item"><a class="desktop-link" href="./draft_predictor_by_pick.html">By Pick</a></li>
+            <li class="desktop-item"><a class="desktop-link" href="./about.html">About</a></li>
+        </ul>-->
+        
+        <div>
+          <button type="button" id="navbar-toggle" class="navbar-toggle-class" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+            <div class="selected-page">
+              <h2>Conference &#9660</h2>
+            </div>
+          </button>
+      
+      <div id="navbar-menu" aria-labelledby="navbar-toggle">
+        <ul class="navbar-links">
+          <!--<h4 style="padding-bottom: 5px; margin: 0px">See Breakdown By:</h4>-->
+            <li class="navbar-item"><a class="navbar-link first-link" href="./">By Player</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./draft_predictor_by_pick.html">By Pick</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./positions_over_under.html">By Position</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="./positions_first_taken.html">First at Pos</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./conference_over_under.html">By Conference</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/mock-draft">Mock Draft</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="/draft-sim">Simulator</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../similarity_plots/similarity.html">Similarity Plots</a></li>
+          <li class="navbar-item"><a class="navbar-link last-link" href="./about.html">About</a></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+<div style='font-family:"News Cycle"' class="page-display">
+	<div class="title-title">
+		<h2 id="title-id">Breakdown By Conference</h2>
+	</div>
+ <FORM id="inputForm" name="inputForm" action="" method=GET>
+    <fieldset style='border-radius: 5px'>
+
+   <div class="conf-options">
+	<div class="conf-opt1">
+   <label style='font-size: 16.5px; padding-left: 5px' for="confSelect">Select Conference:</label>
+		<select style='margin-top: 5px; padding: 2px 2px 2px 5px; border-radius: 5px' id="confSelect" name="confSelect" onchange="setBetConf();update();">
+		  <option value="SEC" selected="selected">SEC</option>
+		  <option value="ACC">ACC</option>
+		  <option value="B10">BIG 10</option>
+		  <option value="B12">BIG 12</option>
+		  <option value="PAC12">PAC 12</option>
+		</select>
+	</div>
+	 <div class="conf-opt2">
+	<label style='font-size: 16.5px; padding: 5px' for="ouSelect"> Over/Under:</label>
+		<select style='margin-top: 5px; padding: 2px 2px 2px 5px; border-radius: 5px' id="ouSelect" name="ouSelect" onchange="update();">
+		  <option value="3.5">3.5</option>
+		  <option value="4.5">4.5</option>
+		  <option value="5.5">5.5</option>
+		  <option value="6.5">6.5</option>
+		  <option value="7.5">7.5</option>
+		  <option value="8.5">8.5</option>
+		  <option value="9.5">9.5</option>
+		  <option value="10.5" selected="selected">10.5</option>
+		  <option value="11.5">11.5</option>
+		  <option value="12.5">12.5</option>
+		  <option value="13.5">13.5</option>
+		  <option value="14.5">14.5</option>
+		  <option value="15.5">15.5</option>
+		</select>
+	 </div>
+	</div>
+		
+		<div style='padding-top: 5px'>
+	<label style='font-size: 16.5px; padding-left: 5px' for="overPrice">Prices:</label>		
+	<label style='font-size: 15px; padding-left: 5px' for="overPrice">Over</label>	
+		<input style='margin-top: 5px; padding: 3px 0px 3px 10px; border-radius: 5px; border: 1px solid black' type="text" id="overPrice" name="overPrice" maxlength="4" size="4" value = "-200" onchange="update();">
+		
+	<label style='font-size: 15px' for="underPrice">Under</label>		 
+		<input style='margin-top: 5px; padding: 3px 0px 3px 10px; border-radius: 5px; border: 1px solid black' type="text" id="underPrice" name="underPrice" maxlength="4" size="4" value = "165" onchange="update();">
+		</div>
+		  
+		
+    </fieldset>
+ </FORM>
+ 
+</div>
+ 
+ <!-- Create a div where the graph will take place -->
+ <div class="page">
+  <div class="graph">
+    <div id="title1" class="title"></div>
+    <div id="chart" ></div>
+  </div>
+  <div class="graph">
+    <div id="title2" class="title"></div>
+    <div id="analysis" style='font-family:"News Cycle"'></div>
+  </div>
+</div>
+<div class="betting-info">
+Over chance: <span id='over-prob'></span>%<br>
+Under chance: <span id='under-prob'></span>%<br><br>
+
+Expected net profit for a $100 bet on Over: <span id = 'over-net'></span>$<br>
+Expected net profit for a $100 bet on Under: <span id = 'under-net'></span>$
+
+
+</div>
+<br><br>
+<span style = 'font-size: 0.8em;'>Model updated as of 4/23/24.<br>
+Discover more NFL Draft analysis at <a href='https://www.espn.com/nfl/draft/projections'>ESPN.com</a>.
+</span>
+
+</div>
+
+</body>
+
+<script>
+const navbarToggle = navbar.querySelector("#navbar-toggle");
+const navbarMenu = document.querySelector("#navbar-menu");
+const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
+let isNavbarExpanded = navbarToggle.getAttribute("aria-expanded") === "true";
+
+const toggleNavbarVisibility = () => {
+  isNavbarExpanded = !isNavbarExpanded;
+  navbarToggle.setAttribute("aria-expanded", isNavbarExpanded);
+};
+
+navbarToggle.addEventListener("click", toggleNavbarVisibility);
+
+navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
+navbarMenu.addEventListener("click", toggleNavbarVisibility);
+
+
+// set the dimensions and margins of the graph
+var margin = {},
+  width,
+  height;
+var mediaPhone = window.matchMedia('(max-width: 699px)')
+var mediaTablet = window.matchMedia('(min-width: 700px) and (max-width: 859px)');
+if (mediaTablet.matches) {
+  margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 650 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+} else if (mediaPhone.matches) {
+  margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = (window.innerWidth) - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+} else {
+  margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 860 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+}
+
+// append the svg object to the body of the page
+var svg = d3.select("#chart")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Initialize the X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .padding(0.2);
+  
+var xAxis = svg.append("g")
+  .attr("class", "myXaxis")
+  .attr("transform", "translate(0," + height + ")")
+
+   
+
+// Initialize the Y axis
+var y = d3.scaleLinear()
+  .range([ height, 0]);
+  
+var yAxis = svg.append("g")
+  .attr("class", "myYaxis")
+  
+
+  
+  
+// Define the div for the tooltip
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);  
+
+
+const f = d3.format(".3f");
+  
+  
+svg.append("text")
+    .attr("class", "x label")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + 40)
+	.attr("font-family", "News Cycle")
+    .text("Conference 1st Rnd Selections");
+  
+svg.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", -50)
+    .attr("dy", "1.0em")
+    .attr("transform", "rotate(-90)")
+	.attr("font-family", "News Cycle")
+    .text("Chance taken (%)");
+		
+
+
+
+// A function to create / update the plot for a given variable:
+function update() {
+  document.getElementById("title1").innerHTML = "<p class='index-p'>Chance each # of " + document.getElementById('confSelect').value + " players is taken in the first round:</p>";
+	var confValue=encodeURIComponent(document.getElementById('confSelect').value); 
+	var ouValue=encodeURIComponent(document.getElementById('ouSelect').value); 
+	var overPrice=encodeURIComponent(document.getElementById('overPrice').value); 
+	var underPrice=encodeURIComponent(document.getElementById('underPrice').value); 
+	
+	overPrice = Number(~~overPrice);
+	
+	var filename = "conf_players_1st_rnd.csv?rndstr=<%= getRandomStr() %>";	
+	
+
+  // Parse the Data
+  d3.csv(filename, function(data_in) {	
+
+    var data = data_in.filter(function(d) { 
+        if( d["conf"] == confValue) { 
+            return d;
+        } 
+    })
+	
+    // X axis
+	// Add Y axis
+    x.domain(data.map(function(d) { return d.count; }));
+	y.domain([0, d3.max(data, function(d) { return +d.pct }) ]);
+    
+		
+	svg.selectAll("line").remove();
+	
+	xAxis.transition().duration(1000).call(d3.axisBottom(x))
+	.selectAll("text")	
+	.style("text-anchor", "center")
+	//.attr("dx", ".8em")
+	//.attr("dy", "1em")
+   // .attr("transform", "rotate(-35)");
+	
+	yAxis.transition().duration(1000).call(d3.axisLeft(y));
+		
+
+    // variable u: map data to existing bars 
+	
+	var u = svg.selectAll("rect")
+	  .data(data);
+	var barColor = "#c41e32";
+    
+
+    // update bars
+    u
+      .enter()
+      .append("rect")
+	  .attr("y", function(d) {
+        return y(0);
+      })
+      .attr("height", 0)
+      .merge(u)
+	//  .style("opacity", 1)  //turns the bars back on
+      .transition()
+      .duration(1000)
+        .attr("x", function(d) { return x(d.count); })
+        .attr("y", function(d) { return y(d.pct); })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) { return height - y(d.pct); })
+        .attr("fill", barColor)
+		
+		
+	//remove excess bars (especially important so the tooltips don't activate over old hidden bars)
+	u.exit().remove();	
+	
+	//determine where vertical divider line should go	
+	var lineIndex = d3.bisectLeft(x.domain(), Number(ouValue));
+	
+	//if the over under value is greater than the maximum value on the x axis then draw the line to the right of the chart
+	if (Number(ouValue) > Number(x.domain()[x.domain().length-1])) {
+	
+		var line_x_position = x(x.domain()[x.domain().length-1]) + x.bandwidth() + 5;
+		var line_y_bottom = height+15;
+
+	} else 
+	
+	//if the over-under value is a half-number, e.g. 2.5
+	if (ouValue % 1 != 0 || ouValue < x.domain()[0]) {
+
+		var line_x_position = x(x.domain()[lineIndex]) - x.step() / 2 + x.bandwidth() / 2;
+		var line_y_bottom = height+15;	  		  
+		  
+	} else { //it's a round number e.g. 2.0
+		
+		var line_x_position = x(x.domain()[lineIndex])+ x.bandwidth() / 2;
+		var line_y_bottom = height+5;
+	  
+	}
+	//draw the vertical line separator
+    var line = svg.append("line")
+			  .attr("x1", line_x_position)
+			  .attr("x2", line_x_position)
+			  .attr("y1", -10)
+			  .attr("y2", line_y_bottom)
+			  .style("stroke", "#01aeef")
+			  .style("stroke-width", 4)
+			  .style("stroke-dasharray", "4,2")
+
+		
+	//filter the data to values less than the over-under value
+	var dataCDF = data.filter(function(d) { 
+        if( d["count"] < Number(ouValue)) { 
+            return d;
+        } 
+    })
+	
+	//filter the data to values exactly equal to the over-under value
+	var dataExact = data.filter(function(d) {
+		if( d["count"] == ouValue) {
+			return d;
+			}
+	})
+	
+	//if the over under value is greater than the maximum value in the data, then make the cdf=1 (otherwise it defaults to zero)
+	if (Number(ouValue) > Number(x.domain()[x.domain().length-1])) {
+		var cdf = 1;
+	} else {
+		//calculate the cdf by summing all the probability to the left of the over under value
+		var cdf = d3.sum(dataCDF, d => d.pct)/100;
+	}
+	//make the p_exact value equal to the single value in dataExact by using sum (sums an array of length 1)
+	var p_exact = d3.sum(dataExact, d => d.pct)/100;
+	
+	//calculate the potential profit on a $100 bet based on the prices
+	var overProfit = overPrice < 100 ? Math.abs(100/overPrice*100) : overPrice;
+	var underProfit = underPrice < 100 ? Math.abs(100/underPrice*100) : underPrice;
+	
+	//calculate the expected net profit based on prices and probabilities
+	var overNet = overProfit * (1-cdf-p_exact) - 100 * (cdf);
+    var underNet = underProfit * cdf - 100 * (1-cdf-p_exact);
+	
+	//fill in the appropriate html spans with the results while rounding
+	document.getElementById("over-prob").innerHTML = Math.round((1-cdf)*1000)/10;
+	document.getElementById("under-prob").innerHTML = Math.round((cdf)*1000)/10;
+	
+	document.getElementById("over-net").innerHTML = Math.round(overNet*10)/10;
+	document.getElementById("under-net").innerHTML = Math.round(underNet*10)/10;
+	
+	
+  })
+
+}
+
+function setBetConf() {
+
+  filename = 'conf props.csv?rndstr=<%= getRandomStr() %>'
+  d3.csv(filename, function(data_in) {	
+
+	//retrieve the current selected position 
+	var confValue=encodeURIComponent(document.getElementById('confSelect').value); 
+	
+	//filter to the row of the selected position
+	var data = data_in.filter(function(d) { 
+        if( d["conf"] == confValue) { 
+            return d;
+        } 
+    })
+	
+	
+	//get the 3 inputs for the bet
+	let ouSelection = document.getElementById('ouSelect');
+	let overPriceValue = document.getElementById('overPrice');
+	let underPriceValue = document.getElementById('underPrice');
+
+	
+	//retrieve the appropriate over/under value and prices for the current position selection
+	ouSelection.value = data.map(function(d) { return d.pick;});
+	overPriceValue.value = data.map(function(d) { return d.over_bet;});
+	underPriceValue.value = data.map(function(d) { return d.under_bet;});
+	
+	//this is needed to get the DOM to recognize the new defaults
+	ouSelection.dispatchEvent(new Event('change'));
+	overPriceValue.dispatchEvent(new Event('change'));
+	underPriceValue.dispatchEvent(new Event('change'));
+	
+
+	//console.log(ouSelection.value);
+
+  })
+ }
+
+update();
+
+</script>
+
+
+
+</html> contentType 9 text/html url 72 https://espnanalytics.com:443/draft-predictor/conference_over_under.html responseCode 3 200 

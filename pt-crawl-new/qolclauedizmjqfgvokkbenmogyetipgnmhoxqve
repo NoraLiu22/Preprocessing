@@ -1,0 +1,85 @@
+qolclauedizmjqfgvokkbenmogyetipgnmhoxqve length 5 12288 page 12288 
+<html>
+<head>
+<title>r44683 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r44683 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/44683" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./44682.html" title="Special:Code/MediaWiki/44682">r44682</a>‎ | <b>r44683</b> | <a href="./44684.html" title="Special:Code/MediaWiki/44684">r44684</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>19:59, 16 December 2008</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/mrzman" title="Special:Code/MediaWiki/author/mrzman">mrzman</a></td></tr>
+<tr><td>Status:</td><td>ok (<a href="#code-comments">Comments</a>)
+</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">Fix for <a href="./44676.html" title="Special:Code/MediaWiki/44676">r44676</a>, fix E_NOTICE from having no canonical name associated with a namespace (ns 0), move RELEASE-NOTES entry to API section and clarify.</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/api/ApiQuerySiteinfo.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2Fapi%2FApiQuerySiteinfo.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/44683&amp;action=purge" title="Special:Code/MediaWiki/44683">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/api/ApiQuerySiteinfo.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -127,7 +127,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">128</td><td class="linenumbers">128</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="7"><td class="linenumbers">129</td><td class="linenumbers">129</td><td class="unchanged"><span> </span></td></tr>
+<tr id="8"><td class="linenumbers">130</td><td class="linenumbers">130</td><td class="unchanged"><span> 	protected function appendNamespaces( $property ) {</span></td></tr>
+<tr id="9"><td class="linenumbers">131</td><td class="linenumbers"> </td><td class="del"><del>-		global $wgContLang;</del></td></tr>
+<tr id="10"><td class="linenumbers"> </td><td class="linenumbers">131</td><td class="ins"><ins>+		global $wgContLang, $wgCanonicalNamespaceNames;</ins></td></tr>
+<tr id="11"><td class="linenumbers">132</td><td class="linenumbers">132</td><td class="unchanged"><span> 		$data = array();</span></td></tr>
+<tr id="12"><td class="linenumbers">133</td><td class="linenumbers">133</td><td class="unchanged"><span> 		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title )</span></td></tr>
+<tr id="13"><td class="linenumbers">134</td><td class="linenumbers">134</td><td class="unchanged"><span> 		{</span></td></tr>
+<tr id="14"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -135,7 +135,7 @@</span></td></tr>
+<tr id="15"><td class="linenumbers">136</td><td class="linenumbers">136</td><td class="unchanged"><span> 				'id' => $ns</span></td></tr>
+<tr id="16"><td class="linenumbers">137</td><td class="linenumbers">137</td><td class="unchanged"><span> 			);</span></td></tr>
+<tr id="17"><td class="linenumbers">138</td><td class="linenumbers">138</td><td class="unchanged"><span> 			ApiResult :: setContent( $data[$ns], $title );</span></td></tr>
+<tr id="18"><td class="linenumbers">139</td><td class="linenumbers"> </td><td class="del"><del>-			$canonical = Namespace::getCanonicalName( $ns );</del></td></tr>
+<tr id="19"><td class="linenumbers"> </td><td class="linenumbers">139</td><td class="ins"><ins>+			$canonical = isset($wgCanonicalNamespaceNames[$ns]) ? $wgCanonicalNamespaceNames[$ns] : false;</ins></td></tr>
+<tr id="20"><td class="linenumbers">140</td><td class="linenumbers">140</td><td class="unchanged"><span> 			</span></td></tr>
+<tr id="21"><td class="linenumbers">141</td><td class="linenumbers">141</td><td class="unchanged"><span> 			if( MWNamespace::hasSubpages( $ns ) )</span></td></tr>
+<tr id="22"><td class="linenumbers">142</td><td class="linenumbers">142</td><td class="unchanged"><span> 				$data[$ns]['subpages'] = '';</span></td></tr>
+<tr id="23"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -352,7 +352,7 @@</span></td></tr>
+<tr id="24"><td class="linenumbers">353</td><td class="linenumbers">353</td><td class="unchanged"><span> 			'prop' => array(</span></td></tr>
+<tr id="25"><td class="linenumbers">354</td><td class="linenumbers">354</td><td class="unchanged"><span> 				'Which sysinfo properties to get:',</span></td></tr>
+<tr id="26"><td class="linenumbers">355</td><td class="linenumbers">355</td><td class="unchanged"><span> 				' "general"      - Overall system information',</span></td></tr>
+<tr id="27"><td class="linenumbers">356</td><td class="linenumbers"> </td><td class="del"><del>-				' "namespaces"   - List of registered namespaces (localized)',</del></td></tr>
+<tr id="28"><td class="linenumbers"> </td><td class="linenumbers">356</td><td class="ins"><ins>+				' "namespaces"   - List of registered namespaces and their canonical names',</ins></td></tr>
+<tr id="29"><td class="linenumbers">357</td><td class="linenumbers">357</td><td class="unchanged"><span> 				' "namespacealiases" - List of registered namespace aliases',</span></td></tr>
+<tr id="30"><td class="linenumbers">358</td><td class="linenumbers">358</td><td class="unchanged"><span> 				' "specialpagealiases" - List of special page aliases',</span></td></tr>
+<tr id="31"><td class="linenumbers">359</td><td class="linenumbers">359</td><td class="unchanged"><span> 				' "magicwords"   - List of magic words and their aliases',</span></td></tr>
+<tr id="32" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="36"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -233,7 +233,6 @@</span></td></tr>
+<tr id="37"><td class="linenumbers">234</td><td class="linenumbers">234</td><td class="unchanged"><span> * (bug 7492) Rights can now be assigned to specific IP addresses and ranges by</span></td></tr>
+<tr id="38"><td class="linenumbers">235</td><td class="linenumbers">235</td><td class="unchanged"><span>   using $wgAutopromote (new defines: APCOND_ISIP and APCOND_IPINRANGE)</span></td></tr>
+<tr id="39"><td class="linenumbers">236</td><td class="linenumbers">236</td><td class="unchanged"><span> * Add a 'change block' link to Special:IPBlockList and Special:Log</span></td></tr>
+<tr id="40"><td class="linenumbers">237</td><td class="linenumbers"> </td><td class="del"><del>-* (bug 16672) Add canonical parameter to meta=siteinfo&amp;siprop=namespaces|namespacealiases. </del></td></tr>
+<tr id="41"><td class="linenumbers">238</td><td class="linenumbers">237</td><td class="unchanged"><span> </span></td></tr>
+<tr id="42"><td class="linenumbers">239</td><td class="linenumbers">238</td><td class="unchanged"><span> === Bug fixes in 1.14 ===</span></td></tr>
+<tr id="43"><td class="linenumbers">240</td><td class="linenumbers">239</td><td class="unchanged"><span> </span></td></tr>
+<tr id="44"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -531,6 +530,7 @@</span></td></tr>
+<tr id="45"><td class="linenumbers">532</td><td class="linenumbers">531</td><td class="unchanged"><span> * (bug 16647) list=allcategories, prop=categories don't return "hidden"</span></td></tr>
+<tr id="46"><td class="linenumbers">533</td><td class="linenumbers">532</td><td class="unchanged"><span>   property for hidden categories</span></td></tr>
+<tr id="47"><td class="linenumbers">534</td><td class="linenumbers">533</td><td class="unchanged"><span> * New siprop parameter of 'extensions' to list all installed extensions</span></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">534</td><td class="ins"><ins>+* (bug 16672) Include canonical namespace name in meta=siteinfo&amp;siprop=namespaces. </ins></td></tr>
+<tr id="49"><td class="linenumbers">535</td><td class="linenumbers">535</td><td class="unchanged"><span> </span></td></tr>
+<tr id="50"><td class="linenumbers">536</td><td class="linenumbers">536</td><td class="unchanged"><span> === Languages updated in 1.14 ===</span></td></tr>
+<tr id="51"><td class="linenumbers">537</td><td class="linenumbers">537</td><td class="unchanged"><span> </span></td></tr>
+</table>
+</div>
+<h2 id='code-references'>Follow-up revisions</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-ok'><td><a href="./44694.html" title="Special:Code/MediaWiki/44694">r44694</a></td><td>Cleanup <a href="./44683.html" title="Special:Code/MediaWiki/44683">r44683</a> -- fix E_NOTICE bug in MWNamespace::getCanonicalName() instead...</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/brion" title="Special:Code/MediaWiki/author/brion">brion</a></td><td>23:57, 16 December 2008</td></tr></table><h2 id='code-referenced'>Past revisions this follows-up on</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-ok'><td><a href="./44676.html" title="Special:Code/MediaWiki/44676">r44676</a></td><td>* (<a class="external" href="https://bugzilla.wikimedia.org/show_bug.cgi?id=16672">bug 16672</a>) Add canonical parameter to meta=siteinfo&amp;siprop=namespaces|name...</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/soxred93" title="Special:Code/MediaWiki/author/soxred93">soxred93</a></td><td>17:19, 16 December 2008</td></tr></table><h2 id='code-comments'>Comments</h2>
+<div class='mw-codereview-comments'><div class="mw-codereview-comment" id="c939" style="margin-left: 0px"><div class="mw-codereview-comment-meta"><a href="./44683.html#c939" title="Special:Code/MediaWiki/44683">#</a>Comment by <a href="https://www.mediawiki.org/wiki/User:Brion_VIBBER" class="mw-userlink" title="User:Brion VIBBER"><bdi>Brion VIBBER</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Brion_VIBBER" class="mw-usertoollinks-talk" title="User talk:Brion VIBBER">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Brion_VIBBER" class="mw-usertoollinks-contribs" title="Special:Contributions/Brion VIBBER">contribs</a>)</span> &#160; 23:57, 16 December 2008 </div><div class="mw-codereview-comment-text mw-content-ltr"><p>Cleaned up in <a href="./44694.html" title="Special:Code/MediaWiki/44694">r44694</a>
+</p></div></div></div><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>23:57, 16 December 2008&#160;<a href="https://www.mediawiki.org/wiki/User:Brion_VIBBER" class="mw-userlink" title="User:Brion VIBBER"><bdi>Brion VIBBER</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Brion_VIBBER" class="mw-usertoollinks-talk" title="User talk:Brion VIBBER">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Brion_VIBBER" class="mw-usertoollinks-contribs" title="Special:Contributions/Brion VIBBER">contribs</a>)</span>&#160;changed the <b>status</b> of r44683 <i>[<b>removed:</b> new&#160;<b>added:</b> ok]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/44683.html responseCode 3 200 

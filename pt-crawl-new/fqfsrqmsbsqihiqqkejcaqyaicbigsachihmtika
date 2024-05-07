@@ -1,0 +1,48 @@
+fqfsrqmsbsqihiqqkejcaqyaicbigsachihmtika length 4 1729 page 1729 <!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="utf-8" />
+</head>
+<body>
+</body>
+</html>
+<script type="text/javascript">
+	(function () {
+		// Returns the version of Internet Explorer or a -1
+		// (indicating the use of another browser).
+		//Ref: http://msdn.microsoft.com/en-us/library/ms537509(v=vs.85).aspx
+		var getInternetExplorerVersion = function () {
+			var rv = -1; // Return value assumes failure.
+			if (navigator.appName === 'Microsoft Internet Explorer') {
+				var ua = navigator.userAgent;
+				var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+				if (re.exec(ua) != null)
+					rv = parseFloat(RegExp.$1);
+			}
+			return rv;
+		};
+
+		var isInternetExplorerMobileVersion = function () {
+			return navigator.userAgent.toLowerCase().indexOf("iemobile") >= 0;
+		};
+
+		var isDesktop = function () {
+			var ieVersion = getInternetExplorerVersion();
+			if (ieVersion !== -1 && ieVersion <= 9 && !isInternetExplorerMobileVersion())
+				return true;
+
+			return document.documentElement.clientWidth < document.documentElement.clientHeight ?
+				document.documentElement.clientWidth >= 768 : /* portraitWidthThreshold */
+				document.documentElement.clientHeight >= 504; /* landscapeHeightThreshold */
+		};
+
+		if (navigator.userAgent.indexOf("facebookexternalhit") === -1) {
+			var delim = window.location.href.indexOf('?') >= 0 ? '&' : '?';
+			var param = "_vcu";
+			var displayViewTypeParam = "_dspvw";
+			var redirect = window.location + delim + param + '=1&' + displayViewTypeParam + '=' + (isDesktop() ? 'd' : 'm');
+			window.location = redirect;
+		}
+	})();
+</script> contentType 9 text/html url 69 https://www.historymakerscommunity.com:443/c/a/68tBwXMdFpqAVJU9Kkve18 responseCode 3 200 

@@ -1,0 +1,701 @@
+iqlmjinmakzmfsbqvqcidepszgfqvekmueioxgug length 5 23543 page 23543 
+
+<!DOCTYPE html>
+<link href="/tr/Content/Lato/css?v=gK_0Vyn9q1-Hg3ZUrQ0a_YWKpKNymBiVZJS-jE95AZk1" rel="stylesheet"/>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <style>
+        /*LN 04162020> Added the following style for not moving the topbanner, fooeter when zoom out.*/
+        html, body {
+            height: 100% !important;
+        }
+
+        .latoWeb {
+            font-family: LatoWeb !important;
+        }
+
+        .topBanner {
+            background-color: #0070c0;
+            width: 100% !important;
+            /*LN 04162020> Added the height for topbanneer for not moving when zoom out.*/
+            height: 10% !important;
+        }
+
+        .imgDiv {
+            width: 15% !important;
+        }
+
+        img {
+            height: 45px;
+            width: 165px;
+            vertical-align: middle !important;
+            padding-left: 10px !important;
+            padding-bottom: 10px !important;
+            padding-top: 10px;
+        }
+
+        .linksDiv {
+            width: 40% !important;
+            color: #fffdf0;
+        }
+
+        .whiteColor {
+            color: white !important;
+            /*LN 02122020> Added the following style to show underline for the entire text with out break.*/
+            text-underline-position: under !important;
+        }
+
+        .middleSection {
+            background-color: #003399;
+            width: 100% !important;
+            /*LN 04162020> Changed the height of middleSection for not moving when zoom out.*/
+            /*height: 530px !important;*/
+            height: 86% !important;
+        }
+
+        .emptyRow {
+            height: 25px !important;
+        }
+
+        .leftSidePane {
+            width: 20% !important;
+            color: white;
+            vertical-align: top !important;
+            /*LN 03042020> Changed the border color from white to gray.*/
+            /*border-top: 0.1px solid white;
+            border-bottom: 1px solid white;*/
+            border-top: 0.1px solid gray;
+            border-bottom: 1px solid gray;
+            padding-left: 1% !important;
+            font-size: 14px !important;
+        }
+
+        .transcriptsDiv {
+            background-color: white;
+            width: 79.5% !important;
+            vertical-align: top !important;
+            padding-left: 2% !important;
+        }
+
+        .footerDiv {
+            width: 100%;
+            background-color: #003399;
+            /*LN 04162020> Added the height for footer for not moving when zoom out.*/
+            height: 4% !important;
+        }
+
+        .footerText {
+            text-align: center !important;
+        }
+
+        .footerLink {
+            color: white;
+            font-size: 14px !important;
+        }
+
+        /*LN 03062020> Added the following style to highlight the links in yellow colors when mouse hover to links.*/
+        a:hover {
+            color: yellow !important;
+        }
+
+        /*LN 03062020> Added the following style for editing transcript in slider view.*/
+        #overlay {
+            z-index: 98;
+            display: none;
+        }
+    </style>
+
+</head>
+<body class="latoWeb">
+    <table class="topBanner">
+        <tr>
+            <td class="imgDiv">
+                <a href="http://phila.gov/">
+                    <img src="/tr/Images/Transcripts/citycouncil.png" alt="City of Philadelphia" />
+                </a>
+            </td>
+
+            <td style="width: 45% !important"></td>
+
+            <td class="linksDiv">
+                <a href="http://phlcouncil.com/" class="whiteColor" target="_blank"> city council</a>
+                ::
+                <a href="https://www.phila.gov/departments/" class="whiteColor" target="_blank"> city directory</a>
+                ::
+                <a href="https://www.phila.gov" class="whiteColor" target="_blank"> phila.gov</a>
+                ::
+                <a href="http://www.amlegal.com/codes/client/philadelphia_pa/" class="whiteColor" target="_blank"> philadelphia code and charter</a>
+            </td>
+        </tr>
+    </table>
+
+    <table class="middleSection">
+        <tr class="emptyRow"></tr>
+
+        <tr>
+            <td class="leftSidePane">
+                <br />
+                <br />
+                <a href="http://philacitycouncil.maps.arcgis.com/apps/InformationLookup/index.html?appid=5aa8ce86ed1a45c99c2c751bd9ebcc06" class="whiteColor" target="_blank">
+                    Who's my Councilmember?
+                </a>
+                <br />
+                <br />
+                <br />
+                <a href="/tr/CAF/TranscriptsWithOutLogin?serviceName=Transcript%20Room%20-%20Committee%20Hearings" style="color: white;
+                                                                        text-underline-position: under !important" id="hearingsLink">
+                    Transcript Room - Committee Hearings
+                </a>
+
+                <br />
+                <br />
+                    <a href="/tr/CAF/TranscriptsWithOutLogin?serviceName=Transcript%20Room%20-%20Council%20Sessions" style="color: white;
+                                                                            text-underline-position: under !important" id="sessionsLink">
+                        Transcript Room - Council Sessions
+                    </a>
+                <br />
+                <br />
+
+                <a href="https://phila.legistar.com/" class="whiteColor" target="_blank">Return to City Council's <br /> Legislative Information Center</a>
+
+            </td>
+            <td class="transcriptsDiv">
+                
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/tr/Content/transcripts.css" />
+
+
+<script type='text/javascript' src="/tr/Scripts/Transcripts.js"></script>
+
+
+
+
+
+<script>
+	//LN 04152020> Initialized the following variable for highlighting the current row in transcripts grid.
+	var currentSelectedRow = 0;
+
+    //LN 02122020> Added the following onload function to disable the date drop down after the page is reloaded. Because it is disabled already before reloading.
+    window.onload = function () {
+        var selectedMonth = '';
+        if (selectedMonth == "All Months" || selectedMonth == "-- Month --" || selectedMonth == "") {
+            $('#date').attr('disabled', true);
+        }
+    }
+
+    $(document).ready(function () {
+        //LN 03092020> Finding the selected year through viewbag, setting that year as selected in year drop down.
+        var year = '';
+        $("#year").val(year);
+
+        //LN 01242020> Finding the options for date drop down when month and year is changed.
+        //$("#month").change(function () {
+        //    getDates();
+        //});
+
+        //$("#year").change(function () {
+        //    getDates();
+        //});
+
+        //LN 02032020> Finding the service which is selected, highlighting the left side link as per the selected service.
+        var service = 'Transcript Room - Council Sessions';
+        if (service == "Transcript Room - Committee Hearings") {
+            $('#hearingsLink').css('color', 'yellow');  //LN 02032020> Showing "committee hearings" link in yellow color when this link is clicked.
+        }
+        else {
+            $('#sessionsLink').css('color', 'yellow');  //LN 02032020> Showing "council sessions" link in yellow color when this link is clicked.
+        }
+
+        //LN 02102020> 2. In the view, when user has changed the committee value using drop down then do the following:
+        //LN 02122020> Commented this entire method, showing al the years when user is not logged in.
+
+        
+
+        //LN 02122020> End of the method that is commented on 02122020.
+
+        //LN 02112020> Setting the title of page.
+        document.title = service;
+    });
+
+    //LN 02042020> Commented all the methods in this script, added them to a javascript file, included that file in this view.
+    //function getDates() {
+    //    //LN 01242020> Finding the selected month, selected year from the view.
+    //    var selectedMonth = $("#month").val();
+    //    var selectedYear = $("#year").val();
+
+    //    //LN 01242020> i. Remove all the options in date drop down.
+    //    $("#date").empty();
+
+    //    //LN 01242020> Adding the options "All Days" to the date drop down.
+    //    var dates = document.getElementById("date");
+    //    var option = document.createElement("option");
+
+    //    //LN 02042020> Commented the following line that is adding "All Days" as first option, added "-- Date --" as first option.
+    //    //option.text = "All Days";
+    //    //dates.add(option);
+
+    //    option.text = "-- Date --";
+    //    dates.add(option);
+
+    //    var option2 = document.createElement("option");
+    //    option2.text = "All Days";
+
+    //    dates.add(option2);
+
+    //    //LN 01242020> If the selected month has 31 days then adding those dates to the date drop down.
+    //    if (selectedMonth == "January" || selectedMonth == "March" || selectedMonth == "May" || selectedMonth == "July" || selectedMonth == "August" ||
+    //        selectedMonth == "October" || selectedMonth == "December")
+    //    {
+    //        createDates(31);
+    //    }
+
+    //    //LN 01242020> If the month is "February",
+    //    else if (selectedMonth == "February")
+    //    {
+    //        var isLeapyear = false;
+    //        //LN 01242020> iii. If the month is february, then check whether the selected is leap year or not. As per the year add options to date drop down.
+    //        isLeapyear = LeapYearOrNot(selectedYear);
+    //        if (isLeapyear)
+    //        {
+    //            createDates(29);
+    //        }
+    //        else
+    //        {
+    //            createDates(28);
+    //        }
+    //    }
+    //    //else if (selectedMonth == "All Months") {
+    //    //    $("#date").empty();
+    //    //}
+    //    else
+    //    {
+    //        createDates(30);
+    //    }
+    //}
+
+    //function LeapYearOrNot(selectedYear) {
+    //    //LN 01242020> Checking whether the selected year is leap year or not.
+    //    if (selectedYear % 4 == 0 && (selectedYear % 100 != 0 || selectedYear % 400 == 0)) {
+    //        return true;
+    //    }
+    //    else
+    //        return false;
+    //}
+
+    ////LN 01242020> This method is for adding dates to the drop down.
+    //function createDates(lastDate) {
+    //    for (var i = 1; i <= lastDate; i++) {
+    //        var dates = document.getElementById("date");
+    //        var option = document.createElement("option");
+    //        option.text = i;
+
+    //        //LN 02042020> Increased the index of option that is adding to dates drop down by 1. Because "All Days" option is added as second option, the index of that option is
+    //        //increased by 1.
+    //        //dates.add(option, dates[i]);
+    //        dates.add(option, dates[i + 1]);
+    //    }
+    //}
+
+    //LN 01202020> 4. When user clicks submit by filling all the details then call a controller method "Transcripts".
+    //Pass the parameters "service appid, category appid, month, 	date, year".
+    //function getTrancripts(serviceAppID) {
+
+        //LN 01222020> Submitting the form instead of making ajax call when "Search" button is clicked.
+        
+
+    //    $("#transcriptsWithOutLogin").submit();
+    //}
+
+    //function showAtt(pdfid, docType, absoluteUrl, title) {
+    //    //LN 01282020> Commented the followin method. Because this method is existing in the script "tcaf.js" which is causing some errors in debug window.
+    //    //ShowPDF(pdfid, docType, absoluteUrl, title);
+
+    //    //LN 01282020> Calling the PDFFile method in caf controller which is to show the pdf in browser.
+    //    var url = absoluteUrl;
+    //    url = url.substring(0, url.toLowerCase().lastIndexOf('/transcripts')) + "/PDFFile/" + pdfid + "?docType=" + docType;
+
+    //    var pdfhtl = '<embed id="pdfcntrl" src="' + url + '"type="application/pdf" negative="yes"  wmode="transparent" style="z-index:1;width:100%; height:99%; position: relative; left:0;"></embed>';
+    //    $("#divPDFContainer").html(pdfhtl);
+    //}
+</script>
+
+<style>
+    /*LN 02042020> Commented all the styles in this style tag, created a stylesheet with these styles, included that stylesheet here.*/
+    /*LN 01222020> Applied the style font-size as 14px for the paragraphs in the view.*/
+    /*p {
+        font-size: 14px !important;
+    }
+
+    .hiddenDiv {
+        display: none !important;
+    }
+
+    .committeeDropDown {
+        width: 250px !important;
+        height: 35px !important;
+        border-radius: 8px !important;
+        margin-left: 1% !important;
+        border-color: #7E8DB0 !important;
+    }
+
+    .monthDropDown {
+        width: 130px;
+        height: 35px;
+        border-radius: 8px;
+        border-color: #7E8DB0;
+    }
+
+    .dateDropDown {
+        width: 120px;
+        height: 35px;
+        border-radius: 8px;
+        border-color: #7E8DB0;
+        margin-left: 1%;
+    }
+
+    .yearDropDown {
+        width: 110px;
+        height: 35px;
+        border-radius: 8px;
+        border-color: #7E8DB0;
+        margin-left: 1%;
+    }
+
+    .searchButton {
+        height: 30px !important;
+        width: 125px !important;
+        background-color: #A6A6A6 !important;
+        color: white !important;
+        border-radius: 8px !important;
+        border-color: #7E8DB0 !important;
+        margin-left: 0.5% !important;
+    }
+
+
+    .trancriptGridFirstColumn {
+        background-color: #4472C4;
+        height: 35px !important;
+        width: 200px !important;
+        float: left !important;
+    }
+
+    .transcriptGridFirstColumnData {
+        background-color: #CFD5EA;
+        height: 35px !important;
+        width: 200px !important;
+        float: left !important;
+    }
+
+    .trancriptGridFirstColumnText {
+        color: #8D4E2F !important;
+        font-size: 14px !important;
+        margin-left: 2% !important;
+        margin-top: 1% !important;
+    }
+
+
+    .transcriptSecondColumn {
+        background-color: #4472C4;
+        height: 35px !important;*/
+    /*LN 02032020> Changed the width from 80 to 85px.*/
+    /*width: 80px !important;*/
+    /*width: 85px !important;
+    }
+
+    .transcriptSecondColumnData {
+        background-color: #CFD5EA;
+        height: 35px !important;*/
+    /*LN 02032020> Changed the width from 80 to 85px.*/
+    /*width: 80px !important;*/
+    /*width: 85px !important;
+    }
+
+    .transcriptSecondColumnText {
+        color: #8D4E2F !important;
+        font-size: 14px !important;
+        margin-left: 2% !important;
+        margin-top: 1% !important;
+    }
+
+
+    .transcriptGridEmptyColumns {
+        background-color: #4472C4;
+        height: 35px !important;
+        width: 120px !important;
+    }
+
+    .transcriptGridEmptyColumnsData {
+        background-color: #CFD5EA;
+        height: 35px !important;
+        width: 120px !important;
+    }
+
+
+    .retrieveColumn {
+        color: #8D4E2F !important;
+        font-size: 14px !important;
+        margin-left: 2% !important;
+        margin-top: 1% !important;
+        text-decoration: none;
+    }
+
+    .trancriptGridColumnName {
+        color: white !important;
+        font-size: 14px !important;
+        margin-left: 2% !important;
+        margin-top: 1% !important;
+    }*/
+    /*LN 05202020> Added the following styles in this view as they need only in this view. In login page they are applying properly.*/
+    .page{
+        margin-left: 1.5% !important;
+        font-size: 12px !important;
+    }
+    .selected-page {
+        margin-left: 1.5% !important;
+        font-size: 12px !important;
+    }
+    .previous {
+        margin-left: 1.5% !important;
+        font-size: 12px !important;
+        color: black !important;
+    }
+    .next {
+        margin-left: 1.5% !important;
+        font-size: 12px !important;
+        color: black !important;
+    }
+    /*LN 05222020> Added the following styles for paging in non-login page.*/
+    .previous-dots {
+        margin-left: 1.5% !important;
+        font-size: 12px !important;
+        color: black !important;
+    }
+    .next-dots {
+        margin-left: 1.5% !important;
+        font-size: 12px !important;
+        color: black !important;
+    }
+    .previous-dots:hover{
+        color: black !important;
+    }
+    .next-dots:hover {
+        color: black !important;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Transcripts</title>
+</head>
+
+
+<body style="overflow-x: hidden !important;">
+    
+    
+    
+<form action="/tr/CAF/TranscriptsWithOutLogin" id="transcriptsWithOutLogin" method="get">        <div>
+
+        </div>
+        <div>
+                <br />
+                <b><span>Transcript Room - Council Sessions</span></b>
+                <br />
+                <textarea name="serviceName" class="hiddenDiv">Transcript Room - Council Sessions</textarea>
+
+        </div>
+            <p>
+                
+                
+                To obtain a transcript of a Council Session, select the date of the session using the ‘Month’, ‘Day’ and ‘Year’ drop down boxes <br />
+                below, and then click ‘Search’.
+            </p>
+            <p>
+                
+                
+                If you do not have an exact date, or wish to browse through multiple dates, you may also retrieve an entire month by selecting <br />
+                ‘All Days’ from the ‘Day’ dropdown box, or an entire year by selecting ‘All Months’ from the ‘Month’ dropdown box.
+            </p>
+            <br />
+        <table style="width: 100% !important; vertical-align: top !important;">
+            <tr style="width: 100% !important; vertical-align: top !important;">
+                <td style="width: 45% !important; vertical-align: top !important;">
+                        <b><span>Date to Search:</span></b>
+                        <br />
+                        <table class="tableInUploadPage">
+                            
+                            
+                            <tr class="tableInUploadPage">
+                                
+                                
+                                
+                                
+                                <td style="width:80% !important">
+                                    
+                                    
+                                    
+                                    <select class="monthDropDown" id="month" name="month" style="margin-left: -1% !important; width: 35% !important"><option>-- Month --</option>
+<option>All Months</option>
+<option>January</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>June</option>
+<option>July</option>
+<option>August</option>
+<option>September</option>
+<option>October</option>
+<option>November</option>
+<option>December</option>
+</select>
+
+                                    
+                                    
+                                    <select class="dateDropDown" id="date" name="date" style="width: 30% !important"><option>-- Day --</option>
+<option>All Days</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>21</option>
+<option>22</option>
+<option>23</option>
+<option>24</option>
+<option>25</option>
+<option>26</option>
+<option>27</option>
+<option>28</option>
+<option>29</option>
+<option>30</option>
+<option>31</option>
+</select>
+
+                                    
+                                    
+                                    <select class="yearDropDown" id="year" name="year" style="width: 30% !important"><option>-- Year --</option>
+<option>1997</option>
+<option>1998</option>
+<option>1999</option>
+<option>2000</option>
+<option>2001</option>
+<option>2002</option>
+<option>2003</option>
+<option>2004</option>
+<option>2005</option>
+<option>2006</option>
+<option>2007</option>
+<option>2008</option>
+<option>2009</option>
+<option>2010</option>
+<option>2011</option>
+<option>2012</option>
+<option>2013</option>
+<option>2014</option>
+<option>2015</option>
+<option>2016</option>
+<option>2017</option>
+<option>2018</option>
+<option>2019</option>
+<option>2020</option>
+<option>2021</option>
+<option>2022</option>
+<option>2023</option>
+<option>2024</option>
+</select>
+
+                                    <br />
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <input type="text" id="searchTxt" name="searchTxt" class="searchTextBoxNonLogin" value='' placeholder="Enter search text" />
+                                </td>
+
+                                <td style="width:25% !important">
+                                    
+                                    
+                                    
+                                    <input type="submit" value="Search" id="submit" onclick="getTrancripts()" class="searchButton" style="height: 80px !important" />
+                                </td>
+                            </tr>
+                        </table>
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            <p style="font-size: 12px !important; margin-left: 0.3% !important;">No. of Transcripts: 0</p>
+                        
+
+                </td>
+
+                <td style="width: 1% !important"></td>
+
+                <td style="width: 54% !important;">
+                    
+                    <nobr>
+                        <b><a id="ancViewPDF" href="" target="_blank">View file in a separate window</a></b>
+                    </nobr>
+                    <br />
+                    <div id="divPDFContainer" style="height: ; width: 100% !important">
+
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+        <div class="pagerPadding">
+
+        </div>
+</form></body>
+</html>
+
+            </td>
+        </tr>
+    </table>
+
+    <table class="footerDiv">
+        <tr>
+            <td class="footerText">
+                <a href="" class="footerLink"> Contact Us </a>
+            </td>
+        </tr>
+    </table>
+
+    
+    <div id="overlay" class="ui-widget-overlay ui-front" />
+</body>
+</html>
+ contentType 9 text/html url 120 https://www.transcriptroom.org:443/tr/CAF/TranscriptsWithOutLogin?serviceName=Transcript%20Room%20-%20Council%20Sessions responseCode 3 200 

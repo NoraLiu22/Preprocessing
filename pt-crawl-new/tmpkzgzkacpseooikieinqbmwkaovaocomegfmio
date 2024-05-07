@@ -1,0 +1,349 @@
+tmpkzgzkacpseooikieinqbmwkaovaocomegfmio length 5 14688 page 14688 <!DOCTYPE html>
+<html lang="None">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Official website for MusicBrainz Picard, a cross-platform music tagger written in Python.">
+    <meta name="author" href="/humans.txt">
+    <link rel="icon" type="image/png" href="/static/img/picard-icon.png">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Build on macOS - Documentation - MusicBrainz Picard</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "MusicBrainz Picard",
+      "softwareVersion": "2.11",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "screenshot": "https://picard.musicbrainz.org/static/img/screenshots/picard-main-windows.png",
+      "abstract": "Picard is a cross-platform music tagger powered by the MusicBrainz database.",
+      "url": "https://picard.musicbrainz.org",
+      "license": "https://www.gnu.org/licenses/gpl-2.0.html",
+      "sourceOrganization": {
+        "@type": "Organization",
+        "name": "MetaBrainz Foundation",
+        "url": "https://metabrainz.org"
+      },
+      "softwareHelp": {
+        "@type": "CreativeWork",
+        "url": "https://picard-docs.musicbrainz.org",
+        "license": "https://creativecommons.org/publicdomain/zero/1.0"
+      }
+    }
+    </script>
+  </head>
+  <body data-spy="scroll" data-target="#sidebar">
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="/static/img/picard-navbar-icon.svg" alt="MusicBrainz Picard"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/downloads/">Downloads</a></li>
+            <li><a href="/plugins/">Plugins</a></li>
+            <li><a href="/quick-start/">Quick Start</a></li>
+            <li class="active"><a href="https://picard-docs.musicbrainz.org" target="_blank">Documentation</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-language"></i> Language <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                
+                <li><a href="?l=de">Deutsch</a></li>
+                
+                <li><a href="?l=en">English</a></li>
+                
+                <li><a href="?l=fr">Français</a></li>
+                
+                <li><a href="?l=it">Italiano</a></li>
+                
+                <li><a href="?l=lt">Lietuvių</a></li>
+                
+                <li><a href="?l=nl">Nederlands</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Build on macOS</h1>
+  </div>
+</div>
+
+<div id="docs" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <p>
+        This guide details the process I've used to build Tiger-compatible Picard app bundles on macOS.
+        There are many ways to achieve this, but I've found these steps to be the simplest and most compatible
+        after much trial and error.
+      </p>
+
+      <p>
+        This guide was tested in a VM running Leopard. If you're using anything above Snow Leopard (Lion,
+        Mountain Lion) you won't be able to install XCode 3, so this guide won't work.
+      </p>
+
+      <p><b>Last updated</b> on 2012-06-03 for Picard 1.0.</p>
+
+      <h1 id="avoid_macports">Avoid MacPorts</h1>
+
+      <p>
+        There are a lot of architecture issues in MacPorts that took days to debug. After working around
+        those, Qt4 had broken functionality, such as drag and drop from Finder not working. Qt4 takes
+        an entire day to build on my machine, whereas the precompiled Qt package from Nokia works just
+        fine. The rest of the dependencies will be installed manually to /usr/local.
+      </p>
+
+      <h1 id="prerequisites">Prerequisites</h1>
+
+      <ul>
+        <li>
+          XCode 3.2.6, with the 10.4 SDK installed at /Developer/SDKs/MacOSX10.4u.sdk (it's a selectable
+          option in the installer).
+        </li>
+        <li>
+          Python 2.7.3. Since we want compatibility with Tiger/i386, make sure to install this one:
+          <a rel="nofollow" href="https://www.python.org/ftp/python/2.7.3/python-2.7.3-macosx10.3.dmg">
+          python-2.7.3-macosx10.3.dmg</a>.
+
+          Use the provided Update Shell Profile.command to make this your default Python. Note: this
+          is required. You can't use the system Python that comes with macOS! py2app won't allow you to
+          build standalone app bundles with it.
+        </li>
+        <li>
+          Qt 4.7.3. Install this one:
+          <a rel="nofollow" href="https://download.qt.io/archive/qt/4.7/qt-mac-carbon-opensource-4.7.3.dmg">
+          qt-mac-carbon-opensource-4.7.3.dmg</a>.
+          Qt 4.8 and up no longer support 10.4/Carbon.
+        </li>
+      </ul>
+
+      <h1 id="set_up_your_environment">Set up your environment</h1>
+
+      <p>
+        Make sure /usr/local/bin is in your PATH, and have the following variables set in your .profile
+        or .bash_profile (or do it manually):
+      </p>
+
+      <pre>
+      export CFLAGS="-arch i386 -isysroot /Developer/SDKs/MacOSX10.4u.sdk -mmacosx-version-min=10.4 -I/usr/local/include"
+      export CXXFLAGS="$CFLAGS"
+      export LDFLAGS="-arch i386 -Xlinker -headerpad_max_install_names -L/usr/local/lib"
+      export MACOSX_DEPLOYMENT_TARGET="10.4"</pre>
+
+      <p>
+        Make sure you're using gcc 4.0.2. On Snow Leopard, I had to change the symlinks, because setting
+        CC= didn't work for some dependencies. (<a rel="nofollow" href="https://stackoverflow.com/questions/1165361/setting-gcc-4-2-as-the-default-compiler-on-mac-os-x-leopard">I did this</a>,
+        but for 4.0 instead of 4.2.)
+      </p>
+
+      <h1 id="dependencies">Dependencies</h1>
+
+      <p>
+        Now you have to install a bunch of dependencies by hand. Or, that's what you would have to do if
+        I hadn't written this super-convenient (hacked-together) script for you:
+        <a rel="nofollow" href="http://users.musicbrainz.org/bitmap/build-deps.sh">build-deps.sh</a>.
+        <code>chmod +x</code> and run from an empty directory.
+      </p>
+
+      <p>
+        I have no doubt the script will break somewhere for someone—help me fix it.&#160;:)
+      </p>
+
+      <p>
+        To enabled <a href="https://musicbrainz.org/doc/AcoustID" title="AcoustID">AcoustID</a> fingerprinting
+        in Picard, you also need the fpcalc binary. Download that from
+        <a rel="nofollow" href="https://github.com/downloads/lalinsky/chromaprint/chromaprint-fpcalc-0.6-osx-i386.tar.gz">here</a>
+        and place it in /usr/local/bin.
+      </p>
+
+      <p>
+        Finally, you'll need two Python modules: py2app and mutagen. Install them manually or just use
+        easy_install. Be sure to install them for the correct Python version!
+      </p>
+
+      <h1 id="building_picard">Building Picard</h1>
+
+      <p>
+        Create the file build.cfg in the source directory. Mine looks like this:
+      </p>
+
+      <pre>
+      [libofa]
+      libs = -arch i386 -L/usr/local/lib -lofa
+      cflags = -arch i386 -I/usr/local/include
+
+      [avcodec]
+      libs = -arch i386 -L/usr/local/lib -lavcodec -lavformat -lavutil -lvorbis -lvorbisenc -logg -lmp3lame -lfaac
+      cflags = -arch i386 -I/usr/local/include
+
+      [build]
+      with-directshow = False
+      with-avcodec = True
+      with-libofa = True </pre>
+
+      <p>
+        Now we should be able to build a Picard app bundle. This requires a few commands, so I use a bash
+        script to run them all:
+      </p>
+
+      <pre>
+      #!/bin/bash
+      rm -rf build dist
+      python setup.py clean
+      python setup.py build_ext -i
+      python setup.py py2app
+      cd dist
+      # Strip any non-i386 code from the app bundle
+      ditto -rsrc --arch i386 MusicBrainz\ Picard.app MusicBrainz\ Picard.tmp
+      rm -r MusicBrainz\ Picard.app
+     mv MusicBrainz\ Picard.tmp MusicBrainz\ Picard.app</pre>
+
+      <p>If all goes well, you'll end up with an app bundle in the dist directory. We're done! Yay!</p>
+    </div>
+
+    <div class="col-md-4">
+      <div id="sidebar" class="hidden-xs">
+        <ul class="nav" data-spy="affix" data-offset-top="200">
+          <li class="active"><a href="#avoid_macports">Avoid MacPorts</a></li>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#set_up_your_environment">Set up your environment</a></li>
+          <li><a href="#dependencies">Dependencies</a></li>
+          <li><a href="#building_picard">Building Picard</a></li>
+        </ul>
+        <!-- <a class="back-to-top" href="#top"> Back to top </a> -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+    
+    <section class="footer">
+      <div class="container">
+        <hr />
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h3>
+              <img src="/static/img/picard-logo.svg" alt="MusicBrainz Picard" width="180">
+            </h3>
+            <br>
+            <p>
+              Picard helps you organize your music collection by renaming your music files and sorting them into a folder structure exactly the way you want it. A variety of plugins are available and you can even write your own. Picard supports a wide range of audio formats and can also lookup an entire CD for you.
+            </p>
+            <ul class="list-unstyled">
+              <li>
+                IRC: <a href="https://kiwiirc.com/nextclient/irc.libera.chat/?#metabrainz">#metabrainz</a>
+              </li>
+            </ul>
+          </div>
+          <br>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>Useful Links</h3>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://metabrainz.org/donate" target="_blank" rel="noopener noreferrer">Donate</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://picard-docs.musicbrainz.org/" target="_blank" rel="noopener noreferrer">Documentation</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://community.metabrainz.org/c/picard" target="_blank" rel="noopener noreferrer">Community</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://blog.metabrainz.org/" target="_blank" rel="noopener noreferrer">Blog</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://www.redbubble.com/people/metabrainz/shop" target="_blank" rel="noopener noreferrer">Shop</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://metabrainz.org/" target="_blank" rel="noopener noreferrer">MetaBrainz</a>
+              </li>
+              <li class="visible-xs">
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://github.com/metabrainz/picard" target="_blank"
+                  rel="noopener noreferrer">Contribute Here</a>
+              </li>
+              <li class="visible-xs">
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://tickets.metabrainz.org/browse/PICARD" target="_blank" rel="noopener noreferrer">Bug Tracker</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <h3>Fellow Projects</h3>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://musicbrainz.org/" target="_blank" rel="noopener noreferrer">MusicBrainz</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://critiquebrainz.org/" target="_blank" rel="noopener noreferrer">CritiqueBrainz</a>
+              </li>
+              <li class="item-list-a">
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://listenbrainz.org/" target="_blank" rel="noopener noreferrer">ListenBrainz</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://coverartarchive.org" target="_blank" rel="noopener noreferrer">Cover Art Archive</a>
+              </li>
+              <li>
+                <i class="fa fa-angle-right"></i> <a
+                  href="https://bookbrainz.org/" target="_blank" rel="noopener noreferrer">BookBrainz</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row center-p">
+          <div class="col-md-3 d-none d-md-block hidden-xs section-line">
+            <p>
+              OSS Geek? <a href="https://github.com/metabrainz/picard">Contribute Here</a>
+            </p>
+          </div>
+          <div class="col-md-6 section-line">
+            <p>
+              
+              Brought to you by <img src="/static/img/meb-icons/metabrainz-icon-detail.svg" alt="MetaBrainz" width="30" height="30"> <span> MetaBrainz Foundation </span>
+            </p>
+          </div>
+          <div class="col-md-3 d-none d-md-block hidden-xs section-line">
+            <p>
+              Found an Issue? <a href="https://tickets.metabrainz.org/browse/PICARD">Report Here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    </body>
+</html> contentType 9 text/html url 50 https://picard.musicbrainz.org:443/docs/build-osx/ responseCode 3 200 

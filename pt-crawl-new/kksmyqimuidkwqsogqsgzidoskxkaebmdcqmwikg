@@ -1,0 +1,142 @@
+kksmyqimuidkwqsogqsgzidoskxkaebmdcqmwikg length 5 17183 page 17183 
+<html>
+<head>
+<title>r25854 MediaWiki - Code Review archive</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../ext.codereview.styles.css"/>
+</head>
+<body>
+<h1>r25854 MediaWiki - Code Review archive</h1>
+<div id="mw-content-text" class="mw-body-content"><form action="/wiki/Special:Code/MediaWiki/25854" method="post"><table class="mw-codereview-meta"><tr><td>Repository:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki" title="Special:Code/MediaWiki">MediaWiki</a></td></tr>
+<tr><td>Revision:</td><td>&lt;&#160;<a href="./25853.html" title="Special:Code/MediaWiki/25853">r25853</a>‎ | <b>r25854</b> | <a href="./25855.html" title="Special:Code/MediaWiki/25855">r25855</a>&#160;&gt;</td></tr>
+<tr><td>Date:</td><td>15:29, 14 September 2007</td></tr>
+<tr><td>Author:</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/brion" title="Special:Code/MediaWiki/author/brion">brion</a></td></tr>
+<tr><td>Status:</td><td>old</td></tr>
+<tr><td>Tags:</td><td></td></tr>
+<tr><td>Comment:</td><td><div class="mw-codereview-message">* Add {{filepath:}} parser function to get full path to an uploaded file, complementing {{fullurl:}} for pages.<br />
+Giving this a |nowiki option to wrap the returned path in &lt;nowiki&gt;s for non-linked standalone use.<br />
+Added File::getFullURL() function for cleaner calls; using full path to ensure consistency here.</div></td></tr>
+<tr><td>Modified paths:</td><td><div class='mw-codereview-paths mw-content-ltr'><ul>
+<li><b>/trunk/phase3/RELEASE-NOTES</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2FRELEASE-NOTES" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/CoreParserFunctions.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FCoreParserFunctions.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/ExternalEdit.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FExternalEdit.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/Parser.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2FParser.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/includes/filerepo/File.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Fincludes%2Ffilerepo%2FFile.php" title="Special:Code/MediaWiki">history</a>)</li>
+<li><b>/trunk/phase3/languages/messages/MessagesEn.php</b> (modified) (<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki&amp;path=%2Ftrunk%2Fphase3%2Flanguages%2Fmessages%2FMessagesEn.php" title="Special:Code/MediaWiki">history</a>)</li>
+</ul></div>
+</td></tr>
+</table>
+<h2>Diff <small>[<a href="https://www.mediawiki.org/w/index.php?title=Special:Code/MediaWiki/25854&amp;action=purge" title="Special:Code/MediaWiki/25854">purge</a>]</small></h2><div class='mw-codereview-diff' id='mw-codereview-diff'><table class="mw-codereview-diff"><tr id="1" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/ExternalEdit.php</td></tr>
+
+
+
+<tr id="5"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -47,12 +47,7 @@</span></td></tr>
+<tr id="6"><td class="linenumbers">48</td><td class="linenumbers">48</td><td class="unchanged"><span> 		} elseif($this->mMode=="file") {</span></td></tr>
+<tr id="7"><td class="linenumbers">49</td><td class="linenumbers">49</td><td class="unchanged"><span> 			$type="Edit file";</span></td></tr>
+<tr id="8"><td class="linenumbers">50</td><td class="linenumbers">50</td><td class="unchanged"><span> 			$image = wfLocalFile( $this->mTitle );</span></td></tr>
+<tr id="9"><td class="linenumbers">51</td><td class="linenumbers"> </td><td class="del"><del>-			$img_url = $image->getURL();</del></td></tr>
+<tr id="10"><td class="linenumbers">52</td><td class="linenumbers"> </td><td class="del"><del>-			if(strpos($img_url,"://")) {</del></td></tr>
+<tr id="11"><td class="linenumbers">53</td><td class="linenumbers"> </td><td class="del"><del>-				$url = $img_url;</del></td></tr>
+<tr id="12"><td class="linenumbers">54</td><td class="linenumbers"> </td><td class="del"><del>-			} else {</del></td></tr>
+<tr id="13"><td class="linenumbers">55</td><td class="linenumbers"> </td><td class="del"><del>-				$url = $wgServer . $img_url;</del></td></tr>
+<tr id="14"><td class="linenumbers">56</td><td class="linenumbers"> </td><td class="del"><del>-			}</del></td></tr>
+<tr id="15"><td class="linenumbers"> </td><td class="linenumbers">51</td><td class="ins"><ins>+			$url = $image->getFullURL();</ins></td></tr>
+<tr id="16"><td class="linenumbers">57</td><td class="linenumbers">52</td><td class="unchanged"><span> 			$extension=substr($name, $pos);</span></td></tr>
+<tr id="17"><td class="linenumbers">58</td><td class="linenumbers">53</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="18"><td class="linenumbers">59</td><td class="linenumbers">54</td><td class="unchanged"><span> 		$special=$wgLang->getNsText(NS_SPECIAL);</span></td></tr>
+<tr id="19" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/Parser.php</td></tr>
+
+
+
+<tr id="23"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -174,6 +174,7 @@</span></td></tr>
+<tr id="24"><td class="linenumbers">175</td><td class="linenumbers">175</td><td class="unchanged"><span> 		$this->setFunctionHook( 'anchorencode', array( 'CoreParserFunctions', 'anchorencode' ), SFH_NO_HASH );</span></td></tr>
+<tr id="25"><td class="linenumbers">176</td><td class="linenumbers">176</td><td class="unchanged"><span> 		$this->setFunctionHook( 'special', array( 'CoreParserFunctions', 'special' ) );</span></td></tr>
+<tr id="26"><td class="linenumbers">177</td><td class="linenumbers">177</td><td class="unchanged"><span> 		$this->setFunctionHook( 'defaultsort', array( 'CoreParserFunctions', 'defaultsort' ), SFH_NO_HASH );</span></td></tr>
+<tr id="27"><td class="linenumbers"> </td><td class="linenumbers">178</td><td class="ins"><ins>+		$this->setFunctionHook( 'filepath', array( 'CoreParserFunctions', 'filepath' ), SFH_NO_HASH );</ins></td></tr>
+<tr id="28"><td class="linenumbers">178</td><td class="linenumbers">179</td><td class="unchanged"><span> </span></td></tr>
+<tr id="29"><td class="linenumbers">179</td><td class="linenumbers">180</td><td class="unchanged"><span> 		if ( $wgAllowDisplayTitle ) {</span></td></tr>
+<tr id="30"><td class="linenumbers">180</td><td class="linenumbers">181</td><td class="unchanged"><span> 			$this->setFunctionHook( 'displaytitle', array( 'CoreParserFunctions', 'displaytitle' ), SFH_NO_HASH );</span></td></tr>
+<tr id="31" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/filerepo/File.php</td></tr>
+
+
+
+<tr id="35"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -149,6 +149,21 @@</span></td></tr>
+<tr id="36"><td class="linenumbers">150</td><td class="linenumbers">150</td><td class="unchanged"><span> 		}</span></td></tr>
+<tr id="37"><td class="linenumbers">151</td><td class="linenumbers">151</td><td class="unchanged"><span> 		return $this->url; </span></td></tr>
+<tr id="38"><td class="linenumbers">152</td><td class="linenumbers">152</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="39"><td class="linenumbers"> </td><td class="linenumbers">153</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="40"><td class="linenumbers"> </td><td class="linenumbers">154</td><td class="ins"><ins>+	/**</ins></td></tr>
+<tr id="41"><td class="linenumbers"> </td><td class="linenumbers">155</td><td class="ins"><ins>+	 * Return a fully-qualified URL to the file.</ins></td></tr>
+<tr id="42"><td class="linenumbers"> </td><td class="linenumbers">156</td><td class="ins"><ins>+	 * Upload URL paths _may or may not_ be fully qualified, so</ins></td></tr>
+<tr id="43"><td class="linenumbers"> </td><td class="linenumbers">157</td><td class="ins"><ins>+	 * we check. Local paths are assumed to belong on $wgServer.</ins></td></tr>
+<tr id="44"><td class="linenumbers"> </td><td class="linenumbers">158</td><td class="ins"><ins>+	 * @return string</ins></td></tr>
+<tr id="45"><td class="linenumbers"> </td><td class="linenumbers">159</td><td class="ins"><ins>+	 */</ins></td></tr>
+<tr id="46"><td class="linenumbers"> </td><td class="linenumbers">160</td><td class="ins"><ins>+	public function getFullUrl() {</ins></td></tr>
+<tr id="47"><td class="linenumbers"> </td><td class="linenumbers">161</td><td class="ins"><ins>+		$url = $this->getUrl();</ins></td></tr>
+<tr id="48"><td class="linenumbers"> </td><td class="linenumbers">162</td><td class="ins"><ins>+		if( substr( $url, 0, 1 ) == '/' ) {</ins></td></tr>
+<tr id="49"><td class="linenumbers"> </td><td class="linenumbers">163</td><td class="ins"><ins>+			global $wgServer;</ins></td></tr>
+<tr id="50"><td class="linenumbers"> </td><td class="linenumbers">164</td><td class="ins"><ins>+			return $wgServer . $url;</ins></td></tr>
+<tr id="51"><td class="linenumbers"> </td><td class="linenumbers">165</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="52"><td class="linenumbers"> </td><td class="linenumbers">166</td><td class="ins"><ins>+		return $url;</ins></td></tr>
+<tr id="53"><td class="linenumbers"> </td><td class="linenumbers">167</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="54"><td class="linenumbers">153</td><td class="linenumbers">168</td><td class="unchanged"><span> </span></td></tr>
+<tr id="55"><td class="linenumbers">154</td><td class="linenumbers">169</td><td class="unchanged"><span> 	function getViewURL() {</span></td></tr>
+<tr id="56"><td class="linenumbers">155</td><td class="linenumbers">170</td><td class="unchanged"><span> 		if( $this->mustRender()) {</span></td></tr>
+<tr id="57" class="patchedfile"><td colspan="3">Index: trunk/phase3/includes/CoreParserFunctions.php</td></tr>
+
+
+
+<tr id="61"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -197,5 +197,18 @@</span></td></tr>
+<tr id="62"><td class="linenumbers">198</td><td class="linenumbers">198</td><td class="unchanged"><span> 			$parser->setDefaultSort( $text );</span></td></tr>
+<tr id="63"><td class="linenumbers">199</td><td class="linenumbers">199</td><td class="unchanged"><span> 		return '';</span></td></tr>
+<tr id="64"><td class="linenumbers">200</td><td class="linenumbers">200</td><td class="unchanged"><span> 	}</span></td></tr>
+<tr id="65"><td class="linenumbers"> </td><td class="linenumbers">201</td><td class="ins"><ins>+	</ins></td></tr>
+<tr id="66"><td class="linenumbers"> </td><td class="linenumbers">202</td><td class="ins"><ins>+	public static function filepath( $parser, $name='', $option='' ) {</ins></td></tr>
+<tr id="67"><td class="linenumbers"> </td><td class="linenumbers">203</td><td class="ins"><ins>+		$file = wfFindFile( $name );</ins></td></tr>
+<tr id="68"><td class="linenumbers"> </td><td class="linenumbers">204</td><td class="ins"><ins>+		if( $file ) {</ins></td></tr>
+<tr id="69"><td class="linenumbers"> </td><td class="linenumbers">205</td><td class="ins"><ins>+			$url = $file->getFullUrl();</ins></td></tr>
+<tr id="70"><td class="linenumbers"> </td><td class="linenumbers">206</td><td class="ins"><ins>+			if( $option == 'nowiki' ) {</ins></td></tr>
+<tr id="71"><td class="linenumbers"> </td><td class="linenumbers">207</td><td class="ins"><ins>+				return "&lt;nowiki>$url&lt;/nowiki>";</ins></td></tr>
+<tr id="72"><td class="linenumbers"> </td><td class="linenumbers">208</td><td class="ins"><ins>+			}</ins></td></tr>
+<tr id="73"><td class="linenumbers"> </td><td class="linenumbers">209</td><td class="ins"><ins>+			return $url;</ins></td></tr>
+<tr id="74"><td class="linenumbers"> </td><td class="linenumbers">210</td><td class="ins"><ins>+		} else {</ins></td></tr>
+<tr id="75"><td class="linenumbers"> </td><td class="linenumbers">211</td><td class="ins"><ins>+			return '';</ins></td></tr>
+<tr id="76"><td class="linenumbers"> </td><td class="linenumbers">212</td><td class="ins"><ins>+		}</ins></td></tr>
+<tr id="77"><td class="linenumbers"> </td><td class="linenumbers">213</td><td class="ins"><ins>+	}</ins></td></tr>
+<tr id="78"><td class="linenumbers">201</td><td class="linenumbers">214</td><td class="unchanged"><span> }</span></td></tr>
+<tr id="79"><td class="linenumbers">202</td><td class="linenumbers">215</td><td class="unchanged"><span> </span></td></tr>
+<tr id="80" class="patchedfile"><td colspan="3">Index: trunk/phase3/languages/messages/MessagesEn.php</td></tr>
+
+
+
+<tr id="84"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -340,6 +340,7 @@</span></td></tr>
+<tr id="85"><td class="linenumbers">341</td><td class="linenumbers">341</td><td class="unchanged"><span> 	'padright'               => array( 0,    'PADRIGHT'               ),</span></td></tr>
+<tr id="86"><td class="linenumbers">342</td><td class="linenumbers">342</td><td class="unchanged"><span> 	'special'                => array( 0,    'special',               ),</span></td></tr>
+<tr id="87"><td class="linenumbers">343</td><td class="linenumbers">343</td><td class="unchanged"><span> 	'defaultsort'            => array( 1,    'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),</span></td></tr>
+<tr id="88"><td class="linenumbers"> </td><td class="linenumbers">344</td><td class="ins"><ins>+	'filepath'               => array( 0,    'FILEPATH:'              ),</ins></td></tr>
+<tr id="89"><td class="linenumbers">344</td><td class="linenumbers">345</td><td class="unchanged"><span> );</span></td></tr>
+<tr id="90"><td class="linenumbers">345</td><td class="linenumbers">346</td><td class="unchanged"><span> </span></td></tr>
+<tr id="91"><td class="linenumbers">346</td><td class="linenumbers">347</td><td class="unchanged"><span> /**</span></td></tr>
+<tr id="92" class="patchedfile"><td colspan="3">Index: trunk/phase3/RELEASE-NOTES</td></tr>
+
+
+
+<tr id="96"><td class="linenumbers">—</td><td class="linenumbers">—</td><td class="chunkdelimiter"><span>@@ -22,7 +22,10 @@</span></td></tr>
+<tr id="97"><td class="linenumbers">23</td><td class="linenumbers">23</td><td class="unchanged"><span> </span></td></tr>
+<tr id="98"><td class="linenumbers">24</td><td class="linenumbers">24</td><td class="unchanged"><span> === New features in 1.12 ===</span></td></tr>
+<tr id="99"><td class="linenumbers">25</td><td class="linenumbers">25</td><td class="unchanged"><span> * Add a warning for non-descriptive filenames at Special:Upload</span></td></tr>
+<tr id="100"><td class="linenumbers"> </td><td class="linenumbers">26</td><td class="ins"><ins>+* Add {{filepath:}} parser function to get full path to an uploaded file,</ins></td></tr>
+<tr id="101"><td class="linenumbers"> </td><td class="linenumbers">27</td><td class="ins"><ins>+  complementing {{fullurl:}} for pages.</ins></td></tr>
+<tr id="102"><td class="linenumbers">26</td><td class="linenumbers">28</td><td class="unchanged"><span> </span></td></tr>
+<tr id="103"><td class="linenumbers"> </td><td class="linenumbers">29</td><td class="ins"><ins>+</ins></td></tr>
+<tr id="104"><td class="linenumbers">27</td><td class="linenumbers">30</td><td class="unchanged"><span> === Bug fixes in 1.12 ===</span></td></tr>
+<tr id="105"><td class="linenumbers">28</td><td class="linenumbers">31</td><td class="unchanged"><span> </span></td></tr>
+<tr id="106"><td class="linenumbers">29</td><td class="linenumbers">32</td><td class="unchanged"><span> * Subpages are now indexed for searching properly when using PostgreSQL</span></td></tr>
+</table>
+</div>
+<h2 id='code-references'>Follow-up revisions</h2>
+<table border='1' class='wikitable'><tr><th>Revision</th><th>Commit summary</th><th>Author</th><th>Date</th></tr><tr class='mw-codereview-status-old'><td><a href="./25861.html" title="Special:Code/MediaWiki/25861">r25861</a></td><td>Merged revisions 25849-25860 via svnmerge from...</td><td><a href="https://www.mediawiki.org/wiki/Special:Code/MediaWiki/author/david" title="Special:Code/MediaWiki/author/david">david</a></td><td>20:03, 14 September 2007</td></tr></table><h2 id='code-changes'>Status &amp; tagging log</h2>
+<ul class='mw-codereview-changes'><li>15:20, 12 September 2011&#160;<a href="https://www.mediawiki.org/wiki/User:Meno25" class="mw-userlink" title="User:Meno25"><bdi>Meno25</bdi></a> <span class="mw-usertoollinks">(<a href="https://www.mediawiki.org/wiki/User_talk:Meno25" class="mw-usertoollinks-talk" title="User talk:Meno25">talk</a> | <a href="https://www.mediawiki.org/wiki/Special:Contributions/Meno25" class="mw-usertoollinks-contribs" title="Special:Contributions/Meno25">contribs</a>)</span>&#160;changed the <b>status</b> of r25854 <i>[<b>removed:</b> ok&#160;<b>added:</b> old]</i></li></ul></form></div>
+</body>
+</html>
+ contentType 9 text/html url 64 https://static-codereview.wikimedia.org:443/MediaWiki/25854.html responseCode 3 200 

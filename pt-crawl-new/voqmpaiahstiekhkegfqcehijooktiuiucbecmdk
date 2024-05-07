@@ -1,0 +1,455 @@
+voqmpaiahstiekhkegfqcehijooktiuiucbecmdk length 5 23372 page 23372 
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>IAPMO R&T Product Listing Directory</title>
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="css/pld_compliant_style.css" type="text/css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" />
+
+    <link rel="shortcut icon" href="/images/logo_IAPMO_blue.ico" />
+
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    
+
+    <script src="/scripts/scriptaculous-js-1.8.1/lib/prototype.js" type="text/javascript"></script>
+    <script src="/scripts/scriptaculous-js-1.8.1/src/scriptaculous.js" type="text/javascript"></script>
+
+    <script type="text/javascript" language="javascript" src="/scripts/jquery.dataTables.min.js"></script>
+
+
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $('#table_results').DataTable( {
+                    "lengthMenu": [25, 50, 100],
+                    "scrollY": 550,
+                    scrollCollapse: true
+                } );
+                
+                });
+        })(jQuery);
+
+
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-4834260-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+    <script type="text/javascript">
+        function hideProgress() {
+            document.getElementById('imgProgress').style.display = 'none';
+            document.getElementById('imgProgress').style.visibility = 'hidden';
+        }
+
+        window.onload = hideProgress;
+
+    </script>
+
+
+    
+
+    <script>
+        var popupTimeout = new Array(3);
+
+        function findPos(obj) {
+            var curleft = curtop = 0;
+            if (obj.offsetParent) {
+                do {
+                    curleft += obj.offsetLeft;
+                    curtop += obj.offsetTop;
+                }
+                while (obj = obj.offsetParent);
+                return [curleft, curtop];
+            }
+        }
+
+        function setPopupPosition() {
+            popupList = new Array("exactWords", "allWords", "anyWords");
+
+            for (var i in popupList) {
+                popupId = popupList[i] + "Popup";
+                if ($(popupId) != null && $(popupId) != undefined) {
+                    currPos = findPos($(popupList[i] + "Radio"));
+                    modX = currPos[0];
+                    modY = currPos[1];
+                    $(popupList[i] + "Popup").style.top = modY;
+                    $(popupList[i] + "Popup").style.left = modX;
+                }
+            }
+        }
+
+        function showPopup(popupId) {
+            hideAllPopups(popupId);
+            clearTimeout(popupTimeout[popupId]);
+            //$(popupId).style.display = "block";
+            $(popupId).appear({ duration: .25 });
+        }
+
+        function hidePopup(popupId) {
+            popupTimeout[popupId] = setTimeout('$("' + popupId + '").fade(0.25)', 1000);
+        }
+
+        function hideAllPopups(notPopup) {
+            popupList = new Array("exactWords", "allWords", "anyWords");
+
+            for (var i in popupList) {
+
+                popupId = popupList[i] + "Popup";
+                if ($(popupId) != null && $(popupId) != undefined && popupId != notPopup) {
+                    $(popupId).hide();
+                }
+            }
+        }
+
+        function showCertType() {
+            if (window.certTypeTimeout !== undefined)
+                clearTimeout(certTypeTimeout);
+            $('certType').appear({ duration: .1 });
+        }
+
+        function hideCertType() {
+            certTypeTimeout = setTimeout('$("certType").fade({duration: .1})', 500);
+        }
+        function certTypeRollOn(id) {
+            $(id).style.backgroundColor = '#AFC9DD';
+        }
+
+        function certTypeRollOff(id) {
+            $(id).style.backgroundColor = 'transparent';
+        }
+
+
+        function staticSearch(keywords, searchCategory, searchType) {
+            //console.log("search", keywords, searchCategory, searchType)
+            document.getElementById("txtSearch").value = keywords;
+            document.getElementById("radio-search-product").checked = true;
+            document.getElementById("search-type-all-words").checked = true;
+            document.getElementById("frmSearch").submit();            
+        }
+    </script>
+
+    <style>
+        .pointer {
+            cursor: pointer;
+        }
+
+        #exactTextPopup,
+        #allKeyPopup,
+        #anyKeyPopup {
+            position: absolute;
+            width: 300px;
+            cursor: default;
+            margin-top: -5px;
+            margin-left: -5px;
+        }
+
+        .popupBox {
+            position: relative;
+            z-index: 20;
+            padding: 5px;
+            border: 1px solid #aaaa00;
+            background-color: #eeeebb;
+            margin: -20px;
+            width: 300px;
+        }
+
+        .popupBoxArrow {
+            position: relative;
+            z-index: 100;
+            margin-left: 8px;
+            top: -15px;
+        }
+
+        #certType .item {
+            cursor: pointer;
+            color: #14255b;
+            padding: 3px 10px 3px 20px;
+            border-bottom: 1px solid #B3C3D0;
+        }
+
+        .auto-style1 {
+            height: 24px;
+        }
+
+        /* Adding some margins for our datatable control divs */
+
+        .dataTables_length {
+            margin-bottom:10px;
+        }
+
+        .dataTables_info, .dataTables_paginate {
+            margin-top:10px;
+        }
+
+        .table_results thead th {
+            /*border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 5px;*/
+            
+            background-color:#ccc;
+        }
+
+        .table_results thead th:first-of-type{
+            border-top-left-radius: 4px; 
+        }
+
+        .table_results thead th:last-of-type{
+            border-top-right-radius: 4px; 
+        }
+
+        .search-results-container {
+            padding-left:20px;
+            padding-right:20px;
+            min-height:300px;
+        }
+
+    </style>
+
+</head>
+
+<body style="margin: 0px; background-color: #e3e3e3;">
+
+    <map name="Map" id="Map">
+        <area shape="rect" coords="36,3,247,138" href="http://www.iapmort.org" alt="IAPMO R&T" />
+    </map>
+
+    <div class="mainDiv">
+
+        <form name="frmSearch" method="post" action="./" id="frmSearch">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwMjc3MDY1NzRkZIQSL4l+v15tPW8YPQxbW5ZKoBXLu/nIw425GRDM48A9" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAMopwdNzyiMsOFaQfM9KwMIJy3pjLgyNr58jsdLjyzCdY7U3Vc0WZ+wxclqyPFfzmNOEfm8TxbemMijCluqPbvn905Y2AhBN9IPu/AW4/dVuA==" />
+
+            
+            <table border="0" style="background-color: #fff; width: 1100px; padding: 0px;">
+                <!--********************************************************************************-->
+                <!-- START - header area -->
+                <!--********************************************************************************-->
+                <tr>
+                    
+                    <td colspan="2" class="banner_image"></td>
+                </tr>
+                <!--********************************************************************************-->
+                <!-- END - header area -->
+                <!--********************************************************************************-->
+
+                <tr style="vertical-align: top; background-color: #ffffff;">
+                    <td rowspan="2" style="width: 220px;">
+
+                        <!--********************************************************************************-->
+                        <!-- START - left menu area -->
+                        <!--********************************************************************************-->
+                        <br />
+
+                        <table border="0" class="table_menu">
+                            <tr>
+                                <td><a class="blue-link pointer" onclick="staticSearch('low lead', 'Product', 'allWords')">View Low Lead Plumbing Listing</a>
+                                    <div style="position: relative">
+                                        <div id="certType" style="display: none; top: 3px; left: 182px; background-color: #DBE8F1; position: absolute; border: 1px #b3c3d0 solid; width: 150px" onmouseover="showCertType();" onmouseout="hideCertType();">
+                                            <div style="position: absolute; left: -9px; top: 87px">
+                                                <img src="/images/arrow_products.gif" alt="arrow" />
+                                            </div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=a">Plumbing</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=b">Mechanical</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=c">Solar</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=d">Swimming Pool</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=e">Electrical</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=f">MHRV</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=g">Classified</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=h">NSF 61</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);"><a target="_self" href="?search=text&button=Search&fixedSearch=i">NSF 14</a></div>
+                                            <div class="item" onclick="hideCertType();" onmouseover="certTypeRollOn(this);" onmouseout="certTypeRollOff(this);" style="border: 0px;"><a target="_self" href="?search=text&button=Search&fixedSearch=i">Green</a></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style1"><a class="blue-link" href="?fixedSearch=LADWP" target="_self">View LADWP Listing</a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="blue-link pointer" href="?fixedSearch=WaterSense" target="_self">View WaterSense Listing</a></td>
+                            </tr>
+                            <tr>
+                                <td><a class="blue-link pointer" href="/solar" target="_blank">View Solar Listing</a></td>
+                            </tr>
+                            
+                            
+    
+
+                            
+                        </table>
+                        <!--********************************************************************************-->
+                        <!-- END - left menu area -->
+                        <!--********************************************************************************-->
+
+                    </td>
+
+                    <td style="width: 980px;">
+                        <!--********************************************************************************-->
+                        <!-- START - main content area -->
+                        <!--********************************************************************************-->
+                        <div style="margin-left: auto; margin-right: auto;  width: 90%; padding: 0px;">
+
+
+                            <br />
+                            <!--***************************************************************-->
+                            <!-- search form -->
+                            <!--***************************************************************-->
+                            <div>
+                                <table border="0" style="margin-left: auto; margin-right: auto; width: 90%; padding: 0px;">
+                                    <tr>
+                                        <td style="width: 300px;">
+
+                                            <div style="border: solid 0px #666;">Select search category:</div>
+
+                                            <table border="0">
+                                                <tr>
+                                                    <td class="small_text">
+                                                        <input type="radio" id="radio-search-file" name="radSearchCategory" value="File"  checked="checked"  />File Number</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_text">
+                                                        <input type="radio" id="radio-search-listee" name="radSearchCategory" value="Listee"  />Listee Name</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td class="small_text">
+                                                        <input type="radio" id="radio-search-standard" name="radSearchCategory" value="Standard"  />Standard</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td class="small_text">
+                                                        <input type="radio" id="radio-search-product" name="radSearchCategory" value="Product"  />Product Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_text">
+                                                        <input type="radio" id="radio-search-model" name="radSearchCategory" value="Model"  />Listed Model / Additional Company</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="small_text">
+                                                        <input type="radio" id="radio-search-tm" name="radSearchCategory" value="Trademark"  />Trademark / Trade Name / Brand Name</td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                        <td>
+
+                                            <table border="0">
+                                                <tr>
+                                                    <td style="text-align: center;">
+                                                        <input name="txtSearch" type="text" id="txtSearch" size="30" />
+                                                        
+                                                        <input type="submit" name="btnSearch" value="Search" id="btnSearch" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p style="text-align: center; font-size: 8pt; color: #666666;">
+                                                            <b>Enter File Number, Listee Name, Product Description, Standard, or Listed Model</b>
+                                                        </p>
+                                                        <div style="text-align: center; color: #666666">
+                                                            <input type="radio" id="search-type-all-words" name="searchType" checked="checked" value="allWords" onmouseover="showPopup('allKeyPopup');" onmouseout="hidePopup('allKeyPopup');" id="allKeyRadio" />
+                                                            <label for="allKeyRadio" onmouseover="showPopup('allKeyPopup');" onmouseout="hidePopup('allKeyPopup');">All Keywords</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input type="radio" name="searchType" id="search-type-exact-words" value="exactWords"  onmouseover="showPopup('exactTextPopup');" onmouseout="hidePopup('exactTextPopup');" id="exactTextRadio" />
+                                                            <label for="exactTextRadio" onmouseover="showPopup('exactTextPopup');" onmouseout="hidePopup('exactTextPopup');">Exact Text</label>&nbsp;&nbsp;&nbsp;&nbsp;  			                                    
+				                                            <input type="radio" name="searchType" id="search-type-any-words" value="anyWords"  onmouseover="showPopup('anyKeyPopup');" onmouseout="hidePopup('anyKeyPopup');" id="anyKeyRadio" />
+                                                            <label for="anyKeyRadio" onmouseover="showPopup('anyKeyPopup');" onmouseout="hidePopup('anyKeyPopup');">Any Keywords</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <!--***************************************************************-->
+
+                            <div style="width: 400px;">
+
+                                <div style="display:none; padding-left:384px; margin-top:-30px;" id="allKeyPopup" onmouseover="showPopup('allKeyPopup');" onmouseout="hidePopup('allKeyPopup');" onclick="hideAllPopups();">
+                                    <div class="popupBoxArrow">
+                                        <img src="/images/arrow.gif" />
+                                    </div>
+                                    <div class="popupBox">This option returns the most targeted results. Results will be returned that contain <span style="color: #ff0000; font-weight: bold">all of the keywords</span> you enter (in any order).</div>
+                                </div>
+
+                                <div style="display:none; padding-left:498px; margin-top:-30px;" id="exactTextPopup" onmouseover="showPopup('exactTextPopup');" onmouseout="hidePopup('exactTextPopup');" onclick="hideAllPopups();">
+                                    <div class="popupBoxArrow">
+                                        <img src="/images/arrow.gif" />
+                                    </div>
+                                    <div class="popupBox">Enter the <span style="color: #ff0000; font-weight: bold">exact wording</span> you wish to search for. Words must be correctly spelled and in the proper order to return results.</div>
+                                </div>
+
+                                <div style="display:none; padding-left:600px; margin-top:-30px;" id="anyKeyPopup" onmouseover="showPopup('anyKeyPopup');" onmouseout="hidePopup('anyKeyPopup');" onclick="hideAllPopups();">
+                                    <div class="popupBoxArrow">
+                                        <img src="/images/arrow.gif" />
+                                    </div>
+                                    <div class="popupBox">This option returns the most results. Results containing <span style="color: #ff0000; font-weight: bold">at least one of the keywords</span> you enter will be returned.</div>
+                                </div>
+
+                            </div>
+                        
+                        </div>
+
+                    </td>
+                </tr>
+            </table>
+
+            <div class="search-results-container">
+                
+
+                <br />
+
+                <img src="/images/img_progressbar.gif" id="imgProgress" alt="Progress Bar" />
+                
+
+                
+                        <div style="text-align:center;">
+                            <p>&nbsp;</p>
+                            <p class="blue-title">Welcome to IAPMO R&T's Product Listing Directory.</p>
+                            <p>Use the search above to locate your listing.</p>
+                            <p>Check back frequently as files are updated daily.</p>
+                        </div>
+                    
+                <p>&nbsp;</p>
+
+            </div>
+
+            <!--********************************************************************************-->
+            <!-- END - main content area -->
+            <!--********************************************************************************-->
+            <p>&nbsp;</p>
+
+
+
+        </form>
+        
+
+    </div>
+
+</body>
+</html>
+ contentType 9 text/html url 26 https://pld.iapmo.org:443/ responseCode 3 200 

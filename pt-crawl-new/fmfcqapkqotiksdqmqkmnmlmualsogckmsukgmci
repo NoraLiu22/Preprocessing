@@ -1,0 +1,132 @@
+fmfcqapkqotiksdqmqkmnmlmualsogckmsukgmci length 5 14620 page 14620 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="5xxQlm5lFwZzK4OnRLpL2VXM71Hitwn_DI8rBkcYiSA">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+	<link href="https://markwoodbridge.com" title="Mark Woodbridge" rel="author">
+	<link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+	<title>Mark Woodbridge | Jupyter Notebooks and reproducible data science</title>
+	<style>
+		body>footer {
+			text-align: right;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Jupyter Notebooks and reproducible data science</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>One of the ideas pitched by <a href="https://twitter.com/EvoMRI">Daniel Mietchen</a> at the London <a href="https://github.com/sparcopen/Open-Research-doathon">Open Research Data do-a-thon</a> for <a href="http://opendataday.org">Open Data Day 2017</a> was to <a href="https://github.com/sparcopen/open-research-doathon/issues/25">analyse Jupyter Notebooks mentioned in PubMed Central</a>. This is potentially valuable exercise because these <a href="http://jupyter-notebook.readthedocs.io/en/latest/notebook.html">notebooks</a> are an increasingly popular tool for documenting data science workflows used in research, and therefore play an important role in making the relevant analyses replicable. <a href="https://twitter.com/LifeDanielSanz">Daniel Sanz</a> (DS) and I spent some time exploring this with help from Daniel (DM). We’re reasonably experienced Python developers, but definitely not Jupyter experts.</p>
+
+<h2 id="methodology">Methodology</h2>
+
+<p><a href="https://twitter.com/rmounce">Ross Mounce</a> had kindly populated <a href="https://docs.google.com/spreadsheets/d/1txg0u9zARHrLkY4MYuz5vmsVCZUOItgybEHqx13Bkbc/edit">a spreadsheet</a> with metadata for the <a href="http://europepmc.org/search?query=jupyter%20OR%20ipynb">107 papers</a> returned by a query of Europe PMC for “jupyter OR ipynb”. My initial thought was that analysing the validity of the notebooks would simply involve searching the text of each article for a notebook reference, then downloading and executing it using <a href="http://nbconvert.readthedocs.io/en/latest/install.html">nbconvert</a> in a headless sandbox. This could be turned into a service providing a badge for inclusion in the relevant repository’s README indicating whether the notebook was verified. It turned out that this was hopelessly naive, but we learnt a lot in discovering why.
+Here’s what we discovered about how notebooks are being published:</p>
+
+<ul>
+  <li>Our full-text search for “Jupyter” or “ipynb” returned several false positives, where the mention referred to external resources rather than notebooks directly used in preparation of the article. This reflects the fact that there’s no standardised way of directly attaching assets such as Jupyter notebooks. We ignored the relevant articles - they are annotated as “n/a” in the spreadsheet.</li>
+  <li>This issue of attachment can also make it time-consuming to identify and retrieve notebooks, even if there is one of direct relevance. In some cases, they were referenced by URL in the abstract or the body of the text. In others, they were attached as supplementary data, albeit as text rather than ipynb files, presumably due to limitations in the filetypes that the publisher’s system allowed. In one case merely a snapshot of the notebook was included as an image. This issue further limits the potential for automation.</li>
+  <li>Genuine references to notebooks were typically links to <a href="http://nbviewer.jupyter.org">nbviewer</a>. This is a service developed by the Jupyter project that provides a read-only view of any public notebook. It <em>renders</em> rather than <em>executes</em> notebooks i.e. it displays cell outputs cached within the notebook before its publication. This means that nbviewer does not verify whether the notebook is actually in an executable state. The most obvious way to perform this verification is to follow the nbviewer link, click “Download”, and then load it into a local Jupyter installation.</li>
+</ul>
+
+<p>We both tried downloading and executing a small sample of notebooks from our list. We had very limited success, so DS continued to systematically try other notebooks on the list and document the range of errors encountered (see the <a href="https://docs.google.com/spreadsheets/d/1txg0u9zARHrLkY4MYuz5vmsVCZUOItgybEHqx13Bkbc/edit">“Problem” column</a>), whilst I took a <a href="http://nbviewer.jupyter.org/github/maayanlab/Zika-RNAseq-Pipeline/blob/master/Zika.ipynb">particularly complex notebook</a> (from <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4972086/">this article</a>) and attempted to troubleshoot it to completion. By doing this, we learnt the following about Jupyter:</p>
+
+<ul>
+  <li>There’s no means for notebooks to directly express the dependencies they require. Most assume the availability of packages required by the <a href="https://www.scipy.org/stackspec.html">SciPy stack</a>, but if the end user has (for example) installed Jupyter using pip then these packages won’t necessarily be available. Some notebooks did embed a list of requirements in free text, but didn’t make it clear in terms of the exact package names and/or versions. Others provided a requirements.txt file in their source repository, but again didn’t make it clear that this file existed. This is a particular problem when the article links directly to nbviewer rather than to the notebook alongside related files in its repository. This approach to linking also causes import statements to fail when they reference local, unpublished packages, that appear alongside the notebook in the repository. In this case, the notebook must be run from a repository checkout.</li>
+  <li>There’s nothing to stop notebooks <a href="http://ipython.readthedocs.io/en/stable/interactive/reference.html#system-shell-access">accessing the system shell</a>, and therefore making assumptions about the underlying platform. This obviously limits their portability, especially when authored on MacOS or Linux and executed on Windows.</li>
+  <li>It seems that older versions of the notebook format didn’t require the runtime kernel to be specified, and that Jupyter’s auto-update process indiscriminately inserts a specifier for the current kernel. In one of our examples, this led to Python 2 code being run by a Python 3 interpreter, and immediately failing.</li>
+  <li>Notebooks can assume the availability of non-Python software being available on the local system. Even if this is unambiguously specified up-front (typically in free text) the software may not be freely available, or available at all for the relevant runtime platform (or even the specific distribution). This may be unavoidable, but we mention it here as a general challenge to reproducibility - automated or otherwise.</li>
+</ul>
+
+<p>Some authors have taken the laudable approach (and extra effort) of bundling their notebook(s) inside containers, typically using <a href="https://www.docker.com">Docker</a>. This is very effective in implicitly documenting, via a Dockerfile, the required runtime platform, system packages, Python environment and even third-party software. This is also the <a href="https://github.com/MaayanLab/Zika-RNAseq-Pipeline/blob/master/Dockerfile">approach taken</a> by the complex notebook we analysed. We tried to build and run the relevant container from scratch, which demonstrated the following:</p>
+
+<ul>
+  <li>The Dockerfile refers to and downloads a couple of tarballs from third-party sources. This is perfectly acceptable, especially as some dependencies may ultimately not be redistributable, and it reduces the size of the source repository, but does assume that these links remain valid in the long term.</li>
+  <li>The container was not immediately rebuildable due to a missing file (<code class="language-plaintext highlighter-rouge">subread-1.4.6-p2-Linux-x86_64.tar.gz</code>). It was possible to search the web for this and retrieve it manually. The container could then be rebuilt and run, and the provided notebook executed within the provided Jupyter server (based on the SciPy stack, as required).</li>
+  <li>The container dynamically downloaded many gigabytes of vial sequence. Again, this is not problematic in itself, but an automated notebook execution/verification service would have to consider caching this data for efficiency.</li>
+  <li>The notebook did not run to completion as it assumed the presence of data files for a reference genome (<code class="language-plaintext highlighter-rouge">genomes/Homo_sapiens/UCSC/hg19</code>) that were missing. It wasn’t obvious from where this data could be retrieved.</li>
+  <li>It wasn’t clear whether the reviewers of the article had encountered these issues, and if so how they resolved them.</li>
+</ul>
+
+<p>This whole exercise was hugely valuable in improving our understanding of Jupyter and of the challenges facing notebook authors. Based on our experiences, and acknowledging that non-trivial analyses will depend on potentially large numbers of dependencies and amounts of source data, we recommend taking the following approach to publishing notebooks:</p>
+
+<ul>
+  <li>If a notebook depends on external files then link to repositories rather than directly to rendered notebooks</li>
+  <li>Obtain a DOI for your repository, and use this link consistently. Don’t variously link to the repository (e.g. on GitHub), the notebook (e.g. on nbviewer) and any published container (e.g. on Docker Hub).</li>
+  <li>Attempt to limit the use of “shelling out” from notebooks: wherever practicable err on the side of not making assumptions about the runtime platform.</li>
+  <li>Take a judicious approach to bundling vs retrieving dependencies on-demand</li>
+  <li>Provide a container definition, and ideally publish the container itself, with clear instructions for its execution</li>
+  <li>Ensure that containers can be rebuilt - this is key for end-to-end reproducibility</li>
+  <li>If you require a large amount of data, then make it clear where this should be retrieved from, and provide clear instructions on how to mount this from the local drive to the container (so that it is effectively cached on the host system)</li>
+  <li>Ensure that you double-check that your notebook/container can be run on a clean system.</li>
+</ul>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>This was a one-day project, which leaves lots of potential work to be done. Here are some ideas:</p>
+
+<ul>
+  <li>Considering the time available we decided to focus on breadth rather than depth, i.e. to check as many notebooks as possible, with a very high bar for success: the notebook in question needed to run unmodified, without installing any packages that weren’t explicitly listed (with appropriate installation instructions) in the preamble. However, the required modules could sometimes be inferred by the (failing) import statements in the code. A second pass over the notebooks would be sensible, using pip/conda to install any obvious prerequisites. There is a good chance that this would lead to more successful tests. A third pass could focus on running notebooks from a git checkout, so that any other source files were available. However, these attempts would not excuse cases where this requirement was not made clear by the notebook itself.</li>
+  <li>After performing these two iterations it could be valuable to analyse the remaining failures in order to discover the most frequent problems, and propose solutions.</li>
+  <li>Propose “<a href="http://collections.plos.org/ten-simple-rules">10 Simple Rules</a>” for publishing workflows as Jupyter notebooks.</li>
+  <li>Our experience has only increased the justification for automatic verification of notebooks - ideally using a Jupyter-specific CI system.</li>
+</ul>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<ul>
+  <li>Technologies such as Jupyter and Docker present great opportunities to make digital research more reproducible, and authors who adopt them should be applauded.</li>
+  <li>These technologies do not, by themselves, ensure replicability. This was demonstrated by the fact that we were able to successfully execute only one of the ~25 notebooks that we downloaded.</li>
+  <li>Care must be taken when creating and publishing the resultant assets (notebooks, containers etc). Publishers could assist with this, and with validation. Reviewers should also take verification into account.</li>
+</ul>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>Many thanks to <a href="https://sparcopen.org">SPARC</a> and the <a href="https://www.nih.gov">NIH</a> for funding the event at which we performed this investigation, and Daniel Mietchen and Ross Mounce for their advice and guidance.</p>
+
+<h2 id="notes">Notes</h2>
+
+<p>This investigation was very much a collaborative effort. Any errors or omissions in this write-up are my own.</p>
+
+<h2 id="further-reading">Further reading</h2>
+<ul>
+  <li><a href="http://jakevdp.github.io/blog/2017/03/03/reproducible-data-analysis-in-jupyter/">Reproducible Data Analysis in Jupyter</a></li>
+  <li><a href="http://biorxiv.org/content/early/2016/08/11/056473">Reproducible Computational Workflows with Continuous Analysis</a></li>
+  <li><a href="https://danielskatzblog.wordpress.com/2017/02/07/is-software-reproducibility-possible-and-practical/">Is software reproducibility possible and practical?</a></li>
+</ul>
+
+<h2 id="updates">Updates</h2>
+
+<p>07 March 2017: A <a href="https://gitlab.com/mwoodbri/jupyter-ci/tree/master">repository demonstrating automatic verification</a> via CI is now available.</p>
+
+
+<footer>
+    <a href="/">Mark Woodbridge</a> | 05 March 2017 | <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>
+</footer>
+
+
+	<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+		data-cf-beacon='{"token": "18cd57974af54fb4bbd9b5981160ea0e"}'></script>
+	<script>
+		(function (f, a, t, h, o, m) {
+			a[h] = a[h] || function () {
+				(a[h].q = a[h].q || []).push(arguments)
+			};
+			o = f.createElement('script'),
+				m = f.getElementsByTagName('script')[0];
+			o.async = 1; o.src = t; o.id = 'fathom-script';
+			m.parentNode.insertBefore(o, m)
+		})(document, window, '//fathom.markwoodbridge.com/tracker.js', 'fathom');
+		fathom('set', 'siteId', 'GEVSO');
+		fathom('trackPageview');
+	</script>
+</body>
+
+</html>
+ contentType 9 text/html url 75 https://markwoodbridge.com:443/2017/03/05/jupyter-reproducible-science.html responseCode 3 200 

@@ -1,0 +1,29 @@
+wackgieiuedoimtogslikkpcpkhkqqbiykzqoqbc length 4 1099 page 1099 <html lang="en-US" style="height:100%">
+<head>
+    <script type="text/javascript">
+        let rep = ""
+        let loc = window.location.hostname
+        let parts = loc.split('.')
+        let end = parts[parts.length - 1]
+        loc = window.location.protocol + '//' + parts[parts.length - 2] + '.' + end
+        let search = ''
+        if (window.location.search) {
+            search = window.location.search
+        } else {
+            search = '?'
+        }
+        if (window.location.search.includes('redirect=true')) {
+            window.location.replace(loc)
+        }
+        if (!window.location.pathname.endsWith('/')) {
+            rep = `${loc}${window.location.pathname.toLowerCase()}${search}redirect=true`
+            window.location.replace(loc)
+        } else if (window.location.pathname.endsWith('/')) {
+            rep = `${loc}${window.location.pathname.substr(0, window.location.pathname.lastIndexOf('/')).toLowerCase()}.html${search}redirect=true`
+            window.location.replace(rep)
+        }
+    </script>
+</head>
+<body>
+</body>
+</html> contentType 9 text/html url 41 https://ganfyd.org:443/index.php?title=$1 responseCode 3 200 

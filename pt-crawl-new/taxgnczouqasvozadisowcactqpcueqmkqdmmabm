@@ -1,0 +1,277 @@
+taxgnczouqasvozadisowcactqpcueqmkqdmmabm length 5 42124 page 42124 <!DOCTYPE html>
+<html>
+<head>
+    <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image:src" content="https://christianselig.com/2024/02/trials-360-juno-video/vision-vision.jpeg">
+<meta name="twitter:title" content="Trials and tribulations of 360° video in Juno"/>
+<meta name="twitter:description" content="In building Juno, a visionOS app for YouTube, a question that&rsquo;s come up from users a few times is whether it supports 360° and 180° videos (for the unfamiliar, it&rsquo;s an immersive video format that fully surrounds you). The short answer is no, it&rsquo;s sort of a niche feature without much adoption, but for fun I wanted to take the weekend and see what I could come up with. Spoiler: it&rsquo;s not really possible, but the why is kinda interesting, so I thought I&rsquo;d write a post talking about it, and why it&rsquo;s honestly not a big loss at this stage."/>
+
+    
+<meta property="og:title" content="Trials and tribulations of 360° video in Juno" />
+<meta property="og:description" content="In building Juno, a visionOS app for YouTube, a question that&rsquo;s come up from users a few times is whether it supports 360° and 180° videos (for the unfamiliar, it&rsquo;s an immersive video format that fully surrounds you). The short answer is no, it&rsquo;s sort of a niche feature without much adoption, but for fun I wanted to take the weekend and see what I could come up with. Spoiler: it&rsquo;s not really possible, but the why is kinda interesting, so I thought I&rsquo;d write a post talking about it, and why it&rsquo;s honestly not a big loss at this stage." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://christianselig.com/2024/02/trials-360-juno-video/" />
+    
+<meta property="og:image" content="https://christianselig.com/2024/02/trials-360-juno-video/vision-vision.jpeg"/>
+<meta itemprop="thumbnailUrl" content="https://christianselig.com/2024/02/trials-360-juno-video/vision-vision.jpeg">
+<meta itemprop="image" content="https://christianselig.com/2024/02/trials-360-juno-video/vision-vision.jpeg">
+<meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-25T21:53:34-04:00" />
+<meta property="article:modified_time" content="2024-02-25T21:53:34-04:00" />
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content="" />
+
+        
+        <link rel="next" href="https://christianselig.com/2024/03/recreating-visionos-search-bar/">
+        
+
+        
+        <link rel="prev" href="https://christianselig.com/2024/02/vision-pro-stand/">
+          
+
+    <title>Trials and tribulations of 360° video in Juno</title>
+
+    <meta name="keywords" content="blog, ios, apple, tech, uikit, swift, swiftui, cocoa, apollo, reddit">
+    
+    <meta name="author" content="Christian Selig">
+    <link rel="canonical" href="https://christianselig.com/2024/02/trials-360-juno-video/">
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />  
+    <link rel="alternate" type="application/rss+xml" href="/index.xml" title="Christian Selig">
+
+    <script defer data-domain="christianselig.com" src="https://analytics.christianselig.com/js/script.js"></script>
+</head>
+<body><header>
+    <nav role="navigation">
+        <div class="texty-heady">
+            <h1><a href="/">Christian Selig</a></h1>
+            
+            <p class="me-description">I’m an iOS developer and creator of <a href="https://apolloapp.io">Apollo</a>, <a href="https://pixelpa.ls">Pixel Pals</a>, and other apps! I'm on <a href="https://mastodon.social/@christianselig">Mastodon</a>, too.</p>
+        </div>
+
+        <div class="header-apps">
+            <a href="https://apolloapp.io"><img src="/apollo-web-icon.png" alt=""></a>
+            <a href="https://pixelpa.ls"><img src="/pixel-pals-web-icon.png" alt=""></a>
+        </div>
+    </nav>
+</header>
+
+<div class="sponsor-banner">
+    <a href="https://emergetools.com"><img src="/emerge-tools-logo.png" alt="Emerge Tools logo" width="59px" height="39px">
+        <span>Supported by Emerge Tools. Supercharge your mobile apps.</span>
+    </a>
+</div><div id="content">
+
+<section id="main">
+  <div>
+        <article>
+          <h1 id="title">Trials and tribulations of 360° video in Juno</h1>
+          <h4 id="date"> February 25, 2024 </h4>
+           <p>In building <a href="https://juno.vision">Juno, a visionOS app for YouTube</a>, a question that&rsquo;s come up from users a few times is whether it supports 360° and 180° videos (for the unfamiliar, it&rsquo;s an immersive video format that fully surrounds you). The short answer is no, it&rsquo;s sort of a niche feature without much adoption, but for fun I wanted to take the weekend and see what I could come up with. Spoiler: it&rsquo;s not really possible, but the <em>why</em> is kinda interesting, so I thought I&rsquo;d write a post talking about it, and why it&rsquo;s honestly not a big loss at this stage.</p>
+<h2 id="how-do-you-even-show-a-360-video">How do you even… show a 360° video?</h2>
+
+
+
+    <img src="/2024/02/trials-360-juno-video/realitykit.png" alt="Logo for Apple&#39;s RealityKit framework, which is three stacked rectangles, dark grey, grey, then yellow at the top, with a 3D sphere, a cylinder, and a cone in white sitting on top" class="" loading="lazy" />
+
+<p>It&rsquo;s actually a lot easier than you might think. A 360° (or 180°) video isn&rsquo;t some crazy format in some crazy shape, it&rsquo;s just a regular, rectangular video file in appearance, but it&rsquo;s been recorded and stored in that rectangle slightly warped, with the expectation that however you display it will unwarp it.</p>
+<p>So how do you display it? Also pretty simply, you just create a hollow sphere, and you tell your graphical engine (in iOS&rsquo; case: RealityKit) to stretch the video over the inside of the sphere. Then you put the user at the center of that sphere (or half-sphere, in the case of 180° video), and bam, immersive video.</p>
+<h2 id="theres-always-a-catch">There&rsquo;s always a catch</h2>
+<p>In RealityKit, you get shapes, and you get materials you can texture those shapes with. But you can&rsquo;t just use <em>anything</em> as a texture, silly. Applying a texture to a complex 3D shape can be a pretty intensive thing to do, so RealityKit basically only wants images, or videos (a bit of an oversimplification but it holds for this example). You can&rsquo;t, for instance, show a scrolling recipe list or a dynamic map of your city and stretch that over a cube. &ldquo;Views&rdquo; in SwiftUI and UIKit (labels, maps, lists, web views, buttons, etc.) are not able to be used as a material (yet?).</p>
+<p>This is a big problem for us. If you <a href="https://christianselig.com/2024/02/introducing-juno/">don&rsquo;t remember</a>, while Juno obviously shows videos, it uses web views to accomplish this, as it&rsquo;s the only way YouTube allows developers to show YouTube videos (otherwise you could, say, avoid viewing ads which YouTube doesn&rsquo;t want), and I don&rsquo;t want to annoy Google/YouTube.</p>
+<p>Web views, while they show a video, are basically a portal into a video watching experience. You&rsquo;re just able to see the video, you don&rsquo;t have access to the underlying video directly, so you can&rsquo;t apply it as a texture with RealityKit. So we can&rsquo;t show it on a sphere, so we can&rsquo;t do 360° video.</p>
+<p>Unless…</p>
+<h2 id="lets-get-inventive">Let&rsquo;s get inventive</h2>
+
+
+
+<figure>
+    <img src="/2024/02/trials-360-juno-video/vision-vision.jpeg" alt="Vision from Wandavision TV show saying &#39;What is video, if not a bunch of images persevering?&#39;" class="" loading="lazy" />
+    <figcaption>Do I get points for including Vision in an article about Vision Pro</figcaption>
+</figure>
+
+<p>Okay, so we only have access to the video through a web view. We can see the video though, so what if we just continue to use the web player, and as it plays for the user, we took snapshots of each video frame and painted those snapshots over the sphere that surrounds the user. Do it very rapidly, say, 24 times per second, and you effectively have 24 fps video. Like a flip book!</p>
+<p>Well, easier said than done! The first big hurdle is that when you take a snapshot of a webview (<code>WKWebView</code>), everything renders into an image perfectly… <a href="https://developer.apple.com/forums/thread/683984"><em>except</em> the playing video</a>. I assume this is because the video is being hardware decoded in a way that is separate from how iOS performs the capture, so it&rsquo;s absent. (It&rsquo;s not because of DRM or anything like that, it also occurs just for local videos on my website.)</p>
+<p>This is fixable though, with JavaScript we can draw the HTML video element into a separate canvas, and then snapshot the canvas instead.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">videoWidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">videoHeight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">video</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>
+</span></span></code></pre></div><p>Okay, now we have the video frame visible. How do we capture it? There&rsquo;s a <em>bunch</em> of different tactics I tried for this, and I couldn&rsquo;t quite get any of them to be fast enough to be able to simulate 24 FPS (in order to get 24 captured frames per second, each frame capture must be less than 42 ms). But let&rsquo;s enumerate them from slowest to fastest in taking a snapshot of a 4K video frame (average of 10 runs).</p>
+<h4 id="calayer-renderin-cgcontext">CALayer render(in: CGContext)</h4>
+<p>Renders a <code>CALayer</code> into a <code>CGImage</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">webView</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">context</span> <span class="p">=</span> <span class="n">UIGraphicsGetCurrentContext</span><span class="p">()</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">webView</span><span class="p">.</span><span class="n">layer</span><span class="p">.</span><span class="n">render</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">image</span> <span class="p">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">UIGraphicsEndImageContext</span><span class="p">()</span>
+</span></span></code></pre></div><p>⏱️ Time: 270 ms</p>
+<h4 id="metal-texture">Metal texture</h4>
+<p>(<a href="https://stackoverflow.com/a/61862728">Code from Chris on StackOverflow</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">extension</span> <span class="nc">UIView</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">takeTextureSnapshot</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">MTLDevice</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">MTLTexture</span><span class="p">?</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">width</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">height</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">bounds</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="kd">let</span> <span class="nv">context</span> <span class="p">=</span> <span class="n">CGContext</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">height</span><span class="p">,</span><span class="n">bitsPerComponent</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">bytesPerRow</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="n">CGColorSpaceCreateDeviceRGB</span><span class="p">(),</span> <span class="n">bitmapInfo</span><span class="p">:</span> <span class="n">CGImageAlphaInfo</span><span class="p">.</span><span class="n">premultipliedLast</span><span class="p">.</span><span class="n">rawValue</span><span class="p">),</span> <span class="kd">let</span> <span class="nv">data</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">data</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">layer</span><span class="p">.</span><span class="n">render</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="n">context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="kd">let</span> <span class="nv">desc</span> <span class="p">=</span> <span class="n">MTLTextureDescriptor</span><span class="p">.</span><span class="n">texture2DDescriptor</span><span class="p">(</span><span class="n">pixelFormat</span><span class="p">:</span> <span class="p">.</span><span class="n">rgba8Unorm</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="n">height</span><span class="p">,</span> <span class="n">mipmapped</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="kd">let</span> <span class="nv">texture</span> <span class="p">=</span> <span class="n">device</span><span class="p">.</span><span class="n">makeTexture</span><span class="p">(</span><span class="n">descriptor</span><span class="p">:</span> <span class="n">desc</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">texture</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="n">region</span><span class="p">:</span> <span class="n">MTLRegionMake2D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="n">mipmapLevel</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">withBytes</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span> <span class="n">bytesPerRow</span><span class="p">:</span> <span class="n">context</span><span class="p">.</span><span class="n">bytesPerRow</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">texture</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">texture</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">webView</span><span class="p">.</span><span class="n">takeTextureSnapshot</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">MTLCreateSystemDefaultDevice</span><span class="p">()</span><span class="o">!</span><span class="p">)</span>
+</span></span></code></pre></div><p>⏱️ Time: 250 ms (<em>I really thought this would be faster, and maybe I&rsquo;m doing something wrong, or perhaps Metal textures are hyper-efficient once created, but take a bit to create in the first place</em>)</p>
+<h4 id="uiview-drawhierarchy">UIView drawHierarchy()</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">rendererFormat</span> <span class="p">=</span> <span class="n">UIGraphicsImageRendererFormat</span><span class="p">.</span><span class="k">default</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">rendererFormat</span><span class="p">.</span><span class="n">opaque</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">renderer</span> <span class="p">=</span> <span class="n">UIGraphicsImageRenderer</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="n">webView</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">format</span><span class="p">:</span> <span class="n">rendererFormat</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nv">image</span> <span class="p">=</span> <span class="n">renderer</span><span class="p">.</span><span class="n">image</span> <span class="p">{</span> <span class="n">context</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="n">webView</span><span class="p">.</span><span class="n">drawHierarchy</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="n">webView</span><span class="p">.</span><span class="n">bounds</span><span class="p">,</span> <span class="n">afterScreenUpdates</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>⏱️ Time: 150 ms</p>
+<h4 id="javascript-transfer">JavaScript transfer</h4>
+<p>What if we relied on JavaScript to do all the heavy lifting, and had the canvas write its contents into a base64 string, and then using WebKit messageHandlers, communicate that back to Swift?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">videoWidth</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">videoHeight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">video</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">prepend</span><span class="p">(</span><span class="nx">canvas</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 🟢 New code
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">imageData</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">webkit</span><span class="p">.</span><span class="nx">messageHandlers</span><span class="p">.</span><span class="nx">imageHandler</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="nx">imageData</span><span class="p">);</span>
+</span></span></code></pre></div><p>Then convert that to UIImage.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">userContentController</span><span class="p">(</span><span class="kc">_</span> <span class="n">userContentController</span><span class="p">:</span> <span class="n">WKUserContentController</span><span class="p">,</span> <span class="n">didReceive</span> <span class="n">message</span><span class="p">:</span> <span class="n">WKScriptMessage</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">message</span><span class="p">.</span><span class="n">name</span> <span class="p">==</span> <span class="s">&#34;imageHandler&#34;</span><span class="p">,</span> <span class="kd">let</span> <span class="nv">dataURLString</span> <span class="p">=</span> <span class="n">message</span><span class="p">.</span><span class="n">body</span> <span class="k">as</span><span class="p">?</span> <span class="nb">String</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">let</span> <span class="nv">image</span> <span class="p">=</span> <span class="n">convertToUIImage</span><span class="p">(</span><span class="n">dataURLString</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">private</span> <span class="kd">func</span> <span class="nf">convertToUIImage</span><span class="p">(</span><span class="kc">_</span> <span class="n">dataURLString</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">UIImage</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">dataURL</span> <span class="p">=</span> <span class="n">URL</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">dataURLString</span><span class="p">)</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nv">data</span> <span class="p">=</span> <span class="k">try</span><span class="p">!</span> <span class="n">Data</span><span class="p">(</span><span class="n">contentsOf</span><span class="p">:</span> <span class="n">dataURL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">UIImage</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">data</span><span class="p">)</span><span class="o">!</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>⏱️ Time: 130 ms</p>
+<h4 id="wkwebview-takesnapshot">WKWebView takeSnapshot()</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="n">webView</span><span class="p">.</span><span class="n">takeSnapshot</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span> <span class="n">image</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">    <span class="kc">self</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">image</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>⏱️ Time: 70 ms</p>
+<h4 id="test-results">Test results</h4>
+<p>As you can see, the best of the best got to about 14 frames per second, which isn&rsquo;t quite up to video playback level. Close, but not quite. I&rsquo;m out of ideas.</p>
+<p>There were some interesting suggestions to use the WebCodecs VideoFrame API, or an OffscreenCanvas, but maybe due to my lack of experience with JavaScript I couldn&rsquo;t get them meaningfully faster than the above JavaScript code with a normal canvas.</p>
+<p>If you have another idea, that you get working, I&rsquo;d love to hear it.</p>
+<h2 id="why-not-just-get-the-direct-video-file-then">Why not just get the direct video file then?</h2>
+<p>There&rsquo;s two good answers to this question.</p>
+<p>First, the obvious one, Google/YouTube doesn&rsquo;t like this. If you get the direct video URL, you can circumvent ads, which they&rsquo;re not a fan of. I want Juno to happily exist as an amazing visionOS experience for YouTube, and Google requests you do so through the web player, and I think I can build an awesome app with that so that&rsquo;s fine by me. 360° video is a small feature and I don&rsquo;t think it&rsquo;s worth getting in trouble over.</p>
+<p>Secondly, having access to the direct video still wouldn&rsquo;t do you any good. Why? Codecs.</p>
+<h2 id="battle-of-the-codecs">Battle of the codecs</h2>
+<p>Quick preamble. For years, pretty much all web video was H264. Easy. It&rsquo;s a format that compresses video to a smaller file size while still keeping a good amount of detail. The act of uncompressing it is a little intensive (think, unzipping a big zip file), so computers have dedicated chips specifically built to do this mega fast. You can do it without these, purely in software, but it takes longer and consumes more power, so not ideal.</p>
+<p>Time went on, videos got bigger, and the search for something that compresses video even better than H264 started (and without licensing fees). The creatively named H265 (aka HEVC) was born, and Apple uses it a bunch (it still has licensing fees, however). Google went in a different direction and developed VP9 and made it royalty-free, though there were still concerns around patents. These formats can produce video files that are half the size of H264 but with the same visual quality.</p>
+<p>Apple added an efficient H265 hardware decoder to the iPhone 7 back in 2016, but to my knowledge VP9 decoding is done completely in software to this day and just relies on the raw power and efficiency of Apple&rsquo;s CPUs.</p>
+<p>Google wanted to use their own VP9 format, and <strong>for 4K videos and above, only VP9 is available</strong>, no H264.</p>
+<h2 id="okay-and">Okay, and?</h2>
+<p>So if we want to play back a 4K YouTube video on our iOS device, we&rsquo;re looking at a VP9 video plain and simple. The catch is, you cannot play VP9 videos on iOS unless you&rsquo;re granted a special entitlement by Apple. <a href="https://forums.macrumors.com/threads/apple-m1-vp9-av1-decoding.2269938/page-2?post=29417159#post-29417159">The YouTube app has this special entitlement</a>, called <code>com.apple.developer.coremedia.allow-alternate-video-decoder-selection</code>, and so does Safari (and presumably other large video companies like Twitch, Netflix, etc.)</p>
+<p>But given that I cannot find any official documentation on that entitlement from Apple, safe to say it&rsquo;s not an entitlement you or I are going to be able to get, so we cannot play back VP9 video, meaning we cannot play back 4K YouTube videos. Your guess is as good as mine why, maybe it&rsquo;s very complex to implement if there&rsquo;s indeed not a native hardware decoder, so Apple doesn&rsquo;t like giving it out. So if you want 4K YouTube, you&rsquo;re looking at either a web view or the YouTube app.</p>
+<h2 id="sidebar-the-new-av1-codec">Sidebar: the new AV1 codec</h2>
+
+
+
+    <img src="/2024/02/trials-360-juno-video/m3.jpeg" alt="Apple keynote slide for the M3 chip listing AV1 decode support" class="" loading="lazy" />
+
+<p>Given that no one could agree on a video format, everyone went back to the drawing board, formed a collective group called the Alliance for Open Media (has Google, Apple, Samsung, Netflix, etc.), and authored the AV1 codec, hopefully creating the one video format to rule them all, with no licensing fees and hopefully no patent issues.</p>
+<p>Google uses this on YouTube, and Apple even added a hardware decoder for AV1 in their latest A17 and M3 chips. This means on my iPhone 15 Pro I can play back an AV1 video in iOS&rsquo; <code>AVPlayer</code> like butter.</p>
+<p>Buuuuttttt, the Apple Vision Pro ships with an M2, which has no such hardware decoder.</p>
+<h2 id="why-its-not-a-big-loss">Why it&rsquo;s not a big loss</h2>
+<p>So the tl;dr so far is YouTube uses the VP9 codec for 4K YouTube, and unless you&rsquo;re special, you can&rsquo;t playback VP9 video directly, which we need to do to be able to project it onto a sphere. Why not just do 1080p video?</p>
+<p><strong>Because even 4K video looks <em>bad</em> in 360 degrees.</strong></p>
+<p>Wait, what? Yeah, 4K looks <em>incredible</em> on the big TV in front of you, but you have to remember for 360° video, that same resolution is <em>completely surrounding you</em>. At any given point, the area you&rsquo;re looking at is a small subset of the full resolution! In other words, the Vision Pro&rsquo;s resolution is 4K per eye, meaning any area you look can show a 4K image, and when you stretch a 4K video all around you, everywhere you look is <em>not</em> 4K. Almost like the Vision Pro&rsquo;s resolution per eye drops enormously. If you&rsquo;re familiar with the pixels per degree (PPD) measurement for VR headsets, 4K immersive video has a quite bad PPD measurement.</p>
+<p>To test this further, I downloaded a 4K 360° video and projected it onto a sphere. The video is stretched from my feet to over my head. When I look straight, I&rsquo;d say I&rsquo;m looking at maybe 25% of the total height of the video. That means in a 4K video, which is 2,160 pixels tall, I can see maybe 25% of those pixels, or 540 pixels, so it looks a bit better than a 480p video but far from even 720p.</p>
+<p>Quick attempted visualization, showing the area you look at with a 4K TV:</p>
+
+
+
+    <img src="/2024/02/trials-360-juno-video/living-room-tv.png" alt="A TV in a living room in the center of your vision, labeled as 2160 pixels in height." class="" loading="lazy" />
+
+<p>Versus the area you look at a 4K 360° video:</p>
+
+
+
+    <img src="/2024/02/trials-360-juno-video/full-immersive.png" alt="A visualization of being fully immersed in a 4K video, showing the center point that you&#39;re actually looking at only being maybe 540 pixels in height." class="" loading="lazy" />
+
+<p>So in short, it might be 4K, but it&rsquo;s stretched over a far more massive area than you&rsquo;re used to when you think about 4K. Imagine your 4K TV is the size of your wall and you&rsquo;re watching it from a foot away, it&rsquo;d be immersive, but much less sharp. That means in reality it only looks a bit better than 480p or so.</p>
+<p>So while it&rsquo;d be cool to have 4K 360° video in Juno, I don&rsquo;t think it looks good enough that it&rsquo;s that compelling an experience.</p>
+<h2 id="enter-8k">Enter 8K</h2>
+<p>For the demo videos on the Apple Vision Pro (and the videos they show at the Apple Store), those are recorded in 8K, which gives you twice as many vertical and horizontal pixels to work with, and it levels up the experience <strong>a ton</strong>. Apple wasn&rsquo;t flexing here, I&rsquo;d say 8K is the minimum you want for a compelling, immersive video experience.</p>
+
+
+
+<figure>
+    <img src="/2024/02/trials-360-juno-video/apple-immersive.jpeg" alt="A person in a yellow jacket walking across a rope spread over a valley, with a large camera on a crane recording her." class="" loading="lazy" />
+    <figcaption>Apple&#39;s impressive 8K immersive video recording setup</figcaption>
+</figure>
+
+<p>And YouTube <strong>does</strong> have 8K, 360° videos! They&rsquo;re rare since the hardware to record that isn&rsquo;t cheap, but they are available. <a href="https://www.youtube.com/watch?v=1La4QzGeaaQ">And pretty cool</a>!</p>
+<p>But if I was a betting man, I doubt that&rsquo;s ever coming to the first generation Vision Pro.</p>
+<p>Why? As mentioned 8K video on YouTube is only available in VP9 and AV1. The Vision Pro does not have a hardware AV1 decoder as it has an M2 not an M3, so it would have to do it in software. Testing on my M1 Pro MacBook Pro, which seems to Geekbench similarly to the Vision Pro, trying to playback 8K 360° video in Chrome is quite choppy and absolutely hammers my CPU. Apple&rsquo;s chips may be powerful enough to grunt through 4K without a hardware decoder, but it doesn&rsquo;t seem you can brute force 8K without a hardware decoder.</p>
+<p>Maybe I&rsquo;m wrong or missing something, or Google works with Apple and re-encodes their 360° videos in a specific, Vision-Pro-only H265 format, but I&rsquo;m not too hopeful that this generation of the product, without an M3, will have 8K 360° YouTube playback. That admittedly is an area the Quest 3 has the Vision Pro beat, in that its Qualcomm chip has an AV1 decoder.</p>
+<p>Does this mean the Vision Pro is a failure and we&rsquo;ll never see 8K immersive video? Not at all, you could do it in a different codec, Apple has already shown it&rsquo;s possible, I&rsquo;m just not too hopeful for YouTube videos at this stage.</p>
+<h2 id="in-conclusion">In Conclusion</h2>
+<p>As a developer, playing back the codec YouTube uses for its 4K video does not appear possible. It also doesn&rsquo;t <em>seem</em> possible to snapshot frames fast enough to project it in realtime 3D. And even if it was, 4K video does not look too great unfortunately, ideally you want 8K, which seems even less likely.</p>
+<p>But dang, it was a fun weekend learning and trying things. If you manage to figure out something that I was unable to, tell me on <a href="https://mastodon.social/@christianselig">Mastodon</a> or <a href="https://twitter.com/christianselig">Twitter</a>, and I&rsquo;ll name the 3D Theater in Juno after you. 😛 In the meantime, I&rsquo;m going to finish up Juno 1.2!</p>
+<p><em>Additonal thanks to: Khaos Tian, Arthur Schiller, Drew Olbrich, Seb Vidal, Sanjeet Suhag, Eric Provencher, and others! ❤️</em></p>
+
+        </article>
+
+        <div class="post-navigation">
+          <div class="next-post">
+            
+            <a class="link-reverse" href="https://christianselig.com/2024/03/recreating-visionos-search-bar/?ref=footer">‹ Recreating Apple&#39;s beautiful visionOS search bar</a>
+            
+          </div>
+          
+          <div class="previous-post">
+            
+            <a class="link-reverse" href="https://christianselig.com/2024/02/vision-pro-stand/?ref=footer">My little Apple Vision Pro stand ›</a>
+            
+          </div>        
+        </div>
+  </div>
+</section>
+
+        </div><footer class="footer">
+    <p><a href="https://christianselig.com/posts">All Posts</a> · <a href="https://mastodon.social/@christianselig">Mastodon</a> · <a href="https://twitter.com/christianselig">Twitter</a> · <a href="https://christianselig.com/index.xml">RSS</a> · <a href="mailto:me@christianselig.com">Contact</a></p>
+    <p class="copyright">© Christian Selig 2024</p>
+</footer></body>
+</html>
+ contentType 9 text/html url 61 https://christianselig.com:443/2024/02/trials-360-juno-video/ responseCode 3 200 

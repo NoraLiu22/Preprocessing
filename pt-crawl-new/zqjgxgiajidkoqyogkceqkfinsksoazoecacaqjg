@@ -1,0 +1,1272 @@
+zqjgxgiajidkoqyogkceqkfinsksoazoecacaqjg length 5 68161 page 68161 <!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<script type="text/javascript" async=true>
+(function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.quantcast.com'
+    .concat('/choice/', 'B7Tf7eGZccc3h', '/', host, '/choice.js?tag_version=V2');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+
+  firstScript.parentNode.insertBefore(element, firstScript);
+
+  function makeStub() {
+    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+    var queue = [];
+    var win = window;
+    var cmpFrame;
+
+    function addFrame() {
+      var doc = win.document;
+      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+      if (!otherCMP) {
+        if (doc.body) {
+          var iframe = doc.createElement('iframe');
+
+          iframe.style.cssText = 'display:none';
+          iframe.name = TCF_LOCATOR_NAME;
+          doc.body.appendChild(iframe);
+        } else {
+          setTimeout(addFrame, 5);
+        }
+      }
+      return !otherCMP;
+    }
+
+    function tcfAPIHandler() {
+      var gdprApplies;
+      var args = arguments;
+
+      if (!args.length) {
+        return queue;
+      } else if (args[0] === 'setGdprApplies') {
+        if (
+          args.length > 3 &&
+          args[2] === 2 &&
+          typeof args[3] === 'boolean'
+        ) {
+          gdprApplies = args[3];
+          if (typeof args[2] === 'function') {
+            args[2]('set', true);
+          }
+        }
+      } else if (args[0] === 'ping') {
+        var retr = {
+          gdprApplies: gdprApplies,
+          cmpLoaded: false,
+          cmpStatus: 'stub'
+        };
+
+        if (typeof args[2] === 'function') {
+          args[2](retr);
+        }
+      } else {
+        if(args[0] === 'init' && typeof args[3] === 'object') {
+          args[3] = Object.assign(args[3], { tag_version: 'V2' });
+        }
+        queue.push(args);
+      }
+    }
+
+    function postMessageEventHandler(event) {
+      var msgIsString = typeof event.data === 'string';
+      var json = {};
+
+      try {
+        if (msgIsString) {
+          json = JSON.parse(event.data);
+        } else {
+          json = event.data;
+        }
+      } catch (ignore) {}
+
+      var payload = json.__tcfapiCall;
+
+      if (payload) {
+        window.__tcfapi(
+          payload.command,
+          payload.version,
+          function(retValue, success) {
+            var returnMsg = {
+              __tcfapiReturn: {
+                returnValue: retValue,
+                success: success,
+                callId: payload.callId
+              }
+            };
+            if (msgIsString) {
+              returnMsg = JSON.stringify(returnMsg);
+            }
+            if (event && event.source && event.source.postMessage) {
+              event.source.postMessage(returnMsg, '*');
+            }
+          },
+          payload.parameter
+        );
+      }
+    }
+
+    while (win) {
+      try {
+        if (win.frames[TCF_LOCATOR_NAME]) {
+          cmpFrame = win;
+          break;
+        }
+      } catch (ignore) {}
+
+      if (win === window.top) {
+        break;
+      }
+      win = win.parent;
+    }
+    if (!cmpFrame) {
+      addFrame();
+      win.__tcfapi = tcfAPIHandler;
+      win.addEventListener('message', postMessageEventHandler, false);
+    }
+  };
+
+  makeStub();
+
+  var uspStubFunction = function() {
+    var arg = arguments;
+    if (typeof window.__uspapi !== uspStubFunction) {
+      setTimeout(function() {
+        if (typeof window.__uspapi !== 'undefined') {
+          window.__uspapi.apply(window.__uspapi, arg);
+        }
+      }, 500);
+    }
+  };
+
+  var checkIfUspIsReady = function() {
+    uspTries++;
+    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+      console.warn('USP is not accessible');
+    } else {
+      clearInterval(uspInterval);
+    }
+  };
+
+  if (typeof window.__uspapi === 'undefined') {
+    window.__uspapi = uspStubFunction;
+    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+})();
+</script>
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+
+    <link rel="shortcut icon" href="https://cdn2.wanderlust.co.uk/siteimages/favicon.ico" type="image/x-icon">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSWXP4F');</script>
+    <!-- End Google Tag Manager -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdPrpIUAAAAAGSRR-svVZQam3PVy4eQw-aGjM5E"></script>
+    
+    <script type="text/javascript" src="https://cdn2.wanderlust.co.uk/sitescripts/essentials.js?ver=BRk0z1vU2Yxwee7VDzm25rMCqKV9swuNilaPBDY1nmA1"></script>
+
+    
+
+    <script>
+        var wl_audio_initialised = false;
+        var wanderlustWebsiteTagging = wanderlustWebsiteTagging || {};
+    </script>
+
+    
+
+
+<script>
+wanderlustWebsiteTagging.author = '';
+wanderlustWebsiteTagging.destTags = {}
+wanderlustWebsiteTagging.destTags.dfpValues = ['india'];
+wanderlustWebsiteTagging.destTags.Labels = ['India'];
+wanderlustWebsiteTagging.destTags.Values = [78];
+wanderlustWebsiteTagging.regionTags = {}
+wanderlustWebsiteTagging.regionTags.dfpValues = ['asia'];
+wanderlustWebsiteTagging.regionTags.Labels = ['Asia'];
+wanderlustWebsiteTagging.regionTags.Values = [302];
+wanderlustWebsiteTagging.audience = 'Anonymous';
+wanderlustWebsiteTagging.zone = 'Content';
+wanderlustWebsiteTagging.subZone = 'home';
+wanderlustWebsiteTagging.pageID = '20183';
+wanderlustWebsiteTagging.contentType = 'legacyDestinationArticle';
+</script>
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500,700,800|Open+Sans:400,500,700" rel="stylesheet">
+    <link href="https://cdn2.wanderlust.co.uk/sitescripts/essentialstyles.css?ver=ou7sOf5yeer0qxVK8TCpJz0XzPctrFBYtyMxbxj0kMU1" type="text/css" rel="stylesheet" />
+
+    
+
+    
+
+    
+
+    
+
+        <link rel="canonical" href="https://www.wanderlust.co.uk/content/time-to-return-to-kashmir-india/">
+
+    <title>Dispatches: time to return to Kashmir? | Wanderlust</title>
+    <meta name="description" content="A restored historic road, revision of the British FCO&#39;s travel restrictions, record visitor numbers – could troubled Kashmir be back on the tourist map, asks A" />
+
+    <meta property="twitter.card" content="summary" />
+    <meta property="twitter:site" content="@wanderlustmag" />
+    <meta property="twitter:creator" content="@wanderlustmag" />
+
+    <meta property="og:title" content="Dispatches: time to return to Kashmir?" />
+    <meta property="og:site_name" content="Wanderlust" />
+    <meta property="og:description" content="A restored historic road, revision of the British FCO&#39;s travel restrictions, record visitor numbers – could troubled Kashmir be back on the tourist map, asks A" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.wanderlust.co.uk/content/time-to-return-to-kashmir-india/?utm_source=Social&utm_medium=Share" />
+
+            <meta property="og:image" content="https://cdn2.wanderlust.co.uk/media/2534/articles-dispatches-time-to-return-to-kashmir.jpg?anchor=center&amp;mode=crop&amp;width=1200&amp;height=0&amp;rnd=131480765510000000" />
+
+
+    
+    <script>(function (i, s, o, g, r, tid, div, cd, chn, a, m) { i['DSContentObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); i[r].q = i[r].q || []; i[r]('render', tid, div, cd, chn); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g + '?dc_ord=' + Math.round(1E9 * Math.random()); m.parentNode.insertBefore(a, m) })(window, document, 'script', '//render.entheto.traveldesk.io/js/serve.js', 'dsContent', '35', 'div-ds-content-35', '17');</script>
+    <script>
+        var enthetoPresent = false; var adSlot99 = '';
+    </script>
+
+    
+
+
+
+
+
+    <!--Googe DFP ad serving-->
+    
+    <script async="async" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
+
+
+    <script>
+        var adSlot1;
+        var adSlotMapping;
+        var singlePixelAd;
+        var subsTopAdSlotMapping;
+        var subsTopAdSlot;
+        var topNavPromoSlot;
+
+        googletag.cmd.push(function () {
+
+            // Define a size mapping object. The first parameter to addSize is
+            // a viewport size, while the second is a list of allowed ad sizes.
+            adSlotMapping = googletag.sizeMapping().
+                //// Small ad
+                addSize([0, 0], [88, 31]).
+                //// Accepts both common mobile banner formats
+                addSize([320, 400], [[300, 250], [320, 100]]).
+                //// Landscape tablet
+                addSize([750, 200], [[728, 90], [336, 280], [300, 250]]).
+                //// Desktop
+                addSize([1024, 200], [[970, 250], [728, 90], [970, 90]]).build();
+
+            //adSlot1 = googletag.defineSlot('/12852463/MultiSize_Slot_One', [[970, 250], [336, 280], [300, 250], [728, 90], [320, 100]], 'div-gpt-ad-1494765176497-0').defineSizeMapping(mapping).addService(googletag.pubads());
+            //var adSlot2 = googletag.defineSlot('/12852463/MultiSize_Slot_Two', [[728, 90], [320, 100], [336, 280], [970, 250], [300, 250]], 'div-gpt-ad-1494767521370-0').defineSizeMapping(mapping).addService(googletag.pubads());
+            //var adSlot3 = googletag.defineSlot('/12852463/MultiSize_Slot_Three', [[336, 280], [970, 250], [300, 250], [728, 90], [320, 100]], 'div-gpt-ad-1494767393911-0').defineSizeMapping(mapping).addService(googletag.pubads());
+            singlePixelAd = googletag.defineSlot('/12852463/SinglePixel_Slot_One', [1, 1], 'div-gpt-ad-1496826577017-0').addService(googletag.pubads())
+                .setCollapseEmptyDiv(true, true);
+
+
+            subsTopAdSlotMapping = googletag.sizeMapping().
+                //// Small ad
+                addSize([0, 0], [320, 100]).
+                //// Accepts both common mobile banner formats
+                addSize([320, 400], [320, 100]).
+                //// Landscape tablet
+                addSize([750, 200], [728, 90]).
+                //// Desktop
+                addSize([1024, 200], [970, 120]).build();
+
+            subsTopAdSlot = googletag.defineSlot('/12852463/SubscriptionsSlot_TopOfPage', [[970, 120], [728, 90], [320, 100]], 'div-gpt-ad-1584357351630-0').
+                defineSizeMapping(subsTopAdSlotMapping).
+                addService(googletag.pubads()).
+                setCollapseEmptyDiv(true, true);
+
+            let topNavSlotName = 'div-gpt-ad-1614600521153-0';
+            topNavPromoSlot = googletag.defineSlot('/12852463/navbar_promo', [300, 150], topNavSlotName).addService(googletag.pubads()).
+                setCollapseEmptyDiv(true, true);
+
+            //window.AdSlots = new Array();
+            //window.AdSlots.push(adSlot1);
+            //window.AdSlots.push(adSlot2);
+            //window.AdSlots.push(adSlot3);
+            //window.AdSlots.push(adSlot4);
+
+            if (wanderlustWebsiteTagging.pageID) {
+                googletag.pubads().setTargeting('PageID', wanderlustWebsiteTagging.pageID);
+            }
+
+            if (wanderlustWebsiteTagging.zone) {
+                googletag.pubads().setTargeting('Zone', wanderlustWebsiteTagging.zone);
+            }
+
+            if (wanderlustWebsiteTagging.subZone) {
+                googletag.pubads().setTargeting('SubZone', wanderlustWebsiteTagging.subZone);
+            }
+
+            if (wanderlustWebsiteTagging.destTags) {
+                googletag.pubads().setTargeting('DestTags', wanderlustWebsiteTagging.destTags.dfpValues);
+            }
+
+            if (wanderlustWebsiteTagging.cityTags) {
+                googletag.pubads().setTargeting('CityTags', wanderlustWebsiteTagging.cityTags.dfpValues);
+            }
+
+            if (wanderlustWebsiteTagging.regionTags) {
+                googletag.pubads().setTargeting('Regions', wanderlustWebsiteTagging.regionTags.dfpValues);
+            }
+
+            if (wanderlustWebsiteTagging.triptypes) {
+                googletag.pubads().setTargeting('TripTypes', wanderlustWebsiteTagging.triptypes.dfpValues);
+            }
+
+            if (wanderlustWebsiteTagging.experiTages) {
+                googletag.pubads().setTargeting('ExperiTags', wanderlustWebsiteTagging.experiTages.dfpValues);
+            }
+
+            if (wanderlustWebsiteTagging.subjects) {
+                googletag.pubads().setTargeting('Subjects', wanderlustWebsiteTagging.subjects.dfpValues);
+            }
+
+            if (wanderlustWebsiteTagging.issue) {
+                googletag.pubads().setTargeting('Issue', wanderlustWebsiteTagging.issue);
+            }
+
+            if (wanderlustWebsiteTagging.audience) {
+                googletag.pubads().setTargeting('Audience', wanderlustWebsiteTagging.audience);
+            }
+
+            if (wanderlustWebsiteTagging.contentType) {
+                googletag.pubads().setTargeting('contentType', wanderlustWebsiteTagging.contentType);
+            }
+
+            googletag.pubads().disableInitialLoad();
+
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+
+            googletag.display(topNavSlotName);
+            googletag.pubads().refresh([topNavPromoSlot]);
+
+        });
+    </script>
+
+    <!--Google Adwords Retargetting options-->
+    <script type="text/javascript">
+        var google_tag_params = {};
+
+        if (wanderlustWebsiteTagging.pageID) {
+            google_tag_params.PageID = wanderlustWebsiteTagging.pageID;
+        }
+
+        if (wanderlustWebsiteTagging.zone) {
+            google_tag_params.Zone = wanderlustWebsiteTagging.zone;
+        }
+
+        if (wanderlustWebsiteTagging.subZone) {
+            google_tag_params.SubZone = wanderlustWebsiteTagging.subZone;
+        }
+
+        if (wanderlustWebsiteTagging.destTags) {
+            google_tag_params.DestTags = wanderlustWebsiteTagging.destTags;
+        }
+
+        if (wanderlustWebsiteTagging.regionTags) {
+            google_tag_params.Regions = wanderlustWebsiteTagging.regionTags;
+        }
+
+        if (wanderlustWebsiteTagging.triptypes) {
+            google_tag_params.TripTypes = wanderlustWebsiteTagging.triptypes;
+        }
+
+        if (wanderlustWebsiteTagging.experiTages) {
+            google_tag_params.ExperiTags = wanderlustWebsiteTagging.experiTages;
+        }
+
+        if (wanderlustWebsiteTagging.subjects) {
+            google_tag_params.Subjects = wanderlustWebsiteTagging.subjects;
+        }
+
+        if (wanderlustWebsiteTagging.issue) {
+            google_tag_params.Issue = wanderlustWebsiteTagging.issue;
+        }
+
+        if (wanderlustWebsiteTagging.audience) {
+            google_tag_params.Audience = wanderlustWebsiteTagging.audience;
+        }
+    </script>
+
+    <!--Google Analytics-->
+    <script>
+                (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-3142295-1', 'auto');
+                var serverName = 'EC2AMAZ-BSQJ2BO';
+                ga('set', 'dimension1', serverName);
+                ga('set', 'dimension2', wanderlustWebsiteTagging.audience);
+                ga('set', 'dimension4', wanderlustWebsiteTagging.regionTags && wanderlustWebsiteTagging.regionTags.dfpValues ? wanderlustWebsiteTagging.regionTags.dfpValues.join(): '');
+                ga('set', 'dimension5', wanderlustWebsiteTagging.destTags && wanderlustWebsiteTagging.destTags.dfpValues ? wanderlustWebsiteTagging.destTags.dfpValues.join() : '');
+                ga('set', 'dimension6', wanderlustWebsiteTagging.triptypes && wanderlustWebsiteTagging.triptypes.dfpValues ? wanderlustWebsiteTagging.triptypes.dfpValues.join() : '');
+                ga('set', 'dimension7', wanderlustWebsiteTagging.experiTages && wanderlustWebsiteTagging.experiTages.dfpValues ? wanderlustWebsiteTagging.experiTages.dfpValues.join() : '');
+                ga('set', 'dimension8', wanderlustWebsiteTagging.subjects && wanderlustWebsiteTagging.subjects.dfpValues ? wanderlustWebsiteTagging.subjects.dfpValues.join() : '');
+
+ga('set', 'dimension3', 'November 2012');
+                ga('send', 'pageview');
+    </script>
+
+    <!--AdSense -->
+    
+
+</head>
+	
+<body class="">
+    <script>
+        var path = window.location.pathname;
+        if (path.indexOf('/guides') === 0 && path != '/guides' && path != '/guides/') {
+            document.body.classList.add('guide-page');
+        }
+        else if (path !== '/') {
+            document.body.classList.add('page');
+        }
+    </script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSWXP4F"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- /12852463/SinglePixel_Slot_One -->
+    <div id='div-gpt-ad-1496826577017-0' style='height:1px; width:1px;'>
+        <script>
+            googletag.cmd.push(function () {
+                googletag.display('div-gpt-ad-1496826577017-0');
+                googletag.pubads().refresh([singlePixelAd]);
+            });
+        </script>
+    </div>
+
+    
+    <div class="header py-4 d-none d-md-block">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <a class="logo" href="/" aria-label="Go to the Wanderlust homepage"><img src="https://cdn2.wanderlust.co.uk/siteimages/wl-logo-gold-v4.svg" width="350" alt="Wanderlust Travel Magazine logo"></a>
+            </div>
+        </div>
+        <!--/row-->
+        
+    </div>
+    <!--container-->
+</div>
+
+<header class="navSection sticky-top">
+    <div class="nav-promo">
+        <div id='div-gpt-ad-1614600521153-0' style='width: 300px; height: 150px;'></div>
+        </div>
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col">
+                    <nav class="wl-navbar" aria-label="Main Navigation">
+                        <div class=" sticky_sentinel sticky_sentinel--top" id="topNavSideLogoSentinel"></div>
+                        <a class="topNavSideLogo" href="/" aria-label="Go to the Wanderlust homepage"><img src="https://cdn2.wanderlust.co.uk/siteimages/wl-logo-gold-v4.svg" width="250" alt="Wanderlust Travel Magazine logo" id="topNavSideLogo"></a>
+                        
+                        <div class="mobile-menu hamburger hamburger--slider js-hamburger" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <div class="hamburger-box">
+                                <div class="hamburger-inner"></div>
+                            </div>
+                        </div>
+                        <div class="mobile-wrapper collapse" id="mainNav" aria-expanded="false">
+                            <ul class="main-menu" role="navigation" aria-label="Main Navigation" tabindex="0">
+                                <li class="nav-item header-more">
+                                    
+                                    <a href="#" title="More" data-bind="toggle-more" role="menuitem" aria-haspopup="true" aria-expanded="false" tabindex="0">
+                                        
+                                        <svg viewBox="0 0 100 80" width="20" height="20">
+                                            <rect width="100" height="10"></rect>
+                                            <rect y="30" width="100" height="10"></rect>
+                                            <rect y="60" width="100" height="10"></rect>
+                                        </svg>
+                                    </a>
+                                    <div class="sub-menu" aria-label="More">
+                                        <ul>
+                                            
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"><a href="/competitions">Competitions</a></li>
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-none"><a href="/wanderlust-magazine">Wanderlust magazine</a></li>
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-none"><a href="https://shop.wanderlust.co.uk/">Shop</a></li>
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"><a href="/hot-offers">Hot Offers</a></li>
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"><a href="/awards/wanderlust-world-guide-awards/">World Guide Awards</a></li>
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"><a href="/wanderlust-photo-of-the-year-competition/">Photo of the Year</a></li>
+                                            
+                                            <li class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"><a href="/discover" target="_blank">Discover</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/destinations" title="Destinations">
+                                        <span>Destinations</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/interests" title="Interests">
+                                        <span>Interests</span>
+                                    </a>
+                                </li>
+                                <!-- li class="nav-item">
+                                    <a href="/trip-finder" title="Trips">
+                                        <span>Trips</span>
+                                    </a>
+                                </li -->
+                                <li class="nav-item">
+                                    <a href="/events" title="Events">
+                                        <span>Events</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-block">
+                                    <a href="/wanderlust-magazine" title="Wanderlust magazine">
+                                        <span>Magazine</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-block">
+                                    <a href="https://shop.wanderlust.co.uk/?utm_source=wanderlust&utm_medium=top_navigation" title="Shop" target="_blank">
+                                        <span>Shop</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"><a href="/competitions">Competitions</a></li>
+                                
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"><a href="/hot-offers">Hot Offers</a></li>
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"><a href="/awards/wanderlust-world-guide-awards/">World Guide Awards</a></li>
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"><a href="/wanderlust-photo-of-the-year-competition/">Photo of the Year</a></li>
+                                
+                                <li class="nav-item d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"><a href="/discover" target="_blank">Discover</a></li>
+
+
+
+                            </ul>
+                            <div class="nav-right">
+                                <form class="search" action="/search" role="search">
+                                    <div class="searchbox"><input class="" type="search" placeholder="Search..." name="srch-term" aria-label="Search"></div>
+                                    <button class="btn btn-search" type="submit" aria-label="Search Wanderlust.co.uk"><i class="far fa-search"></i></button>
+                                </form>
+                                <p class="actions">
+                                    <a href="/your-wanderlust">Wanderlust Club <span class="badge badge-info hidden-xs" data-count="0"></span></a>
+                                </p>
+
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+</header>
+
+    <div class="siteContent">
+        
+        
+    
+    
+    
+
+
+
+
+
+    <div class="subscriptionsAdSlot" id="div-gpt-ad-1584357351630-0"></div>
+
+    <div class="bodySection">
+        
+
+    
+
+    
+
+
+        <div class="mainImageParallax" style="
+                padding-top: 50px;
+                background-color: #ebeae6;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+            ">
+            <div class="hero-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="byline">
+                                        <a class="authorLink" href="/contributors/amar-grover/">Amar Grover</a> | 
+                                    14 November 2012
+
+                            </h4>
+                            <h1>Dispatches: time to return to Kashmir?</h1>
+                            <p class="standfirst">A restored historic road, revision of the British FCO&#39;s travel restrictions, record visitor numbers – could troubled Kashmir be back on the tourist map, asks Amar Grover</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+
+                 @media only screen and (max-width: 2000px) {
+                    .mainImageParallax {
+                        background-image:linear-gradient(to bottom, transparent, rgb(255,255,255,0.1),rgb(0,0,0,0.7)),url(https://cdn2.wanderlust.co.uk/media/2534/articles-dispatches-time-to-return-to-kashmir.jpg?anchor=center&mode=crop&width=2000&height=1000&format=auto&quality=80&rnd=131480765510000000);
+                        height: 80vh;
+                    }
+                }
+
+                @media only screen and (max-width: 1366px) {
+                    .mainImageParallax {
+                        background-image:linear-gradient(to bottom, transparent, rgb(255,255,255,0.1),rgb(0,0,0,0.7)),url(https://cdn2.wanderlust.co.uk/media/2534/articles-dispatches-time-to-return-to-kashmir.jpg?anchor=center&mode=crop&width=1366&height=850&format=auto&quality=80&rnd=131480765510000000);
+                        height: 80vh;
+                    }
+                }
+
+                 @media only screen and (max-width: 1024px) {
+                    .mainImageParallax {
+                        background-image:linear-gradient(to bottom, transparent, rgb(255,255,255,0.1),rgb(0,0,0,0.7)),url(https://cdn2.wanderlust.co.uk/media/2534/articles-dispatches-time-to-return-to-kashmir.jpg?anchor=center&mode=crop&width=1024&height=1024&format=auto&quality=80&rnd=131480765510000000);
+                        height: 80vh;
+                    }
+                    .mainImageParallax .hero-section {bottom: 50px;}
+                }
+
+                @media only screen and (max-width: 768px) {
+                    .mainImageParallax {
+                        background-image:linear-gradient(to bottom, rgb(0,0,0,0.3),rgb(0,0,0,0.3)),url(https://cdn2.wanderlust.co.uk/media/2534/articles-dispatches-time-to-return-to-kashmir.jpg?anchor=center&mode=crop&width=770&height=850&format=auto&quality=80&rnd=131480765510000000);
+                        height: 100vh;
+                    }
+                    .mainImageParallax .hero-section {bottom: 0px;}
+                }
+
+                @media only screen and (max-width: 450px) {
+                    .mainImageParallax {
+                        background-image:linear-gradient(to bottom, rgb(0,0,0,0.3),rgb(0,0,0,0.3)),url(https://cdn2.wanderlust.co.uk/media/2534/articles-dispatches-time-to-return-to-kashmir.jpg?anchor=center&mode=crop&width=450&height=850&format=auto&quality=80&rnd=131480765510000000);
+                        height: 100vh;
+                    }
+                }
+
+            </style>
+        </div>
+    <section class="headerSection">
+        <div class="container">
+            <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <span class="read-time">6 mins</span>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <script>
+
+    function addToPinboard(contentId)
+    {
+        wanderlustWebsite.contentPinBoard.addContentToPinboard(contentId);
+        //toggle our add button
+        $('#addToContentPinboardBttn').toggle();
+        //toggle our delete button
+        $('#removeFromContentPinboardBttn').toggle();
+    }
+
+    function removeFromBasket(contentId)
+    {
+        wanderlustWebsite.contentPinBoard.removeContentFromPinboard(contentId);
+        //toggle our add button
+        $('#addToContentPinboardBttn').toggle();
+        //toggle our delete button
+        $('#removeFromContentPinboardBttn').toggle();
+    }
+</script>
+
+<div class="social-sharing">
+    <div class="socialPanel"></div>
+    <div class="contentPinBoard">
+        <button id="addToContentPinboardBttn" class="pin-it-icon" onclick="ga('send', 'event', 'content', 'contentPinned', 'Time to return to Kashmir India'); addToPinboard(20183)" data-content="Pin to Your Wanderlust" aria-label="Pin content to Your Wanderlust"><i class=" fas fa-heart"></i></button>
+        <button style="display:none;" id="removeFromContentPinboardBttn" class="remove-pin-it-icon" data-content="Remove from Your Wanderlust" onclick="removeFromBasket(20183)"><i class=" fas fa-heart"></i></button>
+    </div>
+
+</div>
+
+    
+                        </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+        <script>
+            var adSlot99 = '';
+
+            googletag.cmd.push(function () {
+                adSlot99 = googletag.defineSlot('/12852463/MultiSize_Slot_Standfirst', [[970, 250], [336, 280], [300, 250], [728, 90], [320, 100]], 'div-gpt-ad-1494765176497-0').
+                    defineSizeMapping(adSlotMapping).
+                    addService(googletag.pubads()).
+                    setCollapseEmptyDiv(true, true);
+            });
+        </script>
+        <div class="adSlot standfirstAd" id='div-gpt-ad-1494765176497-0'>
+                <script>
+                    googletag.cmd.push(function () {
+                        googletag.display('div-gpt-ad-1494765176497-0');
+                        googletag.pubads().refresh([adSlot99]);
+                    });
+                </script>
+        </div>
+
+
+
+
+
+
+<!-- /12852463/MultiSize_Slot_One -->
+<!-- div class="adSlot">
+    <div id='div-gpt-ad-1494765176497-0'>
+        <script>
+            googletag.cmd.push(function () {
+                googletag.display('div-gpt-ad-1494765176497-0');
+                googletag.pubads().refresh([adSlot1]);
+            });
+        </script>
+    </div>
+</div -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="articleBodyContent">
+                        
+                        <div class="textSection">
+<p>Tell me, sir, you&rsquo;re enjoying your stay, everything comfortable?&rdquo; I&rsquo;d been in town barely an hour when my visitor arrived. He was a policeman, friendly and polite; we chatted as he examined my passport. I was in the small Kashmiri town of Rajouri, roughly midway between Jammu, below on the dusty plains, and Srinagar, celebrated Kashmiri capital of lakes and houseboats.</p> <p>All was well. For now, at least, one of Asia&rsquo;s most contentious regions is enjoying some tranquillity. It&rsquo;s happened before, of course. Peace has erupted in the recent past only for some infraction &ndash; major or minor, real or imagined &ndash; to reignite the streets, the soldiers and the politicians. Yet in 2011 Kashmir enjoyed a record 1.2 million tourists (mainly Indian), while Taj Hotels opened the first luxury property the state has seen since way back in 1957.</p> <p>&ldquo;But why was I in Rajouri?&rdquo; the policeman asked, handing me back my passport. A fair question, as it&rsquo;s never featured on Kashmir&rsquo;s modern tourist circuit. That now seems set to change: I&rsquo;d taken this route to drive the recently opened old &lsquo;Mughal Road&rsquo;.</p> <p>The first travellers to visit Kashmir&rsquo;s fabled vale were not Raj-era grandees and fusty colonials but the great Mughals who ruled much of north India from the early 16th century to 1857. Despite their architectural prowess and skill with gardens, they also relished escaping the plains&rsquo; blistering summer heat. Journeying through the Punjab from Lahore and Delhi, they developed an already existing trail across the Himalaya, augmenting the route with caravanserais so the emperor and his retinue could camp in comfort.</p> <h2>Gut instinct</h2> <p>In recent years, with militancy ebbing, Kashmir&rsquo;s state government has made the Mughal Road motorable. Its aim is to provide an alternative to the long-standing yet inherently vulnerable road up to Srinagar, which is prone to rock falls and snow drifts, and increasingly sees epic traffic jams. Although sections of the Mughal Road are still fairly rough and frankly unready, what used to be an arduous 15-hour drive to Srinagar for some Kashmiris is now little more than five.</p> <p>That morning I&rsquo;d flown to Jammu. An hour later I was high on the ramparts of Akhnoor Fort, gazing at the silvery-blue River Chenab as it emerged from the Himalayan foothills onto the hot, hazy Punjab. Skiffs were being punted across the river while bells pealed from a nearby temple &ndash; a charming, bucolic scene.</p> <p> </p> <p>We plunged deeper into lush hills where troupes of macaques foraged. Joining the original Mughal Road near Naushahra, we turned north up a slender valley and paused at Chingus caravanserai. Its peculiar name &ndash; derived from the Persian for intestines &ndash; originates with Emperor Jahangir, who died here in 1627 while&nbsp;returning from Srinagar. Fearful of unrest, the wily Empress Nur Jahan (the most famous of his 20 wives) disguised Jahangir&rsquo;s passing by removing his intestines, embalming his corpse and perching it upright on an elephant just long enough to reach Lahore. Resembling a high-walled fortress, Chingus remains largely intact, and occasional passing traffic fails to dampen its extraordinary, almost sinister, atmosphere.</p> <h2>Floating palaces</h2> <p>Leaving Rajouri early next morning, we headed further into the valley. Slender suspension bridges linked hamlets lapped by terraced fields of wheat and corn. Pillboxes dotted the hillsides, but despite the occasional army camp, the security presence felt surprisingly low-key.</p> <p>Having gained the forested Rattan Pass and plunged to the Suran River, the new road valiantly negotiates boulder-choked ravines and gullies. Amid tortuous hairpin bends, it claws its way to the 3,491m Pir Panjal Pass; most travellers pause to say prayers at a modest shrine to a Muslim saint and enjoy the views. A few kilometres beyond the road is Aliabad, home to one of the route&rsquo;s best-preserved and loneliest serais, before descending to the warmth and greenery of the Vale of Kashmir.</p> <p>More than ever, Srinagar has a clear tourist circuit, with expansive Dal Lake at its heart. The Mughals built several beautiful gardens that drop gently towards the lake; for them, this was paradise on earth. The gardens are currently on UNESCO&rsquo;s list of &lsquo;Tentative&rsquo; World Heritage sites.</p> <p>The famed houseboats on the lake still boast fanciful names, many drawing on their Raj pedigree. Paddling in a shikara (think canopied water taxi) from Nehru Park jetty to my own Royal Palace houseboat, I passed the Savoy, Ark Royal and an ambitiously named Buckingham Palace. The best of these floating hotels have such extravagances as chandeliers, pine panelling and tea and biscuits on demand. </p> <p>Although houseboats remain popular,&nbsp; few are being built now because of their cost. &ldquo;Price of cedar wood &ndash; essential for these boats &ndash; is maybe 30 times what was in the late 90s,&rdquo; explained Gulam Karnai, my houseboat&rsquo;s worldly proprietor. &ldquo;That&rsquo;s around three crore rupees for one boat.&rdquo; In UK money that&rsquo;s an eye-watering &pound;350,000.</p> <p> </p> <p>Strolling through the old city, I entered a less picture-postcard but still authentically Kashmiri world. Ajaz, my guide, took me first to the Jama Masjid, the town&rsquo;s oldest mosque. Behind its austere brick walls, 378 huge cedar pillars support four lofty halls with space for 33,333 worshippers. Now it was still and silent, the solemn atmosphere enhanced by the mosque&rsquo;s simple yet elegant symmetry.</p> <p>Ajaz explained how surrounding streets had often been a focal point for unrest and demonstrations. Many downtown areas still bear subtle scars of conflict, such as bullet-chipped masonry, but I saw, too, how once-sandbagged sentry boxes with gun emplacements were now unused. Virtually every local agreed that tension has eased <br> and that the military has stepped back, if not down.</p> <h2>Trouble in paradise</h2> <p>We moved on to Dastageer Sahib, a shrine to a medieval Sufi saint whose ceilings were <br> a beautiful confection of papier-m&acirc;ch&eacute; scrollwork, floral designs and traditional wood panelling assembled without nails; here I saw pious men singing hearty hymns over offerings of dates and sweets. Since my visit, a tragic fire in June 2012 ravaged the place, though its relics have been saved.</p> <p>I&rsquo;d wanted to see Rozabal, the nondescript tomb of a Muslim preacher. A tiny credulous fringe of Westerners believes it&rsquo;s the burial place of Jesus, a notion sparked by a 19th-century Russian aristocrat. &ldquo;You can&rsquo;t go there now,&rdquo; Ajaz told me apologetically, explaining that so many visitors had turned up with jumbled ideas &ndash; some even called <br> it a church &ndash; that piqued locals promptly&nbsp; had it closed.</p> <p>If this was a far-fetched example of local sensitivities, my visit to Hari Parbat Fort was rather more telling. Dominating a hilltop near Srinagar, the romantic-looking fortress was largely built by an Afghan governor and is a perpetual reminder of their brief yet brutal rule over Kashmir. It&rsquo;s also a sacred place, with several Muslim, Hindu and Sikh shrines dotted below.</p> <p>For years the fort has been under police control and closed to casual visitors; I&rsquo;d arranged permission to enter. I climbed steps to a check post with my new guide Ishtiaq, and showed my permit to an officer. Reluctantly, he waved us through.</p> <p>Inside the muscular walls and decaying courtyards, it wasn&rsquo;t as imposing as I&rsquo;d thought, though there were fine views. </p> <p>&ldquo;A few years ago it re-opened to the public,&rdquo; said Ishtiaq as we strolled into a breezy bastion, &ldquo;but after some months it closed.&rdquo; As locals came, word spread that in contrast to its Hindu shrine, a small mosque within the complex had been ill-maintained &ndash; or possibly even vandalised &ndash; by security forces. In a place where perception is all, tensions mounted so the fort was again closed.</p> <p>Returning to my houseboat in this sadly contested region, I couldn&rsquo;t help thinking of Emperor Jahangir. Nearing death and asked what he cherished most, he reputedly said: &ldquo;Kashmir, the rest is worthless&rdquo;.&nbsp;</p> <p> </p> <h2>Need to know: Kashmir</h2> <h3>Travel advice</h3> <p>The British Foreign and Commonwealth Office (FCO) has very recently lifted its advice against travel to Jammu and Srinagar in Indian-administered Kashmir. <strong><a href="http://www.wanderlust.co.uk/magazine/news/advice-against-travel-to-kashmir-revised">You can find out more about the current situation here</a></strong>. Ask your insurance company if your policy will be valid if you travel to Kashmir; you may need to arrange special cover.</p> <h3>Visas</h3> <p>UK nationals require a visa for India. Apply online at <a href="http://in.vfsglobal.co.uk" target="_blank"><strong>in.vfsglobal.co.uk</strong></a><strong></strong>; you need to submit forms, photos, fees and passports either by post or in person at one of several visa-processing centres. </p> <p>A six-month tourist visa costs &pound;32 plus &pound;10.20 service fee. Processing time is usually three to four working days (longer for postal applications).</p> <h3>When to go</h3> <p><strong>Apr-Aug: </strong>Spring and summer see hot days (typically 25-30&deg;C). The Vale of Kashmir is shielded from much of the July-August monsoon; March-May is wettest.<br> <strong>Sept-Oct: </strong>Autumn is the best time to visit: warm days, cool nights, clear skies. Srinagar gets especially crowded during the Dussehra and Diwali festivals.<br> <strong>Nov-Mar: </strong>Winter; few visitors but beautiful snowy vistas.</p> <h3>Getting there &amp; around</h3> <p>The author travelled with <a href="http://www.industours.co.uk" target="_blank"><strong>Indus Tours</strong></a><strong></strong>, which can tailor itineraries to Kashmir and the rest of India. A five-night Mughal Road itinerary, including one night in Rajouri, two in a Dal Lake houseboat and two at the Taj Vivanta Srinagar, plus Delhi-Jammu and Srinagar-Delhi flights, transfers from Jammu via the Mughal Road and all sightseeing, starts at &pound;630pp. Day excursions to Gulmarg (from &pound;58pp) and the spectacular Zoji Pass (from &pound;70pp) can be added. <a href="http://www.jetairways.com" target="_blank"><strong>Jet Airways</strong></a><strong></strong> flies Heathrow-Delhi daily (from &pound;597 return; 8.5hrs), with onward connections to Jammu (70mins) and Srinagar (80mins). </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<div class="moreContentTabCtrl">
+    <section class="more-content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="header">
+                        <h2 class="with-icon icon-left"><i class="icon article"></i>Related Articles</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container more-content-container">
+            <div class="row">
+                <div class="col">
+                    <div id="relatedContentListContainer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="mostReadListContainer"></section>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        wanderlustWebsite.smartbar.populateRelatedContentPanel(20183);
+        //wanderlustWebsite.smartbar.populateMostRead();
+    });
+</script>
+
+
+
+
+
+
+<section id="tripFinderHolderContainer" class="tripFinderHolderContainer"></div>
+
+    <script>
+
+    //only inject trips if we have none already
+    if ($('.tripFinderQuickSearch').length <= 0) {
+
+            var html = '<div class="container">';
+            html += '<div class="row tripFinderRow">';
+            html += '<div class="col">';
+                html += '<div class="header">';
+                    html += '<h2 class="with-icon icon-left"><i class="icon trip"></i>Find my trip</span>';
+                html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+
+            //Check if we have an override destination - or pass through from our page tagging
+            var destination = '';
+            if ('') {
+                destination = '';
+            } else
+            {
+                if (wanderlustWebsiteTagging.destTags != null && wanderlustWebsiteTagging.destTags.Values.length > 0) {
+                    var index = 0;
+                    if (wanderlustWebsiteTagging.destTags.Values.length > 1) {
+                        index = wanderlustWebsite.utilities.generateRandomNumber(0, wanderlustWebsiteTagging.destTags.Values.length - 1);
+                    }
+
+                    destination = wanderlustWebsiteTagging.destTags.Values[index];
+                }
+
+            }
+
+            var triptype = '';
+            if ('') {
+                triptype = '';
+            } else {
+                if (destination == '' && wanderlustWebsiteTagging.triptypes != null && wanderlustWebsiteTagging.triptypes.Values.length > 0) {
+                    var index = 0;
+                    if (wanderlustWebsiteTagging.triptypes.Values.length > 1) {
+                        index = wanderlustWebsite.utilities.generateRandomNumber(0, wanderlustWebsiteTagging.triptypes.Values.length - 1);
+                    }
+
+                    triptype = wanderlustWebsiteTagging.triptypes.Values[index];
+                }
+            }
+
+            html += '<div class="tripFinderQuickSearch container" data-grp="527783" data-comp="" data-dest="' + destination + '" data-triptype="' + triptype + '" data-act="" data-number="15" data-selectedCurrency="GBP" data-imgheight="268" data-imgwidth="328"></div>';
+            //html += '</div>';
+           // html += '</div>';
+           // html += '</div>';
+
+            $('#tripFinderHolderContainer').html(html);
+
+            wanderlustWebsite.tripFinder.processQuickSearch();
+    } else {
+            //just call processQuickSearch on what we've got
+            wanderlustWebsite.tripFinder.processQuickSearch();
+    }
+    </script>
+
+
+
+
+
+<section id="article-interests-hub" class="interests-hub" style="display:none;">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="header">
+                    <h2 class="with-icon icon-left article-looking-for-inspiration"><i class="icon interests"></i>Looking for inspiration</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container more-content-container">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-12">
+                <div class="card card-interest">
+                    <div class="card-inner">
+                        <a id="ArticleInterestsHub_ItemLink1" href="" aria-label="">
+                            <img id="ArticleInterestsHub_ItemImage1" src="" data-srcset="" data-src="" sizes="auto" class="img-fluid lazyload" alt="" />
+                            <div class="card-headline">
+                                <div class="card-headline-inner">
+                                    <h3 id="ArticleInterestsHub_ItemHeadline1"></h3>
+                                    <p id="ArticleInterestsHub_ItemStandfirst1"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+                <div class="card card-interest">
+                    <div class="card-inner">
+                        <a id="ArticleInterestsHub_ItemLink2" href="" aria-label="">
+                            <img id="ArticleInterestsHub_ItemImage2" src="" data-srcset="" data-src="" sizes="auto" class="img-fluid lazyload" alt="" />
+                            <div class="card-headline">
+                                <div class="card-headline-inner">
+                                    <h3 id="ArticleInterestsHub_ItemHeadline2"></h3>
+                                    <p id="ArticleInterestsHub_ItemStandfirst2"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-12">
+                <div class="card card-interest">
+                    <div class="card-inner">
+                        <a id="ArticleInterestsHub_ItemLink3" href="" aria-label="">
+                            <img id="ArticleInterestsHub_ItemImage3" src="" data-srcset="" data-src="" sizes="auto" class="img-fluid lazyload" alt="" />
+                            <div class="card-headline">
+                                <div class="card-headline-inner">
+                                    <h3 id="ArticleInterestsHub_ItemHeadline3"></h3>
+                                    <p id="ArticleInterestsHub_ItemStandfirst3"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="actions">
+                    <a href="/interests" class="btn btn-primary">ALL INTERESTS</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    $(document).ready(function () {
+        wanderlustWebsite.smartbar.populateArticleHubs(20183).then(function (data) {
+
+            if (data && data.Hubs.length == 3) {
+
+                for (var i = 0; i < data.Hubs.length; i++) {
+                    var item = data.Hubs[i];
+
+                    $('#ArticleInterestsHub_ItemLink' + (i+1)).attr("href", item.Url);
+                    $('#ArticleInterestsHub_ItemLink' + (i + 1)).attr("aria-label", item.Headline);
+
+                    $('#ArticleInterestsHub_ItemHeadline' + (i + 1)).text(item.Headline);
+                    $('#ArticleInterestsHub_ItemStandfirst' + (i + 1)).text(item.Standfirst + '...');
+
+                    $('#ArticleInterestsHub_ItemImage' + (i + 1)).attr("src", item.MediaUrlLowRes);
+                    $('#ArticleInterestsHub_ItemImage' + (i + 1)).attr("data-srcset", item.MediaUrl);
+                    $('#ArticleInterestsHub_ItemImage' + (i + 1)).attr("data-src", item.MediaUrl);
+
+                }
+
+                $('#article-interests-hub').show();
+            }
+
+        })
+    })
+</script>
+
+
+
+            <div id='div-ds-content-35' class="enthetoDiv"></div>
+            <script>
+             function enthetoPublisherHandler(enthetoDetail) {
+                if (enthetoDetail) {
+                    enthetoPresent = true;
+                    ga('send', 'event', 'commercial', 'enthetoServed', 'Time to return to Kashmir India');
+                }
+                else {
+                    console.log("no entheto");
+                }
+
+                 console.log("enthetoPresent", enthetoPresent);
+                 console.log("disableEntheto", false);
+                 console.log("EnableEntheto", true);
+                 console.log("result", enthetoPresent & true);
+
+                 wanderlustWebsite.adserving.injectAdsParagraphModel(enthetoPresent & true);
+            }
+            </script>
+
+
+    
+    <style>
+        .articleBodyContent img {
+            width: 100%;
+        }
+    </style>
+
+
+    <script>
+        $(document).ready(function(){
+           wanderlustWebsite.mostReadContent.registerRead(20183);
+           //wanderlustWebsite.recommendations.registerInteraction(20183);
+           wanderlustWebsite.contentPinBoard.contentInPinboard(20183);
+        });
+    </script>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            googletag.cmd.push(function () {
+                // Display has to be called before
+                // refresh and after the slot div is in the page.
+                googletag.display('div-gpt-ad-1584357351630-0');
+                googletag.pubads().refresh([subsTopAdSlot]);
+            });
+        })
+    </script>
+
+    </div>
+
+
+
+    
+    
+    
+
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <!-- top row -->
+                <div class="row align-items-center">
+                    <div class="col-xs-12 col-lg-3">
+                        <a class="logo" href="/" aria-label="Go to the Wanderlust homepage"><img src="https://cdn2.wanderlust.co.uk/siteimages/logo.svg" width="250" class="img-fluid w-100" alt="Wanderlust Travel Magazine logo"></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-4 col-xl-3">
+                        <p class="footer-newsletter-notice">
+                            Sign up for our newsletter today<br />
+                            and <strong>never miss out again</strong>
+                        </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-lg-5 col-xl-6">
+                        <form id="footer-newsletter">
+                            <input type="text" class="form-control newsletteremailfield" name="email" id="emailsignupAddr" placeholder="Your email address">
+                            <input type="hidden" id="footerToken" class="tokenfield" name="token" />
+                            <button type="submit" id="sitefooter_emailsignup" class="btn btn-default emailsignup" name="emailPopupSubscribe">Sign up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <a href="https://instagram.com/wanderlustmag" target="_blank" rel="noopener" aria-label="Follow Wanderlust on Instagram">
+                            <i class="fab fa-instagram fa-3x"></i>
+                            <span><strong>Follow us on Instagram</strong><br />Inspirational travel photography</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <a href="https://twitter.com/wanderlustmag" target="_blank" rel="noopener" aria-label="Follow Wanderlust on Twitter">
+                            <i class="fab fa-twitter fa-3x"></i>
+                            <span><strong>Find us on Twitter</strong><br />Join the conversation</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <a href="https://www.facebook.com/wanderlusttravelmagazine" rel="noopener" target="_blank" aria-label="Follow Wanderlust on Facebook">
+                            <i class="fab fa-facebook fa-3x"></i>
+                            <span><strong>Join us on Facebook</strong><br />Meet like-minded travellers</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <a href="mailto:website@wanderlust.co.uk" target="_blank" aria-label="Drop us an email">
+                            <i class="far fa-at fa-3x"></i>
+                            <span><strong>Drop us an email</strong><br />We would love to hear from you</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links">
+            <div class="container">
+                <!-- links row -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <h4>Wanderlust Destinations</h4>
+                        <nav>
+                            <ul>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/discover-saudi/content/uncover-saudi-hub/" target="_blank" rel="noopener" aria-label="Uncover Saudi">Uncover Saudi</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/explore-with-flight-centre/content/australia-travel-guide/" target="_blank" rel="noopener" aria-label="Australia Travel Guide">Australia Travel Guide</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/switzerland-travel/content/summer-guide-to-bernese-oberland-switzerland/" target="_blank" rel="noopener" aria-label="Summer in Switzerland">Summer in Switzerland</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/discover-british-columbia/" target="_blank" rel="noopener" aria-label="The ultimate guide to British Columbia">The ultimate guide to British Columbia</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <h4>Wanderlust Experiences</h4>
+                        <nav>
+                            <ul>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/discover-formentera/content/reasons-to-visit-formentera/" target="_blank" rel="noopener" aria-label="Finding Formentera">Finding Formentera</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/asturias-spain-travel/content-hub/wildlife-in-asturias-spain/" target="_blank" rel="noopener" aria-label="Wildlife spotting in Asturias, Spain">Wildlife spotting in Asturias, Spain</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/discover/hokkaido-japan-travel/content/what-to-do-when-in-hokkaido-japan/" target="_blank" rel="noopener" aria-label="Year-round adventure in Japan">Year-round adventure in Japan</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <h4>Recommended content</h4>
+                        <nav>
+                            <ul>
+                                        <li><a href="https://www.wanderlust.co.uk/hot-offers/" target="_blank" rel="noopener" aria-label="Travel discounts and offers">Travel discounts and offers</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/competitions/" target="_blank" rel="noopener" aria-label="Enter our competitions">Enter our competitions</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/misc/podcast/" target="_blank" rel="noopener" aria-label="Listen to our podcast">Listen to our podcast</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <h4>Everything else</h4>
+                        <nav>
+                            <ul>
+                                        <li><a href="https://shop.wanderlust.co.uk/" target="_blank" rel="noopener" aria-label="Subscribe to Wanderlust magazine">Subscribe to Wanderlust magazine</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/newsletter-signup/" target="_blank" rel="noopener" aria-label="Sign up to our newsletter">Sign up to our newsletter</a></li>
+                                        <li><a href="https://wanderlusttravelmedia.com/" target="_blank" rel="noopener" aria-label="Advertise with us">Advertise with us</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/about-us/meet-the-team/" target="_blank" rel="noopener" aria-label="Meet the team">Meet the team</a></li>
+                                        <li><a href="https://www.wanderlust.co.uk/content/wanderlust-travel-awards-winners-results-2021/" target="_blank" rel="noopener" aria-label="Wanderlust Travel Awards">Wanderlust Travel Awards</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <!-- bottom row -->
+                <div class="row align-items-center">
+                    <div class="col-xs-12 col-xl-8">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="/about-us">About Us</a></li>
+                                <li><a href="/system-pages/terms-and-conditions/">Terms &amp; Conditions</a></li>
+                                <li><a href="/system-pages/privacy-policy/">Privacy Policy</a></li>
+                                <li><a href="/about-us/contact-us/">Contact</a></li>
+                                <li><a href="mailto:website@wanderlust.co.uk">Report a problem</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-xs-12 col-xl-4">
+                        <div class="copyrightNotice">
+                            © Copyright Wanderlust, 1993 - 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+<script>
+    $(document).ready(function () {
+        $('#scrollToTop').on("click", function () {
+            window.scrollTo(0, 0);
+        });
+    })
+
+</script>
+
+
+    
+                <div id="list-builder"></div>
+                <div id="popup-box" class="popup-box">
+                    <div class="popup-box-inner">
+                        <img src="https://cdn2.wanderlust.co.uk/siteimages/closebutton_red.png" id="popup-close" alt="Close popup" />
+                        <div id="popup-box-content">
+                            <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://cdn2.wanderlust.co.uk/media/1015/wl-logo-strap-gold.png?width=250&amp;mode=max&amp;animationprocessmode=first" alt="undefined" data-udi="umb://media/6c92cb4d190b40c0839be745905f4a8a" /></p>
+<h2 style="text-align: center; margin-top: 30px;">Join our newsletter</h2>
+<p style="text-align: center;">Get the very best of <em>Wanderlust </em>by signing up to our newsletters, full of travel inspiration, fun quizzes, exciting competitions and exclusive offers.</p>
+                            <form id="popup-form" action="/umbraco/surface/emailssurface/newsletterSignup">
+                                <div class="form-group">
+                                    <label for="emailsignupName" class="sr-only">Your firstname</label>
+                                    <input type="text" class="form-control" name="Firstname" placeholder="Your firstname" id="emailsignupName" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="popupEmailsignupAddr" class="sr-only">Your Email address</label>
+                                    <input type="text" class="form-control newsletteremailfield" name="email" id="popupEmailsignupAddr" placeholder="Your email address" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" id="popupToken" class="tokenfield" name="token" />
+                                    <button type="button" class="btn btn-default" name="emailPopupSubscribe">Subscribe</button>
+                                </div>
+
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn2.wanderlust.co.uk/sitescripts/list-builder.js?ver=99"></script>
+
+
+    
+
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/299c5ae165.js" crossorigin="anonymous"></script>
+
+    <script type=" text/javascript" src="https://cdn2.wanderlust.co.uk/sitescripts/essentials_v2_bottom.js?ver=qJfh0p3b5QJVSgnVrtrhS9pdZKx3aoIHwDT47lI0nrg1" async></script>
+
+
+    
+
+
+    <!-- Adwords retargetting options -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 1056600385;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1056600385/?guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+
+    <script>
+        $(document).ready(function () {
+            wanderlustWebsite.contentPinBoard.totalItemsInBoard();
+        });
+    </script>
+
+    
+
+</body>
+		
+</html>
+ contentType 9 text/html url 73 https://www.wanderlust.co.uk:443/content/time-to-return-to-kashmir-india/ responseCode 3 200 

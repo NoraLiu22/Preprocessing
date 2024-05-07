@@ -1,0 +1,388 @@
+mowiymkanapgusbeyideoiqmgkksnoakdkpcjesq length 5 16054 page 16054 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta http-equiv="imagetoolbar" content="false" />
+  <meta name="MSSmartTagsPreventParsing" content="true" />
+  <title>SeeClickFix API v2 Overview</title>
+  <link rel="alternate" type="application/atom+xml" title="API Changes" href="/changes.atom" />
+  <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="/css/960.css" rel="stylesheet" type="text/css" />
+  <link href="/css/uv_active4d.css" rel="stylesheet" type="text/css" />
+  <link href="/shared/css/documentation.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="/shared/css/pygments.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="/shared/js/jquery.js" type="text/javascript"></script>
+  <script src="/shared/js/documentation.js" type="text/javascript"></script>
+</head>
+<body class="api">
+    <div id="header-wrapper">
+      <div id="header">
+        <div>
+          <a class="logo" href="/"><img src="/images/logo.png" alt="SeeClickFix API" /></a>
+          <ul class="nav">
+            <li><a href="/">v2 (current)</a></li>
+            <li><a href="http://seeclickfix.com" target="_blank">SeeClickFix.com</a></li>
+            <li><a href="http://seeclickfix.com/contact_us" target="_blank">Support</a></li>
+            <li><script async defer src="https://seeclickfix-api-slack.herokuapp.com/slackin.js"></script></li>
+          </ul>
+        </div>
+      </div><!-- #header -->
+    </div><!-- #header-wrapper -->
+
+    <div id="wrapper">
+      <div class="content">
+    
+<h1 id="seeclickfix-api-v2-overview">SeeClickFix API v2 Overview</h1>
+
+<p>Use of the API documented here is subject to the terms of our Data License below.</p>
+
+<p>This describes the resources that make up the official SeeClickFix API v2. If
+you have any problems or requests please contact
+<a href="mailto:developer-support@seeclickfix.com">Developer Support</a>.</p>
+
+<p>SeeClickFix provides an open311 compatible API at <a href="http://seeclickfix.com/open311">http://seeclickfix.com/open311</a>.</p>
+
+<p>SeeClickFix also provides an organizational API based on the public API described here for its partners.</p>
+
+<p>For recommendations on which API to use, please see <a href="/v2/recommendations/">this page</a>.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#coordinate-system">Coordinate System</a></li>
+  <li><a href="#testing">Testing</a></li>
+  <li><a href="#url-format">URL Format</a></li>
+  <li><a href="#data-format">Data Format</a></li>
+  <li><a href="#responses">Responses</a></li>
+  <li><a href="#parameters">Parameters</a></li>
+  <li><a href="#pagination">Pagination</a></li>
+  <li><a href="#blank-fields">Blank Fields</a></li>
+  <li><a href="#time-formats">Time Formats</a></li>
+  <li><a href="#error-responses">Error Responses</a></li>
+  <li><a href="#http-redirects">HTTP Redirects</a></li>
+  <li><a href="#http-verbs">HTTP Verbs</a></li>
+  <li><a href="#user-agent-required">User Agent Required</a></li>
+  <li><a href="#conditional-requests">Conditional requests</a></li>
+  <li><a href="#geography">Geography</a></li>
+  <li><a href="#locales">Locales</a></li>
+  <li><a href="#data-license">Data License</a></li>
+</ul>
+
+<h2 id="coordinate-system">Coordinate System</h2>
+
+<p>All coordinates are assumed to be WSG84. Geographic objects are represented as <a href="http://geojson.org">GeoJSON</a>.</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>Testing can be done on the <code>test.seeclickfix.com</code> subdomain. This
+subdomain has data replicated from production. SSL (https) is
+available on test.seeclickfix.com.</p>
+
+<h2 id="url-format">URL Format</h2>
+
+<p>URLs follow the following format</p>
+
+<pre><code>https://seeclickfix.com/api/v2/&lt; RESOURCE &gt;
+</code></pre>
+
+<h2 id="data-format">Data Format</h2>
+
+<p>All data is sent and received as JSON.</p>
+
+<h2 id="responses">Responses</h2>
+
+<p>Responses follow one of two patterns: <code>singular</code> and <code>collection</code>.</p>
+
+<p><code>singular</code> responses return a single items, such as a user ID #145.</p>
+
+<p><code>collection</code> responses return a collection of items. Collection
+responses have two guaranteed attributes <code>metadata</code> and <code>result</code>.
+The <code>metadata</code> attribute can contain metadata for the consumer about the
+result, for example pagination information, api limits, or query
+information. Metadata can be null. The <code>result</code> attribute contains
+the result of the action.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>Many API methods take optional parameters. Optional parameters will be identified as optional in the documentation.</p>
+
+<p>For POST requests, parameters not included in the URL should be encoded
+in the body with a Content-Type of ‘application/x-www-form-urlencoded’.
+Optionally we accept JSON in the body with a Content-Type of ‘application/json’:</p>
+
+<h2 id="pagination">Pagination</h2>
+
+<p>Requests that return multiple items will be paginated to 20 items by
+default unless otherwise noted. You can specify further pages using the
+<code>?page</code> parameter. You can also set a custom page size up to 100 with
+the <code>?per_page</code> parameter. If you’d like to read more than 100 items
+you’ll need to construct and query the pages programatically.</p>
+
+<pre class="terminal">
+$ curl https://seeclickfix.com/api/v2/issues?page=2&amp;per_page=10
+</pre>
+
+<h2 id="blank-fields">Blank Fields</h2>
+
+<p>Blank fields are included as <code>null</code> instead of being omitted.</p>
+
+<h2 id="time-formats">Time Formats</h2>
+
+<p>All timestamps are returned in ISO 8601 format:</p>
+
+<pre><code>YYYY-MM-DDTHH:MM:SSZ
+</code></pre>
+
+<h2 id="error-responses">Error Responses</h2>
+
+<h3 id="errors">Errors</h3>
+
+<p>There are two possible types of client errors:</p>
+
+<ol>
+  <li>
+    <p>Sending invalid JSON will result in a <code>400 Bad Request</code> response.</p>
+
+    <pre class="headers"><code>Status: 400 Bad Request</code></pre>
+
+    <pre><code> { "request": "Unable to parse JSON" }
+</code></pre>
+  </li>
+  <li>
+    <p>Sending invalid fields will result in a <code>422 Unprocessable Entity</code>
+response.</p>
+
+    <pre class="headers"><code>Status: 422 Unprocessable Entity</code></pre>
+
+    <pre><code> {
+       "email": "Can't be blank.",
+       "base": "You have not voted on this issue."
+ }
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="server-errors">Server Errors</h3>
+
+<p>All server errors return <code>500 Server Error</code>.</p>
+
+<pre class="headers"><code>Status: 500 Server Error</code></pre>
+
+<h2 id="http-redirects">HTTP Redirects</h2>
+
+<p>API v2 uses HTTP redirection where appropriate. Clients should assume that any request may result in a redirection. Receiving an HTTP redirection is <em>not</em> an error and clients should follow that redirect. Redirect responses will have a <code>Location</code> header field which contains the URI of the resource to which the client should repeat the requests.</p>
+
+<pre class="headers"><code>Status: 301 Moved Permanently</code></pre>
+
+<p>The URI you used to make the request has been superseded by the one specified in the <code>Location</code> header field. This and all future requests to this resource should be directed to the new URI.</p>
+
+<pre class="headers"><code>Status: 302 Found</code></pre>
+
+<p>The request should be repeated verbatim to the URI specified in the <code>Location</code> header field but clients should continue to use the original URI for future requests.</p>
+
+<p>Other redirection status codes may be used in accordance with the HTTP 1.1 spec.</p>
+
+<h2 id="http-verbs">HTTP Verbs</h2>
+
+<p>Where possible, API v2 strives to use appropriate HTTP verbs for each
+action.</p>
+
+<dl>
+  <dt>GET</dt>
+  <dd>Used for retrieving resources.</dd>
+  <dt>POST</dt>
+  <dd>Used for creating resources.</dd>
+  <dt>PUT</dt>
+  <dd>Used for updating resources.</dd>
+  <dt>DELETE</dt>
+  <dd>Used for deleting resources.</dd>
+</dl>
+
+<h2 id="user-agent-required">User Agent Required</h2>
+
+<p>All API requests MUST include a valid User Agent string. Requests with no User Agent
+string will be rejected. If you are hitting the API without authentication, we ask that
+you add some kind of identification to the UA header value. This is so we can contact
+you if there are problems.</p>
+
+<h2 id="conditional-requests">Conditional requests</h2>
+
+<p>Most responses return <code>Last-Modified</code> and <code>ETag</code> headers. You can use the values
+of these headers to make subsequent requests to those resources using the
+<code>If-Modified-Since</code> and <code>If-None-Match</code> headers, respectively. If the resource
+has not changed, the server will return a <code>304 Not Modified</code>.</p>
+
+<h2 id="geography">Geography</h2>
+
+<p>At various endpoints SeeClickFix recognizes geography either by a <code>point</code>
+or <code>area</code> attribute. If multiple points are specified, they will be
+evaulated in the listed order of precedence.</p>
+
+<p>NOTE: The use of the <code>address</code> parameter to specifiy a location is deprecated on our public endpoints.
+API clients must handle reverse geocoding locally and use one of the alternate parameter forms to
+specify a point or area. Queries using <code>address</code> may result in an error response.</p>
+
+<p>Points can be defined in one of two forms:</p>
+
+<ol>
+  <li>
+<code>lat=:latitude&amp;lng=:longitude</code> - The latitude and longitude of the point of interest.</li>
+  <li>
+<code>address=:address</code> - (deprecated) Geocode the address and use the resulting latitude/longitude as a point.</li>
+</ol>
+
+<p><code>area</code> attributes can be submitted in the following forms:</p>
+
+<ol>
+  <li><code>lat=:latitude&amp;lng=:longitude&amp;zoom=:zoom</code></li>
+  <li>
+<code>address=:address&amp;zoom=:zoom</code> - (deprecated)</li>
+  <li>
+<code>place_url=:url_name</code> - See <a href="/v2/places">the places documentation</a> for more information.</li>
+  <li>
+<code>min_lat=:sw_lat&amp;min_lng=:sw_lng&amp;max_lat=:ne_lat&amp;max_lng=:ne_lng</code> - Defines the bounding box of the area of interest.</li>
+  <li>
+<code>watcher_token=:watcher_token</code> - The token can be found in the URL of the watch area’s issue map, a link to this can be found on the right hand column of the watch area display page</li>
+</ol>
+
+<h2 id="locales">Locales</h2>
+
+<p>All attributes are consistent between locales. Errors may be translated
+based on the given locale. Objects created will record the locale they
+were created in and notices based on these objects will be delivered with
+the proper locale. i.e. if an issue is created with the “es” locale, all
+email to the creator will be delivered with Spanish translations.</p>
+
+<h2 id="data-license">Data License</h2>
+
+<p>SeeClickFix data sources, including XML, RSS, KML and JSON, are licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License. Attribution should be to seeclickfix.com.</p>
+
+<p>Persons or organizations wishing to reuse large portions (ie., more than occasional queries ) of data are required to contact us first at <a href="mailto:support@seeclickfix.com">support@seeclickfix.com</a>. We are very interested in working with researchers and/or agencies to ensure that this data is put to good use!</p>
+
+<h3 id="api-rate-limits">API Rate Limits</h3>
+
+<p>The rate limit allows for up to 20 requests per minute. </p>
+
+<p>Rate limit is subject to change.</p>
+
+<h4 id="https-headers-and-response-codes">HTTPS Headers and Response Codes</h4>
+
+<p>If you go over the rate limits, we will return a HTTP 429 Too Many Requests error, and a Retry-After HTTP header containing the number of seconds until you can retry.</p>
+
+<pre><code>HTTP/1.1 429 Too Many Requests
+Cache-Control: private
+Content-Length: 23
+Content-Type: application/json; charset=utf-8
+Retry-After: 10
+Server: Microsoft-IIS/10.0
+X-AspNetMvc-Version: 5.1
+Access-Control-Allow-Origin: *
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Set-Cookie: ARRAffinity=beec3692492323782378d2f49514e054d865a22ad2951c
+Date: Fri, 01 Mar 2019 15:23:13 GMT
+
+{
+    "message": "Too Many Requests",
+    "documentation_url": "http://dev.seeclickfix.com"
+}
+</code></pre>
+
+<h4 id="blacklisting">Blacklisting</h4>
+
+<p>If an application abuses the rate limits, we will return a HTTP 403 Forbidden error. </p>
+
+<pre><code>HTTP/1.1 403 Forbidden
+Cache-Control: private
+Content-Length: 15
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-AspNetMvc-Version: 5.1
+Access-Control-Allow-Origin: *
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+Set-Cookie: ARRAffinity=beec3692492323782378d2f49514e054d865a22ad2951c
+Date: Fri, 01 Mar 2019 16:11:07 GMT
+
+{
+    "message": "Request forbidden by administrative rules.",
+    "documentation_url": "http://dev.seeclickfix.com"
+}
+</code></pre>
+
+<p>If you or your application has been blacklisted and you think there has been a mistake, please contact us at <a href="mailto:support@seeclickfix.com">support@seeclickfix.com</a></p>
+
+
+      </div>
+
+    <div id="js-sidebar" class="sidebar-shell">
+      <div class="js-toggle-list sidebar-module expandable">
+        <ul>
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v2/">Overview</a></h3>
+              <ul class="js-guides">
+                <li><a href="/v2/overview/authentication/">Authentication</a></li>
+                <li><a href="/v2/overview/libraries/">Libraries</a></li>
+                <li><a href="/v2/overview/about/">Reading this Document</a></li>
+            </ul>
+          </li>
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v2/issues/">Issues</a></h3>
+            <ul class="js-guides">
+              <li><a href="/v2/issues/reporting/">Reporting an Issue</a></li>
+              <li><a href="/v2/issues/comments/">Comments</a></li>
+              <li><a href="/v2/issues/changing_status/">Changing Status</a></li>
+              <li><a href="/v2/issues/vote/">Vote</a></li>
+              <li><a href="/v2/issues/follow/">Follow</a></li>
+              <li><a href="/v2/issues/flagging/">Flagging Content</a></li>
+            </ul>
+          </li>
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v2/users/">Users</a></h3>
+            <ul class="js-guides">
+              <li><a href="/v2/users/emails/">Emails</a></li>
+            </ul>
+          </li>
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v2/places/">Places</a></h3>
+          </li>
+
+
+          <li class="js-topic">
+            <h3><a href="#" class="js-expand-btn collapsed">&nbsp;</a><a href="/v2/questions/">Questions</a></h3>
+            <ul class="js-guides">
+              <li><a href="/v2/questions/answers/">Answers</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div> <!-- /sidebar-module -->
+      <div class="sidebar-module">
+        <p>This website is a <a href="https://github.com/SeeClickFix/dev.seeclickfix.com" target="_blank">public GitHub repository</a>. Please help us by forking the project and adding to it.</p>
+      </div>
+
+      <div class="sidebar-module">
+        <!-- SCF API Slack badge -->
+        <p>Developers, looking to share ideas or ask questions about the SCF API? Join the Slack channel!<br/><br/>
+        <script async defer src="https://seeclickfix-api-slack.herokuapp.com/slackin.js?large"></script></p>
+      </div>
+
+    </div><!-- /sidebar-shell -->
+
+    </div><!-- #wrapper -->
+
+    <div id="footer" >
+      <div class="lower_footer">
+        <div class="footer_inner clearfix">
+            <div id="legal">
+              <p>&copy; <span id="year">year</span> SeeClickFix All rights reserved.</p>
+            </div><!-- /#legal or /#legal_ie-->
+        </div><!-- /.site -->
+      </div><!-- /.lower_footer -->
+    </div><!-- /#footer -->
+</body>
+</html>
+ contentType 9 text/html url 30 http://dev.seeclickfix.com:80/ responseCode 3 200 

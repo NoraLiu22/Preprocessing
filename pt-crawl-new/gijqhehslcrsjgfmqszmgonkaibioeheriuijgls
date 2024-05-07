@@ -1,0 +1,173 @@
+gijqhehslcrsjgfmqszmgonkaibioeheriuijgls length 4 5963 page 5963 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="../draft-predictor/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@700&display=swap" rel="stylesheet">
+<title>NFL Prospect Athletic Similarity Plots</title>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R9L3PNVJR"></script>
+
+
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3R9L3PNVJR');
+</script>
+
+<style>
+	#frameContainer {
+      padding: 20px;
+    }
+
+    #contentFrame {
+      width: 100%;
+      height: 800px;
+      border: 1px solid #ccc;
+     
+    }
+</style>
+
+</head>
+<body>
+
+<header id="navbar">
+  <nav class="navbar-container container">
+    <a href="/" class="home-link">
+        <img class="ea3-img" src="../draft-predictor/ea3_new.png" >
+    </a>
+    <div class="menu-title">
+      <h1 class="draft-title">Draft Day Predictor</h1>
+    </div>
+    <div class="right-navbar">
+      <!--<ul class="desktop-items">
+        <li class="desktop-item"><a class="desktop-link" href="./">By Player</a></li>
+          <li class="desktop-item"><a class="desktop-link" href="./draft_predictor_by_pick.html">By Pick</a></li>
+          <li class="desktop-item"><a class="desktop-link" href="./about.html">About</a></li>
+      </ul>-->
+      
+      <div>
+        <button type="button" id="navbar-toggle" class="navbar-toggle-class" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
+          <div class="selected-page">
+            <h2>Similarity &#9660</h2>
+          </div>
+        </button>
+        <div id="navbar-menu" aria-labelledby="navbar-toggle">
+          <ul class="navbar-links">
+            <!--<h4 style="padding-bottom: 5px; margin: 0px">See Breakdown By:</h4>-->
+			
+            <li class="navbar-item"><a class="navbar-link first-link" href="../draft-predictor/">By Player</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../draft-predictor/draft_predictor_by_pick.html">By Pick</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../draft-predictor/positions_over_under.html">By Position</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../draft-predictor/conference_over_under.html">By Conference</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../nfl-sim">Simulator</a></li>
+			<li class="navbar-item"><a class="navbar-link" href="similarity.html">Similarity</a></li>
+            <li class="navbar-item"><a class="navbar-link last-link" href="../draft-predictor/about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<!--<br><br>-->
+
+<div style='font-family:"News Cycle" ' class="page-display_nope">
+  <div class="title-title">
+    <h2 id="title-id">Athletic Similarity</h2>
+  </div>
+  <div id="frameContainer"> 	
+  <h3>Select a position:</h3>
+  <select id="dropdown">
+    <option value="CB_2024similarity.html">Cornerbacks</option>
+    <option value="DE_2024similarity.html">Defensive Ends</option> 
+	<option value="DT_2024similarity.html">Defensive Tackles</option>
+	<option value="OLB_2024similarity.html">Outside Linebackers</option>
+	<option value="ILB_2024similarity.html">Inside Linebackers</option>
+	<option value="S_2024similarity.html">Safeties</option>
+	<option value="WR_2024similarity.html">Wide Receivers</option>
+	<option value="OT_2024similarity.html">Offensive Tackles</option>
+	<option value="OG_2024similarity.html">Guards</option>
+	<option value="OC_2024similarity.html">Centers</option>
+	<option value="TE_2024similarity.html">Tight Ends</option>
+	<option value="RB_2024similarity.html">Running Backs</option>
+	<option value="QB_2024similarity.html">Quarterbacks</option>
+
+  </select>
+  <br><br>
+  
+	<iframe id="contentFrame"></iframe>
+  </div>
+
+  
+ 
+</div>
+
+ 
+
+</body>
+
+
+<script type = "text/javascript">
+const imgClose = document.querySelector('#img-cont');
+var deviceIdDDPlayer = localStorage.getItem('deviceIdDDPlayer');
+
+
+/*if (!(deviceIdDDPlayer)) {
+  deviceIdDDPlayer = uuidv4() + Date.now();
+  localStorage.setItem('deviceIdDDPlayer', deviceIdDDPlayer);
+} else {
+  imgClose.style.display = 'none';
+}
+*/
+const navbarToggle = navbar.querySelector("#navbar-toggle");
+const navbarMenu = document.querySelector("#navbar-menu");
+const navbarLinksContainer = navbarMenu.querySelector(".navbar-links");
+let isNavbarExpanded = navbarToggle.getAttribute("aria-expanded") === "true";
+
+const toggleNavbarVisibility = () => {
+  isNavbarExpanded = !isNavbarExpanded;
+  navbarToggle.setAttribute("aria-expanded", isNavbarExpanded);
+};
+const closePopup = () => {
+  imgClose.style.display = 'none';
+}
+
+//imgClose.addEventListener('click', closePopup);
+navbarToggle.addEventListener("click", toggleNavbarVisibility);
+
+
+navbarLinksContainer.addEventListener("click", (e) => e.stopPropagation());
+navbarMenu.addEventListener("click", toggleNavbarVisibility);
+
+if (dropdown.options[0].value) {
+    contentFrame.src = dropdown.options[0].value;
+  }
+
+document.getElementById('dropdown').addEventListener('change', function() {
+  var selectedOption = this.value;
+  var contentFrame = document.getElementById('contentFrame');
+  if (selectedOption) {
+    contentFrame.src = selectedOption;
+  } else {
+    contentFrame.src = '';
+  }
+});
+
+</script>
+
+
+
+    
+
+</html>
+  contentType 9 text/html url 62 https://espnanalytics.com:443/similarity_plots/similarity.html responseCode 3 200 

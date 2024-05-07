@@ -1,0 +1,1248 @@
+jaueceompcbarclmjqwmsafccofcdebklidkxoto length 5 39522 page 39522 <!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>WebService::MusicBrainz - metacpan.org</title>
+        <link rel="preload" as="fetch" href="/account/login_status" crossorigin="anonymous" />
+        <link href="/assets/style-XS3WCTH7.css" rel="stylesheet" type="text/css">
+        <script src="/assets/main-YU6ONH5B.js" type="text/javascript" defer></script>
+        <link rel="alternate" type="application/rss+xml" title="Recent CPAN Uploads of WebService-MusicBrainz - MetaCPAN" href="/dist/WebService-MusicBrainz/releases.rss" />
+        <link rel="canonical" href="https://metacpan.org/pod/WebService::MusicBrainz" />
+        <meta name="description" content="Web service API to MusicBrainz database" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        <link rel="shortcut icon" href="/static/icons/favicon.ico">
+        <link rel="apple-touch-icon" sizes="152x152" href="/static/icons/apple-touch-icon.png">
+        <link rel="search" href="/static/opensearch.xml" type="application/opensearchdescription+xml" title="MetaCPAN">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E82Q2V8LVD"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-E82Q2V8LVD');
+        </script>
+<meta name="twitter:card"        content="summary" />
+<meta name="twitter:url"         content="https://metacpan.org/pod/WebService::MusicBrainz" />
+<meta name="twitter:title"       content="WebService::MusicBrainz" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:site"        content="metacpan" />
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="header-logo-large hidden-xs">
+              <a href="/" tabindex="0">
+                <svg class="logo" aria-label="MetaCPAN">
+                  <use class="logo" href="/static/images/metacpan-logo.svg#logo" />
+                </svg>
+              </a>
+            </div>
+            <div class="header-logo-icon visible-xs">
+              <a href="/">
+                <svg class="logo" aria-label="MetaCPAN">
+                  <use class="logo" href="/static/images/metacpan-logo.svg#dots" />
+                </svg>
+              </a>
+            </div>
+            <ul class="nav navbar-nav menu-items hidden-xs hidden-sm">
+              <li><a href="/about">About</a></li>
+              <li><a href="/about/sponsors">Sponsor</a></li>
+              <li><a href="https://grep.metacpan.org/">grep::cpan</a></li>
+              <li><a href="/recent">Recent</a></li>
+              <li><a href="/about/faq">FAQ</a></li>
+              <li><a href="/tools">Tools</a></li>
+              <li><a href="https://fastapi.metacpan.org/">API</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <button type="button" class="searchbar-btn visible-xs visible-sm">
+                    <i class="fa fa-search button-fa-icon"></i>
+                </button>
+                <form action="/search" class="searchbar-form visible-md visible-lg search-form form-horizontal">
+                   <input type="hidden" name="size" id="metacpan_search-size" value="20">
+                  <div class="form-group">
+                      <div class="search-group">
+                        <i class="fa fa-search"></i>
+                        <input type="text" name="q" placeholder="Search the CPAN" size="41" autocorrect="off" autocapitalize="off" spellcheck="false" id="metacpan_search-input" class="form-control" value="">
+                      </div>
+                  </div>
+                </form>
+                    <li class="icon-slidepanel visible-xs visible-sm">
+                      <button data-toggle="slidepanel" data-target=".slidepanel">
+                        <span class="button-fa-icon">
+                          <i class="fa fa-bars slidepanel-open"></i>
+                          <i class="fa fa-times slidepanel-close"></i>
+                        </span>
+                      </button>
+                    </li>
+                <form action="/account/logout" method="POST" id="metacpan-logout"></form>
+                <li class="dropdown logged_in" style="display: none;">
+                    <button type="button" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-user button-fa-icon logged-in-icon" aria-hidden="true"></i>
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/account/identities">Identities</a></li>
+                        <li><a href="/account/profile">Profile</a></li>
+                        <li><a href="/account/favorite/list">Favorites</a></li>
+                        <li>
+                            <a href="#" type="button" onclick="$('#metacpan-logout').submit(); return false">
+                              Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown logged_out" style="display: none;">
+                    <button type="button" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="fa fa-user button-fa-icon" aria-hidden="true"></i>
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/login/github">
+                                <i class="fab fa-github fa-fw"></i>
+                                GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/login/twitter">
+                                <i class="fab fa-twitter fa-fw"></i>
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/login/google">
+                                <i class="fab fa-google fa-fw"></i>
+                                Google
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown logged_placeholder">
+                    <button>
+                      <i class="fa fa-user button-fa-icon" aria-hidden="true"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="page-content ">
+          <!--
+          <div class="top-notify-banner">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          -->
+          <nav class="sidebar">
+            <div class="slidepanel">
+              <ul class="nav-list ">
+    <li class="nav-header no-margin-top">
+      <div class="ttip" data-toggle="tooltip" data-placement="bottom" title="The date that this version of WebService-MusicBrainz was released.">
+        <span class="relatize">26 Jul 2022 02:41:13 UTC</span>
+      </div>
+    </li>
+  <li>
+    Distribution: <a href="/dist/WebService-MusicBrainz">WebService-MusicBrainz</a>
+  </li>
+  <li>
+    Module version: v1.0.6
+  </li>
+  <li>
+    <a data-keyboard-shortcut="g s" href="/dist/WebService-MusicBrainz/source/lib/WebService/MusicBrainz.pm">Source</a>
+    (<a href="/dist/WebService-MusicBrainz/source/lib/WebService/MusicBrainz.pm?raw=1">raw</a>)
+  </li>
+  <li>
+    <a data-keyboard-shortcut="g b" href="/dist/WebService-MusicBrainz/source/lib/WebService">Browse</a>
+    (<a href="/dist/WebService-MusicBrainz/source/lib/WebService?raw=1">raw</a>)
+  </li>
+    <li>
+      <a data-keyboard-shortcut="g c" href="/dist/WebService-MusicBrainz/changes">Changes</a>
+    </li>
+    <li>
+      <a class="nopopup" href="/dist/WebService-MusicBrainz/contribute">How to Contribute</a>
+    </li>
+    <li>
+        <a rel="noopener nofollow" data-keyboard-shortcut="g r" href="https://github.com/bfaist/webservice-musicbrainz">Repository</a>
+    </li>
+    <li>
+      <a rel="noopener nofollow" data-keyboard-shortcut="g i" href="https://rt.cpan.org/Public/Dist/Display.html?Name=WebService-MusicBrainz">Issues</a>
+      (8)
+    </li>
+    <li>
+      <a rel="noopener nofollow" href="http://matrix.cpantesters.org/?dist=WebService-MusicBrainz+1.0.6" title="Matrix">Testers</a>
+        <span title="(pass / fail / na)">(<a rel="noopener nofollow" href="https://www.cpantesters.org/distro/W/WebService-MusicBrainz.html?oncpan=1&amp;distmat=1&amp;version=1.0.6&amp;grade=2" style="color: #090">200</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/W/WebService-MusicBrainz.html?oncpan=1&amp;distmat=1&amp;version=1.0.6&amp;grade=3" style="color: #900">207</a> / <a rel="noopener nofollow" href="https://www.cpantesters.org/distro/W/WebService-MusicBrainz.html?oncpan=1&amp;distmat=1&amp;version=1.0.6&amp;grade=4">2</a>)</span>
+    </li>
+    <li>
+      <a rel="noopener nofollow" href="http://cpants.cpanauthors.org/release/BFAIST/WebService-MusicBrainz-1.0.6">Kwalitee</a>
+    </li>
+    <li>
+      <div class="ttip" data-toggle="tooltip" data-placement="bottom" title="The # people with an indexing permission on WebService-MusicBrainz who have released something to CPAN in the last 2 years (i.e. the # people likely able to release critical fixes in a timely manner)">
+      Bus factor: 1
+      </div>
+    </li>
+    <li>
+      License: perl_5
+    </li>
+    <li>
+      Perl: v5.10.1
+    </li>
+    <li class="nav-header">Activity</li>
+    <li>
+<div class="activity-graph">
+    <img src="/dist/WebService-MusicBrainz/activity.svg?res=month" />
+    <div class="comment">24 month</div>
+</div>
+    </li>
+    <li class="nav-header">Tools</li>
+    <li>
+      <a itemprop="downloadUrl" href="https://cpan.metacpan.org/authors/id/B/BF/BFAIST/WebService-MusicBrainz-1.0.6.tar.gz">
+      Download (<span itemprop="fileSize">9.78KB</span>)</a>
+    </li>
+    <li>
+      <a href="https://explorer.metacpan.org/?url=%2Fmodule%2FBFAIST%2FWebService-MusicBrainz-1.0.6%2Flib%2FWebService%2FMusicBrainz.pm">
+        MetaCPAN Explorer
+      </a>
+    </li>
+    <li>
+      <a href="/dist/WebService-MusicBrainz/permissions">
+        Permissions
+      </a>
+    </li>
+    <li>
+      <a href="/dist/WebService-MusicBrainz/releases.rss">
+        Subscribe to distribution
+      </a>
+    </li>
+    <li>
+      <button class="btn btn-link" data-toggle="modal" data-target="#metacpan_install-instructions-dialog">
+        Install Instructions
+      </button>
+    </li>
+    <li>
+      <form action="/search">
+        <input type="hidden" name="q" value="dist:WebService-MusicBrainz">
+        <input type="search" name="q" placeholder="Search distribution" class="form-control tool-bar-form">
+        <input type="submit" style="display: none">
+      </form>
+    </li>
+    <li>
+      <form action="https://grep.metacpan.org/search">
+        <input type="hidden" name="qd" value="WebService-MusicBrainz">
+        <input type="hidden" name="source" value="metacpan">
+        <input type="search" name="q" placeholder="grep distribution" class="form-control tool-bar-form">
+        <input type="submit" style="display: none">
+     </form>
+    </li>
+    <li class="version-jump">
+<select onchange="document.location.href=&#39;/release/&#39;+this.value+&#39;/view/lib/WebService/MusicBrainz.pm&#39;" class="form-control tool-bar-form">
+  <option disabled selected>Jump to version</option>
+<option
+  disabled
+  value="BFAIST/WebService-MusicBrainz-1.0.6"
+>1.0.6
+  (BFAIST on 2022-07-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.5"
+>1.0.5
+  (BFAIST on 2019-03-19)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.4"
+>1.0.4
+  (BFAIST on 2018-02-17)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.3"
+>1.0.3
+  (BFAIST on 2018-01-09)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.2"
+>1.0.2
+  (BFAIST on 2017-06-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.1"
+>1.0.1
+  (BFAIST on 2017-03-27)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0"
+>1.0
+  (BFAIST on 2017-03-11)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.94"
+>0.94
+  (BFAIST on 2016-08-24)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.93"
+>0.93
+  (BFAIST on 2009-11-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.92"
+>0.92
+  (BFAIST on 2009-11-01)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.91"
+>0.91
+  (BFAIST on 2009-10-20)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.90"
+>0.90
+  (BFAIST on 2009-10-14)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.22"
+>0.22
+  (BFAIST on 2009-04-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.21"
+>0.21
+  (BFAIST on 2009-02-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.20"
+>0.20
+  (BFAIST on 2009-01-06)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.19"
+>0.19
+  (BFAIST on 2008-10-22)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.18"
+>0.18
+  (BFAIST on 2008-05-15)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.17"
+>0.17
+  (BFAIST on 2008-03-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.16"
+>0.16
+  (BFAIST on 2007-12-06)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.15"
+>0.15
+  (BFAIST on 2007-12-04)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.14"
+>0.14
+  (BFAIST on 2007-12-04)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.13"
+>0.13
+  (BFAIST on 2007-12-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.12"
+>0.12
+  (BFAIST on 2007-11-16)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.11"
+>0.11
+  (BFAIST on 2007-07-10)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.10"
+>0.10
+  (BFAIST on 2007-05-29)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.09"
+>0.09
+  (BFAIST on 2007-05-14)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.08"
+>0.08
+  (BFAIST on 2007-04-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.07"
+>0.07
+  (BFAIST on 2007-02-13)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.06"
+>0.06
+  (BFAIST on 2006-11-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.05"
+>0.05
+  (BFAIST on 2006-11-17)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.04"
+>0.04
+  (BFAIST on 2006-11-16)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.03"
+>0.03
+  (BFAIST on 2006-09-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.02"
+>0.02
+  (BFAIST on 2006-04-30)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.01"
+>0.01
+  (BFAIST on 2006-04-26)</option>
+</select>
+    </li>
+    <li class="version-diff">
+<select onchange="document.location.href='/release/BFAIST/WebService-MusicBrainz-1.0.6/diff/' + encodeURIComponent(this.value) + '/lib/WebService/MusicBrainz.pm'
+" class="form-control tool-bar-form">
+  <option disabled selected>Diff with version</option>
+<option
+  disabled
+  value="BFAIST/WebService-MusicBrainz-1.0.6"
+>1.0.6
+  (BFAIST on 2022-07-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.5"
+>1.0.5
+  (BFAIST on 2019-03-19)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.4"
+>1.0.4
+  (BFAIST on 2018-02-17)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.3"
+>1.0.3
+  (BFAIST on 2018-01-09)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.2"
+>1.0.2
+  (BFAIST on 2017-06-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.1"
+>1.0.1
+  (BFAIST on 2017-03-27)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0"
+>1.0
+  (BFAIST on 2017-03-11)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.94"
+>0.94
+  (BFAIST on 2016-08-24)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.93"
+>0.93
+  (BFAIST on 2009-11-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.92"
+>0.92
+  (BFAIST on 2009-11-01)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.91"
+>0.91
+  (BFAIST on 2009-10-20)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.90"
+>0.90
+  (BFAIST on 2009-10-14)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.22"
+>0.22
+  (BFAIST on 2009-04-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.21"
+>0.21
+  (BFAIST on 2009-02-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.20"
+>0.20
+  (BFAIST on 2009-01-06)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.19"
+>0.19
+  (BFAIST on 2008-10-22)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.18"
+>0.18
+  (BFAIST on 2008-05-15)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.17"
+>0.17
+  (BFAIST on 2008-03-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.16"
+>0.16
+  (BFAIST on 2007-12-06)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.15"
+>0.15
+  (BFAIST on 2007-12-04)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.14"
+>0.14
+  (BFAIST on 2007-12-04)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.13"
+>0.13
+  (BFAIST on 2007-12-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.12"
+>0.12
+  (BFAIST on 2007-11-16)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.11"
+>0.11
+  (BFAIST on 2007-07-10)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.10"
+>0.10
+  (BFAIST on 2007-05-29)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.09"
+>0.09
+  (BFAIST on 2007-05-14)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.08"
+>0.08
+  (BFAIST on 2007-04-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.07"
+>0.07
+  (BFAIST on 2007-02-13)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.06"
+>0.06
+  (BFAIST on 2006-11-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.05"
+>0.05
+  (BFAIST on 2006-11-17)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.04"
+>0.04
+  (BFAIST on 2006-11-16)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.03"
+>0.03
+  (BFAIST on 2006-09-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.02"
+>0.02
+  (BFAIST on 2006-04-30)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.01"
+>0.01
+  (BFAIST on 2006-04-26)</option>
+</select>
+    </li>
+
+    <li>
+<ul class="dependencies">
+  <li class="nav-header">Dependencies</li>
+  <li><a href="/pod/Mojolicious" title="Mojolicious" class="ellipsis">Mojolicious</a></li>
+  <li><i class="ttip" title="dynamic_config enabled">and possibly others</i></li>
+  <li>
+    <hr>
+  </li>
+  <li>
+    <a href="/module/WebService::MusicBrainz/requires">Reverse dependencies</a>
+  </li>
+  <li>
+    <a href="http://deps.cpantesters.org/?module=WebService%3A%3AMusicBrainz">CPAN Testers List</a>
+  </li>
+  <li>
+    <a href="https://cpandeps.grinnz.com/?dist=WebService-MusicBrainz">Dependency graph</a>
+  </li>
+</ul>
+    </li>
+    <li class="nav-header">Permalinks</li>
+    <li>
+      <a href="/release/BFAIST/WebService-MusicBrainz-1.0.6/view/lib/WebService/MusicBrainz.pm">This version</a>
+    </li>
+    <li>
+      <a href="/pod/WebService::MusicBrainz">Latest version</a>
+    </li>
+    <li>
+<div class="plussers">
+<div class="nav-header">++ed by:</div>
+<div>
+<a class="display-all" href="/author/NQOUNET"><img src="https://www.gravatar.com/avatar/e61f06bb6e837f13f4b55d9edf0bcef7?d=identicon&amp;s=20" title="NQOUNET" alt="NQOUNET"></a>
+</div>
+<!-- Display counts of plussers-->
+<div>
+    <a href="/dist/WebService-MusicBrainz/plussers">1 PAUSE user</a>
+</div>
+</div>
+    </li>
+    <li>
+<div id="metacpan_contributors">
+  <div>
+    <button class="btn-link"
+      onclick="$(this).hide(); $('#metacpan_contributors ul').slideDown(); return false;"
+    >and 1 contributors</button>
+  </div>
+  <ul style="display: none">
+    <li class="contributor"
+      data-contrib-email="bob.faist@gmail.com"
+    >
+      <img class="gravatar" width="20" height="20" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?d=identicon&amp;s=20" />
+      Bob Faist
+    </li>
+  </ul>
+</div>
+    </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="content-navigation">
+<div class="breadcrumbs">
+  <span>
+    <a data-keyboard-shortcut="g a" rel="author" href="/author/BFAIST" class="author-name">Bob Faist</a>
+  </span>
+  <span>&nbsp;/&nbsp;</span>
+  <div class="release dist-release status-latest maturity-released">
+    <span class="dropdown"><b class="caret"></b></span>
+<select onchange="document.location.href=&#39;/release/&#39;+this.value+&#39;/view/lib/WebService/MusicBrainz.pm&#39;" class="">
+<option
+  selected
+  value="BFAIST/WebService-MusicBrainz-1.0.6"
+>1.0.6
+  (BFAIST on 2022-07-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.5"
+>1.0.5
+  (BFAIST on 2019-03-19)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.4"
+>1.0.4
+  (BFAIST on 2018-02-17)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.3"
+>1.0.3
+  (BFAIST on 2018-01-09)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.2"
+>1.0.2
+  (BFAIST on 2017-06-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0.1"
+>1.0.1
+  (BFAIST on 2017-03-27)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-1.0"
+>1.0
+  (BFAIST on 2017-03-11)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.94"
+>0.94
+  (BFAIST on 2016-08-24)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.93"
+>0.93
+  (BFAIST on 2009-11-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.92"
+>0.92
+  (BFAIST on 2009-11-01)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.91"
+>0.91
+  (BFAIST on 2009-10-20)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.90"
+>0.90
+  (BFAIST on 2009-10-14)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.22"
+>0.22
+  (BFAIST on 2009-04-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.21"
+>0.21
+  (BFAIST on 2009-02-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.20"
+>0.20
+  (BFAIST on 2009-01-06)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.19"
+>0.19
+  (BFAIST on 2008-10-22)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.18"
+>0.18
+  (BFAIST on 2008-05-15)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.17"
+>0.17
+  (BFAIST on 2008-03-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.16"
+>0.16
+  (BFAIST on 2007-12-06)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.15"
+>0.15
+  (BFAIST on 2007-12-04)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.14"
+>0.14
+  (BFAIST on 2007-12-04)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.13"
+>0.13
+  (BFAIST on 2007-12-03)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.12"
+>0.12
+  (BFAIST on 2007-11-16)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.11"
+>0.11
+  (BFAIST on 2007-07-10)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.10"
+>0.10
+  (BFAIST on 2007-05-29)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.09"
+>0.09
+  (BFAIST on 2007-05-14)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.08"
+>0.08
+  (BFAIST on 2007-04-26)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.07"
+>0.07
+  (BFAIST on 2007-02-13)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.06"
+>0.06
+  (BFAIST on 2006-11-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.05"
+>0.05
+  (BFAIST on 2006-11-17)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.04"
+>0.04
+  (BFAIST on 2006-11-16)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.03"
+>0.03
+  (BFAIST on 2006-09-28)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.02"
+>0.02
+  (BFAIST on 2006-04-30)</option>
+<option
+  
+  value="BFAIST/WebService-MusicBrainz-0.01"
+>0.01
+  (BFAIST on 2006-04-26)</option>
+</select>
+    <a data-keyboard-shortcut="g d" class="release-name" href="/dist/WebService-MusicBrainz">WebService-MusicBrainz-1.0.6</a>
+  </div>
+<span class="river-gauge-gauge">
+  <svg width="24px"
+       height="15px"
+       version="1.1"
+       xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <g>
+      <title>        River stage one &#10;
+          • 2 direct dependents &#10;          • 2 total dependents
+      </title>
+
+      <rect x="0"  y="0" width="4" height="15" fill="#7ea3f2" />
+      <rect x="5"  y="0" width="4" height="15" fill="#e4e2e2" />
+      <rect x="10"  y="0" width="4" height="15" fill="#e4e2e2" />
+      <rect x="15"  y="0" width="4" height="15" fill="#e4e2e2" />
+      <rect x="20"  y="0" width="4" height="15" fill="#e4e2e2" />
+    </g>
+  </svg>
+
+</span>
+<div id="WebService-MusicBrainz-fav" class="logged_in">
+<form action="/account/favorite/add" style="display: inline" onsubmit="return favDistribution(this)">
+    <input type="hidden" name="remove" value="0">
+    <input type="hidden" name="release" value="WebService-MusicBrainz-1.0.6">
+    <input type="hidden" name="author" value="BFAIST">
+    <input type="hidden" name="distribution" value="WebService-MusicBrainz">
+    <button type="submit" class="favorite highlight"><span>1</span> ++</button>
+</form>
+</div>
+<div class="logged_out">
+<a href="" onclick="alert('Please sign in to add favorites'); return false" class="favorite highlight">
+<span>1</span> ++</a>
+</div>
+   / <span>WebService::MusicBrainz</span>
+</div>
+          </div>
+          <main class="content">
+
+
+<nav class="toc">
+  <div class="toc-header"><strong>Contents</strong></div>
+<ul>
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#VERSION">VERSION</a></li>
+  <li><a href="#METHODS">METHODS</a>
+    <ul>
+      <li><a href="#new">new</a></li>
+      <li><a href="#search">search</a>
+        <ul>
+          <li><a href="#Search-by-MBID">Search by MBID</a></li>
+          <li><a href="#Search-area">Search area</a></li>
+          <li><a href="#Search-artist">Search artist</a></li>
+          <li><a href="#Search-label">Search label</a></li>
+          <li><a href="#Search-recording">Search recording</a></li>
+          <li><a href="#Search-release">Search release</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#DEBUG">DEBUG</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul></nav>
+<div class="pod anchors">
+<h1 id="NAME">NAME</h1>
+
+<p>WebService::MusicBrainz</p>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>    use WebService::MusicBrainz;
+
+    my $mb = WebService::MusicBrainz-&gt;new();
+
+    my $result = $mb-&gt;search($resource =&gt; { $search_key =&gt; &#39;search value&#39; });
+    my $result = $mb-&gt;search($resource =&gt; { $search_key =&gt; &#39;search value&#39;, fmt =&gt; &#39;json&#39; });  # fmt =&gt; &#39;json&#39; is default
+
+    my $result_dom = $mb-&gt;search($resource =&gt; { $search_key =&gt; &#39;search value&#39;, fmt =&gt; &#39;xml&#39; });</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<p>API to search the musicbrainz.org database</p>
+
+<h1 id="VERSION">VERSION</h1>
+
+<p>Version 1.0 and future releases are not backward compatible with pre-1.0 releases. This is a complete re-write using version 2.0 of the MusicBrainz API and Mojolicious.</p>
+
+<h1 id="METHODS">METHODS</h1>
+
+<h2 id="new">new</h2>
+
+<pre><code> my $mb = WebService::MusicBrainz-&gt;new();</code></pre>
+
+<h2 id="search">search</h2>
+
+<pre><code> my $result_list = $mb-&gt;search($resource =&gt; { param1 =&gt; &#39;value1&#39; });
+
+ my $result = $mb-&gt;search($resource =&gt; { mbid =&gt; &#39;mbid&#39; });
+
+ my $result_more = $mb-&gt;search($resource =&gt; { mbid =&gt; &#39;mbid&#39;, inc =&gt; &#39;extra stuff&#39; });
+
+ Valid values for $resource are:  area, artist, event, instrument, label, recording, release, release-group, series, work, url
+The default is to return decoded JSON as a perl data structure.  Specify format =&gt; &#39;xml&#39; to return the results as an instance of Mojo::DOM.</code></pre>
+
+<h3 id="Search-by-MBID"><a id="Search"></a>Search by MBID</h3>
+
+<pre><code>  my $result = $mb-&gt;search($resource =&gt; { mbid =&gt; &#39;xxxxxx&#39; });</code></pre>
+
+<p>The &quot;inc&quot; search parameter is only allowed when searching for any particular &quot;mbid&quot;.</p>
+
+<h3 id="Search-area"><a id="Search1"></a>Search area</h3>
+
+<pre><code>  my $area_list_results = $mb_ws-&gt;search(area =&gt; { iso =&gt; &#39;US-OH&#39; });
+  my $area_list_results = $mb_ws-&gt;search(area =&gt; { area =&gt; &#39;cincinnati&#39; });
+  my $area_list_results = $mb_ws-&gt;search(area =&gt; { alias =&gt; &#39;new york&#39; });
+  my $area_list_results = $mb_ws-&gt;search(area =&gt; { sortname =&gt; &#39;new york&#39; });
+  my $area_list_results = $mb_ws-&gt;search(area =&gt; { area =&gt; &#39;new york&#39;, type =&gt; &#39;city&#39; });
+
+  my $area_result = $mb_ws-&gt;search(area =&gt; { mbid =&gt; &#39;0573177b-9ff9-4643-80bc-ed2513419267&#39; });
+  my $area_result = $mb_ws-&gt;search(area =&gt; { mbid =&gt; &#39;0573177b-9ff9-4643-80bc-ed2513419267&#39;, inc =&gt; &#39;area-rels&#39; });</code></pre>
+
+<h3 id="Search-artist"><a id="Search2"></a>Search artist</h3>
+
+<pre><code> # JSON example
+ my $artists = $mb-&gt;search(artist =&gt; { artist =&gt; &#39;Ryan Adams&#39; });
+ my $artists = $mb-&gt;search(artist =&gt; { artist =&gt; &#39;Ryan Adams&#39;, type =&gt; &#39;person&#39; });
+
+ my $artist_country = $artists-&gt;{artists}-&gt;[0]-&gt;{country};
+
+ # XML example
+ my $artists = $mb-&gt;search(artist =&gt; { artist =&gt; &#39;Ryan Adams&#39;, type =&gt; &#39;person&#39;, fmt =&gt; &#39;xml&#39; });
+
+ my $artist_country = $artists-&gt;at(&#39;country&#39;)-&gt;text;
+
+ # find this particular artist
+ my $artist = $mb-&gt;search(artist =&gt; { mbid =&gt; &#39;5c2d2520-950b-4c78-84fc-78a9328172a3&#39; });
+
+ # find this particular artist and include release and artist relations (members of the band)
+ my $artist = $mb-&gt;search(artist =&gt; { mbid =&gt; &#39;5c2d2520-950b-4c78-84fc-78a9328172a3&#39;, inc =&gt; [&#39;releases&#39;,&#39;artist-rels&#39;] });
+
+ # artists that started in Cincinnati
+ my $artists = $mb-&gt;search(artist =&gt; { beginarea =&gt; &#39;Cincinnati&#39; });</code></pre>
+
+<h3 id="Search-label"><a id="Search3"></a>Search label</h3>
+
+<pre><code> my $labels = $mb-&gt;search(label =&gt; { label =&gt; &#39;Death&#39; });</code></pre>
+
+<h3 id="Search-recording"><a id="Search4"></a>Search recording</h3>
+
+<pre><code> my $recordings = $mb-&gt;search(recording =&gt; { artist =&gt; &#39;Taylor Swift&#39; });</code></pre>
+
+<h3 id="Search-release"><a id="Search5"></a>Search release</h3>
+
+<pre><code> my $releases = $mb-&gt;search(release =&gt; { release =&gt; &#39;Love Is Hell&#39;, status =&gt; &#39;official&#39; });
+ print &quot;RELEASE COUNT: &quot;, $releases-&gt;{count}, &quot;\n&quot;;</code></pre>
+
+<h1 id="DEBUG">DEBUG</h1>
+
+<p>Set environment variable MUSICBRAINZ_DEBUG=1</p>
+
+<ul>
+
+<li><p>The URL that is generated for the search will output to STDOUT.</p>
+
+</li>
+<li><p>The formatted output (JSON or XML) will be output to STDOUT</p>
+
+</li>
+</ul>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<dl>
+
+<dt id="Bob-Faist-&lt;bob.faist@gmail.com&gt;"><a id="Bob"></a><a id="Bob-Faist--bob.faist-gmail.com"></a>Bob Faist &lt;bob.faist@gmail.com&gt;</dt>
+<dd>
+
+</dd>
+</dl>
+
+<h1 id="COPYRIGHT-AND-LICENSE"><a id="COPYRIGHT"></a>COPYRIGHT AND LICENSE</h1>
+
+<p>Copyright 2006-2017 by Bob Faist</p>
+
+<p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+
+<h1 id="SEE-ALSO"><a id="SEE"></a>SEE ALSO</h1>
+
+<p>https://musicbrainz.org/doc/MusicBrainz_API</p></div>
+
+<div id="metacpan_install-instructions-dialog" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Module Install Instructions</h4>
+      </div>
+      <div class="modal-body">
+        <p>To install WebService::MusicBrainz, copy and paste the appropriate command in to your terminal.</p>
+        <p><a href="/dist/App-cpanminus/view/bin/cpanm">cpanm</a></p>
+        <pre><code>cpanm WebService::MusicBrainz</code></pre>
+        <p><a href="/pod/CPAN">CPAN shell</a></p>
+        <pre><code>perl -MCPAN -e shell
+install WebService::MusicBrainz</code></pre>
+        <p>For more information on module installation, please visit <a href="https://www.cpan.org/modules/INSTALL.html">the detailed CPAN module installation guide</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+          </main>
+          <div class="content-pagination">
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="footer-container">
+            <div class="footer-social">
+              <div class="footer-link footer-logo">
+                <a href="/">
+                  <img src="/static/images/metacpan-logo.svg" alt="MetaCPAN" />
+                </a>
+              </div>
+              <a class="footer-social-link" href="https://github.com/metacpan">
+                <i class="fab fa-github-square"></i>
+              </a>
+              <a class="footer-social-link" href="https://fosstodon.org/@metacpan">
+                <i class="fab fa-mastodon"></i>
+              </a>
+            </div>
+            <div class="footer-links">
+              <div class="footer-link">
+                  <a href="/about">About</a>
+              </div>
+              <div class="footer-link">
+                  <a href="/about/sponsors">Sponsor</a>
+              </div>
+              <div class="footer-link">
+                  <a href="https://grep.metacpan.org">grep::cpan</a>
+              </div>
+              <div class="footer-link">
+                  <a href="/recent">Recent</a>
+              </div>
+              <div class="footer-link">
+                  <a href="/about/faq">FAQ</a>
+              </div>
+              <div class="footer-link">
+                  <a href="/tools">Tools</a>
+              </div>
+              <div class="footer-link">
+                  <a href="https://fastapi.metacpan.org/">API</a>
+              </div>
+              <div class="footer-link">
+                  <a href="https://www.perl.org/">Perl.org</a>
+              </div>
+            </div>
+            <div class="footer-sponsors">
+              <a class="footer-sponsor-link" target="_blank" href="https://www.bytemark.co.uk/" rel="noopener">
+                <img class="footer-sponsor-bytemark" src="/static/images/sponsors/bytemark_logo.svg" alt="Bytemark logo">
+              </a>
+              <a class="footer-sponsor-link" target="_blank" href="https://www.liquidweb.com/" rel="noopener">
+                <img class="footer-sponsor-liquidweb" src="/static/images/sponsors/liquidweb_logo.png" alt="liquidweb logo">
+              </a>
+              <a class="footer-sponsor-link" target="_blank" href="https://deriv.com/careers/" rel="noopener">
+                <img class="footer-sponsor-deriv" src="/static/images/sponsors/deriv.svg" alt="Deriv logo">
+              </a>
+              <a class="footer-sponsor-link" target="_blank" href="https://geocode.xyz" rel="noopener">
+                <img class="footer-sponsor-geocode" src="/static/images/sponsors/geocodelogo.svg" alt="Geocode logo">
+              </a>
+              <a class="footer-sponsor-link" target="_blank" href="https://www.fastly.com/" rel="noopener">
+
+              </a>
+              <a class="footer-sponsor-link" target="_blank" href="https://opencagedata.com" rel="noopener">
+                <img class="footer-sponsor-opencage" src="/static/images/sponsors/open-cage.svg" alt="OpenCage logo">
+              </a>
+            </div>
+          </div>
+        </footer>
+        <div class="modal fade" tabindex="-1" role="dialog" id="metacpan_keyboard-shortcuts">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Keyboard Shortcuts</h4>
+              </div>
+              <div class="modal-body row">
+<div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Global</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>s</kbd>
+        </td>
+        <td>Focus search bar</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>?</kbd>
+        </td>
+        <td>Bring up this help dialog</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>GitHub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>p</kbd>
+        </td>
+        <td>Go to pull requests</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>go to github issues (only if github is preferred repository)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-6">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>POD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>a</kbd>
+        </td>
+        <td>Go to author</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>c</kbd>
+        </td>
+        <td>Go to changes</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>i</kbd>
+        </td>
+        <td>Go to issues</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>d</kbd>
+        </td>
+        <td>Go to dist</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>r</kbd>
+        </td>
+        <td>Go to repository/SCM</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>s</kbd>
+        </td>
+        <td>Go to source</td>
+      </tr>
+      <tr>
+        <td class="keys">
+          <kbd>g</kbd> <kbd>b</kbd>
+        </td>
+        <td>Go to file browse</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-12">
+  <table class="table keyboard-shortcuts">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Search terms</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><em>module:</em> (e.g. <a href="/search?q=module%3APlugin">module:Plugin</a>)</td>
+      </tr>
+      <tr>
+        <td><em>distribution:</em> (e.g. <a href="/search?q=distribution%3ADancer+auth">distribution:Dancer auth</a>)</td>
+      </tr>
+      <tr>
+        <td><em>author:</em> (e.g. <a href="/search?q=author%3ASONGMU+Redis">author:SONGMU Redis</a>)</td>
+      </tr>
+      <tr>
+        <td><em>version:</em> (e.g. <a href="/search?q=version%3A1.00">version:1.00</a>)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
+ contentType 9 text/html url 52 https://metacpan.org:443/pod/WebService::MusicBrainz responseCode 3 200 

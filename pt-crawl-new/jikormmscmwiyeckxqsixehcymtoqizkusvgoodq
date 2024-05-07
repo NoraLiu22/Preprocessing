@@ -1,0 +1,576 @@
+jikormmscmwiyeckxqsixehcymtoqizkusvgoodq length 5 15742 page 15742 <!DOCTYPE html>
+
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<title>Tails - Upgrading a Tails USB stick</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../local.css?reload-2022-10-17" type="text/css" />
+
+
+
+<script src="../lib/js/local.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body class="en">
+
+
+<header id="banner" role="banner">
+<div id="tails-logo">
+  <a href="../index.en.html">
+    <span>Tails</span>
+    <img alt="" class="svg" height="100" src="../lib/logo.png" width="270" />
+  </a>
+</div>
+<div id="search-and-donate">
+  <form action="https://duckduckgo.com/" id="searchform" method="get" target="_blank">
+    <input aria-label="Search" id="searchbox" name="q" placeholder="Using DuckDuckGo&hellip;" size="16" type="search" value="" />
+    <input name="sites" type="hidden" value="tails.net" />
+    <button aria-label="Search" type="submit"><span>Search</span></button>
+  </form>
+  <div id="donate">
+    <a href="https://tails.net/donate/"><span>Donate</span></a>
+  </div>
+</div>
+
+</header>
+
+
+
+
+
+<nav class="topbar" role="navigation">
+<ul>
+  <li><a href="../index.en.html">Home</a></li>
+  <li><a href="../about/index.en.html">How Tails works</a></li>
+  <li><a href="../install/index.en.html">Install Tails</a></li>
+  <li><a href="../doc/index.en.html">Documentation</a></li>
+  <li><a href="../support/index.en.html">Support</a></li>
+  <li><a href="../contribute/index.en.html">Contribute</a></li>
+  <li><a href="../news/index.en.html">News</a></li>
+</ul>
+
+
+</nav>
+
+
+
+<article class="page">
+
+<section id="pageheader">
+
+<div id="language-switcher-top">
+
+<nav class="language-switcher">
+  <div class="current-language">English</div>
+  <ul class="other-languages">
+    
+    <li>
+      <a href="./index.ca.html">Català</a>
+    </li>
+    
+    <li>
+      <a href="./index.de.html">Deutsch</a>
+    </li>
+    
+    <li>
+      <a href="./index.es.html">Español</a>
+    </li>
+    
+    <li>
+      <a href="./index.fr.html">Français</a>
+    </li>
+    
+    <li>
+      <a href="./index.it.html">Italiano</a>
+    </li>
+    
+    <li>
+      <a href="./index.pt.html">Português</a>
+    </li>
+    
+    <li>
+      <a href="./index.ru.html">Русский</a>
+    </li>
+    
+    
+    <li class="improve-translations">
+      <a href="../contribute/how/translate/" rel="nofollow">Improve translations</a>
+    </li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<ul id="crumbs">
+
+
+
+
+
+
+<li>Upgrading a Tails USB stick</li>
+
+</ul>
+
+</section>
+
+<header class="title">
+<span class="title">
+Upgrading a Tails USB stick
+</span>
+</header>
+
+<div id="pagebody">
+
+<section id="content" role="main">
+<div class="toc">
+<ol>
+	<li class="L1"><a href="#check-version">Checking which version of Tails you are currently running</a>
+	</li>
+	<li class="L1"><a href="#automatic">Automatic upgrade using Tails Upgrader</a>
+	<ol>
+		<li class="L2"><a href="#troubleshooting">Troubleshooting</a>
+		</li>
+		<li class="L2"><a href="#reduce">Reducing the size of the download</a>
+		</li>
+	</ol>
+	</li>
+	<li class="L1"><a href="#manual">Manual upgrade using Tails Cloner</a>
+	<ol>
+		<li class="L2"><a href="#download">Download and upgrade</a>
+		</li>
+		<li class="L2"><a href="#clone">Upgrade by cloning from another Tails</a>
+		</li>
+	</ol>
+	</li>
+</ol>
+</div>
+
+
+<p>Tails includes an automatic mechanism to upgrade a USB stick to
+the latest version of Tails. When an automatic upgrade is performed, only an
+<em>upgrade package</em> is downloaded. The upgrade package contains all the changes
+made to Tails since Tails was first installed or was last manually upgraded.</p>
+
+<p>In some cases, it is impossible to do an <strong>automatic upgrade</strong>
+and you might have to do a <strong>manual upgrade</strong>. This page describes both techniques.</p>
+
+<div class="tip">
+
+<p>To learn how Tails implements automatic upgrades, see our
+<a href="../contribute/design/upgrades/">design documentation about automatic upgrades</a>.</p>
+
+</div>
+
+
+
+
+<div class="note">
+
+<p>Your Persistent Storage will be preserved by both automatic and
+manual upgrades.</p>
+
+</div>
+
+
+<p>If you use Tails from a DVD, you need to <a href="../install/dvd/index.en.html">burn a new DVD</a>.</p>
+
+<h1 id="check-version"><a name="index1h1"></a>Checking which version of Tails you are currently running</h1>
+
+
+<p>To check which version of Tails you are currently running, choose
+<span class="menuchoice">
+  <span class="guimenu">Applications</span>&nbsp;&#x25B8;
+  <span class="guisubmenu">Tails</span>&nbsp;&#x25B8;
+  <span class="guimenuitem">About Tails</span></span>.</p>
+
+<h1 id="automatic"><a name="index2h1"></a>Automatic upgrade using <i>Tails Upgrader</i></h1>
+
+
+<p>After starting Tails and connecting to Tor, <span class="application">Tails
+Upgrader</span> automatically checks if upgrades are available and then
+proposes you to upgrade your USB stick. The upgrades are checked for and downloaded
+through Tor.</p>
+
+<p>The advantages of automatic upgrades are the following:</p>
+
+<ul>
+<li><p>You only need a single Tails USB stick. The upgrade is done on the fly from a
+running Tails. After upgrading, you can restart and use the new version.</p></li>
+<li><p>The upgrade is much smaller to download than a full USB image.</p></li>
+<li><p>The upgrade mechanism includes cryptographic verification of the upgrade.
+You don&#39;t have to verify the USB image yourself anymore.</p></li>
+</ul>
+
+
+<p>Requirements:</p>
+
+<ul>
+<li><p>A Tails USB stick</p></li>
+<li><p>An Internet connection</p></li>
+</ul>
+
+
+<p>After connecting to Tor, if an upgrade is available, a dialog appears and
+proposes you to upgrade your USB stick.</p>
+
+<p><img class="img" height="447" src="../doc/upgrade/upgrader_automatic.png" width="640" /></p>
+
+<p>If you decide to do the upgrade, click on <span class="guilabel">Upgrade now</span>,
+and follow the assistant through the upgrade process.</p>
+
+<div class="tip">
+
+<p>If you cannot upgrade at startup (for example, if you have no network
+connection by then), you can start <span class="application">Tails
+Upgrader</span> later by opening a terminal and executing the following
+command:</p>
+
+<pre>tails-upgrade-frontend-wrapper</pre>
+
+</div>
+
+
+
+
+<h2 id="troubleshooting"><a name="index1h2"></a>Troubleshooting</h2>
+
+
+<p>If an error occurs during the upgrade, the assistant proposes you to read one of the following
+pages:</p>
+
+<ul>
+<li><p>If an error occurs while checking for available upgrades:</p>
+
+<p><a href="../doc/upgrade/error/check/index.en.html">file:///usr/share/doc/tails/website/doc/upgrade/error/check.en.html</a></p></li>
+<li><p>If an error occurs while download the upgrade:</p>
+
+<p><a href="../doc/upgrade/error/download/index.en.html">file:///usr/share/doc/tails/website/doc/upgrade/error/download.en.html</a></p></li>
+<li><p>If an error occurs while installing the upgrade:</p>
+
+<p><a href="../doc/upgrade/error/install/index.en.html">file:///usr/share/doc/tails/website/doc/upgrade/error/install.en.html</a></p></li>
+</ul>
+
+
+<p>If your Tails USB stick fails to start after an automatic upgrade, see
+below how to do a manual upgrade.</p>
+
+<h2 id="reduce"><a name="index2h2"></a>Reducing the size of the download</h2>
+
+
+<p>When doing automatic upgrades, the size of the download increases over time.</p>
+
+<p>You can reduce the size of the download of future automatic upgrades by doing a
+<a href="../doc/upgrade/index.en.html#manual">manual upgrade</a> to the latest version.</p>
+
+<p>Your Tails USB stick stores:</p>
+
+<ul>
+<li><p>1 <strong>base</strong> version that you first installed or to which you last did a manual
+upgrade</p></li>
+<li><p>1 <strong>upgrade</strong> package containing all the changes made to Tails since the base
+version</p></li>
+</ul>
+
+
+<p><img alt="" class="svg" height="250" src="../doc/upgrade/system.png" width="500" /></p>
+
+<p>For example, if you install a Tails USB stick with 4.6, the base version is
+4.6, and:</p>
+
+<ul>
+<li><p>The upgrade to 4.7 is 181 MB.</p></li>
+<li><p>The upgrade to 4.8 is 347 MB.</p></li>
+<li><p>The upgrade to 4.9 is 418 MB.</p></li>
+</ul>
+
+
+<p><img alt="" class="svg" height="220" src="../doc/upgrade/incremental.png" width="277" /></p>
+
+<p>But if you do a manual upgrade of the same USB stick from 4.7 to 4.8, the base
+version becomes 4.8, and then:</p>
+
+<ul>
+<li>The upgrade to 4.9 is only 205 MB, instead of 418 MB when 4.6 was
+the base version.</li>
+</ul>
+
+
+<p><img alt="" class="svg" height="220" src="../doc/upgrade/manual.png" width="376" /></p>
+
+<h1 id="manual"><a name="index3h1"></a>Manual upgrade using <i>Tails Cloner</i></h1>
+
+
+<p>It might not always be possible to do an automatic upgrade as described <a href="../doc/upgrade/index.en.html#automatic">above</a>.
+For example, when:</p>
+
+<ul>
+<li><p>No automatic upgrade is available from our website for this version.</p></li>
+<li><p>The automatic upgrade is impossible for technical reasons (not enough
+memory, not enough free space on the USB stick, and so on). For example, if you
+get the following error message:</p>
+
+<pre><code> there is not enough free space on the Tails system partition
+</code></pre></li>
+<li><p>The automatic upgrade failed and you need to repair a Tails USB stick.</p></li>
+<li><p>You want to upgrade by cloning from another Tails USB stick which is
+already up-to-date, for example, when working offline or with a slow
+Internet connection.</p></li>
+</ul>
+
+
+<p>After connecting to Tor, a dialog informs you if you have to
+upgrade your USB stick using <span class="application">Tails Cloner</span>
+to a newer version of Tails.</p>
+
+<p><img class="img" height="375" src="../doc/upgrade/upgrader_manual.png" width="620" /></p>
+
+<div class="tip">
+
+<p>You can also do a manual upgrade to reduce the size of future automatic
+upgrades, as described <a href="../doc/upgrade/index.en.html#reduce">above</a>.</p>
+
+</div>
+
+
+<p>To do a manual upgrade, you can either:</p>
+
+<ul>
+<li><p><a href="../doc/upgrade/index.en.html#download">Download and upgrade</a> (below)</p></li>
+<li><p><a href="../doc/upgrade/index.en.html#clone">Upgrade by cloning from another Tails</a> (below)</p></li>
+<li><p><a href="../install/dvd/index.en.html">Burn a new Tails DVD</a></p></li>
+</ul>
+
+
+<h2 id="download"><a name="index3h2"></a>Download and upgrade</h2>
+
+
+<p>You need:</p>
+
+<ul>
+<li><p>Your Tails USB stick</p></li>
+<li><p>Another empty USB stick <small>(at least 8 GB)</small>&nbsp;<a class="toggle" href="#doc-upgrade.why-extra">Why?</a></p></li>
+<li><p>&frac12; hour to download Tails (<small class="remove-extra-space">
+1.4 GB
+</small>)</p></li>
+<li><p>&frac12; hour to upgrade</p></li>
+</ul>
+
+
+<div class="toggleable" id="doc-upgrade.why-extra">
+
+
+<p><span class="hide"><a class="toggle" href="#doc-upgrade.why-extra"></a></span></p>
+
+<p>It is currently impossible to manually upgrade a Tails USB stick
+while running from itself. This scenario requires creating an
+intermediary Tails on another USB stick, from which to upgrade your
+Tails.</p>
+
+
+</div>
+
+
+<p>See our instructions on how to do a manual upgrade by:</p>
+
+<ul>
+<li><p><a href="./tails/index.en.html">Downloading and upgrading from your Tails</a> (more secure)</p></li>
+<li><p><a href="./windows/index.en.html">Downloading and upgrading from Windows</a> (more convenient)</p></li>
+<li><p><a href="./mac/index.en.html">Downloading and upgrading from macOS</a> (more convenient)</p></li>
+<li><p><a href="./linux/index.en.html">Downloading and upgrading from Linux</a> (more convenient)</p></li>
+</ul>
+
+
+<div class="caution">
+
+<p>Downloading and upgrading from Windows might be less secure if your
+Windows has viruses. But, it might be more convenient and faster.</p>
+
+</div>
+
+
+
+
+<h2 id="clone"><a name="index4h2"></a>Upgrade by cloning from another Tails</h2>
+
+
+<p>If you know someone you trust who already did the upgrade, you can
+upgrade your Tails by cloning from their Tails.</p>
+
+<p>You need:</p>
+
+<ul>
+<li><p>Your Tails USB stick</p></li>
+<li><p>Another up-to-date Tails (USB stick or DVD)</p></li>
+<li><p>&frac14; hour to upgrade</p></li>
+</ul>
+
+
+<p>See our instructions on how to do a manual upgrade by:</p>
+
+<ul>
+<li><a href="./clone/index.en.html">Cloning from another Tails</a></li>
+</ul>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+</div>
+
+</article>
+
+<div id="language-switcher-bottom">
+
+<nav class="language-switcher">
+  <div class="current-language">English</div>
+  <ul class="other-languages">
+    
+    <li>
+      <a href="./index.ca.html">Català</a>
+    </li>
+    
+    <li>
+      <a href="./index.de.html">Deutsch</a>
+    </li>
+    
+    <li>
+      <a href="./index.es.html">Español</a>
+    </li>
+    
+    <li>
+      <a href="./index.fr.html">Français</a>
+    </li>
+    
+    <li>
+      <a href="./index.it.html">Italiano</a>
+    </li>
+    
+    <li>
+      <a href="./index.pt.html">Português</a>
+    </li>
+    
+    <li>
+      <a href="./index.ru.html">Русский</a>
+    </li>
+    
+    
+    <li class="improve-translations">
+      <a href="../contribute/how/translate/" rel="nofollow">Improve translations</a>
+    </li>
+    
+  </ul>
+</nav>
+
+</div>
+
+<footer id="footer" class="pagefooter" role="contentinfo">
+
+<div>
+
+<h5><a name="index1h5"></a>Tails</h5>
+
+<ul>
+<li><a href="../index.en.html">Home</a></li>
+<li><a href="../about/index.en.html">How Tails works</a></li>
+<li><a href="../install/index.en.html">Install Tails</a></li>
+<li><a href="../doc/index.en.html">Documentation</a></li>
+<li><a href="../support/index.en.html">Support</a></li>
+<li><a href="../contribute/index.en.html">Contribute</a></li>
+<li><a href="../news/index.en.html">News</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h5><a name="index2h5"></a>Support</h5>
+
+<ul>
+<li><a href="../support/faq/index.en.html">FAQs</a></li>
+<li><a href="../support/known_issues/index.en.html">Known issues</a></li>
+<li><a href="../doc/about/warnings/index.en.html">Warnings</a></li>
+<li><a href="../security/index.en.html">Security advisories</a></li>
+<li><a href="../doc/first_steps/accessibility/index.en.html">Accessibility</a></li>
+<li><span class="selflink">Upgrade</span></li>
+</ul>
+
+</div>
+
+<div>
+
+<h5><a name="index3h5"></a>Contribute</h5>
+
+<ul>
+<li><a href="../doc/first_steps/whisperback/index.en.html">Report an error</a></li>
+<li><a href="../contribute/how/translate/">Translate</a></li>
+<li><a href="../contribute/how/code/">Source code</a></li>
+<li><a href="https://gitlab.tails.boum.org/tails/tails/-/issues">GitLab</a></li>
+<li><a href="../donate/index.en.html">Donate</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h5><a name="index4h5"></a>About us</h5>
+
+<ul>
+<li><a href="../about/contact/index.en.html">Contact</a></li>
+<li><a href="../contribute/mission/">Mission and values</a></li>
+<li><a href="../doc/about/social_contract/index.en.html">Social contract</a></li>
+<li><a href="../sponsors/index.en.html">Sponsors</a></li>
+<li><a href="../contribute/working_together/code_of_conduct/">Code of conduct</a></li>
+<li><a href="../doc/about/license/index.en.html">License</a></li>
+<li><a href="../jobs/">Jobs</a></li>
+</ul>
+
+</div>
+
+<div>
+
+<h5><a name="index5h5"></a>News</h5>
+
+<p>Subscribe to our <a href="../news/index.en.html">newsletter</a></p>
+
+<form action="https://www.autistici.org/mailman/subscribe/amnesia-news" method="POST">
+  <input aria-label="Email" name="email" value="" />
+  <button aria-label="Subscribe" type="submit">Subscribe</button>
+</form>
+
+<p><a href="https://twitter.com/Tails_live"><img alt="Twitter" class="img" height="24" src="../lib/twitter.png" width="30" /></a></p>
+
+</div>
+
+
+</footer>
+<script src="../ikiwiki/ikiwiki.js" type="text/javascript" charset="utf-8"></script>
+<script src="../ikiwiki/toggle.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+ contentType 9 text/html url 43 https://tails.net:443/upgrade/index.en.html responseCode 3 200 

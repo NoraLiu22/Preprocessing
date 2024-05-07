@@ -1,0 +1,388 @@
+sgnckcjojahqbczmaqrivczoscyqpmymsmqabeya length 5 20700 page 20700 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en-US">
+<head><title>
+	LMS Online - Case File Search
+</title><meta http-equiv="cache-control" content="no-cache" /><meta http-equiv="pragma" content="no-cache" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <!-- forces the use of latest rendering, which fixes a "sawtooth" tab problem in IE 7 rendering -->
+
+    <link href="css/global.css" rel="stylesheet" type="text/css" /><link href="css/layout.css" rel="stylesheet" type="text/css" /><link href="css/header.css" rel="stylesheet" type="text/css" /><link href="css/buttons.css" rel="stylesheet" type="text/css" /><link href="css/tabs.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/phillylmsprod/pub/lms/favicon.ico" type="image/x-icon" />
+    <!--[if IE 7]>
+        <link href="css/ie7.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <link href="css/insertmenu.css" rel="stylesheet" type="text/css" />
+
+    <!--ExtJS 4 Library and Styles-->
+    <link type="text/css" rel="Stylesheet" href="javascript/extjs4/resources/css/ext-all-gray.css" />
+    <script type="text/javascript" src="javascript/extjs4/ext-all.js"></script>
+
+    <script type="text/javascript">
+        var showDatePicker = function(evt, el, o)
+        {
+            var tDate      = new Date();
+            var initDate   = new Date();
+            var datePicker = Ext.create('Ext.menu.DatePicker',
+            {
+                focusOnToFront: false,
+
+                handler: function(dp, date)
+                {
+                    el.value = Ext.Date.format(date, 'M j, Y');
+                    el.onchange();
+                    addSetValidatedValueToChange(el);
+                }
+            });
+
+            datePicker.showAt(evt.getXY());
+            datePicker.alignTo(el, 'bl');
+
+            // Try to parse the value and set the default value
+            initDate = Ext.Date.parse(el.value, 'M j, Y');
+            if(initDate)
+                datePicker.picker.setValue(initDate);
+        };
+    </script>
+
+    <script src="javascript/posseglobal.js?2"
+        language="javascript" type="text/javascript"></script>
+
+    <script src="javascript/posseextension.js?3"
+        language="javascript" type="text/javascript"></script>
+
+</head>
+<body class="master"  onload='PosseOnLoad(); disablelistprocessor(); initializeValidatedValues();' onunload='PossePwClose(true)'>
+<!-- Google Tag Manager [phila.gov] -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MC6CR2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MC6CR2');</script>
+<!-- End Google Tag Manager -->
+<!-- divs for nicenonfooter, nicecontent, and nicefooter to keep the footer at the lower of the bottom of the window or the page.
+     Note how the nicecontent is nested inside nicenonfooter, and nicefooter is on its own.
+     CSS changes were made to the layout.css for this to work as well.
+     See http://www.themaninblue.com/writing/perspective/2005/08/29/ for more information. -->
+    <div id="nicenonfooter">
+    <form name="aspnetForm" method="post" action="./Default.aspx?PossePresentation=CaseFilePayOnlineSearch" id="aspnetForm" onsubmit="return false" onkeypress="javascript:return FireDefaultButton(event, &#39;ctl00_cphBottomFunctionBand_ctl03_PerformSearch&#39;)">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTkzODgxNjAwNw8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgJmD2QWAgIBDxYEHghvbnN1Ym1pdAUMcmV0dXJuIGZhbHNlHgpvbmtleXByZXNzBV1qYXZhc2NyaXB0OnJldHVybiBGaXJlRGVmYXVsdEJ1dHRvbihldmVudCwgJ2N0bDAwX2NwaEJvdHRvbUZ1bmN0aW9uQmFuZF9jdGwwM19QZXJmb3JtU2VhcmNoJykWBAILD2QWAgIBD2QWBAIBDw8WAh4HVmlzaWJsZWhkZAIDDw8WAh8DaGRkAg8PZBYCAgEPZBYCAgEPZBYCZg9kFgRmD2QWAmYPZBYEAgEPD2QWCB4Hb25jbGljawU8cmV0dXJuIGN0bDAwX2NwaEJvdHRvbUZ1bmN0aW9uQmFuZF9jdGwwM19QZXJmb3JtU2VhcmNoX2ZuKCk7HgRocmVmBQEjHwIFV2lmIChldmVudC5rZXlDb2RlID09IDEzKSB7cmV0dXJuIGN0bDAwX2NwaEJvdHRvbUZ1bmN0aW9uQmFuZF9jdGwwM19QZXJmb3JtU2VhcmNoX2ZuKCk7fR4Ecm9sZQUGYnV0dG9uFgJmDw8WAh4EVGV4dAUGU2VhcmNoZGQCAw8PZBYCHgVzdHlsZQUNZGlzcGxheTpub25lO2QCAQ9kFgJmD2QWBAIBDw9kFggfBAU5cmV0dXJuIGN0bDAwX2NwaEJvdHRvbUZ1bmN0aW9uQmFuZF9jdGwwNV9obGtCdG5MaW5rX2ZuKCk7HwUFASMfAgVUaWYgKGV2ZW50LmtleUNvZGUgPT0gMTMpIHtyZXR1cm4gY3RsMDBfY3BoQm90dG9tRnVuY3Rpb25CYW5kX2N0bDA1X2hsa0J0bkxpbmtfZm4oKTt9HwYFBmJ1dHRvbhYCZg8PFgIfBwUNU2F2ZSBhcyBFeGNlbGRkAgMPD2QWAh8IBQ1kaXNwbGF5Om5vbmU7ZGTWOMF4rtPi+4YViih9y8uMwgayVw==" />
+
+
+<script type="text/javascript">
+//<![CDATA[
+function ctl00_cphBottomFunctionBand_ctl03_PerformSearch_fn(){if (vProcessFunctionLinks) {vProcessFunctionLinks=false; var validEntry = PosseSubmitLinkReturn('https://eclipse.phila.gov/phillylmsprod/pub/lms/Default.aspx?PossePresentation=CaseFilePayOnlineSearch', 5, 3210185); if (!validEntry) {vProcessFunctionLinks=true;}if (validEntry) {var btn = document.getElementById('ctl00_cphBottomFunctionBand_ctl03_PerformSearch'); var img = document.getElementById('ctl00_cphBottomFunctionBand_ctl03_imgLoading');img.style.display = 'inline-block'; btn.style.display = 'none';}} return false;}
+function ctl00_cphBottomFunctionBand_ctl05_hlkBtnLink_fn(){if (vProcessFunctionLinks) {vProcessFunctionLinks=false; var validEntry = PosseSubmitLink('https://eclipse.phila.gov/phillylmsprod/pub/lms/ExcelDownload.aspx?PossePresentation=CaseFilePayOnlineSearch', 5, 3209877);; window.setTimeout(waitASec, 2000);if (validEntry) {var btn = document.getElementById('ctl00_cphBottomFunctionBand_ctl05_hlkBtnLink'); var img = document.getElementById('ctl00_cphBottomFunctionBand_ctl05_imgLoading');img.style.display = 'inline-block'; btn.style.display = 'none';}} return false;}
+//]]>
+</script>
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A24E956F" />
+    <div id="nicecontent">
+    <div class="header" style="text-align: center;"><!--HEADER-->
+        <div class="preheader">
+            <div class="contentCentered">
+                <ul>
+                    <div class="welcomemessage" style="content">
+                        
+	<div id="ctl00_cphUserInfo_pnlUserInfo" class="userInfoPanel">
+	
+	<div>
+		<span class="welcomemessage"></span><span class="versionheader">PhlProd:LMS</span>
+	</div>
+</div>
+
+                    </div>
+                    <li class="CoP">
+                        <a href="http://www.phila.gov/">City of Philadelphia</a>
+                    </li>
+                    <li class="separator"></li>
+                    <li>
+                        <a href="http://www.phila.gov/mayor">Mayor's Office</a>
+                    </li>
+                    <li class="separator"></li>
+                    <li>
+                        <a href="http://www.phila.gov/cityCouncil">City Council</a>
+                    </li>
+                    <li class="separator"></li>
+                    <li>
+                        <a href="http://www.courts.phila.gov/">Courts</a>
+                    </li>
+                    <li class="separator"></li>
+                    <li>
+                        <a href="http://www.phila.gov/districtattorney/index.html">District Attorney</a>
+                    </li>
+                    <li class="separator"></li>
+                    <li>
+                        <a href="http://www.officeofphiladelphiasheriff.com/" target="_blank">Sheriff</a>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="centerpanel">
+            <div class="menuband globalNavigation grid_10">
+                <div class="logo grid_2 alpha omega" style="margin-top: -20px; margin-left: -100px !important;">
+                    <a href="default.aspx">
+                        <img src="images/cityLogo.png" title="City of Philadelphia" alt="City of Philadelphia" class="cityLogo" href="/lms/default.aspx/">
+                    </a>
+                </div>
+                <div class="branding grid_5 alpha omega">
+                    <a>
+                        <img src="images/cityLogoMark-145-30.png" title="City of Philadelphia" alt="City of Philadelphia" style="float: left; margin-left: -40px; margin-top: -20px;">
+                    </a>
+                </div>
+                <!--[if IE]>
+                <div id="IEroot">
+                <![endif]-->
+                
+	<div id="ctl00_cphMenuBand_pnlMenuBand">
+	
+	<div class='nav'><ul id='navigation'><li><a href="default.aspx" title="">Home</a></li><span class="nav-spacer">|</span><li><a href="LogIn.aspx" title="Sign into the system as a Contractor/Owner">Sign In</a></li></ul></div>
+</div>
+
+                <!--[if IE]>
+                </div>
+                <![endif]-->
+            </div>
+        </div>
+    </div>
+    <div class="contentbody" style="text-align: center;">
+        <div class="centerpanel">
+            <div class="TM">
+                <div class="page">
+                    <!-- No documentation yet, don't even show this button
+                    <div class="helpicon">
+                        
+	<div id="ctl00_cphHelpBand_pnlHelpBand">
+	
+	
+</div>
+
+                    </div>
+                    -->
+                    <div class="title">
+                        
+	<div id="ctl00_cphTitleBand_pnlTitleBand">
+	
+	<div>
+		<span>Case File Search</span>
+	</div>
+</div>
+
+                    </div>
+                    <div>
+                        
+	<div id="ctl00_cphTopBand_pnlTopBand">
+	
+		
+		
+		<div class="rightButtons">
+            <div id="ctl00_cphTopBand_pnlTopFunctionBand">
+		
+            
+	</div>
+        </div>
+		<div id="ctl00_cphTopBand_pnlTabLabelBand">
+		
+	    
+	</div>
+	
+</div>
+
+                    </div>
+                    <div>
+                        <noscript>
+                            <center class="posseerror">
+                                JavaScript and Session Cookies must be enabled for this Site.</center>
+                        </noscript>
+                        
+	<div id="ctl00_cphPaneBand_pnlPaneBand" class="datazone">
+	
+	    <div id="todolist"></div>
+	<table class="possedetail" cellpadding="0" cellspacing="0" ><tr class="possedetail">
+<td class="possedetail" colspan="5" rowspan="1"></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="1" height="5" alt=""></td>
+</tr>
+<tr class="possedetail">
+<td class="possedetail" colspan="1" rowspan="1"></td>
+<th class="possedetail" valign="middle" colspan="4" rowspan="1" style="text-align: left" width="459"><span id="InstrCaseFileSearch_3209877_S0_sp" name="InstrCaseFileSearch_3209877_S0_sp" class="possedetail" style="text-align: left"><div class="instructions">Enter the Case File number that you wish to pay fees or fines for and click the "Search" button.</div></span></th>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="1" height="29" alt=""></td>
+</tr>
+<tr class="possedetail">
+<td class="possedetail" colspan="5" rowspan="1"></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="1" height="5" alt=""></td>
+</tr>
+<tr class="possedetail">
+<td class="possedetail" colspan="1" rowspan="1"></td>
+<th class="possedetail" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap><span id="CaseFileNumberLabel_3209877_S0_sp" name="CaseFileNumberLabel_3209877_S0_sp" class="possedetail" style="text-align: left"><span class="posselabel">Case File Number:</span></span></th>
+<td class="possedetail" colspan="1" rowspan="1"></td>
+<td class="possedetail" valign="middle" colspan="1" rowspan="1" style="text-align: left" nowrap><span id="ExternalFileNum_3209877_S0_sp" name="ExternalFileNum_3209877_S0_sp" class="possedetail" style="text-align: left"><input type="text" id="ExternalFileNum_3209877_S0" aria-label="Case File Number:" name="ExternalFileNum_3209877_S0" class="text possedetail" style="text-align:left; width:98%" tabindex="3" size="39" maxlength="40"  value=""  onchange="this.value=this.value.toUpperCase();;return PosseDataChanged('S0',3210260,this.value,40)"></span></td>
+<td class="possedetail" colspan="1" rowspan="1"></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="1" height="14" alt=""></td>
+</tr>
+<tr class="possedetail">
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="2" height="1" alt=""></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="91" height="1" alt=""></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="5" height="1" alt=""></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="238" height="1" alt=""></td>
+<td class="possedetail"><img class="possedetail" src="https://eclipse.phila.gov/phillylmsprod/pub/lms/images/posseband.gif" width="125" height="1" alt=""></td>
+</tr></table>
+
+
+</div>
+
+                    </div>
+                    <div class="buttons">
+                        
+	<div id="ctl00_cphBottomFunctionBand_pnlBottomFunctionBand">
+	
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td>
+<div class="button">
+    <a id="ctl00_cphBottomFunctionBand_ctl03_PerformSearch" onclick="return ctl00_cphBottomFunctionBand_ctl03_PerformSearch_fn();" href="#" onkeypress="if (event.keyCode == 13) {return ctl00_cphBottomFunctionBand_ctl03_PerformSearch_fn();}" role="button"><span id="ctl00_cphBottomFunctionBand_ctl03_lblBtnLabel">Search</span></a>
+    <img id="ctl00_cphBottomFunctionBand_ctl03_imgLoading" src="images/interface/ajax-loader.gif" border="0" style="display:none;" />
+</div>
+</td>
+			<td>
+<div class="button">
+    <a id="ctl00_cphBottomFunctionBand_ctl05_hlkBtnLink" onclick="return ctl00_cphBottomFunctionBand_ctl05_hlkBtnLink_fn();" href="#" onkeypress="if (event.keyCode == 13) {return ctl00_cphBottomFunctionBand_ctl05_hlkBtnLink_fn();}" role="button"><span id="ctl00_cphBottomFunctionBand_ctl05_lblBtnLabel">Save as Excel</span></a>
+    <img id="ctl00_cphBottomFunctionBand_ctl05_imgLoading" src="images/interface/ajax-loader.gif" border="0" style="display:none;" />
+</div>
+</td>
+		</tr>
+	</table>
+
+</div>
+
+                    </div>
+                    <div>
+                        
+	<div id="ctl00_cphDebugLinkBand_pnlDebugLinkBand">
+	
+	<table cellspacing="0" width="100%">
+		<tr>
+			<td width="100%" align="right"><span class="screenid" onclick="PosseToggleDebugKey()">Screen ID: 3209877</span></td>
+		</tr>
+	</table>
+
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div> <!-- nicecontent -->
+    </form>
+    </div> <!-- nicenonfooter -->
+    <div id="nicefooter">
+        <div class="footer" style="text-align: center;">
+            <div class="centerpanel">
+                <span class="footertext" onclick="PosseToggleDebugKey()">Copyright &copy; 2011-2024 Computronix</span>
+                <img src="images/posselogo.png" alt="Powered by POSSE" />
+                
+	<div id="ctl00_cphFooterBand_pnlFooterBand">
+	
+	<div>
+
+	</div>
+</div>
+
+            </div>
+        </div>
+        <div class="bottomFooter" align="center" style="padding-top: 8px; padding-bottom: 30px">
+            <span id="bottomfooter">Technical Problems:
+            <a style="color: #FFFFFF;" href="https://www.phila.gov/departments/department-of-licenses-and-inspections/about/contact-us/">L+I Help</a> |
+            <a style="color: #FFFFFF;" href="Help/Streets_Help.html" target=_blank>Streets Help</a> |
+            <a style="color: #FFFFFF;" href="http://www.phila.gov/privacy/index.html">HIPAA</a> |
+            <a style="color: #FFFFFF;" href="http://www.phila.gov/privacy/index.html">Privacy Policy</a> |
+            <a style="color: #FFFFFF;" href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to Know Policy</a> |
+            <a style="color: #FFFFFF;" href="http://www.phila.gov/tos/index.html">Terms of Use</a></span>
+            <div>
+                <a style="color: #373737;" align="center"></a>
+            </div>
+        </div>
+    </div> <!-- nicefooter -->
+
+    <div style="display: none">
+        
+                <script language="javascript">
+                var vPosseglobalErrorText = "An invalid temporary file " +
+                    "posseglobal.js was found.\n" +
+                    "Try one of the following:\n" +
+                    "  - (Internet Explorer) press Ctrl + F5\n" +
+                    "  - (Other browsers) press Ctrl + Shift + R\n" +
+                    "  - Clear the browser cache " +
+                    "and try again.";
+                function PosseOnLoad() {
+                  try {
+                    if (vPosseglobalVersion != "2019-09-17") {
+                      alert(vPosseglobalErrorText +
+                        "\nDate: expected 2019-09-17 found " +
+                        vPosseglobalVersion);
+                    } else {
+                      PosseSetEventHandlers();
+                    }
+                  }
+                  catch(e) {
+                    alert(vPosseglobalErrorText + "\nNo vPosseglobalVersion!");
+                  }
+
+PosseRefreshJavaScriptWidgets();
+PosseSetFocus("ExternalFileNum_3209877_S0");
+}
+function PosseOnRoundTrip() {
+}
+function PosseRefreshJavaScriptWidgets(){
+}
+</script>
+                <form id=possedocumentchangeform name=possedocumentchangeform
+                    method=post onsubmit="return PosseOnSubmit()">
+                  <input  id=currentpaneid name=currentpaneid
+                      value="3209877">
+                  <input  id=paneid name=paneid value="3209877">
+                  <input  id=functiondef name=functiondef
+                     value="3">
+                  <input  id=sortcolumns name=sortcolumns
+                     value="{}">
+                  <input  id=datachanges name=datachanges
+                     value="'VgPOo37/HHygzEPREHBJxF9aTq3X5g5Txo8L7mWHG0AZF1q5po1ckjx3xpJd1gpwILDNw9i4AmGbw0z1wl2bAPaxgh2Gp1Nhso/vrYrLHvi9oqyiNFkSTAJJwnxSRnTMDetJGTHyQEMp0pt3QvK%2Bw2GcckMM0Witfax3mlHWypP5PxkGNB6ZrjTLCdbai0j1wU5RHaIQPPIesF6qf1LZx58Ftpiors9sxSprDz3vLVjOtYJeAyuysq2FDlAhQpXJrsTIBhzXOIYs4lVn7gZj4m8vKl8kXF5yL1RZQHZWa1w%3D'">
+                  <input  id=comesfrom name=comesfrom value="posse">
+                  <input  id=changesxml name=changesxml value="">
+                  
+                  <input name="changespending" id="changespending" value=""/><input name="changesonobject" id="changesonobject" value=""/></form>
+                <iframe id="posseiframe" style="width: 0; height: 0; visibility: hidden;"
+                  src="posseblankpage.html"></iframe>
+        <form id="elementstodisable" method="post" onsubmit="return false;">
+        <input id="elementstodisablelist" name="elementstodisablelist" value="">
+        </form>
+    </div>
+    <div id="loadingOverlay" style="display: none;">
+    <div></div>
+    <img src="./plupload/examples/img/ajax-loader.gif" />
+    </div>
+    <script language="javascript" type="text/javascript">makeGridsClickable();</script>
+    <div style="display: none">
+        <!--Start of Tawk.to Script--><script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/60e8b093d6e7610a49aa8609/1fa6f3g8q';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();</script><!--End of Tawk.to Script-->
+    </div>
+    
+	<div id="ctl00_cphBrowserNavigationWarning_pnlBrowserNavigationWarning">
+	
+	
+</div>
+
+    <script language="javascript" type="text/javascript">removeTagAttribute('tabindex');</script>
+</body>
+</html>
+ contentType 9 text/html url 106 https://eclipse.phila.gov:443/phillylmsprod/pub/lms/Default.aspx?PossePresentation=CaseFilePayOnlineSearch responseCode 3 200 
